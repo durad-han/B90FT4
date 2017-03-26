@@ -40,7 +40,7 @@
 	
 	<aop:config>
 		<aop:pointcut id="tranMethod"
-		              expression="execution(public * b90ft4/web..*ServiceImpl.*(..)) "/>
+		              expression="execution(public * b90ft4.web..*ServiceImpl.*(..)) "/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="tranMethod" />
 	</aop:config>
 	

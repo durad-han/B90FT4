@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="b90ft4_schedule.repository.mapper.ScheduleMapper">
+<mapper namespace="b90ft4.web.repository.mapper.ScheduleMapper">
 
 	<resultMap type="scheduleVO" id="schMap">
 		<result column="Schedule_Seq"		property="scheduleSeq" 		/>

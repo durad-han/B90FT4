@@ -1,18 +1,4 @@
 @CHARSET "UTF-8";
-
-body{margin:0; padding:0}
-
-#wrap {width: 100%}
-
-#header {
-	width: 980px; height: 100px; background-color: gray;
-	margin: 0 auto;
-	}
-	
-#container {
-	width: 980px; height: 500px; background-color: silver;
-	margin: 0 auto;
-	}
 	
 #container #sideBar {
 	width: 280px; height: 500px;
@@ -53,9 +39,4 @@ body{margin:0; padding:0}
 #container #scheduleDetail #schedule #schOption {
 	width: 550px;
 	float: top; margin: 0 auto;
-	}
-	
-#footer {
-	width: 980px; height: 100px; background-color: gray;
-	margin: 0 auto; clear: both;
 	}
