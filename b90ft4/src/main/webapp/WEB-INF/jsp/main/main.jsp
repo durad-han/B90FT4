@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Main Menu</title>
 <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
-<%@ include file="/WEB-INF/jsp/common/basicinclude.jsp" %>
+<%@ include file="/WEB-INF/jsp/common/baseinclude.jsp" %>
 </head>
 <body>
 
