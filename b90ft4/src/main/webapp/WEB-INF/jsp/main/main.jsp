@@ -4,9 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Menu</title>
-<link rel="import" href="../common/baseinclude.jsp">
 <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
-
+<%@ include file="/WEB-INF/jsp/common/basicinclude.jsp" %>
 </head>
 <body>
 
