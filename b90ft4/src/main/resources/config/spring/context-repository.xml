@@ -22,10 +22,10 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		  destroy-method="close"
-      	  p:driverClassName="${jdbc.oracle.driver}"
-          p:url="${jdbc.oracle.url}"
-          p:username="${jdbc.oracle.username}" 
-          p:password="${jdbc.oracle.password}" />
+      	  p:driverClassName="${jdbc.mysql.driver}"
+          p:url="${jdbc.mysql.url}"
+          p:username="${jdbc.mysql.username}" 
+          p:password="${jdbc.mysql.password}" />
 	
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

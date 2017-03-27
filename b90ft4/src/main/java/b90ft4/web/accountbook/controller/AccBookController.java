@@ -15,7 +15,7 @@ public class AccBookController {
 	
 	@RequestMapping("/main.do")
 	public void test() throws Exception{
-//		System.out.println(dao.count());
+		System.out.println(dao.count());
 		System.out.println("캬캬");
 	}
 	
