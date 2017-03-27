@@ -2,7 +2,7 @@ package b90ft4.web.repository.vo;
 
 import java.util.Date;
 
-public class ScheduleVO {
+public class temp {
 	private int scheduleSeq;
 	private int userSeq;
 	private Date schStart;

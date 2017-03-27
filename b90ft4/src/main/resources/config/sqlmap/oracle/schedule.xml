@@ -3,18 +3,18 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.ScheduleMapper">
 
-	<resultMap type="scheduleVO" id="schMap">
-		<result column="Schedule_Seq"		property="scheduleSeq" 		/>
-		<result column="User_Seq"			property="userSeq" 			/>
-		<result column="SchStart"			property="schStart" 		/>
-		<result column="SchEnd"				property="schEnd" 			/>
-		<result column="Title"				property="title" 			/>
-		<result column="Content"			property="content" 			/>
-		<result column="Budget"				property="budget" 			/>
-		<result column="Category"			property="category"	 		/>
-		<result column="Importance"			property="importance" 		/>
-		<result column="Achieve"			property="achieve" 			/>
-	</resultMap>
+<!-- 	<resultMap type="scheduleVO" id="schMap"> -->
+<!-- 		<result column="Schedule_Seq"		property="scheduleSeq" 		/> -->
+<!-- 		<result column="User_Seq"			property="userSeq" 			/> -->
+<!-- 		<result column="SchStart"			property="schStart" 		/> -->
+<!-- 		<result column="SchEnd"				property="schEnd" 			/> -->
+<!-- 		<result column="Title"				property="title" 			/> -->
+<!-- 		<result column="Content"			property="content" 			/> -->
+<!-- 		<result column="Budget"				property="budget" 			/> -->
+<!-- 		<result column="Category"			property="category"	 		/> -->
+<!-- 		<result column="Importance"			property="importance" 		/> -->
+<!-- 		<result column="Achieve"			property="achieve" 			/> -->
+<!-- 	</resultMap> -->
 		
 	<!--============================================================================
 	
@@ -29,17 +29,17 @@
 			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: List<scheduleVO>
 	============================================================================-->
-	<select id="selectScheduleList" parameterType="searchVO" resultMap="schMap">
-		select	*
-		from	(
-				select	rownum rNum, c.*
-				from	(select	*
-						 from	tb_Sam_schedule
- 						 order	by schedule_Seq desc
-						) c
-				)
-		where	rNum between #{begin} and #{end}
-	</select>
+<!-- 	<select id="selectScheduleList" parameterType="searchVO" resultMap="schMap"> -->
+<!-- 		select	* -->
+<!-- 		from	( -->
+<!-- 				select	rownum rNum, c.* -->
+<!-- 				from	(select	* -->
+<!-- 						 from	tb_Sam_schedule -->
+<!--  						 order	by schedule_Seq desc -->
+<!-- 						) c -->
+<!-- 				) -->
+<!-- 		where	rNum between #{begin} and #{end} -->
+<!-- 	</select> -->
 	 
 	 
 	<!--============================================================================
@@ -48,10 +48,10 @@
 			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: int
 	============================================================================-->
-	<select id="selectscheduleCount" parameterType="searchVO" resultType="int">
-    	select count(*)
-    	  from tb_Sam_schedule
-    </select> 
+<!-- 	<select id="selectscheduleCount" parameterType="searchVO" resultType="int"> -->
+<!--     	select count(*) -->
+<!--     	  from tb_Sam_schedule -->
+<!--     </select>  -->
 	
 	
 	<!--============================================================================
@@ -60,11 +60,11 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: scheduleVO
 	============================================================================-->
-	<select id="selectscheduleSeq" parameterType="int" resultMap="schMap">
-		select	*
-		from	tb_Sam_schedule
-		where	schedule_Seq = #{scheduleSeq}
-	</select>
+<!-- 	<select id="selectscheduleSeq" parameterType="int" resultMap="schMap"> -->
+<!-- 		select	* -->
+<!-- 		from	tb_Sam_schedule -->
+<!-- 		where	schedule_Seq = #{scheduleSeq} -->
+<!-- 	</select> -->
 	
 
 	<!--============================================================================ 
@@ -80,33 +80,33 @@
 			파라메터의 데이터타입: scheduleVO
 			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
-		<insert id="insertSchedule" parameterType="scheduleVO" >
-		insert	into tb_Sam_schedule 
-				(
-				schedule_Seq,
-				User_Seq,
-				SchStart,
-				SchEnd,
-				Title,
-				Content,
-				Budget,
-				Category,
-				Importance,
-				Achieve
-				)
-		values	(
-				s_Sam_schedule.nextVal,
-				#{userSeq},
-				#{SchStart},
-				#{SchEnd},
-				#{Title},
-				#{Content},
-				#{Budget},
-				#{Category},
-				#{Importance},
-				#{Achieve}
-				)
-	</insert>
+<!-- 		<insert id="insertSchedule" parameterType="scheduleVO" > -->
+<!-- 		insert	into tb_Sam_schedule  -->
+<!-- 				( -->
+<!-- 				schedule_Seq, -->
+<!-- 				User_Seq, -->
+<!-- 				SchStart, -->
+<!-- 				SchEnd, -->
+<!-- 				Title, -->
+<!-- 				Content, -->
+<!-- 				Budget, -->
+<!-- 				Category, -->
+<!-- 				Importance, -->
+<!-- 				Achieve -->
+<!-- 				) -->
+<!-- 		values	( -->
+<!-- 				s_Sam_schedule.nextVal, -->
+<!-- 				#{userSeq}, -->
+<!-- 				#{SchStart}, -->
+<!-- 				#{SchEnd}, -->
+<!-- 				#{Title}, -->
+<!-- 				#{Content}, -->
+<!-- 				#{Budget}, -->
+<!-- 				#{Category}, -->
+<!-- 				#{Importance}, -->
+<!-- 				#{Achieve} -->
+<!-- 				) -->
+<!-- 	</insert> -->
 
 
 	<!--============================================================================
@@ -115,18 +115,18 @@
 			파라메터의 데이터타입: scheduleVO
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<update id="updateSchedule" parameterType="scheduleVO" >
-		update	tb_Sam_schedule
-		set		SchStart			= #{SchStart},
-				SchEnd				= #{SchEnd},
-				Title				= #{Title},
-				Content				= #{Content},
-				Budget				= #{Budget},
-				Category			= #{Category},
-				Importance			= #{Importance},
-				Achieve				= #{Achieve}
-		where	schedule_Seq		= #{scheduleSeq}
-	</update>
+<!-- 	<update id="updateSchedule" parameterType="scheduleVO" > -->
+<!-- 		update	tb_Sam_schedule -->
+<!-- 		set		SchStart			= #{SchStart}, -->
+<!-- 				SchEnd				= #{SchEnd}, -->
+<!-- 				Title				= #{Title}, -->
+<!-- 				Content				= #{Content}, -->
+<!-- 				Budget				= #{Budget}, -->
+<!-- 				Category			= #{Category}, -->
+<!-- 				Importance			= #{Importance}, -->
+<!-- 				Achieve				= #{Achieve} -->
+<!-- 		where	schedule_Seq		= #{scheduleSeq} -->
+<!-- 	</update> -->
 	
 	
 	<!--============================================================================
@@ -135,10 +135,10 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
-	<delete id="deleteSchedule" parameterType="int">
-		delete	tb_Sam_schedule
-		where	schedule_Seq = #{scheduleSeq}
-	</delete>
+<!-- 	<delete id="deleteSchedule" parameterType="int"> -->
+<!-- 		delete	tb_Sam_schedule -->
+<!-- 		where	schedule_Seq = #{scheduleSeq} -->
+<!-- 	</delete> -->
 	
 	
 	
