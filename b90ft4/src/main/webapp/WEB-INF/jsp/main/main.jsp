@@ -1,9 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Main Menu</title>
-<link rel="import" href="../common/baseinclude.html">
+<link rel="import" href="../common/baseinclude.jsp">
 <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
 
 </head>

@@ -36,7 +36,7 @@
     
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
-		<mvc:jsp prefix="/web/view/" suffix=".html" /><!-- /WEB-INF/view/..*../*.html  -->
+		<mvc:jsp prefix="/web/view/" suffix=".html" /><!-- /b90ft4/web/view/..*../*.html  -->
 	</mvc:view-resolvers>
 	
 </beans>

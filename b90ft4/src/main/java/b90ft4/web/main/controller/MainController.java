@@ -1,4 +1,4 @@
-package b90ft4.web.schedule.controller;
+package b90ft4.web.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,11 +8,11 @@ import b90ft4.web.schedule.service.ScheduleService;
 
 @RequestMapping
 @Controller
-public class ScheduleController {
+public class MainController {
 	@Autowired
 	private ScheduleService ss;
 	
-	@RequestMapping("/schedule/schedule.do")
+	@RequestMapping("/main/main.do")
 	public void retrieveScheduleList (){
 		System.out.println("hello world");
 	}
