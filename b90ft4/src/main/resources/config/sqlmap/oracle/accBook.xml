@@ -3,9 +3,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.AccBookMapper">
 
-	<select id="count" resultType="int">
-		select count(*)
+	<select id="count" resultType="string">
+		select test_col
 		  from tb_team4_test
+		where test_pk = 'test_pk1'
 	</select>
 	
 </mapper>

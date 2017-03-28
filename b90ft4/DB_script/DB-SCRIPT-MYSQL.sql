@@ -43,7 +43,7 @@ create table tb_sam_Unity(
 -- ACCOUNT BOOK
 ------------------------------------------------------------------------------
 create table tb_sam_budget_category( 
-	Category_No 		int(6) auto_increment 	primary key,
+	Category_No 		int(6)					primary key,
 	Category_name 		varchar(50) 			not null	
 );
 
@@ -55,16 +55,16 @@ create table tb_sam_budget (
 	amount 					int(6) 					not null,
 	budget_date				datetime 				not null,
 	FOREIGN KEY(Category_No) REFERENCES tb_sam_budget_category(Category_No),
-	FOREIGN KEY(user_No) 	REFERENCES tb_sam_user(user_No)
+	FOREIGN KEY(user_No) 	 REFERENCES tb_sam_user(user_No)
 );
 
-create table tb_sam_debt (
-	debt_No 		int(6) auto_increment 		primary key,
-	user_No 		int(6) 						not null,
-	partner 		varchar(20) 				not null,
-	content 		varchar(1000) 				null,
-	amount 			int(6) 						not null,
-	debt_date 		datetime 					not null,
+create table tb_sam_loan_debt (
+	loan_debt_no 		int(6) auto_increment 		primary key,
+	user_no 			int(6) 						not null,
+	partner 			varchar(20) 				not null,
+	content 			varchar(1000) 				null,
+	amount 				int(6) 						not null,
+	debt_date 			datetime 					not null,
 	FOREIGN KEY(user_No) REFERENCES tb_sam_user(user_No)
 );
 
