@@ -19,6 +19,8 @@
 				<ul>
 					<li>datePicker here</li>
 					<li>2017 / 03 / 24</li>
+					<li><button onclick="">임시조회</button></li>
+					
 				</ul>
 			</div>
 			<div id="scheduleList">

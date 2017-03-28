@@ -12,8 +12,6 @@ public class MainController {
 	@Autowired
 	private MainService ms;
 	
-
-
 	@RequestMapping("/main.do")
 	public void mainPage (){
 

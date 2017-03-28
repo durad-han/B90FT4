@@ -15,6 +15,8 @@
 		
 		<div id="container">
 			
+			<h1> Main (JSP) </h1>
+			
 			<div id="menuList">
 			
 			<div id="menu01" class="menuIcon">Schedule</div>
