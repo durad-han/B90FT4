@@ -1,17 +1,17 @@
 ------------------------------------------------------------------------------
 -- SAMPLE
 ------------------------------------------------------------------------------
-CREATE TABLE staff (
-    staff_No 		int(3) auto_increment,
-    staff_Name 		VARCHAR(14) 			NOT NULL,
-    jumin_No 		CHAR(14) 				NOT NULL UNIQUE,
-    school_Code 	int(3) 					NOT NULL,
-    religion_Code 	int(3) 					NOT NULL,
-    graduate_Day 	char(10) 				NOT NULL,
-    FOREIGN KEY(religion_Code) 				REFERENCES code_religion(religion_Code),
-    FOREIGN KEY(school_Code) 				REFERENCES code_School(school_Code),
-    PRIMARY KEY(staff_No)
-);
+--CREATE TABLE staff (
+--    staff_No 		int(3) auto_increment,
+--    staff_Name 		VARCHAR(14) 			NOT NULL,
+--    jumin_No 		CHAR(14) 				NOT NULL UNIQUE,
+--    school_Code 	int(3) 					NOT NULL,
+--    religion_Code 	int(3) 					NOT NULL,
+--    graduate_Day 	char(10) 				NOT NULL,
+--    FOREIGN KEY(religion_Code) 				REFERENCES code_religion(religion_Code),
+--    FOREIGN KEY(school_Code) 				REFERENCES code_School(school_Code),
+--    PRIMARY KEY(staff_No)
+--);
 
 
 ------------------------------------------------------------------------------
@@ -71,8 +71,8 @@ create table tb_Sam_Loan_Debt (
 create tb_Sam_Budget_Memo (
 	Memo_No 		int(6) auto_increment		primary key,
 	User_Id 		varchar(60)					not null,
-	Pos_x 			int 						not null,
-	Pos_y 			int 						not null,
+	Pos_X 			int 						not null,
+	Pos_Y 			int 						not null,
 	Content 		varchar(2000) 				null,
 	Reg_Date 		datetime 					default now(),
 	FOREIGN KEY(User_Id) REFERENCES tb_Sam_User(User_Id)
@@ -99,8 +99,8 @@ create tb_Sam_Budget_Memo (
 create tb_Sam_Schedule (
 	Schedule_No				int(6) auto_increment		primary key,	-- 스케줄 고유번호
 	User_Id					varchar(60)					not null,		-- 작성자 아이디
-	Schedule_Start			datetime					not null,		-- 시작시각
-	Schedule_End			datetime 					not null,		-- 종료시각
+	Start					datetime					not null,		-- 시작시각
+	End						datetime 					not null,		-- 종료시각
 	Title					varchar(60) 				not null,		-- 제목
 	Content					varchar(200),								-- 설명
 	Category				int(1) 						not null,		-- 종류

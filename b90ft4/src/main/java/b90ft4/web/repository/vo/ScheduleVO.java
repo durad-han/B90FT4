@@ -2,41 +2,40 @@ package b90ft4.web.repository.vo;
 
 import java.util.Date;
 
-public class temp {
-	private int scheduleSeq;
-	private int userSeq;
-	private Date schStart;
-	private Date schEnd;	
+public class ScheduleVO {
+	private int scheduleNo;
+	private String userId;
+	private Date start;
+	private Date end;
 	private String title;
 	private String content;
-	private int budget;	
-	private int category;	
+	private int category;
 	private int importance;
 	private int achieve;
 	
-	public int getScheduleSeq() {
-		return scheduleSeq;
+	public int getScheduleNo() {
+		return scheduleNo;
 	}
-	public void setScheduleSeq(int scheduleSeq) {
-		this.scheduleSeq = scheduleSeq;
+	public void setScheduleNo(int scheduleNo) {
+		this.scheduleNo = scheduleNo;
 	}
-	public int getUserSeq() {
-		return userSeq;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserSeq(int userSeq) {
-		this.userSeq = userSeq;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public Date getSchStart() {
-		return schStart;
+	public Date getStart() {
+		return start;
 	}
-	public void setSchStart(Date schStart) {
-		this.schStart = schStart;
+	public void setStart(Date start) {
+		this.start = start;
 	}
-	public Date getSchEnd() {
-		return schEnd;
+	public Date getEnd() {
+		return end;
 	}
-	public void setSchEnd(Date schEnd) {
-		this.schEnd = schEnd;
+	public void setEnd(Date end) {
+		this.end = end;
 	}
 	public String getTitle() {
 		return title;
@@ -49,12 +48,6 @@ public class temp {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public int getBudget() {
-		return budget;
-	}
-	public void setBudget(int budget) {
-		this.budget = budget;
 	}
 	public int getCategory() {
 		return category;
@@ -76,4 +69,3 @@ public class temp {
 	}
 	
 }
-

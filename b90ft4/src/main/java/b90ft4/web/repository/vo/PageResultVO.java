@@ -28,7 +28,7 @@ public class PageResultVO {
 		endPage   = (currTab * tabSize < lastPage) ? currTab * tabSize : lastPage;
 		prev = beginPage != 1; 
 		next = endPage != lastPage;
-		
+
 	}
 
 	public int getPageNo() {

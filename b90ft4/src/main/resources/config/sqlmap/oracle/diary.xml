@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b90ft4.web.repository.mapper.DiaryMapper">
+
+	<resultMap type="diaryVO" id="diaryMap">
+		<result column="Diary_No"		property="diaryNo" 			/>
+		<result column="User_Id"		property="userNo" 			/>
+		<result column="Latitude"		property="latitude" 		/>
+		<result column="Longitude"		property="longitude" 		/>
+		<result column="Weather_City"	property="weatherCity" 		/>
+		<result column="Title"			property="title" 			/>
+		<result column="Content"		property="content" 			/>
+		<result column="File_Ori"		property="fileOri" 			/>
+		<result column="File_New"		property="fileNew" 			/>
+		<result column="File_Path"		property="filePath" 		/>
+	</resultMap>
+		
+	<!--============================================================================
+	
+		D I A R Y		S E L E C T
+		
+	============================================================================-->	
+	 
+	 
+	<!--============================================================================
+			전체 다이어리 조회 selectDiaryList 
+			필터링할 값: SearchVO의 begin between end, rownum 먹인 대상?
+			파라메터의 데이터타입: SearchVO
+			리턴되는 값의 데이터타입: List<??>
+	============================================================================-->
+	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
+		select	*
+		from	(
+				select	rownum rNum, d.*
+				from	(select	*
+						 from	tb_Sam_Diary
+ 						 order	by Diary_No <!--desc -->
+						) d
+				)
+		where	rNum between #{begin} and #{end}
+	</select>
+	
+	 
+	<!--============================================================================
+			페이징용 다이어리 카운트 selectDiaryCount 
+			필터링할 값: 없음
+			파라메터의 데이터타입: SearchVO
+			리턴되는 값의 데이터타입: int
+	============================================================================-->
+	<select id="selectDiaryCount" parameterType="searchVO" resultType="int">
+    	select count(*)
+    	  from tb_Sam_Diary
+    </select> 
+	
+	
+	<!--============================================================================
+			시퀀스로 다이어리 조회 selectDiaryNo 
+			필터링할 값: Diary_No
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: DiaryVO
+	============================================================================-->
+	<select id="selectDiaryNo" parameterType="int" resultMap="diaryMap">
+		select	*
+		from	tb_Sam_Diary
+		where	Diary_No = #{diaryNo}
+	</select>
+	
+	
+	<!--============================================================================ 
+	
+		D I A R Y		INSERT	/	UPDATE	/	DELETE
+	
+	 ============================================================================-->
+
+
+	<!--============================================================================
+			다이어리 정보 입력 insertDiary
+			필터링할 값: 없음
+			파라메터의 데이터타입: DiaryVO
+			리턴되는 값의 데이터타입: 없음 
+	============================================================================-->
+		<insert id="insertDiary" parameterType="diaryVO" >
+		insert	into tb_Sam_Diary 
+				(
+				Diary_No,
+				User_Id,
+				Latitude,
+				Longitude,
+				Weather_City,
+				Title,
+				Content,
+				File_Ori,
+				File_New,
+				File_Path
+				)
+		values	(
+				s_Around_Diary.nextVal,
+				#{userNo},     
+				#{latitude},    
+				#{longitude},   
+				#{weatherCity},
+				#{title},       
+				#{content},     
+				#{fileOri},    
+				#{fileNew},    
+				#{filePath}    
+				)
+	</insert>
+
+
+	<!--============================================================================
+			다이어리 정보 수정 updateDiary
+			필터링할 값: Diary_No
+			파라메터의 데이터타입: DiaryVO
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<update id="updateDiary" parameterType="diaryVO" >
+		update	tb_Sam_Diary
+		set		Latitude    		= #{latitude},    
+				Longitude   		= #{longitude},   
+				Weather_City		= #{weatherCity}, 
+				Title       		= #{title},       
+				Content     		= #{content},     
+				File_Ori            = #{fileOri},     
+				File_New            = #{fileNew},     
+				File_Path           = #{filePath}     
+		where	Diary_No			= #{diaryNo}
+	</update>
+	
+	
+	<!--============================================================================
+			다이어리 삭제 deleteDiary
+			필터링할 값: Diary_No
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<delete id="deleteDiary" parameterType="int">
+		delete	tb_Sam_Diary
+		where	Diary_No = #{diaryNo}
+	</delete>
+	
+	
+	
+	
+	
+</mapper>
