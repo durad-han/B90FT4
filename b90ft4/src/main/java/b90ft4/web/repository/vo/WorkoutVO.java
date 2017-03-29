@@ -1,11 +1,9 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class WorkoutVO {
 	private int workoutNo;
 	private String userId;
-	private Date workoutDay;
+	private String workoutId;
 	private int isBasic;
 	
 	public int getWorkoutNo() {
@@ -20,11 +18,11 @@ public class WorkoutVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Date getWorkoutDay() {
-		return workoutDay;
+	public String getWorkoutId() {
+		return workoutId;
 	}
-	public void setWorkoutDay(Date workoutDay) {
-		this.workoutDay = workoutDay;
+	public void setWorkoutId(String workoutId) {
+		this.workoutId = workoutId;
 	}
 	public int getIsBasic() {
 		return isBasic;
@@ -32,5 +30,7 @@ public class WorkoutVO {
 	public void setIsBasic(int isBasic) {
 		this.isBasic = isBasic;
 	}
+	
+	
 	
 }

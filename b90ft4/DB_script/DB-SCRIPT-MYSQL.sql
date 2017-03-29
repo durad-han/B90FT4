@@ -117,29 +117,20 @@ create table tb_Sam_Budget_Memo (
 -- WORKOUT
 ------------------------------------------------------------------------------
 create table tb_Sam_Workout (
-	Workout_No					int(6) auto_increment	primary key,			-- 
-	User_Id						varchar(60),									-- 
-	Workout_Day					datetime,										-- 
-	Is_Basic					int(1),											-- 
-	FOREIGN KEY(User_Id) 		REFERENCES tb_Sam_User(User_Id),				
-	FOREIGN KEY(Workout_Day) 	REFERENCES tb_Sam_Workout_Statistics(Workout_Day)					
+	Workout_No					int(6) auto_increment	primary key,			--
+	Workout_Id 					varchar(60) not null,
+	User_Id						varchar(60) not null,									-- 
+	Is_Basic					int(1) not null,											-- 
+	FOREIGN KEY(User_Id) 		REFERENCES tb_Sam_User(User_Id)			
+				
 );
 
---create table tb_Sam_W2 (
---	Workout_No					int(6) auto_increment	primary key,	-- 스케줄 고유번호 (시퀀스)
---	Schedule_No					int(6),									-- 작성자 시퀀스 (FK)
---	SchStart					datetime			not null,			-- 시작
---	SchEnd						datetime 			not null,			-- 종료
---	FOREIGN KEY(Schedule_No) 	REFERENCES tb_Sam_Schedule(Schedule_No)
---);
-
 create table tb_Sam_Workout_Statistics (
-	Workout_Day					datetime				primary key,			-- 
-	User_Id						varchar(60)				not null,									-- 
+	Workout_Day					datetime				primary key,
+	Workout_No					int(6)					not null,				-- 								-- 
 	Spent_Cal					int(6)					default 0,				-- 
 	Intake_Cal					int(6)					default 0,				-- 
-	FOREIGN KEY(User_Id) 		REFERENCES tb_Sam_User(User_Id),				
-	FOREIGN KEY(Spent_Cal) 		REFERENCES tb_Sam_Workout_Set(Spent_Cal)	
+	FOREIGN KEY(Workout_No) 		REFERENCES tb_Sam_Workout(Workout_No)	
 	
 );
 
@@ -147,9 +138,9 @@ create table tb_Sam_Workout_Set (
 	Workout_Set_No				int(6) auto_increment	primary key,				--
 	Workout_No					int(6)					not null,					-- 
 	Workout_Day					datetime				not null,					-- 세트 시작 날자. 이걸로 tb_Sam_Workout_Statistics 테이블에서 날자별로 뽑아낼거임
-	Type_A_Count				int(6),												-- 
-	Type_B_Time					varchar(200),										-- 
-	Spent_Cal					int(6),					-- 
+	Type_A_Count				int(6)					default 0,												-- 
+	Type_B_Time					varchar(200)			default 0,							-- 
+	Spent_Cal					int(6)					default 0,					-- 
 	Interval_Time				varchar(200)			default 0,					-- 
 	Workout_Description			varchar(100)			default	'No Description',	-- 
 	FOREIGN KEY(Workout_No) 	REFERENCES tb_Sam_Workout(Workout_No)		

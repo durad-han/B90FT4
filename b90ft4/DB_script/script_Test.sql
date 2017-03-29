@@ -38,5 +38,11 @@ values ('tester01',now(),now(),'으엉','으앙',2,1,0);
 
 
 
+-- workout sample----------------------------------------------------------------
 
+insert into tb_Sam_Workout(User_Id,Workout_Id,Is_Basic) values ('tester01','기본운동A',1);
+insert into tb_Sam_Workout(User_Id,Workout_Id,Is_Basic) values ('tester01','기본운동B',1);
+insert into tb_Sam_Workout(User_Id,Workout_Id,Is_Basic) values ('tester01','기본운동C',1);
+
+commit;
 

@@ -2,40 +2,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-    <script>
+<title>운동</title>
+</head>
+<body>
 
-    function load() {
+<h1>workout main form h1</h1>
+<hr>
+<div id = "container">
 
-		
+	<div id = "workoutList">
+		<div id = "basicList">
+			<ul id = basic1>		
+				<li id = "basic1Graph">O</li>
+				<li id = "basic1Percentage">95%</li>
+				<li id = "basic1Name">기본운동A</li>
+			</ul>
+			<ul id = basic2>		
+				<li id = "basic2Graph">O</li>
+				<li id = "basic2Percentage">40%</li>
+				<li id = "basic2Name">기본운동B</li>
+			</ul>
+			<ul id = basic3>		
+				<li id = "basic3Graph">O</li>
+				<li id = "basic3Percentage">85%</li>
+				<li id = "basic3Name">기본운동C</li>
+			</ul>
+			<ul id = basic4>		
+				<li id = "basic4Graph">O</li>
+				<li id = "basic4Percentage">80%</li>
+				<li id = "basic4Name">기본운동D</li>
+			</ul>
+		</div>
+		<div id = "addableList"></div>
+	</div>
+	<div id = "workoutMainButtons">
+	<button id = "workoutUpdateBtn">운동 편집</button>
+	<button id = "workoutCalManagementBtn">칼로리 관리</button>
+	<button id = "workoutViewAllchartBtn">전체 차트 보기</button>
+	</div>
+</div>
 
-        var video = document.getElementById('myVideo');
-
-        if (navigator.webkitGetUserMedia) {
-
-			navigator.webkitGetUserMedia({audio:true, video:true},
-
-                function(stream) { video.src = webkitURL.createObjectURL(stream); },
-
-                function(error) { alert('ERROR: ' + error.toString()); } );
-
-        } else {
-
-            alert('webkitGetUserMedia not supported');
-
-        }
-
-    }
-
-    </script>
-
-	</head>
-
-    <body onload="load()">
-
-        <video width="100%" height="100%" autoplay="autoplay" id="myVideo" />
-
-    </body>
-
-
+</body>
 </html>
