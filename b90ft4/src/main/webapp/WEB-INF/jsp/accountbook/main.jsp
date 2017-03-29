@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../include/basicInclude.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@ header {
 
 section {
 	width:100%;
+	position: relative;
 }
 
 body > section > nav{
@@ -33,13 +35,21 @@ body > section > nav > ul > li{
 	border: 1px solid black;
 }
 
-
 body > section > article{
 	border:1px solid black;
 	width:84%;
 	height:800px;
-	float: left;
+	float:left;
 	margin-left: 0.6%;
+	overflow: auto;
+	position: relative;
+}
+body > section > > article > article{
+	position: relative;
+}
+#budgetBtn {
+	position: absolute;
+	right:8%;
 }
 
 </style>
@@ -52,6 +62,7 @@ body > section > article{
 	<br>
 	
 	<section>
+	
 		<nav>
 			<ul>
 				<li>
@@ -70,13 +81,16 @@ body > section > article{
 				</li>
 			</ul>
 		</nav>
+		
 		<article>
-			<c:choose>
-				<c:when test="${not empty budget}">
-					<c:import url="../budget.jsp"/>
-				</c:when>
-			</c:choose>
+				<c:choose>
+					<c:when test="${not empty budget}">
+						<!-- 경로 참조가 조금 다른 것 같다. -->
+						<c:import url="myBudget.jsp"/>
+					</c:when>
+				</c:choose>
 		</article>
+		
 	</section>
 	
 </body>
