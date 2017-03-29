@@ -14,9 +14,12 @@ public class AccBookController {
 	AccBookMapper dao;
 	
 	@RequestMapping("/main.do")
-	public void test() throws Exception{
-		System.out.println(dao.count());
-		System.out.println("캬캬");
+	public String main() throws Exception{
+		
+
+		
+		
+		return "jsp/accountbook/main";
 	}
 	
 	
