@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import b90ft4.web.repository.mapper.AccBookMapper;
 
 @Controller
-@RequestMapping("/accBook")
+@RequestMapping("/accountBook")
 public class AccBookController {
 
 	@Autowired
@@ -16,10 +16,7 @@ public class AccBookController {
 	@RequestMapping("/main.do")
 	public String main() throws Exception{
 		
-
-		
-		
-		return "jsp/accountbook/main";
+		return "accountbook/main";
 	}
 	
 	

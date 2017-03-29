@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +58,9 @@ body > section > article{
 					전체
 				</li>
 				<li>
-					비용/지출
+					<a href="budget.do">
+						비용/지출
+					</a>
 				</li>
 				<li>
 					대입금/차입금
@@ -68,8 +71,11 @@ body > section > article{
 			</ul>
 		</nav>
 		<article>
-			<h1>내용</h1>
-		
+			<c:choose>
+				<c:when test="${not empty budget}">
+					<c:import url="../budget.jsp"/>
+				</c:when>
+			</c:choose>
 		</article>
 	</section>
 	
