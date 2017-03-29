@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.WorkoutMapper">
-
+	<resultMap type="workoutVO" id="workoutMap">
+		<result column="Workout_No"		property="workoutNo"	/>
+		<result column="User_Id"			property="userId"		/>
+		<result column="Workout_Id"		property="workoutId"	/>
+		<result column="Is_Basic"		property="isBasic"		/>
+	</resultMap>
+	<select id="selectWorkoutList" parameterType="workoutVO" resultMap="workoutMap">
+		select	*
+		from	tb_Sam_Workout
+	</select>
 
 </mapper>
