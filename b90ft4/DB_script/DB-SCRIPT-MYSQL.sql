@@ -25,17 +25,37 @@ create table tb_Sam_User (
 
 
 ------------------------------------------------------------------------------
--- Unity
+-- DIARY
 ------------------------------------------------------------------------------
-create table tb_Sam_Unity( 
-	Unity_No 					int(6) auto_increment 	primary key,
-	User_Id						varchar(60)				not null,
-	Unity_Name					varchar(60),
-	Category					int(1)					not null,
-	Category_No					int(6)					not null,
-	Schedule_No					int(6)					not null,
-	FOREIGN KEY(User_Id) 		REFERENCES tb_Sam_User(User_Id),
-	FOREIGN KEY(Schedule_No) 	REFERENCES tb_Sam_Schedule(Schedule_No)
+create table tb_Sam_Diary (
+	Diary_No				int(6) auto_increment		primary key,	-- 스케줄 고유번호 (시퀀스)
+	User_Id					varchar(60)					not null,		-- 작성자 시퀀스 (FK)
+	Latitude				float(14,9),								-- 시작
+	Longitude				float(14,9),								-- 종료
+	Weather_City			varchar(200)				not null,		-- 제목
+	Title					varchar(200)				not null,		-- 설명
+	Content					varchar(200)				not null,		-- 설명
+	File_Ori				varchar(200),								-- 종류
+	File_New				varchar(200),								-- 중요도
+	File_Path				varchar(200),								-- 완료여부
+	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
+);
+
+
+------------------------------------------------------------------------------
+-- SCHEDULE
+------------------------------------------------------------------------------
+create table tb_Sam_Schedule (
+	Schedule_No				int(6) auto_increment		primary key,	-- 스케줄 고유번호
+	User_Id					varchar(60)					not null,		-- 작성자 아이디
+	Start					datetime					not null,		-- 시작시각
+	End						datetime 					not null,		-- 종료시각
+	Title					varchar(60) 				not null,		-- 제목
+	Content					varchar(200),								-- 설명
+	Category				int(1) 						not null,		-- 종류
+	Importance				int(1),										-- 중요도 (1: 보통, 2: 높음, 3: 매우높음)
+	Achieve					int(1),										-- 완료여부
+	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
 );
 
 
@@ -68,7 +88,7 @@ create table tb_Sam_Loan_Debt (
 	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
 );
 
-create tb_Sam_Budget_Memo (
+create table tb_Sam_Budget_Memo (
 	Memo_No 		int(6) auto_increment		primary key,
 	User_Id 		varchar(60)					not null,
 	Pos_X 			int 						not null,
@@ -84,7 +104,7 @@ create tb_Sam_Budget_Memo (
 ------------------------------------------------------------------------------
 -- 어차피 여러군데서 사용하는 img 테이블이라면 공용으로 만들 방법을 고민해보자
 -- 각자 사용하는 쪽으로?
---create tb_Sam_img ( 
+--create table tb_Sam_img ( 
 --	Img_No 			int(6) auto_increment	primary key,
 --	Ori_Name 		varchar(250) 			not null,
 --	Sys_Name 		varchar(500) 			not null,
@@ -94,26 +114,9 @@ create tb_Sam_Budget_Memo (
 
 
 ------------------------------------------------------------------------------
--- SCHEDULE
-------------------------------------------------------------------------------
-create tb_Sam_Schedule (
-	Schedule_No				int(6) auto_increment		primary key,	-- 스케줄 고유번호
-	User_Id					varchar(60)					not null,		-- 작성자 아이디
-	Start					datetime					not null,		-- 시작시각
-	End						datetime 					not null,		-- 종료시각
-	Title					varchar(60) 				not null,		-- 제목
-	Content					varchar(200),								-- 설명
-	Category				int(1) 						not null,		-- 종류
-	Importance				int(1),										-- 중요도 (1: 보통, 2: 높음, 3: 매우높음)
-	Achieve					int(1),										-- 완료여부
-	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
-);
-
-
-------------------------------------------------------------------------------
 -- WORKOUT
 ------------------------------------------------------------------------------
-create tb_Sam_Workout (
+create table tb_Sam_Workout (
 	Workout_No					int(6) auto_increment	primary key,			-- 
 	User_Id						varchar(60),									-- 
 	Workout_Day					datetime,										-- 
@@ -122,7 +125,7 @@ create tb_Sam_Workout (
 	FOREIGN KEY(Workout_Day) 	REFERENCES tb_Sam_Workout_Statistics(Workout_Day)					
 );
 
---create tb_Sam_W2 (
+--create table tb_Sam_W2 (
 --	Workout_No					int(6) auto_increment	primary key,	-- 스케줄 고유번호 (시퀀스)
 --	Schedule_No					int(6),									-- 작성자 시퀀스 (FK)
 --	SchStart					datetime			not null,			-- 시작
@@ -130,7 +133,7 @@ create tb_Sam_Workout (
 --	FOREIGN KEY(Schedule_No) 	REFERENCES tb_Sam_Schedule(Schedule_No)
 --);
 
-create tb_Sam_Workout_Statistics (
+create table tb_Sam_Workout_Statistics (
 	Workout_Day					datetime				primary key,			-- 
 	User_Id						varchar(60)				not null,									-- 
 	Spent_Cal					int(6)					default 0,				-- 
@@ -140,7 +143,7 @@ create tb_Sam_Workout_Statistics (
 	
 );
 
-create tb_Sam_Workout_Set (
+create table tb_Sam_Workout_Set (
 	Workout_Set_No				int(6) auto_increment	primary key,				--
 	Workout_No					int(6)					not null,					-- 
 	Workout_Day					datetime				not null,					-- 세트 시작 날자. 이걸로 tb_Sam_Workout_Statistics 테이블에서 날자별로 뽑아낼거임
@@ -153,7 +156,7 @@ create tb_Sam_Workout_Set (
 	
 );
 
-create tb_Sam_Workout_Set_Img (
+create table tb_Sam_Workout_Set_Img (
 	Img_No						int(6) auto_increment	primary key,			--
 	Workout_Set_No				int(6)					not null,				-- 
 	Ori_Name					varchar(250)			not null,				-- 
@@ -166,22 +169,21 @@ create tb_Sam_Workout_Set_Img (
 
 
 
+
+
+
+
+
 ------------------------------------------------------------------------------
--- DIARY
+-- Unity
 ------------------------------------------------------------------------------
-create tb_Sam_Diary (
-	Diary_No				int(6) auto_increment		primary key,	-- 스케줄 고유번호 (시퀀스)
-	User_Id					varchar(60)					not null,		-- 작성자 시퀀스 (FK)
-	Latitude				int(14,9),									-- 시작
-	Longitude				int(14,9),									-- 종료
-	Weather_City			varchar(200)				not null,		-- 제목
-	Title					varchar(200)				not null,		-- 설명
-	Content					varchar(200)				not null,		-- 설명
-	File_Ori				varchar(200),								-- 종류
-	File_New				varchar(200),								-- 중요도
-	File_Path				varchar(200),								-- 완료여부
-	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
+create table tb_Sam_Unity( 
+	Unity_No 					int(6) auto_increment 	primary key,
+	User_Id						varchar(60)				not null,
+	Unity_Name					varchar(60),
+	Category					int(1)					not null,
+	Category_No					int(6)					not null,
+	Schedule_No					int(6)					not null,
+	FOREIGN KEY(User_Id) 		REFERENCES tb_Sam_User(User_Id),
+	FOREIGN KEY(Schedule_No) 	REFERENCES tb_Sam_Schedule(Schedule_No)
 );
-
-
-
