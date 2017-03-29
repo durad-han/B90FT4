@@ -19,7 +19,7 @@
 			
 			<div id="menuList">
 			
-			<div id="menu01" class="menuIcon">Schedule</div>
+			<div id="menu01" class="menuIcon">Schedule1</div>
 			<div id="menu02" class="menuIcon">Diary</div>
 			<div id="menu03" class="menuIcon">Account Book</div>
 			<div id="menu04" class="menuIcon">Workout</div>

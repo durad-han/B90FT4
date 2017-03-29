@@ -22,9 +22,9 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("/schedule.do")
-	public void retrieveSchedule (int scheduleNo) throws Exception{
+	public void retrieveSchedule (/*int scheduleNo*/) throws Exception{
 		System.out.println("retrieveSchedule");
-		ss.retrieveSchedule(scheduleNo);
+//		ss.retrieveSchedule(scheduleNo);
 	}
 
 	

@@ -32,15 +32,9 @@ function detail(){
 	$("#schDetail").html(html)
 }
 
-function dbCheck(){
-	location.href = "/schedule/schedule.do"; 
-}
 
 
 
-
-
-dbCheck();
 schedule();
 prevNext();
 detail();
