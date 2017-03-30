@@ -1,6 +1,6 @@
-$("#menu01").on("click", function(){location.href="../schedule/schedule.html"});
-$("#menu02").on("click", function(){location.href="../diary/diary.html"});
-$("#menu03").on("click", function(){location.href="../accountbook/accountbook.html"});
-$("#menu04").on("click", function(){location.href="../workout/workout.html"});
-$("#menu05").on("click", function(){location.href="../main/main.html"});
-$("#menu06").on("click", function(){location.href="../main/options.html"});
+$("#menu01").on("click", function(){location.href="/b90ft4/schedule/schedule.do"});
+$("#menu02").on("click", function(){location.href="/b90ft4/diary/diary.do"});
+$("#menu03").on("click", function(){location.href="/b90ft4/accountbook/main.do"});
+$("#menu04").on("click", function(){location.href="/b90ft4/workout/workout.do"});
+$("#menu05").on("click", function(){location.href="/b90ft4/main/main.do"});
+$("#menu06").on("click", function(){location.href="/b90ft4/main/options.do"});
