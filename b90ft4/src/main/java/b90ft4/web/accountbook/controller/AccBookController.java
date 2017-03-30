@@ -1,5 +1,7 @@
 package b90ft4.web.accountbook.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,12 @@ public class AccBookController {
 	@Autowired
 	AccBookMapper dao;
 	
+	public Map<String, Object> commonOption() {
+		
+		
+		return null;
+	}
+	
 	@RequestMapping("/main.do")
 	public String main() throws Exception{
 		return "accountbook/main";
@@ -27,8 +35,10 @@ public class AccBookController {
 	
 	@RequestMapping("/budgetRegi.do")
 	public String budgetRegi(Model model) throws Exception{
+		
 		model.addAttribute("budget","budget");
 		return "accountbook/main";
+		
 	}
 	
 	

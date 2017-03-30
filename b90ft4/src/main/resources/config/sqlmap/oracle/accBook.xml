@@ -2,11 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.AccBookMapper">
-
-	<select id="count" resultType="string">
-		select test_col
-		  from tb_team4_test
-		where test_pk = 'test_pk1'
-	</select>
 	
+	<resultMap id="budgetCategoryMap" type="budgetCategoryVO">
+		<result column="Budget_Category_No" property="budgetCategoryNo" />
+		<result column="Category_Name" property="categoryName" />
+	</resultMap>
+
+
+	<select id="retrieveBudgetCtgy" resultMap="budgetCategoryMap">
+	</select>
+
+	<insert id="insertBudgetList">
+	</insert>
 </mapper>

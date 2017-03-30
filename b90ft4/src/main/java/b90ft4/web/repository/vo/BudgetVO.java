@@ -3,13 +3,22 @@ package b90ft4.web.repository.vo;
 import java.util.Date;
 
 public class BudgetVO {
+	
 	private int budgetNo;
 	private String userId;
 	private int budgetCategoryNo;
 	private String content;
 	private int amount;
+	private int budgetCode;
 	private Date budgetDate;
 	
+	
+	public int getBudgetCode() {
+		return budgetCode;
+	}
+	public void setBudgetCode(int budgetCode) {
+		this.budgetCode = budgetCode;
+	}
 	public int getBudgetNo() {
 		return budgetNo;
 	}

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../include/basicInclude.jsp"/>
+<c:import url="/web/view/common/basicInclude.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +50,13 @@ body > section > > article > article{
 #budgetBtn {
 	position: absolute;
 	right:8%;
+}
+
+#budgetRegiForm{
+	width:200px;
+	height:250px;
+	border:1px solid black;
+	display: none;
 }
 
 </style>

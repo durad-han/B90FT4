@@ -31,23 +31,19 @@
 	 		<img src="${pageContext.request.contextPath}/web/image/accountBook/addBtn.jpg">
 	 	</button>
 	 	
-	 	
-	 	
-	 	
-	 	<div id="budgetPop" style="display: block;">
+	 	<div id="budgetRegiForm">
 	 		<form name="budgetF" action="">
-	 			<input type="radio" name="type" id="expense" />
+	 			<input type="radio" name="budgetCode" id="expense" value="1" />
 	 			<label for = "expense">
 	 				지출
 	 			</label>
-	 			<input type="radio" name="type" id="income"/>
+	 			<input type="radio" name="budgetCode" id="income" value="2" />
 	 			<label for = "income">
 	 				수입
 	 			</label>
 	 			<br>
 	 			분류 
-	 			<select id="category">
-	 				<option>	</option>
+	 			<select id="category" style="width:100px">
 	 			</select>
 	 			<br>
 	 			금액
@@ -56,19 +52,87 @@
 	 			내용
 	 			<input type="text" name="content"/>
 	 			<br>
+		 			<button>전송</button>
+		 			
+		 			<button type="button" id="close">닫기</button>
 	 		</form>
 	 	</div>
 	 	
 	 	
-<article>	 
+</article>	 
+
 	<script>
 	
-	
-		$("#budgetBtn").click(function() {
+		var isSelected = false;
+		var dragging = false;
+		var diff={};
 		
+		$("#close").click(function(){
+			$("#budgetRegiForm").hide();
+		})
+		
+		$("#category").mousedown(function(e){
+			console.log("셀렉박스");
+			e.stopPropagation();
+		})
+		
+		$("#budgetBtn").click(function() {
+			
+			$("#budgetRegiForm").show();
+			$("#budgetRegiForm").siblings().css(
+					{
+						"background-color" : "grey"
+					})
+			
+			$("#budgetRegiForm").mousedown(function(e){
+				
+				m = $("section > article").offset().left;
+				n = $("section > article").offset().top;
+				
+				diff.x=e.offsetX;
+				diff.y=e.offsetY;
+				
+				isSelected = true;
+				
+				$("#budgetRegiForm").mousemove(function(e){
+					if(!isSelected) return;
+					
+					if(!dragging){
+						dragging=true;
+					}	
+				
+					
+		 			$("#budgetRegiForm").css({
+		 				"position" : "absolute",
+		 				left : (e.clientX-m) - diff.x,
+		 				top : (e.clientY-n) - diff.x,
+		 			})
+		 		
+				});
+				
+				$("#budgetRegiForm").mouseup( function(e){
+					
+					if(!isSelected) return;
+					
+					isSelected = false;
+					
+					if(dragging) 
+						dragging = false;
+					
+					console.log("오프");
+					
+					$(this).off("mousemove");
+					$(this).off("mouseup");
+				});
+			});
 			
 			
 		});
+		
+		
+		
+		
+		
 	</script>	 
 	
 	
