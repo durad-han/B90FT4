@@ -32,9 +32,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 		List<ScheduleVO> sList = (List<ScheduleVO>) sMap.get("scheduleList");
 		ScheduleVO svo = sList.get(0);
 		System.out.println("--------------------------------");
-		System.out.println("title "+svo.getTitle());
-		System.out.println("content "+svo.getContent());
-		System.out.println("userId "+svo.getUserId());
+		System.out.println("title : "+svo.getTitle());
+		System.out.println("content : "+svo.getContent());
+		System.out.println("userId : "+svo.getUserId());
+		System.out.println("start : "+svo.getStart());
 		System.out.println("--------------------------------");
 		
 		return sMap;

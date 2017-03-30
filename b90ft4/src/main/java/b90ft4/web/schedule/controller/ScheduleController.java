@@ -32,9 +32,9 @@ public class ScheduleController {
 //		ss.retrieveSchedule(scheduleNo);
 	}
 	
-	@RequestMapping("/schedule.do")
+	@RequestMapping("/scheduleMain.do")
 	public String schedule (Model model) throws Exception{
-		System.out.println("schedule");
+		System.out.println("scheduleMain");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 		
 //		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
@@ -45,8 +45,8 @@ public class ScheduleController {
 //		System.out.println("userId "+svo.getUserId());
 //		System.out.println("--------------------------------");
 		
-		model.addAttribute("schedule", retrieveScheduleList(ssVO));
-		return "schedule/schedule";
+		model.addAttribute("schedule", retrieveScheduleList(ssVO).get("scheduleList"));
+		return "schedule/scheduleMain";
 	}
 
 	
