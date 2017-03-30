@@ -3,13 +3,14 @@ package b90ft4.web.schedule.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
 import b90ft4.web.schedule.service.ScheduleService;
 
 @RequestMapping("/schedule")
-@Controller
+@RestController
 public class ScheduleController {
 	@Autowired
 	private ScheduleService ss;
