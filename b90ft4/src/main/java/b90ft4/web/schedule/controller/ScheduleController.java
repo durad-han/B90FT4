@@ -10,7 +10,7 @@ import b90ft4.web.repository.vo.ScheduleVO;
 import b90ft4.web.schedule.service.ScheduleService;
 
 @RequestMapping("/schedule")
-@RestController
+@Controller
 public class ScheduleController {
 	@Autowired
 	private ScheduleService ss;
@@ -22,10 +22,14 @@ public class ScheduleController {
 		ss.retrieveScheduleList(ssVO);
 	}
 	
-	@RequestMapping("/schedule.do")
+	@RequestMapping("/rschedule.do")
 	public void retrieveSchedule (/*int scheduleNo*/) throws Exception{
 		System.out.println("retrieveSchedule");
 //		ss.retrieveSchedule(scheduleNo);
+	}
+	
+	@RequestMapping("/schedule.do")
+	public void schedule () throws Exception{
 	}
 
 	

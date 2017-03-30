@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Schedule</title>
 <link rel="import" href="../common/baseinclude.jsp">
-<link rel="stylesheet" type="text/css" href="../../css/schedule/schedule.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/schedule/schedule.css">
 </head>
 <body>
 <div id="wrap">
@@ -44,7 +44,7 @@
 				<div id="next">
 				</div>
 			</div>
-			<button>â</button>
+			<button>이게무슨버튼이더라</button>
 		</div>
 
 	</div>
@@ -53,6 +53,6 @@
 	</div>
 </div>
 
-<script src="../../js/schedule/schedule.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/schedule.js"></script>
 </body>
 </html>
