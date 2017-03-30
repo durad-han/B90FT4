@@ -1,6 +1,10 @@
+console.log("schedule.js 입니다...");
+console.log('${schedule}');
+console.dir('${schedule}');
+
 function schedule(){
 	var html = "";
-	for(var i = 0 ; i < 10 ; i++){
+	for(var i = 0 ; i < 9 ; i++){
 		html += "<li><span>"+i+"시</span><input type='checkbox' name='schAchieve'><a href='#'>"+ i+"번째 제목이 이곳에</a></li>";
 	}
 	$("#schedules").html(html)
@@ -31,7 +35,6 @@ function detail(){
 		html += "</div>";
 	$("#schDetail").html(html)
 }
-
 
 
 

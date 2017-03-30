@@ -9,10 +9,10 @@
  -->
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/base.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/common/base.css">
 
 <script src="${pageContext.request.contextPath}/web/js/common/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/common/bootstrap.min.js"></script>

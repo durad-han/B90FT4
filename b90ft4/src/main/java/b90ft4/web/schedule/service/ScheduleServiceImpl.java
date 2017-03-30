@@ -1,11 +1,14 @@
 package b90ft4.web.schedule.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.ScheduleMapper;
+import b90ft4.web.repository.vo.PageResultVO;
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
 
@@ -18,9 +21,23 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Override
 	public Map<String, Object> retrieveScheduleList(ScheduleSearchVO ssVO) throws Exception {
 		System.out.println("retrieveScheduleList Service");
-		sm.selectScheduleList(ssVO);
-		sm.selectScheduleCount(ssVO);
-		return null;
+		Map<String, Object> sMap = new HashMap<>();
+		
+		ssVO.setPageNo(1);
+		
+		sMap.put("scheduleList", sm.selectScheduleList(ssVO));
+		sMap.put("pageResult", new PageResultVO(ssVO.getPageNo(), sm.selectScheduleCount(ssVO)));
+		
+//-----	디버그용 코드 -----------------------------------------------------------------------------
+		List<ScheduleVO> sList = (List<ScheduleVO>) sMap.get("scheduleList");
+		ScheduleVO svo = sList.get(0);
+		System.out.println("--------------------------------");
+		System.out.println("title "+svo.getTitle());
+		System.out.println("content "+svo.getContent());
+		System.out.println("userId "+svo.getUserId());
+		System.out.println("--------------------------------");
+		
+		return sMap;
 	}
 
 //	PK인 scheduleNo 로 해당 스케줄 검색

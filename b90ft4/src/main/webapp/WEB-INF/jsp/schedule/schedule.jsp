@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Schedule</title>
-<link rel="import" href="../common/baseinclude.jsp">
+<jsp:include page="../common/baseinclude.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/schedule/schedule.css">
 </head>
 <body>
@@ -55,7 +55,6 @@
 	</div>
 	
 </div>
-
 <script src="${pageContext.request.contextPath}/web/js/schedule/schedule.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package b90ft4.web.repository.vo;
 
 public class PageResultVO {
-	private int listSize = 3;
+	private int listSize = 5;
 	private int tabSize  = 10;
 	private int pageNo;
 	private int count;

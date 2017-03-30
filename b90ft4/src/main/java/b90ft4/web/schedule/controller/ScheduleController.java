@@ -1,7 +1,11 @@
 package b90ft4.web.schedule.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +21,9 @@ public class ScheduleController {
 
 //----- 스케줄 조회 관련 -----------------------------------------------------------------------	
 	@RequestMapping("/scheduleList.do")
-	public void retrieveScheduleList (ScheduleSearchVO ssVO) throws Exception{
+	public Map<String, Object> retrieveScheduleList (ScheduleSearchVO ssVO) throws Exception{
 		System.out.println("retrieveScheduleList");
-		ss.retrieveScheduleList(ssVO);
+		return ss.retrieveScheduleList(ssVO);
 	}
 	
 	@RequestMapping("/rschedule.do")
@@ -29,7 +33,20 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("/schedule.do")
-	public void schedule () throws Exception{
+	public String schedule (Model model) throws Exception{
+		System.out.println("schedule");
+		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+		
+//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
+//		ScheduleVO svo = sList.get(0);
+//		System.out.println("--------------------------------");
+//		System.out.println("title "+svo.getTitle());
+//		System.out.println("content "+svo.getContent());
+//		System.out.println("userId "+svo.getUserId());
+//		System.out.println("--------------------------------");
+		
+		model.addAttribute("schedule", retrieveScheduleList(ssVO));
+		return "schedule/schedule";
 	}
 
 	

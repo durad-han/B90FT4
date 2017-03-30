@@ -28,16 +28,14 @@
 			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: List<??>
 	============================================================================-->
-	<select id="selectScheduleList" parameterType="searchVO" resultMap="scheduleMap">
-		select	*
-		from	(
-				select	rownum rNum, s.*
-				from	(select	*
-						 from	tb_Sam_Schedule
- 						 order	by Schedule_No <!--desc -->
-						) s
-				)
-		where	rNum between #{begin} and #{end}
+	<select id="selectScheduleList" parameterType="scheduleSearchVO" resultMap="scheduleMap">
+		select	sql_calc_found_rows a.* 
+		from	(select	* 
+				 from	tb_Sam_Schedule
+				 order	by Schedule_No
+				) a
+		limit	5
+		offset	0;
 	</select>
 	
 	 
@@ -47,7 +45,7 @@
 			파라메터의 데이터타입: SearchVO
 			리턴되는 값의 데이터타입: int
 	============================================================================-->
-	<select id="selectScheduleCount" parameterType="searchVO" resultType="int">
+	<select id="selectScheduleCount" parameterType="scheduleSearchVO" resultType="int">
     	select count(*)
     	  from tb_Sam_Schedule
     </select> 
