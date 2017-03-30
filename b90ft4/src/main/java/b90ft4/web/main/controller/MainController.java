@@ -14,8 +14,12 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public void mainPage (){
-
 		System.out.println("hello world");
+	}
+	
+	@RequestMapping("/options.do")
+	public void options (){
+		System.out.println("options menu");
 	}
 
 
