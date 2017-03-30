@@ -9,9 +9,11 @@
 </head>
 <body>
 <div id="wrap">
+
 	<div id="header">
 	header
 	</div>
+	
 	<div id="container">
 		<div id="sideBar">
 			<div id="dayList">
@@ -46,11 +48,12 @@
 			</div>
 			<button>이게무슨버튼이더라</button>
 		</div>
-
 	</div>
+	
 	<div id="footer">
 	footer
 	</div>
+	
 </div>
 
 <script src="${pageContext.request.contextPath}/web/js/schedule/schedule.js"></script>
