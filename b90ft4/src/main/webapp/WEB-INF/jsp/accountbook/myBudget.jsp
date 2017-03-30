@@ -33,7 +33,7 @@
 	 	
 	 	<div id="budgetRegiForm">
 	 		<form name="budgetF" action="">
-	 			<input type="radio" name="budgetCode" id="expense" value="1" />
+	 			<input type="radio" name="budgetCode" id="expense" value="1" checked />
 	 			<label for = "expense">
 	 				지출
 	 			</label>
@@ -43,7 +43,7 @@
 	 			</label>
 	 			<br>
 	 			분류 
-	 			<select id="category" style="width:100px">
+	 			<select style="width:100px">
 	 			</select>
 	 			<br>
 	 			금액
@@ -63,6 +63,54 @@
 
 	<script>
 	
+		var esOpt="";
+		var icOpt="";
+		
+		$.ajax({
+			url:"budgetCtgy.do",
+			dataType:"json",
+			data:{userId : "admin"},
+			async:false
+		}).done(function(result) {
+			var es = result.expenseCtgy;
+			var ic = result.incomeCtgy;
+			for(var i=0;i<es.length;i++){
+				var temp = es[i];
+				esOpt+="<option value='"+ temp.expenseCategoryNo  + "'>"+ temp.expenseCategoryName +"</option>";
+			}
+			
+			for(var i=0;i<ic.length;i++){
+				var temp = ic[i];
+				icOpt+="<option value='"+ temp.incomeCategoryNo  + "'>"+ temp.incomeCategoryName +"</option>";
+			}
+			
+			$("[name=budgetF] > select")
+			.attr("name","expenseCategoryNo")
+			.html(esOpt);
+		});
+	
+		$("[name=budgetCode]").click(function(e) {
+			e.stopPropagation();
+			if($(this).val()==1) {
+				$("[name=budgetF] > select")
+				.attr("name","expenseCategoryNo")
+				.html(esOpt);
+			}else{
+				
+				$("[name=budgetF] > select")
+				.attr("name","incomeCategoryNo")
+				.html(icOpt);
+			}
+		});
+		
+		
+		$("[name=budgetF] input, select, label, button").mousedown(function(e){
+			e.stopPropagation();
+		})
+		
+		
+		// 폼 요소, 드로그앤드롭 코드.
+		
 		var isSelected = false;
 		var dragging = false;
 		var diff={};
@@ -71,18 +119,10 @@
 			$("#budgetRegiForm").hide();
 		})
 		
-		$("#category").mousedown(function(e){
-			console.log("셀렉박스");
-			e.stopPropagation();
-		})
 		
 		$("#budgetBtn").click(function() {
 			
 			$("#budgetRegiForm").show();
-			$("#budgetRegiForm").siblings().css(
-					{
-						"background-color" : "grey"
-					})
 			
 			$("#budgetRegiForm").mousedown(function(e){
 				
@@ -100,7 +140,6 @@
 					if(!dragging){
 						dragging=true;
 					}	
-				
 					
 		 			$("#budgetRegiForm").css({
 		 				"position" : "absolute",
@@ -113,24 +152,15 @@
 				$("#budgetRegiForm").mouseup( function(e){
 					
 					if(!isSelected) return;
-					
 					isSelected = false;
-					
-					if(dragging) 
-						dragging = false;
-					
+					if(dragging) dragging = false;
 					console.log("오프");
-					
 					$(this).off("mousemove");
 					$(this).off("mouseup");
+					
 				});
 			});
-			
-			
 		});
-		
-		
-		
 		
 		
 	</script>	 

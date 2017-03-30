@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/web/view/common/basicInclude.jsp"/>
+<c:import url="/WEB-INF/jsp/include/basicInclude.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>

@@ -3,15 +3,46 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.AccBookMapper">
 	
-	<resultMap id="budgetCategoryMap" type="budgetCategoryVO">
-		<result column="Budget_Category_No" property="budgetCategoryNo" />
-		<result column="Category_Name" property="categoryName" />
+	<resultMap id="expenseCategoryMap" type="expenseCategoryVO">
+		<result column="expense_Category_no" property="expenseCategoryNo" />
+		<result column="expense_Category_name" property="expenseCategoryName" />
+		<result column="User_id" property="userId" />
+	</resultMap>
+	
+	<resultMap id="incomeCategoryMap" type="incomeCategoryVO">
+		<result column="income_Category_no" property="incomeCategoryNo" />
+		<result column="income_Category_name" property="incomeCategoryName" />
+		<result column="User_id" property="userId" />
 	</resultMap>
 
-
-	<select id="retrieveBudgetCtgy" resultMap="budgetCategoryMap">
+	<select id="selectExpenseCtgy" parameterType="string" resultMap="expenseCategoryMap">
+		select * 
+		  from tb_sam_expense_category
+		where user_id = 'admin'
+		   or user_id = #{userId}
+		order by expense_category_no
 	</select>
 
-	<insert id="insertBudgetList">
-	</insert>
+	<select id="selectIncomeCtgy" parameterType="string" resultMap="incomeCategoryMap">
+		select * 
+		  from tb_sam_income_category
+		where user_id = 'admin'
+		   or user_id = #{userId}
+		order by income_category_no
+	</select>
+	
+	<select id="count" resultMap="incomeCategoryMap" >
+	 	select *
+	 	  from tb_sam_income_category
+	</select>
+	
 </mapper>
+
+
+
+
+
+
+
+
+

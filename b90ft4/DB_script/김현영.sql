@@ -19,14 +19,14 @@ select * from tb_sam_debt
 select * from tb_sam_memo
 
 create table tb_sam_income_category( 
-	income_category_id 		int(6)	auto_increment primary key,
+	income_category_no 		int(6)	auto_increment primary key,
 	income_category_name 	varchar(50) not null,
 	User_Id				 	varchar(60),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
 create table tb_sam_expense_category( 
-	expense_category_id  	int(6)	auto_increment primary key,
+	expense_category_no  	int(6)	auto_increment primary key,
 	expense_category_name   varchar(50) not null,	
 	User_Id				 	varchar(60),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
@@ -35,22 +35,22 @@ create table tb_sam_expense_category(
 create table tb_sam_expense (
 	expense_no int(6) auto_increment primary key,
 	user_id	   varchar(60) not null,
-	expense_category_id int(2) not null,
+	expense_category_no int(2) not null,
 	expense_content varchar(1000) null,
 	expense_amount int(6) not null,
 	expense_date date not null,
-	FOREIGN KEY(expense_category_id) REFERENCES tb_sam_expense_category(expense_category_id),
+	FOREIGN KEY(expense_category_no) REFERENCES tb_sam_expense_category(expense_category_no),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
 create table tb_sam_income (
 	income_no				 int(6) primary key,
 	user_id 				 varchar(60) not null,
-	income_category_id		 int(2) not null,
+	income_category_no		 int(2) not null,
 	income_content 			 varchar(1000) null,
 	income_amount 			 int(6) not null,
 	income_date datetime 	 not null,
-	FOREIGN KEY(income_category_id) REFERENCES tb_sam_income_category(income_category_id),
+	FOREIGN KEY(income_category_no) REFERENCES tb_sam_income_category(income_category_no),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
@@ -86,6 +86,9 @@ create table tb_Sam_Budget_Memo (
 
 -- 데이터 --
 
+update tb_sam_income_category set user_id = 'admin' where user_id is null
+update tb_sam_expense_category set user_id = 'admin' where user_id is null
+
 insert into tb_sam_income_category( income_category_name) 
 values('급여')
 insert into tb_sam_income_category( income_category_name) 
@@ -112,4 +115,12 @@ values('통신비')
 alter table tb_Sam_Budget
 add column budget_code char(1) not null;
 
+		select * 
+		  from tb_sam_expense_category
+		where user_id = 'admin'
+		   or user_id = 'admin'
+		order by expense_category_no
+		
+select * from tb_board
 
+		

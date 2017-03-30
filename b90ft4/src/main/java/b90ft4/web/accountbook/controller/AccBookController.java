@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import b90ft4.web.accountbook.service.AccBookService;
 import b90ft4.web.repository.mapper.AccBookMapper;
 
 @Controller
@@ -14,12 +16,14 @@ import b90ft4.web.repository.mapper.AccBookMapper;
 public class AccBookController {
 
 	@Autowired
-	AccBookMapper dao;
+	private AccBookService service;
+	@Autowired
+	private AccBookMapper dao;
 	
-	public Map<String, Object> commonOption() {
-		
-		
-		return null;
+	@ResponseBody
+	@RequestMapping("/budgetCtgy.do")
+	public Map<String, Object> retrieveBudgetCtgy(String userId) throws Exception {
+		return service.retrieveBudgetCtgy(userId);
 	}
 	
 	@RequestMapping("/main.do")
