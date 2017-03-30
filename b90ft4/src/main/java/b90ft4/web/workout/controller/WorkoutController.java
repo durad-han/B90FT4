@@ -1,5 +1,8 @@
 package b90ft4.web.workout.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,20 +12,25 @@ import b90ft4.web.workout.service.WorkoutService;
 @RequestMapping("/workout")
 @Controller
 public class WorkoutController {
-	
+
+	@Autowired
 	private WorkoutService ws;
-	
 	
 //
 	@RequestMapping("/workoutlist.do")
 	public void workoutList (WorkoutVO workoutVO) throws Exception{
 		System.out.println("workoutlist");
-		ws.workoutList(workoutVO);
+		ws.workoutList();
 	}
 //
 	@RequestMapping("/workout.do")
-	public void workout() throws Exception{
-		System.out.println("workout");
+	public String workout() throws Exception{
+	//	System.out.println("workout controller");
+		List list = ws.workoutList();
+	//	System.out.println("workoutList size: "+ list.size());
+	//	System.out.println("workout controller done");
+		
+		return "workout/workout";
 	}
 
 }
