@@ -6,7 +6,44 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title</title>
-<%@ include file="/jsp/include/basicInclude.jsp" %>
+<style>
+header {
+	width:100%;
+	border:1px solid black;
+}
+
+section {
+	width:100%;
+}
+
+body > section > nav{
+	border:1px solid black;
+	width:15%;
+	height:800px;
+	float: left;
+}
+
+body > section > nav > ul{
+	list-style: none;
+	margin:0 auto;
+}
+body > section > nav > ul > li{
+	width:100%;
+	height:100px;
+	border: 1px solid black;
+}
+
+
+body > section > article{
+	border:1px solid black;
+	width:84%;
+	height:800px;
+	float: left;
+	margin-left: 0.6%;
+}
+
+</style>
+<%@ include file="../include/diaryInclude.jsp" %>
 </head>
 <body>
 <div class="container">
