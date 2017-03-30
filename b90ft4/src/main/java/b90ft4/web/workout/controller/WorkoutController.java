@@ -15,9 +15,14 @@ public class WorkoutController {
 	
 //
 	@RequestMapping("/workoutlist.do")
-	public void WorkoutList (WorkoutVO workoutVO) throws Exception{
+	public void workoutList (WorkoutVO workoutVO) throws Exception{
 		System.out.println("workoutlist");
 		ws.workoutList(workoutVO);
+	}
+//
+	@RequestMapping("/workout.do")
+	public void workout() throws Exception{
+		System.out.println("workout");
 	}
 
 }

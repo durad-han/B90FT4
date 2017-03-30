@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>workout</title>
-<link rel="import" href="../common/baseinclude.jsp">
-<link rel="stylesheet" type="text/css" href="../../css/workout/workout.css">
+<jsp:include page ="/WEB-INF/jsp/common/baseinclude.jsp">
+<link rel="stylesheet" type="text/css" href="/WEB-INF/css/workout/workout.css">
 </head>
 <body>
 <h1>workout main form h1</h1>
@@ -25,6 +25,6 @@
 </div>
 
 <div id = "footer"></div>
-<script src="../../js/workout/workout.js"></script>
+<script src="/WEB-INF/js/workout/workout.js"></script>
 </body>
 </html>
