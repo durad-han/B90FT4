@@ -1,9 +1,22 @@
 function workoutList(){
 	var html = "";
+	html += "<ul id = basic1>basic1"
 	for(var i = 0 ; i < 10 ;i++){
-		html += "<ul id = basic1>"
+		html += "<li id = 'basic1Graph'>O</li>"
 	}
-	$("#basicList").html(html)
+	html += "</ul>";
+	$("#basicList").html(html);
+/*	
+	var html2="<ul><c:forEach var='l' items='${list}'>" +
+			"<li>${l.workoutNo}</li>" +
+			"<li>${l.userId}</li>" +
+			"<li>${l.workoutId}</li>" +
+			"<li>${l.isBasic}</li>" +
+			"</c:forEach></ul>";
+
+		
+	$("#addableList").html(html2)
+	*/
 	/*
 	<ul id = basic1>		
 	<li id = "basic1Graph">O</li>
@@ -27,5 +40,5 @@ function workoutList(){
 </ul>
 	 */
 	
-workoutList();
 }
+workoutList();
