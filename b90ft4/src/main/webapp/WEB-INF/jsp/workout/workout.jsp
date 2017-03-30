@@ -10,6 +10,7 @@
 <body>
 <h1>workout main form h1</h1>
 <hr>
+<div id = "header"></div>
 <div id = "container">
 
 	<div id = "workoutList">
@@ -23,6 +24,7 @@
 	</div>
 </div>
 
+<div id = "footer"></div>
 <script src="../../js/workout/workout.js"></script>
 </body>
 </html>
