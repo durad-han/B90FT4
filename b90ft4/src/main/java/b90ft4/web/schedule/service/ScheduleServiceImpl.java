@@ -45,8 +45,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Override
 	public ScheduleVO retrieveSchedule(int scheduleNo) throws Exception {
 		System.out.println("retrieveSchedule Service");
-		sm.selectScheduleNo(scheduleNo);
-		return null;
+		return sm.selectScheduleNo(scheduleNo);
 	}
 
 	@Override

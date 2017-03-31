@@ -3,24 +3,24 @@ console.log('${schedule}');
 console.dir('${schedule}');
 
 //----- mobiPicker -----------------------------------------------------------
-$( document ).on( "pagecreate", pageselector, function() {
-    var picker = $( "input[type='text']", this );
-    picker.mobipick();
-});
-
-picker.on( "change", function() {
-    var date = $( this ).val();
-    var dateObject = $( this ).mobipick( "option", "date" );
-});
-
-var mpFrom = $( ".min-date" ).mobipick();
-var mpTo   = $( ".max-date" ).mobipick();
-mpFrom.on( "change", function() {
-    mpTo.mobipick( "option", "minDate", mpFrom.mobipick( "option", "date" ) );
-});
-mpTo.on( "change", function() {
-    mpFrom.mobipick( "option", "maxDate", mpTo.mobipick( "option", "date" ) );
-});
+//$( document ).on( "pagecreate", function(event) {
+//    var picker = $( "input[type='text']", this );
+//    picker.mobipick();
+//});
+//
+//picker.on( "change", function() {
+//    var date = $( this ).val();
+//    var dateObject = $( this ).mobipick( "option", "date" );
+//});
+//
+//var mpFrom = $( ".min-date" ).mobipick();
+//var mpTo   = $( ".max-date" ).mobipick();
+//mpFrom.on( "change", function() {
+//    mpTo.mobipick( "option", "minDate", mpFrom.mobipick( "option", "date" ) );
+//});
+//mpTo.on( "change", function() {
+//    mpFrom.mobipick( "option", "maxDate", mpTo.mobipick( "option", "date" ) );
+//});
 
 
 //----- schedule -------------------------------------------------------------
@@ -38,23 +38,36 @@ function prevNext(){
 	$("#next").html("<li><span>22:30</span><input type='checkbox' name='schAchieve'><a href='#'>다음 스케줄 제목이 이곳에</a></li>")
 }
 
-function goDetail(){
-	console.log("goDetail")
+var scheduleList = '${schedule}';
+function goDetails(){
+	console.log("goDetail!")
+	console.log(scheduleList)
+	for(var i = 1 ; i < 5 ; i++){
+		console.dir(scheduleList['i']);
+	};
+	
+	var thisSchedule = scheduleList['0'];
+	
+	console.log('${thisSchedule}')
+	console.log('${thisSchedule.title}')
+	console.log('${thisSchedule.start}')
+	console.log('${thisSchedule.content}')
+	
 	var html = "";
 		html += "<div id='schedule'>";
 		html += "	<div id='schTitle'>";
-		html += "		<h3>"+${schedule.title}+"</h3>";
+		html += "		<h3>"+'${thisSchedule.title}'+"</h3>";
 		html += "	</div>";
 		html += "	<div id='schTime'>";
-		html += "		<h5>"+${schedule.start}+"</h5>";
+		html += "		<h5>"+'${thisSchedule.start}'+"</h5>";
 		html += "	</div>";
 		html += "	<div id='schContent'>";
-		html += "		<p>"+${schedule.content}+"</p>";
+		html += "		<p>"+'${thisSchedule.content}'+"</p>";
 		html += "	</div>";
 		html += "	<div id='schOption'>";
 		html += "		<span>예산 : 35,000</span>";
 		
-		switch('${schedule.importance}'){
+		switch('${thisSchedule.importance}'){
 		case '1':
 			html += "		<span>★ ☆ ☆</span>";
 			break;
@@ -77,4 +90,4 @@ function goForm(){
 
 schedule();
 prevNext();
-goDetail();
+//goDetail();

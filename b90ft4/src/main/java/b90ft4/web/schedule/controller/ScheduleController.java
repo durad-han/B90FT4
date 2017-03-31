@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
@@ -30,6 +31,20 @@ public class ScheduleController {
 	public void retrieveSchedule (/*int scheduleNo*/) throws Exception{
 		System.out.println("retrieveSchedule");
 //		ss.retrieveSchedule(scheduleNo);
+	}
+	
+	@RequestMapping("/rschedule.json")
+	@ResponseBody
+	public ScheduleVO retrieveSchedule (int scheduleNo) throws Exception{
+		System.out.println("retrieveSchedule json");
+		System.out.println("no : "+scheduleNo);
+		ScheduleVO svo = ss.retrieveSchedule(scheduleNo);
+		System.out.println("--------------------------------");
+		System.out.println("title "+svo.getTitle());
+		System.out.println("content "+svo.getContent());
+		System.out.println("userId "+svo.getUserId());
+		System.out.println("--------------------------------");
+		return ss.retrieveSchedule(scheduleNo);
 	}
 	
 	@RequestMapping("/scheduleMain.do")
