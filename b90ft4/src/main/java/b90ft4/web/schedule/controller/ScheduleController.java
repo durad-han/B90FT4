@@ -44,6 +44,7 @@ public class ScheduleController {
 		System.out.println("content "+svo.getContent());
 		System.out.println("userId "+svo.getUserId());
 		System.out.println("--------------------------------");
+		
 		return ss.retrieveSchedule(scheduleNo);
 	}
 	

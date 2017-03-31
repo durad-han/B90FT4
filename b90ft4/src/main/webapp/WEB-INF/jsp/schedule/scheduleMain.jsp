@@ -14,7 +14,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/xdate.i18n.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/js/mobipick.js"></script>
 
-<script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -102,16 +101,19 @@ function printSchedule(result){
 		html += "	</div>";
 		html += "	<div id='schOption'>";
 		html += "		<span>예산 : 35,000</span>";
-		
+		console.log(result.importance);
 		switch(result.importance){
 		case '1':
 			html += "		<span>★ ☆ ☆</span>";
 			break;
 		case '2':
-			html += "		<span>★★ ☆</span>";
+			html += "		<span>★ ★ ☆</span>";
 			break;
 		case '3':
-			html += "		<span>★★★</span>";
+			html += "		<span>★ ★ ★</span>";
+			break;
+		default:
+			html += "		<span>☆ ☆ ☆</span>";
 			break;
 		}
 		html += "	</div>";
@@ -119,5 +121,6 @@ function printSchedule(result){
 	$("#schDetail").html(html)
 }
 </script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>
 </body>
 </html>

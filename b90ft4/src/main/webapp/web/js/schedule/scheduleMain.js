@@ -1,6 +1,4 @@
 console.log("schedule.js 입니다...");
-console.log('${schedule}');
-console.dir('${schedule}');
 
 //----- mobiPicker -----------------------------------------------------------
 //$( document ).on( "pagecreate", function(event) {
@@ -24,63 +22,55 @@ console.dir('${schedule}');
 
 
 //----- schedule -------------------------------------------------------------
-function schedule(){
-	var html = "";
-	for(var i = 0 ; i < 9 ; i++){
-		html += "<li><span>"+i+"시</span><input type='checkbox' name='schAchieve'><a href='#'>"+ i+"번째 제목이 이곳에</a></li>";
-	}
-	$("#schedules").html(html)
-	
-}
-
 function prevNext(){
 	$("#prev").html("<li><span>13:00</span><input type='checkbox' name='schAchieve'><a href='#'>이전 스케줄 제목이 이곳에</a></li>")
 	$("#next").html("<li><span>22:30</span><input type='checkbox' name='schAchieve'><a href='#'>다음 스케줄 제목이 이곳에</a></li>")
 }
 
-var scheduleList = '${schedule}';
-function goDetails(){
+function goDetail(){
 	console.log("goDetail!")
-	console.log(scheduleList)
-	for(var i = 1 ; i < 5 ; i++){
-		console.dir(scheduleList['i']);
-	};
-	
-	var thisSchedule = scheduleList['0'];
-	
-	console.log('${thisSchedule}')
-	console.log('${thisSchedule.title}')
-	console.log('${thisSchedule.start}')
-	console.log('${thisSchedule.content}')
-	
+	$.ajax({
+		url : "/b90ft4/schedule/rschedule.json",
+		type: "POST",
+		data: {scheduleNo : 2},
+		dataType: "json"
+	}).done(printSchedule);
+}
+
+function printSchedule(result){
+	console.log("디테일 꾸미기")
 	var html = "";
 		html += "<div id='schedule'>";
 		html += "	<div id='schTitle'>";
-		html += "		<h3>"+'${thisSchedule.title}'+"</h3>";
+		html += "		<h3>"+result.title+"</h3>";
 		html += "	</div>";
 		html += "	<div id='schTime'>";
-		html += "		<h5>"+'${thisSchedule.start}'+"</h5>";
+		html += "		<h5>"+result.start+"</h5>";
 		html += "	</div>";
 		html += "	<div id='schContent'>";
-		html += "		<p>"+'${thisSchedule.content}'+"</p>";
+		html += "		<p>"+result.content+"</p>";
 		html += "	</div>";
 		html += "	<div id='schOption'>";
 		html += "		<span>예산 : 35,000</span>";
-		
-		switch('${thisSchedule.importance}'){
+		console.log(result.importance);
+		switch(result.importance){
 		case '1':
 			html += "		<span>★ ☆ ☆</span>";
 			break;
 		case '2':
-			html += "		<span>★★ ☆</span>";
+			html += "		<span>★ ★ ☆</span>";
 			break;
 		case '3':
-			html += "		<span>★★★</span>";
+			html += "		<span>★ ★ ★</span>";
+			break;
+		default:
+			html += "		<span>☆ ☆ ☆</span>";
 			break;
 		}
 		html += "	</div>";
 		html += "</div>";
 	$("#schDetail").html(html)
+	prevNext();
 }
 
 function goForm(){
@@ -88,6 +78,3 @@ function goForm(){
 }
 
 
-schedule();
-prevNext();
-//goDetail();
