@@ -37,13 +37,13 @@ public class ScheduleController {
 	@ResponseBody
 	public ScheduleVO retrieveSchedule (int scheduleNo) throws Exception{
 		System.out.println("retrieveSchedule json");
-		System.out.println("no : "+scheduleNo);
-		ScheduleVO svo = ss.retrieveSchedule(scheduleNo);
-		System.out.println("--------------------------------");
-		System.out.println("title "+svo.getTitle());
-		System.out.println("content "+svo.getContent());
-		System.out.println("userId "+svo.getUserId());
-		System.out.println("--------------------------------");
+//		System.out.println("scheduleNo : "+scheduleNo);
+//		ScheduleVO svo = ss.retrieveSchedule(scheduleNo);
+//		System.out.println("--------------------------------");
+//		System.out.println("title "+svo.getTitle());
+//		System.out.println("content "+svo.getContent());
+//		System.out.println("userId "+svo.getUserId());
+//		System.out.println("--------------------------------");
 		
 		return ss.retrieveSchedule(scheduleNo);
 	}
@@ -81,7 +81,7 @@ public class ScheduleController {
 	
 	
 //----- 스케줄 입력 관련 -----------------------------------------------------------------------
-	@RequestMapping("/write.do")
+	@RequestMapping("/form.do")
 	public void insertSchedule (ScheduleVO schedule) throws Exception{
 		System.out.println("insertSchedule");
 		ss.insertSchedule(schedule);
