@@ -1,14 +1,10 @@
 package b90ft4.web.schedule.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
@@ -21,18 +17,25 @@ public class ScheduleController {
 	private ScheduleService ss;
 
 //----- 스케줄 조회 관련 -----------------------------------------------------------------------	
+
+	//----- 스케줄 리스트 호출시 (초기로딩 포함) ---------------------------------------------------------
 	@RequestMapping("/scheduleList.do")
-	public Map<String, Object> retrieveScheduleList (ScheduleSearchVO ssVO) throws Exception{
+	public String retrieveScheduleList (Model model) throws Exception{
 		System.out.println("retrieveScheduleList");
-		return ss.retrieveScheduleList(ssVO);
-	}
-	
-	@RequestMapping("/rschedule.do")
-	public void retrieveSchedule (/*int scheduleNo*/) throws Exception{
-		System.out.println("retrieveSchedule");
-//		ss.retrieveSchedule(scheduleNo);
-	}
-	
+		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
+//		ScheduleVO svo = sList.get(0);
+//		System.out.println("--------------------------------");
+//		System.out.println("title "+svo.getTitle());
+//		System.out.println("content "+svo.getContent());
+//		System.out.println("userId "+svo.getUserId());
+//		System.out.println("--------------------------------");
+		
+		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		return "schedule/newSchedule";
+	}	
+
+	//----- 스케줄 디테일 출력용 (ajax 호출) ----------------------------------------------------------
 	@RequestMapping("/rschedule.json")
 	@ResponseBody
 	public ScheduleVO retrieveSchedule (int scheduleNo) throws Exception{
@@ -48,23 +51,6 @@ public class ScheduleController {
 		return ss.retrieveSchedule(scheduleNo);
 	}
 	
-	@RequestMapping("/scheduleMain.do")
-	public String schedule (Model model) throws Exception{
-		System.out.println("scheduleMain");
-		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-		
-//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
-//		ScheduleVO svo = sList.get(0);
-//		System.out.println("--------------------------------");
-//		System.out.println("title "+svo.getTitle());
-//		System.out.println("content "+svo.getContent());
-//		System.out.println("userId "+svo.getUserId());
-//		System.out.println("--------------------------------");
-		
-		model.addAttribute("schedule", retrieveScheduleList(ssVO).get("scheduleList"));
-		return "schedule/scheduleMain";
-	}
-
 	
 //----- 스케줄 수정, 삭제 관련 ------------------------------------------------------------------
 	@RequestMapping("/update.do")
