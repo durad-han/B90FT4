@@ -20,7 +20,7 @@
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
 
-<c:import url ="/WEB-INF/jsp/common/baseinclude.jsp"/>
+<c:import url ="/WEB-INF/jsp/common/basicInclude.jsp"/>
 </head>
 <body>
    <div>
