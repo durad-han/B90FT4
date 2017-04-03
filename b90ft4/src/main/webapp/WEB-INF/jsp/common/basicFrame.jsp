@@ -192,6 +192,7 @@
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
+<!-- 
 <script>
 		(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -209,6 +210,7 @@
 
 
 </script>
+ -->
 <script src="${pageContext.request.contextPath}/web/js/workout/workout.js"></script>
 
 </body>

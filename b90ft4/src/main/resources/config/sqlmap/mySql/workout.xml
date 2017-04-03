@@ -8,7 +8,7 @@
 		<result column="Workout_Id"		property="workoutId"	/>
 		<result column="Is_Basic"		property="isBasic"		/>
 	</resultMap>
-	<select id="selectWorkoutList" resultMap="workoutMap">
+	<select id="retrieveWorkoutList" resultMap="workoutMap">
 		select	*
 		from	tb_Sam_Workout
 	</select>

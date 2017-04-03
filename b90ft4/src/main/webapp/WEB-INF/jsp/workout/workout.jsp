@@ -40,11 +40,11 @@
                 <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
                                  <ul class="nav navbar-nav">
                                  <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-                                     <li class="active"><a href="#">메인</a></li>
+                                     <li><a href="#">메인</a></li>
                                      <li><a href="#">스케쥴</a></li>
                                      <li><a href="#">다이어리</a></li>
                                      <li><a href="#">가계부</a></li>
-                                     <li><a href="#">운동</a></li>
+                                     <li class="active"><a href="#">운동</a></li>
                                      <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운<b class="caret"></b></a>
                                          <ul class="dropdown-menu">
                                              <li><a href="#">Action</a></li>
@@ -82,44 +82,23 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashboard.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">기능</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="UIElements.html"><i class="fa fa-fw">
+                     
+                    <li class="active"><a href="UIElements.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">기능</span></a>
+                    </i><span class="menu-title">운동 목록</span></a>
                        
                     </li>
                     <li><a href="Forms.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">기능</span></a>
+                    </i><span class="menu-title">칼로리 계산</span></a>
                       
                     </li>
                     <li><a href="Tables.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">기능</span></a>
+                    </i><span class="menu-title">차트</span></a>
                           
                     </li>
-                    <li><a href="DataGrid.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
+                    
                    
                 </ul>
             </div>
@@ -135,12 +114,12 @@
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">
-                            	카테고리 종류</div>
+                            	운동</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="hidden"><a href="#">카테고리 종류</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="active">카테고리 종류</li>
+                        <li class="hidden"><a href="#">운동</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="active">운동</li>
                     </ol>
                     <div class="clearfix">
                     </div>
@@ -148,37 +127,72 @@
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
                 <div class="page-content">
-<h1>workout main form</h1>
-<hr>
-<div id = "header"></div>
-<div id = "container">
+						<div id="sum_box" class="row mbl">
+                            <!--
+                             <div class="col-sm-6 col-md-3">
+                                <div class="panel task db mbm">
+                                    <div class="panel-body">
+                                        <p class="icon">
+                                            <i class="icon fa fa-signal"></i>
+                                        </p>
+                                        <h4 class="value">
+                                            <span>215</span></h4>
+                                        <p class="description">
+                                            Task completed</p>
+                                        <div class="progress progress-sm mbn">
+                                            <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 50%;" class="progress-bar progress-bar-danger">
+                                                <span class="sr-only">50% Complete (success)</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+                            <c:forEach var='l' items='${list}'>
+								<div class="col-sm-6 col-md-3">
+	                                <div class="panel task db mbm">
+	                                    <div class="panel-body">
+	                                        <p class="icon">
+	                                            <i class="icon fa fa-signal"></i>
+	                                        </p>
+	                                        <h4 class="value">
+	                                            <span>215</span></h4>
+	                                        <p class="description">
+	                                            ${l.workoutId}</p>
+	                                        <div class="progress progress-sm mbn">
+	                                            <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+	                                                style="width: 50%;" class="progress-bar progress-bar-danger">
+	                                                <span class="sr-only">50% Complete (success)</span></div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+							</c:forEach>
+						</div>
+					
+					<div id = "header">
+					</div>
+					<%-- <div id = "container">
+					
+						<div id = "workoutList">
+							<div id = "basicList"></div>
+							<div id = "addableList">
+								<c:forEach var='l' items='${list}'>
+									<ul>
+										<li>${l.workoutNo}</li>
+										<li>${l.userId}</li>
+										<li>${l.workoutId}</li>
+										<li>${l.isBasic}</li>
+									</ul>
+								</c:forEach>
+							</div>
+						</div> --%>
 
-	<div id = "workoutList">
-		<div id = "basicList"></div>
-		<div id = "addableList">
-
-	<c:forEach var='l' items='${list}'>
-		<ul>
-			<li>${l.workoutNo}</li>
-			<li>${l.userId}</li>
-			<li>${l.workoutId}</li>
-			<li>${l.isBasic}</li>
-		</ul>
-			</c:forEach>
-		
-		</div>
-	</div>
-
-	
-	<div id = "workoutMainButtons">
-		<button id = "workoutUpdateBtn">운동 편집</button>
-		<button id = "workoutCalManagementBtn">칼로리 관리</button>
-		<button id = "workoutViewAllchartBtn">전체 차트 보기</button>
-	</div>
-</div>
-
-<div id = "footer"></div>
-</div>
+						<div id = "workoutMainButtons">
+							<button id = "workoutUpdateBtn">운동 편집</button>
+						</div>
+					</div>
+				</div>
                        
                 <!--END CONTENT-->
                 <!--BEGIN FOOTER-->
@@ -218,7 +232,8 @@
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
-<script>
+<!--
+ <script>
 		(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
@@ -226,15 +241,14 @@
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
             m = s.getElementsByTagName(o)[0];
-            a.async = 1;
+            a.async = 1;	
             a.src = g;
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-145464-12', 'auto');
         ga('send', 'pageview');
-
-
 </script>
+-->
 <script src="${pageContext.request.contextPath}/web/js/workout/workout.js"></script>
 
 </body>
