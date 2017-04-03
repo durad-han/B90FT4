@@ -20,30 +20,29 @@ public class AccBookController {
 	@Autowired
 	private AccBookMapper dao;
 	
+	@RequestMapping("/main.do")
+	public String main(Model model) throws Exception{
+		model.addAttribute("subMenu","전체");
+		return "accountbook/main";
+	}
+	@RequestMapping("/budget.do")
+	public String budget(Model model) throws Exception{
+		model.addAttribute("subMenu","지출/수입");
+		return "accountbook/main";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/budgetCtgy.do")
 	public Map<String, Object> retrieveBudgetCtgy(String userId) throws Exception {
 		return service.retrieveBudgetCtgy(userId);
 	}
-	
-	@RequestMapping("/main.do")
-	public String main() throws Exception{
-		return "accountbook/main";
-	}
 
-	@RequestMapping("/budget.do")
-	public String budget(Model model) throws Exception{
-		model.addAttribute("budget","budget");
-		return "accountbook/main";
-	}
+//	@RequestMapping("/budget.do")
+//	public String budget(Model model) throws Exception{
+//		model.addAttribute("budget","budget");
+//		return "accountbook/main";
+//	}
 	
-	@RequestMapping("/budgetRegi.do")
-	public String budgetRegi(Model model) throws Exception{
-		
-		model.addAttribute("budget","budget");
-		return "accountbook/main";
-		
-	}
 	
 	
 	
