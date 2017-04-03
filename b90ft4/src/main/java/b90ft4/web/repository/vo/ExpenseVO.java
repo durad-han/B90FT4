@@ -6,10 +6,10 @@ public class ExpenseVO {
 	
 	private int expenseNo;
 	private String userId;
-	private int expenseCategoryId;
+	private int expenseCategoryNo;
 	private String expenseContent;
 	private int expenseAmount;
-	Date expenseDate;
+	private Date expenseDate;
 	
 	public int getExpenseNo() {
 		return expenseNo;
@@ -23,11 +23,12 @@ public class ExpenseVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public int getExpenseCategoryId() {
-		return expenseCategoryId;
+	
+	public int getExpenseCategoryNo() {
+		return expenseCategoryNo;
 	}
-	public void setExpenseCategoryId(int expenseCategoryId) {
-		this.expenseCategoryId = expenseCategoryId;
+	public void setExpenseCategoryNo(int expenseCategoryNo) {
+		this.expenseCategoryNo = expenseCategoryNo;
 	}
 	public String getExpenseContent() {
 		return expenseContent;

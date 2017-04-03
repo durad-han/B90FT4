@@ -6,10 +6,10 @@ public class IncomeVO {
 	
 	private int incomeNo;
 	private String userId;
-	private int incomeCategoryId;
+	private int incomeCategoryNo;
 	private String incomeContent;
 	private int incomeAmount;
-	Date incomeDate;
+	private Date incomeDate;
 	
 	public int getIncomeNo() {
 		return incomeNo;
@@ -23,11 +23,12 @@ public class IncomeVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public int getIncomeCategoryId() {
-		return incomeCategoryId;
+	
+	public int getIncomeCategoryNo() {
+		return incomeCategoryNo;
 	}
-	public void setIncomeCategoryId(int incomeCategoryId) {
-		this.incomeCategoryId = incomeCategoryId;
+	public void setIncomeCategoryNo(int incomeCategoryNo) {
+		this.incomeCategoryNo = incomeCategoryNo;
 	}
 	public String getIncomeContent() {
 		return incomeContent;
