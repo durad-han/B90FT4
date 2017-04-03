@@ -8,6 +8,6 @@ import b90ft4.web.repository.vo.WorkoutVO;
 
 @Repository
 public interface WorkoutMapper {
-	public List<WorkoutVO> selectWorkoutList() throws Exception; 
+	public List<WorkoutVO> retrieveWorkoutList() throws Exception; 
 
 }

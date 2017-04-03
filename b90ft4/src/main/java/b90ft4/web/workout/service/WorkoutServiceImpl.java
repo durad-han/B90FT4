@@ -17,7 +17,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Override
 	public List<WorkoutVO> workoutList() throws Exception {
 	//	System.out.println("workoutListService");
-		List<WorkoutVO> list = wm.selectWorkoutList();
+		List<WorkoutVO> list = wm.retrieveWorkoutList();
 		//	System.out.println("workoutListService done");
 		return list;
 	}

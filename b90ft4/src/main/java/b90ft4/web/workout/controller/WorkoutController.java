@@ -17,12 +17,7 @@ public class WorkoutController {
 	private WorkoutService ws;
 	
 //
-	@RequestMapping("/workoutlist.do")
-	public void workoutList (WorkoutVO workoutVO) throws Exception{
-		System.out.println("workoutlist");
 
-		ws.workoutList();
-	}
 //
 	@RequestMapping("/workout.do")
 	public String workout(Model model) throws Exception{
@@ -33,6 +28,13 @@ public class WorkoutController {
 	//	System.out.println("workout controller done");
 		model.addAttribute("list",list);
 		return "workout/workout";
+	}
+	
+	@RequestMapping("/workoutTypeA.do")
+	public String workoutList (WorkoutVO workoutVO) throws Exception{
+		System.out.println("workoutTypeA");
+
+		return "workout/workoutTypeA";
 	}
 
 }
