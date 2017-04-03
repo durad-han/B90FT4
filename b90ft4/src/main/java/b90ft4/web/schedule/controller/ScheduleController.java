@@ -32,7 +32,7 @@ public class ScheduleController {
 //		System.out.println("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
-		return "schedule/newSchedule";
+		return "schedule/scheduleList";
 	}	
 
 	//----- 스케줄 디테일 출력용 (ajax 호출) ----------------------------------------------------------
@@ -50,6 +50,40 @@ public class ScheduleController {
 		
 		return ss.retrieveSchedule(scheduleNo);
 	}
+	
+	//----- 스케줄 캘린더 호출시 --------------------------------------------------------------------
+	@RequestMapping("/scheduleCalendar.do")
+	public String retrieveScheduleCalendar (Model model) throws Exception{
+		System.out.println("retrieveScheduleCalendar");
+		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
+//		ScheduleVO svo = sList.get(0);
+//		System.out.println("--------------------------------");
+//		System.out.println("title "+svo.getTitle());
+//		System.out.println("content "+svo.getContent());
+//		System.out.println("userId "+svo.getUserId());
+//		System.out.println("--------------------------------");
+		
+		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		return "schedule/scheduleCalendar";
+	}	
+	
+	//----- 스케줄 그래프 호출시 --------------------------------------------------------------------
+	@RequestMapping("/scheduleGraph.do")
+	public String retrieveScheduleGraph (Model model) throws Exception{
+		System.out.println("retrieveScheduleGraph");
+		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
+//		ScheduleVO svo = sList.get(0);
+//		System.out.println("--------------------------------");
+//		System.out.println("title "+svo.getTitle());
+//		System.out.println("content "+svo.getContent());
+//		System.out.println("userId "+svo.getUserId());
+//		System.out.println("--------------------------------");
+		
+		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		return "schedule/scheduleGraph";
+	}	
 	
 	
 //----- 스케줄 수정, 삭제 관련 ------------------------------------------------------------------
