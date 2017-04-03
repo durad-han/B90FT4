@@ -30,15 +30,13 @@
 			리턴되는 값의 데이터타입: List<??>
 	============================================================================-->
 	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
-		select	*
-		from	(
-				select	rownum rNum, d.*
-				from	(select	*
-						 from	tb_Sam_Diary
- 						 order	by Diary_No <!--desc -->
-						) d
-				)
-		where	rNum between #{begin} and #{end}
+		select	sql_calc_found_rows a.* 
+		from	(select	* 
+				 from	tb_Sam_Diary
+				 order	by Diary_No
+				) a
+		limit	10
+		offset	0;
 	</select>
 	
 	 

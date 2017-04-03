@@ -9,20 +9,15 @@ import b90ft4.web.repository.vo.DiaryVO;
 public interface DiaryMapper {
 
 
-	public List<DiaryVO> selectDiary(DiarySearchVO search);
-	public int selectDiaryCount(DiarySearchVO search);
-	public void insertDiary(DiaryVO diary);
-	public DiaryVO selectOneDiary(int no);
-	public void updateDiary(DiaryVO diary);
-	public void deleteDiary(int no);
+	public List<DiaryVO> selectDiaryList(DiarySearchVO search) throws Exception;
+	public int selectDiaryCount(DiarySearchVO search) throws Exception;
+	public void insertDiary(DiaryVO diary) throws Exception;
+	public DiaryVO selectOneDiary(int no) throws Exception;
+	public void updateDiary(DiaryVO diary) throws Exception;
+	public void deleteDiary(int no) throws Exception;
 
-	public void insertDiaryFile(DiaryFileVO diaryFile);
-	public DiaryFileVO selectDiaryFileByNo(int no);
-
-
-
-
-
+	public void insertDiaryFile(DiaryFileVO diaryFile) throws Exception;
+	public DiaryFileVO selectDiaryFileByNo(int no) throws Exception;
 
 
 }

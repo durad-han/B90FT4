@@ -42,7 +42,7 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public Map<String, Object> list(DiarySearchVO search) throws Exception{
 		Map<String, Object> result = new HashMap<>();
-		result.put("list",  dao.selectDiary(search));
+		result.put("list",  dao.selectDiaryList(search));
 		result.put("pageResult", new PageResultVO(search.getPageNo(), dao.selectDiaryCount(search)));
 		return result;
 	}
