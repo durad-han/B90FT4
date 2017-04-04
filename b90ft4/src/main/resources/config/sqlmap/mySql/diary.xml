@@ -5,7 +5,7 @@
 
 	<resultMap type="diaryVO" id="diaryMap">
 		<result column="Diary_No"		property="diaryNo" 			/>
-		<result column="User_Id"		property="userNo" 			/>
+		<result column="User_Id"		property="userId" 			/>
 		<result column="Latitude"		property="latitude" 		/>
 		<result column="Longitude"		property="longitude" 		/>
 		<result column="Weather_City"	property="weatherCity" 		/>
@@ -94,7 +94,7 @@
 				)
 		values	(
 				s_Around_Diary.nextVal,
-				#{userNo},     
+				#{userId},     
 				#{latitude},    
 				#{longitude},   
 				#{weatherCity},
