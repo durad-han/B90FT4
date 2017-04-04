@@ -36,6 +36,39 @@
 	 	  from tb_sam_income_category
 	</select>
 	
+	<insert id="insertExpense" parameterType="expenseVO">
+		insert into tb_sam_expense (
+			user_id,
+			expense_category_no,
+			expense_content,
+			expense_amount,
+			expense_date
+		) values( 
+			#{userId},
+			#{expenseCategoryNo},
+			#{expenseContent},
+			#{expenseAmount},
+			#{expenseDate}
+		)
+	</insert>
+	
+	<insert id="insertIncome" parameterType="incomeVO">
+		insert into tb_sam_income (
+			user_id,
+			income_category_no,
+			income_content,
+			income_amount,
+			income_date
+		) values( 
+			#{userId},
+			#{incomeCategoryNo},
+			#{incomeContent},
+			#{incomeAmount},
+			#{incomeDate}
+		)
+	</insert>
+	
+	
 </mapper>
 
 

@@ -178,134 +178,192 @@
 <!-- 				<br>여기에 내용입력 <br>            -->
                 
                 <div class="row">
-                    <div class="col-lg-3" style="border: 1px solid black;margin-left: 10%;margin-right: 10%;padding: 0"><h3>달력</h3>
-                
+                    <div class="col-lg-3" style="border: 1px solid black;margin-left: 10%;margin-right: 10%;padding: 0">
 				    <ul id="generalTab" class="nav nav-tabs responsive">
                            <li class="active"><a href="#alert-tab" data-toggle="tab" id="day">일</a></li>
                            <li><a href="#note-tab" data-toggle="tab" id="week">주</a></li>
                            <li><a href="#label-badge-tab" data-toggle="tab" id="month">월</a></li>
                     </ul>
-						
-				 	<div id="datepicker" placeholder="ex) 2017-03-30"
-				 	style="margin-left: 10%"></div><br>
+                    <br>
+				 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
                 	</div>
                 
                 	<div class="col-lg-4" style="border: 1px solid black">
-                		<h3><input type="text" id="actualDate" style="width: 90%;text-align: center;"></h3>
-		                <div class="panel panel-green">
-		                            <div class="panel-heading">지출</div>
-		                            <div class="panel-body">
-		                                <table class="table table-hover-color">
-		                                    <thead>
-		                                    <tr>
-		                                        <th>번호</th>
-		                                        <th>분류</th>
-		                                        <th>내용</th>
-		                                        <th>금액</th>
-		                                    </tr>
-		                                    </thead>
-		                                    <tbody>
-		                                    <tr>
-		                                        <td>1</td>
-		                                        <td><span class="label label-sm label-success">교통비</span></td>
-		                                        <td>집-학원</td>
-		                                        <td>5000원</td>
-		                                    </tr>
-		                                    <tr>
-		                                        <td>2</td>
-		                                        <td><span class="label label-sm label-info">식비</span></td>
-		                                        <td>놀부 부대찌개</td>
-		                                        <td>75,000</td>
-		                                    </tr>
-		                                    <tr>
-		                                        <td>3</td>
-		                                        <td><span class="label label-sm label-warning">의류비</span></td>
-		                                        <td>NC 백화점</td>
-		                                        <td>30,000원</td>
-		                                    </tr>
-		                                    <tr>
-		                                        <td>4</td>
-		                                        <td><span class="label label-sm label-danger">미용비</span></td>
-		                                        <td>뷰티</td>
-		                                        <td>10,000원</td>
-		                                    </tr>
-		                                    </tbody>
-		                                </table>
-		                            </div>
-		                </div>
-		                  <button style="margin-left: 67%"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                		
+                		 <ul id="generalTab" class="nav nav-tabs responsive">
+                            <li class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
+                            <li style="margin-right: 30%;"><a href="#note-tab" data-toggle="tab">수입</a></li>
+                            <li>
+                            	 <button style="margin-top: 5px; type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 			                 		 지출/수입 등록
-			              </button>
-			              <br><br>
+			             		 </button>
+                            </li>
+                        </ul>
+                        
+                		<h3><input type="text" id="actualDate" style="width: 90%;text-align: center;"></h3>
+                		
+                			   <div id="generalTabContent" class="tab-content responsive">
+                			   
+			                            <div id="alert-tab" class="tab-pane fade in active">
+											   <div class="panel panel-green">
+							                            <div class="panel-heading">지출</div>
+							                            <div class="panel-body">
+							                                <table class="table table-hover-color">
+							                                    <thead>
+							                                    <tr>
+							                                        <th>번호</th>
+							                                        <th>분류</th>
+							                                        <th>내용</th>
+							                                        <th>금액</th>
+							                                    </tr>
+							                                    </thead>
+							                                    <tbody>
+							                                    <tr>
+							                                        <td>1</td>
+							                                        <td><span class="label label-red">교통비</span></td>
+							                                        <td>집-학원</td>
+							                                        <td>5000원</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>2</td>
+							                                        <td><span class="label label-orange">식비</span></td>
+							                                        <td>놀부 부대찌개</td>
+							                                        <td>75,000</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>3</td>
+							                                        <td><span class="label label-green">의류비</span></td>
+							                                        <td>NC 백화점</td>
+							                                        <td>30,000원</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>4</td>
+							                                        <td><span class="label label-violet">미용비</span></td>
+							                                        <td>뷰티</td>
+							                                        <td>10,000원</td>
+							                                    </tr>
+							                                    </tbody>
+							                                </table>
+							                            </div>
+							                </div>
+			                		</div>
+			                				
+	                            	<div id="note-tab" class="tab-pane fade">
+											   <div class="panel panel-yellow">
+							                            <div class="panel-heading">수입</div>
+							                            <div class="panel-body">
+							                                <table class="table table-hover-color">
+							                                    <thead>
+							                                    <tr>
+							                                        <th>번호</th>
+							                                        <th>분류</th>
+							                                        <th>내용</th>
+							                                        <th>금액</th>
+							                                    </tr>
+							                                    </thead>
+							                                    <tbody>
+							                                    <tr>
+							                                        <td>1</td>
+							                                        <td><span class="label label-red">교통비</span></td>
+							                                        <td>집-학원</td>
+							                                        <td>5000원</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>2</td>
+							                                        <td><span class="label label-orange">식비</span></td>
+							                                        <td>놀부 부대찌개</td>
+							                                        <td>75,000</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>3</td>
+							                                        <td><span class="label label-green">의류비</span></td>
+							                                        <td>NC 백화점</td>
+							                                        <td>30,000원</td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>4</td>
+							                                        <td><span class="label label-violet">미용비</span></td>
+							                                        <td>뷰티</td>
+							                                        <td>10,000원</td>
+							                                    </tr>
+							                                    </tbody>
+							                                </table>
+							                            </div>
+							                </div>
+	                			   </div>
+	                			   
+                			</div>
+                		
+			              <br>
+                		
+                		</div>
+                		
+			              
 		            </div> 
                     
                     <br>
 		            <br>    
 		                
-		            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								
-								<div class="modal-header">
-									<h4 class="modal-title">지출/수입 등록</h4>
+										<div class="modal-header">
+											<h4 class="modal-title">지출/수입 등록</h4>
+										</div>
+										
+										<div class="modal-body">
+											<form name="budgetF">
+			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
+		                                                <div class="col-sm-9 controls">
+		                                                    <div class="row">
+		                                                        <div class="col-xs-9">
+		                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;
+		                                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;
+		                                                                                 비용</label></div>
+		                                                        </div>
+		                                                    </div>
+		                                                </div>
+		                                            </div>
+			                                            
+											 		   <div class="form-group"><label class="col-sm-3 control-label">분류</label>
+			                                              	<div class="col-sm-9 controls">
+			                                                  	<div class="row">
+			                                                    	  <div class="col-xs-4">
+			                                                     	  	<select class="form-control">
+			                                                     	  	</select>
+			                                                    	 	</div>
+			                                                  	 </div>
+			                                              	 </div>
+			                                    	   </div>
+			                                    	   
+			                                           <div class="form-group"><label class="col-sm-3 control-label">금액</label>
+			                                               <div class="col-sm-9 controls">
+			                                                   <div class="row">
+			                                                       <div class="col-xs-9"><input type="text" class="form-control"/></div>
+			                                                   </div>
+			                                               </div>
+			                                           </div>
+			                                           
+			                                           <div class="form-group"><label class="col-sm-3 control-label">내용</label>
+			                                               <div class="col-sm-9 controls">
+			                                                   <div class="row">
+			                                                       <div class="col-xs-9"><input type="text" class="form-control"/></div>
+			                                                   </div>
+			                                           	   </div>
+			                                           </div>
+			                                           
+			                                           <input type="hidden" />
+			                                </form>
+											<br><br><br><br><br><br><br>
+			                      	   </div>
+			                                
+									<div class="modal-footer">
+										<button type="button" id="budgetRegi"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
+										<button type="button" id="closeF" class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
+									</div>
+									
 								</div>
-								<div class="modal-body">
-								<form name="budgetF">
-								
-								
-	                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-9">
-                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;
-                                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;
-                                                                                 비용</label></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-	                                       
-	                                       
-	                                       
-								 		   <div class="form-group"><label class="col-sm-3 control-label">분류</label>
-                                              	<div class="col-sm-9 controls">
-                                                  	<div class="row">
-                                                    	  <div class="col-xs-4">
-                                                     	  	<select class="form-control">
-                                                     	  	</select>
-                                                    	 	</div>
-                                                  	 </div>
-                                              	 </div>
-                                    	   </div>
-                                    	   
-                                           <div class="form-group"><label class="col-sm-3 control-label">금액</label>
-                                               <div class="col-sm-9 controls">
-                                                   <div class="row">
-                                                       <div class="col-xs-9"><input type="text" class="form-control"/></div>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                           
-                                           <div class="form-group"><label class="col-sm-3 control-label">내용</label>
-                                               <div class="col-sm-9 controls">
-                                                   <div class="row">
-                                                       <div class="col-xs-9"><input type="text" class="form-control"/></div>
-                                                   </div>
-                                           </div>
-                                           
-                                           <input type="hidden" />
-                                           
-                                </form>
-                                </div>
-                                           <br><br><br><br><br><br><br>
-								</div>
-								
-								<div class="modal-footer">
-									<button type="button" id="budgetRegi" class="btn btn-default btn-simple">등록</button>
-									<button type="button" id="closeF" class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
-								</div>
-								
-								
+                                        
 							</div>
 						</div>
 					</div>

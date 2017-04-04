@@ -1,7 +1,5 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class IncomeVO {
 	
 	private int incomeNo;
@@ -9,7 +7,7 @@ public class IncomeVO {
 	private int incomeCategoryNo;
 	private String incomeContent;
 	private int incomeAmount;
-	private Date incomeDate;
+	private String incomeDate;
 	
 	public int getIncomeNo() {
 		return incomeNo;
@@ -42,12 +40,12 @@ public class IncomeVO {
 	public void setIncomeAmount(int incomeAmount) {
 		this.incomeAmount = incomeAmount;
 	}
-	public Date getIncomeDate() {
+	public String getIncomeDate() {
 		return incomeDate;
 	}
-	public void setIncomeDate(Date incomeDate) {
+	public void setIncomeDate(String incomeDate) {
 		this.incomeDate = incomeDate;
 	}
-
+	
 	
 }

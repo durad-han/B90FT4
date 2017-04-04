@@ -1,7 +1,5 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class LoanVO {
 
 	private int loanNo;
@@ -9,7 +7,7 @@ public class LoanVO {
 	private String debtor;
 	private String loanContent;
 	private int loanAmount;
-	private Date loanDate;
+	private String loanDate;
 	
 	
 	public int getLoanNo() {
@@ -42,12 +40,11 @@ public class LoanVO {
 	public void setLoanAmount(int loanAmount) {
 		this.loanAmount = loanAmount;
 	}
-	public Date getLoanDate() {
+	public String getLoanDate() {
 		return loanDate;
 	}
-	public void setLoanDate(Date loanDate) {
+	public void setLoanDate(String loanDate) {
 		this.loanDate = loanDate;
 	}
 
-	
 }

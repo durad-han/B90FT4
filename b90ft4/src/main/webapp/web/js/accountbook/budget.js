@@ -1,51 +1,49 @@
 
-/* 지출 입력 */
 
-
-var budgetCode=0;
-
-$("#budgetRegi").click(function() {
 	
-	var f = document.budgetF;
+/* 지출-수입 입력 */
+	var budgetCode=0;
+	$("#budgetRegi").click(function() {
+		
+		var f = document.budgetF;
+		console.log("등록");
+		$("[name=budgetF] input:eq(4)").val($("#actualDate").val());
+		
+		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(4)").attr("name")),"날짜를 선택하세요")) return;
 	
-	console.log("등록");
-	
-	$("[name=budgetF] input:eq(4)").val($("#actualDate").val());
-	
-	if(isEmpty(eval("f."+$("input:eq(4)").attr("name")),"날짜를 선택하세요")) return;
-
-	if(isEmpty(eval("f."+$("input:eq(2)").attr("name")),"금액을 입력하세요")) return;
-	
-	var params = $("[name=budgetF]").serialize();
-	var path="";
-	
-	if(budgetCode==0){
-		path="expenseRegi.do";
-	}else{
-		path="incomeRegi.do";
-	}
-	
-	console.log("params",params);
-	console.log("path",path);
-	
-	$.ajax({
-		url: path,
-		type:"POST",
-		contentType: "application/x-www-form-urlencoded",
-		data:params,
-		async:false
-	}).done(function(msg){
-		console.log(msg);
+		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
+		
+		var params = $("[name=budgetF]").serialize();
+		var path="";
+		
+		if(budgetCode==0){
+			path="expenseRegi.do";
+		}else{
+			path="incomeRegi.do";
+		}
+		
+		console.log("params",params);
+		console.log("path",path);
+		
+		$.ajax({
+			url: path,
+			type:"POST",
+			contentType: "application/x-www-form-urlencoded",
+			data:params,
+			async:false
+		}).done(function(msg){
+			console.log(msg);
+		});
+		
+		console.log("ㅋ");
+		$("#closeF").trigger("click");
+		
 	});
-	
-	$("#closeF").trigger("click");
-	
-});
 
 
 
 
-/*  달력 만들기 자바스크립트 */
+/*  달력 만들기 자바스크립트  */
 
 	var selectCurrentWeek = function() {
 	    setTimeout(function () {
@@ -137,6 +135,13 @@ $("#budgetRegi").click(function() {
 		$("head").append(style);
 		flag = 3;
 	});
+	
+	/*  현재 날짜 인풋 박스 입력*/
+	
+	var date = $("#datepicker").datepicker("getDate");
+	var today = $.datepicker.formatDate( "yy-mm-dd", date);
+	console.log("today",today);
+	$("#actualDate").val(today);
 
 
 /* 입력 양식, 셀렉박스 옵션 만들기.*/
@@ -183,6 +188,8 @@ $("#budgetRegi").click(function() {
 		
 		if($(this).val()==0) {
 			
+			budgetCode=0;
+			
 			$("[name=budgetF] select")
 			.attr("name","expenseCategoryNo")
 			.html(esOpt);
@@ -197,6 +204,8 @@ $("#budgetRegi").click(function() {
 			.attr("name","expenseDate");
 			
 		}else{
+			
+			budgetCode=1;
 		
 			$("[name=budgetF] select")
 			.attr("name","incomeCategoryNo")

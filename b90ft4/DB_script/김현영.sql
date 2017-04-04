@@ -17,6 +17,17 @@ select * from tb_sam_income
 select * from tb_sam_loan
 select * from tb_sam_debt
 select * from tb_sam_memo
+select * from tb_sam_user
+
+insert into tb_sam_user (
+	user_id,
+	password
+)
+
+delete from tb_sam_income
+  where income_no =2
+  
+
 
 create table tb_sam_income_category( 
 	income_category_no 		int(6)	auto_increment primary key,
@@ -33,23 +44,23 @@ create table tb_sam_expense_category(
 )
 
 create table tb_sam_expense (
-	expense_no int(6) auto_increment primary key,
-	user_id	   varchar(60) not null,
-	expense_category_no int(2) not null,
-	expense_content varchar(1000) null,
-	expense_amount int(6) not null,
-	expense_date date not null,
+	expense_no 				int(6) auto_increment primary key,
+	user_id	  				varchar(60) not null,
+	expense_category_no 	int(2) not null,
+	expense_content 	    varchar(1000) null,
+	expense_amount 			int(6) not null,
+	expense_date 			char(10) not null,
 	FOREIGN KEY(expense_category_no) REFERENCES tb_sam_expense_category(expense_category_no),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
 create table tb_sam_income (
-	income_no				 int(6) primary key,
+	income_no				 int(6) auto_increment primary key,
 	user_id 				 varchar(60) not null,
 	income_category_no		 int(2) not null,
 	income_content 			 varchar(1000) null,
 	income_amount 			 int(6) not null,
-	income_date datetime 	 not null,
+	income_date 			 char(10) not null,
 	FOREIGN KEY(income_category_no) REFERENCES tb_sam_income_category(income_category_no),
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
@@ -60,7 +71,7 @@ create table tb_sam_loan (
 	debtor 					varchar(60) not null,
 	loan_content 			varchar(1000),
 	loan_amount 			int(6) 	not null,
-	loan_date datetime 		not null,
+	loan_date 			 	char(10) not null,
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
@@ -69,8 +80,8 @@ create table tb_sam_debt (
 	User_Id			    	varchar(60) not null,
 	money_lender		 	varchar(60) not null,
 	debt_content 			varchar(1000) null,
-	debt_amount				int(6)		not null,
-	debt_date datetime 		not null,
+	debt_amount				int(6)	 not null,
+	debt_date			 	char(10) not null,
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 

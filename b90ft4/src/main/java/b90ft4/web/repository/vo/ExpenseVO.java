@@ -9,7 +9,7 @@ public class ExpenseVO {
 	private int expenseCategoryNo;
 	private String expenseContent;
 	private int expenseAmount;
-	private Date expenseDate;
+	private String expenseDate;
 	
 	public int getExpenseNo() {
 		return expenseNo;
@@ -42,11 +42,12 @@ public class ExpenseVO {
 	public void setExpenseAmount(int expenseAmount) {
 		this.expenseAmount = expenseAmount;
 	}
-	public Date getExpenseDate() {
+	public String getExpenseDate() {
 		return expenseDate;
 	}
-	public void setExpenseDate(Date expenseDate) {
+	public void setExpenseDate(String expenseDate) {
 		this.expenseDate = expenseDate;
 	}
+	
 	
 }

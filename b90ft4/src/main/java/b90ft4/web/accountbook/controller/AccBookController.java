@@ -19,8 +19,6 @@ public class AccBookController {
 
 	@Autowired
 	private AccBookService service;
-	@Autowired
-	private AccBookMapper dao;
 	
 	@RequestMapping("/main.do")
 	public void main(Model model) throws Exception{
@@ -39,31 +37,82 @@ public class AccBookController {
 	
 	@ResponseBody
 	@RequestMapping("/expenseRegi.do")
-	public String expenseRegi(ExpenseVO expense) 
+	public String registerExpense(ExpenseVO expense) 
 			throws Exception {
 		
-		System.out.println("지출 등록");
-		System.out.println(expense.getExpenseAmount());
-		System.out.println(expense.getExpenseCategoryNo());
-		System.out.println(expense.getExpenseContent());
-		System.out.println(expense.getExpenseDate());
-		
+		expense.setUserId("tester03");
+		service.registerExpense(expense);
 		return "ok";
 	}
 	
 	@ResponseBody
 	@RequestMapping("/incomeRegi.do")
-	public String incomeRegi(IncomeVO income) 
+	public String registerIncome(IncomeVO income) 
 			throws Exception {
 
-		System.out.println("소득 등록");
-		System.out.println(income.getIncomeAmount());
-		System.out.println(income.getIncomeCategoryNo());
-		System.out.println(income.getIncomeContent());
-		System.out.println(income.getIncomeDate());
-		
+		income.setUserId("tester03");
+		service.registerIncome(income);
 		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/budgetList.do")
+	public Map<String, Object> budgetList(){
+
+		return null;
 	}
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//System.out.println("지출 등록");
+//System.out.println(expense.getExpenseAmount());
+//System.out.println(expense.getExpenseCategoryNo());
+//System.out.println(expense.getExpenseContent());
+//System.out.println(expense.getExpenseDate());
+//System.out.println("소득 등록");
+//System.out.println(income.getIncomeAmount());
+//System.out.println(income.getIncomeCategoryNo());
+//System.out.println(income.getIncomeContent());
+//System.out.println(income.getIncomeDate());
+
+
+
+
+
+
+
+
