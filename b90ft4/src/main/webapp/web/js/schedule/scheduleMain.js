@@ -40,7 +40,7 @@ function goDetail(sNo){
 function printSchedule(result){
 	console.log("디테일 꾸미기")
 	var html = "";
-		html += "<div id='schedule'>";
+		html += "<div id='schedule' data-value='slideInDown'>";
 		html += "	<div id='schTitle'>";
 		html += "		<h3>"+result.title+"</h3>";
 		html += "	</div>";

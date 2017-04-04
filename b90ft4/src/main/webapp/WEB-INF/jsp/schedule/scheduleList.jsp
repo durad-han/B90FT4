@@ -21,7 +21,7 @@
     <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
 	<div class="navbar-header">
 	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-	    <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
+	    <a id="logo" href="/b90ft4/main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
 	        </div>
 	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -151,7 +151,7 @@
              
              <div class="page-content">
  <div class="row">
-     <div class="col-lg-4">
+    <div class="col-lg-3">
          <div class="panel">
              <div class="panel-body">
                  <div id="grid-layout-table-1" class="box jplist">
@@ -194,10 +194,10 @@
                          
                             <c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
                              <tr class="tbl-item">
-                             <a href="javascript:goDetail(${schedules.scheduleNo});">
                                  <td class="td-block"><p class="date"><fmt:formatDate value='${schedules.start}' pattern="MM/dd hh:mm"/></p>
-                                    <p class="title"><c:out value='${schedules.title }'/></p>
-                                    <p class="desc"><c:out value='${schedules.content }'/></p>
+                            
+                                    <p class="title"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></p>
+                                    <p class="desc"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
                                     <p class="like">
                                     <c:choose>
 										<c:when test='${schedules.achieve != 0}'>
@@ -209,7 +209,6 @@
 									</c:choose>
 									</p>
 									</td>
-                             </a>
                              </tr>
                             </c:forEach> 
                              
@@ -220,24 +219,6 @@
                         <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
                         <div class="jplist-ios-button"><i class="fa fa-sort"></i>Schedule Options</div>
                         <div class="jplist-panel box panel-bottom">
-                            <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
-                                <ul class="dropdown-menu">
-                                    <li><span data-number="5"> 5 per page</span></li>
-                                    <li><span data-number="10" data-default="true"> 10 per page</span></li>
-                                    <li><span data-number="all"> view all</span></li>
-                                </ul>
-                            </div>
-                            <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
-                                <ul class="dropdown-menu">
-                                    <li><span data-path="default">Sort by</span></li>
-                                    <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
-                                    <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
-                                    <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
-                                    <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
-                                    <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
-                                    <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
-                                </ul>
-                            </div>
                             <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
                             <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
                         </div>
@@ -245,7 +226,27 @@
                 </div>
             </div>
         </div>
+    <div class="col-lg-9">
+    Detail Page
+      <div class="panel">
+         <div class="panel-body">
+         	<div id="detailView">
+			detailView
+				<div id="prev">
+				</div>
+				
+				<div id="schDetail">
+				</div>
+				
+				<div id="next">
+				</div>
+			</div>
+             
+         </div>
+      </div>
     </div>
+    </div>
+    
 </div>
                             
             </div>
@@ -257,8 +258,7 @@
                 
 <!--BEGIN FOOTER-->
 <div id="footer">
-    <div class="copyright">
-        <a href="http://themifycloud.com">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+
 </div>
 <!--END FOOTER-->
 
@@ -267,5 +267,6 @@
     </div>
 </div>
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+<script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>
 </body>
 </html>
