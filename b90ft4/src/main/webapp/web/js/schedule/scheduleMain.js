@@ -40,37 +40,62 @@ function goDetail(sNo){
 function printSchedule(result){
 	console.log("디테일 꾸미기")
 	var html = "";
-		html += "<div id='schedule' data-value='slideInDown'>";
-		html += "	<div id='schTitle'>";
-		html += "		<h3>"+result.title+"</h3>";
-		html += "	</div>";
-		html += "	<div id='schTime'>";
-		html += "		<h5>"+result.start+"</h5>";
-		html += "	</div>";
-		html += "	<div id='schContent'>";
-		html += "		<p>"+result.content+"</p>";
-		html += "	</div>";
-		html += "	<div id='schOption'>";
-		html += "		<span>예산 : 35,000</span>";
+	
+	html += "<div class='form-group' id='schedule'>"
+	html += "    <div class='input-icon right'>"
+	html += "        <i class='fa fa-user'></i>"
+	html += "        <input id='inputTitle' type='text' placeholder='"+result.title+"' class='form-control' /></div>"
+	html += "</div>"
+	html += "<div class='row'>"
+	html += "    <div class='col-md-6'>"
+	html += "        <div class='form-group'>"
+	html += "            <input id='inputStart' type='text' placeholder='"+result.start+"' class='form-control' /></div>"
+	html += "    </div>"
+	html += "    <div class='col-md-6'>"
+	html += "        <div class='form-group'>"
+	html += "            <input id='inputEnd' type='text' placeholder='"+result.end+"' class='form-control' /></div>"
+	html += "    </div>"
+	html += "</div>"
+	html += "<div class='form-group'>"
+	html += "    <div class='input-icon right'>"
+	html += "        <i class='fa fa-user'></i>"
+	html += "        <input id='inputContent' type='text' placeholder='"+result.content+"' class='form-control' /></div>"
+	html += "</div>"
+	html += "<div class='form-group'>"
+	html += "   <select class='form-control' id='inputImportance'>"
+	switch(result.importance){
+	case '1':
+		html += "       <option value='0'>☆ ☆ ☆</option>"
+		html += "       <option value='1' selected='selected'>★ ☆ ☆</option>"
+		html += "       <option value='2'>★ ★ ☆</option>"
+		html += "       <option value='3'>★ ★ ★</option>"
+		break;
+	case '2':
+		html += "       <option value='0'>☆ ☆ ☆</option>"
+		html += "       <option value='1'>★ ☆ ☆</option>"
+		html += "       <option value='2' selected='selected'>★ ★ ☆</option>"
+		html += "       <option value='3'>★ ★ ★</option>"
+		break;
+	case '3':
+		html += "       <option value='0'>☆ ☆ ☆</option>"
+		html += "       <option value='1'>★ ☆ ☆</option>"
+		html += "       <option value='2'>★ ★ ☆</option>"
+		html += "       <option value='3' selected='selected'>★ ★ ★</option>"
+		break;
+	default:
+		html += "       <option value='0' selected='selected'>☆ ☆ ☆</option>"
+		html += "       <option value='1'>★ ☆ ☆</option>"
+		html += "       <option value='2'>★ ★ ☆</option>"
+		html += "       <option value='3'>★ ★ ★</option>"
+	break;
+	}
 		
-		// 중요도 설정
-		switch(result.importance){
-		case '1':
-			html += "		<span>★ ☆ ☆</span>";
-			break;
-		case '2':
-			html += "		<span>★ ★ ☆</span>";
-			break;
-		case '3':
-			html += "		<span>★ ★ ★</span>";
-			break;
-		default:
-			html += "		<span>☆ ☆ ☆</span>";
-			break;
-		}
+	html += "   </select></div>"
+	html += "<div class='form-actions text-right pal'>"
+	html += "	<button onclick='goModify("+result.scheduleNo+");' class='btn btn-warning'>수정</button>"
+	html += "	<button onclick='goDelete("+result.scheduleNo+");' class='btn btn-danger'>삭제</button>"
+	html += "</div>"
 		
-		html += "	</div>";
-		html += "</div>";
 	$("#schDetail").html(html)
 	prevNext(result.scheduleNo);
 }
@@ -90,7 +115,10 @@ function prevNext(scheduleNo){
 		console.log("prev");
 		console.dir(result);
 		prevHtml += "<a href='javascript:goDetail("+result.scheduleNo+")'>";
-		prevHtml += "이전 스케줄 "+result.start + result.title;
+		prevHtml += "이전 스케줄 : ";
+		prevHtml += "<strong>"+result.title+"</strong>";
+		prevHtml += "<p class='date'>"+result.start+"</p>";
+		prevHtml += "</p>";
 		prevHtml += "</a>";
 		$("#prev").html(prevHtml)
 	})
@@ -104,15 +132,28 @@ function prevNext(scheduleNo){
 		console.log("next");
 		console.dir(result);
 		nextHtml += "<a href='javascript:goDetail("+result.scheduleNo+")'>";
-		nextHtml += "다음 스케줄 "+result.start + result.title;
-		nextHtml += "</a>";
+		nextHtml += "다음 스케줄 : ";                                            
+		nextHtml += "<strong>"+result.title+"</strong>";                    
+		nextHtml += "<p class='date'>"+result.start+"</p>";                 
+		nextHtml += "</p>";                                                 
+		nextHtml += "</a>";                                                 
 		$("#next").html(nextHtml)
 	})
 }
 
-//----- 스케줄 입력 폼 띄우기
-function goForm(){
-	console.log("goForm")
+//----- 스케줄 입력
+function insertForm(){
+	console.log("insertForm")
+}
+
+//----- 스케줄 수정
+function goModify(scheduleNo){
+	console.log("goModify : "+scheduleNo+"번 스케줄")
+}
+
+//----- 스케줄 삭제
+function goDelete(scheduleNo){
+	console.log("goDelete : "+scheduleNo+"번 스케줄")
 }
 
 
