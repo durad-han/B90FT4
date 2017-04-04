@@ -30,6 +30,10 @@ insert into tb_sam_user (
 delete from tb_sam_income
   where income_no =2
   
+update tb_sam_expense
+  set user_id = '김현영'
+
+  
 
 
 create table tb_sam_income_category( 
@@ -137,4 +141,16 @@ add column budget_code char(1) not null;
 		
 select * from tb_board
 
-		
+		select 	income.income_no,
+				income.user_id,  				
+				inc.income_category_name, 	
+				inc.income_category_no, 	
+				income.income_content, 	    
+				income.income_amount,
+				income.income_date 			
+			  from tb_sam_income income, tb_sam_income_category inc
+			where  income.income_category_no = inc.income_category_no
+			  and  income.user_id = '김현영'
+			  and  income.income_date= '2017-04-04'
+			  
+			  

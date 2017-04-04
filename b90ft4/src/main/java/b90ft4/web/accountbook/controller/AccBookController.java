@@ -61,8 +61,6 @@ public class AccBookController {
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
 
 		Map<String, Object> result = service.retrieveBudgetList(search);
-		System.out.println(search.getUserId());
-		System.out.println(search.getStartDate());
 		
 		return result;
 	}

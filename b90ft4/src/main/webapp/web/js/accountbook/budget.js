@@ -1,8 +1,18 @@
 
+
+var selectedOption=1;
+	
+
 	
 /* 지출-수입 입력 */
 	var budgetCode=0;
+	
 	$("#budgetRegi").click(function() {
+		
+		if(selectedOption!=1){
+			alert("일 을 선택하세요");
+			return;
+		}
 		
 		var f = document.budgetF;
 		console.log("등록");
@@ -39,6 +49,7 @@
 		
 		$("[name=budgetF] input:eq(2)").val("");
 		$("[name=budgetF] input:eq(3)").val("");
+		budgetList("",$("#actualDate").val());
 		
 	});
 
@@ -90,6 +101,7 @@
 		    			var result = $.datepicker.formatDate( dateFormat, date );
 		    			console.log("result",result);
 		    			$("[id=actualDate]").val(result);
+		    			budgetList("",result);
 	     			}
 	     			if(flag==2) {
 		    			var date = $(this).datepicker('getDate');
@@ -114,8 +126,10 @@
 	            }
 	     		
 		}
+		
 	    $('#datepicker .ui-datepicker-calendar tr').on('mousemove', function() { $(this).find('td a').addClass('ui-state-hover'); });
 	    $('#datepicker .ui-datepicker-calendar tr').on('mouseleave', function() { $(this).find('td a').removeClass('ui-state-hover'); });
+	
 	}
 	
 	makeCalendar();
@@ -145,20 +159,6 @@
 	console.log("today",today);
 	$("#actualDate").val(today);
 	
-
-	/* 오늘 지출-수입 테이블 로딩*/
-
-	$.ajax({
-		url:"budgetList.do",
-		dataType:"json",
-		data : {
-			userId:"김현영",
-			startDate: $("#actualDate").val()
-		}
-	}).done(function (result) {
-		console.log(result);
-	});
-
 
 /* 입력 양식, 셀렉박스 옵션 만들기.*/
 	
@@ -241,6 +241,155 @@
 		
 	});
 	
+/* 오늘 지출-수입 테이블 로딩*/
+
+	 function colorChoice(ctgyNo){
+	
+		var labelColor="";
+		
+		switch(ctgyNo){
+			case 1:
+				labelColor = "label label-red";
+				break;
+			case 2:
+				labelColor = "label label-violet";
+				break;
+			case 3:
+				labelColor = "label label-orange";
+				break;
+			case 4:
+				labelColor = "label label-green";
+				break;
+			case 5:
+				labelColor = "label label-blue";
+				break;
+		}
+		return labelColor;
+	}
+	
+	
+	function budgetList(userId, date){
+		
+		$.ajax({
+			url:"budgetList.do",
+			dataType:"json",
+			data : {
+				userId:"김현영",
+				startDate: date
+			},
+			assync:false
+		}).done(function (result) {
+			
+			var expense = result.expense;
+			var income = result.income;
+			
+			var expenseHtml="";
+			var incomeHtml="";
+
+			var expenseSum =0;
+			var incomeSum =0;
+			
+			
+			if(expense.length!=0){
+				for(var i=0;i<expense.length;i++){
+				
+					expenseHtml+="<tr>";
+					expenseHtml+="<td class='expenseNo' style='display:none;'>"+expense[i].expenseNo+"</td>";
+					expenseHtml+="<td class='expenseCategoryNo' style='display:none;'>"+expense[i].expenseCategoryNo+"</td>";
+					expenseHtml+='<td><span class="'+colorChoice(expense[i].expenseCategoryNo)+'">'+expense[i].expenseCategoryName+'</span></td>';
+					expenseHtml+="<td>"+expense[i].expenseContent+"</td>";
+					expenseHtml+="<td>"+expense[i].expenseAmount+"</td>";
+					expenseSum+=expense[i].expenseAmount;
+					expenseHtml+="</tr>";
+				
+				}
+				
+				expenseHtml+="<tr>";
+				expenseHtml+="<th>합계</th>";
+				expenseHtml+="<td></td>";
+				expenseHtml+="<td>"+expenseSum+"</td>";
+				expenseHtml+="</tr>";
+				
+				
+			}else{
+				expenseHtml+="<tr>";
+				expenseHtml+='<td colspan="3">지출 내역이 없습니다.</td>';
+				expenseHtml+="</tr>";
+			}
+			
+			if(income.length!=0){
+				for(var i=0;i<income.length;i++){
+					incomeHtml+="<tr>";
+					incomeHtml+="<td class='incomeNo' style='display:none;'>"+income[i].incomeNo+"</td>";
+					incomeHtml+="<td class='incomeCategoryNo' style='display:none;'>"+income[i].income[i].incomeCategoryNo+"</td>";
+					incomeHtml+='<td><span class="'+colorChoice(income[i].incomeCategoryNo)+'">'+income[i].incomeCategoryName+'</span></td>';
+					incomeHtml+="<td>"+income[i].incomeContent+"</td>";
+					incomeHtml+="<td>"+income[i].incomeAmount+"</td>";
+					incomeSum+=income[i].incomeAmount;
+					incomeHtml+="</tr>";
+				}
+				incomeHtml+="<tr>";
+				incomeHtml+="<th>합계</th>";
+				incomeHtml+="<td></td>";
+				incomeHtml+="<td>"+incomeSum+"</td>";
+				incomeHtml+="</tr>";
+				
+			}else {
+				incomeHtml+="<tr>";
+				incomeHtml+='<td colspan="3">수입 내역이 없습니다.</td>';
+				incomeHtml+="</tr>";
+			}
+			$("tbody#expense").html(expenseHtml);
+			$("tbody#income").html(incomeHtml);
+			
+			$("tbody#expense > tr").click(function(){
+				
+				$("#updateBudget").show();
+				$("#deleteBudget").show();
+				$("#budgetRegi").hide();
+				
+				console.log($(this).children("td.expenseNo").text());
+				console.log(today);
+				var budgetCode=0;
+				
+				
+				
+				$("#budgetModal").trigger("click");
+			});
+			
+			
+			$("tbody#income > tr").click(function(){
+				
+				var budgetCode=1;
+				
+				console.log($(this).children("td.incomeNo").text());
+				console.log(today);
+				
+				
+				
+				$("#updateBudget").show();
+				$("#deleteBudget").show();
+				$("#budgetRegi").hide();
+				
+				
+				
+				$("#budgetModal").trigger("click");
+			});
+			
+			
+		});	
+	}
+	
+	
+	budgetList("",$("#actualDate").val());
+	
 	
 
+	
+	
+	
+	
+	
+	
+	
 	

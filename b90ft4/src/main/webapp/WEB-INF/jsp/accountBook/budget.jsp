@@ -29,6 +29,15 @@
 /* 	background-color: black; */
 } 
 
+
+tbody#expense tr:hover{
+	background:skyblue;
+}
+
+tbody#expense tr > td.expenseNo{
+	display: none; 
+}
+
 </style>
 <meta charset="UTF-8">
 
@@ -178,26 +187,13 @@
 <!-- 				<br>여기에 내용입력 <br>            -->
                 
                 <div class="row">
-                    <div class="col-lg-3" style="border: 1px solid black;margin-left: 10%;margin-right: 10%;padding: 0">
-				    <ul id="generalTab" class="nav nav-tabs responsive">
-                           <li class="active"><a href="#alert-tab" data-toggle="tab" id="day">일</a></li>
-                           <li><a href="#note-tab" data-toggle="tab" id="week">주</a></li>
-                           <li><a href="#label-badge-tab" data-toggle="tab" id="month">월</a></li>
-                    </ul>
-                    <br>
-				 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
-                	</div>
-                
-                	<div class="col-lg-4" style="border: 1px solid black">
+                	
+                	
+                		<div class="col-lg-4" style="margin-left: 10%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
                             <li class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
-                            <li style="margin-right: 30%;"><a href="#note-tab" data-toggle="tab">수입</a></li>
-                            <li>
-                            	 <button style="margin-top: 5px; type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-			                 		 지출/수입 등록
-			             		 </button>
-                            </li>
+                            <li><a href="#note-tab" data-toggle="tab">수입</a></li>
                         </ul>
                         
                 		<h3><input type="text" id="actualDate" style="width: 90%;text-align: center;"></h3>
@@ -211,19 +207,12 @@
 							                                <table class="table table-hover-color">
 							                                    <thead>
 							                                    <tr>
-							                                        <th>번호</th>
 							                                        <th>분류</th>
 							                                        <th>내용</th>
 							                                        <th>금액</th>
 							                                    </tr>
 							                                    </thead>
-							                                    <tbody>
-							                                    <tr>
-							                                        <td>1</td>
-							                                        <td><span class="label label-red">교통비</span></td>
-							                                        <td>집-학원</td>
-							                                        <td>5000원</td>
-							                                    </tr>
+							                                    <tbody id="expense">
 							                                    </tbody>
 							                                </table>
 							                            </div>
@@ -237,37 +226,12 @@
 							                                <table class="table table-hover-color">
 							                                    <thead>
 							                                    <tr>
-							                                        <th>번호</th>
 							                                        <th>분류</th>
 							                                        <th>내용</th>
 							                                        <th>금액</th>
 							                                    </tr>
 							                                    </thead>
-							                                    <tbody>
-							                                    <tr>
-							                                        <td>1</td>
-							                                        <td><span class="label label-red">교통비</span></td>
-							                                        <td>집-학원</td>
-							                                        <td>5000원</td>
-							                                    </tr>
-							                                    <tr>
-							                                        <td>2</td>
-							                                        <td><span class="label label-orange">식비</span></td>
-							                                        <td>놀부 부대찌개</td>
-							                                        <td>75,000</td>
-							                                    </tr>
-							                                    <tr>
-							                                        <td>3</td>
-							                                        <td><span class="label label-green">의류비</span></td>
-							                                        <td>NC 백화점</td>
-							                                        <td>30,000원</td>
-							                                    </tr>
-							                                    <tr>
-							                                        <td>4</td>
-							                                        <td><span class="label label-violet">미용비</span></td>
-							                                        <td>뷰티</td>
-							                                        <td>10,000원</td>
-							                                    </tr>
+							                                    <tbody id="income">
 							                                    </tbody>
 							                                </table>
 							                            </div>
@@ -279,6 +243,23 @@
 			              <br>
                 		
                 		</div>
+                
+                
+                    <div class="col-lg-3">
+					    <ul id="generalTab" class="nav nav-tabs responsive">
+	                           <li class="active"><a href="#" data-toggle="tab" id="day">일</a></li>
+	                           <li><a href="#" data-toggle="tab" id="week">주</a></li>
+	                           <li><a href="#" data-toggle="tab" id="month">월</a></li>
+	                    </ul>
+	                    <br>
+					 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
+                		 <button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			                 		 지출/수입 등록
+			             </button>
+			             <br><br>
+                	</div>
+                
+                
                 		
 			              
 		            </div> 
@@ -289,6 +270,7 @@
 		            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 							<div class="modal-content">
+									
 										<div class="modal-header">
 											<h4 class="modal-title">지출/수입 등록</h4>
 										</div>
@@ -301,7 +283,7 @@
 		                                                        <div class="col-xs-9">
 		                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;
 		                                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;
-		                                                                                 비용</label></div>
+		                                                                                 수입</label></div>
 		                                                        </div>
 		                                                    </div>
 		                                                </div>
@@ -340,8 +322,10 @@
 			                      	   </div>
 			                                
 									<div class="modal-footer">
-										<button type="button" id="budgetRegi"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
-										<button type="button" id="closeF" class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
+										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
+										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
+										<button type="button" id="budgetRegi"   class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
+										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
 									
 								</div>

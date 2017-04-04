@@ -94,26 +94,28 @@
 		select 	ex.expense_no,
 				ex.user_id,  				
 				exc.expense_category_name, 	
+				exc.expense_category_no, 	
 				ex.expense_content, 	    
 				ex.expense_amount,
 				ex.expense_date 			
 			  from tb_sam_expense ex, tb_sam_expense_category exc
 			where  ex.expense_category_no = exc.expense_category_no
-			  and  ex.user_id=#{userId}
-			  and  ex.expense_date=#{startDate}
+			  and  ex.user_id= #{userId}
+			  and  ex.expense_date= #{startDate}
 	</select>
 	
 	<select id="selectIncome" parameterType="searchVO" resultMap="incomeMap">
-		select 	in.income_no,
-				in.user_id,  				
+		select 	income.income_no,
+				income.user_id,  				
 				inc.income_category_name, 	
-				in.income_content, 	    
-				in.income_amount,
-				in.income_date 			
-			  from tb_sam_income in, tb_sam_income_category inc
-			where  in.income_category_no = inc.income_category_no
-			  and  in.user_id=#{userId}
-			  and  in.income_date=#{startDate}
+				inc.income_category_no, 	
+				income.income_content, 	    
+				income.income_amount,
+				income.income_date 			
+			  from tb_sam_income income, tb_sam_income_category inc
+			where  income.income_category_no = inc.income_category_no
+			  and  income.user_id = #{userId}
+			  and  income.income_date= #{startDate}
 	</select>
 	
 	
