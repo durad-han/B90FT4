@@ -29,7 +29,7 @@
                     <li class="active"><a href="/b90ft4/main/main.do">메인</a></li>
                     <li><a href="/b90ft4/schedule/scheduleList.do">스케쥴</a></li>
                     <li><a href="/b90ft4/diary/list.do">다이어리</a></li>
-                    <li><a href="/b90ft4/accountbook/main.do">가계부</a></li>
+                    <li><a href="/b90ft4/accountBook/main.do">가계부</a></li>
                     <li><a href="/b90ft4/workout/workout.do">운동</a></li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운<b class="caret"></b></a>
                         <ul class="dropdown-menu">
