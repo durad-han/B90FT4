@@ -1,5 +1,4 @@
 
-
 	
 /* 지출-수입 입력 */
 	var budgetCode=0;
@@ -34,9 +33,12 @@
 		}).done(function(msg){
 			console.log(msg);
 		});
-		
 		console.log("ㅋ");
 		$("#closeF").trigger("click");
+		
+		
+		$("[name=budgetF] input:eq(2)").val("");
+		$("[name=budgetF] input:eq(3)").val("");
 		
 	});
 
@@ -142,6 +144,20 @@
 	var today = $.datepicker.formatDate( "yy-mm-dd", date);
 	console.log("today",today);
 	$("#actualDate").val(today);
+	
+
+	/* 오늘 지출-수입 테이블 로딩*/
+
+	$.ajax({
+		url:"budgetList.do",
+		dataType:"json",
+		data : {
+			userId:"김현영",
+			startDate: $("#actualDate").val()
+		}
+	}).done(function (result) {
+		console.log(result);
+	});
 
 
 /* 입력 양식, 셀렉박스 옵션 만들기.*/

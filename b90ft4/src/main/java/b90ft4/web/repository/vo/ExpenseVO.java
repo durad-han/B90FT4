@@ -7,10 +7,17 @@ public class ExpenseVO {
 	private int expenseNo;
 	private String userId;
 	private int expenseCategoryNo;
+	private String expenseCategoryName;
 	private String expenseContent;
 	private int expenseAmount;
 	private String expenseDate;
 	
+	public String getExpenseCategoryName() {
+		return expenseCategoryName;
+	}
+	public void setExpenseCategoryName(String expenseCategoryName) {
+		this.expenseCategoryName = expenseCategoryName;
+	}
 	public int getExpenseNo() {
 		return expenseNo;
 	}

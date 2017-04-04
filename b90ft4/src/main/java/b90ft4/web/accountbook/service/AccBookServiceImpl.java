@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import b90ft4.web.repository.mapper.AccBookMapper;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
+import b90ft4.web.repository.vo.SearchVO;
 
 @Service
 public class AccBookServiceImpl implements AccBookService {
@@ -36,5 +37,15 @@ public class AccBookServiceImpl implements AccBookService {
 		dao.insertIncome(income);
 	}
 
+	public Map<String, Object> retrieveBudgetList(SearchVO search) 
+			throws Exception{
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("expense", dao.selectExpense(search));
+		result.put("income", dao.selectIncome(search));
+		return result;
 	
+	}
+
 }

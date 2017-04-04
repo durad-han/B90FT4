@@ -68,6 +68,54 @@
 		)
 	</insert>
 	
+	<resultMap type="expenseVO" id="expenseMap">
+		<result property="expenseNo" column="expense_no"  />
+		<result property="userId" column="user_id"  />
+		<result property="expenseCategoryNo" column="expense_category_no"  />
+		<result property="expenseCategoryName" column="expense_category_name"  />
+		<result property="expenseContent" column="expense_content"  />
+		<result property="expenseAmount" column="expense_amount"  />
+		<result property="expenseDate" column="expense_date"  />
+	</resultMap>
+	
+	<resultMap type="incomeVO" id="incomeMap">
+		<result property="incomeNo" column="income_no"  />
+		<result property="userId" column="user_id"  />
+		<result property="incomeCategoryNo" column="income_category_no"  />
+		<result property="incomeCategoryName" column="income_category_name"  />
+		<result property="incomeContent" column="income_content"  />
+		<result property="incomeAmount" column="income_amount"  />
+		<result property="incomeDate" column="income_date"  />
+	</resultMap>
+	
+	
+	
+	<select id="selectExpense" parameterType="searchVO" resultMap="expenseMap">
+		select 	ex.expense_no,
+				ex.user_id,  				
+				exc.expense_category_name, 	
+				ex.expense_content, 	    
+				ex.expense_amount,
+				ex.expense_date 			
+			  from tb_sam_expense ex, tb_sam_expense_category exc
+			where  ex.expense_category_no = exc.expense_category_no
+			  and  ex.user_id=#{userId}
+			  and  ex.expense_date=#{startDate}
+	</select>
+	
+	<select id="selectIncome" parameterType="searchVO" resultMap="incomeMap">
+		select 	in.income_no,
+				in.user_id,  				
+				inc.income_category_name, 	
+				in.income_content, 	    
+				in.income_amount,
+				in.income_date 			
+			  from tb_sam_income in, tb_sam_income_category inc
+			where  in.income_category_no = inc.income_category_no
+			  and  in.user_id=#{userId}
+			  and  in.income_date=#{startDate}
+	</select>
+	
 	
 </mapper>
 

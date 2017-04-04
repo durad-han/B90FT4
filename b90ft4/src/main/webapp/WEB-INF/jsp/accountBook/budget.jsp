@@ -224,24 +224,6 @@
 							                                        <td>집-학원</td>
 							                                        <td>5000원</td>
 							                                    </tr>
-							                                    <tr>
-							                                        <td>2</td>
-							                                        <td><span class="label label-orange">식비</span></td>
-							                                        <td>놀부 부대찌개</td>
-							                                        <td>75,000</td>
-							                                    </tr>
-							                                    <tr>
-							                                        <td>3</td>
-							                                        <td><span class="label label-green">의류비</span></td>
-							                                        <td>NC 백화점</td>
-							                                        <td>30,000원</td>
-							                                    </tr>
-							                                    <tr>
-							                                        <td>4</td>
-							                                        <td><span class="label label-violet">미용비</span></td>
-							                                        <td>뷰티</td>
-							                                        <td>10,000원</td>
-							                                    </tr>
 							                                    </tbody>
 							                                </table>
 							                            </div>

@@ -22,6 +22,9 @@ select * from tb_sam_user
 insert into tb_sam_user (
 	user_id,
 	password
+) values( 
+	'김현영',
+	'1234'
 )
 
 delete from tb_sam_income

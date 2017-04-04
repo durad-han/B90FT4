@@ -8,9 +8,16 @@ public class IncomeVO {
 	private String incomeContent;
 	private int incomeAmount;
 	private String incomeDate;
+	private String incomeCategoryName;
 	
 	public int getIncomeNo() {
 		return incomeNo;
+	}
+	public String getIncomeCategoryName() {
+		return incomeCategoryName;
+	}
+	public void setIncomeCategoryName(String incomeCategoryName) {
+		this.incomeCategoryName = incomeCategoryName;
 	}
 	public void setIncomeNo(int incomeNo) {
 		this.incomeNo = incomeNo;

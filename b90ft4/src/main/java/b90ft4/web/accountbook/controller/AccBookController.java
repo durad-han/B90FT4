@@ -1,5 +1,6 @@
 package b90ft4.web.accountbook.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
-import b90ft4.web.repository.mapper.AccBookMapper;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
+import b90ft4.web.repository.vo.SearchVO;
 
 @Controller
 @RequestMapping("/accountBook")
@@ -40,7 +41,7 @@ public class AccBookController {
 	public String registerExpense(ExpenseVO expense) 
 			throws Exception {
 		
-		expense.setUserId("tester03");
+		expense.setUserId("김현영");
 		service.registerExpense(expense);
 		return "ok";
 	}
@@ -50,51 +51,24 @@ public class AccBookController {
 	public String registerIncome(IncomeVO income) 
 			throws Exception {
 
-		income.setUserId("tester03");
+		income.setUserId("김현영");
 		service.registerIncome(income);
 		return "ok";
 	}
 	
 	@ResponseBody
 	@RequestMapping("/budgetList.do")
-	public Map<String, Object> budgetList(){
+	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
 
-		return null;
+		Map<String, Object> result = service.retrieveBudgetList(search);
+		System.out.println(search.getUserId());
+		System.out.println(search.getStartDate());
+		
+		return result;
 	}
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
