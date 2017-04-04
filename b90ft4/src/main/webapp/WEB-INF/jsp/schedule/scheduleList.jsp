@@ -257,9 +257,9 @@
 				    Schedule Detail</div>
 				    
 				<!-- 스케줄 상세 -->
-				<div class="panel-body pan" id="detailView">
-				<form action="scheduleForm">
-				<div class="form-body pal" id="schDetail">
+				<div class="panel-body pan" id="schDetail">
+				<form action="scheduleForm.do" method="post">
+				<div class="form-body pal">
 				
 				<div class="form-group">
 				    <div class="input-icon right">
@@ -270,11 +270,11 @@
 				<div class="row">
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputStart" type="text" placeholder="시작 시간" class="form-control" /></div>
+				            <input id="inputStart" type="date" placeholder="시작 시간" class="form-control" /></div>
 				    </div>
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputEnd" type="text" placeholder="종료 시간" class="form-control" /></div>
+				            <input id="inputEnd" type="date" placeholder="종료 시간" class="form-control" /></div>
 				    </div>
 				</div>
 				
@@ -292,8 +292,8 @@
 				        <option value="2"> ★ ★ ☆ </option>
 				        <option value="3"> ★ ★ ★ </option>
 				    </select></div>
-				<div class="form-actions text-right pal">
-					<button onclick="insertForm();" class="btn btn-success">추가</button>
+				<div class="form-actions text-center pal">
+					<button type="submit" class="btn btn-success">추가</button>
 				</div>
 				</div>
 				</form>
