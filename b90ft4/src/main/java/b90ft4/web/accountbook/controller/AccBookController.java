@@ -25,17 +25,20 @@ public class AccBookController {
 	public void main(Model model) throws Exception{
 		model.addAttribute("subMenu","전체");
 	}
+	
 	@RequestMapping("/budget.do")
 	public void budget(Model model) throws Exception{
 		model.addAttribute("subMenu","지출/수입");
 	}
 	
+	// 지출/수입 카테고리 쏴주기
 	@ResponseBody
 	@RequestMapping("/budgetCtgy.do")
 	public Map<String, Object> retrieveBudgetCtgy(String userId) throws Exception {
 		return service.retrieveBudgetCtgy(userId);
 	}
 	
+	// 지출 등록
 	@ResponseBody
 	@RequestMapping("/expenseRegi.do")
 	public String registerExpense(ExpenseVO expense) 
@@ -46,6 +49,7 @@ public class AccBookController {
 		return "ok";
 	}
 	
+	// 수입 등록
 	@ResponseBody
 	@RequestMapping("/incomeRegi.do")
 	public String registerIncome(IncomeVO income) 
@@ -56,17 +60,44 @@ public class AccBookController {
 		return "ok";
 	}
 	
+	// 지출/수입 리스트 
 	@ResponseBody
 	@RequestMapping("/budgetList.do")
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
-
 		Map<String, Object> result = service.retrieveBudgetList(search);
-		
 		return result;
 	}
+	@ResponseBody
+	@RequestMapping("/deleteBudget.do")
+	public String deleteBudget(SearchVO search) throws Exception{
+
+		System.out.println("code"+ search.getBudgetCode());
+		System.out.println("delNo" + search.getDelNo());
+		
+		service.deleteBudget(search);
+		
+		return "ok";
+	}
 	
+	@ResponseBody
+	@RequestMapping("/updateBudget.do")
+	public String updateBudget(ExpenseVO expense,
+								IncomeVO income) throws Exception{
 	
+		// userId는 세션으로 받는다...
+		
+		if(expense!=null){
+			System.out.println("지출");
+		}
+		if(income!=null){
+			System.out.println("입력");
+		}
+		
+		return "ok";
+	}
 }
+
+
 
 
 

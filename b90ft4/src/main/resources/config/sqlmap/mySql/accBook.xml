@@ -118,6 +118,16 @@
 			  and  income.income_date= #{startDate}
 	</select>
 	
+	<delete id="deleteExpense" parameterType="searchVO">
+		delete 
+		  from tb_sam_expense
+		where expense_no = #{delNo}
+	</delete>
+	<delete id="deleteIncome" parameterType="searchVO">
+		delete 
+		  from tb_sam_income
+		where income_no = #{delNo}
+	</delete>
 	
 </mapper>
 

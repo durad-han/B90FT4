@@ -47,5 +47,14 @@ public class AccBookServiceImpl implements AccBookService {
 		return result;
 	
 	}
+	
+	public void deleteBudget(SearchVO search) throws Exception{
+		if(search.getBudgetCode()==0){
+			dao.deleteExpense(search);
+		}else {
+			dao.deleteIncome(search);
+		}
+	}
+	
 
 }

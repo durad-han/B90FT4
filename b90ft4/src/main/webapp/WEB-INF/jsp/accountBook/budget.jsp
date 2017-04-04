@@ -33,6 +33,9 @@
 tbody#expense tr:hover{
 	background:skyblue;
 }
+tbody#income tr:hover{
+	background:pink;
+}
 
 tbody#expense tr > td.expenseNo{
 	display: none; 

@@ -15,4 +15,6 @@ public interface AccBookService {
 	
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception;
 	
+	public void deleteBudget(SearchVO search) throws Exception;
+	
 }
