@@ -11,7 +11,6 @@ public class WorkoutSetVO {
 	private int spentCal;
 	private String intervalTime;
 	private String workoutDescription;
-	
 	public int getWorkoutSetNo() {
 		return workoutSetNo;
 	}
@@ -60,5 +59,5 @@ public class WorkoutSetVO {
 	public void setWorkoutDescription(String workoutDescription) {
 		this.workoutDescription = workoutDescription;
 	}
-	
+
 }

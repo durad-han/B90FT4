@@ -3,7 +3,7 @@
   transition: all 0.5s;
   box-sizing: border-box;
 }
-body {
+#typeAContainer {
   background: #ff7373;
   margin: 0;
   padding: 0;
@@ -21,7 +21,7 @@ body {
   -webkit-perspective: 300px;
           perspective: 300px;
 }
-body .container {
+#typeAContainer .container {
   background: transparent;
   border-radius: 4px;
   width: 272px;
@@ -31,19 +31,19 @@ body .container {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
-body .container .front {
+#typeAContainer .container .front {
   background: #fff;
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
   z-index: 2;
 }
-body .container .back {
+#typeAContainer .container .back {
   background: #fff;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
-body .container .front,
-body .container .back {
+#typeAContainer .container .front,
+#typeAContainer .container .back {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -60,37 +60,36 @@ body .container .back {
   height: 100px;
   border-radius: 4px;
 }
-body .container .front .decrement,
-body .container .back .decrement,
-body .container .front .increment,
-body .container .back .increment {
+#typeAContainer .container .front .decrement,
+#typeAContainer .container .back .decrement,
+#typeAContainer .container .front .increment,
+#typeAContainer .container .back .increment {
   width: 64px;
   height: 100px;
   opacity: 0.2;
 }
-body .container .front .decrement:hover,
-body .container .back .decrement:hover,
-body .container .front .increment:hover,
-body .container .back .increment:hover {
+#typeAContainer .container .front .decrement:hover,
+#typeAContainer .container .back .decrement:hover,
+#typeAContainer .container .front .increment:hover,
+#typeAContainer .container .back .increment:hover {
   cursor: pointer;
 }
-body .container .front .decrement,
-body .container .back .decrement {
+#typeAContainer .container .front .decrement,
+#typeAContainer .container .back .decrement {
   background: url("http://frolovoleg.ru/images/decrement.svg") no-repeat center;
 }
-body .container .front .increment,
-body .container .back .increment {
+#typeAContainer .container .front .increment,
+#typeAContainer .container .back .increment {
   background: url("http://frolovoleg.ru/images/increment.svg") no-repeat center;
 }
-body .container .front .value_front,
-body .container .back .value_front,
-body .container .front .value_back,
-body .container .back .value_back {
+#typeAContainer .container .front .value_front,
+#typeAContainer .container .back .value_front,
+#typeAContainer .container .front .value_back,
+#typeAContainer .container .back .value_back {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   font-size: 32px;
   line-height: 100px;
-  font-family: "Roboto Mono", "Courier", monospace;
 }
