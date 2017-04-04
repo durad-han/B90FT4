@@ -40,7 +40,8 @@ function goDetail(sNo){
 function printSchedule(result){
 	console.log("디테일 꾸미기")
 	var html = "";
-	
+	html += "<form id='scheduleForm'>"
+	html += "<div class='form-body pal'>"
 	html += "<div class='form-group' id='schedule'>"
 	html += "    <div class='input-icon right'>"
 	html += "        <i class='fa fa-user'></i>"
@@ -91,9 +92,11 @@ function printSchedule(result){
 	}
 		
 	html += "   </select></div>"
-	html += "<div class='form-actions text-right pal'>"
+	html += "<div class='form-actions text-center pal'>"
 	html += "	<button onclick='goModify("+result.scheduleNo+");' class='btn btn-warning'>수정</button>"
 	html += "	<button onclick='goDelete("+result.scheduleNo+");' class='btn btn-danger'>삭제</button>"
+	html += "</div>"
+	html += "</form>"
 	html += "</div>"
 		
 	$("#schDetail").html(html)
@@ -149,11 +152,15 @@ function insertForm(){
 //----- 스케줄 수정
 function goModify(scheduleNo){
 	console.log("goModify : "+scheduleNo+"번 스케줄")
+	
 }
 
 //----- 스케줄 삭제
 function goDelete(scheduleNo){
 	console.log("goDelete : "+scheduleNo+"번 스케줄")
+	
 }
 
-
+$("#scheduleForm").submit(function(){
+	console.log("스케줄 폼 가로챔?")
+})

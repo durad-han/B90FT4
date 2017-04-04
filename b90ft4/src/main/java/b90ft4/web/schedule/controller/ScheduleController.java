@@ -101,7 +101,7 @@ public class ScheduleController {
 	
 	
 //----- 스케줄 입력 관련 -----------------------------------------------------------------------
-	@RequestMapping("/form.do")
+	@RequestMapping("/scheduleForm.do")
 	public void insertSchedule (ScheduleVO schedule) throws Exception{
 		System.out.println("insertSchedule");
 		ss.insertSchedule(schedule);
