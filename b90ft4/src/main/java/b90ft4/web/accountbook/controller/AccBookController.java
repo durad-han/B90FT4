@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
 import b90ft4.web.repository.mapper.AccBookMapper;
+import b90ft4.web.repository.vo.ExpenseVO;
+import b90ft4.web.repository.vo.IncomeVO;
 
 @Controller
 @RequestMapping("/accountBook")
@@ -21,14 +23,12 @@ public class AccBookController {
 	private AccBookMapper dao;
 	
 	@RequestMapping("/main.do")
-	public String main(Model model) throws Exception{
+	public void main(Model model) throws Exception{
 		model.addAttribute("subMenu","전체");
-		return "accountbook/main";
 	}
 	@RequestMapping("/budget.do")
-	public String budget(Model model) throws Exception{
+	public void budget(Model model) throws Exception{
 		model.addAttribute("subMenu","지출/수입");
-		return "accountbook/main";
 	}
 	
 	@ResponseBody
@@ -36,14 +36,34 @@ public class AccBookController {
 	public Map<String, Object> retrieveBudgetCtgy(String userId) throws Exception {
 		return service.retrieveBudgetCtgy(userId);
 	}
+	
+	@ResponseBody
+	@RequestMapping("/expenseRegi.do")
+	public String expenseRegi(ExpenseVO expense) 
+			throws Exception {
+		
+		System.out.println("지출 등록");
+		System.out.println(expense.getExpenseAmount());
+		System.out.println(expense.getExpenseCategoryNo());
+		System.out.println(expense.getExpenseContent());
+		System.out.println(expense.getExpenseDate());
+		
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/incomeRegi.do")
+	public String incomeRegi(IncomeVO income) 
+			throws Exception {
 
-//	@RequestMapping("/budget.do")
-//	public String budget(Model model) throws Exception{
-//		model.addAttribute("budget","budget");
-//		return "accountbook/main";
-//	}
-	
-	
+		System.out.println("소득 등록");
+		System.out.println(income.getIncomeAmount());
+		System.out.println(income.getIncomeCategoryNo());
+		System.out.println(income.getIncomeContent());
+		System.out.println(income.getIncomeDate());
+		
+		return "ok";
+	}
 	
 	
 }

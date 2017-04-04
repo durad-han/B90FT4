@@ -21,18 +21,16 @@
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
     
-    
-    
-	<c:import url ="/WEB-INF/jsp/common/baseinclude.jsp"/>
-
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+  <c:import url ="/WEB-INF/jsp/common/basicInclude.jsp"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
-<body>
-   <div>
 
+<body>
+
+   <div>
+   
         <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
         <!--END BACK TO TOP-->
@@ -136,14 +134,8 @@
 <!-- 				****************************** -->
 <!-- 				<br>여기에 내용입력 <br>            -->
 <!-- 				******************************                -->
-			    <c:choose>
-			    	<c:when test="${subMenu eq '전체'}">
-			    	전체..
-			    	</c:when>
-			    	<c:when test="${subMenu eq '지출/수입'}">
-			    		<c:import url="/WEB-INF/jsp/accountbook/budget.jsp"/>
-			    	</c:when>
-			    </c:choose>         
+                   전체
+                   
                 
                 
                 <!--END CONTENT-->
@@ -156,8 +148,8 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
+    
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//bootstrap.min.js"></script>
@@ -184,22 +176,7 @@
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
-<script>
-		(function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-145464-12', 'auto');
-        ga('send', 'pageview');
-</script>
-<script src="${pageContext.request.contextPath}/web/js/workout/workout.js"></script>
+
 
 </body>
 </html>
