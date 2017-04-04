@@ -151,13 +151,12 @@
              
              <div class="page-content">
  <div class="row">
-     <div class="col-lg-12">
+     <div class="col-lg-4">
          <div class="panel">
              <div class="panel-body">
                  <div id="grid-layout-table-1" class="box jplist">
                      <div class="jplist-ios-button"><i class="fa fa-sort"></i>Schedule Options</div>
                      <div class="jplist-panel box panel-top">
-                         <button type="button" data-control-type="reset" data-control-name="reset" data-control-action="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
                          <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" class="jplist-drop-down form-control">
                              <ul class="dropdown-menu">
                                  <li><span data-number="3"> 3 per page</span></li>
