@@ -33,7 +33,7 @@ public class WorkoutController {
 	@RequestMapping("/workoutTypeA.do")
 	public String workoutList (WorkoutVO workoutVO) throws Exception{
 		System.out.println("workoutTypeA");
-
+		
 		return "workout/workoutTypeA";
 	}
 

@@ -4,13 +4,32 @@
 <mapper namespace="b90ft4.web.repository.mapper.WorkoutMapper">
 	<resultMap type="workoutVO" id="workoutMap">
 		<result column="Workout_No"		property="workoutNo"	/>
-		<result column="User_Id"			property="userId"		/>
+		<result column="User_Id"		property="userId"		/>
 		<result column="Workout_Id"		property="workoutId"	/>
 		<result column="Is_Basic"		property="isBasic"		/>
 	</resultMap>
+	
+<!-- workout list -->
 	<select id="retrieveWorkoutList" resultMap="workoutMap">
 		select	*
 		from	tb_Sam_Workout
 	</select>
+	
+  	<resultMap type="workoutSetVO" id="workoutSetMap">
+		<result column="Workout_Set_No"			property="workoutSetNo"	/>
+		<result column="Workout_No"				property="workoutNo"		/>
+		<result column="Workout_Day"			property="workoutDay"	/>
+		<result column="Type_A_Count"			property="typeACount"		/>
+		<result column="Type_B_Time"			property="typeBTime"		/>
+		<result column="Spent_Cal"				property="spentCal"		/>
+		<result column="Interval_Time"			property="intervalTime"		/>
+		<result column="Workout_Description"	property="workoutDescription"		/>
+	</resultMap>
 
+<!-- workoutTypeA list -->
+	<select id="retrieveWorkoutSetList" resultMap="workoutSetMap">
+		select	*
+		from	tb_Sam_Workout_Set
+	</select>
+ 
 </mapper>
