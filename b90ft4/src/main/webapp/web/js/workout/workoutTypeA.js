@@ -53,6 +53,14 @@
     });
   });
   
-  
 
 }).call(this);
+function endWorkout(){
+	alert("끝ㅋ");
+	moveWorkoutList();
+}
+
+
+function moveWorkoutList(){
+	location.href="workout.do";
+}

@@ -24,7 +24,7 @@ public class DiaryServiceImpl implements DiaryService {
 		dao.insertDiary(diary);
 		DiaryFileVO diaryFile = (DiaryFileVO)param.get("diaryFile");
 		if(diaryFile != null){
-			diaryFile.setNo(diary.getNo());
+			diaryFile.setNo(diary.getDiaryNo());
 			dao.insertDiaryFile(diaryFile);
 		}
 	}

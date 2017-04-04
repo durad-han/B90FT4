@@ -42,3 +42,22 @@ function workoutList(){
 	
 }
 workoutList();
+function workoutMove(result){
+	var typePath = "";
+	switch (result) {
+	case 1:
+		typePath="A";
+		break;
+	case 2:
+		typePath="B";
+		break;
+	case 3:
+		typePath="B";
+		break;
+
+	default:
+		typePath="A";
+		break;
+	}
+	location.href="workoutType"+typePath+".do";
+}

@@ -6,8 +6,8 @@
 	<resultMap type="scheduleVO" id="scheduleMap">
 		<result column="Schedule_No"		property="scheduleNo"		/>
 		<result column="User_Id"			property="userId"			/>
-		<result column="Schedule_Start"		property="scheduleStart"	/>
-		<result column="Schedule_End"		property="scheduleEnd"		/>
+		<result column="Start"				property="start"			/>
+		<result column="End"				property="end"				/>
 		<result column="Title"				property="title"			/>
 		<result column="Content"			property="content"			/>
 		<result column="Category"			property="category"			/>
@@ -81,9 +81,9 @@
 		insert	into tb_Sam_Schedule 
 				(
 				Schedule_No,	
-				User_Id,		
-				Schedule_Start,	
-				Schedule_End,	
+<!-- 				User_Id,		 -->
+				Start,	
+				End,	
 				Title,			
 				Content,		
 				Category,		
@@ -93,9 +93,9 @@
 				)
 		values	(
 				#{scheduleNo},     
-				#{userId},    
-				#{scheduleStart},   
-				#{scheduleEnd},
+<!-- 				#{userId},     -->
+				#{start},   
+				#{end},
 				#{title},       
 				#{content},     
 				#{category},    
@@ -113,8 +113,8 @@
 	============================================================================-->
 	<update id="updateSchedule" parameterType="scheduleVO" >
 		update	tb_Sam_Schedule
-		set		Schedule_Start,			= #{scheduleStart}, 
-				Schedule_End,			= #{scheduleEnd},   
+		set		Start,					= #{start}, 
+				End,					= #{end},   
 				Title,					= #{title},          
 				Content,		        = #{content},        
 				Category,		        = #{category},       

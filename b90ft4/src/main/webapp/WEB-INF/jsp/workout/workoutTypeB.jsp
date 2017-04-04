@@ -19,7 +19,7 @@
     <!--Loading bootstrap css-->
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/workoutTypeA.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/workoutTypeB.css" />
 	<c:import url="/WEB-INF/jsp/common/basicInclude.jsp"/>
 </head>
 <body>
@@ -82,7 +82,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="UIElements.html"><i class="fa fa-fw">
+                    <li class="active"><a href="/b90ft4/workout/workout.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">운동 목록</span></a>
                        
@@ -112,7 +112,7 @@
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">
-                            	기본운동A</div>
+                            	기본운동B</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -133,19 +133,13 @@
 		             <li><a href="#">5세트<br>0/20</a></li>
                  </ul>
                 </div>
-				<div id="typeAContainer">
-					<div class="setList"></div>
-					<div class="container">
-						<div class="front">
-							<div></div>
-							<div class="value_front">Start!</div>
-							<div></div>
-						</div>
-						<div class="back">
-							<div></div>
-							<div class="value_back">0</div>
-							<div></div>
-						</div>
+				<div id="typeBContainer">
+					<div>
+	      			  <video width="70%" height="70%" autoplay="autoplay" id="myVideo" />
+					</div>
+					<div>
+					<button id="videoLoadBtn" onclick="videoLoad()">영상1</button>
+					<button id="videoCloseBtn" onclick="videoClose()">영상 끄기</button>
 					</div>
 				</div>
 				 <div>
@@ -171,7 +165,7 @@
     </div>
    
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/js/workout/workoutTypeA.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/workout/workoutTypeB.js"></script>
 <script src="${pageContext.request.contextPath}/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//jquery-ui.js"></script>
