@@ -195,7 +195,7 @@
                             <div class="col-lg-12">
                                 
                                             <div class="col-md-12">
-                                                <div id="area-chart-spline" style="width: 100%; height: 300px; display: none;">
+                                                <div id="area-chart-spline" style="width: 80%; text-align: center; height: 300px; display: none;">
                                                 </div>
                                             </div>
                                 
@@ -220,8 +220,7 @@
                                         <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
                                     </div>
                                     <div class="box text-shadow">
-                                        
-                                        <table class="demo-tbl1"><!--<item>1</item>-->
+                                        <table class="demo-tbl"><!--<item>1</item>-->
                                             <tr class="tbl-item"><!--<img/>-->
                                                 <td class="img"><img src="images/thumbs/arch-1.jpg" alt="" title=""/></td>
                                                 <!--<data></data>-->
@@ -683,7 +682,9 @@
                                         	<div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
                                     		<div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
                                         </div>
-                                    	
+                                        <div align="right">
+                                    	<a href='${pageContext.request.contextPath}/board/writeForm' class="btn btn-info" role="button">글쓰기</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
