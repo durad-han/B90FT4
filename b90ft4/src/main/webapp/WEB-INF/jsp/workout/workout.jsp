@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>B90FT4 | 운동</title>
+    <title>B90FT4 | 운 동</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,11 +29,11 @@
                 <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
                                  <ul class="nav navbar-nav">
                                  <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-                                    <li class="active"><a href="/b90ft4/main/main.do">메인</a></li>
+                                    <li><a href="/b90ft4/main/main.do">메인</a></li>
 				                    <li><a href="/b90ft4/schedule/scheduleList.do">스케쥴</a></li>
 				                    <li><a href="/b90ft4/diary/list.do">다이어리</a></li>
 				                    <li><a href="/b90ft4/accountBook/main.do">가계부</a></li>
-				                    <li><a href="/b90ft4/workout/workout.do">운동</a></li>
+				                    <li class="active"><a href="/b90ft4/workout/workout.do">운동</a></li>
                                      <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운<b class="caret"></b></a>
                                          <ul class="dropdown-menu">
                                              <li><a href="#">Action</a></li>
@@ -140,7 +140,7 @@
                             <c:forEach var='l' items='${list}'>
 								<div class="col-sm-6 col-md-3">
 	                                <div class="panel task db mbm">
-	                                    <div class="panel-body">
+	                                    <div class="panel-body" onclick="workoutMove(${l.workoutNo})">
 	                                        <p class="icon">
 	                                            <i class="icon fa fa-signal"></i>
 	                                        </p>

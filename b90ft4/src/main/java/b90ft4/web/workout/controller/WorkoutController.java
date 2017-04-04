@@ -31,10 +31,17 @@ public class WorkoutController {
 	}
 	
 	@RequestMapping("/workoutTypeA.do")
-	public String workoutList (WorkoutVO workoutVO) throws Exception{
+	public String workoutListTypeA (WorkoutVO workoutVO) throws Exception{
 		System.out.println("workoutTypeA");
 		
 		return "workout/workoutTypeA";
+	}
+	
+	@RequestMapping("/workoutTypeB.do")
+	public String workoutListTypeB (WorkoutVO workoutVO) throws Exception{
+		System.out.println("workoutTypeB");
+		
+		return "workout/workoutTypeB";
 	}
 
 }

@@ -158,6 +158,13 @@ create table tb_Sam_Workout_Set_Img (
 );
 
 
+create table tb_Sam_Workout_Set_Count (
+	Workout_Start_Date			datetime				primary key,			--
+	Workout_End_Date			datetime				default now(),			--
+	Workout_Set_No				int(6)					not null,				--
+	FOREIGN KEY(Workout_Set_No) REFERENCES tb_Sam_Workout_Set(Workout_Set_No)	--
+);
+
 
 
 
