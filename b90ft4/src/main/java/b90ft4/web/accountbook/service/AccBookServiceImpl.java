@@ -56,5 +56,18 @@ public class AccBookServiceImpl implements AccBookService {
 		}
 	}
 	
+	public void updateBudget(ExpenseVO expense,IncomeVO income) 
+			throws Exception{
+		
+		if(expense.getExpenseNo()!=0){
+			dao.updateExpense(expense);
+		}
+		
+		if(income.getIncomeNo()!=0){
+			dao.updateIncome(income);
+		}
+		
+	}
+	
 
 }

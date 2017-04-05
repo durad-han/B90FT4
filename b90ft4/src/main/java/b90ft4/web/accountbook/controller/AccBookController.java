@@ -83,16 +83,8 @@ public class AccBookController {
 	@RequestMapping("/updateBudget.do")
 	public String updateBudget(ExpenseVO expense,
 								IncomeVO income) throws Exception{
-	
 		// userId는 세션으로 받는다...
-		
-		if(expense!=null){
-			System.out.println("지출");
-		}
-		if(income!=null){
-			System.out.println("입력");
-		}
-		
+		service.updateBudget(expense, income);
 		return "ok";
 	}
 }

@@ -129,6 +129,26 @@
 		where income_no = #{delNo}
 	</delete>
 	
+	<update id="updateExpense" parameterType="expenseVO">
+	
+		update tb_sam_expense
+		  set expense_category_no = #{expenseCategoryNo},
+		      expense_amount = #{expenseAmount},
+		      expense_content = #{expenseContent}
+		where expense_no = #{expenseNo}
+	
+	</update>
+	
+	<update id="updateIncome" parameterType="incomeVO">
+	
+		update tb_sam_income
+		  set income_category_no = #{incomeCategoryNo},
+		      income_amount = #{incomeAmount},
+		      income_content = #{incomeContent}
+		where income_no = #{incomeNo}
+	
+	</update>
+	
 </mapper>
 
 

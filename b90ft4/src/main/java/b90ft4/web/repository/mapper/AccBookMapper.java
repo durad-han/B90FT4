@@ -20,5 +20,9 @@ public interface AccBookMapper {
 	public void deleteExpense (SearchVO search) throws Exception;
 	public void deleteIncome (SearchVO search) throws Exception;
 	
+	public void updateExpense (ExpenseVO expense) throws Exception;
+	public void updateIncome (IncomeVO income) throws Exception;
+	
+	
 	
 }

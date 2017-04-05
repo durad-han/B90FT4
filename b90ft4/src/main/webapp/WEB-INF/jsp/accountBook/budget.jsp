@@ -25,20 +25,16 @@
 /* .ui-datepicker{ */
 /* 	width: 100%; */
 /* } */
+
 .ui-datepicker-today{ 
 /* 	background-color: black; */
 } 
 
-
-tbody#expense tr:hover{
+tbody#expense tr.expenseInfo:hover{
 	background:skyblue;
 }
-tbody#income tr:hover{
+tbody#income tr.incomeInfo:hover{
 	background:pink;
-}
-
-tbody#expense tr > td.expenseNo{
-	display: none; 
 }
 
 </style>
@@ -199,7 +195,10 @@ tbody#expense tr > td.expenseNo{
                             <li><a href="#note-tab" data-toggle="tab">수입</a></li>
                         </ul>
                         
-                		<h3><input type="text" id="actualDate" style="width: 90%;text-align: center;"></h3>
+                		<h3> 
+                		<button id="prev"> ◀  </button> <button id="next"> ▶ </button> 
+                		<input type="text" id="actualDate" style="width: 70%;text-align: center;" readonly />  
+                		</h3>
                 		
                 			   <div id="generalTabContent" class="tab-content responsive">
                 			   
@@ -250,9 +249,9 @@ tbody#expense tr > td.expenseNo{
                 
                     <div class="col-lg-3">
 					    <ul id="generalTab" class="nav nav-tabs responsive">
-	                           <li class="active"><a href="#" data-toggle="tab" id="day">일</a></li>
-	                           <li><a href="#" data-toggle="tab" id="week">주</a></li>
-	                           <li><a href="#" data-toggle="tab" id="month">월</a></li>
+	                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
+	                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
+	                           <li id="month"><a href="#1" data-toggle="tab" >월</a></li>
 	                    </ul>
 	                    <br>
 					 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
@@ -327,7 +326,8 @@ tbody#expense tr > td.expenseNo{
 									<div class="modal-footer">
 										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
 										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
-										<button type="button" id="budgetRegi"   class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
+										
+										<button type="button" id="budgetRegi"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
 									
