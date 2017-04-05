@@ -4,6 +4,7 @@
 <mapper namespace="b90ft4.web.repository.mapper.WorkoutMapper">
 	<resultMap type="workoutVO" id="workoutMap">
 		<result column="Workout_No"		property="workoutNo"	/>
+		<result column="Workout_Type"	property="workoutType"	/>
 		<result column="User_Id"		property="userId"		/>
 		<result column="Workout_Id"		property="workoutId"	/>
 		<result column="Is_Basic"		property="isBasic"		/>
@@ -16,20 +17,20 @@
 	</select>
 	
   	<resultMap type="workoutSetVO" id="workoutSetMap">
-		<result column="Workout_Set_No"			property="workoutSetNo"	/>
-		<result column="Workout_No"				property="workoutNo"		/>
-		<result column="Workout_Day"			property="workoutDay"	/>
-		<result column="Type_A_Count"			property="typeACount"		/>
-		<result column="Type_B_Time"			property="typeBTime"		/>
-		<result column="Spent_Cal"				property="spentCal"		/>
-		<result column="Interval_Time"			property="intervalTime"		/>
-		<result column="Workout_Description"	property="workoutDescription"		/>
+		<result column="Workout_Set_No"			property="workoutSetNo"			/>
+		<result column="Workout_No"				property="workoutNo"			/>
+		<result column="Type_A_Count"			property="typeACount"			/>
+		<result column="Type_B_Time"			property="typeBTime"			/>
+		<result column="Spent_Cal"				property="spentCal"				/>
+		<result column="Interval_Time"			property="intervalTime"			/>
+		<result column="Workout_Description"	property="workoutDescription"	/>
 	</resultMap>
 
-<!-- workoutTypeA list -->
-	<select id="retrieveWorkoutSetList" resultMap="workoutSetMap">
+<!-- workoutSet list -->
+	<select id="retrieveWorkoutSetList" resultMap="workoutSetMap" parameterType="int">
 		select	*
 		from	tb_Sam_Workout_Set
+		where workout_no = #{workoutNo}
 	</select>
  
 </mapper>

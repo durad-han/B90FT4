@@ -1,12 +1,10 @@
-/**
- * 
- */
+
 $("#videoCloseBtn").addClass("hidden");
+var video = document.getElementById('myVideo');
 
 function videoLoad() {
 
 
-        var video = document.getElementById('myVideo');
 
         if (navigator.webkitGetUserMedia) {
 
@@ -15,19 +13,21 @@ function videoLoad() {
                 function(stream) { video.src = webkitURL.createObjectURL(stream); },
 
                 function(error) { alert('ERROR: ' + error.toString()); } );
+			
+			
 				$("#videoLoadBtn").addClass("hidden");
 				$("#videoCloseBtn").removeClass("hidden");
 				
         } else {
 
-            alert('webkitGetUserMedia not supported');
+            alert('지원하지 않는 브라우저 입니다.');
 
         }
 
     }
 
 function videoClose(){
-	video.close();
+	video.paused();
 	
 	$("#videoCloseBtn").addClass("hidden");
 	$("#videoLoadBtn").removeClass("hidden");
@@ -35,3 +35,8 @@ function videoClose(){
 function moveWorkoutList(){
 	location.href="workout.do";
 }
+function endWorkout(){
+	alert("끝ㅋ");
+	moveWorkoutList();
+}
+

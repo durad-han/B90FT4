@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.WorkoutMapper;
+import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutVO;
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
@@ -21,6 +22,13 @@ public class WorkoutServiceImpl implements WorkoutService {
 		//	System.out.println("workoutListService done");
 		return list;
 	}
+	@Override
+	public List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception {
+		// TODO Auto-generated method stub
+		List<WorkoutSetVO> list = wm.retrieveWorkoutSetList(workoutNo);
+		return list;
+	}
+
 
 
 

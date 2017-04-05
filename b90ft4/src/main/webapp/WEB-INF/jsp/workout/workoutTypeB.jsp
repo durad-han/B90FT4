@@ -126,11 +126,7 @@
                 <!--BEGIN CONTENT-->
                 <div id="setContainer">
                  <ul class="pagination pagination-lg mtm mbm">
-		             <li><a href="#">1세트<br>0/20</a></li>
-		             <li><a href="#">2세트<br>0/20</a></li>
-		             <li><a href="#">3세트<br>0/20</a></li>
-		             <li><a href="#">4세트<br>0/20</a></li>
-		             <li><a href="#">5세트<br>0/20</a></li>
+		           <c:import url="workoutSet.jsp"></c:import>
                  </ul>
                 </div>
 				<div id="typeBContainer">
@@ -138,7 +134,7 @@
 	      			  <video width="70%" height="70%" autoplay="autoplay" id="myVideo" />
 					</div>
 					<div>
-					<button id="videoLoadBtn" onclick="videoLoad()">영상1</button>
+					<button id="videoLoadBtn" onclick="videoLoad()">영상 보기</button>
 					<button id="videoCloseBtn" onclick="videoClose()">영상 끄기</button>
 					</div>
 				</div>

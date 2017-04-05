@@ -2,6 +2,7 @@ package b90ft4.web.repository.vo;
 
 public class WorkoutVO {
 	private int workoutNo;
+	private char WorkoutType;
 	private String userId;
 	private String workoutId;
 	private int isBasic;
@@ -11,6 +12,12 @@ public class WorkoutVO {
 	}
 	public void setWorkoutNo(int workoutNo) {
 		this.workoutNo = workoutNo;
+	}
+	public char getWorkoutType() {
+		return WorkoutType;
+	}
+	public void setWorkoutType(char workoutType) {
+		WorkoutType = workoutType;
 	}
 	public String getUserId() {
 		return userId;
