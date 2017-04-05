@@ -41,15 +41,13 @@
 	     		dayNamesMin: ['일','월','화','수','목','금','토'],
 	     		onSelect : function(dateText, inst) {
 	     		
+	     			var date = $("#datepicker").datepicker('getDate');
+	     			
 	     			if(selectedDateOption==1) {
 	     				
 	     				var temp =  $.datepicker.parseDate("yy-mm-dd",dateText);
 	     				var today = new Date();
 	     					
-//	     				console.log(temp);
-//	     				console.log(today);
-//	     				console.log($.datepicker.formatDate("yy-mm-dd",today) == $.datepicker.formatDate("yy-mm-dd",temp));
-	     				
 	     				if($.datepicker.formatDate("yy-mm-dd",today) == $.datepicker.formatDate("yy-mm-dd",temp)) {
 	     					i = 0;
 	     					console.log("1",i);
@@ -57,27 +55,28 @@
 	     					i = (Math.ceil((temp.getTime() - today.getTime()) / 1000 / 60 / 60 / 24));
 	     					console.log("2",i);
 	     				}else if(today > temp){
+	     					// 다시 살펴봐야 할 부분.
 	     					i = -(Math.ceil((today.getTime() - temp.getTime()) / 1000 / 60 / 60 / 24)) + 1;
 	     					console.log("3",i);
 	     				}
 	     				
-	     				var date = $("#datepicker").datepicker('getDate');
 	     				var dateFormat = 'yy-mm-dd';
-		    			var result = $.datepicker.formatDate( dateFormat, date );
-		    			$("[id=actualDate]").val(result);
-		    			budgetList("",result);
+		    			var selectedDate = $.datepicker.formatDate( dateFormat, date );
+		    			$("[id=actualDate]").val(selectedDate); // 선택한 날짜를 인풋 박스에 출력.
+		    			budgetList("",selectedDate); // 선택한 날짜에 해당하는 지출/수입을 긁어온다.
 	     			
 	     			}
 	     			
 	     			if(selectedDateOption==2) {
 		    			
-	     				var date = $(this).datepicker('getDate');
 		                startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
 		               	endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+		               	
 		               	var dateFormat = 'yy-mm-dd';
-		    			var result = $.datepicker.formatDate( dateFormat, startDate ) + "~" + $.datepicker.formatDate( dateFormat, endDate);
-		    			$("[id=actualDate]").val(result);
+		    			var selectedWeek = $.datepicker.formatDate( dateFormat, startDate ) + "~" + $.datepicker.formatDate( dateFormat, endDate);
+		    			$("[id=actualDate]").val(selectedWeek);
 		                selectCurrentWeek();
+		                
 	     			}
 	     			
 	     			
@@ -90,38 +89,39 @@
 					
 				},
 	            beforeShowDay: function(date) {
-	                
-	            	var cssClass = '';
-	                if(date >= startDate && date <= endDate)
-	                    cssClass = 'ui-datepicker-current-day';
+	            	
+            		var cssClass = '';
+            		
+            		if(selectedDateOption==2) {
+            		
+		                if(date >= startDate && date <= endDate) 
+		                	cssClass = 'ui-datepicker-current-day';
+		                
+            		}
+            		
 	                return [true, cssClass];
-	            
+	                
 	            }
-				
 		}
-		
-	    $('#datepicker .ui-datepicker-calendar tr').on('mousemove', function() { $(this).find('td a').addClass('ui-state-hover'); });
-	    $('#datepicker .ui-datepicker-calendar tr').on('mouseleave', function() { $(this).find('td a').removeClass('ui-state-hover'); });
 	
 	}
 	
 	makeCalendar();
 	$("#datepicker").datepicker(datepicker_default);
-	$("#day").trigger("click");
 		
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
 			selectedDateOption = 1;
-			console.log("day",
-			$(".ui-datepicker-current-day").text()
-			);
+			$("#datepicker").datepicker("refresh");
+			$(".ui-datepicker-current-day").trigger("click");
 	});
 	
 	$("#week").click(function() {
 		$("head > style#hidden").remove();
 			selectedDateOption = 2;
+			console.log("selectedDateOption",selectedDateOption);
+			
 		var date = $("#datepicker").datepicker("getDate");
-//		console.log(date);
 		$(".ui-datepicker-current-day").trigger("click");
 		
 	});
