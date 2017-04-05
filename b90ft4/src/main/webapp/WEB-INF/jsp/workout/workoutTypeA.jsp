@@ -125,13 +125,7 @@
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
                 <div id="setContainer">
-                 <ul class="pagination pagination-lg mtm mbm">
-		             <li><a href="#">1세트<br>0/20</a></li>
-		             <li><a href="#">2세트<br>0/20</a></li>
-		             <li><a href="#">3세트<br>0/20</a></li>
-		             <li><a href="#">4세트<br>0/20</a></li>
-		             <li><a href="#">5세트<br>0/20</a></li>
-                 </ul>
+                <c:import url="workoutSet.jsp"></c:import>
                 </div>
 				<div id="typeAContainer">
 					<div class="setList"></div>

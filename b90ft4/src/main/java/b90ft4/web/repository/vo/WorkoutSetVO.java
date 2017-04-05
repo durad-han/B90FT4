@@ -5,7 +5,6 @@ import java.util.Date;
 public class WorkoutSetVO {
 	private int workoutSetNo;
 	private int workoutNo;
-	private Date workoutDay;
 	private int typeACount;
 	private String typeBTime;
 	private int spentCal;
@@ -22,12 +21,6 @@ public class WorkoutSetVO {
 	}
 	public void setWorkoutNo(int workoutNo) {
 		this.workoutNo = workoutNo;
-	}
-	public Date getWorkoutDay() {
-		return workoutDay;
-	}
-	public void setWorkoutDay(Date workoutDay) {
-		this.workoutDay = workoutDay;
 	}
 	public int getTypeACount() {
 		return typeACount;
