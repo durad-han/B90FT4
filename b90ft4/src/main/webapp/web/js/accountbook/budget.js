@@ -4,8 +4,8 @@
 /*  ---------------------------------------  달력 만들기 자바스크립트 -------------------------------------------------------------- */
 
 	var selectCurrentWeek = function() {
-	    setTimeout(function () {
-	        $('#datepicker').find('.ui-datepicker-current-day a').addClass('ui-state-active')
+		setTimeout(function () {
+	        $('#datepicker').find('.ui-datepicker-current-day a').addClass('ui-state-active');
 	    }, 1);
 	}
 	
@@ -40,7 +40,7 @@
 	     		dayNamesShort: ['일','월','화','수','목','금','토'],
 	     		dayNamesMin: ['일','월','화','수','목','금','토'],
 	     		onSelect : function(dateText, inst) {
-	     		
+	     			
 	     			var date = $("#datepicker").datepicker('getDate');
 	     			
 	     			if(selectedDateOption==1) {
@@ -75,10 +75,9 @@
 		               	var dateFormat = 'yy-mm-dd';
 		    			var selectedWeek = $.datepicker.formatDate( dateFormat, startDate ) + "~" + $.datepicker.formatDate( dateFormat, endDate);
 		    			$("[id=actualDate]").val(selectedWeek);
-		                selectCurrentWeek();
+		    			selectCurrentWeek();
 		                
 	     			}
-	     			
 	     			
 	            },
 				onChangeMonthYear: function(year, month) {
@@ -91,16 +90,14 @@
 	            beforeShowDay: function(date) {
 	            	
             		var cssClass = '';
+//            		console.log(date);
             		
             		if(selectedDateOption==2) {
-            		
 		                if(date >= startDate && date <= endDate) 
 		                	cssClass = 'ui-datepicker-current-day';
-		                
             		}
-            		
+            		console.log("cssClass",cssClass);
 	                return [true, cssClass];
-	                
 	            }
 		}
 	
@@ -108,20 +105,24 @@
 	
 	makeCalendar();
 	$("#datepicker").datepicker(datepicker_default);
-		
+	
+	
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
 			selectedDateOption = 1;
 			$("#datepicker").datepicker("refresh");
+			
+			// onSelect 발생 시 , beforeShowDay 실행된다.
 			$(".ui-datepicker-current-day").trigger("click");
+			
 	});
 	
 	$("#week").click(function() {
 		$("head > style#hidden").remove();
-			selectedDateOption = 2;
-			console.log("selectedDateOption",selectedDateOption);
-			
-		var date = $("#datepicker").datepicker("getDate");
+		selectedDateOption = 2;
+//		console.log("selectedDateOption",selectedDateOption);
+//		var date = $("#datepicker").datepicker("getDate");
+		
 		$(".ui-datepicker-current-day").trigger("click");
 		
 	});
@@ -131,6 +132,7 @@
 			selectedDateOption = 3;
 			
 			var date = $("#datepicker").datepicker("getDate");
+			$(".ui-datepicker-month").val(date.getMonth());
 			$("#actualDate").val((date.getYear()+1900)+"-"+ (((date.getMonth()+1)<10) ? "0"+(date.getMonth()+1) : (date.getMonth()+1)));
 	});
 	
@@ -176,7 +178,7 @@
 	var date = $("#datepicker").datepicker("getDate");
 	var today = $.datepicker.formatDate( "yy-mm-dd", date);
 	
-	console.log("today",today);
+//	console.log("today",today);
 	$("#actualDate").val(today);
 	
 /* ------------------------------------------------------------------------------------------------------------- */
