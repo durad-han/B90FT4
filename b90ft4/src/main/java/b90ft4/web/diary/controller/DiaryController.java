@@ -53,36 +53,36 @@ public class DiaryController {
 		param.put("diary", diary);
 		
 		//게시물 저장 처리 부탁..
-		MultipartFile file = mRequest.getFile("attachFile");
-		String oriName = file.getOriginalFilename();
-		if (oriName != null && !oriName.equals("")){
-			//확장자 처리
-			String ext = "";
-			//뒤쪽에 있는 . 의 위치
-			int index = oriName.lastIndexOf(".");
-			if (index != -1){
-				//파일명에서 확장자 명(.포함)을 추출
-				ext = oriName.substring(index);
-			}
-			//파일 사이즈
-			long fileSize = file.getSize();
-			System.out.println("파일 사이즈 : " + fileSize);
-			
-			//고유한 파일명 만들기
-			String systemName = "mlec-" + UUID.randomUUID().toString() + ext;
-			System.out.println("저장할 파일명 : " + systemName);
-			
-			//임시저장된 파일을 원하는 경로에 저장
-			file.transferTo(new File(savePath + "/" + systemName));
-			
-			DiaryFileVO diaryFile = new DiaryFileVO();
-			diaryFile.setOriName(oriName);
-			diaryFile.setSystemName(systemName);
-			diaryFile.setFilePath(datePath);
-			diaryFile.setFileSize(fileSize);
-			param.put("dairyFile", diaryFile);
-			
-		}
+//		MultipartFile file = mRequest.getFile("attachFile");
+//		String oriName = file.getOriginalFilename();
+//		if (oriName != null && !oriName.equals("")){
+//			//확장자 처리
+//			String ext = "";
+//			//뒤쪽에 있는 . 의 위치
+//			int index = oriName.lastIndexOf(".");
+//			if (index != -1){
+//				//파일명에서 확장자 명(.포함)을 추출
+//				ext = oriName.substring(index);
+//			}
+//			//파일 사이즈
+//			long fileSize = file.getSize();
+//			System.out.println("파일 사이즈 : " + fileSize);
+//			
+//			//고유한 파일명 만들기
+//			String systemName = "mlec-" + UUID.randomUUID().toString() + ext;
+//			System.out.println("저장할 파일명 : " + systemName);
+//			
+//			//임시저장된 파일을 원하는 경로에 저장
+//			file.transferTo(new File(savePath + "/" + systemName));
+//			
+//			DiaryFileVO diaryFile = new DiaryFileVO();
+//			diaryFile.setOriName(oriName);
+//			diaryFile.setSystemName(systemName);
+//			diaryFile.setFilePath(datePath);
+//			diaryFile.setFileSize(fileSize);
+//			param.put("dairyFile", diaryFile);
+//			
+//		}
 		service.write(param);
 		
 		attr.addFlashAttribute("msg", "게시물이 등록되었습니다.");
@@ -111,8 +111,8 @@ public class DiaryController {
 	}
 	
 	@RequestMapping("/diary/detail.do")
-	public void detail(@RequestParam(value="no") int no, Model model) throws Exception{
-		Map<String, Object> result = service.detail(no);
+	public void detail(@RequestParam(value="diaryNo") int diaryNo, Model model) throws Exception{
+		Map<String, Object> result = service.detail(diaryNo);
 		model.addAttribute("diaryVO", result.get("diaryVO"));
 		model.addAttribute("file", result.get("file"));
 	}

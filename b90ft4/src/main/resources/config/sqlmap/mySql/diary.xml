@@ -58,10 +58,10 @@
 			파라메터의 데이터타입: int
 			리턴되는 값의 데이터타입: DiaryVO
 	============================================================================-->
-	<select id="selectDiaryNo" parameterType="int" resultMap="diaryMap">
+	<select id="selectOneDiary" parameterType="int" resultMap="diaryMap">
 		select	*
 		from	tb_Sam_Diary
-		where	Diary_No = #{diaryNo}
+		where	Diary_No = #{no}
 	</select>
 	
 	
@@ -81,7 +81,6 @@
 		<insert id="insertDiary" parameterType="diaryVO" >
 		insert	into tb_Sam_Diary 
 				(
-				Diary_No,
 				User_Id,
 				Latitude,
 				Longitude,
@@ -93,7 +92,6 @@
 				File_Path
 				)
 		values	(
-				s_Around_Diary.nextVal,
 				#{userId},     
 				#{latitude},    
 				#{longitude},   
@@ -138,6 +136,23 @@
 		where	Diary_No = #{diaryNo}
 	</delete>
 	
+	
+	<!--============================================================================
+			다이어리 파일 selectDiaryFileByNo
+			필터링할 값: File_No
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+<!-- 	<select id="selectDiaryFileByNo" parameterType="int" resultMap="boardFileMap"> -->
+<!-- 	    select File_No, -->
+<!-- 	           no, -->
+<!-- 	           ori_name, -->
+<!-- 	           system_name, -->
+<!-- 	           file_path, -->
+<!-- 	           file_size -->
+<!-- 	      from tb_sam_ -->
+<!-- 	     where no = #{no}       -->
+<!-- 	</select> -->
 	
 	
 	
