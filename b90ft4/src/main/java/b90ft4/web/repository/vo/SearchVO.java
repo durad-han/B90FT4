@@ -4,9 +4,30 @@ public class SearchVO extends PageVO {
 
 	private String userId;
 	private String startDate;
+	private String endDate;
 	private int delNo;
 	private int budgetCode;
+	private int incomeCategoryNo;
+	private int expenseCategoryNo;
 	
+	public int getIncomeCategoryNo() {
+		return incomeCategoryNo;
+	}
+	public void setIncomeCategoryNo(int incomeCategoryNo) {
+		this.incomeCategoryNo = incomeCategoryNo;
+	}
+	public int getExpenseCategoryNo() {
+		return expenseCategoryNo;
+	}
+	public void setExpenseCategoryNo(int expenseCategoryNo) {
+		this.expenseCategoryNo = expenseCategoryNo;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	public int getDelNo() {
 		return delNo;
 	}

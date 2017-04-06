@@ -1,5 +1,6 @@
 package b90ft4.web.accountbook.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +45,21 @@ public class AccBookServiceImpl implements AccBookService {
 		
 		result.put("expense", dao.selectExpense(search));
 		result.put("income", dao.selectIncome(search));
+		
+		String[] temp = dao.selectExpenpseEachDayCount(search);
+		int[] temp2 = new int[temp.length];
+		for(int i=0;i<temp.length;i++) {
+			temp2[i] = Integer.parseInt(temp[i]);
+		}
+		result.put("expenseEachDayCount", temp2);
+		
+		temp = dao.selectIncomeEachDayCount(search);
+		temp2 = new int[temp.length];
+		for(int i=0;i<temp.length;i++) {
+			temp2[i] = Integer.parseInt(temp[i]);
+		}
+		result.put("incomeEachDayCount", temp2);
+		
 		return result;
 	
 	}

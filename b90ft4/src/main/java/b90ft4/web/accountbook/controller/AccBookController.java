@@ -1,6 +1,8 @@
 package b90ft4.web.accountbook.controller;
 
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,6 @@ public class AccBookController {
 	@RequestMapping("/expenseRegi.do")
 	public String registerExpense(ExpenseVO expense) 
 			throws Exception {
-		
 		expense.setUserId("김현영");
 		service.registerExpense(expense);
 		return "ok";
@@ -54,7 +55,6 @@ public class AccBookController {
 	@RequestMapping("/incomeRegi.do")
 	public String registerIncome(IncomeVO income) 
 			throws Exception {
-
 		income.setUserId("김현영");
 		service.registerIncome(income);
 		return "ok";
@@ -64,30 +64,44 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/budgetList.do")
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
+		search.setUserId("김현영");
+
 		Map<String, Object> result = service.retrieveBudgetList(search);
+		
+		
+//		Calendar c = Calendar.getInstance();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		Date d = sdf.parse(search.getStartDate());
+//		c.setTime(d);
+//		System.out.println("몇주 차 ? : " + c.get(Calendar.WEEK_OF_MONTH));
+		
 		return result;
 	}
+	
+	
+	// 지출/수입 삭제
 	@ResponseBody
 	@RequestMapping("/deleteBudget.do")
 	public String deleteBudget(SearchVO search) throws Exception{
-
-		System.out.println("code"+ search.getBudgetCode());
-		System.out.println("delNo" + search.getDelNo());
-		
 		service.deleteBudget(search);
-		
 		return "ok";
 	}
 	
+	// 지출/수입 수정
 	@ResponseBody
 	@RequestMapping("/updateBudget.do")
-	public String updateBudget(ExpenseVO expense,
-								IncomeVO income) throws Exception{
+	public String updateBudget(ExpenseVO expense, IncomeVO income) throws Exception{
 		// userId는 세션으로 받는다...
 		service.updateBudget(expense, income);
 		return "ok";
 	}
 }
+
+
+
+
+
+
 
 
 

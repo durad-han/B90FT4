@@ -88,7 +88,44 @@
 		<result property="incomeDate" column="income_date"  />
 	</resultMap>
 	
+	<sql id="expenseCommon">
+		  from tb_sam_expense ex, tb_sam_expense_category exc
+			<where> 
+			   ex.expense_category_no = exc.expense_category_no
+			   and  ex.user_id= #{userId}
+			  <if test= "startDate != null and endDate == null " >
+			   and  ex.expense_date = #{startDate}
+			  </if>
+			  
+			  <if test= "startDate != null and endDate != null " >
+			   and  ex.expense_date between STR_TO_DATE (#{startDate}, '%Y-%m-%d') 
+						  			    and STR_TO_DATE (#{endDate}, '%Y-%m-%d')
+			  </if>
+			  <if test= "expenseCategoryNo != 0 " >
+			  		ex.expense_category_no = #{expenseCategoryNo}
+			  </if>
+			</where>
+	</sql>
 	
+	
+	<sql id="incomeCommon">
+		  from tb_sam_income income, tb_sam_income_category inc
+			<where> 
+			   income.income_category_no = inc.income_category_no
+			   and  income.user_id= #{userId}
+			  <if test= "startDate != null and endDate == null " >
+			   and  income.income_date = #{startDate}
+			  </if>
+			  
+			  <if test= "startDate != null and endDate != null " >
+			   and  income.income_date between STR_TO_DATE (#{startDate}, '%Y-%m-%d') 
+						  			    and STR_TO_DATE (#{endDate}, '%Y-%m-%d')
+			  </if>
+			  <if test= "incomeCategoryNo != 0 " >
+			  		income.income_category_no = #{incomeCategoryNo}
+			  </if>
+			</where>
+	</sql>
 	
 	<select id="selectExpense" parameterType="searchVO" resultMap="expenseMap">
 		select 	ex.expense_no,
@@ -98,10 +135,8 @@
 				ex.expense_content, 	    
 				ex.expense_amount,
 				ex.expense_date 			
-			  from tb_sam_expense ex, tb_sam_expense_category exc
-			where  ex.expense_category_no = exc.expense_category_no
-			  and  ex.user_id= #{userId}
-			  and  ex.expense_date= #{startDate}
+			<include refid="expenseCommon"/>
+			order by ex.expense_date
 	</select>
 	
 	<select id="selectIncome" parameterType="searchVO" resultMap="incomeMap">
@@ -112,11 +147,25 @@
 				income.income_content, 	    
 				income.income_amount,
 				income.income_date 			
-			  from tb_sam_income income, tb_sam_income_category inc
-			where  income.income_category_no = inc.income_category_no
-			  and  income.user_id = #{userId}
-			  and  income.income_date= #{startDate}
+			 <include refid="incomeCommon"/>
+			  order by income.income_date
 	</select>
+	
+	<select id="selectExpenpseEachDayCount" parameterType="searchVO" resultType="string">
+			select 	count(ex.expense_date)			
+			<include refid="expenseCommon"/>
+			group by ex.expense_date
+			order by ex.expense_date
+	</select>
+	
+	<select id="selectIncomeEachDayCount" parameterType="searchVO" resultType="string">
+			select 	count(income.income_date)			
+			<include refid="incomeCommon"/>
+			group by income.income_date
+			order by income.income_date
+	</select>
+	
+	
 	
 	<delete id="deleteExpense" parameterType="searchVO">
 		delete 
@@ -140,13 +189,11 @@
 	</update>
 	
 	<update id="updateIncome" parameterType="incomeVO">
-	
 		update tb_sam_income
 		  set income_category_no = #{incomeCategoryNo},
 		      income_amount = #{incomeAmount},
 		      income_content = #{incomeContent}
 		where income_no = #{incomeNo}
-	
 	</update>
 	
 </mapper>

@@ -146,10 +146,13 @@ tbody#income tr.incomeInfo:hover{
                     </i><span class="menu-title">지출/수입</span></a>
                        
                     </li>
-                    <li><a href="UIElements.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">대입금/차입금</span></a>
-                       
+                    <li>
+	                    <a href="UIElements.html">
+		                    <i class="fa fa-fw">
+		                        <div class="icon-bg bg-green"></div>
+		                    </i>
+		                    <span class="menu-title">대입금/차입금</span>
+	                    </a>
                     </li>
                     <li><a href="Forms.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-violet"></div>
@@ -193,11 +196,20 @@ tbody#income tr.incomeInfo:hover{
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
                             <li class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
                             <li><a href="#note-tab" data-toggle="tab">수입</a></li>
+<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
+<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
+<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
+<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
+<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
+                           
+<!--                            <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li> -->
+<!--                            <li id="week"><a href="#1" data-toggle="tab" >주</a></li> -->
+<!--                            <li id="month"><a href="#1" data-toggle="tab" >월</a></li> -->
                         </ul>
                         
                 		<h3> 
-                		<button id="prev"> ◀  </button> <button id="next"> ▶ </button> 
                 		<input type="text" id="actualDate" style="width: 70%;text-align: center;" readonly />  
+                		<button id="prev"> ◀  </button> <button id="next"> ▶ </button> 
                 		</h3>
                 		
                 			   <div id="generalTabContent" class="tab-content responsive">
@@ -208,8 +220,10 @@ tbody#income tr.incomeInfo:hover{
 							                            <div class="panel-body">
 							                                <table class="table table-hover-color">
 							                                    <thead>
-							                                    <tr>
-							                                        <th>분류</th>
+							                                    <tr id="column">
+							                                        <th id="expenseCtgy">
+							                                        	분류
+							                                        </th>
 							                                        <th>내용</th>
 							                                        <th>금액</th>
 							                                    </tr>
@@ -227,8 +241,8 @@ tbody#income tr.incomeInfo:hover{
 							                            <div class="panel-body">
 							                                <table class="table table-hover-color">
 							                                    <thead>
-							                                    <tr>
-							                                        <th>분류</th>
+							                                    <tr id="column">
+							                                        <th id="incomeCtgy">분류</th>
 							                                        <th>내용</th>
 							                                        <th>금액</th>
 							                                    </tr>
@@ -261,11 +275,7 @@ tbody#income tr.incomeInfo:hover{
 			             <br><br>
                 	</div>
                 
-                
-                		
-			              
-		            </div> 
-                    
+		  </div> 
                     <br>
 		            <br>    
 		                

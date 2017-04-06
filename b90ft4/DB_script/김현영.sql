@@ -153,4 +153,14 @@ select * from tb_board
 			  and  income.user_id = '김현영'
 			  and  income.income_date= '2017-04-04'
 			  
-			  
+select 	count(*) 			
+			  from tb_sam_income income, tb_sam_income_category inc
+			where income.income_category_no = income.income_category_no
+			   and  income.user_id= '김현영'
+			   and  income.income_date between STR_TO_DATE ('2017-04-02', '%Y-%m-%d') 
+						  			    and STR_TO_DATE ('2017-04-08', '%Y-%m-%d')
+			group by income.income_date
+			order by income.income_date
+		
+			
+						  			    

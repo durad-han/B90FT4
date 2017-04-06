@@ -23,6 +23,8 @@ public interface AccBookMapper {
 	public void updateExpense (ExpenseVO expense) throws Exception;
 	public void updateIncome (IncomeVO income) throws Exception;
 	
+	public String[] selectExpenpseEachDayCount (SearchVO search) throws Exception;
+	public String[] selectIncomeEachDayCount (SearchVO search) throws Exception;
 	
 	
 }
