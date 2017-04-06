@@ -29,13 +29,17 @@
 			리턴되는 값의 데이터타입: List<??>
 	============================================================================-->
 	<select id="selectScheduleList" parameterType="scheduleSearchVO" resultMap="scheduleMap">
-		select	sql_calc_found_rows a.* 
-		from	(select	* 
-				 from	tb_Sam_Schedule
-				 order	by Schedule_No
-				) a
-		limit	5
-		offset	0;
+		select	*      
+		from	tb_Sam_Schedule
+		order	by Schedule_No 
+	
+<!-- 		select	sql_calc_found_rows a.*  -->
+<!-- 		from	(select	*  -->
+<!-- 				 from	tb_Sam_Schedule -->
+<!-- 				 order	by Schedule_No -->
+<!-- 				) a -->
+<!-- 		limit	5 -->
+<!-- 		offset	0; -->
 	</select>
 	
 	 
@@ -80,27 +84,22 @@
 		<insert id="insertSchedule" parameterType="scheduleVO" >
 		insert	into tb_Sam_Schedule 
 				(
-				Schedule_No,	
-<!-- 				User_Id,		 -->
+				User_Id,
+				Title,			
 				Start,	
 				End,	
-				Title,			
 				Content,		
 				Category,		
-				Importance,	
-				Achieve		
-				
+				Importance	
 				)
 		values	(
-				#{scheduleNo},     
-<!-- 				#{userId},     -->
+				#{userId},       
+				#{title},       
 				#{start},   
 				#{end},
-				#{title},       
 				#{content},     
-				#{category},    
-				#{importance},    
-				#{achieve}    
+				#{category},     
+				#{importance}    
 				)
 	</insert>
 
@@ -131,7 +130,7 @@
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
 	<delete id="deleteSchedule" parameterType="int">
-		delete	tb_Sam_Schedule
+		delete	from tb_Sam_Schedule
 		where	Schedule_No = #{scheduleNo}
 	</delete>
 	
