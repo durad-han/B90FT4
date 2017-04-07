@@ -126,6 +126,11 @@ insert into tb_sam_expense_category(expense_category_name)
 values('의류비')
 insert into tb_sam_expense_category(expense_category_name) 
 values('통신비')
+insert into tb_sam_expense_category(expense_category_name) 
+values('기타')
+
+update tb_sam_expense_category
+  set user_id = 'admin'
 
 
 -- alter 예시--
@@ -198,8 +203,12 @@ group by expense_category_no
 
 
 
-
-		
+select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eachSum
+		  from tb_sam_expense ex, tb_sam_expense_category exc
+		where ex.expense_category_no = exc.expense_category_no
+		  and ex.user_id = '김현영'
+		  and ex.expense_date between STR_TO_DATE ('2017-05-01', '%Y-%m-%d') 
+								     and STR_TO_DATE ('2017-05-31', '%Y-%m-%d')
 		
 		
 		

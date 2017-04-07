@@ -9,7 +9,14 @@ public class SearchVO extends PageVO {
 	private int budgetCode;
 	private int incomeCategoryNo;
 	private int expenseCategoryNo;
+	private int budgetSearchCode;
 	
+	public int getBudgetSearchCode() {
+		return budgetSearchCode;
+	}
+	public void setBudgetSearchCode(int budgetSearchCode) {
+		this.budgetSearchCode = budgetSearchCode;
+	}
 	public int getIncomeCategoryNo() {
 		return incomeCategoryNo;
 	}

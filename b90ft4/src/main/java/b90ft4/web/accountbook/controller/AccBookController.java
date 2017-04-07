@@ -66,8 +66,13 @@ public class AccBookController {
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
 		search.setUserId("김현영");
 
-		Map<String, Object> result = service.retrieveBudgetList(search);
+		Map<String, Object> result;
 		
+		if(search.getBudgetSearchCode()!=3){
+			result = service.retrieveBudgetList(search);
+		}else{
+			result = service.retrieveBudgetList(search);
+		}
 		
 //		Calendar c = Calendar.getInstance();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -204,7 +204,7 @@
 		where ex.expense_category_no = exc.expense_category_no
 		  and ex.user_id = #{userId}
 		  and ex.expense_date between STR_TO_DATE (#{startDate}, '%Y-%m-%d') 
-								     and STR_TO_DATE (#{endDate}', '%Y-%m-%d')
+								     and STR_TO_DATE (#{endDate}, '%Y-%m-%d')
 		group by ex.expense_category_no
 	</select> 
 	

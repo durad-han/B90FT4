@@ -218,9 +218,8 @@ tbody#income tr.incomeInfo:hover{
                 		
                 			   <div id="generalTabContent" class="tab-content responsive">
                 			   
-			                       <div id="alert-tab" class="tab-pane fade in active">
-									 <div id="expenseDiv" style='height:500px;overflow: auto;'>			                       
-											   <div class="panel panel-green">
+			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto">
+											   <div class="panel panel-green" id="expenseTable">
 							                            <div class="panel-heading">지출</div>
 							                            <div class="panel-body">
 							                                <table class="table table-hover-color">
@@ -237,9 +236,10 @@ tbody#income tr.incomeInfo:hover{
 							                                    </tbody>
 							                                </table>
 							                            </div>
-							                </div>
-			                		  </div>
-			                		</div>
+							                   </div>
+									 <div id="expenseDiv" style='display: none;height: 50%;'>			                       
+			                		 </div>
+			                	   </div>
 			                				
 	                            	<div id="note-tab" class="tab-pane fade">
 											   <div class="panel panel-yellow">
@@ -333,7 +333,6 @@ tbody#income tr.incomeInfo:hover{
 			                                                   </div>
 			                                           	   </div>
 			                                           </div>
-			                                           
 			                                           <input type="hidden" />
 			                                </form>
 											<br><br><br><br><br><br><br>
@@ -397,6 +396,7 @@ tbody#income tr.incomeInfo:hover{
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jquery.jqplot.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>
 
 

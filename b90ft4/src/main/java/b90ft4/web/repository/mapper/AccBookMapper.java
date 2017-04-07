@@ -3,6 +3,7 @@ package b90ft4.web.repository.mapper;
 import java.util.List;
 
 import b90ft4.web.repository.vo.ExpenseCategoryVO;
+import b90ft4.web.repository.vo.ExpenseResultVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeCategoryVO;
 import b90ft4.web.repository.vo.IncomeVO;
@@ -25,6 +26,9 @@ public interface AccBookMapper {
 	
 	public String[] selectExpenpseEachDayCount (SearchVO search) throws Exception;
 	public String[] selectIncomeEachDayCount (SearchVO search) throws Exception;
+	
+	public List<ExpenseResultVO> selectExpenseCtgySum (SearchVO search) throws Exception;
+	
 	
 	
 }

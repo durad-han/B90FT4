@@ -8,8 +8,8 @@
 	        $('#datepicker').find('.ui-datepicker-current-day a').addClass('ui-state-active');
 	    }, 1);
 	}
-	
-	var style = '<style id="hidden"> table.ui-datepicker-calendar { visibility: hidden; } </style>'
+//	 visibility: hidden;
+	var style = '<style id="hidden"> table.ui-datepicker-calendar {display:none;} </style>'
 	var datepicker_default;
 	var startDate;
 	var endDate;
@@ -48,6 +48,7 @@
 	     			var temp =  $.datepicker.parseDate("yy-mm-dd",dateText);
 	     			var today = new Date();
 	     			
+	     			
 	     			if(selectedDateOption==1) {
 	     				
 	     				if($.datepicker.formatDate(dateFormat,today) == $.datepicker.formatDate(dateFormat,temp)) {
@@ -64,7 +65,9 @@
 	     				
 		    			var selectedDate = $.datepicker.formatDate( dateFormat, date );
 		    			$("[id=actualDate]").val(selectedDate); // 선택한 날짜를 인풋 박스에 출력.
-		    			budgetList("",selectedDate); // 선택한 날짜에 해당하는 지출/수입을 긁어온다.
+		    			$("[name=budgetF] input:eq(4)").val(selectedDate);
+		    			console.log("선택한 날짜1",	$("[name=budgetF] input:eq(4)").val());
+		    			budgetList(selectedDate); // 선택한 날짜에 해당하는 지출/수입을 긁어온다.
 	     			
 	     			}
 	     			
@@ -91,7 +94,7 @@
 		    			var selectedWeek = startDate + "~" + endDate;
 		    			$("[id=actualDate]").val(selectedWeek);
 		    			selectCurrentWeek();
-		    			budgetList("",startDate,endDate);
+		    			budgetList(startDate,endDate);
 		                
 	     			}
 	     			
@@ -104,6 +107,9 @@
 					
 					if(selectedDateOption==3){
 						$("[id=actualDate]").val(year+"-"+ ( month < 10 ? "0"+month : month));
+						var d1 = $.datepicker.formatDate(dateFormat,new Date(year,month-1,1));
+						var d2 = $.datepicker.formatDate(dateFormat,new Date(year,month,0));
+						budgetList(d1,d2,selectedDateOption);
 					}
 					
 				},
@@ -133,29 +139,41 @@
 	
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
-			selectedDateOption = 1;
-			$("#datepicker").datepicker("refresh");
+			
+		$("#expenseTable").show();
+		$("#expenseDiv").hide();
+		$("#expenseDate").remove();
+		$("#incomeDate").remove();
+		$("#budgetModal").show();
+		
+		selectedDateOption = 1;
+
+		$("#datepicker").datepicker("refresh");
 			// onSelect 발생 시 , beforeShowDay 실행된다.
 			// setDate 발생 시 , beforeShowDay 실행된다.
 			
-			$("#expenseCtgy").html("분류");
-			$("#incomeCtgy").html("분류");
-			
-			$(".ui-datepicker-current-day").trigger("click");
+		$("#expenseCtgy").html("분류");
+		$("#incomeCtgy").html("분류");
+		
+		$(".ui-datepicker-current-day").trigger("click");
 			
 	});
 	
 	$("#week").click(function() {
+		
 		$("head > style#hidden").remove();
-		if(selectedDateOption == 2) return; //
+		if(selectedDateOption == 2) return; 
+
+		$("#budgetModal").hide();
+		$("#expenseTable").show();
+		$("#expenseDiv").hide();
+		$("#expenseDate").remove();
+		$("#incomeDate").remove();
+		
+		
 		selectedDateOption = 2;
 		
-//		console.log("selectedDateOption",selectedDateOption);
-//		var date = $("#datepicker").datepicker("getDate");
-		
-		
 		// 여러 개 라면 가장 첫번째에 있는 a 태그가 클릭된다.
-		
 		// 주 를 클릭한 후,
 		// 원래 current-day는 어떻게 다시 복구가 될 수 있는가?
 		// refresh의 역할이 중요하다.
@@ -170,12 +188,24 @@
 	$("#month").click(function() {
 	
 		$("head").append(style);
+		
+		if(selectedDateOption == 3) return; //
+		$("#expenseTable").hide();
+		$("#budgetModal").hide();
+		$("#expenseDiv").show();
+		
 		selectedDateOption = 3;
 		$("#datepicker").datepicker("refresh");
 		var date = $("#datepicker").datepicker("getDate");
 		$(".ui-datepicker-month").val(date.getMonth());
 		$("#actualDate").val((date.getYear()+1900)+"-"+ (((date.getMonth()+1)<10) ? "0"+(date.getMonth()+1) : (date.getMonth()+1)));
 
+		var d1 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth(),1));
+		var d2 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth()+1,0));
+		console.log(d1,d2);
+		budgetList(d1,d2,selectedDateOption);
+		
+		
 	});
 	
 	$("#prev").click(function() {
@@ -277,7 +307,7 @@
 	function initForm(flag){
 		
 		if(!flag){
-			budgetList("",today);
+			budgetList($("#actualDate").val());
 			modAndDelEvent();
 		}
 		
@@ -389,6 +419,9 @@
 			case 5:
 				labelColor = "label label-blue";
 				break;
+			case 6:
+				labelColor = "label label-grey";
+				break;
 		}
 		return labelColor;
 	}
@@ -397,18 +430,69 @@
 	var weekFlag=false; 
 	 
 	/* 오늘 지출-수입 테이블 로딩 함수*/
-	function budgetList(userId, startDate,endDate){
+	function budgetList(startDate,endDate,budgetSearchCode){
 		
 		$.ajax({
 			url:"budgetList.do",
 			dataType:"json",
 			data : {
-				userId:"김현영",
 				startDate: startDate,
-				endDate : endDate
+				endDate : endDate,
+				budgetSearchCode:budgetSearchCode
 			},
 			assync:false
 		}).done(function (result) {
+			
+			// 원 그래프 그리기.
+			if(budgetSearchCode==3){
+				
+					console.log(result);
+				
+					$("#expenseDiv").empty();
+				
+					var pie = [];
+					pie.push(new Array());
+					var data = pie[0];	
+					var sum=0;
+					var monthBudget = result.monthBudget;
+					
+					
+					for(var i=0;i<monthBudget.length;i++) {
+						sum+=monthBudget[i].eachSum;
+					}	
+			
+					  for(var i=0;i<monthBudget.length;i++) {
+					  	var arr=[];
+						  	arr[0] = monthBudget[i].expenseCategoryName;
+						  	arr[1] = (monthBudget[i].eachSum/sum);
+					  	data.push(arr);
+					  }	
+					
+					  jQuery.jqplot.config.enablePlugins = true;
+					  plot7 = jQuery.jqplot(
+						'expenseDiv', 
+			//		 		[[['Verwerkende industrie', 9],['Retail', 8], ['Primaire producent', 7], 
+			//		 	    ['Out of home', 6],['Groothandel', 5], ['Grondstof', 4], ['Consument', 3], ['Bewerkende industrie', 2]]], 
+						pie,
+					    {
+					      title: ' ', 
+					      seriesDefaults: {shadow: true, renderer: jQuery.jqplot.PieRenderer, rendererOptions: { showDataLabels: true } }, 
+					      // s 가 좋다.
+					      legend: { show: true, location: 'w',xoffset:1,yoffset:1}
+					      // compass direction, nw, n, ne, e, se, s, sw, w. xoffset: 12, // pixel offset of the legend box from the x (or x2) axis. yoffset: 12, // pixel offset of the legend box from the y (or y2) axis.  }
+					    }
+					  );
+					  
+					  $(".jqplot-table-legend").css({
+						  "font-size" : "20px",
+						  "margin-left" : "7%"
+					  });
+				
+				return;
+			}
+			
+			
+			
 			
 //			console.log(result);
 			
@@ -431,12 +515,11 @@
 			}
 			
 			if(weekFlag){
-				$("#budgetDate").remove();
-				$("#expenseColumn").prepend("<th id='expenseDate'>날짜</th>");
-				$("#incomeColumn").prepend("<th id='incomeDate'>날짜</th>");
-			}else{
+				// 날짜 컬럼 추가,식제
 				$("#expenseDate").remove();
 				$("#incomeDate").remove();
+				$("#expenseColumn").prepend("<th id='expenseDate'>날짜</th>");
+				$("#incomeColumn").prepend("<th id='incomeDate'>날짜</th>");
 			}
 			
 			// 지출 리스트
@@ -457,7 +540,7 @@
 							weekFlag=false;
 						}else{
 							if(selectedDateOption == 2){
-								expenseHtml+="<td></td>";
+								expenseHtml+="<th style='visibility:hidden;'>"+expense[k].expenseDate+"</th>";
 							}
 						}
 						
@@ -532,7 +615,7 @@
 							weekFlag=false;
 						}else{
 							if(selectedDateOption == 2){
-								incomeHtml+="<td></td>";
+								incomeHtml+="<th style='display:none;'>"+income[k].incomeDate+"</th>";
 							}
 						}
 						
@@ -595,7 +678,7 @@
 				
 				budgetCodeFordel		  	 = 0;
 				expenseObj.expenseNo 		 = $(this).children("td.expenseNo").text();
-				expenseObj.expenseDate 	     = today;
+				expenseObj.expenseDate 	     = $(this).children("th").text();
 				expenseObj.expenseCategoryNo = $(this).children("td.expenseCategoryNo").text();
 				expenseObj.expenseContent    = $(this).children("td:eq(3)").text();
 				expenseObj.expenseAmount     = $(this).children("td:eq(4)").text();
@@ -648,7 +731,9 @@
 				$("#budgetModal").trigger("click");
 				
 			});
+			
 			weekFlag=false;
+			
 		});	
 	}
 	
@@ -716,7 +801,7 @@
 		
 	}
 	
-	budgetList("",today);
+	budgetList(today);
 	modAndDelEvent();
 	
 	/* -------------------------------------------------------------------------------------------------------------- */
@@ -726,20 +811,13 @@
 	
 	$("#budgetRegi").click(function() {
 		
-		if(selectedDateOption!=1){
-			alert("일 을 선택하세요");
-			return;
-		}
-		
 		var f = document.budgetF;
-		$("[name=budgetF] input:eq(4)").val(today);
 		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
 		
 		var params = $("[name=budgetF]").serialize();
 		var path="";
 		
-		
-		$("[name=budgetCode]").each(function() {
+	$("[name=budgetCode]").each(function() {
 			if(this.checked){
 				if(this.value==0){
 					path="expenseRegi.do";
@@ -749,12 +827,12 @@
 //				console.log(path);
 				return;
 			}
-		});
+	});
 		
-		console.log("params",params);
-		console.log("path",path);
+	console.log("params",params);
+	console.log("path",path);
 		
-		$.ajax({
+	$.ajax({
 			url: path,
 			type:"POST",
 			contentType: "application/x-www-form-urlencoded",
@@ -763,19 +841,15 @@
 		}).done(function(msg){
 			console.log(msg);
 		});
+	
 		initForm();
+		
 	});
+	
 	
 	$("#closeF").click(function() {
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(1);
-	});
-	
-	$("#budgetModal").click(function() {
-		if(selectedDateOption!=1) {
-			alert("일자를 선택하세요");
-			return;
-		}
 	});
 	
 

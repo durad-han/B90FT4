@@ -43,6 +43,15 @@ public class AccBookServiceImpl implements AccBookService {
 		
 		Map<String, Object> result = new HashMap<>();
 		
+		if(search.getBudgetSearchCode()==3){
+			System.out.println(search.getUserId());
+			System.out.println(search.getStartDate());
+			System.out.println(search.getEndDate());
+			result.put("monthBudget",dao.selectExpenseCtgySum(search));
+			return result;
+		}
+		
+		
 		result.put("expense", dao.selectExpense(search));
 		result.put("income", dao.selectIncome(search));
 		
