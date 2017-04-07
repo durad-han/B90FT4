@@ -138,8 +138,8 @@
 			// onSelect 발생 시 , beforeShowDay 실행된다.
 			// setDate 발생 시 , beforeShowDay 실행된다.
 			
-//			$("#expenseCtgy").html("분류");
-//			$("#incomeCtgy").html("분류");
+			$("#expenseCtgy").html("분류");
+			$("#incomeCtgy").html("분류");
 			
 			$(".ui-datepicker-current-day").trigger("click");
 			
@@ -147,7 +147,9 @@
 	
 	$("#week").click(function() {
 		$("head > style#hidden").remove();
+		if(selectedDateOption == 2) return; //
 		selectedDateOption = 2;
+		
 //		console.log("selectedDateOption",selectedDateOption);
 //		var date = $("#datepicker").datepicker("getDate");
 		
@@ -157,8 +159,8 @@
 		// 주 를 클릭한 후,
 		// 원래 current-day는 어떻게 다시 복구가 될 수 있는가?
 		// refresh의 역할이 중요하다.
-//		$("#expenseCtgy").html("<select><option>분류</option>"+esOpt+"</select>");
-//		$("#incomeCtgy").html("<select><option>분류</option>"+icOpt+"</select>");
+		$("#expenseCtgy").html("<select><option>분류</option>"+esOpt+"</select>");
+		$("#incomeCtgy").html("<select><option>분류</option>"+icOpt+"</select>");
 		
 		
 		$(".ui-datepicker-current-day").trigger("click");
@@ -166,12 +168,14 @@
 	});
 	
 	$("#month").click(function() {
+	
 		$("head").append(style);
-			selectedDateOption = 3;
-			$("#datepicker").datepicker("refresh");
-			var date = $("#datepicker").datepicker("getDate");
-			$(".ui-datepicker-month").val(date.getMonth());
-			$("#actualDate").val((date.getYear()+1900)+"-"+ (((date.getMonth()+1)<10) ? "0"+(date.getMonth()+1) : (date.getMonth()+1)));
+		selectedDateOption = 3;
+		$("#datepicker").datepicker("refresh");
+		var date = $("#datepicker").datepicker("getDate");
+		$(".ui-datepicker-month").val(date.getMonth());
+		$("#actualDate").val((date.getYear()+1900)+"-"+ (((date.getMonth()+1)<10) ? "0"+(date.getMonth()+1) : (date.getMonth()+1)));
+
 	});
 	
 	$("#prev").click(function() {
@@ -428,9 +432,11 @@
 			
 			if(weekFlag){
 				$("#budgetDate").remove();
-				$("#column").prepend("<th id='budgetDate'>날짜</th>");
+				$("#expenseColumn").prepend("<th id='expenseDate'>날짜</th>");
+				$("#incomeColumn").prepend("<th id='incomeDate'>날짜</th>");
 			}else{
-				$("#budgetDate").remove();
+				$("#expenseDate").remove();
+				$("#incomeDate").remove();
 			}
 			
 			// 지출 리스트
@@ -489,8 +495,6 @@
 					expenseHtml+="</tr>";
 				}
 				
-				
-				
 			}else {
 				expenseHtml+="<tr>";
 				if(endDate != undefined) {
@@ -501,8 +505,12 @@
 				expenseHtml+="</tr>";
 			}
 			
+			weekFlag=false;
+			
 			//
-			weekFlag=true;
+			if(endDate != undefined) {
+				weekFlag=true;
+			}
 			
 			// 수입 리스트
 			if(incomeEachDayCount.length!=0){
@@ -640,12 +648,14 @@
 				$("#budgetModal").trigger("click");
 				
 			});
-			
 			weekFlag=false;
-			
-			
 		});	
 	}
+	
+	
+	
+	
+	
 	
 	function modAndDelEvent() {
 		
@@ -741,8 +751,8 @@
 			}
 		});
 		
-//		console.log("params",params);
-//		console.log("path",path);
+		console.log("params",params);
+		console.log("path",path);
 		
 		$.ajax({
 			url: path,
@@ -751,9 +761,8 @@
 			data:params,
 			async:false
 		}).done(function(msg){
-//			console.log(msg);
+			console.log(msg);
 		});
-		
 		initForm();
 	});
 	

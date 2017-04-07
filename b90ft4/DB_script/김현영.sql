@@ -163,4 +163,50 @@ select 	count(*)
 			order by income.income_date
 		
 			
-						  			    
+			select * 
+		  from tb_sam_expense_category
+		where user_id = 'admin'
+		   or user_id =  'admin'
+		order by expense_category_no		
+		
+		
+		
+		
+select exc.expense_category_name , sum(ex.expense_amount) eachSum
+  from tb_sam_expense ex, tb_sam_expense_category exc
+where ex.expense_category_no = exc.expense_category_no
+  and ex.user_id = '김현영'
+  and ex.expense_date between STR_TO_DATE ('2017-04-01', '%Y-%m-%d') 
+						     and STR_TO_DATE ('2017-04-30', '%Y-%m-%d')
+group by ex.expense_category_no
+
+
+select expense_category_no,expense_date 
+  from tb_sam_expense
+  
+select expense_category_no,expense_category_no
+  from tb_sam_expense
+  
+  
+
+select expense_category_no,expense_date 
+  from tb_sam_expense
+where user_id = '김현영'
+  and expense_date between STR_TO_DATE ('2017-04-01', '%Y-%m-%d') 
+					   and STR_TO_DATE ('2017-04-30', '%Y-%m-%d')
+group by expense_category_no
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -50,6 +50,10 @@ tbody#income tr.incomeInfo:hover{
  	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	
+  	
+  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/accountbook/jquery.jqplot.css" />
+  	
+  	
 <!--   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
 <!--     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" /> -->
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> -->
@@ -191,7 +195,7 @@ tbody#income tr.incomeInfo:hover{
                 <div class="row">
                 	
                 	
-                		<div class="col-lg-4" style="margin-left: 10%;margin-right: 5%;padding: 0">
+                		<div class="col-lg-5" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
                             <li class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
@@ -214,13 +218,14 @@ tbody#income tr.incomeInfo:hover{
                 		
                 			   <div id="generalTabContent" class="tab-content responsive">
                 			   
-			                            <div id="alert-tab" class="tab-pane fade in active">
+			                       <div id="alert-tab" class="tab-pane fade in active">
+									 <div id="expenseDiv" style='height:500px;overflow: auto;'>			                       
 											   <div class="panel panel-green">
 							                            <div class="panel-heading">지출</div>
 							                            <div class="panel-body">
 							                                <table class="table table-hover-color">
 							                                    <thead>
-							                                    <tr id="column">
+							                                    <tr id="expenseColumn">
 							                                        <th id="expenseCtgy">
 							                                        	분류
 							                                        </th>
@@ -233,6 +238,7 @@ tbody#income tr.incomeInfo:hover{
 							                                </table>
 							                            </div>
 							                </div>
+			                		  </div>
 			                		</div>
 			                				
 	                            	<div id="note-tab" class="tab-pane fade">
@@ -241,7 +247,7 @@ tbody#income tr.incomeInfo:hover{
 							                            <div class="panel-body">
 							                                <table class="table table-hover-color">
 							                                    <thead>
-							                                    <tr id="column">
+							                                    <tr id="incomeColumn">
 							                                        <th id="incomeCtgy">분류</th>
 							                                        <th>내용</th>
 							                                        <th>금액</th>
@@ -390,6 +396,10 @@ tbody#income tr.incomeInfo:hover{
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>
+
+
 <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 

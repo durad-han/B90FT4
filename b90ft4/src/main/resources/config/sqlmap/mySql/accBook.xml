@@ -196,6 +196,18 @@
 		where income_no = #{incomeNo}
 	</update>
 	
+	
+	<!-- 달에 대한 원 그래프 그릴 데이터-->
+	<select id="selectExpenseCtgySum" parameterType="searchVO"  resultType="expenseResultVO">
+		select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eachSum
+		  from tb_sam_expense ex, tb_sam_expense_category exc
+		where ex.expense_category_no = exc.expense_category_no
+		  and ex.user_id = #{userId}
+		  and ex.expense_date between STR_TO_DATE (#{startDate}, '%Y-%m-%d') 
+								     and STR_TO_DATE (#{endDate}', '%Y-%m-%d')
+		group by ex.expense_category_no
+	</select> 
+	
 </mapper>
 
 
