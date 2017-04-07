@@ -62,3 +62,15 @@
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
+
+<!-- sweetAlert -->
+<script src="${pageContext.request.contextPath}/web/js/common/sweetalert.min.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
+
+<!-- datePicker -->
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/bootstrap/mobipick/css/mobipick.css" /> --%>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/xdate.js"></script> --%>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/xdate.i18n.js"></script> --%>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/js/mobipick.js"></script> --%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/jquery.mobile-1.3.0.min.css"> --%>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/jquery.mobile-1.3.0.min.js"></script> --%>

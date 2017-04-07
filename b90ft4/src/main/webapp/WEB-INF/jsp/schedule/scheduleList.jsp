@@ -273,12 +273,12 @@
 				<div class="row">
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputStart" name="start" type="date" placeholder="시작 시간" class="form-control" />
+				            <input id="inputStart" name="start" type="datetime-local" placeholder="시작 시간" class="form-control" />
 				        </div>
 				    </div>
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputEnd" name="end" type="date" placeholder="종료 시간" class="form-control" />
+				            <input id="inputEnd" name="end" type="datetime-local" placeholder="종료 시간" class="form-control" />
 				        </div>
 				    </div>
 				</div>
@@ -312,7 +312,7 @@
 				<div class="form-group">
 				    <div class="input-icon right">
 				        <i class="fa fa-user"></i>
-				        <input id="inputㅁchieve" name="achieve" type="hidden" placeholder="달성" value="1" class="form-control" />
+				        <input id="inputAchieve" name="achieve" type="hidden" placeholder="달성" value="1" class="form-control" />
 				    </div>
 				</div>
 <!-- ============ 임시 하드코딩============	-->
@@ -364,5 +364,6 @@
 </div>
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>
+
 </body>
 </html>

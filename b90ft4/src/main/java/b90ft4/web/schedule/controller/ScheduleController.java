@@ -97,13 +97,13 @@ public class ScheduleController {
 		System.out.println("modifySchedule");
 		ScheduleVO sVO = new ScheduleVO();
 		
-		System.out.println(schedule2.getUserId());            
-		System.out.println(schedule2.getCategory());          
-		System.out.println(schedule2.getTitle());             
+		System.out.println(schedule2.getUserId());
+		System.out.println(schedule2.getCategory());
+		System.out.println(schedule2.getTitle());
 		System.out.println(schedule2.getStart());
-		System.out.println(schedule2.getEnd()); 
-		System.out.println(schedule2.getImportance());        
-		System.out.println(schedule2.getContent());           
+		System.out.println(schedule2.getEnd());
+		System.out.println(schedule2.getImportance());
+		System.out.println(schedule2.getContent());
 		
 		// 임시 떔빵
 		sVO.setUserId		(schedule2.getUserId());

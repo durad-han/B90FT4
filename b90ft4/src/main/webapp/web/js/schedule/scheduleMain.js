@@ -1,8 +1,10 @@
-console.log("scheduleMain.js 로드됨...!");
+console.log("scheduleMain.js 로드됨...!!");
 
-//----- mobiPicker -----------------------------------------------------------
+//----- datePicker -----------------------------------------------------------
+
 //$( document ).on( "pagecreate", function(event) {
-//    var picker = $( "input[type='text']", this );
+//	console.log("mobi activate")
+//    var picker = $( "input[type='mobi']", this );
 //    picker.mobipick();
 //});
 //
@@ -241,35 +243,70 @@ function modifyForm(result){
 //----- 스케줄 수정 서브밋 ------------------------------------------------------------------------------------------------------
 function modifySubmit(scheduleNo){
 	console.log("modifySubmit : "+scheduleNo+"번 스케줄")
-	$.ajax({
-		url : "/b90ft4/schedule/modify.json", // dho 이게 적용이 안돼 이상해 모르겠어 ㄷㄷ
-		type: "POST",
-		data: { scheduleNo: scheduleNo,
-				userId: 'tester01',
-				start: $("input[id=inputStart]").val(),
-				end: $("input[id=inputEnd]").val(),
-				title: $("input[id=inputTitle]").val(),
-				content: $("input[id=inputContent]").val(),
-				importance:$("select[id=inputImportance]").val(),
-				category: 1,
-				achieve: 1
+	
+	swal({
+		  title: "정말 수정하시겠습니까?",
+		  text: "선택한 스케줄이 변경됩니다",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "수정",
+		  closeOnConfirm: false
 		},
-		dataType: "json"
-	}).done(goDetail);
+		function(){
+				swal("수정", "스케줄이 변경되었습니다", "success");
+				$.ajax({
+					url : "/b90ft4/schedule/modify.json", // dho 이게 적용이 안돼 이상해 모르겠어 ㄷㄷ
+					type: "POST",
+					data: { scheduleNo: scheduleNo,
+						userId: 'tester01',
+						start: $("input[id=inputStart]").val(),
+						end: $("input[id=inputEnd]").val(),
+						title: $("input[id=inputTitle]").val(),
+						content: $("input[id=inputContent]").val(),
+						importance:$("select[id=inputImportance]").val(),
+						category: 1,
+						achieve: 1
+					},
+					dataType: "json"
+				}).done(goDetail);
+			});
 };
 
 
 //----- 스케줄 삭제----------------------------------------------------------------------------------------------------------
 function goDelete(scheduleNo){
 	console.log("goDelete : "+scheduleNo+"번 스케줄")
-	$.ajax({
-		url : "/b90ft4/schedule/delete.json",
-		type: "POST",
-		data: {scheduleNo : scheduleNo},
-		dataType: "json"
-	}).done(function(){
-		alert("삭제됨");
-	});
+	swal({
+	  title: "정말 삭제하시겠습니까?",
+	  text: "선택한 스케줄이 삭제됩니다",
+	  type: "warning",
+	  showCancelButton: true,
+	  confirmButtonColor: "#DD6B55",
+	  confirmButtonText: "삭제",
+	  closeOnConfirm: false
+	},
+	function(){
+		console.log("inner del function")
+		$.ajax({
+			url : "/b90ft4/schedule/delete.json",
+			type: "POST",
+			data: {scheduleNo : scheduleNo},
+			dataType: "json"
+		}).done(function(){
+			swal("삭제", "스케줄이 삭제되었습니다", "success");
+			})
+			
+		});
+	
+//	$.ajax({
+//		url : "/b90ft4/schedule/delete.json",
+//		type: "POST",
+//		data: {scheduleNo : scheduleNo},
+//		dataType: "json"
+//	}).done(function(){
+//		alert("삭제됨");
+//	});
 	console.log("goDelete...")
 	
 };
@@ -281,17 +318,17 @@ function scheduleForm(form){
 	console.dir(form)
 	
 	if ($("#inputTitle").val() == "") {
-		alert("제목이 비어있습니다");
+		swal("등록", "제목을 입력하세요", "error");
 		$("input[id=inputTitle]").focus();
 		return false;
 	}
 	if ($("input[id=inputStart]").val() == "") {
-		alert("스케줄이 시작될 시간을 지정해주세요");
+		swal("등록", "스케줄이 시작될 시간을 지정해주세요", "error");
 		$("input[id=inputStart]").focus();
 		return false;
 	}
 	if ($("input[id=inputEnd]").val() == "") {
-		alert("스케줄이 종료될 시간을 지정해주세요");
+		swal("등록", "스케줄이 종료될 시간을 지정해주세요", "error");
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
@@ -315,3 +352,20 @@ function scheduleForm(form){
 //	}).done(goDetail);
 	return true;
 };
+
+
+function swTest(){
+	swal({
+		  title: "정말 삭제하시겠습니까?",
+		  text: "선택한 스케줄이 삭제됩니다",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "삭제",
+		  closeOnConfirm: false
+		},
+		function(){
+				swal("삭제", "스케줄이 삭제되었습니다", "success");
+			});
+}
+
