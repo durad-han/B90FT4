@@ -16,6 +16,20 @@
 </repositories>  
 
 <dependencies>
+
+	<!--  데이터베이스 로그 출력 -->
+	<dependency>
+	    <groupId>org.lazyluke</groupId>
+	    <artifactId>log4jdbc-remix</artifactId>
+	    <version>0.2.7</version>
+	</dependency>
+	<dependency>  
+	  <groupId>org.slf4j</groupId>  
+	  <artifactId>slf4j-log4j12</artifactId>  
+	  <version>1.7.25</version>  
+	</dependency> 
+
+
 	<!-- 데이터베이스 관련 설정 -->
 	<dependency>
 		<groupId>com.oracle</groupId>

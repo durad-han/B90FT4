@@ -25,6 +25,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/jplist.css">
+	
 </head>
 <body>
     <div>
@@ -228,7 +229,7 @@
                                                 <!--<data></data>-->
                                                 <td class="td-block"><p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
 
-                                                    <p class="title"><a href='detail?dairyNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
+                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
 
                                                     <p class="desc"><c:out value="${diary.content}"/></p>
 
@@ -271,7 +272,7 @@
                                     		<div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
                                         </div>
                                         <div align="right">
-                                    	<a href='${pageContext.request.contextPath}/board/writeForm' class="btn btn-info" role="button">글쓰기</a>
+                                    	<a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
                                         </div>
                                     </div>
                                 </div>

@@ -258,34 +258,67 @@
 				    
 				<!-- 스케줄 상세 -->
 				<div class="panel-body pan" id="schDetail">
-				<form action="scheduleForm.do" method="post">
+				
+				<!-- 스케줄 입력 폼 시작 -->
+				<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
 				<div class="form-body pal">
 				
 				<div class="form-group">
 				    <div class="input-icon right">
 				        <i class="fa fa-user"></i>
-				        <input id="inputTitle" type="text" placeholder="제목" class="form-control" /></div>
+				        <input id="inputTitle" name="title" type="text" placeholder="제목" class="form-control" />
+				    </div>
 				</div>
 				
 				<div class="row">
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputStart" type="date" placeholder="시작 시간" class="form-control" /></div>
+				            <input id="inputStart" name="start" type="date" placeholder="시작 시간" class="form-control" />
+				        </div>
 				    </div>
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputEnd" type="date" placeholder="종료 시간" class="form-control" /></div>
+				            <input id="inputEnd" name="end" type="date" placeholder="종료 시간" class="form-control" />
+				        </div>
 				    </div>
 				</div>
 				
 				<div class="form-group">
 				    <div class="input-icon right">
 				        <i class="fa fa-user"></i>
-				        <input id="inputContent" type="text" placeholder="내용" class="form-control" /></div>
+				        <input id="inputContent" name="content" type="text" placeholder="내용" class="form-control" />
+				    </div>
 				</div>
 				
+<!-- ============ 임시 하드코딩 ============	-->
 				<div class="form-group">
-				    <select class="form-control">
+				    <div class="input-icon right">
+				        <i class="fa fa-user"></i>
+				        <input id="inputCategory" name="category" type="text" placeholder="카테고리" value="1" class="form-control" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="input-icon right">
+				        <i class="fa fa-user"></i>
+				        <input id="inputUserId" name="userId" type="hidden" placeholder="유저" value="tester01" class="form-control" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="input-icon right">
+				        <i class="fa fa-user"></i>
+				        <input id="inputScheduleNo" name="scheduleNo" type="hidden" placeholder="유저" value="1" class="form-control" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="input-icon right">
+				        <i class="fa fa-user"></i>
+				        <input id="inputㅁchieve" name="achieve" type="hidden" placeholder="달성" value="1" class="form-control" />
+				    </div>
+				</div>
+<!-- ============ 임시 하드코딩============	-->
+				
+				<div class="form-group">
+				    <select class="form-control" id="inputImportance" name="importance">
 				        <option>중요도</option>
 				        <option value="0"> ☆ ☆ ☆ </option>
 				        <option value="1"> ★ ☆ ☆ </option>
@@ -293,7 +326,7 @@
 				        <option value="3"> ★ ★ ★ </option>
 				    </select></div>
 				<div class="form-actions text-center pal">
-					<button type="submit" class="btn btn-success">추가</button>
+					<button class="btn btn-success">추가</button>
 				</div>
 				</div>
 				</form>

@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+.ttop{
+	text-align: right;
+	border-bottom: 1px solid black;
+	
+}
+
+.pc{
+	height: 50%;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid black;
+	
+}
+
+.tb{
+	width: 70%;
+	border-bottom: 1px solid black;
+
+}
+
+.row{
+}

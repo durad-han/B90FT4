@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
+import b90ft4.web.repository.vo.ScheduleVO2;
 
 @Repository
 public interface ScheduleMapper {
