@@ -6,6 +6,7 @@ import b90ft4.web.repository.vo.ExpenseCategoryVO;
 import b90ft4.web.repository.vo.ExpenseResultVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeCategoryVO;
+import b90ft4.web.repository.vo.IncomeResultVO;
 import b90ft4.web.repository.vo.IncomeVO;
 import b90ft4.web.repository.vo.SearchVO;
 
@@ -28,6 +29,7 @@ public interface AccBookMapper {
 	public String[] selectIncomeEachDayCount (SearchVO search) throws Exception;
 	
 	public List<ExpenseResultVO> selectExpenseCtgySum (SearchVO search) throws Exception;
+	public List<IncomeResultVO> selectIncomeCtgySum (SearchVO search) throws Exception;
 	
 	
 	

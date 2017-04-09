@@ -140,11 +140,16 @@
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
 			
-		$("#expenseTable").show();
-		$("#expenseDiv").hide();
-		$("#expenseDate").remove();
-		$("#incomeDate").remove();
-		$("#budgetModal").show();
+		$("#budgetModal").show();		 // 지출/수입 등록 버튼
+		$("#expenseTable").show(); 	     // 지출 테이블
+		$("#incomeTable").show(); 	     // 수입 테이블
+		$("#expenseDiv").hide(); 	     // 지출 원 그래프 
+		$("#incomeDiv").hide(); 	     // 수입 원 그래프 
+		$("#expenseDate").remove(); 	 // 지출 테이블 날짜 컬럼
+		$("#incomeDate").remove(); 		 // 수입 테이블 날짜 컬럼
+		
+		$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
+		
 		
 		selectedDateOption = 1;
 
@@ -152,8 +157,8 @@
 			// onSelect 발생 시 , beforeShowDay 실행된다.
 			// setDate 발생 시 , beforeShowDay 실행된다.
 			
-		$("#expenseCtgy").html("분류");
-		$("#incomeCtgy").html("분류");
+		$("#expenseCtgy").html("분류");	  // 지출 테이블 분류 컬럼
+		$("#incomeCtgy").html("분류");     // 수입 테이블 분류 컬럼
 		
 		$(".ui-datepicker-current-day").trigger("click");
 			
@@ -164,12 +169,14 @@
 		$("head > style#hidden").remove();
 		if(selectedDateOption == 2) return; 
 
-		$("#budgetModal").hide();
-		$("#expenseTable").show();
-		$("#expenseDiv").hide();
-		$("#expenseDate").remove();
-		$("#incomeDate").remove();
-		
+		$("#budgetModal").hide();   // 지출/수입 버튼
+		$("#expenseTable").show();  // 지출 테이블
+		$("#incomeTable").show();   // 수입 테이블
+		$("#expenseDiv").hide();    // 지출 원 그래프 
+		$("#incomeDiv").hide();     // 수입 원 그래프 
+		$("#expenseDate").remove(); // 지출 테이블 날짜 컬럼
+		$("#incomeDate").remove();  // 수입 테이블 날짜 컬럼
+		$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
 		
 		selectedDateOption = 2;
 		
@@ -177,9 +184,11 @@
 		// 주 를 클릭한 후,
 		// 원래 current-day는 어떻게 다시 복구가 될 수 있는가?
 		// refresh의 역할이 중요하다.
-		$("#expenseCtgy").html("<select><option>분류</option>"+esOpt+"</select>");
-		$("#incomeCtgy").html("<select><option>분류</option>"+icOpt+"</select>");
 		
+		// 지출 테이블 분류 컬럼
+		$("#expenseCtgy").html("<select><option>분류</option>"+esOpt+"</select>");
+		// 수입 테이블 분류 컬럼
+		$("#incomeCtgy").html("<select><option>분류</option>"+icOpt+"</select>");
 		
 		$(".ui-datepicker-current-day").trigger("click");
 		
@@ -189,10 +198,14 @@
 	
 		$("head").append(style);
 		
-		if(selectedDateOption == 3) return; //
-		$("#expenseTable").hide();
-		$("#budgetModal").hide();
-		$("#expenseDiv").show();
+		if(selectedDateOption == 3) return; 
+		$("#expenseTable").hide();  // 지출 테이블
+		$("#incomeTable").hide();   // 수입 테이블
+		$("#expenseDiv").show();	// 지출 원 그래프 
+		$("#incomeDiv").show();		// 수입 원 그래프 
+		$("#budgetModal").hide();   // 지출/수입 등록 버튼
+		
+		$("#incomeTab").addClass("active"); // 수입 탭활성화
 		
 		selectedDateOption = 3;
 		$("#datepicker").datepicker("refresh");
@@ -226,6 +239,7 @@
 		
 		}
 	});
+	
 	
 	$("#next").click(function() {
 		
@@ -429,7 +443,7 @@
 	 
 	var weekFlag=false; 
 	 
-	/* 오늘 지출-수입 테이블 로딩 함수*/
+	/* 지출-수입 테이블 로딩 함수*/
 	function budgetList(startDate,endDate,budgetSearchCode){
 		
 		$.ajax({
@@ -443,56 +457,63 @@
 			assync:false
 		}).done(function (result) {
 			
-			// 원 그래프 그리기.
+			// 월을 선택할 경우, 원 그래프 그리기.
 			if(budgetSearchCode==3){
 				
 					console.log(result);
 				
 					$("#expenseDiv").empty();
-				
-					var pie = [];
-					pie.push(new Array());
-					var data = pie[0];	
-					var sum=0;
-					var monthBudget = result.monthBudget;
+					$("#incomeDiv").empty();
 					
+					var expenseData = new Array();	
+					var incomeData = new Array();		
 					
-					for(var i=0;i<monthBudget.length;i++) {
-						sum+=monthBudget[i].eachSum;
+					var expenseSum=0;
+					var incomeSum=0;
+					
+					var expenseMonthBudget = result.expenseMonthBudget;
+					var incomeMonthBudget = result.incomeMonthBudget;
+					
+					var html="";
+					
+					for(var i=0;i<expenseMonthBudget.length;i++) {
+						expenseSum+=expenseMonthBudget[i].eachSum;
 					}	
 			
-					  for(var i=0;i<monthBudget.length;i++) {
-					  	var arr=[];
-						  	arr[0] = monthBudget[i].expenseCategoryName;
-						  	arr[1] = (monthBudget[i].eachSum/sum);
-					  	data.push(arr);
-					  }	
+					for(var i=0;i<expenseMonthBudget.length;i++) {
+						var arr=[];
+							arr[0] = expenseMonthBudget[i].expenseCategoryName;
+							arr[1] = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+							console.log(arr[1]);
+						expenseData.push(arr);
+					}	
 					
-					  jQuery.jqplot.config.enablePlugins = true;
-					  plot7 = jQuery.jqplot(
-						'expenseDiv', 
-			//		 		[[['Verwerkende industrie', 9],['Retail', 8], ['Primaire producent', 7], 
-			//		 	    ['Out of home', 6],['Groothandel', 5], ['Grondstof', 4], ['Consument', 3], ['Bewerkende industrie', 2]]], 
-						pie,
-					    {
-					      title: ' ', 
-					      seriesDefaults: {shadow: true, renderer: jQuery.jqplot.PieRenderer, rendererOptions: { showDataLabels: true } }, 
-					      // s 가 좋다.
-					      legend: { show: true, location: 'w',xoffset:1,yoffset:1}
-					      // compass direction, nw, n, ne, e, se, s, sw, w. xoffset: 12, // pixel offset of the legend box from the x (or x2) axis. yoffset: 12, // pixel offset of the legend box from the y (or y2) axis.  }
-					    }
-					  );
-					  
-					  $(".jqplot-table-legend").css({
-						  "font-size" : "20px",
-						  "margin-left" : "7%"
-					  });
-				
+					for(var i=0;i<incomeMonthBudget.length;i++) {
+						incomeSum+=incomeMonthBudget[i].eachSum;
+					}	
+					
+					for(var i=0;i<incomeMonthBudget.length;i++) {
+						var arr=[];
+						arr[0] = incomeMonthBudget[i].incomeCategoryName;
+						arr[1] =  Math.round(((incomeMonthBudget[i].eachSum/incomeSum)*1000))/10;
+						incomeData.push(arr);
+					}	
+					
+					console.log(incomeData);
+					
+					makePieGraph(expenseData,'expenseDiv','지출');
+					makePieGraph(incomeData,'incomeDiv','수입');
+//					makePieGraph2(expenseData,"지출");
+					
+					
+					
+					
+//					$("#incomeDiv").html("<h1>후!</h1>")  
+					
 				return;
 			}
 			
-			
-			
+			// 일 , 주에 대한 지출/수입 테이블 작성
 			
 //			console.log(result);
 			
@@ -737,11 +758,7 @@
 		});	
 	}
 	
-	
-	
-	
-	
-	
+	// 수정,삭제 버튼에 이벤트 등록.
 	function modAndDelEvent() {
 		
 		$("#deleteBudget").click(function (){
@@ -801,6 +818,8 @@
 		
 	}
 	
+	
+	// 초기 오늘에 대한 지출/수입 테이블 그리기
 	budgetList(today);
 	modAndDelEvent();
 	
@@ -846,15 +865,113 @@
 		
 	});
 	
-	
+	// close를 눌렀을 때 초기화 시키기.
 	$("#closeF").click(function() {
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(1);
 	});
 	
-
 	
+	// 원 그래프 그리기 함수.
+	function makePieGraph(obj,div,title) {
+		
+		  jQuery.jqplot.config.enablePlugins = true;
+		  plot7 = jQuery.jqplot(
+		    div, 
+			[obj],
+		    {
+		      title: title, 
+		      seriesDefaults: {shadow: true, renderer: jQuery.jqplot.PieRenderer, rendererOptions: { showDataLabels: true } }, 
+		      legend: { show: true, location: 'w',xoffset:1,yoffset:1}
+		      // compass direction, nw, n, ne, e, se, s, sw, w. xoffset: 12, // pixel offset of the legend box from the x (or x2) axis. yoffset: 12, // pixel offset of the legend box from the y (or y2) axis.  }
+		    }
+		  );
+		  
+		  $(".jqplot-table-legend").css({
+			  "font-size" : "15px",
+			  "margin-left" : "7%"
+		  });
+		  jQuery.jqplot.config.enablePlugins = false;
+	}
 	
+//	function makePieGraph2(data,title) {
+//		
+//		/* Pie with gradient fill */
+//	    // Radialize the colors
+//	    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+//	        return {
+//	            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+//	            stops: [
+//	                [0, color],
+//	                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+//	            ]
+//	        };
+//	    });
+//
+//	    // Build the chart
+//	    $('#expenseDiv').highcharts({
+//	        chart: {
+//	            plotBackgroundColor: null,
+//	            plotBorderWidth: null,
+//	            plotShadow: false
+//	        },
+//	        title: {
+//	            text: title
+//	        },
+//	        tooltip: {
+//	            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+//	        },
+//	        plotOptions: {
+//	            pie: {
+//	                allowPointSelect: true,
+//	                cursor: 'pointer',
+//	                dataLabels: {
+//	                    enabled: true,
+//	                    color: '#000000',
+//	                    connectorColor: '#000000',
+//	                    formatter: function() {
+//	                        return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+//	                    }
+//	                }
+//	            }
+//	        },
+//	        series: [{
+//	            type: 'pie',
+//	            name: title,
+//	            data: [
+//					['aa',   75.4],
+//					{
+//						name: 'cc',
+//						y: 4.9,
+//						sliced: true,
+//						selected: true
+//					},
+//					['bb',   19.7]
+//					]
+//	        }]
+//	    });
+//	   
+//		
+//	}
+	
+//	  series: [{
+//          type: 'pie',
+//          name: '지출',
+//          data: [
+//              ['Firefox',   45.0],
+//              ['IE',       26.8],
+//              {
+//                  name: 'Chrome',
+//                  y: 12.8,
+//                  sliced: true,
+//                  selected: true
+//              },
+//              ['Safari',    8.5],
+//              ['Opera',     6.2],
+//              ['Others',   0.7]
+//          ]
+//      }]
+//	
 	
 	
 	

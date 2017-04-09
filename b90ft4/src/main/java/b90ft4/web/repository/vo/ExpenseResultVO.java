@@ -4,7 +4,7 @@ public class ExpenseResultVO {
 	
 	private String expenseCategoryName;
 	private int eachSum;
-
+	
 	public String getExpenseCategoryName() {
 		return expenseCategoryName;
 	}

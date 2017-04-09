@@ -47,7 +47,8 @@ public class AccBookServiceImpl implements AccBookService {
 			System.out.println(search.getUserId());
 			System.out.println(search.getStartDate());
 			System.out.println(search.getEndDate());
-			result.put("monthBudget",dao.selectExpenseCtgySum(search));
+			result.put("expenseMonthBudget",dao.selectExpenseCtgySum(search));
+			result.put("incomeMonthBudget", dao.selectIncomeCtgySum(search));
 			return result;
 		}
 		

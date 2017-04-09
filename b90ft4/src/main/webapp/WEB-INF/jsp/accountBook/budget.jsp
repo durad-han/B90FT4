@@ -195,11 +195,11 @@ tbody#income tr.incomeInfo:hover{
                 <div class="row">
                 	
                 	
-                		<div class="col-lg-5" style="margin-left: 2%;margin-right: 5%;padding: 0">
+                		<div class="col-lg-6" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
-                            <li class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
-                            <li><a href="#note-tab" data-toggle="tab">수입</a></li>
+                            <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
+                            <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
 <!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
 <!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
 <!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
@@ -217,47 +217,50 @@ tbody#income tr.incomeInfo:hover{
                 		</h3>
                 		
                 			   <div id="generalTabContent" class="tab-content responsive">
-                			   
-			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto">
-											   <div class="panel panel-green" id="expenseTable">
-							                            <div class="panel-heading">지출</div>
-							                            <div class="panel-body">
-							                                <table class="table table-hover-color">
-							                                    <thead>
-							                                    <tr id="expenseColumn">
-							                                        <th id="expenseCtgy">
-							                                        	분류
-							                                        </th>
-							                                        <th>내용</th>
-							                                        <th>금액</th>
-							                                    </tr>
-							                                    </thead>
-							                                    <tbody id="expense">
-							                                    </tbody>
-							                                </table>
-							                            </div>
-							                   </div>
-									 <div id="expenseDiv" style='display: none;height: 50%;'>			                       
-			                		 </div>
+			                       <div id="alert-tab" class="tab-pane fade in active" style="height:400px;overflow: auto">
+										   <div class="panel panel-green" id="expenseTable">
+						                            <div class="panel-heading">지출</div>
+						                            <div class="panel-body">
+						                                <table class="table table-hover-color">
+						                                    <thead>
+						                                    <tr id="expenseColumn">
+						                                        <th id="expenseCtgy">
+						                                        	분류
+						                                        </th>
+						                                        <th>내용</th>
+						                                        <th>금액</th>
+						                                    </tr>
+						                                    </thead>
+						                                    <tbody id="expense">
+						                                    </tbody>
+						                                </table>
+						                            </div>
+						                   </div>
+							                   
+										   <div id="expenseDiv" style='display: none;'>			                       
+				                		   </div>
+				                		   <br>
+				                		   <div id="incomeDiv" style='display: none;'>			                       
+				                		   </div>
 			                	   </div>
 			                				
-	                            	<div id="note-tab" class="tab-pane fade">
-											   <div class="panel panel-yellow">
-							                            <div class="panel-heading">수입</div>
-							                            <div class="panel-body">
-							                                <table class="table table-hover-color">
-							                                    <thead>
-							                                    <tr id="incomeColumn">
-							                                        <th id="incomeCtgy">분류</th>
-							                                        <th>내용</th>
-							                                        <th>금액</th>
-							                                    </tr>
-							                                    </thead>
-							                                    <tbody id="income">
-							                                    </tbody>
-							                                </table>
-							                            </div>
-							                </div>
+	                            	<div id="note-tab" class="tab-pane fade" style="height:400px;overflow: auto;">
+										   <div class="panel panel-yellow" id="incomeTable">
+						                            <div class="panel-heading">수입</div>
+						                            <div class="panel-body">
+						                                <table class="table table-hover-color">
+						                                    <thead>
+						                                    <tr id="incomeColumn">
+						                                        <th id="incomeCtgy">분류</th>
+						                                        <th>내용</th>
+						                                        <th>금액</th>
+						                                    </tr>
+						                                    </thead>
+						                                    <tbody id="income">
+						                                    </tbody>
+						                                </table>
+						                            </div>
+						                   </div>
 	                			   </div>
 	                			   
                 			</div>
@@ -275,13 +278,25 @@ tbody#income tr.incomeInfo:hover{
 	                    </ul>
 	                    <br>
 					 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
-                		 <button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                		
+                		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 			                 		 지출/수입 등록
-			             </button>
-			             <br><br>
-                	</div>
+			            </button>
+			            
+			            
+			             <h4 class="box-heading">Contextual classes</h4>
+                         <ul class="list-group">
+                             <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+                             <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+                             <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+                             <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+                         </ul>
+			             
+			             
+			        </div>
+               </div>
                 
-		  </div> 
+		  </div> <!-- page wrapper  -->
                     <br>
 		            <br>    
 		                
@@ -395,6 +410,13 @@ tbody#income tr.incomeInfo:hover{
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
+<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jquery.jqplot.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>

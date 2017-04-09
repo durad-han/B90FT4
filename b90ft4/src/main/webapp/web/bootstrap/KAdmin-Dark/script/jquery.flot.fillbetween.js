@@ -12,7 +12,7 @@ In order to name the other series, you need to give it an id, like this:
 
 	var dataset = [
 		{ data: [ ... ], id: "foo" } ,         // use default bottom
-		{ data: [ ... ], fillBetween: "foo" }, // use first dataset as bottom
+		{ data: [ ... ], fillBetween: "foo" }, // use first datpie-with-gradient-fillaset as bottom
 	];
 
 	$.plot($("#placeholder"), dataset, { lines: { show: true, fill: true }});

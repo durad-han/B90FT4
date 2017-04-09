@@ -211,7 +211,13 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 								     and STR_TO_DATE ('2017-05-31', '%Y-%m-%d')
 		
 		
-		
+	select inc.income_category_name incomeCategoryName, sum(income.income_amount) eachSum
+		  from tb_sam_income income, tb_sam_income_category inc
+		where income.income_category_no = inc.income_category_no
+		  and income.user_id = '김현영'
+		  and income.income_date between STR_TO_DATE ('2017-04-02', '%Y-%m-%d') 
+								     and STR_TO_DATE ('2017-04-08', '%Y-%m-%d')
+		group by income.income_category_no	
 		
 		
 		
