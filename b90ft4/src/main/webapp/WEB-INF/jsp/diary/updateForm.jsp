@@ -178,26 +178,69 @@
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
-						<div class="page-content">
-						<table class="tb">
-						<tr class="ttop" >
-						 	<td><c:out value="${diaryVO.title}"/></td>
-						 	<td><fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
-						</tr>
-						<tr class="content">
-						 	<td colspan="2"><c:out value="${diaryVO.content}"/></td>
-						</tr>
-						</table>
-						
-						<div class="row">
-						    <div class="col-md-9"></div>
-						    <div class="col-md-3">
-						    <a href='updateForm.do?diaryNo=<c:out value="${diaryVO.diaryNo}"/>' class="btn btn-success btn-lg">수정</a>
-								<a href='delete.do?no=${diaryVO.diaryNo}' class="btn btn-danger btn-lg">삭제</a>
-								<a href='list.do' class="btn btn-info btn-lg">목록</a>
-						    </div>
-						</div>
-						<hr>
+						<div class="content">
+		<ol class="breadcrumb">
+		  <li><a href="${pageContext.request.contextPath}/main/main">Home</a></li>
+		  <li class="active">자유게시판</li>
+		</ol>	
+		
+		<form action='update.do' method='post'>
+			<input type="hidden" name="diaryNo" value="<c:out value="${diary.diaryNo}"/>" /> 
+			<table class="table table-no-border">
+			<tr>
+				<td class="td-txt-right td-wp10">제목</td> 
+			 	<td>
+			 		<div class="form-group">
+			 			<input type='text' name='title' class="form-control input-wp1" value="<c:out value="${diary.title}"/>" />
+			 		</div>
+			 	</td>
+			</tr>
+			<tr>
+				<td class="td-txt-right td-wp10">내용</td>
+			 	<td><div class="form-group">
+			 		<textarea name='content' rows='5' cols='70' class="form-control"><c:out value="${diary.content}"/></textarea>
+			 		</div>
+			 	</td>
+			</tr>
+			</table>
+			
+			<div class="row">
+			    <div class="col-md-10"></div>
+			    <div class="col-md-2">
+					<button class="btn btn-primary btn-lg">수정</button>
+					<a href='list' class="btn btn-info btn-lg">목록</a>
+			    </div>
+			</div>
+		</form>
+				<!-- 날씨정보 입력 -->
+<!-- 				<td class="td-txt-right td-wp10">날씨</td> -->
+<!-- 			 	<td> -->
+<!-- 			 		<div class="form-group"> -->
+<!-- 			 			<label for="sunny">  -->
+<!-- 			 			<input type='radio' name='weather' value='sunny' /> -->
+<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/> --%>
+<!-- 			 			</label> -->
+			 			
+<!-- 			 			<label for="cloud">  -->
+<!-- 			 			<input type='radio' name='weather' value='cloud' /> -->
+<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/cloud.jpg"/> --%>
+<!-- 			 			</label> -->
+			 			
+<!-- 			 			<label for="rain">  -->
+<!-- 			 			<input type='radio' name='weather' value='rain' /> -->
+<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/rain.jpg"/> --%>
+<!-- 						</label> -->
+<!-- 			 			<label for="rain">  -->
+<!-- 			 			<input type='radio' name='weather' value='snow' /> -->
+<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/snow.jpg"/> --%>
+<!-- 			 			</label> -->
+<!-- 			 			<label for="rain">  -->
+<!-- 			 			<input type='radio' name='weather' value='hail' /> -->
+<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/hail.jpg"/> --%>
+<!-- 			 			</label> -->
+<!-- 			 		</div> -->
+<!-- 			 	</td> -->
+	</div>
                 <!--END CONTENT-->
                 <!--BEGIN FOOTER-->
                 <!--END FOOTER-->
@@ -245,7 +288,6 @@
 
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
-   
 
 
 </body>
