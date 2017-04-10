@@ -186,6 +186,11 @@
 		
 		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post' enctype="multipart/form-data">
 			<table class="table table-no-border">
+			<tr class="hidden">
+				<td>
+					<input type='text' name='userId' />
+				</td>
+			</tr>
 			<tr>
 				<td class="td-txt-right td-wp10">제목</td> 
 			 	<td>
@@ -296,7 +301,13 @@
 
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
-
+	 <script>
+    	$.ajax({
+    		type : 'POST',
+    		url
+    	
+    	})
+    </script>
 
 </body>
 </html>

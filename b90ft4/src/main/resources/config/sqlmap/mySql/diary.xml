@@ -82,25 +82,25 @@
 		insert	into tb_Sam_Diary 
 				(
 				User_Id,
-				Latitude,
-				Longitude,
-				Weather_City,
+<!-- 				Latitude, -->
+<!-- 				Longitude, -->
+<!-- 				Weather_City, -->
 				Title,
-				Content,
-				File_Ori,
-				File_New,
-				File_Path
+				Content
+<!-- 				File_Ori, -->
+<!-- 				File_New, -->
+<!-- 				File_Path -->
 				)
 		values	(
 				#{userId},     
-				#{latitude},    
-				#{longitude},   
-				#{weatherCity},
+<!-- 				#{latitude},     -->
+<!-- 				#{longitude},    -->
+<!-- 				#{weatherCity}, -->
 				#{title},       
-				#{content},     
-				#{fileOri},    
-				#{fileNew},    
-				#{filePath}    
+				#{content}   
+<!-- 				#{fileOri},     -->
+<!-- 				#{fileNew},     -->
+<!-- 				#{filePath}     -->
 				)
 	</insert>
 
@@ -113,14 +113,14 @@
 	============================================================================-->
 	<update id="updateDiary" parameterType="diaryVO" >
 		update	tb_Sam_Diary
-		set		Latitude    		= #{latitude},    
-				Longitude   		= #{longitude},   
-				Weather_City		= #{weatherCity}, 
-				Title       		= #{title},       
-				Content     		= #{content},     
-				File_Ori            = #{fileOri},     
-				File_New            = #{fileNew},     
-				File_Path           = #{filePath}     
+<!-- 		set		Latitude    		= #{latitude},     -->
+<!-- 				Longitude   		= #{longitude},    -->
+<!-- 				Weather_City		= #{weatherCity},  -->
+		set		Title       		= #{title},       
+				Content     		= #{content}     
+<!-- 				File_Ori            = #{fileOri},      -->
+<!-- 				File_New            = #{fileNew},      -->
+<!-- 				File_Path           = #{filePath}      -->
 		where	Diary_No			= #{diaryNo}
 	</update>
 	
@@ -132,7 +132,8 @@
 			리턴되는 값의 데이터타입: 없음
 	============================================================================-->
 	<delete id="deleteDiary" parameterType="int">
-		delete	tb_Sam_Diary
+		delete	
+		  from  tb_Sam_Diary
 		where	Diary_No = #{diaryNo}
 	</delete>
 	
