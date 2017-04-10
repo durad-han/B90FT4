@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
+import b90ft4.web.repository.vo.DebtVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
+import b90ft4.web.repository.vo.LoanVO;
 import b90ft4.web.repository.vo.SearchVO;
 
 @Controller
@@ -97,6 +99,52 @@ public class AccBookController {
 		service.updateBudget(expense, income);
 		return "ok";
 	}
+	
+	/* 대입금 / 차입금 파트 */
+	
+	@RequestMapping("/loanDept.do")
+	public void loanDept() {
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("/bondList.do")
+	public Map<String, Object> bondList(SearchVO search) throws Exception {
+		search.setUserId("김현영");
+		System.out.println(search.getStartDate());
+		return service.retrieveBondList(search);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/regiBond.do")
+	public String regiLoanDebt(LoanVO loan,DebtVO debt) throws Exception {
+		loan.setUserId("김현영");
+		debt.setUserId("김현영");
+		service.registerBond(loan, debt);
+		return "ok";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/deleteBond.do")
+	public String deleteBond(SearchVO search) throws Exception {
+		service.deleteBond(search);
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateBond.do")
+	public String deleteBond(LoanVO loan,DebtVO debt) throws Exception {
+		service.updateBond(loan, debt);
+		return "ok";
+	}
+	
+	@RequestMapping("/accMemo.do")
+	public void memo() {
+	}
+	
+	
 }
 
 
@@ -109,6 +157,17 @@ public class AccBookController {
 
 
 
+//		System.out.println(loan.getDebtor());
+//		System.out.println(loan.getLoanAmount());
+//		System.out.println(loan.getLoanContent());
+//		System.out.println(loan.getUserId());
+//		System.out.println(loan.getLoanDate());
+//		System.out.println("--------------------------");
+//		System.out.println(debt.getMoneyLender());
+//		System.out.println(debt.getDebtAmount());
+//		System.out.println(debt.getDebtContent());
+//		System.out.println(debt.getUserId());
+//		System.out.println(debt.getDebtDate());
 //System.out.println("지출 등록");
 //System.out.println(expense.getExpenseAmount());
 //System.out.println(expense.getExpenseCategoryNo());

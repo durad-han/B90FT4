@@ -1,6 +1,5 @@
 package b90ft4.web.accountbook.service;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.AccBookMapper;
+import b90ft4.web.repository.vo.DebtVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
+import b90ft4.web.repository.vo.LoanVO;
 import b90ft4.web.repository.vo.SearchVO;
 
 @Service
@@ -87,13 +88,82 @@ public class AccBookServiceImpl implements AccBookService {
 		
 		if(expense.getExpenseNo()!=0){
 			dao.updateExpense(expense);
+			return;
 		}
 		
 		if(income.getIncomeNo()!=0){
 			dao.updateIncome(income);
+			return;
+		}
+	}
+	
+	// 대입금 , 차입금 파트.
+	
+	public void registerBond(LoanVO loan, DebtVO debt) 
+			throws Exception {
+		
+		if(loan.getDebtor() != null){
+			dao.insertLoan(loan);
+			return;
+		}
+		
+		if(debt.getMoneyLender() != null) {
+			dao.insertDebt(debt);
+			return;
+		}
+	}
+	
+	
+	public Map<String, Object> retrieveBondList(SearchVO search) 
+			throws Exception{
+
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("loan", dao.selectLoan(search));
+		result.put("debt", dao.selectDebt(search));
+		
+		return result;
+		
+	}
+	
+	public void deleteBond(SearchVO search) 
+			throws Exception{
+		
+		if(search.getBondCode()==0){
+			dao.deleteLoan(search);
+		}else {
+			dao.deleteDebt(search);
 		}
 		
 	}
 	
+	public void updateBond(LoanVO loan,DebtVO debt) 
+			throws Exception{
+		
+		if(loan.getLoanNo()!=0){
+			dao.updateLoan(loan);
+			return;
+		}
+		
+		if(debt.getDebtNo()!=0){
+			dao.updateeDebt(debt);
+			return;
+		}
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

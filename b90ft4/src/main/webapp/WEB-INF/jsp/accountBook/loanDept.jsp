@@ -5,27 +5,6 @@
 <head>
 <style>
 
-/* .ui-datepicker-header{ */
-/* 	background: green; */
-/* } */
-/* .ui-datepicker-month{ */
-/* 	background: transparent; */
-/* } */
-/* .ui-datepicker-year{ */
-/* 	background: transparent; */
-/* } */
-/* .ui-datepicker-prev{ */
-/* 	background: transparent; */
-/* 	height: 100%; */
-/* } */
-/* .ui-datepicker-next{ */
-/* 	background: transparent; */
-/* 	height: 100%; */
-/* } */
-/* .ui-datepicker{ */
-/* 	width: 100%; */
-/* } */
-
 .ui-datepicker-today{ 
 /* 	background-color: black; */
 } 
@@ -53,24 +32,8 @@ tbody#income tr.incomeInfo:hover{
   	
   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/accountbook/jquery.jqplot.css" />
   	
-  	
-<!--   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
-<!--     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" /> -->
-<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> -->
-	<!-- CSS Files -->
-<%--     <link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/bootstrap.min.css" rel="stylesheet" /> --%>
-<%--     <link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/material-kit.css" rel="stylesheet"/> --%>
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-<%-- 	<link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/demo.css" rel="stylesheet" /> --%>
     
-    
-    
-    
-    
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css"/> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css"/>
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/bootstrap.min.css"/> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css"/>
      <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css"/>
@@ -80,6 +43,7 @@ tbody#income tr.incomeInfo:hover{
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
  	<c:import url ="/WEB-INF/jsp/common/basicInclude.jsp"/>
+ 	
 </head>
 
 <body>
@@ -150,7 +114,7 @@ tbody#income tr.incomeInfo:hover{
                     </i><span class="menu-title">지출/수입</span></a>
                        
                     </li>
-                        <li><a href="${pageContext.request.contextPath}/accountBook/loanDept.do"><i class="fa fa-fw">
+                    <li><a href="${pageContext.request.contextPath}/accountBook/loanDept.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">대입금/차입금</span></a>
                     </li>
@@ -194,17 +158,8 @@ tbody#income tr.incomeInfo:hover{
                   <div class="col-lg-6" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
-                            <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
-                            <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-                           
-<!--                            <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li> -->
-<!--                            <li id="week"><a href="#1" data-toggle="tab" >주</a></li> -->
-<!--                            <li id="month"><a href="#1" data-toggle="tab" >월</a></li> -->
+                            <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">대입금</a></li>
+                            <li id="incomeTab"><a href="#note-tab" data-toggle="tab">차입금</a></li>
                         </ul>
                         
                 		<h3> 
@@ -214,107 +169,66 @@ tbody#income tr.incomeInfo:hover{
                 		<br><br>
                 		
                 			<div id="generalTabContent" class="tab-content responsive">
-			                       <div id="alert-tab" class="tab-pane fade in active" style="height:630px;overflow: ">
-										   <div class="panel panel-green" id="expenseTable">
-						                            <div class="panel-heading">지출</div>
-						                            <div class="panel-body">
-						                                <table class="table table-hover-color">
-						                                    <thead>
-						                                    <tr id="expenseColumn">
-						                                        <th id="expenseCtgy">
-						                                        	분류
-						                                        </th>
-						                                        <th>내용</th>
-						                                        <th>금액</th>
-						                                    </tr>
-						                                    </thead>
-						                                    <tbody id="expense">
-						                                    </tbody>
-						                                </table>
-						                            </div>
-						                   </div>
-							                   
-										   <div id="expenseDiv" style='display: none;height: 50%;'>			                       
-				                		   </div>
-				                		   <br>
-				                		   <div id="incomeDiv" style='display: none;height: 50%;'>			                       
-				                		   </div>
-			                	   </div>
+			                     
+			                   <div id="alert-tab" class="tab-pane fade in active" style="height:400px;overflow: auto;">
+								  
+								   <div class="panel panel-green" id="">
+				                            <div class="panel-heading">받을 돈</div>
+				                            <div class="panel-body">
+				                                <table class="table table-hover-color">
+				                                    <thead>
+				                                    <tr>
+				                                        <th>
+				                                        	빌려간 사람
+				                                        </th>
+				                                        <th>내용</th>
+				                                        <th>금액</th>
+				                                    </tr>
+				                                    </thead>
+				                                    <tbody id="loanTbody">
+				                                    </tbody>
+				                                </table>
+				                            </div>
+				                   </div>
+				                   
+								   <div class="panel panel-yellow" id="">
+				                            <div class="panel-heading">갚을 돈</div>
+				                            <div class="panel-body">
+				                                <table class="table table-hover-color">
+				                                    <thead>
+				                                    <tr>
+				                                        <th>빌려준 사람</th>
+				                                        <th>내용</th>
+				                                        <th>금액</th>
+				                                    </tr>
+				                                    </thead>
+				                                    <tbody id="debtTbody">
+				                                    </tbody>
+				                                </table>
+				                            </div>
+				                   </div>
+				                   
+				                </div>
 			                				
-	                            	<div id="note-tab" class="tab-pane fade" style="height:400px;overflow: auto;">
-										   <div class="panel panel-yellow" id="incomeTable">
-						                            <div class="panel-heading">수입</div>
-						                            <div class="panel-body">
-						                                <table class="table table-hover-color">
-						                                    <thead>
-						                                    <tr id="incomeColumn">
-						                                        <th id="incomeCtgy">분류</th>
-						                                        <th>내용</th>
-						                                        <th>금액</th>
-						                                    </tr>
-						                                    </thead>
-						                                    <tbody id="income">
-						                                    </tbody>
-						                                </table>
-						                            </div>
-						                   </div>
-	                			   </div>
-	                			   
-                			</div>
                 		</div>
+                			
+                 </div>
                 
                 
-                    <div class="col-lg-3">
+                 <div class="col-lg-3">
 					    <ul id="generalTab" class="nav nav-tabs responsive">
 	                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
 	                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
-	                           <li id="month"><a href="#1" data-toggle="tab" >월</a></li>
 	                    </ul>
 	                    <br>
 					 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
                 		
-                		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-			                 		 지출/수입 등록
+                		<button id="bondModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			                 		 대입금/차입금 등록
 			            </button>
-			            
 			         
 			         
-			    <div id="monthBudgteTable" style="display: none;">
-			        <h4 class="box-heading">월별 지출/수입 현황</h4>
-                           <div class="panel panel-red">
-                            <div class="panel-heading">지출</div>
-                            <div class="panel-body">
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>분류</th>
-                                        <th>합계</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="monthExpense">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="panel panel-blue" style="background:#FFF;">
-                            <div class="panel-heading">수입</div>
-                            <div class="panel-body">
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>분류</th>
-                                        <th>합계</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="monthIncome">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-			             
-			      </div>
-			    </div> <!-- cols -->
+			     </div> <!-- cols -->
              
              </div> <!-- row -->
                 
@@ -327,30 +241,27 @@ tbody#income tr.incomeInfo:hover{
 							<div class="modal-content">
 									
 										<div class="modal-header">
-											<h4 class="modal-title">지출/수입 등록</h4>
+											<h4 class="modal-title">대입금/차입금 등록</h4>
 										</div>
 										
 										<div class="modal-body">
-											<form name="budgetF">
+											<form name="bondF">
 			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
 		                                                <div class="col-sm-9 controls">
 		                                                    <div class="row">
 		                                                        <div class="col-xs-9">
-		                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;
-		                                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;
-		                                                                                 수입</label></div>
+		                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="bondCode" checked="checked"/>&nbsp;
+		                                                               	 대입금</label><label class="radio-inline"><input type="radio" value="1" name="bondCode"/>&nbsp;
+		                                                                                 차입금</label></div>
 		                                                        </div>
 		                                                    </div>
 		                                                </div>
 		                                            </div>
 			                                            
-											 		   <div class="form-group"><label class="col-sm-3 control-label">분류</label>
+											 		   <div class="form-group"><label class="col-sm-3 control-label" id="bondName"></label>
 			                                              	<div class="col-sm-9 controls">
 			                                                  	<div class="row">
-			                                                    	  <div class="col-xs-4">
-			                                                     	  	<select class="form-control">
-			                                                     	  	</select>
-			                                                    	 	</div>
+			                                                    	    <div class="col-xs-9"><input type="text" class="form-control"/></div>
 			                                                  	 </div>
 			                                              	 </div>
 			                                    	   </div>
@@ -376,10 +287,10 @@ tbody#income tr.incomeInfo:hover{
 			                      	   </div>
 			                                
 									<div class="modal-footer">
-										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
-										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
+										<button type="button" id="updateBond" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
+										<button type="button" id="deleteBond" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
 										
-										<button type="button" id="budgetRegi"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
+										<button type="button" id="regiLoanDept"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
 									
@@ -432,29 +343,11 @@ tbody#income tr.incomeInfo:hover{
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jquery.jqplot.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>
 
 
-<script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
+
+<script src="${pageContext.request.contextPath}/web/js/accountbook/loanDept.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
-
-
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/material.min.js"></script> --%>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/nouislider.min.js" type="text/javascript"></script> --%>
-<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/material-kit.js" type="text/javascript"></script> --%>
-
-
 
 
 

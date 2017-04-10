@@ -4,7 +4,14 @@ public class ExpenseResultVO {
 	
 	private String expenseCategoryName;
 	private int eachSum;
+	private int expenseCategoryNo;
 	
+	public int getExpenseCategoryNo() {
+		return expenseCategoryNo;
+	}
+	public void setExpenseCategoryNo(int expenseCategoryNo) {
+		this.expenseCategoryNo = expenseCategoryNo;
+	}
 	public String getExpenseCategoryName() {
 		return expenseCategoryName;
 	}

@@ -7,10 +7,17 @@ public class SearchVO extends PageVO {
 	private String endDate;
 	private int delNo;
 	private int budgetCode;
+	private int bondCode;
 	private int incomeCategoryNo;
 	private int expenseCategoryNo;
 	private int budgetSearchCode;
 	
+	public int getBondCode() {
+		return bondCode;
+	}
+	public void setBondCode(int bondCode) {
+		this.bondCode = bondCode;
+	}
 	public int getBudgetSearchCode() {
 		return budgetSearchCode;
 	}

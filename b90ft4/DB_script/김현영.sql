@@ -27,6 +27,20 @@ insert into tb_sam_user (
 	'1234'
 )
 
+insert into tb_sam_loan ( 
+				user_id,
+				debtor,
+				loan_content,
+				loan_date,
+				loan_amount
+			) values ( 
+				'김현영',
+				'홍길동',
+				'ㅋㅋ',
+				'2017-04-10',
+				1000
+)
+
 delete from tb_sam_income
   where income_no =2
   
@@ -183,8 +197,8 @@ where ex.expense_category_no = exc.expense_category_no
   and ex.user_id = '김현영'
   and ex.expense_date between STR_TO_DATE ('2017-04-01', '%Y-%m-%d') 
 						     and STR_TO_DATE ('2017-04-30', '%Y-%m-%d')
-group by ex.expense_category_no
-
+  and ex.expense_category_no = 3
+  
 
 select expense_category_no,expense_date 
   from tb_sam_expense
@@ -199,7 +213,7 @@ select expense_category_no,expense_date
 where user_id = '김현영'
   and expense_date between STR_TO_DATE ('2017-04-01', '%Y-%m-%d') 
 					   and STR_TO_DATE ('2017-04-30', '%Y-%m-%d')
-group by expense_category_no
+  and ex.expense_category_no = 1
 
 
 
@@ -207,8 +221,10 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		  from tb_sam_expense ex, tb_sam_expense_category exc
 		where ex.expense_category_no = exc.expense_category_no
 		  and ex.user_id = '김현영'
-		  and ex.expense_date between STR_TO_DATE ('2017-05-01', '%Y-%m-%d') 
-								     and STR_TO_DATE ('2017-05-31', '%Y-%m-%d')
+		  and ex.expense_date between STR_TO_DATE ('2017-04-01', '%Y-%m-%d') 
+								     and STR_TO_DATE ('2017-04-30', '%Y-%m-%d')
+		and ex.expense_category_no = 1
+		
 		
 		
 	select inc.income_category_name incomeCategoryName, sum(income.income_amount) eachSum
@@ -221,6 +237,17 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		
 		
 		
+	select *
+		  from tb_sam_debt
+		where user_id = '김현영'
+		  and  debt_date = '2017-04-10'
+			  
+	select *
+		  from tb_sam_loan
+		where user_id = '김현영'
+		  and  loan_date = '2017-04-10'
+			  
+			
 		
 		
 		
