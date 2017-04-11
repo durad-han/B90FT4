@@ -381,8 +381,8 @@ tbody#income tr.incomeInfo:hover{
 			                      	   </div>
 			                                
 									<div class="modal-footer">
-										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
-										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
+										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">수정</button>
+										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">삭제</button>
 										
 										<button type="button" id="budgetRegi">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-success btn-simple" data-dismiss="modal">닫기</button>

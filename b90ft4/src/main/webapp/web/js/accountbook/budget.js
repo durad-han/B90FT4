@@ -342,7 +342,6 @@
 		if(!flag){
 			budgetList($("#actualDate").val());
 			console.log("순서1 - ");
-			modAndDelEvent();
 		}
 		
 		addBudgetName();
@@ -376,57 +375,11 @@
 			var temp = ic[i];
 			icOpt+="<option value='"+ temp.incomeCategoryNo  + "'>"+ temp.incomeCategoryName +"</option>";
 		}
-		
-		$("[name=budgetF] select")
-		.attr("name","expenseCategoryNo")
-		.html(esOpt);
-		
-		$("[name=budgetF] input:eq(2)")
-		.attr("name","expenseAmount");
-		
-		$("[name=budgetF] input:eq(3)")
-		.attr("name","expenseContent");
-
-		$("[name=budgetF] input:eq(4)")
-		.attr("name","expenseDate");
-		
+		addBudgetName();
 	});
 	
 	$("[name=budgetCode]").click(function(e) {
-		
-		if($(this).val()==0) {
-			
-			budgetCode=0;
-			
-			$("[name=budgetF] select")
-			.attr("name","expenseCategoryNo")
-			.html(esOpt);
-			
-			$("[name=budgetF] input:eq(2)")
-			.attr("name","expenseAmount");
-			
-			$("[name=budgetF] input:eq(3)")
-			.attr("name","expenseContent");
-
-			$("[name=budgetF] input:eq(4)")
-			.attr("name","expenseDate");
-			
-		}else{
-			budgetCode=1;
-		
-			$("[name=budgetF] select")
-			.attr("name","incomeCategoryNo")
-			.html(icOpt);
-			
-			$("[name=budgetF] input:eq(2)")
-			.attr("name","incomeAmount");
-			
-			$("[name=budgetF] input:eq(3)")
-			.attr("name","incomeContent");
-			
-			$("[name=budgetF] input:eq(4)")
-			.attr("name","incomeDate");
-		}
+		addBudgetName();
 	});
 	
 	/* -------------------------------------------------------------------------------------------------------------- */
@@ -487,9 +440,6 @@
 		}
 		
 		return labelColor;
-		
-		
-		
 		
 	}
 	
@@ -740,7 +690,9 @@
 						$("tbody#expense").html(expenseHtml);
 						
 						// 지출 수정/삭제를 위한 이벤트 등록
-						$("tbody#expense > tr.expenseInfo").click(function(){
+						$("tbody#expense > tr.expenseInfo").click(function(e){
+							
+							e.stopPropagation();
 							
 							$("#updateBudget").show();
 							$("#deleteBudget").show();
@@ -765,12 +717,9 @@
 							addBudgetName();
 							$("[name=budgetF] select").val(expenseObj.expenseCategoryNo);
 							$("[name=budgetF] input:eq(2)").val(expenseObj.expenseAmount);
-							console.log("선수확인",$("[name=budgetF] input:eq(2)").val());
-							console.log("순서2");
 							$("[name=budgetF] input:eq(3)").val(expenseObj.expenseContent);
 							$("#budgetModal").trigger("click");
-//							$("body").addClass("pace-done modal-open")
-//								     .css("padding-right", "15px");
+							
 						});
 						
 						weekFlag=false;
@@ -851,8 +800,10 @@
 						$("tbody#income").html(incomeHtml);
 						
 						// 수입 수정/삭제를 위한 이벤트 등록
-						$("tbody#income > tr.incomeInfo").click(function(){
+						$("tbody#income > tr.incomeInfo").click(function(e){
 			
+							e.stopPropagation();
+							
 							$("#updateBudget").show();
 							$("#deleteBudget").show();
 							$("#budgetRegi").hide();
@@ -890,9 +841,12 @@
 	// 수정,삭제 버튼에 이벤트 등록.
 	function modAndDelEvent() {
 		
-		$("#deleteBudget").click(function (){
+		$("#deleteBudget").click(function (e){
+			
+			console.log("삭제 몇번 실행될까?");
 			var delNo;
-			if(!budgetCodeFordel){
+			
+			if(budgetCodeFordel==0){
 				delNo = expenseObj.expenseNo;
 			}else{
 				delNo = incomeObj.incomeNo;
@@ -903,16 +857,19 @@
 				data:{
 					budgetCode:budgetCodeFordel,
 					delNo : delNo
-				}
+				},
+				async:false
 			}).done(function(result){
 //				console.log(result);
 				initForm();
-			})
+				
+			});
+			
 		});
 	
 		$("#updateBudget").click(function (e){
 			
-			e.stopPropagation();
+			console.log("수정 몇번 실행될까?");
 			
 			var modNo;
 			if(!budgetCodeFordel){
@@ -941,6 +898,7 @@
 //				console.log(msg);
 				initForm();
 			});
+			
 		});
 	}
 	
@@ -991,6 +949,7 @@
 			});
 
 			$("#budgetRegi").attr("data-dismiss","modal");
+			
 			setTimeout(function() {
 				$("#budgetRegi").removeAttr("data-dismiss");
 			},10);
