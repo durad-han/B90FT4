@@ -972,28 +972,28 @@
 				}
 		});
 		
-	console.log("params",params);
-	console.log("path",path);
+		console.log("params",params);
+		console.log("path",path);
 		
-	$.ajax({
-			url: path,
-			type:"POST",
-			contentType: "application/x-www-form-urlencoded",
-			data:params,
-			async:false
-		}).done(function(msg){
-			console.log(msg);
+		$.ajax({
+				url: path,
+				type:"POST",
+				contentType: "application/x-www-form-urlencoded",
+				data:params,
+				async:false
+			}).done(function(msg){
+				console.log(msg);
+			});
+		
+			initForm();
+			
 		});
 	
-		initForm();
-		
-	});
-	
-	// close를 눌렀을 때 초기화 시키기.
-	$("#closeF").click(function() {
-//		console.log("expense.expenseNo",expenseObj.expenseNo);
-		initForm(1);
-	});
+		// close를 눌렀을 때 초기화 시키기.
+		$("#closeF").click(function() {
+	//		console.log("expense.expenseNo",expenseObj.expenseNo);
+			initForm(1);
+		});
 	
 	
 	// 원 그래프 그리기 함수.

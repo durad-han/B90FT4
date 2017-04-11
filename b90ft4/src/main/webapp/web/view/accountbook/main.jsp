@@ -231,7 +231,7 @@
 				<!--BEGIN TITLE & BREADCRUMB PAGE-->
 				<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
 					<div class="page-header pull-left">
-						<div class="page-title">Data Grid</div>
+						<div class="page-title">오늘의 뉴스</div>
 					</div>
 					<ol class="breadcrumb page-breadcrumb pull-right">
 						<li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i
@@ -268,82 +268,22 @@
 															<i class="fa fa-sort"></i>jPList Actions
 														</div>
 														<div class="jplist-panel box panel-top">
-															<button type="button" data-control-type="reset"
-																data-control-name="reset" data-control-action="reset"
-																class="jplist-reset-btn btn btn-default">
-																Reset<i class="fa fa-share mls"></i>
-															</button>
-															<div data-control-type="drop-down"
-																data-control-name="paging" data-control-action="paging"
-																class="jplist-drop-down form-control">
-																<ul class="dropdown-menu">
-																	<li><span data-number="3"> 3 per page</span></li>
-																	<li><span data-number="5"> 5 per page</span></li>
-																	<li><span data-number="10" data-default="true">
-																			10 per page</span></li>
-																	<li><span data-number="all"> view all</span></li>
-																</ul>
-															</div>
-															<div data-control-type="drop-down"
-																data-control-name="sort" data-control-action="sort"
-																data-datetime-format="{month}/{day}/{year}"
-																class="jplist-drop-down form-control">
-																<ul class="dropdown-menu">
-																	<li><span data-path="default">Sort by</span></li>
-																	<li><span data-path=".title" data-order="asc"
-																		data-type="text">Title A-Z</span></li>
-																	<li><span data-path=".title" data-order="desc"
-																		data-type="text">Title Z-A</span></li>
-																	<li><span data-path=".desc" data-order="asc"
-																		data-type="text">Description A-Z</span></li>
-																	<li><span data-path=".desc" data-order="desc"
-																		data-type="text">Description Z-A</span></li>
-																	<li><span data-path=".like" data-order="asc"
-																		data-type="number" data-default="true">Likes
-																			asc</span></li>
-																	<li><span data-path=".like" data-order="desc"
-																		data-type="number">Likes desc</span></li>
-																	<li><span data-path=".date" data-order="asc"
-																		data-type="datetime">Date asc</span></li>
-																	<li><span data-path=".date" data-order="desc"
-																		data-type="datetime">Date desc</span></li>
-																</ul>
-															</div>
-															<div class="text-filter-box">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-search"></i></span><input data-path=".title"
-																		type="text" value="" placeholder="Filter by Title"
-																		data-control-type="textbox"
-																		data-control-name="title-filter"
-																		data-control-action="filter" class="form-control" />
-																</div>
-															</div>
-															<div class="text-filter-box">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-search"></i></span><input data-path=".desc"
-																		type="text" value=""
-																		placeholder="Filter by Description"
-																		data-control-type="textbox"
-																		data-control-name="desc-filter"
-																		data-control-action="filter" class="form-control" />
-																</div>
-															</div>
-															<div data-type="Page {current} of {pages}"
-																data-control-type="pagination-info"
-																data-control-name="paging" data-control-action="paging"
-																class="jplist-label btn btn-default"></div>
-															<div data-control-type="pagination"
-																data-control-name="paging" data-control-action="paging"
-																class="jplist-pagination"></div>
+														
+														<button onclick="makeNews('rss')"class="btn"> 속보 </button>
+														<button onclick="makeNews('today')"class="btn"> 오늘의 주요뉴스 </button>
+														<button onclick="makeNews('it')"class="btn"> IT </button>
+							                            <button onclick="makeNews('culture')" class="btn btn-primary">culture</button>
+							                            <button onclick="makeNews('politics')" class="btn btn-info">politics</button>
+							                            <button onclick="makeNews('life')"	   class="btn btn-success">life</button>
+							                            <button onclick="makeNews('engilshNews')" class="btn btn-warning">engilshNews</button>
+															
 														</div>
 
 														<div class="box text-shadow">
 															<!--<item>1</item>-->
 															<!-- 테이블 시작. -->
 															<table class="demo-tbl" id="newsTable">
-
+																
 																<tr class="tbl-item">
 																	<!--<img/>-->
 																	<td class="img"></td>
@@ -464,67 +404,107 @@
 	<script
 		src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script>
 	<script>
-                  
-     		var html="";
-     		$.ajax({
-     			url:"http://localhost:10001/login/pass.do?",
-     			dataType:"json"
-     		}).done(function(result) {
-     			console.log(result.rss.channel[0].item[0]);
-
-     			var items = result.rss.channel[0].item;
-     			console.log(items);
-     			console.log(items[0].title[0]);
-         			
-//          			$("#title").html(items[5].title[0]);
-//          			$("#author").html(items[5].author[0]);
-//          			$("#category").html(items[5].category[0]);
-//          			$("#description").html(arr[1]);
-//          			$("#img").html(arr[0]);
-//          			$("#link").html("<a href="+items[5].link[0]+">링크</a>");
-//          			$("#pubDate").html(items[5].pubDate[0]);
-         			
-         			
-//          				html+="<tr>";
-//          				html+="<td>"+items[i].title[0]+"</td>";
-//          				html+="<td>"+items[i].category[0]+"</td>";
-//          				html+="<td>"+items[i].description[0]+"</td>";
-//          				html+="<td><a href='"+items[i].link[0]+"'>링크</a></td>";
-//          				html+="<td>"+items[i].pubDate[0]+"</td>";
-//          				html+="</tr>";
-
-				   for(var i=0; i < items.length; i ++ ) {
-						if(items[i].description[0].indexOf("</table>") != -1 ) {
-			     			var arr = (items[i].description[0]).split("</table>");
-			     			arr[0]+="</table>";
-			     			arr[1];
-			         		html+='<tr class="tbl-item">';
-			                html+=  '<td class="img">'+arr[0]+'</td>';
-			                html+=  '<td class="td-block">'
-		                	html+=      '<p class="date">'+items[i].pubDate[0]+'</p>';
-			                html+=      '<p class="title">'+items[i].title[0]+'</p>';
-			                html+=      '<p class="desc">'+arr[1]+'</p>';
-			                html+=      '<p class="like"><a href='+items[i].link[0]+'><b>기사 보기</b></a></p>';
-		                	html+=	'</td>';
-			                html+='</tr>';
-						} else{
-							html+='<tr class="tbl-item">';
-			                html+=  '<td class="img">사진없음</td>';
-			                html+=  '<td class="td-block">'
-		                	html+=      '<p class="date">'+items[i].pubDate[0]+'</p>';
-			                html+=      '<p class="title">'+items[i].title[0]+'</p>';
-			                html+=      '<p class="desc">'+items[i].description[0]+'</p>';
-			                html+=      '<p class="like"><a href='+items[i].link[0]+'><b>기사 보기</b></a></p>';
-		                	html+=	'</td>';
-			                html+='</tr>';
-						}
-         	   }
-		                
-         			$("#newsTable").html(html);
-         			
-         			
-      		})
-                		
+	
+			function makeNews(category) {
+	
+		     		var html="";
+		     		
+		     		$.ajax({
+		     			
+		     			url:"http://localhost:10001/news?category="+category,
+		     			dataType:"json"
+		     			
+		     		}).done(function(result) {
+		
+		     			   var items = result.rss.channel[0].item;
+		     			   
+						   console.log(items[0]);		     			   
+		     			
+						   for(var i=0; i < items.length; i ++ ) {
+							   
+								if(items[i].description[0].indexOf("</table>") != -1 ) {
+					     			var arr = (items[i].description[0]).split("</table>");
+					     			arr[0]+="</table>";
+					     			arr[1];
+					         		html+='<tr class="tbl-item">';
+					                html+=  '<td class="img">'+arr[0]+'</td>';
+					                html+=  '<td class="td-block">'
+					                
+					                if(items[i].pubDate){
+				                		html+=      '<p>'+items[i].pubDate[0]+'</p>';
+					                }
+					                
+					                html+=      '<p><h3>'+items[i].title[0]+'</h3></p>';
+					                
+					                
+ 									var desArr = (arr[1]).split('.');
+					                
+					                html+=      '<p>'
+					               
+					                for(var j=0;j<desArr.length;j++) {
+					                	
+					                	var tail='';
+					                	
+					                	if(desArr[j]==''){
+						                	tail+=".....";
+						                	html+= desArr[j]+tail;
+					                		break;
+					                	}else{
+					                		tail+='.<br>';
+						                	html+= desArr[j]+tail;
+					                	}	
+					                }
+					                
+					                html+= 	    '</p>';
+					                
+					                
+					                html+=      '<p><a href='+items[i].link[0]+'><b>기사 보기</b></a></p>';
+				                	html+=	'</td>';
+					                html+='</tr>';
+					                
+					                
+								} else{
+								
+									html+='<tr class="tbl-item">';
+					                html+=  '<td class="img"></td>';
+					                html+=  '<td class="td-block">'
+			                	    if(items[i].pubDate){
+				                		html+=      '<p>'+items[i].pubDate[0]+'</p>';
+					                }
+					                html+=      '<p><h3>'+items[i].title[0]+'</h3></p>';
+					                
+					                var desArr = (items[i].description[0]).split('.');
+					                
+					                html+=      '<p>'
+					               
+					                for(var j=0;j<desArr.length;j++) {
+										var tail='';
+					                	
+					                	if(desArr[j]==''){
+						                	tail+="......";
+						                	html+= desArr[j]+tail;
+											break;					                	
+					                	}else{
+					                		tail+='.<br>';
+						                	html+= desArr[j]+tail;
+					                	}	
+					                }
+					                
+					                html+= 	    '</p>';
+					                
+					                html+=      '<p><a href='+items[i].link[0]+'><b>기사 보기</b></a></p>';
+				                	html+=	'</td>';
+					                html+='</tr>';
+					                
+								}
+								
+		         	  	   }
+						   
+		         			$("#newsTable").html(html);
+		         			
+		      		});
+     		
+			}
     </script>
 
 
