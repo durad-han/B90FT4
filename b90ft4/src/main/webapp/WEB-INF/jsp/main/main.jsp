@@ -23,7 +23,7 @@
 			<div id="menu02" class="menuIcon">Diary</div>
 			<div id="menu03" class="menuIcon">Account Book</div>
 			<div id="menu04" class="menuIcon">Workout</div>
-			<div id="menu05" class="menuIcon">Null</div>
+			<div id="menu05" class="menuIcon">Login (임시) </div>
 			<div id="menu06" class="menuIcon">Options</div>
 			
 			</div>

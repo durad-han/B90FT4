@@ -23,7 +23,7 @@ public class MainController {
 	
 	@RequestMapping("/options.do")
 	public void options (){
-		System.out.println("options menu");
+		logger.debug("options menu");
 	}
 
 

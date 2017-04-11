@@ -12,11 +12,17 @@ public class LoginController {
 	@Autowired
 	private LoginService ls;
 	
-	@RequestMapping("/login.do")
-	public void loginPage (){
+	@RequestMapping("/loginForm.do")
+	public String loginPage (){
 		System.out.println("welcome.");
+		return "login/naverLogin";
 	}
 	
+	@RequestMapping("/login.do")
+	public String loginCallback (){
+		System.out.println("welcome.");
+		return "login/naverLoginCallback";
+	}
 	@RequestMapping("/logout.do")
 	public void options (){
 		System.out.println("bye");

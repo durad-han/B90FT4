@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,21 +22,23 @@ import b90ft4.web.schedule.service.ScheduleService;
 public class ScheduleController {
 	@Autowired
 	private ScheduleService ss;
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 //----- 스케줄 조회 관련 -----------------------------------------------------------------------	
 
 	//----- 스케줄 리스트 호출시 (초기로딩 포함) ---------------------------------------------------------
 	@RequestMapping("/scheduleList.do")
 	public String retrieveScheduleList (Model model) throws Exception{
-		System.out.println("retrieveScheduleList");
+		logger.debug("retrieveScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 //		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
 //		ScheduleVO svo = sList.get(0);
-//		System.out.println("--------------------------------");
-//		System.out.println("title "+svo.getTitle());
-//		System.out.println("content "+svo.getContent());
-//		System.out.println("userId "+svo.getUserId());
-//		System.out.println("--------------------------------");
+//		logger.debug("--------------------------------");
+//		logger.debug("title "+svo.getTitle());
+//		logger.debug("content "+svo.getContent());
+//		logger.debug("userId "+svo.getUserId());
+//		logger.debug("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		return "schedule/scheduleList";
@@ -44,14 +48,14 @@ public class ScheduleController {
 	@RequestMapping("/rschedule.json")
 	@ResponseBody
 	public ScheduleVO retrieveSchedule (int scheduleNo) throws Exception{
-		System.out.println("retrieveSchedule json");
-//		System.out.println("scheduleNo : "+scheduleNo);
+		logger.debug("retrieveSchedule json");
+//		logger.debug("scheduleNo : "+scheduleNo);
 //		ScheduleVO svo = ss.retrieveSchedule(scheduleNo);
-//		System.out.println("--------------------------------");
-//		System.out.println("title "+svo.getTitle());
-//		System.out.println("content "+svo.getContent());
-//		System.out.println("userId "+svo.getUserId());
-//		System.out.println("--------------------------------");
+//		logger.debug("--------------------------------");
+//		logger.debug("title "+svo.getTitle());
+//		logger.debug("content "+svo.getContent());
+//		logger.debug("userId "+svo.getUserId());
+//		logger.debug("--------------------------------");
 		
 		return ss.retrieveSchedule(scheduleNo);
 	}
@@ -59,15 +63,15 @@ public class ScheduleController {
 	//----- 스케줄 캘린더 호출시 --------------------------------------------------------------------
 	@RequestMapping("/scheduleCalendar.do")
 	public String retrieveScheduleCalendar (Model model) throws Exception{
-		System.out.println("retrieveScheduleCalendar");
+		logger.debug("retrieveScheduleCalendar");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 //		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
 //		ScheduleVO svo = sList.get(0);
-//		System.out.println("--------------------------------");
-//		System.out.println("title "+svo.getTitle());
-//		System.out.println("content "+svo.getContent());
-//		System.out.println("userId "+svo.getUserId());
-//		System.out.println("--------------------------------");
+//		logger.debug("--------------------------------");
+//		logger.debug("title "+svo.getTitle());
+//		logger.debug("content "+svo.getContent());
+//		logger.debug("userId "+svo.getUserId());
+//		logger.debug("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		return "schedule/scheduleCalendar";
@@ -76,15 +80,15 @@ public class ScheduleController {
 	//----- 스케줄 그래프 호출시 --------------------------------------------------------------------
 	@RequestMapping("/scheduleGraph.do")
 	public String retrieveScheduleGraph (Model model) throws Exception{
-		System.out.println("retrieveScheduleGraph");
+		logger.debug("retrieveScheduleGraph");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 //		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
 //		ScheduleVO svo = sList.get(0);
-//		System.out.println("--------------------------------");
-//		System.out.println("title "+svo.getTitle());
-//		System.out.println("content "+svo.getContent());
-//		System.out.println("userId "+svo.getUserId());
-//		System.out.println("--------------------------------");
+//		logger.debug("--------------------------------");
+//		logger.debug("title "+svo.getTitle());
+//		logger.debug("content "+svo.getContent());
+//		logger.debug("userId "+svo.getUserId());
+//		logger.debug("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		return "schedule/scheduleGraph";
@@ -94,16 +98,16 @@ public class ScheduleController {
 //----- 스케줄 수정, 삭제 관련 ------------------------------------------------------------------
 	@RequestMapping("/modify.json")
 	public void modifySchedule (ScheduleVO2 schedule2) throws Exception{
-		System.out.println("modifySchedule");
+		logger.debug("modifySchedule");
 		ScheduleVO sVO = new ScheduleVO();
 		
-		System.out.println(schedule2.getUserId());
-		System.out.println(schedule2.getCategory());
-		System.out.println(schedule2.getTitle());
-		System.out.println(schedule2.getStart());
-		System.out.println(schedule2.getEnd());
-		System.out.println(schedule2.getImportance());
-		System.out.println(schedule2.getContent());
+		logger.debug(schedule2.getUserId());
+//		logger.debug(schedule2.getCategory());
+		logger.debug(schedule2.getTitle());
+		logger.debug(schedule2.getStart());
+		logger.debug(schedule2.getEnd());
+//		logger.debug(schedule2.getImportance());
+		logger.debug(schedule2.getContent());
 		
 		// 임시 떔빵
 		sVO.setUserId		(schedule2.getUserId());
@@ -119,8 +123,8 @@ public class ScheduleController {
 	
 	@RequestMapping("/delete.json")
 	public void deleteSchedule (int scheduleNo) throws Exception{
-		System.out.println("deleteSchedule");
-		System.out.println("scheduleNo : "+scheduleNo);
+		logger.debug("deleteSchedule");
+		logger.debug("scheduleNo : "+scheduleNo);
 		ss.deleteSchedule(scheduleNo);
 	}
 	
@@ -128,24 +132,24 @@ public class ScheduleController {
 //----- 스케줄 입력 관련 -----------------------------------------------------------------------
 	@RequestMapping("/insertSchedule.do")
 	public String insertSchedule (HttpServletRequest req, ScheduleVO2 scheduleVO2) throws Exception{
-		System.out.println("insertSchedule");
+		logger.debug("insertSchedule");
 		
-		System.out.println("--------------------------------");
-		System.out.println("scheduleVO 자동화 체크 : ");
-		System.out.println("title "+scheduleVO2.getTitle());
-		System.out.println("content "+scheduleVO2.getContent());
-		System.out.println("start "+scheduleVO2.getStart());
-		System.out.println("end "+scheduleVO2.getEnd());
-		System.out.println("importance "+scheduleVO2.getImportance());
-		System.out.println("--------------------------------");
+		logger.debug("--------------------------------");
+		logger.debug("scheduleVO 자동화 체크 : ");
+		logger.debug("title "+scheduleVO2.getTitle());
+		logger.debug("content "+scheduleVO2.getContent());
+		logger.debug("start "+scheduleVO2.getStart());
+		logger.debug("end "+scheduleVO2.getEnd());
+		logger.debug("importance "+scheduleVO2.getImportance());
+		logger.debug("--------------------------------");
 		
-		System.out.println("--------------------------------");
-		System.out.println("title "+req.getParameter("title"));
-		System.out.println("content "+req.getParameter("content"));
-		System.out.println("start "+req.getParameter("start"));
-		System.out.println("end "+req.getParameter("end"));
-		System.out.println("importance "+req.getParameter("importance"));
-		System.out.println("--------------------------------");
+		logger.debug("--------------------------------");
+		logger.debug("title "+req.getParameter("title"));
+		logger.debug("content "+req.getParameter("content"));
+		logger.debug("start "+req.getParameter("start"));
+		logger.debug("end "+req.getParameter("end"));
+		logger.debug("importance "+req.getParameter("importance"));
+		logger.debug("--------------------------------");
 		
 		ScheduleVO sVO = new ScheduleVO();
 		//임시 박아넣기
