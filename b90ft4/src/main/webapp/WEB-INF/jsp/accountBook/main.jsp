@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-    <title>B90FT4 | 운동</title>
+    <title>B90FT4 | 가계부</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,14 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
 
+<style>
+#add{
+	font-weight:bold;
+}
+
+</style>
+</head>
 <body>
 
    <div>
@@ -50,16 +56,17 @@
                                          </ul>
                                      </li>
                                  </ul>
-                                 <ul class="nav navbar-nav navbar-right">
-                                     <li><a href="#">Link</a></li>
-                                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<b class="caret"></b></a>
-                                         <ul class="dropdown-menu">
-                                             <li><a href="#">Action</a></li>
-                                             <li><a href="#">Another action</a></li>
-                                             <li><a href="#">Something else here</a></li>
-                                             <li class="divider"></li>
-                                             <li><a href="#">Separated link</a></li>
-                                         </ul>
+                                 <ul class="nav navbar-nav navbar-right" style='margin-right: 40px;'>
+                                     <li style='margin-right: 20px;'>
+  	                                    <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked/>
+										<label for='showAndHideMemo'>
+										메모 보기
+										</label>
+                                     </li>
+                                     <li>
+	                                     <div id="addMemo">
+											<button><img src="icon_add_stickynote.gif" />메모 추가</button>
+										 </div>
                                      </li>
                                  </ul>
                              </div>     
@@ -135,7 +142,9 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-    
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+
+<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
+
 </body>
 </html>

@@ -273,8 +273,8 @@ tbody#income tr.incomeInfo:hover{
 	                    </ul>
 	                    <br>
 					 	<div id="datepicker" placeholder="ex) 2017-03-30" style="margin-left: 10%"></div><br>
-                		
-                		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<!--                 																													data-toggle="modal" data-target="#modal-config" -->
+                		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-config">
 			                 		 지출/수입 등록
 			            </button>
 			            
@@ -321,77 +321,38 @@ tbody#income tr.incomeInfo:hover{
                 
 		  </div> <!-- page wrapper  -->
 		                
-		        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						
-						<div class="modal-dialog">
-						
-							<div class="modal-content">
-							
-										<div class="modal-header">
-											<h4 class="modal-title">지출/수입 등록</h4>
-										</div>
-										
-										<div class="modal-body">
-										
-											<form name="budgetF">
-											
-			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
-		                                                <div class="col-sm-9 controls">
-		                                                    <div class="row">
-		                                                        <div class="col-xs-9">
-		                                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;
-		                                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;
-		                                                                                 수입</label></div>
-		                                                        </div>
-		                                                    </div>
-		                                                </div>
-		                                            </div>
-			                                            
-											 		<div class="form-group"><label class="col-sm-3 control-label">분류</label>
-		                                              	<div class="col-sm-9 controls">
-		                                                  	<div class="row">
-		                                                    	  <div class="col-xs-4">
-		                                                     	  	<select class="form-control">
-		                                                     	  	</select>
-		                                                    	 	</div>
-		                                                  	 </div>
-		                                              	 </div>
-			                                    	 </div>
-			                                    	   
-			                                         <div class="form-group"><label class="col-sm-3 control-label">금액</label>
-		                                                 <div class="col-sm-9 controls">
-		                                                     <div class="row">
-		                                                      	    <div class="col-xs-9"><input type="text" class="form-control"/></div>
-		                                                      </div>
-		                                               </div>
-			                                         </div>
-			                                           
-			                                         <div class="form-group"><label class="col-sm-3 control-label">내용</label>
-			                                               <div class="col-sm-9 controls">
-			                                                   <div class="row">
-			                                                       <div class="col-xs-9"><input type="text" class="form-control"/></div>
-			                                                   </div>
-			                                           	   </div>
-			                                         </div>
-			                                           
-			                                         <input type="hidden" />
-			                                           
-			                                </form>
-											<br><br><br><br><br><br><br>
-			                      	   </div>
-			                                
-									<div class="modal-footer">
-										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
-										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
-										
-										<button type="button" id="budgetRegi">등록</button>
-										<button type="button" id="closeF" 	    class="btn btn-success btn-simple" data-dismiss="modal">닫기</button>
-									</div>
-									
-								</div>
-                                        
-						</div>
-				</div>
+		                
+		        <div id="modal-config" class="modal fade">
+	                <div class="modal-dialog">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
+	                                &times;</button>
+	                            <h4 class="modal-title">
+	                                Modal title</h4>
+	                        </div>
+	                        <div class="modal-body">
+	                            <p>
+	                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend et nisl eget
+	                                porta. Curabitur elementum sem molestie nisl varius, eget tempus odio molestie.
+	                                Nunc vehicula sem arcu, eu pulvinar neque cursus ac. Aliquam ultricies lobortis
+	                                magna et aliquam. Vestibulum egestas eu urna sed ultricies. Nullam pulvinar dolor
+	                                vitae quam dictum condimentum. Integer a sodales elit, eu pulvinar leo. Nunc nec
+	                                aliquam nisi, a mollis neque. Ut vel felis quis tellus hendrerit placerat. Vivamus
+	                                vel nisl non magna feugiat dignissim sed ut nibh. Nulla elementum, est a pretium
+	                                hendrerit, arcu risus luctus augue, mattis aliquet orci ligula eget massa. Sed ut
+	                                ultricies felis.</p>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="button" data-dismiss="modal" id="closeF"  class="btn btn-default">
+	                                Close</button>
+	                            <button type="button" id="save"  class="btn btn-primary">
+	                                Save changes</button>
+                       		 </div>
+                    	</div>
+                	</div>
+            	</div>
+            	
 				
                 <!--END CONTENT-->
                 
@@ -447,7 +408,7 @@ tbody#income tr.incomeInfo:hover{
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>
 
 
-<script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script> --%>
 <script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 
 
@@ -456,10 +417,23 @@ tbody#income tr.incomeInfo:hover{
 <%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/nouislider.min.js" type="text/javascript"></script> --%>
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/material-kit.js" type="text/javascript"></script> --%>
-
-
-
-
+<script>
+	var i=0;
+	$("#save").click(function() {
+		
+		
+		
+		if(!i) {
+			console.log(i);
+			i++;
+			return; 
+		}
+		console.log("쥬노플로");
+		
+		$("#save").attr("data-dismiss","modal");
+		
+	})
+</script>
 
 </body>
 </html>

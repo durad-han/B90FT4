@@ -341,6 +341,7 @@
 		
 		if(!flag){
 			budgetList($("#actualDate").val());
+			console.log("순서1 - ");
 			modAndDelEvent();
 		}
 		
@@ -348,8 +349,8 @@
 		$("#updateBudget").hide();
 		$("#deleteBudget").hide();
 		$("#budgetRegi").show();
-		$("[name=budgetF] input:eq(2)").val("");
-		$("[name=budgetF] input:eq(3)").val("");
+		$("[name=budgetF] input:eq(2)").val(""); // 금액
+		$("[name=budgetF] input:eq(3)").val(""); // 내용
 		
 	}
 	/* -------------------------------------------------------------------------------------------------------------- */
@@ -521,7 +522,7 @@
 				incomeCategoryNo: incomeCategoryNo,
 				budgetSearchCode:budgetSearchCode
 			},
-			assync:false
+			async:false
 		}).done(function (result) {
 			
 			// 월을 선택할 경우, 원 그래프 그리기.
@@ -764,9 +765,12 @@
 							addBudgetName();
 							$("[name=budgetF] select").val(expenseObj.expenseCategoryNo);
 							$("[name=budgetF] input:eq(2)").val(expenseObj.expenseAmount);
+							console.log("선수확인",$("[name=budgetF] input:eq(2)").val());
+							console.log("순서2");
 							$("[name=budgetF] input:eq(3)").val(expenseObj.expenseContent);
 							$("#budgetModal").trigger("click");
-							
+//							$("body").addClass("pace-done modal-open")
+//								     .css("padding-right", "15px");
 						});
 						
 						weekFlag=false;
@@ -853,6 +857,7 @@
 							$("#deleteBudget").show();
 							$("#budgetRegi").hide();
 							
+							
 							budgetCodeFordel		 =	1;
 							incomeObj.incomeNo 		 = 	$(this).children("td.incomeNo").text();
 							incomeObj.incomeDate 		 =	today;
@@ -875,9 +880,8 @@
 							$("[name=budgetF] input:eq(3)").val(incomeObj.incomeContent);
 							$("#budgetModal").trigger("click");
 							
+							
 						});
-						
-						
 				}
 			
 		});	
@@ -906,8 +910,10 @@
 			})
 		});
 	
-		$("#updateBudget").click(function (){
-
+		$("#updateBudget").click(function (e){
+			
+			e.stopPropagation();
+			
 			var modNo;
 			if(!budgetCodeFordel){
 				modNo = "&expenseNo="+expenseObj.expenseNo;
@@ -915,17 +921,15 @@
 				modNo = "&incomeNo="+incomeObj.incomeNo;
 			}
 			
-			$("[name=budgetF] input:eq(4)").val(today);
-
 			var f = document.budgetF;
-			
-//			console.log("금액",$("[name=budgetF] input:eq(2)").val());
-//			console.log("금액",$("[name=budgetF] input:eq(2)").attr("name"));
+			console.log("순서3");
+			console.log("금액",$("[name=budgetF] input:eq(2)").val());
+			console.log("금액",$("[name=budgetF] input:eq(2)").attr("name"));
 				
-			if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
+//			if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
 			
 			var params = $("[name=budgetF]").serialize();
-//			console.log("params",params+modNo);
+			console.log("params+modNo",params+modNo);
 			
 			$.ajax({
 				url: "updateBudget.do",
@@ -937,9 +941,7 @@
 //				console.log(msg);
 				initForm();
 			});
-
 		});
-		
 	}
 	
 	
@@ -967,7 +969,7 @@
 					}else {
 						path="incomeRegi.do";
 					}
-	//				console.log(path);
+	//				console.log(path); 
 					return;
 				}
 		});
@@ -983,18 +985,23 @@
 				async:false
 			}).done(function(msg){
 				console.log(msg);
+				$("#closeF").trigger("click");
+				console.log("제")
+				initForm();
 			});
+
+			$("#budgetRegi").attr("data-dismiss","modal");
+			setTimeout(function() {
+				$("#budgetRegi").removeAttr("data-dismiss");
+			},10);
 		
-			initForm();
-			
-		});
+	});
 	
-		// close를 눌렀을 때 초기화 시키기.
-		$("#closeF").click(function() {
-	//		console.log("expense.expenseNo",expenseObj.expenseNo);
-			initForm(1);
-		});
-	
+	// close를 눌렀을 때 초기화 시키기.
+	$("#closeF").click(function() {
+//		console.log("expense.expenseNo",expenseObj.expenseNo);
+		initForm(1);
+	});
 	
 	// 원 그래프 그리기 함수.
 	function makePieGraph(obj,div,title,colors) {
@@ -1018,86 +1025,4 @@
 		  });
 		  jQuery.jqplot.config.enablePlugins = false;
 	}
-	
-//	function makePieGraph2(data,title) {
-//		
-//		/* Pie with gradient fill */
-//	    // Radialize the colors
-//	    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
-//	        return {
-//	            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
-//	            stops: [
-//	                [0, color],
-//	                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-//	            ]
-//	        };
-//	    });
-//
-//	    // Build the chart
-//	    $('#expenseDiv').highcharts({
-//	        chart: {
-//	            plotBackgroundColor: null,
-//	            plotBorderWidth: null,
-//	            plotShadow: false
-//	        },
-//	        title: {
-//	            text: title
-//	        },
-//	        tooltip: {
-//	            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-//	        },
-//	        plotOptions: {
-//	            pie: {
-//	                allowPointSelect: true,
-//	                cursor: 'pointer',
-//	                dataLabels: {
-//	                    enabled: true,
-//	                    color: '#000000',
-//	                    connectorColor: '#000000',
-//	                    formatter: function() {
-//	                        return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-//	                    }
-//	                }
-//	            }
-//	        },
-//	        series: [{
-//	            type: 'pie',
-//	            name: title,
-//	            data: [
-//					['aa',   75.4],
-//					{
-//						name: 'cc',
-//						y: 4.9,
-//						sliced: true,
-//						selected: true
-//					},
-//					['bb',   19.7]
-//					]
-//	        }]
-//	    });
-//	   
-//		
-//	}
-	
-//	  series: [{
-//          type: 'pie',
-//          name: '지출',
-//          data: [
-//              ['Firefox',   45.0],
-//              ['IE',       26.8],
-//              {
-//                  name: 'Chrome',
-//                  y: 12.8,
-//                  sliced: true,
-//                  selected: true
-//              },
-//              ['Safari',    8.5],
-//              ['Opera',     6.2],
-//              ['Others',   0.7]
-//          ]
-//      }]
-//	
-	
-	
-	
 	

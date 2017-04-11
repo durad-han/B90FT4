@@ -8,8 +8,8 @@ drop table tb_sam_expense
 drop table tb_sam_income
 drop table tb_sam_loan
 drop table tb_sam_debt
-drop table tb_sam_memo
-
+drop table tb_Sam_Budget_Memo
+tb_Sam_Budget_Memo
 select * from tb_sam_income_category
 select * from tb_sam_expense_category
 select * from tb_sam_expense
@@ -17,6 +17,7 @@ select * from tb_sam_income
 select * from tb_sam_loan
 select * from tb_sam_debt
 select * from tb_sam_memo
+tb_Sam_Budget_Memo
 select * from tb_sam_user
 
 insert into tb_sam_user (
@@ -106,12 +107,12 @@ create table tb_sam_debt (
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
-create table tb_Sam_Budget_Memo (
+create table tb_Sam_Memo (
 	Memo_No 		int(6) auto_increment		primary key,
 	User_Id 		varchar(60)					not null,
 	Pos_X 			int 						not null,
 	Pos_Y 			int 						not null,
-	Content 		varchar(2000) 				null,
+	Memo_Content 		varchar(2000) 				null,
 	Reg_Date 		datetime 					default now(),
 	FOREIGN KEY(User_Id) REFERENCES tb_Sam_User(User_Id)
 );

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b90ft4.web.repository.mapper.MemoMapper">
+	
+	<resultMap id="memoMap" type="memoVO">
+		<result  property="memoNo" column="Memo_No"/>
+		<result  property="userId" column="user_Id"/>
+		<result  property="posX" column="Pos_X"/>
+		<result  property="posY" column="Pos_Y"/>
+		<result  property="memoContent" column="Memo_Content"/>
+		<result  property="regDate" column="Reg_Date"/>
+	</resultMap>
+	
+	<select id="selectMemo" parameterType="userVO" resultMap="memoMap">
+		select *
+		  from tb_sam_memo
+		where user_id = #{userId}
+		order by memo_no
+	</select>
+	
+	<insert id="insertMemo" parameterType="memoVO">
+		insert into tb_sam_memo(
+			user_id,
+			pos_x,
+			pos_y,
+			memo_content
+		 ) values ( 
+		 	#{userId},
+		 	#{posX},
+		 	#{posY},
+		 	#{memoContent}
+		 )
+		<selectKey resultType="int" keyProperty="memoNo" order="AFTER">
+				select last_insert_id()	
+		</selectKey>
+	</insert>
+	
+	
+	<update id="updateMemo" parameterType="memoVO">
+		update tb_sam_memo
+		  set pos_x = #{posX},
+		      pos_y = #{posY},
+		      memo_content = #{memoContent}
+		where memo_no = #{memoNo}	
+	</update>
+	
+	
+	
+	<delete id="deleteMemo" parameterType="int">
+		delete
+		  from tb_sam_memo
+		where memo_no = #{memoNo}	
+	</delete>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
