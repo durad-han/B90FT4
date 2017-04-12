@@ -7,17 +7,20 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+
   <!-- 네이버아이디로로그인 버튼 노출 영역 -->
   <div id="naver_id_login"></div>
   <!-- //네이버아이디로로그인 버튼 노출 영역 -->
-  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://127.0.0.1:9090/b90ft4/login/login.do");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://127.0.0.1:9090/b90ft4/main/main.do");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
+  
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://127.0.0.1:9090/b90ft4/login/login.do");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain("http://127.0.0.1:9090/b90ft4/main/main.do");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script>
+</body> 
 </html>
 
