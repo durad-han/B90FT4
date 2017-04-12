@@ -3,6 +3,7 @@ package b90ft4.web.repository.vo;
 public class SearchVO extends PageVO {
 
 	private String userId;
+	private String excelFileName;
 	private String startDate;
 	private String endDate;
 	private int delNo;
@@ -12,6 +13,12 @@ public class SearchVO extends PageVO {
 	private int expenseCategoryNo;
 	private int budgetSearchCode;
 	
+	public String getExcelFileName() {
+		return excelFileName;
+	}
+	public void setExcelFileName(String excelFileName) {
+		this.excelFileName = excelFileName;
+	}
 	public int getBondCode() {
 		return bondCode;
 	}

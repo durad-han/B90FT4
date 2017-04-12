@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <style>
 
 /* .ui-datepicker-header{ */
@@ -45,41 +46,9 @@ tbody#income tr.incomeInfo:hover{
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	
-  	
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/accountbook/jquery.jqplot.css" />
-  	
-  	
-<!--   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
-<!--     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" /> -->
-<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> -->
-	<!-- CSS Files -->
-<%--     <link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/bootstrap.min.css" rel="stylesheet" /> --%>
-<%--     <link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/material-kit.css" rel="stylesheet"/> --%>
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-<%-- 	<link href="${pageContext.request.contextPath}/web/js/accountbook/assets/css/demo.css" rel="stylesheet" /> --%>
-    
-    
-    
-    
-    
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css"/> --%>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css"/>
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/bootstrap.min.css"/> --%>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css"/>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css"/>
-     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css"/>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/style-responsive.css"/>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css"/>
-    <!--Loading bootstrap css-->
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
- 	<c:import url ="/WEB-INF/jsp/common/basicInclude.jsp"/>
+<!--     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+<!--  	<script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
+<!--   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 </head>
 
 <body>
@@ -155,9 +124,9 @@ tbody#income tr.incomeInfo:hover{
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">대입금/차입금</span></a>
                     </li>
-                    <li><a href="Forms.html"><i class="fa fa-fw">
+                    <li><a href="${pageContext.request.contextPath}/accountBook/setting.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">가계메모</span></a>
+                    </i><span class="menu-title">설정</span></a>
                       
                     </li>
                 </ul>
@@ -192,20 +161,11 @@ tbody#income tr.incomeInfo:hover{
                 <div class="row">
                 	
                 	
-                  <div class="col-lg-6" style="margin-left: 2%;margin-right: 5%;padding: 0">
+                  <div class="col-lg-7" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
                             <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
                             <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-<!--                            <li><a href="#1" data-toggle="tab" ></a></li> -->
-                           
-<!--                            <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li> -->
-<!--                            <li id="week"><a href="#1" data-toggle="tab" >주</a></li> -->
-<!--                            <li id="month"><a href="#1" data-toggle="tab" >월</a></li> -->
                         </ul>
                         
                 		<h3> 
@@ -215,9 +175,9 @@ tbody#income tr.incomeInfo:hover{
                 		<br><br>
                 		
                 			<div id="generalTabContent" class="tab-content responsive">
-			                       <div id="alert-tab" class="tab-pane fade in active" style="height:630px;overflow: ">
+			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto">
 										   <div class="panel panel-green" id="expenseTable">
-						                            <div class="panel-heading">지출</div>
+						                            <div class="panel-heading">지출d</div>
 						                            <div class="panel-body">
 						                                <table class="table table-hover-color">
 						                                    <thead>
@@ -234,15 +194,15 @@ tbody#income tr.incomeInfo:hover{
 						                                </table>
 						                            </div>
 						                   </div>
-							                   
-										   <div id="expenseDiv" style='display: none;height: 50%;'>			                       
+										   <div id="expenseDiv" style='display: none;width: 100%;height: 200px;'>			                       
 				                		   </div>
-				                		   <br>
-				                		   <div id="incomeDiv" style='display: none;height: 50%;'>			                       
+				                		   <br><br>
+				                		   <div id="incomeDiv" style='display: none;width: 100%;height: 200px;'>			                       
 				                		   </div>
+							               
 			                	   </div>
 			                				
-	                            	<div id="note-tab" class="tab-pane fade" style="height:400px;overflow: auto;">
+	                            	<div id="note-tab" class="tab-pane fade" style="height:500px;overflow: auto;">
 										   <div class="panel panel-yellow" id="incomeTable">
 						                            <div class="panel-heading">수입</div>
 						                            <div class="panel-body">
@@ -311,7 +271,6 @@ tbody#income tr.incomeInfo:hover{
                                     <tbody id="monthIncome">
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
 			             
 			      </div>
@@ -404,62 +363,9 @@ tbody#income tr.incomeInfo:hover{
                 
 	 </div>     <!--END WRAPPER-->
 		                
-                
-                
-   
-    
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//jquery-ui.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//bootstrap-hover-dropdown.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//html5shiv.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script//respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
-<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jquery.jqplot.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pieRenderer.js"></script>
-
 
 <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
-
-
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/material.min.js"></script> --%>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/nouislider.min.js" type="text/javascript"></script> --%>
-<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-<%-- <script src="${pageContext.request.contextPath}/web/js/accountbook/assets/js/material-kit.js" type="text/javascript"></script> --%>
-
-
-
-
 
 </body>
 </html>

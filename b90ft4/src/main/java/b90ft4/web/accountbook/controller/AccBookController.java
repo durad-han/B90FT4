@@ -1,6 +1,14 @@
 package b90ft4.web.accountbook.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
+import b90ft4.web.common.file.Download;
 import b90ft4.web.repository.vo.DebtVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
@@ -140,8 +149,56 @@ public class AccBookController {
 		return "ok";
 	}
 	
-	@RequestMapping("/accMemo.do")
-	public void memo() {
+	@RequestMapping("/setting.do")
+	public void setting() {
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("/makeExcel.do")
+	public String makeExcel(SearchVO search,
+							HttpServletRequest request, 
+							HttpServletResponse response) throws Exception {
+		
+		String filePath = "http://14.32.66.123:9090/ProgramData/MySQL/MySQL Server 5.7/Uploads/GGG.cvs";
+		search.setExcelFileName(filePath);
+		search.setUserId("김현영");
+		service.makeExcel(search);
+		
+		
+		String uploadPath = filePath;
+		File f = new File(filePath);
+		
+		
+		response.setHeader("Content-Type", "application/octet-stream");
+		// 다운로드 파일 이름 헤더 설정
+		response.setHeader(
+				"Content-Disposition", "attachment;filename=" + new String("김현영".getBytes("UTF-8"), "8859_1"));
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		response.setHeader("Content-Length", String.valueOf(f.length()));
+		
+		FileInputStream fis = new FileInputStream(f);
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		
+		OutputStream out = response.getOutputStream();
+		BufferedOutputStream bos = new BufferedOutputStream(out);
+		
+		while (true) {
+			
+			int ch = bis.read();
+			if (ch == -1) break;
+			
+			bos.write(ch);
+		}
+		
+		bis.close();
+		fis.close();
+		bos.close();
+		out.close();
+		
+		
+		return "ok";
 	}
 	
 	

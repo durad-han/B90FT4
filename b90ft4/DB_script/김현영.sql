@@ -19,7 +19,7 @@ select * from tb_sam_debt
 select * from tb_sam_memo
 tb_Sam_Budget_Memo
 select * from tb_sam_user
-
+14.32.66.123
 insert into tb_sam_user (
 	user_id,
 	password
@@ -245,11 +245,51 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 			  
 	select *
 		  from tb_sam_loan
-		where user_id = '김현영'
+		where user_id = '김현영' 
 		  and  loan_date = '2017-04-10'
 			  
+		    select *
+            from tb_sam_expense
+            
 			
+	select * into outfile 'mini.csv' fields terminated by ',' from tb_sam_expense
+		
+	select * from tb_board 
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/kim.csv' fields terminated by ','
+		
+	
+	select * from tb_sam_expense 
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/dff.csv' fields terminated by ','
+	
+		
+	select *      from tb_sam_expense   where user_id = '김현영'  
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/김현ㅇ.csv' fields terminated by ','
+	
+	
+	
+		select * 
+		  from tb_sam_expense
+		where user_id = '김현영'
+		into outfile 
+		'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/Y.csv'
+		fields terminated by ','
+		
+
+		select CONCAT('C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/','kim','.csv')
+
 		
 		
+
 		
+	
 		
+	select 	CONCAT('C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/','kim','.csv')
+	
+	
+	
+	
+	
+	
+	
+	
+	

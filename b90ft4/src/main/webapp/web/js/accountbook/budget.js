@@ -339,9 +339,15 @@
 	
 	function initForm(flag){
 		
-		if(!flag){
+		if(flag==1){
 			budgetList($("#actualDate").val());
 			console.log("순서1 - ");
+		}
+		
+		if(flag==2) {
+			var dateArr = $("#actualDate").val().split("~");
+			budgetList(dateArr[0],dateArr[1]);
+			
 		}
 		
 		addBudgetName();
@@ -478,6 +484,150 @@
 			// 월을 선택할 경우, 원 그래프 그리기.
 			if(budgetSearchCode==3){
 				
+				$("#expenseDiv").empty();
+				$("#incomeDiv").empty();
+				
+				var expenseData = new Array();	
+				var incomeData = new Array();
+				
+				var expenseSum=0;
+				var incomeSum=0;
+				
+				
+				var expenseMonthBudget = result.expenseMonthBudget;
+				var incomeMonthBudget = result.incomeMonthBudget;
+				
+				var monthExpenseHtml="";
+				var monthIncomeHtml="";
+				
+				for(var i=0;i<expenseMonthBudget.length;i++) {
+					expenseSum+=expenseMonthBudget[i].eachSum;
+				}	
+		
+				for(var i=0;i<expenseMonthBudget.length;i++) {
+					
+					var obj={};
+				
+					obj.label = expenseMonthBudget[i].expenseCategoryName;
+					obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+					obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
+					
+					expenseData.push(obj);
+					
+					monthExpenseHtml+="<tr>"
+					monthExpenseHtml+="<td><span class='"+colorChoice(1,expenseMonthBudget[i].expenseCategoryNo)+"'>"+obj.label+"</span></td>";
+					monthExpenseHtml+="<td>"+expenseMonthBudget[i].eachSum+"</td>";
+					monthExpenseHtml+="</tr>"
+							
+				}
+				
+				for(var i=0;i<incomeMonthBudget.length;i++) {
+					incomeSum+=incomeMonthBudget[i].eachSum;
+				}	
+				
+				for(var i=0;i<incomeMonthBudget.length;i++) {
+					
+					var obj={};
+					obj.label = incomeMonthBudget[i].incomeCategoryName;
+					obj.data = Math.round(((incomeMonthBudget[i].eachSum/incomeSum)*1000))/10;
+					obj.color = colorChoice(2,incomeMonthBudget[i].incomeCategoryNo);
+					
+					incomeData.push(obj);
+					
+					monthIncomeHtml+="<tr>"
+					monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+obj.label+"</span></td>";
+					monthIncomeHtml+="<td>"+incomeMonthBudget[i].eachSum+"</td>";
+					monthIncomeHtml+="</tr>"
+				}	
+				
+					monthExpenseHtml+="<tr>"
+					monthExpenseHtml+="<td>합계</td>"
+					monthExpenseHtml+="<td>"+expenseSum+"</td>"
+					monthExpenseHtml+="</tr>"
+						
+					monthIncomeHtml+="<tr>"
+					monthIncomeHtml+="<td>합계</td>"
+					monthIncomeHtml+="<td>"+incomeSum+"</td>"
+					monthIncomeHtml+="</tr>"
+								
+					$("#monthExpense").html(monthExpenseHtml);
+					$("#monthIncome").html(monthIncomeHtml);
+					
+					$("#monthBudgteTable").show();
+				
+				//BEGIN PIE CHART
+			    $.plot('#expenseDiv', expenseData, {
+			    series: {
+			        pie: {
+			            show: true,
+			            startAngle:2,
+			            radius: 1,
+			            tilt:.9,
+			            innerRadius:0.5,
+			            label: {
+			                show: true,
+			                radius: 3/4,
+			                background: {
+			                	opacity: 1,
+			                    color: 'white'
+			                }
+			            }
+			        }
+			    },
+			    legend: {
+			        show: true
+			    }
+			    });
+			    
+			    $("#expenseDiv").prepend("<h3>지출</h3>");
+			    
+			    $("div.legend:eq(0) table").css({
+			    	"font-size":"20px",
+			    	"font-weight":"bold",
+			    	"right" : "10%"
+			    });
+			    
+			    
+			    $.plot('#incomeDiv', incomeData, {
+			    	  series: {
+					        pie: {
+					            show: true,
+					            startAngle:2,
+					            radius: 1,
+					            tilt:.9,
+					            innerRadius:0.5,
+					            label: {
+					                show: true,
+					                radius: 3/4,
+					                background: {
+					                	opacity: 1,
+					                    color: 'white'
+					                }
+					            }
+					        }
+					    },
+					    legend: {
+					        show: true
+					    }
+			    });
+			    
+			    $("#incomeDiv").prepend("<h3>수입</h3>");
+			    
+			    $("div.legend:eq(1) table").css({
+			    	"font-size":"20px",
+			    	"font-weight":"bold",
+			    	"right" : "10%"
+			    });
+			    
+			
+			    $("span.pieLabel div").css({
+			    	"font-weight":"bold"
+			    })
+			    
+				
+			    return;
+				
+				/*
 					console.log(result);
 				
 					$("#expenseDiv").empty();
@@ -494,6 +644,7 @@
 					
 					var monthExpenseHtml="";
 					var monthIncomeHtml="";
+					
 					var expenseColors = new Array();
 					var incomeColors = new Array();
 					
@@ -503,6 +654,13 @@
 					}	
 			
 					for(var i=0;i<expenseMonthBudget.length;i++) {
+						
+						var obj={};
+						obj.label = expenseMonthBudget[i].expenseCategoryName;
+						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
+						
+						expenseData.push(obj);
 						
 						var arr=[];
 						arr[0] = expenseMonthBudget[i].expenseCategoryName;
@@ -537,7 +695,6 @@
 						monthIncomeHtml+="</tr>"
 							
 						incomeColors[i]=colorChoice(2,incomeMonthBudget[i].incomeCategoryNo);	
-							
 					}	
 					
 					
@@ -565,6 +722,7 @@
 					$("#monthBudgteTable").show();
 					
 				return;
+				 */
 			}
 			
 			// 일 , 주에 대한 지출/수입 테이블 작성
@@ -861,7 +1019,7 @@
 				async:false
 			}).done(function(result){
 //				console.log(result);
-				initForm();
+				initForm(selectedDateOption);
 				
 			});
 			
@@ -896,7 +1054,7 @@
 				async:false
 			}).done(function(msg){
 //				console.log(msg);
-				initForm();
+				initForm(selectedDateOption);
 			});
 			
 		});
@@ -945,7 +1103,7 @@
 				console.log(msg);
 				$("#closeF").trigger("click");
 				console.log("제")
-				initForm();
+				initForm(selectedDateOption);
 			});
 
 			$("#budgetRegi").attr("data-dismiss","modal");
@@ -959,7 +1117,7 @@
 	// close를 눌렀을 때 초기화 시키기.
 	$("#closeF").click(function() {
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
-		initForm(1);
+		initForm(0);
 	});
 	
 	// 원 그래프 그리기 함수.
@@ -984,4 +1142,44 @@
 		  });
 		  jQuery.jqplot.config.enablePlugins = false;
 	}
+	
+	
+
+	//BEGIN PIE CHART
+    var d7_1 = [40];
+    var d7_2 = [20];
+    var d7_3 = [40];
+    $.plot('#pie-chart', [{
+        data: d7_1,
+        label: "Search Engines",
+        color: "#3DB9D3"
+    },
+    {
+        data: d7_2,
+        label: "Referrals",
+        color: "#ffce54"
+    },
+    {
+        data: d7_3,
+        label: "Direct",
+        color: "#fc6e51"
+    }], {
+    series: {
+        pie: {
+            show: true,
+            radius: 1,
+            label: {
+                show: true,
+                radius: 3/4,
+                background: {
+                    opacity: 0.5,
+                    color: '#000'
+                }
+            }
+        }
+    }
+    });
+    //END PIE CHART
+
+	
 	

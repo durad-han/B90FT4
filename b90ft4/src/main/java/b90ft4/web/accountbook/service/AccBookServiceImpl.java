@@ -152,6 +152,12 @@ public class AccBookServiceImpl implements AccBookService {
 	}
 	
 
+	public void makeExcel(SearchVO search)
+			throws Exception {
+		
+		dao.selectExcel(search);
+	}
+	
 }
 
 

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <meta charset="UTF-8">
 
     <title>B90FT4 | 가계부</title>
@@ -94,9 +95,9 @@
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">대입금/차입금</span></a>
                     </li>
-                    <li><a href="accMemo.do"><i class="fa fa-fw">
+                    <li><a href="setting.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">가계메모</span></a>
+                    </i><span class="menu-title">설정</span></a>
                       
                     </li>
                 </ul>
@@ -142,7 +143,7 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+
 
 <script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 

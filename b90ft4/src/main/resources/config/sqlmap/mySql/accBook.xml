@@ -341,6 +341,16 @@
 	</update>
 	
 	
+	<!-- 엑셀 파일 만들기. -->
+	<select id="selectExcel" parameterType="searchVO">
+		select * 
+		  from tb_sam_expense
+		where user_id = #{userId}
+		into outfile 
+		#{excelFileName}
+		fields terminated by ','
+	</select>
+	
 </mapper>
 
 
