@@ -161,20 +161,17 @@ public class AccBookController {
 							HttpServletRequest request, 
 							HttpServletResponse response) throws Exception {
 		
-		String filePath = "http://14.32.66.123:9090/ProgramData/MySQL/MySQL Server 5.7/Uploads/GGG.cvs";
+		String filePath = "C:/java90/tomcat-work/wtpwebapps/b90ft4/accountBookFile/show.csv";
 		search.setExcelFileName(filePath);
 		search.setUserId("김현영");
 		service.makeExcel(search);
 		
-		
-		String uploadPath = filePath;
 		File f = new File(filePath);
-		
 		
 		response.setHeader("Content-Type", "application/octet-stream");
 		// 다운로드 파일 이름 헤더 설정
 		response.setHeader(
-				"Content-Disposition", "attachment;filename=" + new String("김현영".getBytes("UTF-8"), "8859_1"));
+				"Content-Disposition", "attachment;filename=" + new String("김현영님 가계부".getBytes("UTF-8"), "8859_1"));
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		response.setHeader("Content-Length", String.valueOf(f.length()));
 		

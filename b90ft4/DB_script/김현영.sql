@@ -271,7 +271,7 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		  from tb_sam_expense
 		where user_id = '김현영'
 		into outfile 
-		'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/Y.csv'
+		'C:/java90/tomcat-work/wtpwebapps/b90ft4/accountBookFile/kim.csv'
 		fields terminated by ','
 		
 
