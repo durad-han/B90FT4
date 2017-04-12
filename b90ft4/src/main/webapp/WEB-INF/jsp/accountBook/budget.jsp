@@ -4,32 +4,27 @@
 <html>
 <head>
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+
 <style>
 
 /* .ui-datepicker-header{ */
-/* 	background: green; */
-/* } */
-/* .ui-datepicker-month{ */
-/* 	background: transparent; */
-/* } */
-/* .ui-datepicker-year{ */
-/* 	background: transparent; */
-/* } */
+/* }  */
+
 /* .ui-datepicker-prev{ */
 /* 	background: transparent; */
-/* 	height: 100%; */
-/* } */
+/* }  */
+
 /* .ui-datepicker-next{ */
 /* 	background: transparent; */
-/* 	height: 100%; */
-/* } */
-/* .ui-datepicker{ */
-/* 	width: 100%; */
 /* } */
 
-.ui-datepicker-today{ 
-/* 	background-color: black; */
-} 
+/* .ui-datepicker-month { */
+/* 	color:black; */
+/* } */
+
+/* .ui-datepicker-year{ */
+/* 	color:black; */
+/* } */
 
 tbody#expense tr.expenseInfo:hover{
 	background:skyblue;
@@ -46,9 +41,10 @@ tbody#income tr.incomeInfo:hover{
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-<!--     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
-<!--  	<script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
-<!--   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>

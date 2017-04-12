@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
     <title>B90FT4 | 가계부</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,12 +11,10 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <style>
 #add{
 	font-weight:bold;
 }
-
 </style>
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 </head>
@@ -118,7 +115,9 @@
             <!--END CHAT FORM-->
             <!--BEGIN PAGE WRAPPER-->
             <div id="page-wrapper">
+              
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
+              
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">
@@ -132,12 +131,38 @@
                     <div class="clearfix">
                     </div>
                 </div>
-                <!--END TITLE & BREADCRUMB PAGE-->
-                <!--BEGIN CONTENT-->
-<!-- 				****************************** -->
-<!-- 				<br>여기에 내용입력 <br>            -->
-<!-- 				******************************                -->
-                   <button>엑셀로 가계부 받기.</button>
+                            <!--BEGIN CONTENT-->
+                <div class="page-content">
+                    <div id="title-breadcrumb-page" class="row">
+                           	
+                             <div class="page-title-breadcrumb option-demo">
+                                <div class="page-header pull-left">
+                                    <div class="page-title pull-left mrm">
+                                     <button>엑셀로 가계부 받기.</button>
+	                                     <div class="label label-primary pull-left mtm">
+	                                     New
+	                                    </div>
+                                    
+	                                 <div class="clearfix">
+	                                 </div>
+                           		   </div>
+                         
+                       		   </div>
+                   			</div>
+                	</div>
+               </div>
+
+	           <div id="footer">
+	               <div class="copyright">
+	                   <a href="http://themifycloud.com">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+	           </div>
+           </div>
+                        
+      </div>
+                <!--END CONTENT-->
+                <!--BEGIN FOOTER-->
+                <!--END FOOTER-->
+            <!--END PAGE WRAPPER-->
                    <script>
                    	$("button").click(function () {
 						$.ajax({
@@ -147,20 +172,8 @@
 						})  ;                 		
                    	});
                    </script>
-                   
-                
-                
                 <!--END CONTENT-->
                 <!--BEGIN FOOTER-->
-                <div id="footer">
-                    <div class="copyright"><a>B90FT4 Footer</a></div>
-                </div>
-                <!--END FOOTER-->
-            </div>
-            <!--END PAGE WRAPPER-->
-        </div>
-    </div>
-<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 
 <script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 

@@ -161,7 +161,7 @@ public class AccBookController {
 							HttpServletRequest request, 
 							HttpServletResponse response) throws Exception {
 		
-		String filePath = "C:/java90/tomcat-work/wtpwebapps/b90ft4/accountBookFile/show.csv";
+		String filePath = "C:/java90/tomcat-work/wtpwebapps/b90ft4/accountBookFile/glgl.csv";
 		search.setExcelFileName(filePath);
 		search.setUserId("김현영");
 		service.makeExcel(search);
