@@ -1,18 +1,10 @@
-@CHARSET "UTF-8";
-	
-#menuList {
-	width: 780px; height: 480px;
-	margin: 0 auto;
-	}
-	
-#menuList .menuIcon {
-	width: 230px; height: 200px; background-color: white;
-	margin: 0 auto; margin: 10px;
-	float: left; text-align: center;
-	border: 1px solid black;
-	}
-	
-.modalSample {
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.white_content {
     position: fixed;
     top: 0;
     right: 0;
@@ -25,11 +17,11 @@
     transition: opacity 400ms ease-in;
     pointer-events: none;
 }
-.modalSample:target {
+.white_content:target {
     opacity:1;
     pointer-events: auto;
 }
-.modalSample > #loginMenu {
+.white_content > div {
 	position: absolute;
 	top: 25%;
 	left: 25%;
@@ -40,3 +32,17 @@
 	background-color: white;
 	overflow: auto;	
 }
+</style>
+
+</head>
+<body>
+
+ <p>메인 콘텐츠입니다. Lightbox를 표시하려면<a href="#open">여기</a>를 클릭하십시오.</p>
+    <div class="white_content" id="open">
+        <div>
+            <p>Lightbox 콘텐츠입니다. <a href="#close">닫기</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

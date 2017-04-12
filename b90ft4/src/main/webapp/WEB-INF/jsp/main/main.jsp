@@ -162,9 +162,10 @@
 <!-- 페이지 컨텐츠 시작 ==================================================================================================== -->
 <div class="page-content">
 	<div class="row">
-		<div class="modal" id="callModal">
+		<div class="modalSample" id="callModal">
 		<div id="loginMenu">
-			 <div id="naver_id_login"> <a href="#close">닫기</a></div>
+			 <div id="naver_id_login"></div>
+			 <a href="#close">닫기</a>
 		</div>
 		</div>
 		<div id="menuList">
