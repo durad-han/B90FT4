@@ -20,12 +20,12 @@
 				  <li><a href="#"> ${loop.count} 세트<br>${l.typeBTime}초<br>${l.workoutNo}</a></li>
 				</c:when>
 				<c:otherwise>
-					<li>등록된 세트가 없습니다.<a href="#">세트 등록</a></li>
+					<li>등록된 세트가 없습니다.</li>
 				</c:otherwise>
 			</c:choose>
 		
 		</c:forEach>
-		
+		<li><a href="#">세트 등록</a></li>
 	  </ul>
 							
 </body>

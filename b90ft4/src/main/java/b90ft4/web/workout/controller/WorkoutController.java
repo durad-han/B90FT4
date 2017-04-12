@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutVO;
@@ -16,23 +17,41 @@ public class WorkoutController {
 	
 	@Autowired
 	private WorkoutService ws;
-	
-//
 
-//
 	@RequestMapping("/workout.do")
-	public String workout(Model model) throws Exception{//jsp에 뿌려줄 데이터 를 모델 객체에 담는다
-	//	System.out.println("workout controller");
+	public String workout(Model model) throws Exception{//jsp에 뿌려줄 데이터를 모델 객체에 담는다
 		
 		List<WorkoutVO> list = ws.workoutList();
-		
-	//	System.out.println("workoutList size: "+ list.size());
-	//	System.out.println(list.get(0).getWorkoutNo());
-	//	System.out.println("workout controller done");
-		
+
 		model.addAttribute("list",list);
 		
 		return "workout/workout";
+	}
+	
+	/*
+	@RequestMapping("/workoutList.do")
+	public String workoutList(Model model) throws Exception{
+
+		List<WorkoutVO> list = ws.workoutList();
+		model.addAttribute("list",list);
+		
+		
+		return "workout/workoutList";
+	}
+	*/
+	
+	@ResponseBody
+	@RequestMapping("/workoutList.do")
+	public List<WorkoutVO> workoutList(String userId) throws Exception{
+		List<WorkoutVO> list = ws.workoutList();
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/workoutForm.do")
+	public List<WorkoutSetVO> workoutForm (int workoutNo) throws Exception{
+		List<WorkoutSetVO> setList = ws.workoutSetList(workoutNo);
+		return setList;
 	}
 	
 	@RequestMapping("/workoutTypeA.do")
@@ -54,6 +73,25 @@ public class WorkoutController {
 		return "workout/workoutTypeB";
 	}
 	
+/*	@RequestMapping("/workoutForm.do")
+	public String workoutForm (Model model,int workoutNo) throws Exception{
+		System.out.println(workoutNo);
+		List<WorkoutSetVO> setList = ws.workoutSetList(workoutNo);
+		model.addAttribute("setList",setList);
+		return "workout/workoutForm";
+	}
+*/	
+	@RequestMapping("/testhandlebars.do")
+	public String testhandlebars (Model model) throws Exception{
+
+		return "workout/testhandlebars";
+	}
+	
+	@RequestMapping("/timerTest.do")
+	public String TimerTest (Model model) throws Exception{
+		
+		return "workout/timerTest";
+	}
 
 
 }

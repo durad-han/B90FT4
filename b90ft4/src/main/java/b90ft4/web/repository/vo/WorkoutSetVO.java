@@ -1,7 +1,5 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class WorkoutSetVO {
 	private int workoutSetNo;
 	private int workoutNo;
@@ -10,6 +8,13 @@ public class WorkoutSetVO {
 	private int spentCal;
 	private String intervalTime;
 	private String workoutDescription;
+	private char WorkoutType;
+	public char getWorkoutType() {
+		return WorkoutType;
+	}
+	public void setWorkoutType(char workoutType) {
+		WorkoutType = workoutType;
+	}
 	public int getWorkoutSetNo() {
 		return workoutSetNo;
 	}
