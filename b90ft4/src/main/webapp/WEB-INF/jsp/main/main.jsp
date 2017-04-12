@@ -6,6 +6,12 @@
 <head>
 <title>B90FT4 | Main</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/main/main.css">
+
+<!-- 	네이버 로그인 임시 -->
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- 	//네이버 로그인 임시 -->
+  
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +59,7 @@
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Link</a></li>
+                  <li><a href="#callModal">Login</a></li>
 <!-- 미사용 드롭다운 샘플2 ==================================================================================================== -->
                   <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -156,7 +162,11 @@
 <!-- 페이지 컨텐츠 시작 ==================================================================================================== -->
 <div class="page-content">
 	<div class="row">
-	
+		<div class="modal" id="callModal">
+		<div id="loginMenu">
+			 <div id="naver_id_login"> <a href="#close">닫기</a></div>
+		</div>
+		</div>
 		<div id="menuList">
 			
 			<div id="menu01" class="menuIcon">Schedule</div>
@@ -166,7 +176,7 @@
 			<div id="menu05" class="menuIcon">Login (임시) </div>
 			<div id="menu06" class="menuIcon">Options</div>
 			
-			</div>
+		</div>
 	
 	</div>
 </div>
@@ -192,5 +202,14 @@
 <jsp:include page="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <script src="${pageContext.request.contextPath}/web/js/main/main.js"></script>
 
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://127.0.0.1:9090/b90ft4/login/login.do");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain("http://127.0.0.1:9090/b90ft4/main/main.do");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script>
 </body>
 </html>
