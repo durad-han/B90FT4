@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <title>Main Menu</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/main/main.css">
-<jsp:include page="../common/basicInclude.jsp"></jsp:include>
 </head>
 <body>
 

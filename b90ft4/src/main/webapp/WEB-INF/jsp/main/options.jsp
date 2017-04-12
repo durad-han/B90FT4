@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Options</title>
-<link rel="import" href="../common/basicInclude.jsp">
 <link rel="stylesheet" type="text/css" href="../../css/main/main.css">
 
 </head>

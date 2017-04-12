@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Schedule</title>
-<jsp:include page="../common/basicInclude.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/css/schedule/schedule.css">
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/web/bootstrap/mobipick/css/mobipick.css" />
