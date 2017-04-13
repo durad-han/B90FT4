@@ -171,7 +171,7 @@ public class AccBookController {
 		
 		File f = new File(filePath);
 		
-		response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+		response.setHeader("Content-Type", "application/smnet; charset=utf-8");
 		// 다운로드 파일 이름 헤더 설정
 		response.setHeader(
 				"Content-Disposition", "attachment;filename=" + new String((search.getUserId()+" 가계부.csv").getBytes("UTF-8"), "8859_1"));
