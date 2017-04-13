@@ -4,20 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
     <title>B90FT4 | 운동</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+	<link type='text/css' rel='stylesheet' href='${pageContext.request.contextPath}/web/css/workout/workoutTypeA.css' />
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
 </head>
 <body>
 <div>
 <!-- 위로가기 ==================================================================================================== -->
-	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
-        
+	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>       
 <!-- 상단 메뉴 시작 ==================================================================================================== -->
 <div id="header-topbar-option-demo" class="page-header-topbar">
     <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
@@ -43,7 +42,7 @@
                   <li><a href="http://127.0.0.1:9090/b90ft4/accountBook/main.do">가계부</a></li>
                   <li><a href="http://127.0.0.1:9090/b90ft4/workout/workout.do">운동</a></li>
 <!-- 미사용 드롭다운 샘플 ==================================================================================================== -->
-                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret"></b></a>
+                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret" ></b></a>
                       <ul class="dropdown-menu">
                           <li><a href="#">Action</a></li>
                           <li><a href="#">Another action</a></li>
@@ -72,8 +71,6 @@
 	</nav>
 </div>
 <!-- 상단메뉴 종료 ==================================================================================================== -->
-
-
 		<div id="wrapper">
 			<!--BEGIN SIDEBAR MENU-->
 			<nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;" data-position="right" class="navbar-default navbar-static-side">
@@ -92,8 +89,7 @@
 						<li><a href="#"><i class="fa fa-fw">
 									<div class="icon-bg bg-blue"></div>
 							</i><span class="menu-title">차트</span></a></li>
-					</ul>
-					
+					</ul>					
 				</div>
 			</nav>
 			<!--END SIDEBAR MENU-->
@@ -121,8 +117,7 @@
 				<!--BEGIN FOOTER-->
 				<div id="footer">
 					<div class="copyright">
-						<a>B90FT4 Footer</a>
-						
+						<a>B90FT4 Footer</a>					
 					</div>
 				</div>
 				<!--END FOOTER-->
@@ -130,8 +125,6 @@
 			<!--END PAGE WRAPPER-->
 		</div>
 	</div>
-
-
 <script id="workoutList" type="text/x-handlebars-template">
 
 	<div id="sum_box" class="row mbl">
@@ -201,12 +194,11 @@
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
 					{{#setList}}						
 						{{#isZero}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{typeACount}},{{typeBTime}},{{intervalTime}},{{workoutDescription}})"><a>0세트<br>0/{{typeACount}}회</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeACount}}회</a></li>
 						{{else}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{typeACount}},{{typeBTime}},{{intervalTime}},{{workoutDescription}})"><a>0세트<br>0/{{typeBTime}}초</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
-					<li><a href="#">세트 등록</a></li>
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->

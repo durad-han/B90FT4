@@ -56,6 +56,69 @@ function listLoad(result){
 
 	});
 }
+
+//typeA 관련 함수
+
+(function() {
+	  $(document).ready(function() {
+	    var count, rotateY, setValueFunc, value, zero;
+	    zero = 0;
+	    rotateY = 180;
+	    value = -1;
+	    count = -1;
+	    maxValue = 7;
+	    max = "/"+maxValue;
+	    breakTimeVal = 10;
+	    
+
+
+	    $(".front").on("mousedown", function() {
+	      count++;
+	      $("#typeAContainer").css({"background": "#0080ff"});
+	      $(".container").css({
+	        "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	      });
+	      value++;
+	      
+	      if(count === maxValue){
+	    	  $("#typeAContainer").css({"background": "#ff7373"});
+	    	  alert("break time");
+	          $(".container").css({
+	              "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	            });
+	    	  value = -1;
+	    	  count = -1;
+	    	  return $(".value_front").text("Start!");
+	      }
+	      
+	      return $(".value_back").text(value + max);
+	    });
+	    $(".back").on("mousedown", function() {
+	    	count++;
+	    	$("#typeAContainer").css({"background": "#0080ff"});
+	    	$(".container").css({
+	    		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	    	});
+	    	value++;
+	        if(count === maxValue){
+	        	$("#typeAContainer").css({"background": "#ff7373"});
+	      	  alert("break time");
+	            $(".container").css({
+	                "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	              });
+	      	  value = -1;
+	      	  count = -1;
+	      	  return $(".value_back").text("Start!");
+	        }
+	    	return $(".value_front").text(value + max);
+	    });
+	  });
+	  
+
+	}).call(this);
+
+
+//typeB 관련 함수
 $("#videoCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
 
@@ -84,32 +147,44 @@ function videoClose(){
 	$("#videoCloseBtn").addClass("hidden");
 	$("#videoLoadBtn").removeClass("hidden");
 }
-function workoutTypeLoad(workoutSetNo,typeACount,typeBTime,intervalTime,workoutDescription){
+
+
+//타입별 로드될 html 파싱
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
+	
+	console.log("workoutTypeLoad function started");
 	var type="";
 	if(typeACount != 0){
 		type = "A";
 	}else{ 
 		type = "B";
 	}
-	
+	console.log(type);
 	var html = "";
 	//typeA load
-	if(type = "A"){
-		alert("typeA load");
+	if(type == "A"){
+		console.log("typeA load");
 		
-		html += "<link type='text/css' rel='stylesheet' href='${pageContext.request.contextPath}/web/css/workout/workoutTypeA.css' />";
+		html += "<meta charset='UTF-8'>"+
+				"<div id='typeAContainer'>"+
+					"<div class='setList'></div>"+
+					"<div class='container'>"+
+						"<div class='front'>"+
+							"<div></div>"+
+							"<div class='value_front'>Start!</div>"+
+							"<div></div></div>"+
+						"<div class='back'><div></div>"+
+							"<div class='value_back'>0</div>"+
+							"<div></div></div></div></div>";
 	}
 	//typeB load
-	else if(type = "B"){
-		alert("typeB load");
+	else if(type == "B"){
+		console.log("typeB load");
 		
 		
 
-		html += "<link type='text/css' rel='stylesheet' href='${pageContext.request.contextPath}/web/css/workout/workoutTypeB.css' />"+
+		html += "typeB load"+
 				"<div id='setContainer'>"+
-				"<ul class='pagination pagination-lg mtm mbm'>"+
-				"<c:import url='workoutSet.jsp'></c:import>"+
-				"</ul>"+
 				"</div><div id='typeBContainer'>"+
 				"<div><video width='70%' height='70%' autoplay='autoplay' id='myVideo' /></div><div>"+
 				"<button id='videoLoadBtn' onclick='videoLoad()'>영상 보기</button>"+
@@ -117,7 +192,7 @@ function workoutTypeLoad(workoutSetNo,typeACount,typeBTime,intervalTime,workoutD
 				
 	}
 	$('#typeContainer').html(html);
-	
+	console.log(html);
 }
 
 
@@ -127,4 +202,22 @@ function endWorkout(){
 	listLoad();
 }
 
+
+/*function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
+	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime);
+}*/
+/*
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,workoutDescription,WorkoutType){
+	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime+" "+workoutDescription+" "+WorkoutType);
+}
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,workoutDescription,WorkoutType){
+	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime+" "+workoutDescription+" "+WorkoutType);
+}
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,workoutDescription,WorkoutType){
+	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime+" "+workoutDescription+" "+WorkoutType);
+}
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,workoutDescription,WorkoutType){
+	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime+" "+workoutDescription+" "+WorkoutType);
+}
+*/
 
