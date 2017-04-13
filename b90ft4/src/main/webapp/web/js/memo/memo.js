@@ -27,7 +27,7 @@
 			       	   })
 					   .attr("class","memo")
 					   .append(
-						$("<div></div>")
+						$("<div class='memoContent'></div>")
 						.attr("contentEditable",true)
 						.css({
 						   width:"150px", 
@@ -49,7 +49,7 @@
 			}).done(function (memoNo) {
 				$(obj)
 				.attr("id",memoNo)
-				.prepend("<button type='button' onclick='delMemo("+memoNo+")' style='margin-left:84%'>X</button><br>");
+				.prepend("<div style='width:150px;height:30px;background:yellow'><button type='button' onclick='delMemo("+memoNo+")' style='margin-left:84%'>X</button></div>");
 			});
 			
 			
@@ -81,7 +81,7 @@
 					"posX" : $(this).offset().left,
 					"posY" : $(this).offset().top,
 					"memoNo" : $(this).attr("id"),
-					"memoContent" : $(this).find("div:eq(0)").html()
+					"memoContent" : $(this).find("div:eq(1)").html()
 				}
 			}).done(function (result) {
 			});
@@ -94,13 +94,12 @@
 					"posX" : $(this).offset().left,
 					"posY" : $(this).offset().top,
 					"memoNo" : $(this).attr("id"),
-					"memoContent" : $(this).find("div:eq(0)").html()
+					"memoContent" : $(this).find("div:eq(1)").html()
 				}
 			}).done(function (result) {
-				
-				
-				
 			});
+		}).on("mousedown","div.memoContent",function(e) {
+			e.stopPropagation();
 		});
 		
 		
@@ -138,9 +137,9 @@
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
-					   .append("<button type='button' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:84%'>X</button><br>")
+					   .append("<div style='width:150px;height:30px;background:yellow;'><button type='button' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:84%'>X</button></div>")
 					   .append(
-						$("<div></div>")
+						$("<div class='memoContent'></div>")
 								.attr("contentEditable",true)
 								.css({
 								   width:"150px", 

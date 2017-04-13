@@ -114,7 +114,9 @@
 
             <!--END CHAT FORM-->
             <!--BEGIN PAGE WRAPPER-->
-            <div id="page-wrapper">
+            <div id="page-wrapper"
+            style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100% 100%'
+            >
               
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
               
@@ -135,20 +137,14 @@
                 <div class="page-content">
                     <div id="title-breadcrumb-page" class="row">
                            	
-                             <div class="page-title-breadcrumb option-demo">
-                                <div class="page-header pull-left">
-                                    <div class="page-title pull-left mrm">
-                                     <button>엑셀로 가계부 받기.</button>
-	                                     <div class="label label-primary pull-left mtm">
-	                                     New
-	                                    </div>
-                                    
-	                                 <div class="clearfix">
-	                                 </div>
-                           		   </div>
-                         
-                       		   </div>
-                   			</div>
+                           	<div class="page-title-breadcrumb option-demo">
+                                     <div class="page-header" style='width:30%;margin: 0 auto'>
+                                         <div class="page-title mrm">
+                                              <button>엑셀로 가계부 받기</button>
+                                         </div>
+                                     </div>
+                             </div>
+                           	
                 	</div>
                </div>
 

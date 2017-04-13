@@ -45,6 +45,7 @@
                   <li><a href="http://127.0.0.1:9090/b90ft4/diary/list.do">다이어리</a></li>
                   <li><a href="http://127.0.0.1:9090/b90ft4/accountBook/main.do">가계부</a></li>
                   <li><a href="http://127.0.0.1:9090/b90ft4/workout/workout.do">운동</a></li>
+                  <li><a href="http://127.0.0.1:9090/b90ft4/main/news.do">뉴스</a></li>
 <!-- 미사용 드롭다운 샘플 ==================================================================================================== -->
                   <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -105,7 +106,7 @@
                 <div class="icon-bg bg-blue"></div>
             </i><span class="menu-title">Workout</span></a>
             </li>
-            <li><a href="http://127.0.0.1:9090/b90ft4/main/options.do"><i class="fa fa-file-o fa-fw">
+            <li><a href="http://127.0.0.1:9090/b90ft4/main/news.do"><i class="fa fa-file-o fa-fw">
                 <div class="icon-bg bg-yellow"></div>
             </i><span class="menu-title">Options</span></a>
             </li>

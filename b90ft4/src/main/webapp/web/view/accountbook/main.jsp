@@ -5,6 +5,17 @@
 <html>
 
 <head>
+<style>
+tr, td.img {
+	padding:0;
+	margin: 0;
+}
+
+td.img img{
+	width: 100%;
+	height: 100%;
+}
+</style>
 <title>오늘의 뉴스</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -299,7 +310,8 @@
 																			the Ancient Romans who were the first to apply the
 																			technique to a wide range of structures.</p>
 
-																		<p class="like">5 Likes</p></td>
+																		<p class="like">5 Likes</p>
+																	</td>
 																</tr>
 
 															</table>
@@ -318,13 +330,6 @@
 				</div>
 				<!--END CONTENT-->
 				<!--BEGIN FOOTER-->
-				<div id="footer">
-					<div class="copyright">
-						<a href="http://themifycloud.com">2014 © KAdmin Responsive
-							Multi-Purpose Template</a>
-					</div>
-				</div>
-				<!--END FOOTER-->
 			</div>
 			<!--END PAGE WRAPPER-->
 		</div>
@@ -424,8 +429,8 @@
 							   
 								if(items[i].description[0].indexOf("</table>") != -1 ) {
 					     			var arr = (items[i].description[0]).split("</table>");
-					     			arr[0]+="</table>";
-					     			arr[1];
+					     			arr[0] = arr[0].substring( arr[0].indexOf("<img") , arr[0].indexOf(">",arr[0].indexOf("<img"))+1);                
+					     			console.log(arr[0]);
 					         		html+='<tr class="tbl-item">';
 					                html+=  '<td class="img">'+arr[0]+'</td>';
 					                html+=  '<td class="td-block">'
@@ -509,23 +514,6 @@
 
 
 	<!--CORE JAVASCRIPT-->
-	<script
-		src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
-	<script>        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-145464-12', 'auto');
-        ga('send', 'pageview');
-
-
-</script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/main.js"></script>
 </body>
 </html>

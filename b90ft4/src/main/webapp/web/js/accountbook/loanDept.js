@@ -339,9 +339,6 @@
 				$("[name=bondF] input:eq(5)").val(loanObj.loanDate);
 				$("#bondModal").trigger("click");
 				console.log(loanObj);
-				
-				modAndDelEvent();
-				
 			});
 		
 		}); // 아잭스 끝.
@@ -349,32 +346,31 @@
 	} // 함수 끝
 
 	bondList(today);
-	
+	modAndDelEvent();
 	
 /* -------------------------------------------------------------------------------------------------------------- */	
 	
-$("#regiLoanDept").click(function(){
-	
-	console.log("ㅋㅋ");
-	
-	var f = document.bondF;
-	if(isEmpty(eval("f."+$("[name=bondF] input:eq(3)").attr("name")),"금액을 입력하세요")) return;
-	
-	var params = $("[name=bondF]").serialize();
-	
-	console.log(params);
-	
-	initForm();
-	
-	$.ajax({
-		url : "regiBond.do",
-		data : params,
-		type: "POST"
-	}).done(function(result) {
-		console.log(result);
-	});
-	
-})	
+	$("#regiLoanDept").click(function(){
+		
+		console.log("ㅋㅋ");
+		
+		var f = document.bondF;
+		if(isEmpty(eval("f."+$("[name=bondF] input:eq(3)").attr("name")),"금액을 입력하세요")) return;
+		
+		var params = $("[name=bondF]").serialize();
+		
+		console.log(params);
+		
+		$.ajax({
+			url : "regiBond.do",
+			data : params,
+			type: "POST"
+		}).done(function(result) {
+			console.log(result);
+			initForm();
+		});
+		
+	})	
 
 
 /* ------------------------------------------------------------------ */
@@ -427,7 +423,9 @@ $("#regiLoanDept").click(function(){
 	// 폼 초기화
 	function initForm(flag){
 		
+		console.log($("#actualDate").val());
 		bondList($("#actualDate").val());
+		
 		$("#updateBond").hide();
 		$("#deleteBond").hide();
 		$("#regiLoanDept").show();

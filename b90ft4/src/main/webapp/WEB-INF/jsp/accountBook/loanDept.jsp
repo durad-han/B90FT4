@@ -35,8 +35,6 @@ tbody#income tr.incomeInfo:hover{
 
 <body>
 
-   <div>
-   
   <!-- 위로가기 ==================================================================================================== -->
 	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
         
@@ -129,7 +127,9 @@ tbody#income tr.incomeInfo:hover{
 
             <!--END CHAT FORM-->
             <!--BEGIN PAGE WRAPPER-->
-            <div id="page-wrapper">
+            <div id="page-wrapper"
+            	style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100% 100%'
+            >
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
@@ -167,7 +167,7 @@ tbody#income tr.incomeInfo:hover{
                 		
                 			<div id="generalTabContent" class="tab-content responsive">
 			                     
-			                   <div id="alert-tab" class="tab-pane fade in active" style="height:400px;overflow: auto;">
+			                   <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto;">
 								  
 								   <div class="panel panel-green" id="">
 				                            <div class="panel-heading">받을 돈</div>
@@ -228,8 +228,9 @@ tbody#income tr.incomeInfo:hover{
 			     </div> <!-- cols -->
              
              </div> <!-- row -->
-                
-		  </div> <!-- page wrapper  -->
+			 <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+
+	 		</div> <!-- page wrapper  -->
                     <br>
 		            <br>    
 		                
@@ -294,27 +295,15 @@ tbody#income tr.incomeInfo:hover{
 								</div>
                                         
 							</div>
-						</div>
-					</div>
+			 </div>
+			 
+		</div>
 		                
-		            </div>
-                </div>
                 
                 
                 
-                <!--END CONTENT-->
-                <!--BEGIN FOOTER-->
-                <div id="footer">
-                    <div class="copyright"><a>B90FT4 Footer</a></div>
-                </div>
-                <!--END FOOTER-->
-            </div>
-            <!--END PAGE WRAPPER-->
-        </div>
-    </div>
-    
 
-
+<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/accountbook/loanDept.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 
