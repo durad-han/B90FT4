@@ -348,7 +348,7 @@
 		where user_id = #{userId}
 		into outfile 
 		#{excelFileName}
-		fields terminated by ','
+		fields terminated by ',' ENCLOSED BY '' LINES TERMINATED BY ''
 	</select>
 	
 </mapper>

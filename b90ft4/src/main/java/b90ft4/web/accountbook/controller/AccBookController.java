@@ -162,6 +162,8 @@ public class AccBookController {
 							HttpServletRequest request, 
 							HttpServletResponse response) throws Exception {
 		
+		
+		
 		String filePath = "C:/accountBookFile/"+UUID.randomUUID().toString()+".csv";
 		search.setExcelFileName(filePath);
 		search.setUserId("김현영");
@@ -169,10 +171,10 @@ public class AccBookController {
 		
 		File f = new File(filePath);
 		
-		response.setHeader("Content-Type", "application/octet-stream");
+		response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
 		// 다운로드 파일 이름 헤더 설정
 		response.setHeader(
-				"Content-Disposition", "attachment;filename=" + new String((search.getUserId()+" 가계부").getBytes("UTF-8"), "8859_1"));
+				"Content-Disposition", "attachment;filename=" + new String((search.getUserId()+" 가계부.csv").getBytes("UTF-8"), "8859_1"));
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		response.setHeader("Content-Length", String.valueOf(f.length()));
 		
