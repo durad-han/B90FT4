@@ -165,11 +165,14 @@
             <!--END PAGE WRAPPER-->
                    <script>
                    	$("button").click(function () {
-						$.ajax({
-							url:"makeExcel.do"
-						}).done(function(result) {
-							console.log(result);
-						})  ;                 		
+                   		
+// 						$.ajax({
+// 							url:"makeExcel.do"
+// 						}).done(function(result) {
+// 							console.log(result);
+// 						})  ;       
+						location.href="makeExcel.do";
+                   	
                    	});
                    </script>
                 <!--END CONTENT-->

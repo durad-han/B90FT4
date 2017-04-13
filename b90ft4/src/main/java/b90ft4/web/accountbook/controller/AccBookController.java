@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -157,11 +158,11 @@ public class AccBookController {
 	
 	@ResponseBody
 	@RequestMapping("/makeExcel.do")
-	public String makeExcel(SearchVO search,
+	public void makeExcel(SearchVO search,
 							HttpServletRequest request, 
 							HttpServletResponse response) throws Exception {
 		
-		String filePath = "C:/java90/tomcat-work/wtpwebapps/b90ft4/accountBookFile/zlzl.csv";
+		String filePath = "C:/accountBookFile/"+UUID.randomUUID().toString()+".csv";
 		search.setExcelFileName(filePath);
 		search.setUserId("김현영");
 		service.makeExcel(search);
@@ -171,7 +172,7 @@ public class AccBookController {
 		response.setHeader("Content-Type", "application/octet-stream");
 		// 다운로드 파일 이름 헤더 설정
 		response.setHeader(
-				"Content-Disposition", "attachment;filename=" + new String("김현영님 가계부".getBytes("UTF-8"), "8859_1"));
+				"Content-Disposition", "attachment;filename=" + new String((search.getUserId()+" 가계부").getBytes("UTF-8"), "8859_1"));
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		response.setHeader("Content-Length", String.valueOf(f.length()));
 		
@@ -194,8 +195,13 @@ public class AccBookController {
 		bos.close();
 		out.close();
 		
+		if(f.delete()){
+			System.out.println("파일 삭제");
+		}else{
+			System.out.println("파일 삭제 실패");
+		}
 		
-		return "ok";
+		
 	}
 	
 	
