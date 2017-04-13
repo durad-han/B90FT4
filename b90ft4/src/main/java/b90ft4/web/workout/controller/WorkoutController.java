@@ -53,7 +53,7 @@ public class WorkoutController {
 		List<WorkoutSetVO> setList = ws.workoutSetList(workoutNo);
 		return setList;
 	}
-	
+/*	
 	@RequestMapping("/workoutTypeA.do")
 	public String workoutListTypeA (Model model,int workoutNo) throws Exception{
 		
@@ -73,7 +73,7 @@ public class WorkoutController {
 		return "workout/workoutTypeB";
 	}
 	
-/*	@RequestMapping("/workoutForm.do")
+	@RequestMapping("/workoutForm.do")
 	public String workoutForm (Model model,int workoutNo) throws Exception{
 		System.out.println(workoutNo);
 		List<WorkoutSetVO> setList = ws.workoutSetList(workoutNo);

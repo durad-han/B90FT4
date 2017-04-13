@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>insert title</title>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"/>
 </head>
 <body>
 <div id='timeline'>
-<div class="container">
+<div class="timerContainer">
   <div class="timer"></div>
   <div class="slideshow">
     <div class="slide">01</div>

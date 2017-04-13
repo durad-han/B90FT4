@@ -13,7 +13,7 @@ $(function() {
     
     $n = $('.slide').length; //number of slides
     $w = $('.slide').width(); // slide width
-  	$c = $('.container').width(); // container width
+  	$c = $('.timerContainer').width(); // container width
    	$ss = $n * $w; // slideshow width
   
   	

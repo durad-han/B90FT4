@@ -59,63 +59,66 @@ function listLoad(result){
 
 //typeA 관련 함수
 
-(function() {
-	  $(document).ready(function() {
-	    var count, rotateY, setValueFunc, value, zero;
-	    zero = 0;
-	    rotateY = 180;
-	    value = -1;
-	    count = -1;
-	    maxValue = 7;
-	    max = "/"+maxValue;
-	    breakTimeVal = 10;
-	    
+
+function typeAFunctionLoad() {
+	console.log("typeAFunctionLoadㅋㅋ");
+    var count, rotateY, setValueFunc, value, zero;
+    zero = 0;
+    rotateY = 180;
+    value = -1;
+    count = -1;
+    maxValue = 7;
+    max = "/"+maxValue;
+    breakTimeVal = 10;
+    
 
 
-	    $(".front").on("mousedown", function() {
-	      count++;
-	      $("#typeAContainer").css({"background": "#0080ff"});
-	      $(".container").css({
-	        "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-	      });
-	      value++;
-	      
-	      if(count === maxValue){
-	    	  $("#typeAContainer").css({"background": "#ff7373"});
-	    	  alert("break time");
-	          $(".container").css({
-	              "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-	            });
-	    	  value = -1;
-	    	  count = -1;
-	    	  return $(".value_front").text("Start!");
-	      }
-	      
-	      return $(".value_back").text(value + max);
-	    });
-	    $(".back").on("mousedown", function() {
-	    	count++;
-	    	$("#typeAContainer").css({"background": "#0080ff"});
-	    	$(".container").css({
-	    		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-	    	});
-	    	value++;
-	        if(count === maxValue){
-	        	$("#typeAContainer").css({"background": "#ff7373"});
-	      	  alert("break time");
-	            $(".container").css({
-	                "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-	              });
-	      	  value = -1;
-	      	  count = -1;
-	      	  return $(".value_back").text("Start!");
-	        }
-	    	return $(".value_front").text(value + max);
-	    });
-	  });
-	  
+    $(".front").on("mousedown", function() {
+    	console.log("frontㅋㅋ");
+      count++;
+      $("#typeAContainer").css({"background": "#0080ff"});
+      $(".container").css({
+        "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+      });
+      value++;
+      
+      if(count === maxValue){
+    	  $("#typeAContainer").css({"background": "#ff7373"});
+    	  alert("break time");
+          $(".container").css({
+              "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+            });
+    	  value = -1;
+    	  count = -1;
+    	  return $(".value_front").text("Start!");
+      }
+      
+      return $(".value_back").text(value + max);
+    });
 
-	}).call(this);
+    $(".back").on("mousedown", function() {
+    	console.log("backㅋㅋ");
+    	count++;
+    	$("#typeAContainer").css({"background": "#0080ff"});
+    	$(".container").css({
+    		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+    	});
+    	value++;
+        if(count === maxValue){
+        	$("#typeAContainer").css({"background": "#ff7373"});
+      	  alert("break time");
+            $(".container").css({
+                "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+              });
+      	  value = -1;
+      	  count = -1;
+      	  return $(".value_back").text("Start!");
+        }
+    	return $(".value_front").text(value + max);
+    });
+}
+
+
 
 
 //typeB 관련 함수
@@ -124,6 +127,7 @@ var video = document.getElementById('myVideo');
 
 function videoLoad() {
 
+	
 	var constraints = { audio: true, video: true}; 
 
 	navigator.mediaDevices.getUserMedia(constraints)
@@ -147,9 +151,96 @@ function videoClose(){
 	$("#videoCloseBtn").addClass("hidden");
 	$("#videoLoadBtn").removeClass("hidden");
 }
+function slide() {
 
+    // slider type
+    $t = "slide"; // opitions are fade and slide
+    
+  	//variables
+    $f = 1000,  // fade in/out speed
+    $s = 1000,  // slide transition speed (for sliding carousel)
+    $d = 5000;  // duration per slide
+    
+    $n = $('.slide').length; //number of slides
+    $w = $('.slide').width(); // slide width
+  	$c = $('.timerContainer').width(); // container width
+   	$ss = $n * $w; // slideshow width
+  
+  	
+      function timer() {
+        $('.timer').animate({"width":$w}, $d);
+        $('.timer').animate({"width":0}, 0);
+    }
 
-//타입별 로드될 html 파싱
+  
+  // fading function
+    function fadeInOut() {
+      timer();
+        $i = 0;    
+        var setCSS = {
+            'position' : 'absolute',
+            'top' : '0',
+            'left' : '0'
+        }        
+        
+        $('.slide').css(setCSS);
+        
+        //show first item
+        $('.slide').eq($i).show();
+        
+
+        setInterval(function() {
+          timer();
+            $('.slide').eq($i).fadeOut($f);
+            if ($i == $n - 1) {
+                $i = 0;
+            } else {
+                $i++;
+            }
+            $('.slide').eq($i).fadeIn($f, function() {
+                $('.timer').css({'width' : '0'});
+            });
+
+        }, $d);
+        
+    }
+    
+    function slide() {
+      timer();
+        var setSlideCSS = {
+            'float' : 'left',
+            'display' : 'inline-block',
+          	'width' : $c
+        }
+        var setSlideShowCSS = {
+            'width' : $ss // set width of slideshow container
+        }
+        $('.slide').css(setSlideCSS);
+        $('.slideshow').css(setSlideShowCSS); 
+        
+        
+        setInterval(function() {
+            timer();
+            $('.slideshow').animate({"left": -$w}, $s, function(){
+                // to create infinite loop
+                $('.slideshow').css('left',0).append( $('.slide:first'));
+            });
+        }, $d);
+        
+    }
+    
+    if ($t == "fade") {
+        fadeInOut();
+        
+    } if ($t == "slide") {
+        slide();
+        
+    } else {
+      
+    }
+}
+
+//타입별 로드될 html 작성
 function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
 	
 	console.log("workoutTypeLoad function started");
@@ -169,6 +260,8 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 				"<div id='typeAContainer'>"+
 					"<div class='setList'></div>"+
 					"<div class='container'>"+
+					"0/"+typeACount+"회"+
+					"<br>이번 세트 휴식시간:"+intervalTime+"초"+
 						"<div class='front'>"+
 							"<div></div>"+
 							"<div class='value_front'>Start!</div>"+
@@ -176,22 +269,40 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 						"<div class='back'><div></div>"+
 							"<div class='value_back'>0</div>"+
 							"<div></div></div></div></div>";
+		
+		typeAFunctionLoad();
 	}
 	//typeB load
 	else if(type == "B"){
 		console.log("typeB load");
 		
-		
-
-		html += "typeB load"+
-				"<div id='setContainer'>"+
+		html += "<div id='setContainer'>"+
 				"</div><div id='typeBContainer'>"+
+				"이번 세트 운동시간 : "+typeBTime+"초"+
+				"<br>이번 세트 휴식시간:"+intervalTime+"초"+
+				"<div id='view'>"+
+			/*	
+				"<div id='timeline'>"+
+				"<div class='timerContainer'>"+
+				  "<div class='timer'></div>"+
+				  "<div class='slideshow'>"+
+				    "<div class='slide'>01</div>"+
+				    "<div class='slide'>02</div>"+
+				    "<div class='slide'>03</div>"+
+				    "<div class='slide'>04</div>"+
+				  "</div>"+
+				"</div>"+
+				"</div>"+
+				*/
 				"<div><video width='70%' height='70%' autoplay='autoplay' id='myVideo' /></div><div>"+
-				"<button id='videoLoadBtn' onclick='videoLoad()'>영상 보기</button>"+
-				"<button id='videoCloseBtn' onclick='videoClose()'>영상 끄기</button></div></div>";
+				"<button id='videoLoadBtn' onclick='videoLoad()'>영상 보기</button>"+	
+				"<button id='videoCloseBtn' onclick='videoClose()'>영상 끄기</button></div></div></div>";
+		
 				
 	}
 	$('#typeContainer').html(html);
+	$("#videoCloseBtn").addClass("hidden");
+	slide();
 	console.log(html);
 }
 

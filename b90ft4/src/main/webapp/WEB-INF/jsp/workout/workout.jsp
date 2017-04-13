@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 	<link type='text/css' rel='stylesheet' href='${pageContext.request.contextPath}/web/css/workout/workoutTypeA.css' />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"/>
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
 </head>
