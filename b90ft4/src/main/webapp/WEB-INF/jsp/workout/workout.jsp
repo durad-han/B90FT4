@@ -155,11 +155,7 @@
 	</div>
 	<div id="workoutMainButtons">
 		<button class='btn btn-primary' id="workoutUpdateBtn">운동 편집</button>
- 		<div class="col-md-2">
-        	<div class="box-placeholder">
-        	<button data-toggle="dropdown" data-value="fadeInDown" class="btn btn-success btn-block">fadeInDown</button>
-			</div>
-        </div>
+ 		
 	</div>
    
 </script>
@@ -202,6 +198,7 @@
 							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
+					
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->
