@@ -122,10 +122,11 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("/delete.json")
-	public void deleteSchedule (int scheduleNo) throws Exception{
+	public String deleteSchedule (int scheduleNo) throws Exception{
 		logger.debug("deleteSchedule");
 		logger.debug("scheduleNo : "+scheduleNo);
 		ss.deleteSchedule(scheduleNo);
+		return "schedule/scheduleList";
 	}
 	
 	

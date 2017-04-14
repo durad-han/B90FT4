@@ -36,25 +36,25 @@
     <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
 	<div class="navbar-header">
 	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only"> toggle </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-	    <a id="logo" href="http://127.0.0.1:9090/b90ft4/main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
+	    <a id="logo" href="http://14.32.66.123:9092/b90ft4/main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
 	        </div>
 	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
 <!-- 메뉴 옵션들 ==================================================================================================== -->
-                  <li class="active"><a href="http://127.0.0.1:9090/b90ft4/main/main.do">메인</a></li>
-                  <li class="dropdown"><a href="http://127.0.0.1:9090/b90ft4/schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
+                  <li class="active"><a href="http://14.32.66.123:9092/b90ft4/main/main.do">메인</a></li>
+                  <li class="dropdown"><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                      	  <li><a href="http://127.0.0.1:9090/b90ft4/schedule/scheduleList.do">스케줄 리스트</a></li>
-                          <li><a href="http://127.0.0.1:9090/b90ft4/schedule/scheduleCalendar.do">스케줄 캘린더</a></li>
-                          <li><a href="http://127.0.0.1:9090/b90ft4/schedule/scheduleGraph.do">스케줄 그래프</a></li>
+                      	  <li><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleList.do">스케줄 리스트</a></li>
+                          <li><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleCalendar.do">스케줄 캘린더</a></li>
+                          <li><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleGraph.do">스케줄 그래프</a></li>
                           <li class="divider"></li>
                           <li><a href="#">임시메뉴</a></li>
                       </ul>
                   </li>
-                  <li><a href="http://127.0.0.1:9090/b90ft4/diary/list.do">다이어리</a></li>
-                  <li><a href="http://127.0.0.1:9090/b90ft4/accountBook/main.do">가계부</a></li>
-                  <li><a href="http://127.0.0.1:9090/b90ft4/workout/workout.do">운동</a></li>
+                  <li><a href="http://14.32.66.123:9092/b90ft4/diary/list.do">다이어리</a></li>
+                  <li><a href="http://14.32.66.123:9092/b90ft4/accountBook/main.do">가계부</a></li>
+                  <li><a href="http://14.32.66.123:9092/b90ft4/workout/workout.do">운동</a></li>
 <!-- 미사용 드롭다운 샘플 ==================================================================================================== -->
                   <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -129,7 +129,7 @@
                             	${subMenu}</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="http://127.0.0.1:9090/b90ft4/main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                         <li class="hidden"><a href="#">카테고리 종류</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                         <li class="active">카테고리 종류</li>
                     </ol>

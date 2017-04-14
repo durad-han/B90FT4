@@ -80,3 +80,7 @@
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/js/mobipick.js"></script> --%>
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/jquery.mobile-1.3.0.min.css"> --%>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/web/bootstrap/mobipick/external/jquery.mobile-1.3.0.min.js"></script> --%>
+
+
+<!--  메모 기능	 -->
+<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
