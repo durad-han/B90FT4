@@ -154,12 +154,14 @@
 		{{/list}} 
 	</div>
 	<div id="workoutMainButtons">
-		<button id="workoutUpdateBtn">운동 편집</button>
+		<button class='btn btn-primary' id="workoutUpdateBtn">운동 편집</button>
+ 		<div class="col-md-2">
+        	<div class="box-placeholder">
+        	<button data-toggle="dropdown" data-value="fadeInDown" class="btn btn-success btn-block">fadeInDown</button>
+			</div>
+        </div>
 	</div>
    
-
-
-
 </script>
 
 <script id="workoutForm" type="text/x-handlebars-template">
@@ -195,9 +197,9 @@
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
 					{{#setList}}						
 						{{#isZero}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeACount}}회</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeACount}}회</a></li>
 						{{else}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeBTime}}초</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
 				</ul>
@@ -207,8 +209,8 @@
 			</div>
 			<div>
 				<div class="buttons">
-					<button id="setEndBtn" onclick="endWorkout()">운동 끝내기</button>
-					<button id="viewChartBtn">차트보기</button>
+					<button id="setEndBtn" class='btn btn-primary' onclick="endWorkout()">운동 끝내기</button>
+					<!-- <button id="viewChartBtn" class='btn btn-primary' >차트보기</button> --> 
 				</div>
 					<br>
 					<br>

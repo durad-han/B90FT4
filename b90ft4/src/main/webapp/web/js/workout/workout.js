@@ -59,9 +59,6 @@ function listLoad(result){
 
 //typeA 관련 함수
 
-
-function typeAFunctionLoad() {
-	console.log("typeAFunctionLoadㅋㅋ");
     var count, rotateY, setValueFunc, value, zero;
     zero = 0;
     rotateY = 180;
@@ -116,7 +113,7 @@ function typeAFunctionLoad() {
         }
     	return $(".value_front").text(value + max);
     });
-}
+
 
 
 
@@ -256,21 +253,24 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	if(type == "A"){
 		console.log("typeA load");
 		
-		html += "<meta charset='UTF-8'>"+
+	/*	html += "<meta charset='UTF-8'>"+
 				"<div id='typeAContainer'>"+
 					"<div class='setList'></div>"+
-					"<div class='container'>"+
+					"<div class='typeAcontainer'>"+
 					"0/"+typeACount+"회"+
 					"<br>이번 세트 휴식시간:"+intervalTime+"초"+
+					"<div class='container'>"+
 						"<div class='front'>"+
 							"<div></div>"+
 							"<div class='value_front'>Start!</div>"+
 							"<div></div></div>"+
 						"<div class='back'><div></div>"+
 							"<div class='value_back'>0</div>"+
-							"<div></div></div></div></div>";
+							"<div></div></div></div></div></div>";
 		
-		typeAFunctionLoad();
+		$('#typeContainer').html(html);*/
+		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTest.html");
+		
 	}
 	//typeB load
 	else if(type == "B"){
@@ -295,15 +295,14 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 				"</div>"+
 				*/
 				"<div><video width='70%' height='70%' autoplay='autoplay' id='myVideo' /></div><div>"+
-				"<button id='videoLoadBtn' onclick='videoLoad()'>영상 보기</button>"+	
-				"<button id='videoCloseBtn' onclick='videoClose()'>영상 끄기</button></div></div></div>";
-		
-				
+				"<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>"+	
+				"<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button></div></div></div>";
+		$('#typeContainer').html(html);
+		$("#videoCloseBtn").addClass("hidden");
+		slide();
 	}
-	$('#typeContainer').html(html);
-	$("#videoCloseBtn").addClass("hidden");
-	slide();
-	console.log(html);
+	
+	/*console.log(html);*/
 }
 
 
