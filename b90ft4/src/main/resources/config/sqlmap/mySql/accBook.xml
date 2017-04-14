@@ -236,6 +236,7 @@
 		<result property="debtNo" column="debt_no" />
 		<result property="moneyLender" column="money_lender" />
 		<result property="userId" column="user_id" />
+		<result property="debtor" column="debtor" />
 		<result property="debtAmonut" column="debt_amonut" />
 		<result property="debtContent" column="debt_content" />
 		<result property="debtDate" column="debt_date" />

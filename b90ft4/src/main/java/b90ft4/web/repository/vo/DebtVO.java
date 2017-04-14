@@ -3,12 +3,19 @@ package b90ft4.web.repository.vo;
 public class DebtVO {
 
 	private int debtNo;
+	private String debtor;
 	private String userId;
 	private String moneyLender;
 	private String debtContent;
 	private int debtAmount;
 	private String debtDate;
-	
+
+	public String getDebtor() {
+		return debtor;
+	}
+	public void setDebtor(String debtor) {
+		this.debtor = debtor;
+	}
 	public int getDebtNo() {
 		return debtNo;
 	}
