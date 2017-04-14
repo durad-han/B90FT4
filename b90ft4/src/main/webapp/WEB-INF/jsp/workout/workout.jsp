@@ -154,12 +154,10 @@
 		{{/list}} 
 	</div>
 	<div id="workoutMainButtons">
-		<button id="workoutUpdateBtn">운동 편집</button>
+		<button class='btn btn-primary' id="workoutUpdateBtn">운동 편집</button>
+ 		
 	</div>
    
-
-
-
 </script>
 
 <script id="workoutForm" type="text/x-handlebars-template">
@@ -195,11 +193,12 @@
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
 					{{#setList}}						
 						{{#isZero}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeACount}}회</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeACount}}회</a></li>
 						{{else}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a>0세트<br>0/{{typeBTime}}초</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
+					
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->
@@ -207,8 +206,8 @@
 			</div>
 			<div>
 				<div class="buttons">
-					<button id="setEndBtn" onclick="endWorkout()">운동 끝내기</button>
-					<button id="viewChartBtn">차트보기</button>
+					<button id="setEndBtn" class='btn btn-primary' onclick="endWorkout()">운동 끝내기</button>
+					<!-- <button id="viewChartBtn" class='btn btn-primary' >차트보기</button> --> 
 				</div>
 					<br>
 					<br>
