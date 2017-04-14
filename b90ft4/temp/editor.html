@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta charset="utf-8">
+        <title>A Simple Page with CKEditor</title>
+        <!-- Make sure the path to CKEditor is correct. -->
+    <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    
+    <body>
+        <form action="/datepicker/board/write.do" method="post">
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1',{
+                	 filebrowserUploadUrl: '/datepicker/board/img.do'
+                });
+            </script>
+        	<button>전송</button>
+        </form>
+    </body>
+    
+    
+</html>
+<!--                 	ck 웹 에디터. -->
+<!-- 					여러분이 웹 사이트를 만들고나면, 사용자로부터 어떤 정보를 입력 받아서, -->
+<!-- 					사용자가 정보를 여러분의 서비스에 등록할수 잇ㅆ게 하는 기능을 많이 ㄱ지고 있다. -->
+<!-- 					그런 기능들을 우리가 제공할때, 사용자에게 직접 HTML을 직접 입력하도록 하는 것은.. -->
+<!-- 					조금 불편한 서비스 이다. 그런데 에플리케이션 대부분은.. 사용자가 입력할때, 선택해서 글자를 진하게 한다거나, -->
+<!-- 					글씨의 크기를 바꾼다거ㅏㄴ, 이런것들을 GUI 방식으로, 편리 하게 할 수 있도록, 제공하느 ㄴ애플리케이션이 대부분이다. -->
+<!-- 					바로 그러한 것들을, 우리가 직접 만들수도 있지만, 소위 위지윅 에디터라고함. 직접 만드는게 쉬운게 아님. -->
+<!-- 					쉽게 만들수있도록 여러가지 오픈소스가 있는데, -->
+<!-- 					저는 ck에디터라고 하는 도구를 통해서, 여러분이 쉽게 여러분의 웹 애플리케이션에 위지잇 에디터를  -->
