@@ -253,6 +253,7 @@ p.newsContent{
                                     
                                     
                                     <script>
+                                    
 			                                    function makeNews(category) {
 			                                    	
 			                    		     		var html="";
