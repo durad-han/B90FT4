@@ -282,7 +282,7 @@
 		if(loan.length!=0){	
 			
 			for(var i=0;i<loan.length;i++) {
-				loanHtml+="<tr>";
+				loanHtml+="<tr class='bondInfo'>";
 				loanHtml+="<td style='display:none;'>"+loan[i].loanNo+"</td>";
 				loanHtml+="<td style='display:none;'>"+loan[i].loanDate+"</td>";
 				loanHtml+="<td>"+loan[i].debtor+"</td>";
@@ -299,9 +299,9 @@
 		
 		if(debt.length!=0){
 			for(var i=0;i<debt.length;i++) {
-				debtHtml+="<tr>";
-				loanHtml+="<td style='display:none;'>"+debt[i].debtNo+"</td>";
-				loanHtml+="<td style='display:none;'>"+debt[i].debtDate+"</td>";
+				debtHtml+="<tr class='bondInfo'>";
+				debtHtml+="<td style='display:none;'>"+debt[i].debtNo+"</td>";
+				debtHtml+="<td style='display:none;'>"+debt[i].debtDate+"</td>";
 				debtHtml+="<td>"+debt[i].moneyLender+"</td>";
 				debtHtml+="<td>"+debt[i].debtContent+"</td>";
 				debtHtml+="<td>"+debt[i].debtAmount+"</td>";
@@ -315,8 +315,8 @@
 			
 			$("#loanTbody").html(loanHtml);
 			$("#debtTbody").html(debtHtml);
-		
-			$("#loanTbody > tr").click(function() {
+			
+			$("#loanTbody > tr.bondInfo").click(function() {
 				
 				$("#updateBond").show();
 				$("#deleteBond").show();
@@ -328,9 +328,9 @@
 				loanObj.debtor 			 = $(this).children("td:eq(2)").text();
 				loanObj.loanContent  	 = $(this).children("td:eq(3)").text();
 				loanObj.loanAmount    	 = $(this).children("td:eq(4)").text();
-				loanObj.loanDate
 				
 				// 폼 양식에 id 와 값 셋팅.
+				$("[name=bondF] input:eq(1)").prop("checked",true);
 				addBondName();
 				
 				$("[name=bondF] input:eq(2)").val(loanObj.debtor);
@@ -340,6 +340,33 @@
 				$("#bondModal").trigger("click");
 				console.log(loanObj);
 			});
+			
+			
+			$("#debtTbody > tr.bondInfo").click(function() {
+				$("#updateBond").show();
+				$("#deleteBond").show();
+				$("#regiLoanDept").hide();
+				
+				bondCodeFordel		  		 = 1;
+				debtObj.debtNo 			 = $(this).children("td:eq(0)").text();
+				debtObj.debtDate 		 = $(this).children("td:eq(1)").text();
+				debtObj.moneyLender 	 = $(this).children("td:eq(2)").text();
+				debtObj.debtContent  	 = $(this).children("td:eq(3)").text();
+				debtObj.debtAmount    	 = $(this).children("td:eq(4)").text();
+				
+				
+				// 폼 양식에 id 와 값 셋팅.
+				$("[name=bondF] input:eq(1)").prop("checked",true);
+				addBondName();
+				
+				$("[name=bondF] input:eq(2)").val(debtObj.moneyLender);
+				$("[name=bondF] input:eq(3)").val(debtObj.debtAmount);
+				$("[name=bondF] input:eq(4)").val(debtObj.debtContent);
+				$("[name=bondF] input:eq(5)").val(debtObj.debtDate);
+				$("#bondModal").trigger("click");
+				console.log(debtObj);
+				
+			});
 		
 		}); // 아잭스 끝.
 		
@@ -347,6 +374,7 @@
 
 	bondList(today);
 	modAndDelEvent();
+	addBondName();
 	
 /* -------------------------------------------------------------------------------------------------------------- */	
 	
@@ -425,7 +453,7 @@
 		
 		console.log($("#actualDate").val());
 		bondList($("#actualDate").val());
-		
+		addBondName();
 		$("#updateBond").hide();
 		$("#deleteBond").hide();
 		$("#regiLoanDept").show();
@@ -482,7 +510,7 @@
 //			if(isEmpty(eval("f."+$("[name=bondF] input:eq(3)").attr("name")),"금액을 입력하세요")) return;
 			
 			var params = $("[name=bondF]").serialize();
-//			console.log("params",params+modNo);
+			console.log("params",params+modNo);
 			
 			$.ajax({
 				url: "updateBond.do",
@@ -496,6 +524,5 @@
 			});
 
 		});
-		
 	}
 	

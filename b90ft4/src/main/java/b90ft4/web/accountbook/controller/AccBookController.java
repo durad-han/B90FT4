@@ -146,6 +146,12 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/updateBond.do")
 	public String deleteBond(LoanVO loan,DebtVO debt) throws Exception {
+		
+		System.out.println(debt.getMoneyLender());
+		System.out.println(debt.getDebtContent());
+		System.out.println(debt.getDebtNo());
+		System.out.println(debt.getDebtAmount());
+		
 		service.updateBond(loan, debt);
 		return "ok";
 	}
@@ -162,8 +168,6 @@ public class AccBookController {
 							HttpServletRequest request, 
 							HttpServletResponse response) throws Exception {
 		
-		
-		
 		String filePath = "C:/accountBookFile/"+UUID.randomUUID().toString()+".csv";
 		search.setExcelFileName(filePath);
 		search.setUserId("김현영");
@@ -171,7 +175,7 @@ public class AccBookController {
 		
 		File f = new File(filePath);
 		
-		response.setHeader("Content-Type", "application/smnet; charset=utf-8");
+		response.setHeader("Content-Type", "application/octetstream; charset=utf-8");
 		// 다운로드 파일 이름 헤더 설정
 		response.setHeader(
 				"Content-Disposition", "attachment;filename=" + new String((search.getUserId()+" 가계부.csv").getBytes("UTF-8"), "8859_1"));

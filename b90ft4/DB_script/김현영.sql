@@ -255,7 +255,7 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 	select * into outfile 'mini.csv' fields terminated by ',' from tb_sam_expense
 		
 	select * from tb_board 
-	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/kim.csv' fields terminated by ','
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/kdm.csv' fields terminated by ','
 		
 	
 	select * from tb_sam_expense 
@@ -263,7 +263,7 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 	
 		
 	select *      from tb_sam_expense   where user_id = '김현영'  
-	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/김현ㅇ.csv' fields terminated by ','
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/zcx.xlsx' fields terminated by ','
 	
 	
 	

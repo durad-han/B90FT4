@@ -46,7 +46,7 @@ public interface AccBookMapper {
 	public void deleteDebt(SearchVO search) throws Exception;
 	
 	public void updateLoan(LoanVO loan) throws Exception;
-	public void updateeDebt(DebtVO debt) throws Exception;
+	public void updateDebt(DebtVO debt) throws Exception;
 	
 	public void selectExcel(SearchVO search) throws Exception;
 	

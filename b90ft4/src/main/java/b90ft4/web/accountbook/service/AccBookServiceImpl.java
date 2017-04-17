@@ -26,6 +26,7 @@ public class AccBookServiceImpl implements AccBookService {
 		
 		result.put("expenseCtgy", dao.selectExpenseCtgy(userId));
 		result.put("incomeCtgy", dao.selectIncomeCtgy(userId));
+		
 		return result;
 		
 	}
@@ -146,9 +147,10 @@ public class AccBookServiceImpl implements AccBookService {
 		}
 		
 		if(debt.getDebtNo()!=0){
-			dao.updateeDebt(debt);
+			dao.updateDebt(debt);
 			return;
 		}
+		
 	}
 	
 

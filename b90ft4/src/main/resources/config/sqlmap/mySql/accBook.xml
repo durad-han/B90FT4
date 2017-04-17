@@ -237,7 +237,7 @@
 		<result property="moneyLender" column="money_lender" />
 		<result property="userId" column="user_id" />
 		<result property="debtor" column="debtor" />
-		<result property="debtAmonut" column="debt_amonut" />
+		<result property="debtAmount" column="debt_amount" />
 		<result property="debtContent" column="debt_content" />
 		<result property="debtDate" column="debt_date" />
 	</resultMap>
@@ -300,11 +300,11 @@
 				user_id,
 				money_lender,
 				debt_content,
-				debt_amonut,
+				debt_amount,
 				debt_date
 			) values ( 
 				#{userId},
-				#{debtor},
+				#{moneyLender},
 				#{debtContent},
 				#{debtAmount},
 				#{debtDate}
@@ -325,7 +325,7 @@
 		where debt_no = #{delNo}
 	</delete>
 	
-	<update id="updateLoan" parameterType="LoanVO">
+	<update id="updateLoan" parameterType="loanVO">
 		update tb_sam_loan
 		  set debtor = #{debtor},
 		  	  loan_amount = #{loanAmount},
@@ -333,7 +333,7 @@
 		where loan_no = #{loanNo}
 	</update>
 	
-	<update id="updateDebt" parameterType="DebtVO">
+	<update id="updateDebt" parameterType="debtVO">
 		update tb_sam_debt
 		  set money_lender = #{moneyLender},
 		  	  debt_amount = #{debtAmount},
