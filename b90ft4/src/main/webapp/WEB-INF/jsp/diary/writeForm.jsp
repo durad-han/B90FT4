@@ -17,7 +17,6 @@
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css">
@@ -25,6 +24,13 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap.min.css">
+    
+    <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>s
+    
 </head>
 <body>
     <div>
@@ -184,7 +190,7 @@
 		  <li class="active">자유게시판</li>
 		</ol>	
 		
-		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post' enctype="multipart/form-data">
+		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post'>
 			<table class="table table-no-border">
 			<tr class="hidden">
 				<td>
@@ -232,7 +238,18 @@
 			<tr>
 				<td class="td-txt-right td-wp10">내용</td>
 			 	<td><div class="form-group">
-			 		<textarea name='content' rows='5' cols='70' class="form-control"></textarea>
+			 		
+			 		<textarea name='content' id="editor1" rows='10' cols='70' class="form-control"
+			 		></textarea>
+			 		
+			 		<script>
+		                // Replace the <textarea id="editor1"> with a CKEditor
+		                // instance, using default configuration.
+		                CKEDITOR.replace( 'editor1',{
+		                	 filebrowserUploadUrl: '/b90ft4/diary/img.do'
+		                });
+		            </script>
+			 		
 			 		</div>
 			 	</td>
 			</tr>
@@ -252,6 +269,7 @@
 					<a href='list.do' class="btn btn-info btn-lg">목록</a>
 			    </div>
 			</div>
+			
 		</form>
 	</div>
                 <!--END CONTENT-->

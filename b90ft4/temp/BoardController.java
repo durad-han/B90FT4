@@ -115,8 +115,6 @@ public class BoardController {
 		// http://localhost:9090/
 		System.out.println("'"+url+"'");
 		return "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('"+CKEditorFuncNum+"','"+url+"','전송에 성공했습니다.')</script>";
-	
-	
 	}
 	
 	

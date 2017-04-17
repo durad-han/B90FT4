@@ -194,20 +194,20 @@
                 <div class="page-content">
                     <div id="tab-general">
                         <div class="row mbl">
-                            <div class="col-lg-12">
+                            <div class="col-lg-5">
                                 
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <div id="area-chart-spline" style="width: 80%; text-align: center; height: 300px; display: none;">
                                                 </div>
                                             </div>
                                 
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-5">
                             
                             <div class="page-content">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-5">
                         <div class="panel">
                             <div class="panel-body">
                                 <div id="grid-layout-table-1" class="box jplist">
