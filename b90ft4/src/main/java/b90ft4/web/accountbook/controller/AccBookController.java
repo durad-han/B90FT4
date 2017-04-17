@@ -5,6 +5,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.UUID;
 
@@ -188,12 +189,17 @@ public class AccBookController {
 		OutputStream out = response.getOutputStream();
 		BufferedOutputStream bos = new BufferedOutputStream(out);
 		
+	
+		PrintWriter owt = response.getWriter();
+		
+		
 		while (true) {
 			
 			int ch = bis.read();
 			if (ch == -1) break;
+//			bos.write(ch);
+			owt.write(ch);
 			
-			bos.write(ch);
 		}
 		
 		bis.close();
