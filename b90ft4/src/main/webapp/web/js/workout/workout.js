@@ -126,7 +126,8 @@ function videoLoad() {
 
 	
 	var constraints = { audio: true, video: true}; 
-
+	navigator.serviceWorker.register('sw.js',{insecure:true});
+	navigator.serviceWorker.register('workout.js',{insecure:true});
 	navigator.mediaDevices.getUserMedia(constraints)
 	.then(function(mediaStream) {
 	  var video = document.querySelector('video');
