@@ -44,7 +44,8 @@ insert into tb_sam_loan (
 )
 
 delete from tb_sam_expense
-  where income_no =2
+  where expense_no =38
+  
   
 update tb_sam_expense
   set user_id = '김현영'

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+div{
+	width:200px;
+	height:250px;
+	border:1px solid black;
+	position: relative;
+	left:600px;
+}
+</style>
+
+</head>
+
+<body>
+
+<br><br><br><br>
+<br><br><br><br>
+
+<div id="memo">
+</div>
+ 	<script>
+ 	
+//  	$("#memo").mousedown(function() {
+//  		console.log("다운1");
+//  	})
+ 	
+//  	$(document).mouseup(function() {
+//  		console.log("업");
+//  	})
+ 	
+ 	
+//  		$("#memo").click(function(e){
+ 			
+//  			var x = e.offsetX;
+// 			var y = e.offsetY;
+ 			
+// 			if(x >=0 && x<=8 || x >=192  && x <= 200) {
+// 				// 서쪽
+// 				if(x >=0 && x<=8) {
+// // 					console.log(x);
+// 					westSide();
+// 				}	
+				
+// 				// 동쪽
+// 				if(x >=192  && x <= 200){
+// // 					console.log(x);
+// 					eastSide();
+// 				}
+// 			}
+ 			
+//  		});
+
+ 		$("#memo").mousedown(function(e){
+ 			
+ 			var x = e.offsetX;
+ 			var width = $(this).width();
+ 			
+			// 서쪽
+			if(x >=0 && x<=8) {
+				westSide();
+			}
+			
+			// 동쪽
+			if(x >=width-8  && x <= width){
+				eastSide();
+			}
+ 			
+ 		});
+ 		
+ 	
+ 	
+ 		$("#memo").mousemove(function(e){
+ 			var x = e.offsetX;
+ 			var y = e.offsetY;
+			var width = $(this).width();
+			var height = $(this).height();
+			
+			if(x>=0 && x<=8 || x >=width-8  && x <= width){
+				
+				$("#memo").css("cursor","e-resize");
+				
+				if(x >=0 && x<=8){
+					console.log("서쪽");
+				}
+				
+				if(x >=width-8  && x <= width){
+					console.log("동쪽");
+				}
+				
+			}
+			
+			if(y>=0 && y<=8 || y>=height-8 && y<=height) {
+					
+				$("#memo").css("cursor","e-resize");
+				
+				if(y >=0 && y<=8){
+					console.log("북쪽");
+				}
+				
+				if(y >=height-8  && y <= height){
+					console.log("남쪽");
+				}
+				
+			}else {
+				console.log("마우스 커서 변경 종료.");
+				$("#memo").css("cursor","default");
+			}
+			
+ 		});
+ 		
+ 		
+ 		// 서쪽 
+ 		function westSide() {
+				
+			$(document).mousemove(function(e) {
+			
+// 				$("body").css("cursor","e-resize");
+				
+				$("#memo").css({
+					"left" : "-="+(($("#memo").offset().left) - e.clientX),
+					"width" : "+="+(($("#memo").offset().left) - e.clientX)
+				});
+				
+				
+			}).mouseup(function() {
+// 				$("body").css("cursor","default");
+				$(document).off();
+				console.log("서쪽 document 마우스 업");
+			});
+				
+ 		}
+ 		
+ 		// 동쪽
+ 		function eastSide() {
+ 			
+			$(document).mousemove(function(e) {
+				
+				var size = e.clientX - ($("#memo").offset().left += $("#memo").width())+"px";
+				
+// 				$("body").css("cursor","e-resize");
+				$("#memo").css({
+					"width" : "+="+size
+				});
+				
+			}).mouseup(function() {
+// 				$("body").css("cursor","default");
+				$(document).off();
+				console.log("동쪽 document 마우스 업");
+			});
+				
+ 		}
+ 		
+ 		
+ 		
+ 	</script>
+</body>
+</html>
