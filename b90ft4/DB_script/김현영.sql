@@ -28,6 +28,7 @@ insert into tb_sam_user (
 	'1234'
 )
 
+
 insert into tb_sam_loan ( 
 				user_id,
 				debtor,
@@ -42,7 +43,7 @@ insert into tb_sam_loan (
 				1000
 )
 
-delete from tb_sam_income
+delete from tb_sam_expense
   where income_no =2
   
 update tb_sam_expense
