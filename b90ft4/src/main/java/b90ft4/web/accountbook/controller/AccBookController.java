@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
-import b90ft4.web.common.file.Download;
 import b90ft4.web.repository.vo.DebtVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
@@ -186,19 +185,31 @@ public class AccBookController {
 		FileInputStream fis = new FileInputStream(f);
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		
+//		Reader reader = new FileReader(f);
+//		BufferedReader br = new BufferedReader(reader);
+		
+		
 		OutputStream out = response.getOutputStream();
 		BufferedOutputStream bos = new BufferedOutputStream(out);
 		
-	
-		PrintWriter owt = response.getWriter();
+//		PrintWriter owt = response.getWriter();
 		
+		bos.write(0xEF);
+		bos.write(0xBB);
+		bos.write(0xBF);
+		String 	str = "번호,이름,분류,내용,금액,날짜\n"
+				+ " ";
+		bos.write(str.getBytes("utf-8"));
+		bos.write(32);
 		
 		while (true) {
 			
 			int ch = bis.read();
+//			String str = br.readLine();
+			
 			if (ch == -1) break;
-//			bos.write(ch);
-			owt.write(ch);
+			bos.write(ch);
+//			owt.write(str);
 			
 		}
 		
@@ -206,6 +217,8 @@ public class AccBookController {
 		fis.close();
 		bos.close();
 		out.close();
+//		br.close();
+//		owt.close();
 		
 		if(f.delete()){
 			System.out.println("파일 삭제");
