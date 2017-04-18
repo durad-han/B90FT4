@@ -10,7 +10,21 @@ public class MemoVO {
 	private double posY 	;		
 	private String memoContent 	;	
 	private Date regDate 	;
-	
+	private double memoWidth;
+	private double memoHeight;
+
+	public double getMemoWidth() {
+		return memoWidth;
+	}
+	public void setMemoWidth(double memoWidth) {
+		this.memoWidth = memoWidth;
+	}
+	public double getMemoHeight() {
+		return memoHeight;
+	}
+	public void setMemoHeight(double memoHeight) {
+		this.memoHeight = memoHeight;
+	}
 	public int getMemoNo() {
 		return memoNo;
 	}

@@ -119,6 +119,9 @@ create table tb_Sam_Memo (
 	FOREIGN KEY(User_Id) REFERENCES tb_Sam_User(User_Id)
 );
 
+
+
+
 -- 데이터 --
 
 update tb_sam_income_category set user_id = 'admin' where user_id is null
@@ -148,12 +151,32 @@ values('기타')
 
 update tb_sam_expense_category
   set user_id = 'admin'
+  
+
+ 
+select * from tb_Sam_Memo
+
 
 
 -- alter 예시--
 
 alter table tb_Sam_Budget
 add column budget_code char(1) not null;
+
+alter table tb_Sam_Memo
+add column memo_height int not null;
+
+alter table tb_Sam_Memo
+drop memo_width
+
+
+delete * 
+from tb_Sam_Memo
+
+
+
+
+---------------
 
 		select * 
 		  from tb_sam_expense_category
@@ -282,7 +305,6 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		
 		
 
-		
 	
 		
 	select 	CONCAT('C:/ProgramData/MySQL/MySQL Server 5.7/Uploads/','kim','.csv')

@@ -14,7 +14,7 @@ div{
 	height:250px;
 	border:1px solid black;
 	position: relative;
-	left:600px;
+	left:200px;
 }
 </style>
 
@@ -24,7 +24,7 @@ div{
 
 <br><br><br><br>
 <br><br><br><br>
-
+dd
 <div id="memo">
 </div>
  	<script>
@@ -79,14 +79,15 @@ div{
  	
  	
  		$("#memo").mousemove(function(e){
+ 			
  			var x = e.offsetX;
  			var y = e.offsetY;
 			var width = $(this).width();
 			var height = $(this).height();
 			
 			if(x>=0 && x<=8 || x >=width-8  && x <= width){
-				
-				$("#memo").css("cursor","e-resize");
+				$("#memo
+						").css("cursor","e-resize");
 				
 				if(x >=0 && x<=8){
 					console.log("서쪽");
@@ -95,25 +96,29 @@ div{
 				if(x >=width-8  && x <= width){
 					console.log("동쪽");
 				}
-				
-			}
-			
-			if(y>=0 && y<=8 || y>=height-8 && y<=height) {
-					
-				$("#memo").css("cursor","e-resize");
-				
-				if(y >=0 && y<=8){
-					console.log("북쪽");
-				}
-				
-				if(y >=height-8  && y <= height){
-					console.log("남쪽");
-				}
-				
 			}else {
 				console.log("마우스 커서 변경 종료.");
 				$("#memo").css("cursor","default");
 			}
+			
+// 			if(y>=0 && y<=8 || y>=height-8 && y<=height) {
+					
+// 				$("#memo").css("cursor","s-resize");
+				
+// 				if(y >=0 && y<=8){
+// 					console.log("북쪽");
+// 				}
+				
+// 				if(y >=height-8  && y <= height){
+// 					console.log("남쪽");
+// 				}
+				
+// 			}else {
+// 				console.log("마우스 커서 변경 종료.");
+// 				$("#memo").css("cursor","default");
+// 			}
+			
+			
 			
  		});
  		

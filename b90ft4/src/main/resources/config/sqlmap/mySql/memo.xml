@@ -8,6 +8,8 @@
 		<result  property="userId" column="user_Id"/>
 		<result  property="posX" column="Pos_X"/>
 		<result  property="posY" column="Pos_Y"/>
+		<result  property="memoWidth" column="memo_width"/>
+		<result  property="memoHeight" column="memo_height"/>
 		<result  property="memoContent" column="Memo_Content"/>
 		<result  property="regDate" column="Reg_Date"/>
 	</resultMap>
@@ -24,12 +26,16 @@
 			user_id,
 			pos_x,
 			pos_y,
-			memo_content
+			memo_content,
+			memo_width,
+			memo_height
 		 ) values ( 
 		 	#{userId},
 		 	#{posX},
 		 	#{posY},
-		 	#{memoContent}
+		 	#{memoContent},
+			#{memoWidth},
+			#{memoHeight}
 		 )
 		<selectKey resultType="int" keyProperty="memoNo" order="AFTER">
 				select last_insert_id()	
@@ -41,7 +47,9 @@
 		update tb_sam_memo
 		  set pos_x = #{posX},
 		      pos_y = #{posY},
-		      memo_content = #{memoContent}
+		      memo_content = #{memoContent},
+		      memo_width = #{memoWidth},
+		      memo_height = #{memoHeight}
 		where memo_no = #{memoNo}	
 	</update>
 	
