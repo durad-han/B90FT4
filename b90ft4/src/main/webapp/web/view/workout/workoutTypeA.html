@@ -6,16 +6,20 @@
 <link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeA.css" />
 </head>
 <body> 
-<div id='typeAContainer'>
-					<div class='setList'></div>
-					<div class='container'>
-					<div class='front'>
-						<div></div>
-						<div class='value_front'>Start!</div>
-						<div></div></div>
-					<div class='back'><div></div>
-						<div class='value_back'>0</div>
-						<div></div></div></div></div>
+<div id='typeAContainer'>	
+	<div class='container'>
+		<div class='front'>
+			<div></div>
+			<div class='value_front'>Start!</div>
+			<div></div>
+		</div>
+		<div class='back'>
+			<div></div>
+			<div class='value_back'>0</div>
+			<div></div>
+		</div>
+	</div>
+</div>
 
 <script src="/b90ft4/web/js/common/jquery.min.js"></script>
 <script>
@@ -24,14 +28,14 @@ zero = 0;
 rotateY = 180;
 value = -1;
 count = -1;
-maxValue = 7;
+maxValue = gvTypeACount;
 max = "/"+maxValue;
 breakTimeVal = 10;
 
 
 
 $(".front").on("mousedown", function() {
-	console.log("frontㅋㅋ");
+	console.log(gvWorkoutSetNo+" "+gvIsLast+"setno+islast");
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
 	$(".container").css({
@@ -41,7 +45,12 @@ value++;
   
   if(count === maxValue){
 	  $("#typeAContainer").css({"background": "#ff7373"});
-	  alert("break time");
+  		if(gvIsLast){
+		  alert("마지막 세트입니다.");
+  		}
+  		else{
+		  alert(gvIntervalTime+"초 동안 쉽니다.");
+		}
       $(".container").css({
           "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
         });
@@ -63,7 +72,14 @@ $(".back").on("mousedown", function() {
 	value++;
     if(count === maxValue){
     	$("#typeAContainer").css({"background": "#ff7373"});
-  	  alert("break time");
+    	if(gvIsLast){
+  		  alert("마지막 세트입니다.");
+    	}
+    	else{
+  		  alert(gvIntervalTime+"초 동안 쉽니다.");
+  		}
+    	
+    	
         $(".container").css({
             "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
           });

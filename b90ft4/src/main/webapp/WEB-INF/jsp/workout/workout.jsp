@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
-	<link type='text/css' rel='stylesheet' href='${pageContext.request.contextPath}/web/css/workout/workoutTypeA.css' />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"/>
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
@@ -142,7 +141,7 @@
 						<h4 class="value">
 							<span>215</span>
 						</h4>
-						<p class="description">{{workoutId}}운동타입 - {{workoutType}}</p>
+						<p class="description">{{workoutId}} 운동타입 - {{workoutType}}</p>
 						<div class="progress progress-sm mbn">
 							<div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar progress-bar-danger">
 								<span class="sr-only">70% Complete (success)</span>
@@ -188,14 +187,15 @@
                 </div>
             </div>
             <!--END MODAL CONFIG PORTLET-->
-         <!-- 운동 폼 호출 -->
+         <!-- 운동 세트 호출 -->
             <div id="setContainer">
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
+					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
 						{{#isZero}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeACount}}회</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li>
 						{{else}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}})"><a> {{counter @index}} 세트<br>0/{{typeBTime}}초</a></li>
+							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
 					

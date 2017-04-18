@@ -1,3 +1,10 @@
+var gvWorkoutSetNo = "";
+var gvWorkoutNo = "";
+var gvTypeACount = "";
+var gvTypeBTime = "";
+var gvSpentCal = "";
+var gvIntervalTime = "";
+var gvIsLast = "";
 
 function workoutMove(workoutNo){
 	$.ajax({
@@ -51,72 +58,67 @@ function listLoad(result){
 		$('.page-content').html(html);
 /*		$('.page-content').append(html);*/
 		/*$(".page-content").load("/b90ft4/web/view/workout/workoutList.html");*/
-		
+	
 
 
 	});
 }
 
-//typeA 관련 함수
+/*//typeA 관련 함수
+var count, rotateY, setValueFunc, value, zero;
+zero = 0;
+rotateY = 180;
+value = -1;
+count = -1;
+maxValue = 7;
+max = "/"+maxValue;
+breakTimeVal = 10;
 
-    var count, rotateY, setValueFunc, value, zero;
-    zero = 0;
-    rotateY = 180;
-    value = -1;
-    count = -1;
-    maxValue = 7;
-    max = "/"+maxValue;
-    breakTimeVal = 10;
-    
-
-
-    $(".front").on("mousedown", function() {
-    	console.log("frontㅋㅋ");
-      count++;
-      $("#typeAContainer").css({"background": "#0080ff"});
+$(".front").on("mousedown", function() {
+	console.log(tempWorkoutSetNo);
+	count++;
+	$("#typeAContainer").css({"background": "#0080ff"});
+	$(".container").css({
+    "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+});
+value++;
+  
+  if(count === maxValue){
+	  $("#typeAContainer").css({"background": "#ff7373"});
+	  alert("break time");
       $(".container").css({
-        "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-      });
-      value++;
-      
-      if(count === maxValue){
-    	  $("#typeAContainer").css({"background": "#ff7373"});
-    	  alert("break time");
-          $(".container").css({
-              "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-            });
-    	  value = -1;
-    	  count = -1;
-    	  return $(".value_front").text("Start!");
-      }
-      
-      return $(".value_back").text(value + max);
-    });
+          "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+        });
+	  value = -1;
+	  count = -1;
+	  return $(".value_front").text("Start!");
+  }
+  
+  return $(".value_back").text(value + max);
+});
 
-    $(".back").on("mousedown", function() {
-    	console.log("backㅋㅋ");
-    	count++;
-    	$("#typeAContainer").css({"background": "#0080ff"});
-    	$(".container").css({
-    		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-    	});
-    	value++;
-        if(count === maxValue){
-        	$("#typeAContainer").css({"background": "#ff7373"});
-      	  alert("break time");
-            $(".container").css({
-                "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-              });
-      	  value = -1;
-      	  count = -1;
-      	  return $(".value_back").text("Start!");
-        }
-    	return $(".value_front").text(value + max);
-    });
+$(".back").on("mousedown", function() {
+	console.log("backㅋㅋ");
+	count++;
+	$("#typeAContainer").css({"background": "#0080ff"});
+	$(".container").css({
+		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	});
+	value++;
+    if(count === maxValue){
+    	$("#typeAContainer").css({"background": "#ff7373"});
+  	  alert("break time");
+        $(".container").css({
+            "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+          });
+  	  value = -1;
+  	  count = -1;
+  	  return $(".value_back").text("Start!");
+    }
+	return $(".value_front").text(value + max);
+});
 
-
-
-
+*/
 
 //typeB 관련 함수
 $("#videoCloseBtn").addClass("hidden");
@@ -238,9 +240,16 @@ function slide() {
     }
 }
 
+
 //타입별 로드될 html 작성
-function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
-	
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,isLast){
+	 gvWorkoutSetNo = workoutSetNo;
+	 gvWorkoutNo = workoutNo;
+	 gvTypeACount = typeACount;
+	 gvTypeBTime = typeBTime;
+	 gvSpentCal = spentCal;
+	 gvIntervalTime = intervalTime;
+	 gvIsLast = isLast;
 	console.log("workoutTypeLoad function started");
 	var type="";
 	if(typeACount != 0){
@@ -252,25 +261,28 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	var html = "";
 	//typeA load
 	if(type == "A"){
-		console.log("typeA load");
+		console.log("typeA load"+workoutSetNo);
 		
-	/*	html += "<meta charset='UTF-8'>"+
-				"<div id='typeAContainer'>"+
-					"<div class='setList'></div>"+
-					"<div class='typeAcontainer'>"+
-					"0/"+typeACount+"회"+
-					"<br>이번 세트 휴식시간:"+intervalTime+"초"+
+/*
+		html += "<div id='typeAContainer'>"	+
 					"<div class='container'>"+
 						"<div class='front'>"+
 							"<div></div>"+
 							"<div class='value_front'>Start!</div>"+
-							"<div></div></div>"+
-						"<div class='back'><div></div>"+
+							"<div></div>"+
+						"</div>"+
+						"<div class='back'>"+
+							"<div></div>"+
 							"<div class='value_back'>0</div>"+
-							"<div></div></div></div></div></div>";
+							"<div></div>"+
+						"</div>"+
+					"</div>"+
+				"</div>";
 		
-		$('#typeContainer').html(html);*/
-		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTest.html");
+		$('#typeContainer').html(html);
+*/
+		
+		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA.html");
 		
 	}
 	//typeB load
