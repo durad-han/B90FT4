@@ -2,28 +2,47 @@ console.log("scheduleMain.js 로드됨...!!");
 
 //----- datePicker -----------------------------------------------------------
 
-//$( document ).on( "pagecreate", function(event) {
-//	console.log("mobi activate")
-//    var picker = $( "input[type='mobi']", this );
-//    picker.mobipick();
-//});
-//
-//picker.on( "change", function() {
-//    var date = $( this ).val();
-//    var dateObject = $( this ).mobipick( "option", "date" );
-//});
-//
-//var mpFrom = $( ".min-date" ).mobipick();
-//var mpTo   = $( ".max-date" ).mobipick();
-//mpFrom.on( "change", function() {
-//    mpTo.mobipick( "option", "minDate", mpFrom.mobipick( "option", "date" ) );
-//});
-//mpTo.on( "change", function() {
-//    mpFrom.mobipick( "option", "maxDate", mpTo.mobipick( "option", "date" ) );
-//});
 
 
 //----- schedule ---------------------------------------------------------------------------------------------
+
+//----- scheduleTimeline -------------------------------------------------------------------------------------
+$(window).on('scroll', function(){
+	$timeline_block.each(function(){
+		if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+			$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+		}
+	});
+});
+
+//----- foxholder -----------------------------------------------------------
+jQuery('.clz-insertSchedule').foxholder({
+	demo: 6 //(1-15)
+});
+
+$("#inputImportance").starRating({
+	totalStars: 3,
+	initialRating: 1,
+	starSize: 25,
+	starShape: 'rounded',
+	emptyColor: 'lightgray',
+	hoverColor: 'salmon',
+	activeColor: 'yellow',
+	useFullStars: true,
+	useGradient: true,
+	starGradient: {start: '#FEF7CD', end: '#FF9511'},
+	disableAfterRate: false,
+	onHover: function(currentIndex, currentRating, $el){
+	      $('#imp').text(currentIndex);
+	    },
+	onLeave: function(currentIndex, currentRating, $el){
+	        $('#imp').text(currentRating);
+	    },
+    callback: function(currentRating, $el){
+        // make a server call here
+    }
+});
+
 
 //----- 좌측 스케줄 리스트로부터 선택된 스케줄 detail 값 받아오기 -------------------------------------------------------------
 function goDetail(sNo){
@@ -35,7 +54,7 @@ function goDetail(sNo){
 		type: "POST",
 		// 리스트의 a 스크립트 링크 내부에 심어놓은 스케줄 고유번호
 		data: {scheduleNo : sNo},
-		dataType: "json"
+		dataType: "json",
 	}).done(printSchedule);
 };
 
@@ -166,7 +185,10 @@ function goModify(scheduleNo){
 		type: "POST",
 		// 리스트의 a 스크립트 링크 내부에 심어놓은 스케줄 고유번호
 		data: {scheduleNo : scheduleNo},
-		dataType: "json"
+		dataType: "json",
+		success: function(){
+			$.notify("스케줄을 수정합니다", {align:"center", verticalAlign:"middle", color: "#fff", background: "#D44950", blur: 0.2, delay: 1500});
+		}
 	}).done(modifyForm);
 };
 
