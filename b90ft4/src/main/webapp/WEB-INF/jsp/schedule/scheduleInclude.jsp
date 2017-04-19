@@ -27,6 +27,15 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/star-rating-svg.css"/>
 <!-- 별점 ==================================================================================================== -->
 
+<!-- 타임피커 ==================================================================================================== -->
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/jquery-ui-sliderAccess.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/jquery-ui-timepicker-addon.min.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/jquery-ui-timepicker-addon.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/schedule/jquery-ui-timepicker-addon-i18n.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/jquery-ui-timepicker-addon.min.css"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/jquery-ui-timepicker-addon.css"/>
+<!-- 타임피커 ==================================================================================================== -->
 
 
 
