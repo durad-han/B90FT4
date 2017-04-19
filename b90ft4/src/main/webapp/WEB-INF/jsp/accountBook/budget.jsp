@@ -205,7 +205,6 @@ tbody#income tr.incomeInfo:hover{
 				                		   <br><br>
 				                		   <div id="incomeDiv" style='display: none;width: 100%;height: 200px;'>			                       
 				                		   </div>
-							               
 			                	   </div>
 			                				
 	                            	<div id="note-tab" class="tab-pane fade" style="height:500px;overflow: auto;">
@@ -225,7 +224,7 @@ tbody#income tr.incomeInfo:hover{
 						                                </table>
 						                            </div>
 						                   </div>
-	                			   </div>
+	                			      </div>
 	                			   
                 			</div>
                 		</div>
@@ -243,44 +242,54 @@ tbody#income tr.incomeInfo:hover{
                 		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 			                 		 지출/수입 등록
 			            </button>
-			            
+			          
+			        <br><br>
+			        <div id="budgetPlanDiv" style="margin-left: 10%;">
+			        	<h4><b>이번 달 지출 목표</b></h4>
+			        	
+			        	<input type="text" readonly />
+			        	<h4><b>이번 달 지금까지의 총 지출</b></h4>
+			        	<input type="text" readonly />
+			        	<h4><b>여유 지출 금액</b></h4>
+			        	<input type="text" readonly />
+			        </div>  
 			         
 			         
-			    <div id="monthBudgteTable" style="display: none;">
-			        <h4 class="box-heading">월별 지출/수입 현황</h4>
-                           <div class="panel panel-red">
-                            <div class="panel-heading">지출</div>
-                            <div class="panel-body">
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>분류</th>
-                                        <th>합계</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="monthExpense">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="panel panel-blue" style="background:#FFF;">
-                            <div class="panel-heading">수입</div>
-                            <div class="panel-body">
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>분류</th>
-                                        <th>합계</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="monthIncome">
-                                    </tbody>
-                                </table>
-                        </div>
-			             
-			      </div>
-			    </div> <!-- cols -->
+				    <div id="monthBudgteTable" style="display: none;">
+				        <h4 class="box-heading">월별 지출/수입 현황</h4>
+	                           <div class="panel panel-red">
+	                            <div class="panel-heading">지출</div>
+	                            <div class="panel-body">
+	                                <table class="table table-hover table-bordered">
+	                                    <thead>
+	                                    <tr>
+	                                        <th>분류</th>
+	                                        <th>합계</th>
+	                                    </tr>
+	                                    </thead>
+	                                    <tbody id="monthExpense">
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="panel panel-blue" style="background:#FFF;">
+	                            <div class="panel-heading">수입</div>
+	                            <div class="panel-body">
+	                                <table class="table table-hover table-bordered">
+	                                    <thead>
+	                                    <tr>
+	                                        <th>분류</th>
+	                                        <th>합계</th>
+	                                    </tr>
+	                                    </thead>
+	                                    <tbody id="monthIncome">
+	                                    </tbody>
+	                                </table>
+	                        </div>
+				             
+				      </div>
+				   </div> <!-- cols -->
              
              </div> <!-- row -->
                 
@@ -297,7 +306,6 @@ tbody#income tr.incomeInfo:hover{
 										</div>
 										
 										<div class="modal-body">
-										
 											<form name="budgetF">
 											
 			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>

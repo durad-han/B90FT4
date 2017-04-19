@@ -5,7 +5,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.accountbook.service.AccBookService;
 import b90ft4.web.repository.vo.DebtVO;
+import b90ft4.web.repository.vo.ExpensePlanVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
 import b90ft4.web.repository.vo.LoanVO;
@@ -88,7 +88,6 @@ public class AccBookController {
 //		Date d = sdf.parse(search.getStartDate());
 //		c.setTime(d);
 //		System.out.println("몇주 차 ? : " + c.get(Calendar.WEEK_OF_MONTH));
-		
 		return result;
 	}
 	
@@ -160,8 +159,6 @@ public class AccBookController {
 	public void setting() {
 	}
 	
-	
-	
 	@ResponseBody
 	@RequestMapping("/makeExcel.do")
 	public void makeExcel(SearchVO search,
@@ -185,14 +182,9 @@ public class AccBookController {
 		FileInputStream fis = new FileInputStream(f);
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		
-//		Reader reader = new FileReader(f);
-//		BufferedReader br = new BufferedReader(reader);
-		
-		
 		OutputStream out = response.getOutputStream();
 		BufferedOutputStream bos = new BufferedOutputStream(out);
 		
-//		PrintWriter owt = response.getWriter();
 		
 		bos.write(0xEF);
 		bos.write(0xBB);
@@ -203,32 +195,37 @@ public class AccBookController {
 		bos.write(32);
 		
 		while (true) {
-			
 			int ch = bis.read();
-//			String str = br.readLine();
 			
 			if (ch == -1) break;
 			bos.write(ch);
-//			owt.write(str);
-			
 		}
 		
 		bis.close();
 		fis.close();
 		bos.close();
 		out.close();
-//		br.close();
-//		owt.close();
 		
 		if(f.delete()){
 			System.out.println("파일 삭제");
 		}else{
 			System.out.println("파일 삭제 실패");
 		}
-		
-		
 	}
 	
+	@ResponseBody
+	@RequestMapping("/regiPlan.do")
+	public String regiPlan(ExpensePlanVO plan) throws Exception{
+		plan.setUserId("김현영");
+		service.regiPlan(plan);
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/expensePlan.do")
+	public ExpensePlanVO expensePlan(ExpensePlanVO plan) throws Exception{
+		return service.expensePlan(plan);
+	}
 	
 }
 
@@ -241,6 +238,9 @@ public class AccBookController {
 
 
 
+//		System.out.println(plan.getExpensePlanDate());
+//		System.out.println(plan.getExpenseGoal());
+//		System.out.println(plan.getPlanStatus());
 
 //		System.out.println(loan.getDebtor());
 //		System.out.println(loan.getLoanAmount());

@@ -12,6 +12,9 @@
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
+input {
+	text-align: center;
+}
 #add{
 	font-weight:bold;
 }
@@ -136,11 +139,136 @@
                             <!--BEGIN CONTENT-->
                 <div class="page-content">
                     <div id="title-breadcrumb-page" class="row">
+
+                           	<div class="page-title-breadcrumb option-demo">
+                                     <div class="page-header" style='width:30%;margin: 0 auto'>
+                                         <div class="page-title mrm">
+                                              <button id="budgetManagement" type="button" style='width:500px;text-align:center;'>자산 설정 및 관리</button>
+                                         </div>
+                                     </div>
+                             </div>
+                             
+				                               <!-- 자산 등록 모달 -->
+									<div class="modal-dialog" style='width:20%;display: none;'>
+											<div class="modal-content">
+														
+												<div class="modal-header">
+													<h4 class="modal-title">자산 설정
+													
+														<input type="radio" name="budgetManageCode" value="0" checked/> 설정
+														<input type="radio" name="budgetManageCode" value="1" /> 미설정
+														
+													</h4>
+												</div>
+														
+		                                        <div id="managementDiv">
+													    <div class="modal-body">
+														
+															<form name="budgetManageF">
+									                                        
+							                                       	 <h4><b>이번 달</b></h4>
+						                                             <input type="text" id="expensePlanDate" readonly />
+						                                           
+						                                             <script>
+						                                             
+						                                             	var date = new Date();
+						                                             	var year = date.getYear()+1900;
+						                                             	var month = date.getMonth()+1;
+						                                             	if(month<10) {
+						                                             		month="0"+month;
+						                                             	}	
+						                                             	$("#expensePlanDate").val(year+"-"+month);
+						                                             	
+						                                             </script>    
+						                                                  	    
+						                                             <br>
+							                                       	 <h4><b>목표 지출 금액</b></h4>
+							                                         <input type="text" id="expenseGoal"/>
+											                                                      
+								                                 </form>
+							                      	    </div>
+							                                
+														<div class="modal-footer">
+															<button type="button" id="registerPlan">등록</button>
+														</div>
+	                                      	  </div>
+													
+											</div>
+									</div>
+										
+										
+										<script>
+										
+											$("#budgetManagement").click(function() {
+												$("div.modal-dialog").slideToggle(250);	
+													
+// 												if(!flag){												
+// 													$("div.modal-dialog").show();	
+// 													flag=true;
+// 												}else{
+// 													$("div.modal-dialog").hide();	
+// 													flag=false;
+// 												}
+											});
+											
+											$("[name=budgetManageCode]").click(function() {
+												
+												console.log("클릭");
+												
+												$("[name=budgetManageCode]").each(function() {
+														if(this.checked && this.value == 0){
+															$("#managementDiv").show();
+															return;
+														}
+
+														if(this.checked && this.value == 1){
+		 													$("#managementDiv").hide();
+		 													return;
+		 												}
+														
+												});
+												
+// 												if(this.checked && this.value == 0){
+// 													$("#managementDiv").show();
+// 													return;
+// 												}
+
+// 												if(this.checked && this.value == 1){
+// 													$("#managementDiv").hide();
+// 													return;
+// 												}
+												
+												
+											});
+											
+											$("#registerPlan").click(function() {
+												
+												if($("#expenseGoal").val()=="") {
+													alert("금액을 입력하세요.");
+													return;
+												} 
+												
+												$.ajax({
+													url:"regiPlan.do",
+													data:{
+														expensePlanDate : $("#expensePlanDate").val(),
+														expenseGoal : $("#expenseGoal").val(),
+														planStatus : "y"
+													}
+												}).done(function(result) {
+													alert("등록완료");
+												});
+												
+											});
+											
+											
+										</script>
+                             
                            	
                            	<div class="page-title-breadcrumb option-demo">
                                      <div class="page-header" style='width:30%;margin: 0 auto'>
                                          <div class="page-title mrm">
-                                              <button>엑셀로 가계부 받기</button>
+                                              <button type="button" id="getBook" style='width:500px;text-align:center;'>엑셀로 가계부 받기</button>
                                          </div>
                                      </div>
                              </div>
@@ -155,15 +283,8 @@
                 <!--END FOOTER-->
             <!--END PAGE WRAPPER-->
                    <script>
-                   	$("button").click(function () {
-                   		
-// 						$.ajax({
-// 							url:"makeExcel.do"
-// 						}).done(function(result) {
-// 							console.log(result);
-// 						})  ;       
+                   	$("button#getBook").click(function () {
 						location.href="makeExcel.do";
-                   	
                    	});
                    </script>
                 <!--END CONTENT-->

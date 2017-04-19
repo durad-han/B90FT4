@@ -302,7 +302,7 @@
 				loanHtml+="<td style='display:"+clz+";'>"+loan[i].loanDate+"</td>";
 				loanHtml+="<td>"+loan[i].debtor+"</td>";
 				loanHtml+="<td>"+loan[i].loanContent+"</td>";
-				loanHtml+="<td>"+loan[i].loanAmount+"</td>";
+				loanHtml+="<td>"+numberWithCommas(loan[i].loanAmount)+"원</td>";
 				loanHtml+="</tr>";
 			}
 			
@@ -319,7 +319,7 @@
 				debtHtml+="<td style='display:"+clz+";'>"+debt[i].debtDate+"</td>";
 				debtHtml+="<td>"+debt[i].moneyLender+"</td>";
 				debtHtml+="<td>"+debt[i].debtContent+"</td>";
-				debtHtml+="<td>"+debt[i].debtAmount+"</td>";
+				debtHtml+="<td>"+numberWithCommas(debt[i].debtAmount)+"원</td>";
 				debtHtml+="</tr>";
 			}
 		}else{
@@ -540,4 +540,14 @@
 
 		});
 	}
+
+	// 콤마 찍는 정규 표현식 적용 함수.
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	console.log(numberWithCommas(10000));
+	
+
+	
 	

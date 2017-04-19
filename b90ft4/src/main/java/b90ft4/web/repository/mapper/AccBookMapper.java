@@ -4,6 +4,7 @@ import java.util.List;
 
 import b90ft4.web.repository.vo.DebtVO;
 import b90ft4.web.repository.vo.ExpenseCategoryVO;
+import b90ft4.web.repository.vo.ExpensePlanVO;
 import b90ft4.web.repository.vo.ExpenseResultVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeCategoryVO;
@@ -49,6 +50,12 @@ public interface AccBookMapper {
 	public void updateDebt(DebtVO debt) throws Exception;
 	
 	public void selectExcel(SearchVO search) throws Exception;
+	
+	// 지출 계획 CRUD
+	public void insertExpensePlan(ExpensePlanVO plan) throws Exception;
+	public void updateExpensePlan(ExpensePlanVO plan) throws Exception;
+	public ExpensePlanVO selectExpensePlan(ExpensePlanVO plan) throws Exception;
+	
 	
 }
 

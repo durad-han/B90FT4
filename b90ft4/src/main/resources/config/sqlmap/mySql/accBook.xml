@@ -340,6 +340,45 @@
 		      debt_content = #{debtContent}
 		where debt_no = #{debtNo}
 	</update>
+
+
+	<resultMap id="expensePlanMap" type="expensePlanVO">
+		<result column="expense_plan_date" property="expensePlanDate" />
+		<result column="expense_goal" property="expenseGoal" />
+		<result column="user_id" property="userId" />
+		<result column="plan_status" property="planStatus" />
+	</resultMap>
+
+	<!-- 지출계획 수정 -->
+	<update id="updateExpensePlan" parameterType="expensePlanVO">
+		update tb_sam_expense_plan
+		   set expense_goal = #{expenseGoal}
+		where user_id = #{userId} 
+		  and expense_plan_date = #{expensePlanDate}
+	</update>
+	
+	<!-- 지출계획 조회 -->
+	<select id="selectExpensePlan" parameterType="expensePlanVO" resultMap="expensePlanMap">
+		select * 
+		  from tb_sam_expense_plan
+		where user_id = #{userId}
+		  and expense_plan_date = #{expensePlanDate}
+	</select>
+	
+	<!-- 지출계획 등록 -->
+	<insert id="insertExpensePlan" parameterType="expensePlanVO">
+		insert into tb_sam_expense_plan (
+			expense_plan_date,	
+			expense_goal,
+			user_id, 			
+			plan_status
+		) values (
+			#{expensePlanDate},	
+			#{expenseGoal},
+			#{userId}, 			
+			#{planStatus}
+		)
+	</insert>	
 	
 	
 	<!-- 엑셀 파일 만들기. -->

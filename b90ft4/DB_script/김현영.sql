@@ -16,8 +16,10 @@ select * from tb_sam_expense
 select * from tb_sam_income
 select * from tb_sam_loan
 select * from tb_sam_debt
+
 select * from tb_sam_memo
 tb_Sam_Budget_Memo
+
 select * from tb_sam_user
 14.32.66.123
 insert into tb_sam_user (
@@ -108,6 +110,16 @@ create table tb_sam_debt (
 	debt_date			 	char(10) not null,
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
+
+create table tb_sam_expense_plan (
+	expense_plan_date char(7) primary key,
+	expense_goal int(7) not null,
+	user_id varchar(60) not null,
+	plan_status char(1) not null,
+	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
+)
+
+
 
 create table tb_Sam_Memo (
 	Memo_No 		int(6) auto_increment		primary key,

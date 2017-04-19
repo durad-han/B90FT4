@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.AccBookMapper;
 import b90ft4.web.repository.vo.DebtVO;
+import b90ft4.web.repository.vo.ExpensePlanVO;
 import b90ft4.web.repository.vo.ExpenseVO;
 import b90ft4.web.repository.vo.IncomeVO;
 import b90ft4.web.repository.vo.LoanVO;
@@ -151,6 +152,22 @@ public class AccBookServiceImpl implements AccBookService {
 			return;
 		}
 		
+	}
+	
+	public void regiPlan(ExpensePlanVO plan) 
+			throws Exception{
+		
+		if(dao.selectExpensePlan(plan)!=null){
+			dao.updateExpensePlan(plan);
+		}else{
+			dao.insertExpensePlan(plan);
+		}
+	}
+	
+	
+	public ExpensePlanVO expensePlan(ExpensePlanVO plan) 
+			throws Exception{
+		return dao.selectExpensePlan(plan);
 	}
 	
 

@@ -516,7 +516,7 @@
 					
 					monthExpenseHtml+="<tr>"
 					monthExpenseHtml+="<td><span class='"+colorChoice(1,expenseMonthBudget[i].expenseCategoryNo)+"'>"+obj.label+"</span></td>";
-					monthExpenseHtml+="<td>"+expenseMonthBudget[i].eachSum+"</td>";
+					monthExpenseHtml+="<td>"+numberWithCommas(expenseMonthBudget[i].eachSum)+"원</td>";
 					monthExpenseHtml+="</tr>"
 							
 				}
@@ -536,19 +536,19 @@
 					
 					monthIncomeHtml+="<tr>";
 					monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+obj.label+"</span></td>";
-					monthIncomeHtml+="<td>"+incomeMonthBudget[i].eachSum+"</td>";
+					monthIncomeHtml+="<td>"+numberWithCommas(incomeMonthBudget[i].eachSum)+"원</td>";
 					monthIncomeHtml+="</tr>";
 						
 				}	
 				
 					monthExpenseHtml+="<tr>"
 					monthExpenseHtml+="<td>합계</td>"
-					monthExpenseHtml+="<td>"+expenseSum+"</td>"
+					monthExpenseHtml+="<td>"+numberWithCommas(expenseSum)+"원</td>"
 					monthExpenseHtml+="</tr>"
 						
 					monthIncomeHtml+="<tr>"
 					monthIncomeHtml+="<td>합계</td>"
-					monthIncomeHtml+="<td>"+incomeSum+"</td>"
+					monthIncomeHtml+="<td>"+numberWithCommas(incomeSum)+"원</td>"
 					monthIncomeHtml+="</tr>"
 								
 					$("#monthExpense").html(monthExpenseHtml);
@@ -803,7 +803,7 @@
 									
 									expenseHtml+='<td><span class="'+colorChoice(1,expense[k].expenseCategoryNo)+'">'+expense[k].expenseCategoryName+'</span></td>';
 									expenseHtml+="<td>"+expense[k].expenseContent+"</td>";
-									expenseHtml+="<td>"+expense[k].expenseAmount+"</td>";
+									expenseHtml+="<td>"+numberWithCommas(expense[k].expenseAmount)+"원</td>";
 									expenseSum+=expense[k].expenseAmount;
 									expenseHtml+="</tr>";
 								}
@@ -817,7 +817,7 @@
 								}
 								
 								expenseHtml+="<td></td>";
-								expenseHtml+="<th>"+expenseSum+"</th>";
+								expenseHtml+="<th>"+numberWithCommas(expenseSum)+"원</th>";
 								totalExpense+=expenseSum;
 								expenseSum=0;
 								expenseHtml+="</tr>";
@@ -831,7 +831,7 @@
 								expenseHtml+="<th> 총 지출 합계</th>";
 								expenseHtml+="<td></td>";
 								expenseHtml+="<td></td>";
-								expenseHtml+="<th>"+totalExpense+"</th>";
+								expenseHtml+="<th>"+numberWithCommas(totalExpense)+"원</th>";
 								expenseHtml+="</tr>";
 							}
 							
@@ -864,7 +864,12 @@
 							expenseObj.expenseDate 	     = $(this).children("th").text();
 							expenseObj.expenseCategoryNo = $(this).children("td.expenseCategoryNo").text();
 							expenseObj.expenseContent    = $(this).children("td:eq(3)").text();
-							expenseObj.expenseAmount     = $(this).children("td:eq(4)").text();
+							
+							var temp = $(this).children("td:eq(4)").text();
+							temp = temp.replace(",","");
+							temp = temp.replace("원","");
+							
+							expenseObj.expenseAmount = temp;
 							
 							// 폼 양식에 id 와 값 셋팅.
 							
@@ -915,7 +920,7 @@
 									
 									incomeHtml+='<td><span class="'+colorChoice(1,income[k].incomeCategoryNo)+'">'+income[k].incomeCategoryName+'</span></td>';
 									incomeHtml+="<td>"+income[k].incomeContent+"</td>";
-									incomeHtml+="<td>"+income[k].incomeAmount+"</td>";
+									incomeHtml+="<td>"+numberWithCommas(income[k].incomeAmount)+"원</td>";
 									incomeSum+=income[k].incomeAmount;
 									incomeHtml+="</tr>";
 								}
@@ -929,7 +934,7 @@
 								}
 								
 								incomeHtml+="<td></td>";
-								incomeHtml+="<th>"+incomeSum+"</th>";
+								incomeHtml+="<th>"+numberWithCommas(incomeSum)+"원</th>";
 								totalIncome+=incomeSum;
 								incomeSum=0;
 								incomeHtml+="</tr>";
@@ -943,7 +948,7 @@
 								incomeHtml+="<th> 총 지출 합계</th>";
 								incomeHtml+="<td></td>";
 								incomeHtml+="<td></td>";
-								incomeHtml+="<th>"+totalIncome+"</th>";
+								incomeHtml+="<th>"+numberWithCommas(totalIncome)+"원</th>";
 								incomeHtml+="</tr>";
 							}
 							
@@ -975,7 +980,13 @@
 							incomeObj.incomeDate 		 =	today;
 							incomeObj.incomeCategoryNo  = 	$(this).children("td.incomeCategoryNo").text();
 							incomeObj.incomeContent     = 	$(this).children("td:eq(3)").text();
-							incomeObj.incomeAmount      =  $(this).children("td:eq(4)").text();
+							
+							var temp = $(this).children("td:eq(4)").text();
+							temp = temp.replace(",","");
+							temp = temp.replace("원","");
+							
+							incomeObj.incomeAmount      =  temp;
+							
 							
 							// 체크하게 만들기
 							$("[name=budgetF] [name=budgetCode]").each(function() {
@@ -1185,4 +1196,9 @@
     //END PIE CHART
 
 	
+ // 콤마 찍는 정규 표현식 적용 함수.
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	
+	console.log(numberWithCommas(10000));
