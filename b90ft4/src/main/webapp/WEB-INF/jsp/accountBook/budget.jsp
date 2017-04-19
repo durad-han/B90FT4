@@ -183,7 +183,7 @@ tbody#income tr.incomeInfo:hover{
                 			<div id="generalTabContent" class="tab-content responsive">
 			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto">
 										   <div class="panel panel-green" id="expenseTable">
-						                            <div class="panel-heading">지출d</div>
+						                            <div class="panel-heading">지출</div>
 						                            <div class="panel-body">
 						                                <table class="table table-hover-color">
 						                                    <thead>

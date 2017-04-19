@@ -174,6 +174,9 @@ tbody#income tr.incomeInfo:hover{
 				                                <table class="table table-hover-color">
 				                                    <thead>
 				                                    <tr>
+				                                    	<th class="bondDate" style="display: none;">
+				                                    		날짜
+				                                    	</th>
 				                                        <th>
 				                                        	빌려간 사람
 				                                        </th>
@@ -193,6 +196,9 @@ tbody#income tr.incomeInfo:hover{
 				                                <table class="table table-hover-color">
 				                                    <thead>
 				                                    <tr>
+				                                    	<th class="bondDate" style="display: none;">
+				                                    		날짜
+				                                    	</th>
 				                                        <th>빌려준 사람</th>
 				                                        <th>내용</th>
 				                                        <th>금액</th>

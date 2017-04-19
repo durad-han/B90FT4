@@ -534,10 +534,11 @@
 					
 					incomeData.push(obj);
 					
-					monthIncomeHtml+="<tr>"
+					monthIncomeHtml+="<tr>";
 					monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+obj.label+"</span></td>";
 					monthIncomeHtml+="<td>"+incomeMonthBudget[i].eachSum+"</td>";
-					monthIncomeHtml+="</tr>"
+					monthIncomeHtml+="</tr>";
+						
 				}	
 				
 					monthExpenseHtml+="<tr>"
@@ -554,6 +555,8 @@
 					$("#monthIncome").html(monthIncomeHtml);
 					
 					$("#monthBudgteTable").show();
+					
+					
 				
 				//BEGIN PIE CHART
 			    $.plot('#expenseDiv', expenseData, {

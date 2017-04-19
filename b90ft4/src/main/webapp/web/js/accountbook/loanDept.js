@@ -262,6 +262,18 @@
 	// 대입금/차입금 리스트
 	
 	function bondList(startDate,endDate) {
+		
+		
+		if(endDate) {
+			$("th.bondDate").each(function() {
+				$(this).show();
+			});
+		}else{
+			$("th.bondDate").each(function() {
+				$(this).hide();
+			});
+		}
+		
 		$.ajax({
 			url:"bondList.do",
 			dataType:"json",
@@ -279,12 +291,15 @@
 			var loanHtml="";
 			var debtHtml="";
 			
+			if(selectedDateOption==2) clz="block;";
+			else clz ="none;"
+			
 		if(loan.length!=0){	
 			
 			for(var i=0;i<loan.length;i++) {
 				loanHtml+="<tr class='bondInfo'>";
 				loanHtml+="<td style='display:none;'>"+loan[i].loanNo+"</td>";
-				loanHtml+="<td style='display:none;'>"+loan[i].loanDate+"</td>";
+				loanHtml+="<td style='display:"+clz+";'>"+loan[i].loanDate+"</td>";
 				loanHtml+="<td>"+loan[i].debtor+"</td>";
 				loanHtml+="<td>"+loan[i].loanContent+"</td>";
 				loanHtml+="<td>"+loan[i].loanAmount+"</td>";
@@ -301,7 +316,7 @@
 			for(var i=0;i<debt.length;i++) {
 				debtHtml+="<tr class='bondInfo'>";
 				debtHtml+="<td style='display:none;'>"+debt[i].debtNo+"</td>";
-				debtHtml+="<td style='display:none;'>"+debt[i].debtDate+"</td>";
+				debtHtml+="<td style='display:"+clz+";'>"+debt[i].debtDate+"</td>";
 				debtHtml+="<td>"+debt[i].moneyLender+"</td>";
 				debtHtml+="<td>"+debt[i].debtContent+"</td>";
 				debtHtml+="<td>"+debt[i].debtAmount+"</td>";
