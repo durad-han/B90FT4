@@ -363,12 +363,12 @@
 				<div class="row">
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputStart" name="start" type="date" placeholder="시작 시간" class="form-control" />
+				            <input id="inputStart" name="start" type="text" placeholder="시작 시간" value="" />
 				        </div>
 				    </div>
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputEnd" name="end" type="date" placeholder="종료 시간" class="form-control" />
+				            <input id="inputEnd" name="start" type="text" placeholder="종료 시간" value="" />
 				        </div>
 				    </div>
 				</div>
@@ -388,30 +388,19 @@
 				    </div>
 				</div>
 				<div class="form-group">
-				    <div class="input-icon right">
-				        <i class="fa fa-user"></i>
-				        <input id="inputUserId" name="userId" type="hidden" placeholder="유저" value="tester01" class="form-control" />
-				    </div>
+				        <input id="inputUserId" name="userId" type="hidden" value="tester01" class="form-control" />
 				</div>
 				<div class="form-group">
-				    <div class="input-icon right">
-				        <i class="fa fa-user"></i>
-				        <input id="inputScheduleNo" name="scheduleNo" type="hidden" placeholder="유저" value="1" class="form-control" />
-				    </div>
+				        <input id="inputScheduleNo" name="scheduleNo" type="hidden" value="1" class="form-control" />
 				</div>
 				<div class="form-group">
-				    <div class="input-icon right">
-				        <i class="fa fa-user"></i>
-				        <input id="inputAchieve" name="achieve" type="hidden" placeholder="달성" value="1" class="form-control" />
-				    </div>
+				        <input id="inputAchieve" name="achieve" type="hidden" value="1" class="form-control" />
 				</div>
 <!-- ============ 임시 하드코딩============	-->
 				
-				<div class="form-group">
-				    <div class="form-control" id="inputImportance">
-				    </div>
-				    <div id="imp">
-				    </div>
+				<div class="form-group text-center">
+			    	<div class="stars"></div>
+				    <div class="stars-msg"></div>
 				</div>
 				    
 				<div class="form-actions text-center pal">

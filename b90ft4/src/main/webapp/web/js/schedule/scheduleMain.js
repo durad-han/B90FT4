@@ -1,4 +1,4 @@
-console.log("scheduleMain.js 로드됨...!!");
+console.log("scheduleMain.js 로드됨...!");
 
 //----- datePicker -----------------------------------------------------------
 
@@ -15,15 +15,19 @@ $(window).on('scroll', function(){
 	});
 });
 
+//----- detePicker -------------------------------------------------------------------------------------
+$('#inputStart').datetimepicker();
+$('#inputEnd').datetimepicker();
+
 //----- foxholder -----------------------------------------------------------
 jQuery('.clz-insertSchedule').foxholder({
 	demo: 6 //(1-15)
 });
 
-$("#inputImportance").starRating({
+$(".stars").starRating({
 	totalStars: 3,
 	initialRating: 1,
-	starSize: 25,
+	starSize: 40,
 	starShape: 'rounded',
 	emptyColor: 'lightgray',
 	hoverColor: 'salmon',
@@ -33,11 +37,25 @@ $("#inputImportance").starRating({
 	starGradient: {start: '#FEF7CD', end: '#FF9511'},
 	disableAfterRate: false,
 	onHover: function(currentIndex, currentRating, $el){
-	      $('#imp').text(currentIndex);
-	    },
+				var navTxt = "";
+				switch(currentIndex){
+				case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+				case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+				case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+				default : navTxt = "보통 : 일정을 추가합니다"; break;
+				}
+			      $('.stars-msg').text(navTxt);
+			    },
 	onLeave: function(currentIndex, currentRating, $el){
-	        $('#imp').text(currentRating);
-	    },
+				var navTxt = "";
+				switch(currentRating){
+				case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+				case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+				case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+				default : navTxt = "보통 : 일정을 추가합니다"; break;
+				}
+			        $('.stars-msg').text(navTxt);
+			    },
     callback: function(currentRating, $el){
         // make a server call here
     }
