@@ -12,6 +12,7 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"/>
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
 </head>
 <body>
 <div>
@@ -28,7 +29,7 @@
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
 <!-- 메뉴 옵션들 ==================================================================================================== -->
-                  <li class="active"><a href="http://14.32.66.123:9092/b90ft4/main/main.do">메인</a></li>
+                  <li><a href="http://14.32.66.123:9092/b90ft4/main/main.do">메인</a></li>
                   <li class="dropdown"><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
                       	  <li><a href="http://14.32.66.123:9092/b90ft4/schedule/scheduleList.do">스케줄 리스트</a></li>
@@ -40,7 +41,7 @@
                   </li>
                   <li><a href="http://14.32.66.123:9092/b90ft4/diary/list.do">다이어리</a></li>
                   <li><a href="http://14.32.66.123:9092/b90ft4/accountBook/main.do">가계부</a></li>
-                  <li><a href="http://14.32.66.123:9092/b90ft4/workout/workout.do">운동</a></li>
+                  <li class="active"><a href="http://14.32.66.123:9092/b90ft4/workout/workout.do">운동</a></li>
 <!-- 미사용 드롭다운 샘플 ==================================================================================================== -->
                   <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret" ></b></a>
                       <ul class="dropdown-menu">
@@ -83,12 +84,15 @@
 								class="fa fa-fw">
 									<div class="icon-bg bg-green"></div>
 							</i><span class="menu-title">운동 하기</span></a></li>
-						<li><a href="#"><i class="fa fa-fw">
+						<li><a onclick="workoutMoveCal()"><i class="fa fa-fw">
 									<div class="icon-bg bg-violet"></div>
 							</i><span class="menu-title">칼로리 계산</span></a></li>
-						<li><a href="#"><i class="fa fa-fw">
+						<li><a onclick="workoutMoveChart()"><i class="fa fa-fw">
 									<div class="icon-bg bg-blue"></div>
 							</i><span class="menu-title">차트</span></a></li>
+						<li><a onclick="tempMove()"><i class="fa fa-fw">
+									<div class="icon-bg bg-blue"></div>
+							</i><span class="menu-title">임시</span></a></li>
 					</ul>					
 				</div>
 			</nav>
@@ -193,9 +197,11 @@
 					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
 						{{#isZero}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li>
+						<!--	<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
+							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
 						{{else}}
-							<li onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li>
+						<!--	<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
+							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
 					
@@ -203,6 +209,7 @@
             </div>
 		<!-- 운동 내용 호출 -->
 			<div id="typeContainer">
+
 			</div>
 			<div>
 				<div class="buttons">

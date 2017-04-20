@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 <link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeA.css" />
 </head>
-<body> 
+<body>
 <div id='typeAContainer'>	
 	<div class='container'>
 		<div class='front'>
@@ -20,9 +20,8 @@
 		</div>
 	</div>
 </div>
-
-<script src="/b90ft4/web/js/common/jquery.min.js"></script>
 <script>
+var nextSet = gvSetIndex+1;
 var count, rotateY, setValueFunc, value, zero;
 zero = 0;
 rotateY = 180;
@@ -32,10 +31,15 @@ maxValue = gvTypeACount;
 max = "/"+maxValue;
 breakTimeVal = 10;
 
+//setContainer혹은 viewContainer 마지막에 현재 세트 정보 표시
 
+
+//typeA관련 함수
 
 $(".front").on("mousedown", function() {
-	console.log(gvWorkoutSetNo+" "+gvIsLast+"setno+islast");
+	console.log("gvWorkoutSetNo : " + gvWorkoutSetNo);
+	console.log("gvIsLast : " + gvIsLast);
+	console.log("nextSet : " + nextSet);
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
 	$(".container").css({
@@ -47,9 +51,11 @@ value++;
 	  $("#typeAContainer").css({"background": "#ff7373"});
   		if(gvIsLast){
 		  alert("마지막 세트입니다.");
+		  
   		}
   		else{
 		  alert(gvIntervalTime+"초 동안 쉽니다.");
+		  $("#setNo"+nextSet).trigger("click");
 		}
       $(".container").css({
           "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"

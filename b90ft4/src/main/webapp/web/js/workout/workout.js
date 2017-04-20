@@ -5,7 +5,17 @@ var gvTypeBTime = "";
 var gvSpentCal = "";
 var gvIntervalTime = "";
 var gvIsLast = "";
+var gvSetIndex ="";
 
+function tempMove(){
+	$(".page-content").load("/b90ft4/web/view/workout/Charts.html");
+}
+function workoutMoveCal(){
+	$(".page-content").load("/b90ft4/web/view/workout/workoutCal.html");
+}
+function workoutMoveChart(){
+	$(".page-content").load("/b90ft4/web/view/workout/workoutChart.html");
+}
 function workoutMove(workoutNo){
 	$.ajax({
 		url:"workoutForm.do",
@@ -27,7 +37,8 @@ function workoutMove(workoutNo){
 		//생성된 HTML을 DOM에 주입
 		$('.page-content').html(html);
 		/*$(".page-content").load("/b90ft4/web/view/workout/workoutList.html");*/
-		
+		//해당 운동의 첫번째 세트 띄워줌
+		$("#setNo1").trigger("click");
 
 	
 	});
@@ -64,7 +75,8 @@ function listLoad(result){
 	});
 }
 
-/*//typeA 관련 함수
+/*
+//typeA 관련 함수
 var count, rotateY, setValueFunc, value, zero;
 zero = 0;
 rotateY = 180;
@@ -120,6 +132,7 @@ $(".back").on("mousedown", function() {
 
 */
 
+/*
 //typeB 관련 함수
 $("#videoCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
@@ -240,9 +253,9 @@ function slide() {
     }
 }
 
-
+*/
 //타입별 로드될 html 작성
-function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,isLast){
+function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime,isLast,setIndex){
 	 gvWorkoutSetNo = workoutSetNo;
 	 gvWorkoutNo = workoutNo;
 	 gvTypeACount = typeACount;
@@ -250,6 +263,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	 gvSpentCal = spentCal;
 	 gvIntervalTime = intervalTime;
 	 gvIsLast = isLast;
+	 gvSetIndex = setIndex;
 	console.log("workoutTypeLoad function started");
 	var type="";
 	if(typeACount != 0){
@@ -283,18 +297,19 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 */
 		
 		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA.html");
-		
+		//해당 운동의 첫번째 세트 띄워줌 ERRORCODE1
+		//$("#setNo1").trigger("click");
 	}
 	//typeB load
 	else if(type == "B"){
 		console.log("typeB load");
-		
+		/*
 		html += "<div id='setContainer'>"+
 				"</div><div id='typeBContainer'>"+
 				"이번 세트 운동시간 : "+typeBTime+"초"+
 				"<br>이번 세트 휴식시간:"+intervalTime+"초"+
 				"<div id='view'>"+
-			/*	
+				
 				"<div id='timeline'>"+
 				"<div class='timerContainer'>"+
 				  "<div class='timer'></div>"+
@@ -306,13 +321,17 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 				  "</div>"+
 				"</div>"+
 				"</div>"+
-				*/
+				
 				"<div><video width='70%' height='70%' autoplay='autoplay' id='myVideo' /></div><div>"+
 				"<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>"+	
 				"<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button></div></div></div>";
 		$('#typeContainer').html(html);
 		$("#videoCloseBtn").addClass("hidden");
-		slide();
+		slide();*/
+		
+		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeB.html");
+		//해당 운동의 첫번째 세트 띄워줌 ERRORCODE2
+		//$("#setNo1").trigger("click");
 	}
 	
 	/*console.log(html);*/
@@ -324,6 +343,7 @@ listLoad();
 function endWorkout(){
 	listLoad();
 }
+
 
 
 /*function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
