@@ -56,6 +56,7 @@ public interface AccBookMapper {
 	public void updateExpensePlan(ExpensePlanVO plan) throws Exception;
 	public ExpensePlanVO selectExpensePlan(ExpensePlanVO plan) throws Exception;
 	
+	public int selectMonthTotal(SearchVO search) throws Exception;
 	
 }
 

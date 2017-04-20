@@ -32,6 +32,13 @@ tbody#expense tr.expenseInfo:hover{
 tbody#income tr.incomeInfo:hover{
 	background:pink;
 }
+#budgetPlanDiv input{
+	text-align: center;
+	font-weight: bold;
+}
+#budgetPlanDiv input:nth-child(6){
+	color:blue;
+}
 
 </style>
 <meta charset="UTF-8">
@@ -166,7 +173,7 @@ tbody#income tr.incomeInfo:hover{
                 
                 <div class="row">
                 	
-                	
+                
                   <div class="col-lg-7" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
@@ -243,18 +250,15 @@ tbody#income tr.incomeInfo:hover{
 			                 		 지출/수입 등록
 			            </button>
 			          
-			        <br><br>
-			        <div id="budgetPlanDiv" style="margin-left: 10%;">
+			        <div id="budgetPlanDiv" style="margin-left: 10%;display: none;border:1px solid black;padding:20px;">
 			        	<h4><b>이번 달 지출 목표</b></h4>
-			        	
 			        	<input type="text" readonly />
-			        	<h4><b>이번 달 지금까지의 총 지출</b></h4>
+			        	<h4><b>이번 달 현재 총 지출</b></h4>
 			        	<input type="text" readonly />
-			        	<h4><b>여유 지출 금액</b></h4>
+			        	<h4><b>여유 지출 한도</b></h4>
 			        	<input type="text" readonly />
-			        </div>  
-			         
-			         
+			        </div> 
+			        
 				    <div id="monthBudgteTable" style="display: none;">
 				        <h4 class="box-heading">월별 지출/수입 현황</h4>
 	                           <div class="panel panel-red">

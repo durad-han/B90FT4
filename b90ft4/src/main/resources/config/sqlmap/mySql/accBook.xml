@@ -352,18 +352,30 @@
 	<!-- 지출계획 수정 -->
 	<update id="updateExpensePlan" parameterType="expensePlanVO">
 		update tb_sam_expense_plan
-		   set expense_goal = #{expenseGoal}
+		   set expense_goal = #{expenseGoal},
+		       plan_status = #{planStatus}
 		where user_id = #{userId} 
 		  and expense_plan_date = #{expensePlanDate}
 	</update>
 	
 	<!-- 지출계획 조회 -->
 	<select id="selectExpensePlan" parameterType="expensePlanVO" resultMap="expensePlanMap">
-		select * 
-		  from tb_sam_expense_plan
-		where user_id = #{userId}
-		  and expense_plan_date = #{expensePlanDate}
+		select *
+  		  from tb_sam_expense_plan
+		  where user_id = #{userId}
+		    and expense_plan_date = #{expensePlanDate}
 	</select>
+	
+	
+	<!-- 달 지출 합계 -->
+	<select id="selectMonthTotal"  parameterType="searchVO"  resultType="int">
+		select sum(expense_amount)
+		  from tb_sam_expense
+		where  user_id = #{userId}
+		  and  expense_date between STR_TO_DATE (#{startDate},'%Y-%m-%d') 
+								 and STR_TO_DATE (#{endDate},  '%Y-%m-%d')
+	</select>
+	
 	
 	<!-- 지출계획 등록 -->
 	<insert id="insertExpensePlan" parameterType="expensePlanVO">

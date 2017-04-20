@@ -1,5 +1,7 @@
 package b90ft4.web.accountbook.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -165,9 +167,32 @@ public class AccBookServiceImpl implements AccBookService {
 	}
 	
 	
-	public ExpensePlanVO expensePlan(ExpensePlanVO plan) 
+	public Map<String,Object> expensePlan(ExpensePlanVO plan) 
 			throws Exception{
-		return dao.selectExpensePlan(plan);
+		Map<String,Object> result = new HashMap<>();
+
+		System.out.println(plan.getExpensePlanDate());
+		System.out.println(plan.getUserId());
+		
+		result.put("goal", dao.selectExpensePlan(plan));
+		
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.DATE, 1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String begin = sdf.format(c.getTime());
+		c.set(Calendar.DATE, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+		String end = sdf.format(c.getTime());
+		
+		System.out.println("begin : " + begin);
+		System.out.println("end : " + end);
+
+		SearchVO search = new SearchVO();
+		search.setUserId(plan.getUserId());
+		search.setStartDate(begin);
+		search.setEndDate(end);
+		result.put("currentTotal", dao.selectMonthTotal(search));
+		
+		return result;
 	}
 	
 

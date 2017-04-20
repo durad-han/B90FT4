@@ -33,7 +33,7 @@ public interface AccBookService {
 	public void updateBond(LoanVO loan,DebtVO debt) throws Exception;
 
 	public void regiPlan(ExpensePlanVO plan) throws Exception;
-	public ExpensePlanVO expensePlan(ExpensePlanVO plan) throws Exception;
+	public Map<String,Object> expensePlan(ExpensePlanVO plan) throws Exception;
 	
 	public void makeExcel(SearchVO search) throws Exception;
 	

@@ -147,7 +147,6 @@
 		$("#incomeDiv").hide(); 	     // 수입 원 그래프 
 		$("#expenseDate").remove(); 	 // 지출 테이블 날짜 컬럼
 		$("#incomeDate").remove(); 		 // 수입 테이블 날짜 컬럼
-		
 		$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
 		
 		$("#monthBudgteTable").hide();
@@ -217,8 +216,8 @@
 		$("#expenseDiv").show();	// 지출 원 그래프 
 		$("#incomeDiv").show();		// 수입 원 그래프 
 		$("#budgetModal").hide();   // 지출/수입 등록 버튼
-		
 		$("#incomeTab").addClass("active"); // 수입 탭활성화
+		$("#budgetPlanDiv").hide(); // 지출 계획 숨기기.
 		
 		selectedDateOption = 3;
 		$("#datepicker").datepicker("refresh");
@@ -228,7 +227,7 @@
 
 		var d1 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth(),1));
 		var d2 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth()+1,0));
-		console.log(d1,d2);
+
 		budgetList(d1,d2,selectedDateOption);
 		
 		
@@ -287,8 +286,38 @@
 	$("#actualDate").val(today);
 	$("[name=budgetF] input:eq(4)").val(today);
 	console.log($("[name=budgetF] input:eq(4)").val());
-	console.log($("[name=budgetF] input:eq(4)").attr("name"));
+//	console.log("들어왔다.");
+
+	showPlan();
+	function showPlan(){
 	
+	    var planDate = new Date();
+		var year = planDate.getYear()+1900;
+		var month = planDate.getMonth()+1;
+		
+		if(month<10) {
+			month="0"+month;
+		}
+
+		$.ajax({
+	   		url:"expensePlan.do",
+	   		dataType:"json",
+	   		data:{
+	   			expensePlanDate: year +"-" + month
+	   		}
+	   	}).done( function(result) {
+				var goal = result.goal;
+				if(goal && goal.planStatus == 'y'){
+					$("#budgetPlanDiv").show();
+					$("#budgetPlanDiv > input:eq(0)").val(numberWithCommas(goal.expenseGoal) + "원");
+					$("#budgetPlanDiv > input:eq(1)").val(numberWithCommas(result.currentTotal) + "원");
+					$("#budgetPlanDiv > input:eq(2)").val(numberWithCommas(goal.expenseGoal - result.currentTotal) + "원");
+				}else {
+					$("#budgetPlanDiv").hide();
+				}
+	   	});
+		
+	}
 	
 /* ------------------------------------------------------------------------------------------------------------- */
 	
@@ -341,15 +370,14 @@
 		
 		if(flag==1){
 			budgetList($("#actualDate").val());
-			console.log("순서1 - ");
 		}
 		
 		if(flag==2) {
 			var dateArr = $("#actualDate").val().split("~");
 			budgetList(dateArr[0],dateArr[1]);
-			
 		}
 		
+		showPlan();
 		addBudgetName();
 		$("#updateBudget").hide();
 		$("#deleteBudget").hide();
@@ -442,11 +470,8 @@
 				labelColor = "#7c7777";
 				break;
 			}
-			
 		}
-		
 		return labelColor;
-		
 	}
 	
 	 
@@ -480,6 +505,8 @@
 			},
 			async:false
 		}).done(function (result) {
+			
+			showPlan();
 			
 			// 월을 선택할 경우, 원 그래프 그리기.
 			if(budgetSearchCode==3){
@@ -555,8 +582,6 @@
 					$("#monthIncome").html(monthIncomeHtml);
 					
 					$("#monthBudgteTable").show();
-					
-					
 				
 				//BEGIN PIE CHART
 			    $.plot('#expenseDiv', expenseData, {
@@ -1084,6 +1109,25 @@
 	
 	/* ---------------------------------------------- 지출-수입 입력----------------------------------------------- */
 	
+	$("[name=budgetF] input:eq(2)").keyup(function(e) {
+			if(e.keyCode == 13){
+				$("#budgetRegi").trigger("click");
+			}
+	});
+	
+	$("[name=budgetF] input:eq(3)").keyup(function(e) {
+			if(e.keyCode == 13){
+			$("#budgetRegi").trigger("click");
+			}
+	});
+	
+	$("#budgetModal").click(function() {
+		console.log("ㅋㅋ");
+		$("[name=budgetF] input:eq(2)").focus();
+	});
+	
+	
+	
 	$("#budgetRegi").click(function() {
 		
 		var f = document.budgetF;
@@ -1200,5 +1244,9 @@
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
+    	
+
+
 	
-	console.log(numberWithCommas(10000));
+	
+	

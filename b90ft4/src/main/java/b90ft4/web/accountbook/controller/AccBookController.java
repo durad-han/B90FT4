@@ -223,7 +223,9 @@ public class AccBookController {
 	
 	@ResponseBody
 	@RequestMapping("/expensePlan.do")
-	public ExpensePlanVO expensePlan(ExpensePlanVO plan) throws Exception{
+	public Map<String,Object> expensePlan(ExpensePlanVO plan) throws Exception{
+		plan.setUserId("김현영");
+		System.out.println("은하계 대표 : " + plan.getExpensePlanDate());
 		return service.expensePlan(plan);
 	}
 	

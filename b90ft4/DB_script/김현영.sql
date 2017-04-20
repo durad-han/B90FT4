@@ -132,7 +132,15 @@ create table tb_Sam_Memo (
 );
 
 
-
+select *
+  from tb_sam_expense_plan
+  
+		where user_id = '김현영'
+		  and expense_plan_date = '2017-04'
+  
+delete 
+  from tb_Sam_Memo
+  
 
 -- 데이터 --
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +12,129 @@
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
-<!-- include summernote-ko-KR -->
-<!-- <script src="lang/summernote-ko-KR.js"></script> -->
-
+<style>
+#attachFileList {
+	border:1px solid black;
+	width: 300px;
+	height:200px;
+	margin:0 auto;
+}
+</style>
 </head>
 <body>
+onImageUpload<br>
+Override image upload handler(default: base64 dataURL on IMG tag). You can upload image to server or AWS S3: more…<br>
+
 <div id="summernote">Hello Summernote</div>
+
+<div id="attachFileList">
+	<ul>
+	</ul>
+</div>
+
+<button>확인</button>
+
 <script>
-$(document).ready(function() {
-	  $('#summernote').summernote();
+
+
+
+var imgArr=[];
+
+
+$('#summernote').summernote({
+	  callbacks: {
+	    onImageUpload: function(files) {
+		     // upload image to server and create imgNode...
+		     console.log(files);
+		     
+		     var fd = new FormData();
+		     
+		     for(var i=0,f; f = files[i];i++){
+			     fd.append("attachFile"+i,files[i]);
+		     }
+		     
+		     
+		     $.ajax({
+		    	 url:"/datepicker/board/img2.do",
+		    	 type:"POST",
+		    	 data: fd,
+		    	 processData: false,
+		    	 contentType : false,
+		    	 dataType:"json"
+		     }).done(function(result) {
+		    	 console.log(result);
+			     
+		    	 for(var i=0; i < result.length;i++){
+		    		 
+		    		 var img = document.createElement("img");
+		    		 img.src = result[i];
+				     $('#summernote').summernote('insertNode', img);
+				     
+				     imgArr[result[i]]=img;
+				     
+					 $("#attachFileList > ul ")
+					 .append(
+					  $("<li>"+files[i].name+"</li>")
+					  .append("<button id='del' imgPath="+result[i]+" onclick='delImg(this)'>삭제</button>")
+					 )		
+				     
+			     }
+		    	 
+		     });
+	     }
+	  }
 });
+
+
+
+
+function delImg(that) {
+	console.log("삭제");
+// 	var path = that.getAttribute("imgPath");
+// 	console.log(path);
+
+// 	var div =  document.querySelector("div.note-editable panel-body");
+// 	console.log(div);
+// 	console.log("innerHtml",div.innerHtml);
+// 	console.log("제이쿼리 html", $("div.note-editable panel-body").html());
+// 	console.log($("div.note-editing-area div:last").html());
+// 	$(".note-editable panel-body img").each(function() {
+// 		console.log("ㅋㅋ",this);
+// 	});
+
+	console.log(imgArr[that.getAttribute("imgPath")]);
+	var delImg = imgArr[that.getAttribute("imgPath")];
+	delImg.parentNode.removeChild(delImg);
+	that.parentNode.parentNode.removeChild(that.parentNode);
+	
+	
+}
+
+	
+	$("button").click(function(){
+// 		console.log($("div.note-editable panel-body"));
+		console.log($("div.note-editing-area div:last").html());
+		console.log(imgArr);
+	})
+	
+</script>
+
+<script>
+// onImageUpload callback
+// $('#summernote').summernote({
+//   callbacks: {
+//     onImageUpload: function(files) {
+//       // upload image to server and create imgNode...
+//       $summernote.summernote('insertNode', imgNode);
+//     }
+//   }
+// });
+
+// summernote.image.upload
+// $('#summernote').on('summernote.image.upload', function(we, files) {
+  // upload image to server and create imgNode...
+//   $summernote.summernote('insertNode', imgNode);
+// });
 </script>
 </body>
 </html>

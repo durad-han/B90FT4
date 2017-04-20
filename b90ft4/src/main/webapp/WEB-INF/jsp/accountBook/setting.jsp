@@ -149,14 +149,16 @@ input {
                              </div>
                              
 				                               <!-- 자산 등록 모달 -->
-									<div class="modal-dialog" style='width:20%;display: none;'>
+									<div class="modal-dialog" style='width:25%;display: none;'>
 											<div class="modal-content">
 														
 												<div class="modal-header">
 													<h4 class="modal-title">자산 설정
 													
-														<input type="radio" name="budgetManageCode" value="0" checked/> 설정
-														<input type="radio" name="budgetManageCode" value="1" /> 미설정
+														<input type="radio" id="set" name="budgetManageCode" value="0" checked/>
+														<label for="set">설정</label>
+														<input type="radio" id="noSet" name="budgetManageCode" value="1" /> 
+														<label for="noSet">미설정</label>
 														
 													</h4>
 												</div>
@@ -199,47 +201,59 @@ input {
 										
 										<script>
 										
+											$.ajax({
+												url:"expensePlan.do",
+												dataType:"json",
+												data : {
+													expensePlanDate : $("#expensePlanDate").val()
+												}
+											}).done(function(result) {
+												console.log(result);
+												
+												if(result.goal.planStatus=='y')
+													$("#set").prop("checked",true);
+												else	
+													$("#noSet").prop("checked",true);
+												
+													checkCode();
+											});
+										
 											$("#budgetManagement").click(function() {
 												$("div.modal-dialog").slideToggle(250);	
-													
-// 												if(!flag){												
-// 													$("div.modal-dialog").show();	
-// 													flag=true;
-// 												}else{
-// 													$("div.modal-dialog").hide();	
-// 													flag=false;
-// 												}
 											});
 											
+											
 											$("[name=budgetManageCode]").click(function() {
-												
-												console.log("클릭");
-												
-												$("[name=budgetManageCode]").each(function() {
+												checkCode();
+											});
+											
+											function checkCode(){
+											   
+												  $("[name=budgetManageCode]").each(function() {
+														
 														if(this.checked && this.value == 0){
-															$("#managementDiv").show();
-															return;
-														}
-
+																$("#managementDiv").show();
+																return;
+															}
+	
 														if(this.checked && this.value == 1){
 		 													$("#managementDiv").hide();
+		 													
+		 													$.ajax({
+		 														url:"regiPlan.do",
+		 														data:{
+		 															expensePlanDate : $("#expensePlanDate").val(),
+		 															planStatus : "n"
+		 														}
+		 													}).done(function(result) {
+		 													});
 		 													return;
 		 												}
-														
-												});
+													});
 												
-// 												if(this.checked && this.value == 0){
-// 													$("#managementDiv").show();
-// 													return;
-// 												}
-
-// 												if(this.checked && this.value == 1){
-// 													$("#managementDiv").hide();
-// 													return;
-// 												}
-												
-												
-											});
+											  }
+											
+											
 											
 											$("#registerPlan").click(function() {
 												
@@ -262,6 +276,11 @@ input {
 											});
 											
 											
+											
+										   	$("button#getBook").click(function () {
+												location.href="makeExcel.do";
+						                   	});
+											
 										</script>
                              
                            	
@@ -282,11 +301,6 @@ input {
                 <!--BEGIN FOOTER-->
                 <!--END FOOTER-->
             <!--END PAGE WRAPPER-->
-                   <script>
-                   	$("button#getBook").click(function () {
-						location.href="makeExcel.do";
-                   	});
-                   </script>
                 <!--END CONTENT-->
                 <!--BEGIN FOOTER-->
 
