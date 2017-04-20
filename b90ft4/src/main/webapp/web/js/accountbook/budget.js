@@ -1203,41 +1203,41 @@
 	
 	
 
-	//BEGIN PIE CHART
-    var d7_1 = [40];
-    var d7_2 = [20];
-    var d7_3 = [40];
-    $.plot('#pie-chart', [{
-        data: d7_1,
-        label: "Search Engines",
-        color: "#3DB9D3"
-    },
-    {
-        data: d7_2,
-        label: "Referrals",
-        color: "#ffce54"
-    },
-    {
-        data: d7_3,
-        label: "Direct",
-        color: "#fc6e51"
-    }], {
-    series: {
-        pie: {
-            show: true,
-            radius: 1,
-            label: {
-                show: true,
-                radius: 3/4,
-                background: {
-                    opacity: 0.5,
-                    color: '#000'
-                }
-            }
-        }
-    }
-    });
-    //END PIE CHART
+//	//BEGIN PIE CHART
+//    var d7_1 = [40];
+//    var d7_2 = [20];
+//    var d7_3 = [40];
+//    $.plot('#pie-chart', [{
+//        data: d7_1,
+//        label: "Search Engines",
+//        color: "#3DB9D3"
+//    },
+//    {
+//        data: d7_2,
+//        label: "Referrals",
+//        color: "#ffce54"
+//    },
+//    {
+//        data: d7_3,
+//        label: "Direct",
+//        color: "#fc6e51"
+//    }], {
+//    series: {
+//        pie: {
+//            show: true,
+//            radius: 1,
+//            label: {
+//                show: true,
+//                radius: 3/4,
+//                background: {
+//                    opacity: 0.5,
+//                    color: '#000'
+//                }
+//            }
+//        }
+//    }
+//    });
+//    //END PIE CHART
 
 	
  // 콤마 찍는 정규 표현식 적용 함수.

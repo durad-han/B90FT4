@@ -251,11 +251,11 @@ tbody#income tr.incomeInfo:hover{
 			            </button>
 			          
 			        <div id="budgetPlanDiv" style="margin-left: 10%;display: none;border:1px solid black;padding:20px;">
-			        	<h4><b>이번 달 지출 목표</b></h4>
+			        	<h4><b>이번 달 지출 한도</b></h4>
 			        	<input type="text" readonly />
 			        	<h4><b>이번 달 현재 총 지출</b></h4>
 			        	<input type="text" readonly />
-			        	<h4><b>여유 지출 한도</b></h4>
+			        	<h4><b>잔여 지출 한도</b></h4>
 			        	<input type="text" readonly />
 			        </div> 
 			        

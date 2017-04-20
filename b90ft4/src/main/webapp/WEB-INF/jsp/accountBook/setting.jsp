@@ -23,7 +23,6 @@ input {
 </head>
 <body>
 
-   <div>
    
 <!-- 위로가기 ==================================================================================================== -->
 	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
@@ -143,7 +142,7 @@ input {
                            	<div class="page-title-breadcrumb option-demo">
                                      <div class="page-header" style='width:30%;margin: 0 auto'>
                                          <div class="page-title mrm">
-                                              <button id="budgetManagement" type="button" style='width:500px;text-align:center;'>자산 설정 및 관리</button>
+                                              <button id="budgetManagement" type="button" style='width:500px;text-align:center;'> 지출 관리 </button>
                                          </div>
                                      </div>
                              </div>
@@ -153,7 +152,7 @@ input {
 											<div class="modal-content">
 														
 												<div class="modal-header">
-													<h4 class="modal-title">자산 설정
+													<h4 class="modal-title">지출 한도 설정
 													
 														<input type="radio" id="set" name="budgetManageCode" value="0" checked/>
 														<label for="set">설정</label>
@@ -184,7 +183,7 @@ input {
 						                                             </script>    
 						                                                  	    
 						                                             <br>
-							                                       	 <h4><b>목표 지출 금액</b></h4>
+							                                       	 <h4><b>목표 지출 한도</b></h4>
 							                                         <input type="text" id="expenseGoal"/>
 											                                                      
 								                                 </form>
