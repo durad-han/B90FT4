@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+<style>
+#attachFileList {
+	border:1px solid black;
+	width: 300px;
+	height:200px;
+	margin:0 auto;
+}
+</style>
+</head>
+<body>
+onImageUpload<br>
+Override image upload handler(default: base64 dataURL on IMG tag). You can upload image to server or AWS S3: more…<br>
+
+<div id="summernote">Hello Summernote</div>
+
+<div id="attachFileList">
+	<ul>
+	</ul>
+</div>
+
+<button id="check">확인</button>
+
+<script>
+
+var imgArr=[];
+
+$('#summernote').summernote({
+	  callbacks: {
+	    onImageUpload: function(files) {
+// 		upload image to server and create imgNode...
+// 		     console.log(files);
+		     
+		     var fd = new FormData();
+		     
+		     for(var i=0,f; f = files[i];i++){
+			     fd.append("attachFile"+i,files[i]);
+		     }
+		     
+		     $.ajax({
+		    	 url:"/b90ft4/board/img2.do",
+		    	 type:"POST",
+		    	 data: fd,
+		    	 processData: false,
+		    	 contentType : false,
+		    	 dataType:"json"
+		     }).done(function(result) {
+		    	 
+		    	 for(var i=0; i < result.length;i++){
+		    		 
+		    		 var img = document.createElement("img");
+		    		 img.src = result[i];
+				     $('#summernote').summernote('insertNode', img);
+				     
+				     imgArr[result[i]]=img;
+				     
+					 $("#attachFileList > ul ")
+					 .append(
+					  $("<li>"+files[i].name+"</li>")
+					  .append("<button id='del' imgPath="+result[i]+" onclick='delImg(this)'>삭제</button>")
+					 )		
+				     
+			     }
+		     });
+		     
+	     }
+	  }
+});
+
+
+
+
+function delImg(that) {
+	
+	console.log("삭제");
+
+	var path = that.getAttribute("imgPath");
+	var delImg = imgArr[path]; // 이미지 객체 반환.
+	
+	$.ajax({
+		url:"/b90ft4/board/delImg.do",
+		data:{delPath:path}
+	}).done(function(result) {
+// 		console.log("result",result);
+	});
+	
+	$(delImg).remove(); // 웹 에디터 이미지 삭제.
+	that.parentNode.parentNode.removeChild(that.parentNode); // 버튼 삭제
+	
+		
+}
+
+	// 확인을 눌렀을 때, 삭제버튼의 개수와 웹 에디터 상의 이미지 개수가 맞나 
+	// 확인하여 서버에서 삭제 시켜야한다.
+	
+	$("#check").click(function(){
+		
+// 		console.log($("div.note-editable panel-body"));
+		
+		$("div.note-editing-area div:last img").each(function() {
+			var src = this.src;
+			var ix = src.indexOf("/b90ft4");
+			src = src.substring(ix);
+// 			console.log("src :",src);
+			delete imgArr[src];
+		});
+		
+		console.log("삭제후 확인");
+		console.dir(imgArr);
+		
+		for(var k in imgArr){
+			
+				var src = imgArr[k].src;
+				var ix = src.indexOf("/b90ft4");
+				src = src.substring(ix);
+				
+				$.ajax({
+					url:"/b90ft4/board/delImg.do",
+					data:{delPath:src},
+					async:false
+				}).done(function(result) {
+					console.log("result",result);
+				});
+		}
+		
+	});
+	
+	  function delAllImg(){
+		  
+		  for(var k in imgArr){
+				
+				var src = imgArr[k].src;
+				var ix = src.indexOf("/b90ft4");
+				src = src.substring(ix);
+				
+				$.ajax({
+					url:"/b90ft4/board/delImg.do",
+					data:{delPath:src},
+					async:false
+				}).done(function(result) {
+					console.log("result",result);
+				});
+				
+		}
+		  
+		  
+	  }
+	  
+	  
+	  var checkUnload = true;
+	    $(window).on("beforeunload", function(){
+	        
+	    	
+	    	
+	    	
+// 	    	if(checkUnload) {
+	        		
+	        	
+	        	
+// 	        	return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
+// 	        }
+	    	/*
+	    		단, 글쓰기 버튼을 클릭해서 글을 저장한 후 페이지를 이동할때도 저런 메시지가 뜨기 때문에, 고럴땐 checkUnload 값을 false 로 바꿔준 후 submit 이나 페이지를 이동해야 한다~
+	    	*/
+	    });
+	
+	
+// 			$("[imgPath="+src+"]").remove();
+</script>
+
+
+
+
+
+
+
+<script>
+// onImageUpload callback
+// $('#summernote').summernote({
+//   callbacks: {
+//     onImageUpload: function(files) {
+//       // upload image to server and create imgNode...
+//       $summernote.summernote('insertNode', imgNode);
+//     }
+//   }
+// });
+
+// summernote.image.upload
+// $('#summernote').on('summernote.image.upload', function(we, files) {
+  // upload image to server and create imgNode...
+//   $summernote.summernote('insertNode', imgNode);
+// });
+// 	var path = that.getAttribute("imgPath");
+// 	console.log(path);
+
+// 	var div =  document.querySelector("div.note-editable panel-body");
+// 	console.log(div);
+// 	console.log("innerHtml",div.innerHtml);
+// 	console.log("제이쿼리 html", $("div.note-editable panel-body").html());
+// 	console.log($("div.note-editing-area div:last").html());
+// 	$(".note-editable panel-body img").each(function() {
+// 		console.log("ㅋㅋ",this);
+// 	});
+
+// 	console.log(imgArr[that.getAttribute("imgPath")]);
+</script>
+</body>
+</html>

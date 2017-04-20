@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -171,6 +172,37 @@ public class BoardController {
 //	}
 	
 	@ResponseBody
+	@RequestMapping("/test.do")
+	public String test() {
+		
+		System.out.println("테스트 완료");
+		
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/delImg.do")
+	public String delImg(
+			HttpServletRequest res,
+			String delPath) throws Exception{
+		
+		
+		File f = new File("C:/java90/tomcat-work/wtpwebapps"+delPath);
+		
+		System.out.println(delPath);
+		
+		if(f.exists()){
+			System.out.println("존재");
+			f.delete();
+		}
+		
+		System.out.println("삭제 완료");
+		
+		return "ok";
+		
+	}
+	
+	@ResponseBody
 	@RequestMapping("/img2.do")
 	public List<String> imgtest(MultipartHttpServletRequest mRes) throws Exception {
 		
@@ -195,6 +227,7 @@ public class BoardController {
 			String oriName = file.getOriginalFilename();
 
 			if(oriName != null && !oriName.equals("")) {
+			
 				// 확장자 처리
 				String ext = "";
 				// 뒤쪽에 있는 . 의 위치 
@@ -224,6 +257,7 @@ public class BoardController {
 				list.add(fullPath);
 				
 			}
+			
 		}
 			
 		return list;
