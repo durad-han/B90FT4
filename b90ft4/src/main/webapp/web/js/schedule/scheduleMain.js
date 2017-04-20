@@ -1,4 +1,4 @@
-console.log("scheduleMain.js 로드됨...!");
+console.log("scheduleMain.js 로드됨...");
 
 //----- datePicker -----------------------------------------------------------
 
@@ -7,59 +7,77 @@ console.log("scheduleMain.js 로드됨...!");
 //----- schedule ---------------------------------------------------------------------------------------------
 
 //----- scheduleTimeline -------------------------------------------------------------------------------------
-$(window).on('scroll', function(){
-	$timeline_block.each(function(){
-		if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
-			$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
-		}
-	});
-});
+//$(window).on('scroll', function(){
+//	$timeline_block.each(function(){
+//		if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+//			$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+//		}
+//	});
+//});
 
-//----- detePicker -------------------------------------------------------------------------------------
-$('#inputStart').datetimepicker();
-$('#inputEnd').datetimepicker();
-
+function scheduleBody(result){
+	
+	if(result!=null) console.log("중요도 : "+result.importance)
+	
+console.log("foxholder proceed")
 //----- foxholder -----------------------------------------------------------
-jQuery('.clz-insertSchedule').foxholder({
-	demo: 6 //(1-15)
-});
+	jQuery('.clz-insertSchedule').foxholder({
+		demo: 6 //(1-15)
+	});
 
-$(".stars").starRating({
-	totalStars: 3,
-	initialRating: 1,
-	starSize: 40,
-	starShape: 'rounded',
-	emptyColor: 'lightgray',
-	hoverColor: 'salmon',
-	activeColor: 'yellow',
-	useFullStars: true,
-	useGradient: true,
-	starGradient: {start: '#FEF7CD', end: '#FF9511'},
-	disableAfterRate: false,
-	onHover: function(currentIndex, currentRating, $el){
-				var navTxt = "";
-				switch(currentIndex){
-				case 1: navTxt = "보통 : 일정을 추가합니다"; break;
-				case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
-				case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
-				default : navTxt = "보통 : 일정을 추가합니다"; break;
-				}
-			      $('.stars-msg').text(navTxt);
-			    },
-	onLeave: function(currentIndex, currentRating, $el){
-				var navTxt = "";
-				switch(currentRating){
-				case 1: navTxt = "보통 : 일정을 추가합니다"; break;
-				case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
-				case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
-				default : navTxt = "보통 : 일정을 추가합니다"; break;
-				}
-			        $('.stars-msg').text(navTxt);
-			    },
-    callback: function(currentRating, $el){
-        // make a server call here
-    }
-});
+console.log("datepicker proceed")
+//----- datePicker -------------------------------------------------------------------------------------
+	$('#inputStart').datetimepicker();
+	$('#inputEnd').datetimepicker();
+	
+	console.log("stars proceed")
+//----- stars -----------------------------------------------------------
+	$(".stars").starRating({
+		totalStars: 3,
+		initialRating: 0,
+		starSize: 40,
+		starShape: 'rounded',
+		emptyColor: 'lightgray',
+		hoverColor: 'salmon',
+		activeColor: 'yellow',
+		useFullStars: true,
+		useGradient: true,
+		starGradient: {start: '#FEF7CD', end: '#FF9511'},
+		disableAfterRate: false,
+		onHover: function(currentIndex, currentRating, $el){
+					var navTxt = "";
+					switch(currentIndex){
+					case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+					case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+					case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+					default : navTxt = "설정되지 않음 : 중요도를 설정합니다"; break;
+					}
+				      $('.stars-msg').text(navTxt);
+				    },
+		onLeave: function(currentIndex, currentRating, $el){
+					var navTxt = "";
+					switch(currentRating){
+					case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+					case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+					case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+					default : navTxt = "설정되지 않음 : 중요도를 설정합니다"; break;
+					}
+				        $('.stars-msg').text(navTxt);
+				    },
+	    callback: function(currentRating, $el){
+	        // make a server call here
+	    }
+	});
+	
+	if(result!=null){
+		switch(result.importance){
+		case 1: $(".stars").starRating('setRating', 1);break;
+		case 2: $(".stars").starRating('setRating', 2);break;
+		case 3: $(".stars").starRating('setRating', 3);break;
+		}
+	}
+
+}
 
 
 //----- 좌측 스케줄 리스트로부터 선택된 스케줄 detail 값 받아오기 -------------------------------------------------------------
@@ -80,6 +98,7 @@ function goDetail(sNo){
 function printSchedule(result){
 	console.log("디테일 꾸미기")
 	var html = "";
+	html += "<div id='clz-insertSchedule'>"
 	html += "<div id='sForm'>"
 	html += "<div class='form-body pal'>"
 	html += "<div class='form-group' id='schedule'>"
@@ -102,44 +121,23 @@ function printSchedule(result){
 	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputContent' type='text' placeholder='내용을 입력해주세요' value='"+result.content+"' class='form-control' /></div>"
 	html += "</div>"
-	html += "<div class='form-group'>"
-	html += "   <select class='form-control' id='inputImportance'>"
-	switch(result.importance){
-	case '1':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1' selected='selected'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-		break;
-	case '2':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2' selected='selected'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-		break;
-	case '3':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3' selected='selected'>★ ★ ★</option>"
-		break;
-	default:
-		html += "       <option value='0' selected='selected'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-	break;
-	}
-		
-	html += "   </select></div>"
+	html += "<div class='form-group text-center' id='inputImportance'>"
+	html += "   <div class='form-group text-center'>"
+	html += "   	<div class='stars'></div>"       
+	html += "       <div class='stars-msg'></div>"   
+	html += "   </div>"
+	html += "</div>"
 	html += "	<div class='form-actions text-center pal'>"
 	html += "		<button onclick='goModify("+result.scheduleNo+");' class='btn btn-warning'>수정</button>"
 	html += "		<button onclick='goDelete("+result.scheduleNo+");' class='btn btn-danger'>삭제</button>"
 	html += "	</div>"
 	html += "</div>"
 	html += "</div>"
+	html += "</div>"
 		
 	$("#schDetail").html(html)
+	
+	scheduleBody(result);
 	prevNext(result.scheduleNo);
 };
 
@@ -168,6 +166,7 @@ function prevNext(scheduleNo){
 			prevHtml += "<p class='date'>"+result.start+"</p>";
 			prevHtml += "</a>";
 		}
+		console.log("prev 삽입")
 		$("#prev").html(prevHtml)
 	});
 	
@@ -189,6 +188,7 @@ function prevNext(scheduleNo){
 			nextHtml += "</p>";                                                 
 			nextHtml += "</a>";                                                 
 		}
+		console.log("next 삽입")
 		$("#next").html(nextHtml)
 	})
 };
@@ -215,6 +215,7 @@ function goModify(scheduleNo){
 function modifyForm(result){
 	console.log("수정 폼 꾸미기")
 	var html = "";
+	html += "<div id='clz-insertSchedule'>"
 	html += "<div name='modifyForm' >"
 	html += "<div class='form-body pal'>"
 	html += "<div class='form-group' id='schedule'>"
@@ -237,45 +238,22 @@ function modifyForm(result){
 	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputContent' type='text' placeholder='내용을 입력해주세요' value='"+result.content+"' class='form-control' /></div>"
 	html += "</div>"
-	html += "<div class='form-group'>"
-	html += "   <select class='form-control' id='inputImportance'>"
-		console.log("importance 값 : "+result.importance)
-	switch(result.importance){
-	case '1':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1' selected='selected'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-		break;
-	case '2':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2' selected='selected'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-		break;
-	case '3':
-		html += "       <option value='0'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3' selected='selected'>★ ★ ★</option>"
-		break;
-	default:
-		html += "       <option value='0' selected='selected'>☆ ☆ ☆</option>"
-		html += "       <option value='1'>★ ☆ ☆</option>"
-		html += "       <option value='2'>★ ★ ☆</option>"
-		html += "       <option value='3'>★ ★ ★</option>"
-	break;
-	}
-		
-	html += "   </select></div>"
-	html += "<div class='form-actions text-center pal'>"
-	html += "	<button onclick='modifySubmit("+result.scheduleNo+")' class='btn btn-success'>수정</button>"
-	html += "	<a href='javascript:goDetail("+result.scheduleNo+");' class='btn btn-danger'>취소</a>"
+	html += "<div class='form-group text-center' id='inputImportance'>"
+	html += "   	<div class='form-group text-center'>"
+	html += "   		<div class='stars'></div>"       
+	html += "      		<div class='stars-msg'></div>"   
+	html += "   	</div>"
+	html += "</div>"
+	html += "	<div class='form-actions text-center pal'>"
+	html += "		<button onclick='modifySubmit("+result.scheduleNo+")' class='btn btn-success'>수정</button>"
+	html += "		<a href='javascript:goDetail("+result.scheduleNo+");' class='btn btn-danger'>취소</a>"
+	html += "	</div>"
 	html += "</div>"
 	html += "</div>"
 	html += "</div>"
 		
 	$("#schDetail").html(html)
+	scheduleBody(result);
 	prevNext(result.scheduleNo);
 };
 
@@ -394,18 +372,5 @@ function scheduleForm(form){
 };
 
 
-function swTest(){
-	swal({
-		  title: "정말 삭제하시겠습니까?",
-		  text: "선택한 스케줄이 삭제됩니다",
-		  type: "warning",
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "삭제",
-		  closeOnConfirm: false
-		},
-		function(){
-				swal("삭제", "스케줄이 삭제되었습니다", "success");
-			});
-}
+scheduleBody();
 

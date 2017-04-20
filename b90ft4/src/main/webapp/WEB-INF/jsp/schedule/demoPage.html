@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<!-- scheduleMap 객체로부터 scheduleList 추출 -->
+ <c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>  
+	<tr class="tbl-item">
+<!-- 		시작일 -->
+ 		<td class="td-block"><p class="date"><fmt:formatDate value='${schedules.start}' pattern="MM/dd hh:mm"/></p>  
+<!-- 		제목 -->
+ 		<p class="title"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></p>  
+<!-- 		내용 -->
+ 		<p class="desc"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>  
+<!-- 		달성여부 -->
+		<p class="like">
+ 		<c:choose>  
+ 			<c:when test='${schedules.achieve != 0}'>  
+				<input type="checkbox" name="achieved" checked="checked" disabled="disabled">
+ 			</c:when>  
+ 			<c:otherwise>  
+				<input type="checkbox" name="achieved" >
+ 			</c:otherwise>  
+ 		</c:choose>  
+		</p>
+		
+		</td>
+	</tr>
+ </c:forEach>   
+
+</body>
+</html>
