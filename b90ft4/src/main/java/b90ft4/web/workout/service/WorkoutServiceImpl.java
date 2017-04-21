@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.WorkoutMapper;
 import b90ft4.web.repository.vo.WorkoutSetVO;
+import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutVO;
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
@@ -26,6 +27,13 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception {
 		// TODO Auto-generated method stub
 		List<WorkoutSetVO> list = wm.retrieveWorkoutSetList(workoutNo);
+		return list;
+	}
+
+	@Override
+	public List<WorkoutStatisticsVO> WorkoutStatisticsList() throws Exception {
+		// TODO Auto-generated method stub
+		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList();
 		return list;
 	}
 

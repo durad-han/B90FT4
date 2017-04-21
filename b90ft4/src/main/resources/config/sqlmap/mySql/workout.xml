@@ -36,5 +36,17 @@
 		on wrkoutset.Workout_No = wrkout.Workout_No
 		where wrkout.Workout_No =#{workoutNo}
 	</select>
+	
+   	<resultMap type="workoutStatisticsVO" id="workoutStatisticsMap">
+		<result column="Workout_Day"			property="workoutDay"		/>
+		<result column="Spent_Cal"				property="spentCal"			/>
+		<result column="Intake_Cal"				property="intakeCal"		/>
+	</resultMap>
+
+<!--  retrieveWorkoutSet list -->
+	<select id="retrieveWorkoutStatisticsList" resultMap="workoutStatisticsMap">
+		select *
+		from tb_Sam_Workout_Statistics
+	</select> 
  
 </mapper>

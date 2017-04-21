@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import b90ft4.web.repository.vo.WorkoutSetVO;
+import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutVO;
 import b90ft4.web.workout.service.WorkoutService;
 @RequestMapping("/workout")
@@ -39,6 +40,15 @@ public class WorkoutController {
 		return "workout/workoutList";
 	}
 	*/
+
+	@ResponseBody
+	@RequestMapping("/WorkoutStatisticsList.do")
+	public List<WorkoutStatisticsVO> WorkoutStatisticsList() throws Exception{
+		List<WorkoutStatisticsVO> list = ws.WorkoutStatisticsList();
+		return list;
+	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping("/workoutList.do")
@@ -92,6 +102,7 @@ public class WorkoutController {
 		
 		return "workout/timerTest";
 	}
+	
 
 
 }
