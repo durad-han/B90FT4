@@ -64,9 +64,6 @@ console.log("datepicker proceed")
 					}
 				        $('.stars-msg').text(navTxt);
 				    },
-	    callback: function(currentRating, $el){
-	        // make a server call here
-	    }
 	});
 	
 	if(result!=null){
@@ -104,22 +101,22 @@ function printSchedule(result){
 	html += "<div class='form-group' id='schedule'>"
 	html += "    <div class='input-icon right'>"
 	html += "        <i class='fa fa-user'></i>"
-	html += "        <input id='inputTitle' type='text' value='"+result.title+"' class='form-control' /></div>"
+	html += "        <input id='inputTitle' type='text' value='"+result.title+"' class='form-control' readonly/></div>"
 	html += "</div>"
 	html += "<div class='row'>"
 	html += "    <div class='col-md-6'>"
 	html += "        <div class='form-group'>"
-	html += "            <input id='inputStart' type='text' value='"+result.start+"' class='form-control' /></div>"
+	html += "            <input id='inputStart' type='text' value='"+result.start+"' class='form-control' readonly/></div>"
 	html += "    </div>"
 	html += "    <div class='col-md-6'>"
 	html += "        <div class='form-group'>"
-	html += "            <input id='inputEnd' type='text' placeholder='"+result.end+"' class='form-control' /></div>"
+	html += "            <input id='inputEnd' type='text' value='"+result.end+"' class='form-control' readonly/></div>"
 	html += "    </div>"
 	html += "</div>"
 	html += "<div class='form-group'>"
 	html += "    <div class='input-icon right'>"
 	html += "        <i class='fa fa-user'></i>"
-	html += "        <input id='inputContent' type='text' placeholder='내용을 입력해주세요' value='"+result.content+"' class='form-control' /></div>"
+	html += "        <input id='inputContent' type='text' value='"+result.content+"' class='form-control' readonly/></div>"
 	html += "</div>"
 	html += "<div class='form-group text-center' id='inputImportance'>"
 	html += "   <div class='form-group text-center'>"
@@ -138,6 +135,7 @@ function printSchedule(result){
 	$("#schDetail").html(html)
 	
 	scheduleBody(result);
+	$(".stars").starRating('setReadOnly', true);
 	prevNext(result.scheduleNo);
 };
 
@@ -266,29 +264,28 @@ function modifySubmit(scheduleNo){
 		  title: "정말 수정하시겠습니까?",
 		  text: "선택한 스케줄이 변경됩니다",
 		  type: "warning",
-		  showCancelButton: true,
 		  confirmButtonColor: "#DD6B55",
 		  confirmButtonText: "수정",
-		  closeOnConfirm: false
+		  showCancelButton: true,
+		  closeOnConfirm: true
 		},
 		function(){
-				swal("수정", "스케줄이 변경되었습니다", "success");
 				$.ajax({
 					url : "/b90ft4/schedule/modify.json", // dho 이게 적용이 안돼 이상해 모르겠어 ㄷㄷ
 					type: "POST",
 					data: { scheduleNo: scheduleNo,
-						userId: 'tester01',
+						userId: $("input[id=userId]").val(),
 						start: $("input[id=inputStart]").val(),
 						end: $("input[id=inputEnd]").val(),
 						title: $("input[id=inputTitle]").val(),
 						content: $("input[id=inputContent]").val(),
-						importance:$("select[id=inputImportance]").val(),
-						category: 1,
-						achieve: 1
+						importance: $('.stars').starRating('getRating'),
+						category: $("input[id=inputCategory]").val(),
+						achieve: $("input[id=inputAchieve]").val()
 					},
 					dataType: "json"
-				}).done(goDetail);
-			});
+					})
+				});
 };
 
 
@@ -302,7 +299,7 @@ function goDelete(scheduleNo){
 	  showCancelButton: true,
 	  confirmButtonColor: "#DD6B55",
 	  confirmButtonText: "삭제",
-	  closeOnConfirm: false
+	  closeOnConfirm: true
 	},
 	function(){
 		console.log("inner del function")
@@ -311,10 +308,7 @@ function goDelete(scheduleNo){
 			type: "POST",
 			data: {scheduleNo : scheduleNo},
 			dataType: "json"
-		}).done(function(){
-			swal("삭제", "스케줄이 삭제되었습니다", "success");
-			})
-			
+		})
 		});
 	
 //	$.ajax({
@@ -368,6 +362,8 @@ function scheduleForm(form){
 //		},
 //		dataType: "json"
 //	}).done(goDetail);
+	
+	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;
 };
 

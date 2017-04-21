@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+console.log("scheduleInclude.jsp 로드됨...");
 
 
 <!-- 타임라인 ==================================================================================================== -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/schedule/timeLine.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/web/js/schedule/modernizr.js"></script> --%>
-<%-- <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleList.css"/> --%>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/reset.css"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/style.css"/>
 <!-- 타임라인 ==================================================================================================== -->
@@ -40,4 +38,5 @@
 
 
 
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleList.css"/>
 <script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>

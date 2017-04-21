@@ -1,9 +1,5 @@
 package b90ft4.web.schedule.controller;
 
-import java.sql.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
-import b90ft4.web.repository.vo.ScheduleVO2;
 import b90ft4.web.schedule.service.ScheduleService;
 
 @RequestMapping("/schedule")
@@ -39,8 +35,9 @@ public class ScheduleController {
 //		logger.debug("content "+svo.getContent());
 //		logger.debug("userId "+svo.getUserId());
 //		logger.debug("--------------------------------");
-		
-		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		if(ss.retrieveScheduleList(ssVO) != null){ 
+			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		}
 		return "schedule/scheduleList";
 	}	
 
@@ -97,77 +94,57 @@ public class ScheduleController {
 	
 //----- 스케줄 수정, 삭제 관련 ------------------------------------------------------------------
 	@RequestMapping("/modify.json")
-	public void modifySchedule (ScheduleVO2 schedule2) throws Exception{
+	public String modifySchedule (ScheduleVO scheduleVO, RedirectAttributes attr) throws Exception{
 		logger.debug("modifySchedule");
-		ScheduleVO sVO = new ScheduleVO();
 		
-		logger.debug(schedule2.getUserId());
-//		logger.debug(schedule2.getCategory());
-		logger.debug(schedule2.getTitle());
-		logger.debug(schedule2.getStart());
-		logger.debug(schedule2.getEnd());
-//		logger.debug(schedule2.getImportance());
-		logger.debug(schedule2.getContent());
+		logger.debug(scheduleVO.getUserId());
+//		logger.debug(scheduleVO.getCategory());
+		logger.debug(scheduleVO.getTitle());
+		logger.debug(scheduleVO.getStart());
+		logger.debug(scheduleVO.getEnd());
+//		logger.debug(scheduleVO.getImportance());
+		logger.debug(scheduleVO.getContent());
 		
 		// 임시 떔빵
-		sVO.setUserId		(schedule2.getUserId());
-		sVO.setCategory		(schedule2.getCategory());
-		sVO.setTitle		(schedule2.getTitle());
-		sVO.setStart		(Date.valueOf(schedule2.getStart()));
-		sVO.setEnd			(Date.valueOf(schedule2.getEnd()));
-		sVO.setImportance	(schedule2.getImportance());
-		sVO.setContent		(schedule2.getContent());
+//		sVO.setUserId		(scheduleVO.getUserId());
+//		sVO.setCategory		(scheduleVO.getCategory());
+//		sVO.setTitle		(scheduleVO.getTitle());
+//		sVO.setStart		(Date.valueOf(scheduleVO.getStart()));
+//		sVO.setEnd			(Date.valueOf(scheduleVO.getEnd()));
+//		sVO.setImportance	(scheduleVO.getImportance());
+//		sVO.setContent		(scheduleVO.getContent());
 		
-		ss.modifySchedule(sVO);
+		ss.modifySchedule(scheduleVO);
+		attr.addFlashAttribute("msg", "스케줄이 수정되었습니다");
+		return "redirect:scheduleList.do";
 	}
 	
 	@RequestMapping("/delete.json")
-	public String deleteSchedule (int scheduleNo) throws Exception{
+	public String deleteSchedule (int scheduleNo, RedirectAttributes attr) throws Exception{
 		logger.debug("deleteSchedule");
 		logger.debug("scheduleNo : "+scheduleNo);
 		ss.deleteSchedule(scheduleNo);
-		return "schedule/scheduleList";
+		attr.addFlashAttribute("msg", "스케줄이 삭제되었습니다");
+		return "redirect:scheduleList.do";
 	}
 	
 	
 //----- 스케줄 입력 관련 -----------------------------------------------------------------------
 	@RequestMapping("/insertSchedule.do")
-	public String insertSchedule (HttpServletRequest req, ScheduleVO2 scheduleVO2) throws Exception{
+	public String insertSchedule (ScheduleVO scheduleVO) throws Exception{
 		logger.debug("insertSchedule");
 		
 		logger.debug("--------------------------------");
 		logger.debug("scheduleVO 자동화 체크 : ");
-		logger.debug("title "+scheduleVO2.getTitle());
-		logger.debug("content "+scheduleVO2.getContent());
-		logger.debug("start "+scheduleVO2.getStart());
-		logger.debug("end "+scheduleVO2.getEnd());
-		logger.debug("importance "+scheduleVO2.getImportance());
+		logger.debug("title "+scheduleVO.getTitle());
+		logger.debug("content "+scheduleVO.getContent());
+		logger.debug("start "+scheduleVO.getStart());
+		logger.debug("end "+scheduleVO.getEnd());
+		logger.debug("importance "+scheduleVO.getImportance());
 		logger.debug("--------------------------------");
 		
-		logger.debug("--------------------------------");
-		logger.debug("title "+req.getParameter("title"));
-		logger.debug("content "+req.getParameter("content"));
-		logger.debug("start "+req.getParameter("start"));
-		logger.debug("end "+req.getParameter("end"));
-		logger.debug("importance "+req.getParameter("importance"));
-		logger.debug("--------------------------------");
-		
-		ScheduleVO sVO = new ScheduleVO();
-		//임시 박아넣기
-		sVO.setUserId("tester01");
-		sVO.setCategory(1);
-		
-		sVO.setTitle(req.getParameter("title"));
-		sVO.setStart(Date.valueOf(req.getParameter("start")));
-		sVO.setEnd(Date.valueOf(req.getParameter("end")));
-		sVO.setImportance(Integer.parseInt(req.getParameter("importance")));
-		sVO.setContent(req.getParameter("content"));
-		if(sVO.getTitle() != null)ss.insertSchedule(sVO);
-		
-		
-//		
-//		if(scheduleVO.getTitle() != null)ss.insertSchedule(scheduleVO);
-		return "schedule/scheduleList";
+		if(scheduleVO.getTitle() != null)ss.insertSchedule(scheduleVO);
+		return "redirect:scheduleList.do";
 	}
 	
 	

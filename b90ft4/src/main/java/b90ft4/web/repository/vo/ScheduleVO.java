@@ -1,12 +1,10 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class ScheduleVO {
 	private int scheduleNo;
 	private String userId;
-	private Date start;
-	private Date end;
+	private String start;
+	private String end;
 	private String title;
 	private String content;
 	private int category;
@@ -25,16 +23,16 @@ public class ScheduleVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Date getStart() {
+	public String getStart() {
 		return start;
 	}
-	public void setStart(Date start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
-	public Date getEnd() {
+	public String getEnd() {
 		return end;
 	}
-	public void setEnd(Date end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
 	public String getTitle() {
@@ -67,5 +65,6 @@ public class ScheduleVO {
 	public void setAchieve(int achieve) {
 		this.achieve = achieve;
 	}
+	
 	
 }

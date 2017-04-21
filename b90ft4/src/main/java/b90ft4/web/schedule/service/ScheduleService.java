@@ -4,7 +4,7 @@ import java.util.Map;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
 import b90ft4.web.repository.vo.ScheduleVO;
-import b90ft4.web.repository.vo.ScheduleVO2;
+import b90ft4.web.repository.vo.ScheduleVO;
 
 public interface ScheduleService {
 

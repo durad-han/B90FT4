@@ -165,7 +165,6 @@
 			<div id="grid-layout-table-1" class="box jplist">
 			
 <!-- 스케줄 타임라인 시작 ==================================================================================================== -->
-<div class="side-scroll">
 <section id="cd-timeline" class="timeline-container">
 
 <c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
@@ -179,31 +178,94 @@
 			<div class="cd-timeline-content">
 				<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
 				<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
-				<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">상세</a>
-				<span class="cd-date"><c:out value='${schedules.start}'/></span>
+				<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">스케줄 상세</a>
+				<span class="cd-date"><fmt:formatDate value='${schedules.start}' pattern="MM/dd hh:mm"/></span>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 </c:forEach>
-<c:if test='${empty scheduleMap["scheduleList"]}'>
-<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<i class="fa fa-edit fa-fw">
-	            </i>
-<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-			</div> <!-- cd-timeline-img -->
-			<div class="cd-timeline-content">
-				<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
-				<p><a href="#;">스케줄을 등록하세요</a></p>
-				<a href="#;" class="cd-read-more">상제</a>
-				<span class="cd-date"></span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-</c:if>
 
 </section> <!-- cd-timeline -->
-</div>
 <!-- 스케줄 타임라인 종료 ==================================================================================================== -->
 				
+<!-- 컨트롤 판넬 시작 ==================================================================================================== -->
+<!-- 				<div class="jplist-ios-button"><i class="fa fa-sort"></i>스케줄 조회 옵션</div> -->
+<!-- 				<div class="jplist-panel box panel-top"> -->
+<!-- 					<div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" class="jplist-drop-down form-control"> -->
+<!-- 						<ul class="dropdown-menu"> -->
+<!-- 					        <li><span data-number="3"> 3개씩 보이기 </span></li> -->
+<!-- 					        <li><span data-number="5"> 5개씩 보이기 </span></li> -->
+<!-- 					        <li><span data-number="10" data-default="true"> 10개씩 보이기 </span></li> -->
+<!-- 					        <li><span data-number="all"> 전부 다 보이기 </span></li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 					<div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-datetime-format="{month}/{day}/{hour}:{minutes}" class="jplist-drop-down form-control"> -->
+<!-- 						<ul class="dropdown-menu"> -->
+<!-- 							<li><span data-path="default">정렬하기</span></li> -->
+<!-- 							<li><span data-path=".title" data-order="asc" data-type="text">제목</span></li> -->
+<!-- 							<li><span data-path=".title" data-order="desc" data-type="text">제목 역순</span></li> -->
+<!-- 							<li><span data-path=".desc" data-order="asc" data-type="text">내용</span></li> -->
+<!-- 							<li><span data-path=".desc" data-order="desc" data-type="text">내용 역순</span></li> -->
+<!-- 							<li><span data-path=".like" data-order="asc" data-type="number" data-default="true">달성된 스케줄</span></li> -->
+<!-- 							<li><span data-path=".like" data-order="desc" data-type="number">달성되지 않은 스케줄</span></li> -->
+<!-- 							<li><span data-path=".date" data-order="asc" data-type="datetime">시간 순서</span></li> -->
+<!-- 							<li><span data-path=".date" data-order="desc" data-type="datetime">시간 역순</span></li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 					<div class="text-filter-box"> -->
+<!-- 						<div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="제목으로 검색하기" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="text-filter-box"> -->
+<!-- 						<div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="내용으로 검색하기" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div> -->
+<!-- 					</div> -->
+<!-- 					<div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div> -->
+<!-- 					<div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div> -->
+<!-- 				</div> -->
+<!-- 컨트롤 판넬 종료 ==================================================================================================== -->
+                     
+<!-- 스케줄 리스트 시작 ==================================================================================================== -->
+<!-- 				<div class="box text-shadow"> -->
+				
+<!-- 				<table class="demo-tbl"> -->
+				
+<!-- 					scheduleMap 객체로부터 scheduleList 추출 -->
+<%-- 					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'> --%>
+<!-- 						<tr class="tbl-item"> -->
+<!-- 							시작일 -->
+<%-- 							<td class="td-block"><p class="date"><fmt:formatDate value='${schedules.start}' pattern="MM/dd hh:mm"/></p> --%>
+<!-- 							제목 -->
+<%-- 							<p class="title"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></p> --%>
+<!-- 							내용 -->
+<%-- 							<p class="desc"><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p> --%>
+<!-- 							달성여부 -->
+<!-- 							<p class="like"> -->
+<%-- 							<c:choose> --%>
+<%-- 								<c:when test='${schedules.achieve != 0}'> --%>
+<!-- 									<input type="checkbox" name="achieved" checked="checked" disabled="disabled"> -->
+<%-- 								</c:when> --%>
+<%-- 								<c:otherwise> --%>
+<!-- 									<input type="checkbox" name="achieved" > -->
+<%-- 								</c:otherwise> --%>
+<%-- 							</c:choose> --%>
+<!-- 							</p> -->
+							
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<%-- 					</c:forEach>  --%>
+				
+<!-- 				</table> -->
+				    
+<!-- 				</div> -->
+<!-- 스케줄 리스트 종료 ==================================================================================================== -->
+                        
+<!-- 하단 컨트롤 판넬 시작 ==================================================================================================== -->
+<!--                         <div class="box jplist-no-results text-shadow align-center"><p>결과값이 존재하지 않습니다.</p></div> -->
+<!--                         <div class="jplist-ios-button"><i class="fa fa-sort"></i>스케줄 조회 옵션</div> -->
+<!--                         <div class="jplist-panel box panel-bottom"> -->
+<!--                             <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div> -->
+<!--                             <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div> -->
+<!--                         </div> -->
+<!-- 하단 컨트롤 판넬 시작 ==================================================================================================== -->
+                        
         	</div>
 			</div>
 		</div>
@@ -246,7 +308,7 @@
 				    </div>
 				    <div class="col-md-6">
 				        <div class="form-group">
-				            <input id="inputEnd" name="end" type="text" placeholder="종료 시간" value="" />
+				            <input id="inputEnd" name="start" type="text" placeholder="종료 시간" value="" />
 				        </div>
 				    </div>
 				</div>
@@ -267,11 +329,15 @@
 				</div>
 				<div class="form-group">
 				        <input id="inputUserId" name="userId" type="hidden" value="tester01" class="form-control" />
-				        <input id="inputImportance" name="importance" type="hidden" value="0" class="form-control" />
+				</div>
+				<div class="form-group">
 				        <input id="inputScheduleNo" name="scheduleNo" type="hidden" value="1" class="form-control" />
+				</div>
+				<div class="form-group">
 				        <input id="inputAchieve" name="achieve" type="hidden" value="1" class="form-control" />
 				</div>
 <!-- ============ 임시 하드코딩============	-->
+				
 				<div class="form-group text-center">
 			    	<div class="stars"></div>
 				    <div class="stars-msg"></div>
@@ -318,10 +384,5 @@
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 
-<script>
-if ('${msg}') {
-	swal("삭제", '${msg}', "success");
-}
-</script>
 </body>
 </html>
