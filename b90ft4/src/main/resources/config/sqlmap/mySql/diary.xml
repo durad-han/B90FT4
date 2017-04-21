@@ -11,9 +11,9 @@
 		<result column="Weather_City"	property="weatherCity" 		/>
 		<result column="Title"			property="title" 			/>
 		<result column="Content"		property="content" 			/>
-		<result column="File_Ori"		property="fileOri" 			/>
-		<result column="File_New"		property="fileNew" 			/>
-		<result column="File_Path"		property="filePath" 		/>
+		<result column="Weather_Code"		property="weatherCode" 			/>
+		<result column="Emotion_Code"		property="emotionCode" 			/>
+		
 	</resultMap>
 		
 	<!--============================================================================
@@ -30,13 +30,16 @@
 			리턴되는 값의 데이터타입: List<??>
 	============================================================================-->
 	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
-		select	sql_calc_found_rows a.* 
-		from	(select	* 
-				 from	tb_Sam_Diary
-				 order	by Diary_No
-				) a
-		limit	10
-		offset	0;
+			select *
+			  from tb_sam_diary
+		    order by reg_date
+<!-- 		select	sql_calc_found_rows a.*  -->
+<!-- 		from	(select	*  -->
+<!-- 				 from	tb_Sam_Diary -->
+<!-- 				 order	by Diary_No -->
+<!-- 				) a -->
+<!-- 		limit	10 -->
+<!-- 		offset	0; -->
 	</select>
 	
 	 
@@ -86,10 +89,9 @@
 <!-- 				Longitude, -->
 <!-- 				Weather_City, -->
 				Title,
-				Content
-<!-- 				File_Ori, -->
-<!-- 				File_New, -->
-<!-- 				File_Path -->
+				Content,
+				emotion_code,
+				weather_code
 				)
 		values	(
 				#{userId},     
@@ -97,10 +99,9 @@
 <!-- 				#{longitude},    -->
 <!-- 				#{weatherCity}, -->
 				#{title},       
-				#{content}   
-<!-- 				#{fileOri},     -->
-<!-- 				#{fileNew},     -->
-<!-- 				#{filePath}     -->
+				#{content},
+				#{emotionCode}, 
+				#{weatherCode}   
 				)
 	</insert>
 

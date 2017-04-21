@@ -230,11 +230,11 @@
 				                                            		<img src="${pageContext.request.contextPath}/web/image/diary/sad.jpg"/>
 				                                            	</td>
 				                                                <!--<data></data>-->
-				                                                <td class="td-block"><p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
+				                                                <td class="td-block"><p class="date"><fmt:formatDate value="${diary.regDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
 				
 				                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
 				
-				                                                    <p class="desc"><c:out value="${diary.content}"/></p>
+<%-- 				                                                    <p class="desc"><c:out value="${diary.content}"/></p> --%>
 				                                                    <p class="weather"><img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/></p>
 																</td>
 				                                            </tr>

@@ -19,8 +19,7 @@ public class DiaryServiceImpl implements DiaryService {
 	private DiaryMapper dao;
 	//글쓰기
 	@Override
-	public void write(Map<String, Object> param) throws Exception{
-		DiaryVO diary = (DiaryVO)param.get("diary");
+	public void write(DiaryVO diary) throws Exception{
 		dao.insertDiary(diary);
 //		DiaryFileVO diaryFile = (DiaryFileVO)param.get("diaryFile");
 //		if(diaryFile != null){

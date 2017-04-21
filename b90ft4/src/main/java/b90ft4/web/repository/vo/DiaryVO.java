@@ -3,51 +3,32 @@ package b90ft4.web.repository.vo;
 import java.util.Date;
 
 public class DiaryVO {
-	private int diaryNo;
-	private String userId;
-	private int latitude;
-	private int longitude;
-	private String weatherCity;
-	private String title;
-	private String content;
-	private Date diaryDate;
-	private String fileOri;
 	
-	public Date getDiaryDate() {
-		return diaryDate;
-	}
-	public void setDiaryDate(Date diaryDate) {
-		this.diaryDate = diaryDate;
-	}
-	private String fileNew;
-	private String filePath;
+	private int diaryNo		  ;
+	private String userId			; 
+	private int latitude		  ;
+	private int longitude		  ;
+	private String weatherCity	  ;
+	private String title			;
+	private String content			;
+	private int weatherCode	  ;
+	private int emotionCode	  ;
+	private Date regDate;
 	
-	public String getFileOri() {
-		return fileOri;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setFileOri(String fileOri) {
-		this.fileOri = fileOri;
-	}
-	public String getFileNew() {
-		return fileNew;
-	}
-	public void setFileNew(String fileNew) {
-		this.fileNew = fileNew;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-	public String getUserId() {
-		return userId;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	public int getDiaryNo() {
 		return diaryNo;
 	}
 	public void setDiaryNo(int diaryNo) {
 		this.diaryNo = diaryNo;
+	}
+	public String getUserId() {
+		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -82,5 +63,19 @@ public class DiaryVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	public int getWeatherCode() {
+		return weatherCode;
+	}
+	public void setWeatherCode(int weatherCode) {
+		this.weatherCode = weatherCode;
+	}
+	public int getEmotionCode() {
+		return emotionCode;
+	}
+	public void setEmotionCode(int emotionCode) {
+		this.emotionCode = emotionCode;
+	}
+	
+	
+	
 }
