@@ -161,92 +161,31 @@
 	<div class="col-lg-4">
 		<div class="panel">
 		<div class="panel-body">
+			<div class="side-timeline">
 			<div id="grid-layout-table-1" class="box jplist">
+			
 <!-- 스케줄 타임라인 시작 ==================================================================================================== -->
+<section id="cd-timeline" class="timeline-container">
 
-<section id="cd-timeline" class="cd-container">
+<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
 		<div class="cd-timeline-block">
 			<div class="cd-timeline-img cd-picture">
-				<img src="img/cd-icon-picture.svg" alt="Picture">
+				<i class="fa fa-edit fa-fw">
+	            </i>
+<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
 			</div> <!-- cd-timeline-img -->
 
 			<div class="cd-timeline-content">
-				<h2>Title of section 1</h2>
-				<p> 첫번째 스케줄이 아마 이곳에 </p>
-				<a href="javascript:goModify(13);" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 14</span>
+				<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
+				<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
+				<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">스케줄 상세</a>
+				<span class="cd-date"><fmt:formatDate value='${schedules.start}' pattern="MM/dd hh:mm"/></span>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
+</c:forEach>
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="img/cd-icon-movie.svg" alt="Movie">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Title of section 2</h2>
-				<p> 두번째 스케줄이 아마 이곳에 </p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 18</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<img src="img/cd-icon-picture.svg" alt="Picture">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Title of section 3</h2>
-				<p> 세번째 스케줄이 아마 이곳에 </p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 24</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-location">
-				<img src="img/cd-icon-location.svg" alt="Location">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Title of section 4</h2>
-				<p> 네번째 스케줄이 아마 이곳에 </p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Feb 14</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-location">
-				<img src="img/cd-icon-location.svg" alt="Location">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Title of section 5</h2>
-				<p> 다섯번째 스케줄이 아마 이곳에 </p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Feb 18</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="img/cd-icon-movie.svg" alt="Movie">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Final Section</h2>
-				<p> 마지막 스케줄이 아마 이곳에 </p>
-				<span class="cd-date">Feb 26</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-	</section> <!-- cd-timeline -->
-
+</section> <!-- cd-timeline -->
 <!-- 스케줄 타임라인 종료 ==================================================================================================== -->
-
-	
-	
 				
 <!-- 컨트롤 판넬 시작 ==================================================================================================== -->
 <!-- 				<div class="jplist-ios-button"><i class="fa fa-sort"></i>스케줄 조회 옵션</div> -->
@@ -328,6 +267,7 @@
 <!-- 하단 컨트롤 판넬 시작 ==================================================================================================== -->
                         
         	</div>
+			</div>
 		</div>
 		</div>
 	</div>
