@@ -55,8 +55,11 @@ $('#summernote').summernote({
 		    	 data: fd,
 		    	 processData: false,
 		    	 contentType : false,
-		    	 dataType:"json"
+		    	 dataType:"json",
+		    	 async:false
 		     }).done(function(result) {
+		    	 
+		    	 console.log(result);
 		    	 
 		    	 for(var i=0; i < result.length;i++){
 		    		 
@@ -70,11 +73,11 @@ $('#summernote').summernote({
 					 .append(
 					  $("<li>"+files[i].name+"</li>")
 					  .append("<button id='del' imgPath="+result[i]+" onclick='delImg(this)'>삭제</button>")
-					 )		
-				     
+					 );
+					 
 			     }
+		    	 
 		     });
-		     
 	     }
 	  }
 });
@@ -105,37 +108,61 @@ function delImg(that) {
 	// 확인을 눌렀을 때, 삭제버튼의 개수와 웹 에디터 상의 이미지 개수가 맞나 
 	// 확인하여 서버에서 삭제 시켜야한다.
 	
+	
+	// 글 등록을 누른후, 이미지 삭제 버튼을 누를 일은 없다.. 괜찮다. 걱징 NO NO.
 	$("#check").click(function(){
 		
 // 		console.log($("div.note-editable panel-body"));
+
+		var pathArr = [];
 		
 		$("div.note-editing-area div:last img").each(function() {
+			
 			var src = this.src;
 			var ix = src.indexOf("/b90ft4");
 			src = src.substring(ix);
 // 			console.log("src :",src);
+
+			pathArr.push(src);
+			
 			delete imgArr[src];
+			
 		});
 		
 		console.log("삭제후 확인");
 		console.dir(imgArr);
 		
 		for(var k in imgArr){
+			var src = imgArr[k].src;
+			var ix = src.indexOf("/b90ft4");
+			src = src.substring(ix);
 			
-				var src = imgArr[k].src;
-				var ix = src.indexOf("/b90ft4");
-				src = src.substring(ix);
-				
-				$.ajax({
-					url:"/b90ft4/board/delImg.do",
-					data:{delPath:src},
-					async:false
-				}).done(function(result) {
-					console.log("result",result);
-				});
+			$.ajax({
+				url:"/b90ft4/board/delImg.do",
+				data:{delPath:src},
+				async:false
+			}).done(function(result) {
+				console.log("result",result);
+			});
+			
 		}
 		
-	});
+		// 옮길 이미지 ajax
+		for(var i=0;i<pathArr.length;i++) {
+			
+			$.ajax({
+				url:"/b90ft4/board/saveImg.do",
+				data:{
+					tempPath:pathArr[i]
+				},
+				async:false
+			}).done(function(result) {
+				console.log(result);				
+			});	
+			
+		}
+	 });
+	
 	
 	  function delAllImg(){
 		  
@@ -153,14 +180,14 @@ function delImg(that) {
 					console.log("result",result);
 				});
 				
-		}
+		  }
 		  
 		  
 	  }
 	  
 	  
-	  var checkUnload = true;
-	    $(window).on("beforeunload", function(){
+// 	  var checkUnload = true;
+// 	    $(window).on("beforeunload", function(){
 	        
 	    	
 	    	
@@ -174,7 +201,7 @@ function delImg(that) {
 	    	/*
 	    		단, 글쓰기 버튼을 클릭해서 글을 저장한 후 페이지를 이동할때도 저런 메시지가 뜨기 때문에, 고럴땐 checkUnload 값을 false 로 바꿔준 후 submit 이나 페이지를 이동해야 한다~
 	    	*/
-	    });
+// 	    });
 	
 	
 // 			$("[imgPath="+src+"]").remove();

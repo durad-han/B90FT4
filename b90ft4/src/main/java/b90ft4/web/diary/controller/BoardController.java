@@ -194,9 +194,10 @@ public class BoardController {
 		if(f.exists()){
 			System.out.println("존재");
 			f.delete();
+			System.out.println("삭제 완료");
+		}else{
+			System.out.println("파일 없음");
 		}
-		
-		System.out.println("삭제 완료");
 		
 		return "ok";
 		
@@ -209,10 +210,13 @@ public class BoardController {
 		ServletContext context = mRes.getServletContext();
 		String path = context.getRealPath("/upload");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
-		String datePath = sdf.format(new Date());
+//		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
+//		String datePath = sdf.format(new Date());
 		
-		String savePath = path + datePath;
+		String savePath = path + "/temp";
+		
+		System.out.println(savePath);
+		
 		File f = new File(savePath);
 		if (!f.exists()) f.mkdirs();
 		
@@ -243,7 +247,6 @@ public class BoardController {
 				long fileSize = file.getSize();
 				System.out.println("파일 사이즈 : " + fileSize);
 
-				
 				// 임시저장된 파일을 원하는 경로에 저장
 				file.transferTo(new File(savePath + "/" + systemName));
 
@@ -263,6 +266,49 @@ public class BoardController {
 		return list;
 		
 	}
+	
+	// 이미지 실제 저장 완료.
+	@ResponseBody
+	@RequestMapping("/saveImg.do")
+	public String saveImg(String tempPath,
+						  HttpServletRequest res) {
+		
+		ServletContext context = res.getServletContext();
+		String savePath = context.getRealPath("/upload");
+		savePath = savePath.replace("\\", "/");
+		
+		String webName = res.getContextPath();
+
+		int ix = savePath.indexOf(webName);
+		
+		String partPath = savePath.substring(0,ix);
+		
+		tempPath = partPath + tempPath;
+
+		File temp = new File(tempPath);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String datePath = sdf.format(new Date());
+
+		File whereToGo = new File(savePath+"/"+datePath);
+		
+		if(!whereToGo.exists()) {
+			whereToGo.mkdirs();
+			System.out.println("폴더 생성");
+		}
+		
+		savePath = savePath+"/"+datePath +"/"+ temp.getName();
+		
+		temp.renameTo(new File(savePath));
+		
+		return "ok";
+	}
+	
+//		System.out.println("savePath : " + savePath);
+//		System.out.println("webName : " + webName);
+//		System.out.println("partPath : " + partPath);
+//		System.out.println("tempPath : " + tempPath);
+//		System.out.println("savePath + datePath : " +savePath);
 	 
 }
 
