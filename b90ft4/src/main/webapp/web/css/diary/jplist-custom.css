@@ -494,9 +494,6 @@
     float: right;
     color: #440e00
 }
-.weather{
-	float: right;
-}
 
 .like, .keywords {
     color: #440e00
@@ -861,14 +858,14 @@
     float: none
 }
 
-@media only screen and (min-width: 600px) and (max-width: 800px) {
+@media only screen and (min-width: 200px) and (max-width: 800px) {
     .jplist-grid-view .ul-li-list .list-item .img {
         width: 90%;
         margin: 0 5%
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .jplist-grid-view .ul-li-list .list-item {
         width: 100%
     }

@@ -2,8 +2,11 @@ package b90ft4.web.diary.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -130,62 +133,127 @@ public class DiaryController {
 	
 	
 	@ResponseBody
-	@RequestMapping("/img.do")
-	public String img(MultipartHttpServletRequest res,
-					  int CKEditorFuncNum
-					  ) throws Exception{
+	@RequestMapping("/delImg.do")
+	public String delImg(
+			HttpServletRequest res,
+			String delPath) throws Exception{
 		
 		
-		ServletContext context = res.getServletContext();
+		File f = new File("C:/java90/tomcat-work/wtpwebapps"+delPath);
+		
+		System.out.println(delPath);
+		
+		if(f.exists()){
+			System.out.println("존재");
+			f.delete();
+			System.out.println("삭제 완료");
+		}else{
+			System.out.println("파일 없음");
+		}
+		
+		return "ok";
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("/img2.do")
+	public List<String> imgtest(MultipartHttpServletRequest mRes) throws Exception {
+		
+		ServletContext context = mRes.getServletContext();
 		String path = context.getRealPath("/upload");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
-		String datePath = sdf.format(new Date());
+//		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
+//		String datePath = sdf.format(new Date());
 		
-		String savePath = path + datePath;
+		String savePath = path + "/temp";
+		
+		System.out.println(savePath);
+		
 		File f = new File(savePath);
 		if (!f.exists()) f.mkdirs();
 		
-		MultipartFile file = res.getFile("upload");
+		Iterator<String> fileNames = mRes.getFileNames();
 		
-		String systemName="";
-		String url="";
+		List<String> list = new ArrayList<>();
+		
+		while(fileNames.hasNext()){
+			
+			String fileName = fileNames.next();
+			MultipartFile file = mRes.getFile(fileName);
+			String oriName = file.getOriginalFilename();
 
-		String oriName = file.getOriginalFilename();
-		
-		if (oriName != null && !oriName.equals("")) {
-			// 확장자 처리
-			String ext = "";
-			// 뒤쪽에 있는 . 의 위치 
-			int index = oriName.lastIndexOf(".");
-			if (index != -1) {
-				// 파일명에서 확장자명(.포함)을 추출
-				ext = oriName.substring(index);
+			if(oriName != null && !oriName.equals("")) {
+			
+				// 확장자 처리
+				String ext = "";
+				// 뒤쪽에 있는 . 의 위치 
+				int index = oriName.lastIndexOf(".");
+				if (index != -1) {
+					// 파일명에서 확장자명(.포함)을 추출
+					ext = oriName.substring(index);
+				}
+				// 고유한 파일명 만들기	
+				String systemName = "mlec-" + UUID.randomUUID().toString() + ext;
+				System.out.println("저장할 파일명 : " + systemName);
+				// 파일 사이즈
+				long fileSize = file.getSize();
+				System.out.println("파일 사이즈 : " + fileSize);
+
+				// 임시저장된 파일을 원하는 경로에 저장
+				file.transferTo(new File(savePath + "/" + systemName));
+
+				String fullPath = savePath + "/" + systemName;
+				
+				fullPath = fullPath.replace("\\", "/");
+				
+				int ix = fullPath.indexOf(context.getContextPath());
+				
+				fullPath = fullPath.substring(ix);
+				list.add(fullPath);
+				
 			}
 			
-			// 파일 사이즈
-//			long fileSize = file.getSize();
-//			System.out.println("파일 사이즈 : " + fileSize);
-			
-			// 고유한 파일명 만들기	
-			systemName = "mlec-" + UUID.randomUUID().toString() + ext;
-			System.out.println("저장할 파일명 : " + systemName);
-		
-			// 임시저장된 파일을 원하는 경로에 저장
-			file.transferTo(new File(savePath + "/" + systemName));
-			
-			url = savePath + "/" + systemName;
-			
 		}
-//		String url="../calendar.jpg";
-		url = url.replace("C:\\java90\\tomcat-work\\wtpwebapps\\", "/");
-		url = url.replace("\\", "/");
+			
+		return list;
 		
-		System.out.println(CKEditorFuncNum);
-		System.out.println("url : " + url);
-		// http://localhost:9090/
-		System.out.println("'"+url+"'");
-		return "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('"+CKEditorFuncNum+"','/b90ft4/web/image/accountBook/addBtn.jpg','전송에 성공했습니다.')</script>";
+	}
+	
+	// 이미지 실제 저장 완료.
+	@ResponseBody
+	@RequestMapping("/saveImg.do")
+	public String saveImg(String tempPath,
+						  HttpServletRequest res) {
+		
+		ServletContext context = res.getServletContext();
+		String savePath = context.getRealPath("/upload");
+		savePath = savePath.replace("\\", "/");
+		
+		String webName = res.getContextPath();
+
+		int ix = savePath.indexOf(webName);
+		
+		String partPath = savePath.substring(0,ix);
+		
+		tempPath = partPath + tempPath;
+
+		File temp = new File(tempPath);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String datePath = sdf.format(new Date());
+
+		File whereToGo = new File(savePath+"/"+datePath);
+		
+		if(!whereToGo.exists()) {
+			whereToGo.mkdirs();
+			System.out.println("폴더 생성");
+		}
+		
+		savePath = savePath+"/"+datePath +"/"+ temp.getName();
+		
+		temp.renameTo(new File(savePath));
+		
+		return "ok";
 	}
 	
 	@RequestMapping("/write.do")

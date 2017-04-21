@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style>
+#attachFileList {
+	border:1px solid black;
+	width: 300px;
+	height:200px;
+	margin:0 auto;
+}
+</style>
+
     <title>다이어리</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,11 +35,31 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap.min.css">
-    
-    <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>s
+    <!-- content css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_editor.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/code_view.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/colors.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/emoticons.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image_manager.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/line_breaker.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/table.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/char_counter.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/video.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/fullscreen.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/file.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/quick_insert.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+	
+	<!-- include summernote css/js-->
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
     
 </head>
 <body>
@@ -125,7 +155,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashboard.html"><i class="fa fa-fw">
+                    <li class="active"><a href="dashdiary.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">전체</span></a></li>
                     <li><a href="Layout.html"><i class="fa fa-fw">
@@ -184,7 +214,7 @@
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
-						<div class="content">
+						<div class="content" style="width: 80%;">
 		<ol class="breadcrumb">
 		  <li><a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a></li>
 		  <li class="active">자유게시판</li>
@@ -198,74 +228,101 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="td-txt-right td-wp10">제목</td> 
+				<td class="td-txt-right td-wp8">제목</td> 
 			 	<td>
 			 		<div class="form-group">
 			 			<input type='text' name='title' class="form-control input-wp1" />
 			 		</div>
 			 	</td>
 			</tr>
-			<tr>
 				<!-- 날씨정보 입력 -->
-<!-- 				<td class="td-txt-right td-wp10">날씨</td> -->
-<!-- 			 	<td> -->
-<!-- 			 		<div class="form-group"> -->
-<!-- 			 			<label for="sunny">  -->
-<!-- 			 			<input type='radio' name='weather' value='sunny' /> -->
-<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/> --%>
-<!-- 			 			</label> -->
-			 			
-<!-- 			 			<label for="cloud">  -->
-<!-- 			 			<input type='radio' name='weather' value='cloud' /> -->
-<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/cloud.jpg"/> --%>
-<!-- 			 			</label> -->
-			 			
-<!-- 			 			<label for="rain">  -->
-<!-- 			 			<input type='radio' name='weather' value='rain' /> -->
-<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/rain.jpg"/> --%>
-<!-- 						</label> -->
-<!-- 			 			<label for="rain">  -->
-<!-- 			 			<input type='radio' name='weather' value='snow' /> -->
-<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/snow.jpg"/> --%>
-<!-- 			 			</label> -->
-<!-- 			 			<label for="rain">  -->
-<!-- 			 			<input type='radio' name='weather' value='hail' /> -->
-<%-- 			 			<img src="${pageContext.request.contextPath}/web/image/diary/hail.jpg"/> --%>
-<!-- 			 			</label> -->
-<!-- 			 		</div> -->
-<!-- 			 	</td> -->
-			</tr>
 			<tr>
-				<td class="td-txt-right td-wp10">내용</td>
-			 	<td><div class="form-group">
-			 		
-			 		<textarea name='content' id="editor1" rows='10' cols='70' class="form-control"
-			 		></textarea>
-			 		
-			 		<script>
-		                // Replace the <textarea id="editor1"> with a CKEditor
-		                // instance, using default configuration.
-		                CKEDITOR.replace( 'editor1',{
-		                	 filebrowserUploadUrl: '/b90ft4/diary/img.do'
-		                });
-		            </script>
-			 		
+				<td class="td-txt-right td-wp8">날씨</td>
+			 	<td>
+			 		<div class="form-group">
+			 			<label for="sunny"> 
+			 			<input type='radio' name='weather' value='sunny' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/>
+			 			</label>
+			 			
+			 			<label for="cloud"> 
+			 			<input type='radio' name='weather' value='cloud' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/cloud.jpg"/>
+			 			</label>
+			 			
+			 			<label for="rain"> 
+			 			<input type='radio' name='weather' value='rain' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/rain.jpg"/>
+						</label>
+			 			<label for="rain"> 
+			 			<input type='radio' name='weather' value='snow' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/snow.jpg"/>
+			 			</label>
+			 			<label for="rain"> 
+			 			<input type='radio' name='weather' value='hail' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/hail.jpg"/>
+			 			</label>
 			 		</div>
 			 	</td>
 			</tr>
-<!-- 			<tr> -->
-<!-- 				<td class="td-txt-right td-wp10">첨부파일</td> -->
-<!-- 			 	<td><div class="form-group"> -->
-<!-- 			 			<input type="file" name="attachFile" /> -->
-<!-- 					</div> -->
-<!-- 			 	</td>			 			 -->
-<!-- 			</tr> -->
+			<tr>
+				<td class="td-txt-right td-wp8">상태</td>
+			 	<td>
+			 		<div class="form-group">
+			 			<label for="superHappy"> 
+			 			<input type='radio' name='emotion' value='superHappy' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/superhappy.jpg"/>
+			 			</label>
+			 			
+			 			<label for="happy"> 
+			 			<input type='radio' name='emotion' value='happy' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/happy.jpg"/>
+			 			</label>
+			 			
+			 			<label for="enjoy"> 
+			 			<input type='radio' name='emotion' value='enjoy' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/enjoy.jpg"/>
+						</label>
+			 			<label for="sad"> 
+			 			<input type='radio' name='emotion' value='sad' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/sad.jpg"/>
+			 			</label>
+			 			<label for="angry"> 
+			 			<input type='radio' name='emotion' value='angry' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/angry.jpg"/>
+			 			</label>
+			 			<label for="despair"> 
+			 			<input type='radio' name='emotion' value='despair' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/despair.jpg"/>
+			 			</label>
+			 			<label for="sulk"> 
+			 			<input type='radio' name='emotion' value='sulk' />
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/sulk.jpg"/>
+			 			</label>
+			 		</div>
+			 	</td>
+			</tr>
+			<tr>
+				<td class="td-txt-right td-wp10">내용</td>
+			 	<td id="editor">
+			   		 <div id="summernote">Hello Summernote
+			   		 
+			   		 </div>
+
+					<div id="attachFileList">
+						<ul>
+						</ul>
+					</div>
+
+			  	</td>
+
+			</tr>
 			</table>
 			
 			<div class="row">
 			    <div class="col-md-10"></div>
 			    <div class="col-md-2">
-					<button class="btn btn-primary btn-lg">등록</button>
+					<button class="btn btn-primary btn-lg" id="check">등록</button>
 					<a href='list.do' class="btn btn-info btn-lg">목록</a>
 			    </div>
 			</div>
@@ -279,6 +336,156 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
+    <script>
+    var imgArr=[];
+
+    $('#summernote').summernote({
+    	  callbacks: {
+    	    onImageUpload: function(files) {
+//     		upload image to server and create imgNode...
+//     		     console.log(files);
+    		     
+    		     var fd = new FormData();
+    		     
+    		     for(var i=0,f; f = files[i];i++){
+    			     fd.append("attachFile"+i,files[i]);
+    		     }
+    		     
+    		     $.ajax({
+    		    	 url:"/b90ft4/diary/img2.do",
+    		    	 type:"POST",
+    		    	 data: fd,
+    		    	 processData: false,
+    		    	 contentType : false,
+    		    	 dataType:"json",
+    		    	 async:false
+    		     }).done(function(result) {
+    		    	 
+    		    	 console.log(result);
+    		    	 
+    		    	 for(var i=0; i < result.length;i++){
+    		    		 
+    		    		 var img = document.createElement("img");
+    		    		 img.src = result[i];
+    				     $('#summernote').summernote('insertNode', img);
+    				     
+    				     imgArr[result[i]]=img;
+    				     
+    					 $("#attachFileList > ul ")
+    					 .append(
+    					  $("<li>"+files[i].name+"</li>")
+    					  .append("<button id='del' imgPath="+result[i]+" onclick='delImg(this)'>삭제</button>")
+    					 );
+    					 
+    			     }
+    		    	 
+    		     });
+    	     }
+    	  }
+    });
+
+
+
+
+    function delImg(that) {
+    	
+    	console.log("삭제");
+
+    	var path = that.getAttribute("imgPath");
+    	var delImg = imgArr[path]; // 이미지 객체 반환.
+    	
+    	$.ajax({
+    		url:"/b90ft4/diary/delImg.do",
+    		data:{delPath:path}
+    	}).done(function(result) {
+//     		console.log("result",result);
+    	});
+    	
+    	$(delImg).remove(); // 웹 에디터 이미지 삭제.
+    	that.parentNode.parentNode.removeChild(that.parentNode); // 버튼 삭제
+    	
+    		
+    }
+
+    	// 확인을 눌렀을 때, 삭제버튼의 개수와 웹 에디터 상의 이미지 개수가 맞나 
+    	// 확인하여 서버에서 삭제 시켜야한다.
+    	
+    	
+    	// 글 등록을 누른후, 이미지 삭제 버튼을 누를 일은 없다.. 괜찮다. 걱징 NO NO.
+    	$("#check").click(function(){
+    		
+//     		console.log($("div.note-editable panel-body"));
+
+    		var pathArr = [];
+    		
+    		$("div.note-editing-area div:last img").each(function() {
+    			
+    			var src = this.src;
+    			var ix = src.indexOf("/b90ft4");
+    			src = src.substring(ix);
+//     			console.log("src :",src);
+
+    			pathArr.push(src);
+    			
+    			delete imgArr[src];
+    			
+    		});
+    		
+    		console.log("삭제후 확인");
+    		console.dir(imgArr);
+    		
+    		for(var k in imgArr){
+    			var src = imgArr[k].src;
+    			var ix = src.indexOf("/b90ft4");
+    			src = src.substring(ix);
+    			
+    			$.ajax({
+    				url:"/b90ft4/diary/delImg.do",
+    				data:{delPath:src},
+    				async:false
+    			}).done(function(result) {
+    				console.log("result",result);
+    			});
+    			
+    		}
+    		
+    		// 옮길 이미지 ajax
+    		for(var i=0;i<pathArr.length;i++) {
+    			
+    			$.ajax({
+    				url:"/b90ft4/diary/saveImg.do",
+    				data:{
+    					tempPath:pathArr[i]
+    				},
+    				async:false
+    			}).done(function(result) {
+    				console.log(result);				
+    			});	
+    			
+    		}
+    	 });
+    	
+    	
+    	  function delAllImg(){
+    		  
+    		  for(var k in imgArr){
+    				
+    				var src = imgArr[k].src;
+    				var ix = src.indexOf("/b90ft4");
+    				src = src.substring(ix);
+    				
+    				$.ajax({
+    					url:"/b90ft4/diary/delImg.do",
+    					data:{delPath:src},
+    					async:false
+    				}).done(function(result) {
+    					console.log("result",result);
+    				});
+    				
+    		  }
+    	  }
+    
+    </script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script>
@@ -317,15 +524,39 @@
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script>
 
+	<!-- content js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/froala_editor.min.js" ></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/align.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/char_counter.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/code_beautifier.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/code_view.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/draggable.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/emoticons.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/entities.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/file.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/font_size.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/font_family.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/fullscreen.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/image.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/image_manager.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/line_breaker.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/inline_style.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/link.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/lists.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/paragraph_format.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/paragraph_style.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/quick_insert.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/quote.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/table.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/save.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/url.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/video.min.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
-	 <script>
-    	$.ajax({
-    		type : 'POST',
-    		url
-    	
-    	})
-    </script>
-
 </body>
 </html>

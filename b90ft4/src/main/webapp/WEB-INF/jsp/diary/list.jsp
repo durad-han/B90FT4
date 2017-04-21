@@ -25,7 +25,12 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/jplist.css">
+    <!-- datepicker -->
+	<link rel="stylesheet" href="/resources/demos/style.css">
 	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
     <div>
@@ -99,16 +104,6 @@
                                 Modal title</h4>
                         </div>
                         <div class="modal-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend et nisl eget
-                                porta. Curabitur elementum sem molestie nisl varius, eget tempus odio molestie.
-                                Nunc vehicula sem arcu, eu pulvinar neque cursus ac. Aliquam ultricies lobortis
-                                magna et aliquam. Vestibulum egestas eu urna sed ultricies. Nullam pulvinar dolor
-                                vitae quam dictum condimentum. Integer a sodales elit, eu pulvinar leo. Nunc nec
-                                aliquam nisi, a mollis neque. Ut vel felis quis tellus hendrerit placerat. Vivamus
-                                vel nisl non magna feugiat dignissim sed ut nibh. Nulla elementum, est a pretium
-                                hendrerit, arcu risus luctus augue, mattis aliquet orci ligula eget massa. Sed ut
-                                ultricies felis.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-default">
@@ -191,99 +186,112 @@
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
-                <div class="page-content">
-                    <div id="tab-general">
+                <div class="page-content" style='background:url("${pageContext.request.contextPath}/web/image/diary/background1.jpg") no-repeat;background-size:100% 100%'>
+                     <div id="tab-general">
                         <div class="row mbl">
-                            <div class="col-lg-5">
+                        <table style="width: 100%;">
+                        <tr>
+                        <td>
+                        
+                            <div class="col-lg-12">
                                 
-                                            <div class="col-md-5">
-                                                <div id="area-chart-spline" style="width: 80%; text-align: center; height: 300px; display: none;">
+                                            <div class="col-md-7">
+                                                <div id="area-chart-spline" style="width: 100%; text-align: center; height: 300px; display: none;">
                                                 </div>
                                             </div>
                                 
                             </div>
 
-                            <div class="col-lg-5">
+                            <div class="col-lg-12">
                             
                             <div class="page-content">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div id="grid-layout-table-1" class="box jplist">
-                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
-                                    <div align="right">
-                                    	전체 <c:out value="${pageResult.count}"/>개
-									</div>                                    
-                                    <div style="display: none;" class="jplist-panel box panel-top">
-                                        
-                                        
-                                        <div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
-                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
-                                    </div>
-                                    <div class="box text-shadow">
-                                        <table class="demo-tbl"><!--<item>1</item>-->
-                                        <c:forEach var="diary" items="${list}">
-                                            <tr class="tbl-item"><!--<img/>-->
-                                            	<td class="img"><img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg" alt="" title=""/></td>
-                                                <!--<data></data>-->
-                                                <td class="td-block"><p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
-
-                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
-
-                                                    <p class="desc"><c:out value="${diary.content}"/></p>
-
-                                            </tr>
-                                        </c:forEach>
-                                            
-                                        </table>
-                                    </div>
-                                    <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
-                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
-                                    <div class="jplist-panel box panel-bottom">
-                                        <div class="text-filter-box">
-                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div>
-                                        </div>
-                                        <div class="text-filter-box">
-                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div>
-                                        </div>
-                                        <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
-                                            <ul class="dropdown-menu">
-                                                <li><span data-number="10" data-default="true"> 10 per page</span></li>
-                                                <li><span data-number="all"> view all</span></li>
-                                            </ul>
-                                        </div>
-                                        <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
-                                            <ul class="dropdown-menu">
-                                                <li><span data-path="default">Sort by</span></li>
-                                                <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
-                                                <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
-                                                <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
-                                                <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
-                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
-                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
-                                                <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
-                                                <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
-                                            </ul>
-                                        </div>
-                                        <br><p></p><br>
-                                        <div id="paging" align="center">
-                                        	<div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
-                                    		<div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
-                                        </div>
-                                        <div align="right">
-                                    	<a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
-                                        </div>
-                                    </div>
-                                </div>
+				                <div class="row">
+				                    <div class="col-lg-12">
+				                        <div class="panel">
+				                            <div class="panel-body">
+				                                <div id="grid-layout-table-1" class="box jplist">
+				                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+				                                    <div align="right">
+				                                    	전체 <c:out value="${pageResult.count}"/>개
+													</div>                                    
+				                                    <div style="display: none;" class="jplist-panel box panel-top">
+				                                        
+				                                        
+				                                        <div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+				                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
+				                                    </div>
+				                                    <div class="box text-shadow">
+				                                        <table class="demo-tbl"><!--<item>1</item>-->
+				                                        <c:forEach var="diary" items="${list}">
+				                                            <tr class="tbl-item">
+				                                            	<!--<img/>-->
+				                                            	
+				                                            	<td style="width:150px;">
+				                                            		<img src="${pageContext.request.contextPath}/web/image/diary/sad.jpg"/>
+				                                            	</td>
+				                                                <!--<data></data>-->
+				                                                <td class="td-block"><p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
+				
+				                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
+				
+				                                                    <p class="desc"><c:out value="${diary.content}"/></p>
+				                                                    <p class="weather"><img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/></p>
+																</td>
+				                                            </tr>
+				                                        </c:forEach>
+				                                            
+				                                        </table>
+				                                    </div>
+				                                    <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
+				                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+				                                    <div class="jplist-panel box panel-bottom">
+				                                        <div class="text-filter-box">
+				                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div>
+				                                        </div>
+				                                        <div class="text-filter-box">
+				                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div>
+				                                        </div>
+				                                        <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
+				                                            <ul class="dropdown-menu">
+				                                                <li><span data-number="10" data-default="true"> 10 per page</span></li>
+				                                                <li><span data-number="all"> view all</span></li>
+				                                            </ul>
+				                                        </div>
+				                                        <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
+				                                            <ul class="dropdown-menu">
+				                                                <li><span data-path="default">Sort by</span></li>
+				                                                <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+				                                                <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+				                                                <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+				                                                <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+				                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+				                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+				                                                <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+				                                                <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+				                                            </ul>
+				                                        </div>
+				                                        <br><p></p><br>
+				                                        <div id="paging" align="center">
+				                                        	<div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
+				                                    		<div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+				                                        </div>
+				                                        <div align="right">
+				                                    	<a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
+				                                        </div>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                            
-                            </div>
-                            
+                            </td>
+                            <td>
+                            <div id="datepicker"></div>
+                        	</td>
+                        </tr>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -338,21 +346,54 @@
 
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
-    <script>        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-145464-12', 'auto');
-        ga('send', 'pageview');
+    <script>     
+    	console.log("갱신");
+// 		datepicker
+// 		  $( function() {
+//             $( "#datepicker" ).datepicker(datepicker_default);
+//           } );
+			
+		var datepicker_default;
+// 		makeCalendar();
+		$("#datepicker").datepicker({
+			showOn: 'button',
+			buttonText: "달력",
+			currentText: "이번달",
+			closeText : "선택" ,
+			dateFormat: "yy-mm-dd",
+			firstDay: 0,
+			isRTL: false,
+			showMonthAfterYear: true,
+			changeMonth: true,
+			changeYear: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			gotoCurrent:true,
+			monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
+			     		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
+     		monthNamesShort: ['1월','2월','3월','4월','5월','6월',
+     					'7월','8월','9월','10월','11월','12월'],
+     		dayNames: ['일','월','화','수','목','금','토'],
+     		dayNamesShort: ['일','월','화','수','목','금','토'],
+     		dayNamesMin: ['일','월','화','수','목','금','토'],
+     		onSelect : function(dateText, inst) {
+     			
+//	     			var date = $("#datepicker").datepicker('getDate');
+//	     			var temp =  $.datepicker.parseDate("yy-mm-dd",dateText);
+//	     			var today = new Date();
 
-
+				console.log(dateText);
+//		    			var selectedDate = $.datepicker.formatDate( dateFormat, date );
+//		    			$("[id=actualDate]").val(selectedDate); // 선택한 날짜를 인풋 박스에 출력.
+//		    			$("[name=budgetF] input:eq(4)").val(selectedDate);
+// 		    		ㄴ	console.log("선택한 날짜1",	$("[name=budgetF] input:eq(4)").val());
+//		    			budgetList(selectedDate); // 선택한 날짜에 해당하는 지출/수입을 긁어온다.
+	    			
+     		}
+		});
+		
+        
 </script>
+
 </body>
 </html>
