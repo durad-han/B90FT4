@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class WorkoutStatisticsVO {
 	private Date workoutDay;
-	private String userId;
 	private int spentCal;
 	private int intakeCal;
 	
@@ -13,12 +12,6 @@ public class WorkoutStatisticsVO {
 	}
 	public void setWorkoutDay(Date workoutDay) {
 		this.workoutDay = workoutDay;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 	public int getSpentCal() {
 		return spentCal;

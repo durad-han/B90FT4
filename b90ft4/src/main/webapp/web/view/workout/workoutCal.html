@@ -5,28 +5,99 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>섭취 칼로리 입력</div>
-<input type="text">
-<div>소비 칼로리 입력</div>
-<input type="text">
-<div class="portlet box">
-	<div class="portlet-header">
-		<div class="caption">칼로리 계산</div>
-		<div class="tools"><i class="fa fa-chevron-up"></i><i data-toggle="modal" data-target="#modal-config" class="fa fa-cog"></i><i class="fa fa-refresh"></i><i class="fa fa-times"></i></div>
-	</div>
-<div id="bar-chart-stack" style="width: 100%; height:300px"></div>
+<div>
+<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><br>
+<input id='setConsumeCal' type='text'>kcal<br>
+<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button onclick='callSpendCal()'>오늘 한 운동에서 받아오기</button><br>
+<input id='setSpendCal'type='text'>kcal<br>
+
+<button onclick='setCal()'>입력</button><button>저장</button>
 </div>
-                        
-   <script>
+<div class='caption'>칼로리 계산</div>
+<div id='bar-chart-stack' style='width: 50%; height:300px'></div>
+  
+<script>
+
+	var spendCal = "";   
+function callSpendCal(){
+	$.ajax({
+		url:"selectWorkoutStatisticsList.do",
+		dataType:"json",
+		data : {"workoutDay" : workoutDay,
+			 "spentCal" : spentCal,
+			 "intakeCal" : intakeCal
+			}
+		}).done(function(result){
+			console.dir(result);
+		});
+	}
+  
+   
+   var spendCal1 = 500; 
+   var consumeCal1 = 1000;
+   var leftCal1 = consumeCal1 - spendCal1;
+   var overCal1 = spendCal1 - consumeCal1;
+   if (spendCal1 < consumeCal1){
+	   overCal1 = 0;
+   }
+
+   var spendCal2 = 1000; 
+   var consumeCal2 = 1000;
+   var leftCal2 = consumeCal2 - spendCal2;
+   var overCal2 = spendCal2 - consumeCal2;
+   
+   if (spendCal2 < consumeCal2){
+	   overCal2 = 0;
+   }
+
+   var spendCal3 = 1500; 
+   var consumeCal3 = 1000;
+   var leftCal3 = consumeCal3 - spendCal3;
+   var overCal3 = spendCal3 - consumeCal3;
+   if (spendCal3 < consumeCal3){
+	   overCal3 = 0;
+   }
+   
+   
+   var spendCal4 =10;
+   var consumeCal4 = 10;
+   var leftCal4 = 10;
+   var overCal4 = 10;
+   function setCal(){
+   spendCal4 = $("#setSpendCal").val();
+   console.log("consume:"+$("#setConsumeCal").val());
+   consumeCal4 = $("#setConsumeCal").val();
+   leftCal4 = consumeCal4 - spendCal4;
+   overCal4 = spendCal4 - consumeCal4;
+   if (spendCal4 < consumeCal4){
+	   overCal4 = 0;
+   }
+   barChartStack();
+   console.log("차트스택 빠져나온 spendcal4 : "+spendCal4);
+
+   }
+   
  //bar-chart-stack  
-   var d4_1 = [["섭취 칼로리", 126],["소비 칼로리", 73]];
-   var d4_2 = [["소비 칼로리", 61]];
+   var d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],["날짜4", spendCal4]];
+   var d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],["날짜4", leftCal4]];
+   var d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],["날짜4", overCal4]];
+   function barChartStack(){
+	   d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],["날짜4", spendCal4]];
+	   d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],["날짜4", leftCal4]];
+	   d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],["날짜4", overCal4]];
+	   
+	   console.log("차트스택 안에있는 spendcal4 : "+spendCal4);
+		console.dir(d4_1);
        $.plot("#bar-chart-stack", [{
            data: d4_1,
-           label: "칼로리",
-           color: "#3DB9D3"
+           label: "소비 칼로리",
+           color: "#f15f5f"
        },{
            data: d4_2,
+           label: "섭취 칼로리",
+           color: "#3DB9D3"
+       },{
+           data: d4_3,
            label: "초과 소비 칼로리",
            color: "#ffce54"
        }], {
@@ -59,7 +130,9 @@
            },
            shadowSize: 0
        });
-   
+		console.dir(d4_1);
+   }
+   barChartStack();
    </script>
 </body>
 </html>
