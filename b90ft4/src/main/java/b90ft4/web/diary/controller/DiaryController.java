@@ -50,7 +50,7 @@ public class DiaryController {
 		
 		service.write(diary);
 		
-		return "diary/list";
+		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/updateForm.do")
