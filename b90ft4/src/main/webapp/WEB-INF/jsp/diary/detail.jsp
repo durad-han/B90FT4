@@ -193,7 +193,7 @@
 						    <div class="col-md-9"></div>
 						    <div class="col-md-3">
 						    <a href='updateForm.do?diaryNo=<c:out value="${diaryVO.diaryNo}"/>' class="btn btn-success btn-lg">수정</a>
-								<a href='delete.do?no=${diaryVO.diaryNo}' class="btn btn-danger btn-lg">삭제</a>
+								<a href='delete.do?no=${diaryVO.diaryNo}' class="btn btn-danger btn-lg" id="">삭제</a>
 								<a href='list.do' class="btn btn-info btn-lg">목록</a>
 						    </div>
 						</div>
@@ -205,6 +205,12 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
+    <script>
+    	$("#deleteDiary").click(function() {
+    		console.log("삭제");
+    	});
+    </script>
+    
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script> --%>
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script> --%>
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script> --%>

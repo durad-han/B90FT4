@@ -221,9 +221,9 @@
 				                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
 				                                    </div>
 				                                    <div class="box text-shadow">
-				                                        <table class="demo-tbl"><!--<item>1</item>-->
+				                                        <table class=""><!--<item>1</item>-->
 				                                        <c:forEach var="diary" items="${list}">
-				                                            <tr class="tbl-item">
+				                                            <tr class="">
 				                                            	<!--<img/>-->
 				                                            	
 				                                            	<td style="width:150px;">
