@@ -187,7 +187,7 @@
 						<table class="tb">
 						<tr class="ttop" >
 						 	<td><c:out value="${diaryVO.title}"/></td>
-						 	<td><fmt:formatDate value="${diaryVO.regDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+						 	<td><fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
 						</tr>
 						<tr class="content">
 						 	<td colspan="2">${diaryVO.content}</td>

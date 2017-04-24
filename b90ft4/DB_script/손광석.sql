@@ -37,3 +37,4 @@ drop table tb_sam_diary
 
 select * from tb_sam_diary
 
+ALTER TABLE tb_sam_diary CHANGE diaryDate diary_Date datetime default now();

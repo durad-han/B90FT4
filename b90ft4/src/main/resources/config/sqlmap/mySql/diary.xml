@@ -11,9 +11,9 @@
 		<result column="Weather_City"	property="weatherCity" 		/>
 		<result column="Title"			property="title" 			/>
 		<result column="Content"		property="content" 			/>
-		<result column="Weather_Code"		property="weatherCode" 			/>
-		<result column="Emotion_Code"		property="emotionCode" 			/>
-		
+		<result column="Weather_Code"	property="weatherCode" 		/>
+		<result column="Emotion_Code"	property="emotionCode" 		/>
+		<result column="Diary_Date"		property="diaryDate"		/>
 	</resultMap>
 		
 	<!--============================================================================
@@ -32,7 +32,7 @@
 	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
 			select *
 			  from tb_sam_diary
-		    order by reg_date
+		    order by diary_date
 <!-- 		select	sql_calc_found_rows a.*  -->
 <!-- 		from	(select	*  -->
 <!-- 				 from	tb_Sam_Diary -->

@@ -1,9 +1,49 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert Title</title>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+
+<!-- include summernote css/js-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+
+<!--Loading bootstrap css-->
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/style-responsive.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+
+<!-- content css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_editor.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/code_view.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/colors.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/emoticons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image_manager.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/line_breaker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/table.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/char_counter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/video.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/fullscreen.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/file.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/quick_insert.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 
 <style>
 #attachFileList {
@@ -13,58 +53,8 @@
 	margin:0 auto;
 }
 </style>
-
-    <title>다이어리</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="images/icons/favicon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/favicon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/favicon-114x114.png">
-    <!--Loading bootstrap css-->
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/style-responsive.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap.min.css">
-    <!-- content css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_editor.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_style.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/code_view.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/colors.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/emoticons.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image_manager.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/line_breaker.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/table.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/char_counter.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/video.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/fullscreen.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/file.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/quick_insert.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
-	
-	
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-	
-	<!-- include summernote css/js-->
-	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
-    
 </head>
 <body>
-    <div>
         <!--BEGIN THEME SETTING-->
         <div id="theme-setting">
             <div class="content-theme-setting">
@@ -120,33 +110,12 @@
                                  </ul>
                              </div>     
         </nav>
+        
                           
         </div>
             <!--END TOPBAR-->
-        
-            <!--BEGIN MODAL CONFIG PORTLET-->
-            <div id="modal-config" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
-                                &times;</button>
-                            <h4 class="modal-title">
-                                Modal title</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-default">
-                                Close</button>
-                            <button type="button" class="btn btn-primary">
-                                Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--END MODAL CONFIG PORTLET-->
-        </div>
-        <!--END TOPBAR-->
-        <div id="wrapper">
+            
+          <div id="wrapper">
             <!--BEGIN SIDEBAR MENU-->
              <div id="wrapper">
             <!--BEGIN SIDEBAR MENU-->
@@ -223,11 +192,6 @@
 		
 		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post'>
 			<table class="table table-no-border">
-			<tr class="hidden">
-				<td>
-					<input type='text' name='userId' />
-				</td>
-			</tr>
 			<tr>
 				<td class="td-txt-right td-wp8">제목</td> 
 			 	<td>
@@ -241,28 +205,31 @@
 				<td class="td-txt-right td-wp8">날씨</td>
 			 	<td>
 			 		<div class="form-group">
+			 			<input type='radio' id="sunny" name='weatherCode' value='1' checked />
 			 			<label for="sunny"> 
-			 			<input type='radio' name='weather' value='sunny' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg"/>
 			 			</label>
 			 			
+			 			<input type='radio' id="cloud" name='weatherCode' value='2' />
 			 			<label for="cloud"> 
-			 			<input type='radio' name='weather' value='cloud' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/cloud.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg"/>
+			 			</label>
+
+			 			<input type='radio' id="rain" name='weatherCode' value='3' />
+			 			<label for="rain"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg"/>
+						</label>
+
+			 			<input type='radio' id="snow" name='weatherCode' value='4' />
+			 			<label for="snow"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg"/>
+			 			</label>
+
+			 			<input type='radio' id="hail" name='weatherCode' value='5' />
+			 			<label for="hail"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg"/>
 			 			</label>
 			 			
-			 			<label for="rain"> 
-			 			<input type='radio' name='weather' value='rain' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/rain.jpg"/>
-						</label>
-			 			<label for="rain"> 
-			 			<input type='radio' name='weather' value='snow' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/snow.jpg"/>
-			 			</label>
-			 			<label for="rain"> 
-			 			<input type='radio' name='weather' value='hail' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/hail.jpg"/>
-			 			</label>
 			 		</div>
 			 	</td>
 			</tr>
@@ -270,35 +237,35 @@
 				<td class="td-txt-right td-wp8">상태</td>
 			 	<td>
 			 		<div class="form-group">
+			 			<input type='radio' id="superHappy" name='emotionCode' value='1' checked/>
 			 			<label for="superHappy"> 
-			 			<input type='radio' name='emotion' value='superHappy' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/superhappy.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg"/>
 			 			</label>
 			 			
+			 			<input type='radio' id="happy" name='emotionCode' value='2' />
 			 			<label for="happy"> 
-			 			<input type='radio' name='emotion' value='happy' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/happy.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/happy.jpg"/>
 			 			</label>
 			 			
+			 			<input type='radio' id="enjoy" name='emotionCode' value='3' />
 			 			<label for="enjoy"> 
-			 			<input type='radio' name='emotion' value='enjoy' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/enjoy.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg"/>
 						</label>
+			 			<input type='radio' id="sad" name='emotionCode' value='4' />
 			 			<label for="sad"> 
-			 			<input type='radio' name='emotion' value='sad' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/sad.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sad.jpg"/>
 			 			</label>
+			 			<input type='radio' id="angry" name='emotionCode' value='5' />
 			 			<label for="angry"> 
-			 			<input type='radio' name='emotion' value='angry' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/angry.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/angry.jpg"/>
 			 			</label>
+			 			<input type='radio' id="despair" name='emotionCode' value='6' />
 			 			<label for="despair"> 
-			 			<input type='radio' name='emotion' value='despair' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/despair.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/despair.jpg"/>
 			 			</label>
+			 			<input type='radio' id="sulk" name='emotionCode' value='7' />
 			 			<label for="sulk"> 
-			 			<input type='radio' name='emotion' value='sulk' />
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/sulk.jpg"/>
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg"/>
 			 			</label>
 			 		</div>
 			 	</td>
@@ -314,19 +281,21 @@
 						<ul>
 						</ul>
 					</div>
-
 			  	</td>
-
 			</tr>
 			</table>
 			
 			<div class="row">
 			    <div class="col-md-10"></div>
 			    <div class="col-md-2">
-					<button class="btn btn-primary btn-lg" id="check">등록</button>
-					<a href='list.do' class="btn btn-info btn-lg">목록</a>
+					<button type="button" class="btn btn-primary btn-lg" id="check">등록</button>
+					<a  href="list.do" class="btn btn-info btn-lg">목록</a>
 			    </div>
 			</div>
+			
+			<textarea style="display: none;" name="content" id="realContent">
+				
+			</textarea>
 			
 		</form>
 	</div>
@@ -336,8 +305,22 @@
             </div>
             <!--END PAGE WRAPPER-->
         </div>
-    </div>
-    <script>
+    </div>    
+
+
+<!-- 		 <div id="summernote">Hello Summernote -->
+			   		 
+<!-- 			   		 </div> -->
+
+<!-- 		<div id="attachFileList"> -->
+<!-- 						<ul> -->
+<!-- 						</ul> -->
+<!-- 		</div> -->
+	
+<!-- 	    <button class="btn btn-primary btn-lg" id="check">등록</button> -->
+	
+	
+<script>
     var imgArr=[];
 
     $('#summernote').summernote({
@@ -368,8 +351,8 @@
     		    		 
     		    		 var img = document.createElement("img");
     		    		 img.src = result[i];
+    		    		 img.setAttribute("oriname",files[i].name);
     				     $('#summernote').summernote('insertNode', img);
-    				     
     				     imgArr[result[i]]=img;
     				     
     					 $("#attachFileList > ul ")
@@ -404,7 +387,6 @@
     	
     	$(delImg).remove(); // 웹 에디터 이미지 삭제.
     	that.parentNode.parentNode.removeChild(that.parentNode); // 버튼 삭제
-    	
     		
     }
 
@@ -464,13 +446,19 @@
     			});	
     			
     		}
+    		
+			$("#realContent").val($("div.note-editing-area div:last").html());
+			
+			var f = document.querySelector("[name=wForm]");
+			console.log("전송");
+			f.submit();
+    		
+    		
     	 });
     	
     	
     	  function delAllImg(){
-    		  
     		  for(var k in imgArr){
-    				
     				var src = imgArr[k].src;
     				var ix = src.indexOf("/b90ft4");
     				src = src.substring(ix);
@@ -482,77 +470,58 @@
     				}).done(function(result) {
     					console.log("result",result);
     				});
-    				
     		  }
+    		  
+    		  
+//     		  $("#note-editing-area").val();
+    	  
     	  }
-    
-    </script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap-hover-dropdown.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/html5shiv.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/respond.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.news-ticker.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/modernizr.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script>
+    	  
+//     	  $("#test").click(test);
+    	  
+//     	  function test() {
+//     		  console.log("수정");
+//     		  console.log($("div.note-editing-area div:last").html());
+    		  
+//     	  }
+ </script>	
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap-hover-dropdown.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/html5shiv.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/respond.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.news-ticker.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/modernizr.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script> --%>
+<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script> --%>
 
-	<!-- content js -->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/align.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/char_counter.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/code_beautifier.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/code_view.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/colors.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/draggable.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/emoticons.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/entities.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/file.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/font_size.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/font_family.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/fullscreen.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/image.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/image_manager.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/line_breaker.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/inline_style.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/link.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/lists.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/paragraph_format.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/paragraph_style.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/quick_insert.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/quote.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/table.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/save.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/url.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web/js/diary/plugins/video.min.js"></script>
-    <!--CORE JAVASCRIPT-->
-    <script src="script/main.js"></script>
 </body>
 </html>
