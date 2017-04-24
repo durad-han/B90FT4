@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id = "container">날짜</div>
+<button id = "dateBtn" onclick = "pullDate()">날짜 받아오기</button>
+<script src =../../bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js></script>
+<script>
+function pullDate(){
+	$.ajax({
+		url:"/b90ft4/workout/workoutDateTest.do",
+		dataType:"json"
+	}).done(function(result) {
+console.dir(result);
+		var html = result;
+		$("#container").html(html);
+
+
+	});
+}
+</script>
+</body>
+</html>

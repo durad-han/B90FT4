@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.media.jfxmedia.logging.Logger;
+import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
+
 import b90ft4.web.repository.mapper.WorkoutMapper;
+import b90ft4.web.repository.vo.WorkoutDateTestVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutVO;
@@ -27,14 +31,22 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception {
 		// TODO Auto-generated method stub
 		List<WorkoutSetVO> list = wm.retrieveWorkoutSetList(workoutNo);
+			System.out.println("zzzzzzzzzzzzzzz"+list.size());
 		return list;
 	}
 
 	@Override
-	public List<WorkoutStatisticsVO> WorkoutStatisticsList() throws Exception {
+	public List<WorkoutStatisticsVO> WorkoutStatisticsList(String today) throws Exception {
 		// TODO Auto-generated method stub
-		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList();
+		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today);
 		return list;
+	}
+	@Override
+	public WorkoutDateTestVO workoutDateTest() throws Exception {
+		// TODO Auto-generated method stub
+		WorkoutDateTestVO date = wm.retrieveWorkoutDateTestList();
+		System.out.println(date.getWorkoutDay().toString());
+		return date;
 	}
 
 

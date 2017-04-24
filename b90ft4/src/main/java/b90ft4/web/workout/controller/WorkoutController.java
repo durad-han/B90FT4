@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import b90ft4.web.repository.vo.WorkoutDateTestVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutVO;
@@ -42,9 +43,9 @@ public class WorkoutController {
 	*/
 
 	@ResponseBody
-	@RequestMapping("/WorkoutStatisticsList.do")
-	public List<WorkoutStatisticsVO> WorkoutStatisticsList() throws Exception{
-		List<WorkoutStatisticsVO> list = ws.WorkoutStatisticsList();
+	@RequestMapping("/selectWorkoutStatisticsList.do")
+	public List<WorkoutStatisticsVO> WorkoutStatisticsList(String today) throws Exception{	
+		List<WorkoutStatisticsVO> list = ws.WorkoutStatisticsList(today);
 		return list;
 	}
 	
@@ -62,6 +63,12 @@ public class WorkoutController {
 	public List<WorkoutSetVO> workoutForm (int workoutNo) throws Exception{
 		List<WorkoutSetVO> setList = ws.workoutSetList(workoutNo);
 		return setList;
+	}
+	@ResponseBody
+	@RequestMapping("/workoutDateTest.do")
+	public WorkoutDateTestVO workoutDateTest () throws Exception{
+		WorkoutDateTestVO date = ws.workoutDateTest();
+		return date;
 	}
 /*	
 	@RequestMapping("/workoutTypeA.do")

@@ -45,8 +45,22 @@
 
 <!--  retrieveWorkoutSet list -->
 	<select id="retrieveWorkoutStatisticsList" resultMap="workoutStatisticsMap">
-		select *
+		select * 
 		from tb_Sam_Workout_Statistics
+		where Workout_Day like concat('%',#{today},'%')
+<!--  where substring(Workout_Day,1,10) = #{today}  -->
+		
 	</select> 
+ 
+   	<resultMap type="workoutDateTestVO" id="workoutDateTestMap">
+		<result column="Workout_Day"			property="workoutDay"		/>
+	</resultMap>
+	
+<!--  retrieveWorkoutDateTest list -->
+	<select id="retrieveWorkoutDateTestList" resultMap="workoutDateTestMap" parameterType="String">
+		select * 
+		from tb_Sam_Workout_Statistics
+		
+	</select>
  
 </mapper>

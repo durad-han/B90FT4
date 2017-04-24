@@ -3,14 +3,13 @@ package b90ft4.web.repository.vo;
 import java.util.Date;
 
 public class WorkoutStatisticsVO {
-	private Date workoutDay;
+	private String workoutDay;
 	private int spentCal;
 	private int intakeCal;
-	
-	public Date getWorkoutDay() {
+	public String getWorkoutDay() {
 		return workoutDay;
 	}
-	public void setWorkoutDay(Date workoutDay) {
+	public void setWorkoutDay(String workoutDay) {
 		this.workoutDay = workoutDay;
 	}
 	public int getSpentCal() {
@@ -25,5 +24,6 @@ public class WorkoutStatisticsVO {
 	public void setIntakeCal(int intakeCal) {
 		this.intakeCal = intakeCal;
 	}
+	
 	
 }

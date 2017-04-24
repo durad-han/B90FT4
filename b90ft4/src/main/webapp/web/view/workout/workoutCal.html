@@ -6,9 +6,9 @@
 </head>
 <body>
 <div>
-<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><br>
+<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><button onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
 <input id='setConsumeCal' type='text'>kcal<br>
-<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button onclick='callSpendCal()'>오늘 한 운동에서 받아오기</button><br>
+<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
 <input id='setSpendCal'type='text'>kcal<br>
 
 <button onclick='setCal()'>입력</button><button>저장</button>
@@ -18,17 +18,37 @@
   
 <script>
 
-	var spendCal = "";   
-function callSpendCal(){
+	var totalSpentCal = 0;   
+	var totalIntakeCal = 0;
+	var today = $.datepicker.formatDate("yy-mm-dd",new Date());
+function callIntakeCal(){
 	$.ajax({
 		url:"selectWorkoutStatisticsList.do",
 		dataType:"json",
-		data : {"workoutDay" : workoutDay,
-			 "spentCal" : spentCal,
-			 "intakeCal" : intakeCal
-			}
+		data : {"today" : today }
 		}).done(function(result){
 			console.dir(result);
+			console.dir($('#setConsumeCal').val());
+			for(var i = 0 ; i < result.length ; i++){
+				totalIntakeCal += parseInt(result[i].intakeCal);
+			}
+			$('#setConsumeCal').val(totalIntakeCal);
+		});
+	}
+	
+function callSpentCal(){
+	console.log("callSpentCal loaded");
+	console.log("today : "+ today);
+	$.ajax({
+		url:"selectWorkoutStatisticsList.do",
+		dataType:"json",
+		data : {"today" : today }
+		}).done(function(result){
+			console.dir(result);
+			for(var i = 0 ; i < result.length ; i++){
+				totalSpentCal += parseInt(result[i].spentCal);
+			}
+			$('#setSpendCal').val(totalSpentCal);
 		});
 	}
   
@@ -78,13 +98,13 @@ function callSpendCal(){
    }
    
  //bar-chart-stack  
-   var d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],["날짜4", spendCal4]];
-   var d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],["날짜4", leftCal4]];
-   var d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],["날짜4", overCal4]];
+   var d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],[today, spendCal4]];
+   var d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],[today, leftCal4]];
+   var d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],[today, overCal4]];
    function barChartStack(){
-	   d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],["날짜4", spendCal4]];
-	   d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],["날짜4", leftCal4]];
-	   d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],["날짜4", overCal4]];
+	   d4_1 = [["날짜1", spendCal1],["날짜2", spendCal2],["날짜3", spendCal3],[today, spendCal4]];
+	   d4_2 = [["날짜1", leftCal1],["날짜2", leftCal2],["날짜3", leftCal3],[today, leftCal4]];
+	   d4_3 = [["날짜1", overCal1],["날짜2", overCal2],["날짜3", overCal3],[today, overCal4]];
 	   
 	   console.log("차트스택 안에있는 spendcal4 : "+spendCal4);
 		console.dir(d4_1);
