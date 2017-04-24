@@ -17,34 +17,44 @@
 	<div>
 		<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
+		<button id='youtubeOpenBtn' class='btn btn-default' onclick='youtubeOpen()'>영상 켜기</button>
+		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
 	</div>
 </div>
 <script type="text/javascript">
-var nextSet = gvSetIndex+1;
-console.log("nextSet : "+nextSet);
-var html = "이번 세트 운동시간 : "+gvTypeBTime+"초"+
-			"<br>이번 세트 휴식시간 : "+gvIntervalTime+"초"+
-			"<div id='view'>"+
-				"<div id='timeline'>"+
-					"<div class='timerContainer'>"+
-						"<div class='timer'></div>"+
-					"<div class='slideshow'>"+
-						"<div class='slide'>01</div>"+
-						"<div class='slide'>02</div>"+
-						"<div class='slide'>03</div>"+
-						"<div class='slide'>04</div>"+
+
+//이미지 슬라이드 가져오기
+function imgSetLoad(){
+	var nextSet = gvSetIndex+1;
+	console.log("nextSet : "+nextSet);
+	var html = "이번 세트 운동시간 : "+gvTypeBTime+"초"+
+				"<br>이번 세트 휴식시간 : "+gvIntervalTime+"초"+
+				"<div id='view'>"+
+					"<div id='timeline'>"+
+						"<div class='timerContainer'>"+
+							"<div class='timer'></div>"+
+						"<div class='slideshow'>"+
+							"<div class='slide'>01</div>"+
+							"<div class='slide'>02</div>"+
+							"<div class='slide'>03</div>"+
+							"<div class='slide'>04</div>"+
+						"</div>"+
 					"</div>"+
-				"</div>"+
-			"</div>";
-console.log(html);
-			
-$('#viewContainer').html(html);
+				"</div>";
+	console.log(html);
+				
+	$('#viewContainer').html(html);
+}
+imgSetLoad();
 
 //typeB 관련 함수
 $("#videoCloseBtn").addClass("hidden");
+$("#youtubeCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
 
+//사용자 카메라 가져오기
 function videoLoad() {
+	
 
 	
 	var constraints = { audio: true, video: true}; 
@@ -58,6 +68,7 @@ function videoLoad() {
 	    video.play();
 	  };
 	});
+	$("#viewContainer").addClass("hidden");
 	$("#videoLoadBtn").addClass("hidden");
 	$("#videoCloseBtn").removeClass("hidden");
 	
@@ -68,9 +79,27 @@ function videoClose(){
 	video.pause();
 	video.srcObject = null;
 	
+	$("#viewContainer").removeClass("hidden");
 	$("#videoCloseBtn").addClass("hidden");
 	$("#videoLoadBtn").removeClass("hidden");
 }
+
+//youtube 영상 가져오기 
+function youtubeOpen() {
+		
+	var youtubeTag = '<iframe width="1903" height="765" src="https://www.youtube.com/embed/piHCHNPDO_4" frameborder="0" allowfullscreen></iframe>';
+	$("#viewContainer").html(youtubeTag);
+		$("#youtubeOpenBtn").addClass("hidden");
+		$("#youtubeCloseBtn").removeClass("hidden");
+		
+	    }
+function youtubeClose(){
+		imgSetLoad();
+		$("#youtubeCloseBtn").addClass("hidden");
+		$("#youtubeOpenBtn").removeClass("hidden");
+	}
+	
+
 function slide() {
 
     // slider type
@@ -91,7 +120,7 @@ function slide() {
         $('.timer').animate({"width":$w}, $d);
         $('.timer').animate({"width":0}, 0);
     }
-
+	
   
   // fading function
     function fadeInOut() {

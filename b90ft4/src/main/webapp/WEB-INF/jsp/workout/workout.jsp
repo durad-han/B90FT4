@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>B90FT4 | 운ㅋ동</title>
+    <title>B90FT4 | 운동ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,6 +128,7 @@
 			<!--END PAGE WRAPPER-->
 		</div>
 	</div>
+
 <script id="workoutList" type="text/x-handlebars-template">
 
 	<div id="sum_box" class="row mbl">
