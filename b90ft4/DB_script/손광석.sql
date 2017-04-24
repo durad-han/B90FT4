@@ -14,6 +14,19 @@ create table tb_Sam_Diary (
 	FOREIGN KEY(User_Id) 	REFERENCES tb_Sam_User(User_Id)
 );
 
+create table tb_Sam_Diary_Img (
+	no			   int(6) primary key,
+	Diary_No 	   int(6),
+	ori_name       varchar(100) not null,
+	system_name    varchar(200) not null,
+	file_path	   varchar(100) not null,
+	file_size	   int(8),
+	FOREIGN KEY(Diary_No) 	REFERENCES tb_Sam_diary(Diary_No)
+)
+
+drop table tb_Sam_Diary_Img;
+
+
 alter table tb_Sam_diary
 add column Reg_Date datetime default now()
 

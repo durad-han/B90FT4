@@ -114,18 +114,21 @@
 	============================================================================-->
 	<update id="updateDiary" parameterType="diaryVO" >
 		update	tb_Sam_Diary
-<!-- 		set		Latitude    		= #{latitude},     -->
-<!-- 				Longitude   		= #{longitude},    -->
-<!-- 				Weather_City		= #{weatherCity},  -->
-		set		Title       		= #{title},       
-				Content     		= #{content}     
-<!-- 				File_Ori            = #{fileOri},      -->
-<!-- 				File_New            = #{fileNew},      -->
-<!-- 				File_Path           = #{filePath}      -->
+		set		Latitude    		= #{latitude},    
+				Longitude   		= #{longitude},   
+				Weather_City		= #{weatherCity}, 
+				Title       		= #{title},       
+				Content     		= #{content},
+				Emotion_Code 		= #{emotionCode},
+				Weather_Code		= #{weatherCode}     
 		where	Diary_No			= #{diaryNo}
+		  and   User_Id				= #{userId}
 	</update>
 	
 	
+<!-- 				File_Ori            = #{fileOri},      -->
+<!-- 				File_New            = #{fileNew},      -->
+<!-- 				File_Path           = #{filePath}      -->
 	<!--============================================================================
 			다이어리 삭제 deleteDiary
 			필터링할 값: Diary_No

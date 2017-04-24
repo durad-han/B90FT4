@@ -55,11 +55,21 @@ public class DiaryController {
 	
 	@RequestMapping("/updateForm.do")
 	public void updateForm(int diaryNo, Model model) throws Exception{
-		model.addAttribute("diary", service.updateForm(diaryNo));
+		Map<String, Object> result = service.detail(diaryNo);
+		model.addAttribute("diaryVO", result.get("diaryVO"));
 	}
 	
 	@RequestMapping("/update.do")
 	public String update(DiaryVO diary, RedirectAttributes attr) throws Exception{
+		
+		String content = diary.getContent();
+		System.out.println(content);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String datePath = sdf.format(new Date());
+		
+		content = content.replace("temp", datePath);
+		diary.setContent(content);
 		
 		service.update(diary);
 		
@@ -78,7 +88,6 @@ public class DiaryController {
 	public void detail(@RequestParam(value="diaryNo") int diaryNo, Model model) throws Exception{
 		Map<String, Object> result = service.detail(diaryNo);
 		model.addAttribute("diaryVO", result.get("diaryVO"));
-		model.addAttribute("file", result.get("file"));
 	}
 	
 	

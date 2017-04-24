@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>다이어리</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,6 +26,22 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+	
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+	
+	<!-- include summernote css/js-->
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+<style>
+#attachFileList {
+	border:1px solid black;
+	width: 300px;
+	height:200px;
+	margin:0 auto;
+}
+</style>
 </head>
 <body>
     <div>
@@ -184,31 +201,48 @@
 		  <li class="active">자유게시판</li>
 		</ol>	
 		
-		<form action='update.do' method='post'>
-			<input type="hidden" name="diaryNo" value="<c:out value="${diary.diaryNo}"/>" /> 
+		<form name='uForm' action='update.do' method='post'>
+			<input type="hidden" name="diaryNo" value="<c:out value="${diaryVO.diaryNo}"/>" /> 
+			<input type="hidden" name="userId" value="<c:out value="${diaryVO.userId}"/>" /> 
 			<table class="table table-no-border">
 			<tr>
 				<td class="td-txt-right td-wp10">제목</td> 
 			 	<td>
 			 		<div class="form-group">
-			 			<input type='text' name='title' class="form-control input-wp1" value="<c:out value="${diary.title}"/>" />
+			 			<input type='text' name='title' class="form-control input-wp1" value="<c:out value="${diaryVO.title}"/>" />
 			 		</div>
 			 	</td>
 			</tr>
 			<tr>
 				<td class="td-txt-right td-wp10">내용</td>
 			 	<td><div class="form-group">
-			 		<textarea name='content' rows='5' cols='70' class="form-control"><c:out value="${diary.content}"/></textarea>
+				 		<div id="summernote">
+				   			${diaryVO.content}	 
+				   		</div>
+			 		
+			 		
+			 		<textarea style='display:none;' name='content'
+			 		></textarea>
 			 		</div>
 			 	</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+			 		<div id="attachFileList">
+							<ul>
+							</ul>
+					</div>
+				</td>
 			</tr>
 			</table>
 			
 			<div class="row">
 			    <div class="col-md-10"></div>
 			    <div class="col-md-2">
-					<button class="btn btn-primary btn-lg">수정</button>
-					<a href='list' class="btn btn-info btn-lg">목록</a>
+					<button class="btn btn-primary btn-lg" type="button" id="updateBtn">수정</button>
+					<a href='list.do' id="check" class="btn btn-info btn-lg">목록</a>
 			    </div>
 			</div>
 		</form>
@@ -248,43 +282,215 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap-hover-dropdown.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/html5shiv.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/respond.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.news-ticker.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/modernizr.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script>
+    <script>
+ 	   var imgArr=[];
+	   var delImgArr=[];	
+ 	   
+ 	   console.log("로딩되면 자동으로..");
+ 	   
+
+ 	   $("#updateBtn").click(function() {
+//  	    	console.log($("div.note-editing-area div:last").html());
+ 		  	var pathArr = [];
+  		
+	  		$("div.note-editing-area div:last img").each(function() {
+	  			
+	  			var src = this.src;
+	  			var ix = src.indexOf("/b90ft4");
+	  			src = src.substring(ix);
+	//   			console.log("src :",src);
+	
+	  			pathArr.push(src);
+	  			
+	  			delete imgArr[src];
+	  			
+	  		});
+	  		
+	  		console.log("삭제후 확인");
+	  		console.dir(imgArr);
+  		
+	  		for(var k in imgArr){
+	  			var src = imgArr[k].src;
+	  			var ix = src.indexOf("/b90ft4");
+	  			src = src.substring(ix);
+	  			
+	  			$.ajax({
+	  				url:"/b90ft4/diary/delImg.do",
+	  				data:{delPath:src},
+	  				async:false
+	  			}).done(function(result) {
+	  				console.log("result",result);
+	  			});
+	  		}
+  		
+	  		// 옮길 이미지 ajax
+	  		for(var i=0;i<pathArr.length;i++) {
+	  			
+	  			$.ajax({
+	  				url:"/b90ft4/diary/saveImg.do",
+	  				data:{
+	  					tempPath:pathArr[i]
+	  				},
+	  				async:false
+	  			}).done(function(result) {
+	  				console.log(result);				
+	  			});	
+	  		}
+	  		
+	  		
+	  		for(var i=0;i<delImgArr.length;i++) {
+		    	$.ajax({
+		    		url:"/b90ft4/diary/delImg.do",
+		    		data:{delPath:path},
+		    		async:false
+		    	}).done(function(result) {
+	//	     		console.log("result",result);
+		    	});
+	  		}
+	  		
+	  		
+			$("[name=content]").val($("div.note-editing-area div:last").html());
+			
+			var f = document.querySelector("[name=uForm]");
+			console.log("전송");
+			f.submit();
+	
+
+ 	   });
+ 	   
+ 	   
+ 	   
+ 	   $("#check").click(function(e){
+//  		   console.dir(imgArr);
+ 	   });
+ 	   
+
+	    $('#summernote').summernote({
+	    	  callbacks: {
+	    	    onImageUpload: function(files) {
+	//     		upload image to server and create imgNode...
+	//     		     console.log(files);
+	    		     
+	    		     var fd = new FormData();
+	    		     
+	    		     for(var i=0,f; f = files[i];i++){
+	    			     fd.append("attachFile"+i,files[i]);
+	    		     }
+	    		     
+	    		     $.ajax({
+	    		    	 url:"/b90ft4/diary/img2.do",
+	    		    	 type:"POST",
+	    		    	 data: fd,
+	    		    	 processData: false,
+	    		    	 contentType : false,
+	    		    	 dataType:"json",
+	    		    	 async:false
+	    		     }).done(function(result) {
+	    		    	 
+	    		    	 console.log(result);
+	    		    	 
+	    		    	 for(var i=0; i < result.length;i++){
+	    		    		 
+	    		    		 var img = document.createElement("img");
+	    		    		 img.src = result[i];
+	    		    		 img.setAttribute("oriname",files[i].name);
+	    				     $('#summernote').summernote('insertNode', img);
+	    				     imgArr[result[i]]=img;
+	    				     
+	    					 $("#attachFileList > ul ")
+	    					 .append(
+	    					  $("<li>"+files[i].name+"</li>")
+	    					  .append("<button id='del' imgPath="+result[i]+" onclick='delImg(this)'>삭제</button>")
+	    					 );
+	    					 
+	    			     }
+	    		     });
+	    	     }
+	    	  }
+	    });
+	    
+	    function delImg(that) {
+	    	
+	    	console.log("삭제");
+	    	
+	    	var path = that.getAttribute("imgPath");
+	    	delImgArr.push(path);
+	    	var delImg = imgArr[path]; // 이미지 객체 반환.
+	    	
+// 	    	$.ajax({
+// 	    		url:"/b90ft4/diary/delImg.do",
+// 	    		data:{delPath:path}
+// 	    	}).done(function(result) {
+// //	     		console.log("result",result);
+// 	    	});
+	    	
+	    	$(delImg).remove(); // 웹 에디터 이미지 삭제.
+	    	that.parentNode.parentNode.removeChild(that.parentNode); // 버튼 삭제
+	    		
+	    }
+
+	    
+	    
+ 	   $(function() {
+	 	   $("div.note-editing-area div:last").find("img").each(function(){
+				var src = this.src;
+				var ix = src.indexOf("/b90ft4");
+				src = src.substring(ix);
+	
+				imgArr[src] = this;
+				console.log("src",src);
+	
+				 $("#attachFileList > ul ")
+				 .append(
+				  $("<li>"+this.getAttribute("oriname")+"</li>")
+				  .append("<button id='del' imgPath="+src+" onclick='delImg(this)'>삭제</button>")
+				 );
+			});   
+ 	   });
+	    
+	    
+	    
+	    
+	    
+    </script>
+    
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap-hover-dropdown.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/html5shiv.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/respond.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.news-ticker.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/modernizr.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script> --%>
 
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>

@@ -267,10 +267,6 @@
 			 	</td>
 			</tr>
 			<tr>
-				<textarea style="display: none;" name="content" id="realContent">
-				
-				</textarea>
-			
 				<td class="td-txt-right td-wp10">내용</td>
 			 	<td id="editor">
 			   		 <div id="summernote">Hello Summernote
@@ -292,6 +288,10 @@
 					<a  id="test" class="btn btn-info btn-lg">목록</a>
 			    </div>
 			</div>
+			
+			<textarea style="display: none;" name="content" id="realContent">
+				
+			</textarea>
 			
 		</form>
 	</div>
@@ -347,8 +347,8 @@
     		    		 
     		    		 var img = document.createElement("img");
     		    		 img.src = result[i];
+    		    		 img.setAttribute("oriname",files[i].name);
     				     $('#summernote').summernote('insertNode', img);
-    				     
     				     imgArr[result[i]]=img;
     				     
     					 $("#attachFileList > ul ")
@@ -383,7 +383,6 @@
     	
     	$(delImg).remove(); // 웹 에디터 이미지 삭제.
     	that.parentNode.parentNode.removeChild(that.parentNode); // 버튼 삭제
-    	
     		
     }
 

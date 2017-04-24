@@ -211,8 +211,8 @@
         </div>
     </div>
     <script>
+    
     	$("#deleteDiary").click(function(e) {
-    		e.preventDefault();
     		console.log("삭제");
 //     		console.log($("tr.content > td").html());
     		
