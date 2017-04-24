@@ -6,7 +6,6 @@ var gvSpentCal = "";
 var gvIntervalTime = "";
 var gvIsLast = "";
 var gvSetIndex ="";
-
 function tempMove(){
 	$(".page-content").load("/b90ft4/web/view/workout/Charts.html");
 }

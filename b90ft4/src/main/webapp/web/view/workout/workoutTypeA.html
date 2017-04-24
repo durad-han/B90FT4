@@ -54,7 +54,7 @@ value++;
 		  
   		}
   		else{
-		  alert(gvIntervalTime+"초 동안 쉽니다.");
+		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
 		  $("#setNo"+nextSet).trigger("click");
 		}
       $(".container").css({
@@ -82,9 +82,9 @@ $(".back").on("mousedown", function() {
   		  alert("마지막 세트입니다.");
     	}
     	else{
-  		  alert(gvIntervalTime+"초 동안 쉽니다.");
+    		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+    		 $("#setNo"+nextSet).trigger("click");
   		}
-    	
     	
         $(".container").css({
             "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"

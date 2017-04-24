@@ -6,18 +6,22 @@
 <link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeB.css" />
 </head>
 <body>
-<div id='setContainer'>
+<div id='setContainer'>	
 </div>
 <div id='typeBContainer'>
+	<div id = 'timerContainer'>
+	남은시간:
+	</div>
 	<div id = 'viewContainer'>
 	</div>
 	<div>
 		<video width='70%' height='70%' autoplay='autoplay' id='myVideo' />
 	</div>
 	<div>
+		<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
 		<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
-		<button id='youtubeOpenBtn' class='btn btn-default' onclick='youtubeOpen()'>영상 켜기</button>
+		<button id='youtubeOpenBtn' class='btn btn-primary' onclick='youtubeOpen()'>영상 켜기</button>
 		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
 	</div>
 </div>
@@ -52,11 +56,38 @@ $("#videoCloseBtn").addClass("hidden");
 $("#youtubeCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
 
+//운동 시작 관련 함수
+function typeBStart(){
+	console.log("typeBStart load");
+	var timerId = 0;
+	var timerEnd = 0; 
+
+	 
+	timerId = setInterval(function(){
+		console.log("setInterval load");
+		var timerHtml = "남은시간 : "+(timerEnd-gvTypeBTime)+"초";
+		$('#timerContainer').html(timerHtml);
+		timerEnd++;
+		console.log(timerEnd);
+    	if(gvIsLast){
+    		  alert("마지막 세트입니다.");
+    		  clearInterval(timerId);
+      	}
+    	else if(timerEnd == gvTypeBTime){
+			clearInterval(timerId);
+			alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+			 $("#setNo"+nextSet).trigger("click");
+		}
+		
+	}, gvTypeBTime*1000); 
+
+
+}
+
+
 //사용자 카메라 가져오기
 function videoLoad() {
-	
 
-	
 	var constraints = { audio: true, video: true}; 
 /* 	navigator.serviceWorker.register('sw.js',{insecure:true});
 	navigator.serviceWorker.register('workout.js',{insecure:true}); */
