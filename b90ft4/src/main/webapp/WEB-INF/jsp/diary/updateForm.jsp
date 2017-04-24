@@ -339,13 +339,15 @@
 	  		
 	  		
 	  		for(var i=0;i<delImgArr.length;i++) {
-		    	$.ajax({
+		    
+	  			$.ajax({
 		    		url:"/b90ft4/diary/delImg.do",
-		    		data:{delPath:path},
+		    		data:{delPath:delImgArr[i]},
 		    		async:false
 		    	}).done(function(result) {
 	//	     		console.log("result",result);
 		    	});
+	  			
 	  		}
 	  		
 	  		

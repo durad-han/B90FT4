@@ -26,6 +26,8 @@ create table tb_Sam_Diary_Img (
 
 drop table tb_Sam_Diary_Img;
 
+delete  from tb_Sam_Diary
+
 
 alter table tb_Sam_diary
 add column Reg_Date datetime default now()
