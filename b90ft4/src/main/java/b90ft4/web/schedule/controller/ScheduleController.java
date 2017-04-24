@@ -50,7 +50,9 @@ public class ScheduleController {
 		logger.debug("retrieveScheduleCalendar");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 		
-		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		if(ss.retrieveScheduleList(ssVO) != null){ 
+			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
+		}
 		return "schedule/scheduleCalendar";
 	}	
 	
@@ -80,17 +82,14 @@ public class ScheduleController {
 		
 		ss.modifySchedule(scheduleVO);
 		attr.addFlashAttribute("msg", "스케줄이 수정되었습니다");
-		return "redirect:scheduleList.do";
+		return "redirect:scheduleList";
 	}
 	
 	@RequestMapping("/delete.json")
-	public String deleteSchedule (int scheduleNo, RedirectAttributes attr) throws Exception{
+	public void deleteSchedule (int scheduleNo) throws Exception{
 		logger.debug("deleteSchedule");
 		logger.debug("scheduleNo : "+scheduleNo);
-		
 		ss.deleteSchedule(scheduleNo);
-		attr.addFlashAttribute("msg", "스케줄이 삭제되었습니다");
-		return "redirect:schedule/scheduleList.do";
 	}
 	
 	

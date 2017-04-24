@@ -31,7 +31,7 @@
 	<select id="selectScheduleList" parameterType="scheduleSearchVO" resultMap="scheduleMap">
 		select	*      
 		from	tb_Sam_Schedule
-		order	by Schedule_No 
+		order	by Start 
 	
 <!-- 		select	sql_calc_found_rows a.*  -->
 <!-- 		from	(select	*  -->

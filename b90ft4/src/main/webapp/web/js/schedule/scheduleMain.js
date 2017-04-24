@@ -1,4 +1,4 @@
-console.log("scheduleMain.js 로드됨...!!");
+console.log("scheduleMain.js 로드됨...!");
 
 //----- datePicker -----------------------------------------------------------
 
@@ -291,8 +291,12 @@ function modifySubmit(scheduleNo){
 						achieve: $("input[id=inputAchieve]").val()
 					},
 					dataType: "json"
-					}).done(goDetail(scheduleNo))
+					})
+					swal("스케줄 수정", '스케줄이 변경되었습니다', "success", function(){
+						location.href="scheduleList.do";
+					});
 				});
+	console.log("수정완료펑션2")
 };
 
 
@@ -309,17 +313,25 @@ function goDelete(scheduleNo){
 	  closeOnConfirm: true
 	},
 	function(){
-		console.log("inner del function")
 		$.ajax({
 			url : "/b90ft4/schedule/delete.json",
 			type: "POST",
 			data: {scheduleNo : scheduleNo},
 			dataType: "json"
-		}).done(goDetail())
+			}).done(function(){
+				swal({
+					title: "스케줄 삭제?",
+					text: "선택한 스케줄이 삭제되었습니다",
+					type: "success",
+					confirmButtonText: "확인",
+					showCancelButton: false,
+					closeOnConfirm: true
+				}, function(){
+					location.href="scheduleList.do";
+				});
+				
+			})
 		});
-	
-	console.log("goDelete...")
-	
 };
 
 
@@ -353,6 +365,29 @@ function scheduleForm(form){
 	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;
 };
+
+
+//----- 페이지 스크롤---------------------------------------------------------------------------------------------------
+function getScheduleList() {
+	$('#loading').html('스케줄 로딩중입니다');
+
+	$.post("data.html?action=getLastList&lastID=" + $(".timeline-container:last").attr("id"), 
+			function(addSchedule){ 
+			if (addSchedule != "") { 
+				$(".timeline-container").after(addSchedule); 
+			} 
+			$('#loading').empty(); 
+		}); 
+	}; 
+	
+	//무한 스크롤 
+	$(window).scroll(function() { 
+		if($(window).scrollTop() == $(document).height() - $(window).height()){
+			getScheduleList(); 
+			} 
+		}); 
+
+
 
 
 scheduleBody();

@@ -200,7 +200,10 @@
 		</div> <!-- cd-timeline-block -->
 </c:if>
 
-</section> <!-- cd-timeline -->
+<div class="list" id="9">content</div>  
+<div id="loading"></div>
+
+</section>
 </div>
 <!-- 스케줄 타임라인 종료 ==================================================================================================== -->
 				
@@ -320,7 +323,7 @@
 
 <script>
 if ('${msg}') {
-	swal("메시지", '${msg}', "success");
+	swal("스케줄 입력", '${msg}', "success");
 }
 </script>
 </body>

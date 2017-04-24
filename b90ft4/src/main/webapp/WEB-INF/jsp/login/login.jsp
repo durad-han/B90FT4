@@ -11,6 +11,9 @@
   <!-- 네이버아이디로로그인 버튼 노출 영역 -->
   <div id="naver_id_login"></div>
   <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+  <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+  <div id="naver_id_login"></div>
+  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
   
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/login.do");
