@@ -16,21 +16,42 @@ public class LoginController {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@RequestMapping("/loginForm.do")
-	public String loginPage (){
-		logger.debug("welcome.");
+//	case : naver --------------------------------------------------------------------
+	@RequestMapping("/nloginForm.do")
+	public String nLoginPage (){
+		logger.debug("naver welcome.");
 		return "login/naverLogin";
 	}
 	
-	@RequestMapping("/login.do")
-	public String loginCallback (){
-		logger.debug("welcome.");
+	@RequestMapping("/nlogin.do")
+	public String nLoginCallback (){
+		logger.debug("naver welcome.");
 		return "login/naverLoginCallback";
 	}
-	@RequestMapping("/logout.do")
-	public void options (){
-		logger.debug("bye");
+	@RequestMapping("/nlogout.do")
+	public void nLogout (){
+		logger.debug("naver bye");
 	}
 
+//	case : google -------------------------------------------------------------------
+	@RequestMapping("/gloginForm.do")
+	public String gLoginPage (){
+		logger.debug("google welcome.");
+		return "login/naverLogin";
+	}
+	
+	@RequestMapping("/glogin.do")
+	public String gLoginCallback (){
+		logger.debug("google welcome.");
+		return "login/naverLoginCallback";
+	}
+	@RequestMapping("/glogout.do")
+	public void gLogout (){
+		logger.debug("google bye");
+	}
+	
+	
+	
+	
 
 }
