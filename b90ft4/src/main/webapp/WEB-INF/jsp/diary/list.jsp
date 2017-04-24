@@ -25,12 +25,6 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/jplist.css">
-    <!-- datepicker -->
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
     <div>
@@ -224,18 +218,85 @@
 				                                        <table class="demo-tbl"><!--<item>1</item>-->
 				                                        <c:forEach var="diary" items="${list}">
 				                                            <tr class="tbl-item">
+				                                            
+				                                            
+				                                            	<tr class="tbl-item"><!--<img/>-->
+					                                                <td class="img"><img src="images/thumbs/arch-1.jpg" alt="" title=""/></td>
+					                                                <!--<data></data>-->
+					                                                <td class="td-block"><p class="date">03/15/2012</p>
+					
+					                                                    <p class="title">Arch</p>
+					
+					                                                    <p class="desc">An arch is a structure that spans a space and supports a load. Arches appeared as early as the 2nd millennium BC in Mesopotamian brick architecture and their systematic use started with the Ancient Romans who were the first to apply the technique to a wide range of structures.</p>
+					
+					                                                    <p class="like">5 Likes</p></td>
+					                                            </tr>
+					                                            
+					                                            
 				                                            	<!--<img/>-->
-				                                            	
 				                                            	<td style="width:150px;">
-				                                            		<img src="${pageContext.request.contextPath}/web/image/diary/sad.jpg"/>
+																	<c:choose>
+																		<c:when test="${diary.emotionCode eq 1}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superHappy.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 2}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/happy.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 3}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 4}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sad.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 5}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/angry.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 6}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/despair.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.emotionCode eq 7}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg" />
+																		</c:when>
+																		
+																	</c:choose>				                                            		
+				                                            		
 				                                            	</td>
 				                                                <!--<data></data>-->
-				                                                <td class="td-block"><p class="date"><fmt:formatDate value="${diary.regDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
+				                                                <td class="td-block">
+				                                                <p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
 				
 				                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
 				
 <%-- 				                                                    <p class="desc"><c:out value="${diary.content}"/></p> --%>
-				                                                    <p class="weather"><img src="${pageContext.request.contextPath}/web/image/diary/weather1.jpg"/></p>
+				                                                    <p class="weather">
+				                                                    <c:choose>
+																		<c:when test="${diary.weatherCode eq 1}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.weatherCode eq 2}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.weatherCode eq 3}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.weatherCode eq 4}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg" />
+																		</c:when>
+																		
+																		<c:when test="${diary.weatherCode eq 5}">
+																			<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg" />
+																		</c:when>
+																	</c:choose>	
+				                                                    </p>
 																</td>
 				                                            </tr>
 				                                        </c:forEach>
@@ -287,9 +348,9 @@
 				            </div>
                             </div>
                             </td>
-                            <td>
-                            <div id="datepicker"></div>
-                        	</td>
+<!--                             <td> -->
+<!--                             <div id="datepicker"></div> -->
+<!--                         	</td> -->
                         </tr>
                         </table>
                         </div>
@@ -346,53 +407,21 @@
 
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
-    <script>     
-    	console.log("갱신");
-// 		datepicker
-// 		  $( function() {
-//             $( "#datepicker" ).datepicker(datepicker_default);
-//           } );
-			
-		var datepicker_default;
-// 		makeCalendar();
-		$("#datepicker").datepicker({
-			showOn: 'button',
-			buttonText: "달력",
-			currentText: "이번달",
-			closeText : "선택" ,
-			dateFormat: "yy-mm-dd",
-			firstDay: 0,
-			isRTL: false,
-			showMonthAfterYear: true,
-			changeMonth: true,
-			changeYear: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			gotoCurrent:true,
-			monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-			     		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-     		monthNamesShort: ['1월','2월','3월','4월','5월','6월',
-     					'7월','8월','9월','10월','11월','12월'],
-     		dayNames: ['일','월','화','수','목','금','토'],
-     		dayNamesShort: ['일','월','화','수','목','금','토'],
-     		dayNamesMin: ['일','월','화','수','목','금','토'],
-     		onSelect : function(dateText, inst) {
-     			
-//	     			var date = $("#datepicker").datepicker('getDate');
-//	     			var temp =  $.datepicker.parseDate("yy-mm-dd",dateText);
-//	     			var today = new Date();
+    <script>        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-145464-12', 'auto');
+        ga('send', 'pageview');
 
-				console.log(dateText);
-//		    			var selectedDate = $.datepicker.formatDate( dateFormat, date );
-//		    			$("[id=actualDate]").val(selectedDate); // 선택한 날짜를 인풋 박스에 출력.
-//		    			$("[name=budgetF] input:eq(4)").val(selectedDate);
-// 		    		ㄴ	console.log("선택한 날짜1",	$("[name=budgetF] input:eq(4)").val());
-//		    			budgetList(selectedDate); // 선택한 날짜에 해당하는 지출/수입을 긁어온다.
-	    			
-     		}
-		});
-		
-        
+
 </script>
 
 </body>

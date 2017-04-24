@@ -28,13 +28,7 @@ public class ScheduleController {
 	public String retrieveScheduleList (Model model) throws Exception{
 		logger.debug("retrieveScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
-//		ScheduleVO svo = sList.get(0);
-//		logger.debug("--------------------------------");
-//		logger.debug("title "+svo.getTitle());
-//		logger.debug("content "+svo.getContent());
-//		logger.debug("userId "+svo.getUserId());
-//		logger.debug("--------------------------------");
+		
 		if(ss.retrieveScheduleList(ssVO) != null){ 
 			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		}
@@ -46,13 +40,6 @@ public class ScheduleController {
 	@ResponseBody
 	public ScheduleVO retrieveSchedule (int scheduleNo) throws Exception{
 		logger.debug("retrieveSchedule json");
-//		logger.debug("scheduleNo : "+scheduleNo);
-//		ScheduleVO svo = ss.retrieveSchedule(scheduleNo);
-//		logger.debug("--------------------------------");
-//		logger.debug("title "+svo.getTitle());
-//		logger.debug("content "+svo.getContent());
-//		logger.debug("userId "+svo.getUserId());
-//		logger.debug("--------------------------------");
 		
 		return ss.retrieveSchedule(scheduleNo);
 	}
@@ -62,13 +49,6 @@ public class ScheduleController {
 	public String retrieveScheduleCalendar (Model model) throws Exception{
 		logger.debug("retrieveScheduleCalendar");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
-//		ScheduleVO svo = sList.get(0);
-//		logger.debug("--------------------------------");
-//		logger.debug("title "+svo.getTitle());
-//		logger.debug("content "+svo.getContent());
-//		logger.debug("userId "+svo.getUserId());
-//		logger.debug("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		return "schedule/scheduleCalendar";
@@ -79,13 +59,6 @@ public class ScheduleController {
 	public String retrieveScheduleGraph (Model model) throws Exception{
 		logger.debug("retrieveScheduleGraph");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-//		List<ScheduleVO> sList = (List<ScheduleVO>) retrieveScheduleList(ssVO).get("scheduleList");
-//		ScheduleVO svo = sList.get(0);
-//		logger.debug("--------------------------------");
-//		logger.debug("title "+svo.getTitle());
-//		logger.debug("content "+svo.getContent());
-//		logger.debug("userId "+svo.getUserId());
-//		logger.debug("--------------------------------");
 		
 		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		return "schedule/scheduleGraph";
@@ -105,15 +78,6 @@ public class ScheduleController {
 //		logger.debug(scheduleVO.getImportance());
 		logger.debug(scheduleVO.getContent());
 		
-		// 임시 떔빵
-//		sVO.setUserId		(scheduleVO.getUserId());
-//		sVO.setCategory		(scheduleVO.getCategory());
-//		sVO.setTitle		(scheduleVO.getTitle());
-//		sVO.setStart		(Date.valueOf(scheduleVO.getStart()));
-//		sVO.setEnd			(Date.valueOf(scheduleVO.getEnd()));
-//		sVO.setImportance	(scheduleVO.getImportance());
-//		sVO.setContent		(scheduleVO.getContent());
-		
 		ss.modifySchedule(scheduleVO);
 		attr.addFlashAttribute("msg", "스케줄이 수정되었습니다");
 		return "redirect:scheduleList.do";
@@ -123,15 +87,16 @@ public class ScheduleController {
 	public String deleteSchedule (int scheduleNo, RedirectAttributes attr) throws Exception{
 		logger.debug("deleteSchedule");
 		logger.debug("scheduleNo : "+scheduleNo);
+		
 		ss.deleteSchedule(scheduleNo);
 		attr.addFlashAttribute("msg", "스케줄이 삭제되었습니다");
-		return "redirect:scheduleList.do";
+		return "redirect:schedule/scheduleList.do";
 	}
 	
 	
 //----- 스케줄 입력 관련 -----------------------------------------------------------------------
 	@RequestMapping("/insertSchedule.do")
-	public String insertSchedule (ScheduleVO scheduleVO) throws Exception{
+	public String insertSchedule (ScheduleVO scheduleVO, RedirectAttributes attr) throws Exception{
 		logger.debug("insertSchedule");
 		
 		logger.debug("--------------------------------");
@@ -144,6 +109,7 @@ public class ScheduleController {
 		logger.debug("--------------------------------");
 		
 		if(scheduleVO.getTitle() != null)ss.insertSchedule(scheduleVO);
+		attr.addFlashAttribute("msg", "스케줄이 입력되었습니다");
 		return "redirect:scheduleList.do";
 	}
 	

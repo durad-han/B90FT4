@@ -320,7 +320,7 @@
 
 <script>
 if ('${msg}') {
-	swal("삭제", '${msg}', "success");
+	swal("메시지", '${msg}', "success");
 }
 </script>
 </body>

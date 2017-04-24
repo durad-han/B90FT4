@@ -25,6 +25,11 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 <body>
     <div>
@@ -182,7 +187,7 @@
 						<table class="tb">
 						<tr class="ttop" >
 						 	<td><c:out value="${diaryVO.title}"/></td>
-						 	<td><fmt:formatDate value="${diaryVO.regDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+						 	<td><fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
 						</tr>
 						<tr class="content">
 						 	<td colspan="2">${diaryVO.content}</td>
@@ -193,7 +198,7 @@
 						    <div class="col-md-9"></div>
 						    <div class="col-md-3">
 						    <a href='updateForm.do?diaryNo=<c:out value="${diaryVO.diaryNo}"/>' class="btn btn-success btn-lg">수정</a>
-								<a href='delete.do?no=${diaryVO.diaryNo}' class="btn btn-danger btn-lg">삭제</a>
+								<a href='delete.do?no=${diaryVO.diaryNo}' class="btn btn-danger btn-lg" id="deleteDiary">삭제</a>
 								<a href='list.do' class="btn btn-info btn-lg">목록</a>
 						    </div>
 						</div>
@@ -205,6 +210,35 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
+    <script>
+    
+    	$("#deleteDiary").click(function(e) {
+    		console.log("삭제");
+//     		console.log($("tr.content > td").html());
+    		
+    		$("tr.content > td").find("img").each(function() {
+    			
+    			var src = this.src;
+    			var ix = src.indexOf("/b90ft4");
+    			src = src.substring(ix);
+
+				console.log("src",src);
+				
+				$.ajax({
+					url:"delImg.do",
+					data: {
+						delPath:src
+					},
+					async:false
+				}).done(function(result) {
+					console.log(result);
+				});
+    			
+    		});
+    		
+    	});
+    </script>
+    
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script> --%>
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script> --%>
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script> --%>

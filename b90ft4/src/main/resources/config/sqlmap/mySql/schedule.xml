@@ -112,12 +112,12 @@
 	============================================================================-->
 	<update id="updateSchedule" parameterType="scheduleVO" >
 		update	tb_Sam_Schedule
-		set		Start,					= #{start}, 
-				End,					= #{end},   
-				Title,					= #{title},          
-				Content,		        = #{content},        
-				Category,		        = #{category},       
-				Importance,	          	= #{importance},     
+		set		Start					= #{start}, 
+				End						= #{end},   
+				Title					= #{title},          
+				Content		        	= #{content},        
+				Category		        = #{category},       
+				Importance	          	= #{importance},     
 				Achieve		   			= #{achieve}        
 		where	Schedule_No		   		= #{scheduleNo}        
 	</update>

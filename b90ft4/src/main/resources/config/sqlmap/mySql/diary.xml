@@ -11,9 +11,9 @@
 		<result column="Weather_City"	property="weatherCity" 		/>
 		<result column="Title"			property="title" 			/>
 		<result column="Content"		property="content" 			/>
-		<result column="Weather_Code"		property="weatherCode" 			/>
-		<result column="Emotion_Code"		property="emotionCode" 			/>
-		
+		<result column="Weather_Code"	property="weatherCode" 		/>
+		<result column="Emotion_Code"	property="emotionCode" 		/>
+		<result column="Diary_Date"		property="diaryDate"		/>
 	</resultMap>
 		
 	<!--============================================================================
@@ -32,7 +32,7 @@
 	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
 			select *
 			  from tb_sam_diary
-		    order by reg_date
+		    order by diary_date
 <!-- 		select	sql_calc_found_rows a.*  -->
 <!-- 		from	(select	*  -->
 <!-- 				 from	tb_Sam_Diary -->
@@ -114,18 +114,21 @@
 	============================================================================-->
 	<update id="updateDiary" parameterType="diaryVO" >
 		update	tb_Sam_Diary
-<!-- 		set		Latitude    		= #{latitude},     -->
-<!-- 				Longitude   		= #{longitude},    -->
-<!-- 				Weather_City		= #{weatherCity},  -->
-		set		Title       		= #{title},       
-				Content     		= #{content}     
-<!-- 				File_Ori            = #{fileOri},      -->
-<!-- 				File_New            = #{fileNew},      -->
-<!-- 				File_Path           = #{filePath}      -->
+		set		Latitude    		= #{latitude},    
+				Longitude   		= #{longitude},   
+				Weather_City		= #{weatherCity}, 
+				Title       		= #{title},       
+				Content     		= #{content},
+				Emotion_Code 		= #{emotionCode},
+				Weather_Code		= #{weatherCode}     
 		where	Diary_No			= #{diaryNo}
+		  and   User_Id				= #{userId}
 	</update>
 	
 	
+<!-- 				File_Ori            = #{fileOri},      -->
+<!-- 				File_New            = #{fileNew},      -->
+<!-- 				File_Path           = #{filePath}      -->
 	<!--============================================================================
 			다이어리 삭제 deleteDiary
 			필터링할 값: Diary_No

@@ -13,13 +13,13 @@ public class DiaryVO {
 	private String content			;
 	private int weatherCode	  ;
 	private int emotionCode	  ;
-	private Date regDate;
+	private Date diaryDate;
 	
-	public Date getRegDate() {
-		return regDate;
+	public Date getdiaryDate() {
+		return diaryDate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setdiaryDate(Date diaryDate) {
+		this.diaryDate = diaryDate;
 	}
 	public int getDiaryNo() {
 		return diaryNo;
