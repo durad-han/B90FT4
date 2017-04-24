@@ -1,4 +1,4 @@
-console.log("scheduleMain.js 로드됨...");
+console.log("scheduleMain.js 로드됨...!!");
 
 //----- datePicker -----------------------------------------------------------
 
@@ -209,7 +209,7 @@ function goModify(scheduleNo){
 };
 
 
-//----- 받아온 값으로 스케줄 출력-----------------------------------------------------------------------------------------------
+//----- 수정용 폼 출력-----------------------------------------------------------------------------------------------
 function modifyForm(result){
 	console.log("수정 폼 꾸미기")
 	var html = "";
@@ -228,7 +228,7 @@ function modifyForm(result){
 	html += "    </div>"
 	html += "    <div class='col-md-6'>"
 	html += "        <div class='form-group'>"
-	html += "            <input id='inputEnd' type='text' placeholder='"+result.end+"' class='form-control' /></div>"
+	html += "            <input id='inputEnd' type='text' value='"+result.end+"' class='form-control' /></div>"
 	html += "    </div>"
 	html += "</div>"
 	html += "<div class='form-group'>"
@@ -270,6 +270,13 @@ function modifySubmit(scheduleNo){
 		  closeOnConfirm: true
 		},
 		function(){
+			
+			console.log("title : "+$("input[id=inputTitle]").val());
+			console.log("start : "+$("input[id=inputStart]").val());
+			console.log("end : "+$("input[id=inputEnd]").val());
+			console.log("content : "+$("input[id=inputContent]").val());
+			console.log("importance : "+$('.stars').starRating('getRating'));
+			
 				$.ajax({
 					url : "/b90ft4/schedule/modify.json", // dho 이게 적용이 안돼 이상해 모르겠어 ㄷㄷ
 					type: "POST",
@@ -284,7 +291,7 @@ function modifySubmit(scheduleNo){
 						achieve: $("input[id=inputAchieve]").val()
 					},
 					dataType: "json"
-					})
+					}).done(goDetail(scheduleNo))
 				});
 };
 
@@ -296,9 +303,9 @@ function goDelete(scheduleNo){
 	  title: "정말 삭제하시겠습니까?",
 	  text: "선택한 스케줄이 삭제됩니다",
 	  type: "warning",
-	  showCancelButton: true,
 	  confirmButtonColor: "#DD6B55",
 	  confirmButtonText: "삭제",
+	  showCancelButton: true,
 	  closeOnConfirm: true
 	},
 	function(){
@@ -308,17 +315,9 @@ function goDelete(scheduleNo){
 			type: "POST",
 			data: {scheduleNo : scheduleNo},
 			dataType: "json"
-		})
+		}).done(goDetail())
 		});
 	
-//	$.ajax({
-//		url : "/b90ft4/schedule/delete.json",
-//		type: "POST",
-//		data: {scheduleNo : scheduleNo},
-//		dataType: "json"
-//	}).done(function(){
-//		alert("삭제됨");
-//	});
 	console.log("goDelete...")
 	
 };
@@ -350,18 +349,6 @@ function scheduleForm(form){
 	console.log("end : "+$("input[id=inputEnd]").val());
 	console.log("content : "+$("input[id=inputContent]").val());
 	console.log("importance : "+$("select[id=inputImportance]").val());
-//	$.ajax({
-//		url : "/b90ft4/schedule/insertSchedule.json",
-//		type: "POST",
-//		data: { scheduleNo: scheduleNo,
-//				start: $("input[id=inputStart]").val(),
-//				end: $("input[id=inputEnd]").val(),
-//				title: $("input[id=inputTitle]").val(),
-//				content: $("input[id=inputContent]").val(),
-//				importance:$("select[id=inputImportance]").val()
-//		},
-//		dataType: "json"
-//	}).done(goDetail);
 	
 	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;
