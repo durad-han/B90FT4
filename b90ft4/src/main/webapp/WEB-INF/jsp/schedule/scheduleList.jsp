@@ -27,7 +27,7 @@
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
                   <li class="active"><a href="../main/main.do">메인</a></li>
-                  <li class="dropdown"><a href="../schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
+                  <li class="dropdown active"><a href="../schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
                       	  <li><a href="../schedule/scheduleList.do">스케줄 리스트</a></li>
                           <li><a href="../schedule/scheduleCalendar.do">스케줄 캘린더</a></li>

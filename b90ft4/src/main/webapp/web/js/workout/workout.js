@@ -264,6 +264,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	 gvIsLast = isLast;
 	 gvSetIndex = setIndex;
 	console.log("workoutTypeLoad function started");
+	console.log("gvSetIndex : " + gvSetIndex);
 	$("#currentSet").html("현재 세트 : "+gvSetIndex);
 	var type="";
 	if(typeACount != 0){
@@ -275,7 +276,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	var html = "";
 	//typeA load
 	if(type == "A"){
-		console.log("typeA load"+workoutSetNo);
+		console.log("typeA load");
 		
 /*
 		html += "<div id='typeAContainer'>"	+
