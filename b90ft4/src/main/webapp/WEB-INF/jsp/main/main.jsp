@@ -151,12 +151,12 @@
 		</div>
 		<div id="menuList">
 			
-			<div id="menu01" class="menuIcon">Schedule</div>
-			<div id="menu02" class="menuIcon">Diary</div>
-			<div id="menu03" class="menuIcon">Account Book</div>
-			<div id="menu04" class="menuIcon">Workout</div>
-			<div id="menu05" class="menuIcon">Login (임시) </div>
-			<div id="menu06" class="menuIcon">Options</div>
+			<div id="menu01" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/schedule.jpg" width="350" height="300">Schedule</div>
+			<div id="menu02" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/diary.jpeg" width="350" height="300">Diary</div>
+			<div id="menu03" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/budget.jpg" width="350" height="300">Account Book</div>
+			<div id="menu04" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/workout.jpg" width="350" height="300">Workout</div>
+			<div id="menu05" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/login.jpg" width="350" height="300">Login (임시) </div>
+			<div id="menu06" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/option.jpg" width="350" height="300">Options</div>
 			
 		</div>
 	
