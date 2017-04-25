@@ -1,5 +1,7 @@
 package b90ft4.web.schedule.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +48,17 @@ public class ScheduleController {
 	
 	//----- 스케줄 캘린더 호출시 --------------------------------------------------------------------
 	@RequestMapping("/scheduleCalendar.do")
-	public String retrieveScheduleCalendar (Model model) throws Exception{
+	public void initScheduleCalendar () throws Exception{
+		logger.debug("initiate ScheduleCalendar");
+	}	
+	
+	//----- 스케줄 캘린더 값 주기 --------------------------------------------------------------------
+	@RequestMapping("/scheduleCalendar.json")
+	@ResponseBody
+	public Map<String, Object> retrieveScheduleCalendar () throws Exception{
 		logger.debug("retrieveScheduleCalendar");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-		
-		if(ss.retrieveScheduleList(ssVO) != null){ 
-			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
-		}
-		return "schedule/scheduleCalendar";
+		return ss.retrieveScheduleList(ssVO);
 	}	
 	
 	//----- 스케줄 그래프 호출시 --------------------------------------------------------------------

@@ -8,17 +8,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/javascript">
-	
-	var googleCalendarId="bi6gttp37c8sjfj693cm8l6c1k@group.calendar.google.com";
-	var googleCalendarApiKey="bad613f17e871e7094213d9e34b464d86a2e8229";
-	var maxGcalEvents = 5;
-		
-	//optional parameters-----------------------------------------------
-	//var colorBox=["green","red"];	
-	
-</script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- try google cal -->
+<!-- <script type="text/javascript"> -->
+<!--  	var googleCalendarId="bi6gttp37c8sjfj693cm8l6c1k@group.calendar.google.com"; -->
+<!--  	var googleCalendarApiKey="bad613f17e871e7094213d9e34b464d86a2e8229"; -->
+<!--  	var maxGcalEvents = 5; -->
+<!--  	//optional parameters----------------------------------------------- -->
+<!--  	//var colorBox=["green","red"];	 -->
+<!-- </script> -->
+<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 </head>
 
 <body>
@@ -139,12 +137,12 @@
  <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
      <div class="page-header pull-left">
          <div class="page-title">
-             Schedule List</div>
+             Schedule Calendar</div>
      </div>
      <ol class="breadcrumb page-breadcrumb pull-right">
          <li><i class="fa fa-home"></i>&nbsp;<a href="../main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-         <li class="hidden"><a href="#">Schedule List</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-         <li class="active">Schedule List</li>
+         <li class="hidden"><a href="#">Schedule Calendar</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+         <li class="active">Schedule Calendar</li>
      </ol>
      <div class="clearfix">
      </div>
@@ -153,96 +151,24 @@
 
 <!-- 메인 컨텐츠 시작 ==================================================================================================== -->
 <div class="page-content">
-	<div id="tab-general">
-	<div class="row mbl">
-	
-	<div class="col-lg-12">
-		<div class="col-md-12">
-			<div id="area-chart-spline" style="width: 50%; height: 300px; display: none;">
-			</div>
-		</div>
-	</div>
-
 	<div class="col-lg-12">
 <!-- 페이지 컨텐츠 시작 ==================================================================================================== -->
 <div class="page-content">
 	<div class="row">
-	
-<!-- 바디 판넬 시작 ==================================================================================================== -->
-	<div class="col-lg-4">
-		<div class="panel">
-		<div class="panel-body">
-			<div class="side-timeline">
-			<div id="grid-layout-table-1" class="box jplist">
-			
-<!-- 스케줄 타임라인 시작 ==================================================================================================== -->
-<div class="side-scroll">
-<section id="cd-timeline" class="timeline-container">
-
-<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<i class="fa fa-edit fa-fw">
-	            </i>
-<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
-				<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
-				<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">상세</a>
-				<span class="cd-date"><c:out value='${schedules.start}'/></span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-</c:forEach>
-<c:if test='${empty scheduleMap["scheduleList"]}'>
-<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<i class="fa fa-edit fa-fw">
-	            </i>
-<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-			</div> <!-- cd-timeline-img -->
-			<div class="cd-timeline-content">
-				<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
-				<p><a href="#;">스케줄을 등록하세요</a></p>
-				<a href="#;" class="cd-read-more">상제</a>
-				<span class="cd-date"></span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-</c:if>
-
-<div class="list" id="9">content</div>  
-<div id="loading"></div>
-
-</section>
-</div>
-<!-- 스케줄 타임라인 종료 ==================================================================================================== -->
-				
-        	</div>
-			</div>
-		</div>
-		</div>
-	</div>
-<!-- 바디 판넬 종료 ==================================================================================================== -->
-
-<!-- 디테일 페이지 시작 ==================================================================================================== -->
-	<div class="col-lg-8">
+<!-- 달력 ==================================================================================================== -->
+	<div class="col-md-12">
 		<div class="panel">
 		<div class="panel-body">
 		
-		<div id="gcal">
-		</div>
+		<div id='calendar'></div>
 			
 		</div>
 		</div>
 	</div>
-<!-- 디테일 페이지 종료 ==================================================================================================== -->
-	
+<!-- 달력 ==================================================================================================== -->
 	</div>
 </div>
 <!-- 페이지 컨텐츠 종료 ==================================================================================================== -->
-	</div>
-	</div>
 	</div>
 </div>
 <!-- 메인 컨텐츠 종료 ==================================================================================================== -->
@@ -260,9 +186,10 @@
 
 </div>
 <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
-<c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
+<c:import url ="/WEB-INF/jsp/schedule/calendarInclude.jsp"/>
 
-<script src="${pageContext.request.contextPath}/web/js/schedule/gcal-events.min.js"></script>
+<!-- try google cal -->
+<%-- <script src="${pageContext.request.contextPath}/web/js/schedule/gcal-events.min.js"></script> --%>
 <script>
 if ('${msg}') {
 	swal("스케줄 입력", '${msg}', "success");

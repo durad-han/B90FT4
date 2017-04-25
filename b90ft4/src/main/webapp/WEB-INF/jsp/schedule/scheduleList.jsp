@@ -146,13 +146,6 @@
 	<div class="row mbl">
 	
 	<div class="col-lg-12">
-		<div class="col-md-12">
-			<div id="area-chart-spline" style="width: 50%; height: 300px; display: none;">
-			</div>
-		</div>
-	</div>
-
-	<div class="col-lg-12">
 <!-- 페이지 컨텐츠 시작 ==================================================================================================== -->
 <div class="page-content">
 	<div class="row">
