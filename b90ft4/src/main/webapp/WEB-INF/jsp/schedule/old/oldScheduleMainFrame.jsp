@@ -113,7 +113,7 @@
 <!--                             Data Grid</div> -->
 <!--                     </div> -->
 <!--                     <ol class="breadcrumb page-breadcrumb pull-right"> -->
-<!--                         <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li> -->
+<!--                         <li><i class="fa fa-home"></i>&nbsp;<a href="../main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li> -->
 <!--                         <li class="hidden"><a href="#">Data Grid</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li> -->
 <!--                         <li class="active">Data Grid</li> -->
 <!--                     </ol> -->
@@ -267,7 +267,7 @@
 	               	카테고리 종류</div>
 	       </div>
 	       <ol class="breadcrumb page-breadcrumb pull-right">
-	           <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+	           <li><i class="fa fa-home"></i>&nbsp;<a href="../main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 	           <li class="hidden"><a href="#">카테고리 종류</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 	           <li class="active">카테고리 종류</li>
 	       </ol>

@@ -123,7 +123,7 @@ p.newsContent{
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li><a href="dashboard.html"><i class="fa fa-tachometer fa-fw">
+                    <li><a href="../main/main.do"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
                     <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
@@ -192,7 +192,7 @@ p.newsContent{
                             Data Grid</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="../main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                         <li class="hidden"><a href="#">Data Grid</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                         <li class="active">Data Grid</li>
                     </ol>

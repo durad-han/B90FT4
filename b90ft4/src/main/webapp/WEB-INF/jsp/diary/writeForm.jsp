@@ -112,7 +112,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashdiary.html"><i class="fa fa-fw">
+                    <li class="active"><a href="../main/main.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">전체</span></a></li>
                     <li><a href="Layout.html"><i class="fa fa-fw">
