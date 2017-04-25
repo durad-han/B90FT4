@@ -154,15 +154,14 @@ input {
 												<div class="modal-header">
 													<h4 class="modal-title">지출 한도 설정
 													
-														<input type="radio" id="set" name="budgetManageCode" value="0" checked/>
-														<label for="set">설정</label>
-														<input type="radio" id="noSet" name="budgetManageCode" value="1" /> 
-														<label for="noSet">미설정</label>
+														<button id="set">설정</button>
+														<button id="noSet">미설정</button>
 														
 													</h4>
 												</div>
 														
 		                                        <div id="managementDiv">
+		                                        
 													    <div class="modal-body">
 														
 															<form name="budgetManageF">
@@ -186,7 +185,8 @@ input {
 							                                       	 <h4><b>목표 지출 한도</b></h4>
 							                                         <input type="text" id="expenseGoal"/>
 											                                                      
-								                                 </form>
+								                              </form>
+								                              
 							                      	    </div>
 							                                
 														<div class="modal-footer">
@@ -200,6 +200,15 @@ input {
 										
 										<script>
 										
+											$("[name=set]").click(function(){
+												console.log("라디오 테스트");
+												
+											});
+										
+											$("#budgetManagement").click(function() {
+												$("div.modal-dialog").slideToggle(250);	
+											});
+										
 											$.ajax({
 												url:"expensePlan.do",
 												dataType:"json",
@@ -209,28 +218,41 @@ input {
 											}).done(function(result) {
 												console.log(result);
 												
-												if(result.goal.planStatus=='y')
-													$("#set").prop("checked",true);
-												else	
-													$("#noSet").prop("checked",true);
-												
-													checkCode();
-											});
-										
-											$("#budgetManagement").click(function() {
-												$("div.modal-dialog").slideToggle(250);	
+												if(result.goal.planStatus=='y'){
+													$("#managementDiv").hide();
+												}	
+// 													$("#set").prop("checked",true);
+												else{
+													$("#managementDiv").show();
+												}	
 											});
 											
 											
-											$("[name=budgetManageCode]").click(function() {
-												checkCode();
+											$("#set").click(function() {
+												$("#managementDiv").show();
+											});
+											
+											
+											$("#noSet").click(function() {
+												$("#managementDiv").hide();
+													
+													$.ajax({
+														url:"regiPlan.do",
+														data:{
+															expensePlanDate : $("#expensePlanDate").val(),
+															planStatus : "n"
+														}
+													}).done(function(result) {
+													});
+													
+												return;
 											});
 											
 											function checkCode(){
 											   
 												  $("[name=budgetManageCode]").each(function() {
 														
-														if(this.checked && this.value == 0){
+													  if(this.checked && this.value == 0){
 																$("#managementDiv").show();
 																return;
 															}
@@ -249,13 +271,11 @@ input {
 		 													return;
 		 												}
 													});
-												
 											  }
 											
 											
 											
 											$("#registerPlan").click(function() {
-												
 												if($("#expenseGoal").val()=="") {
 													alert("금액을 입력하세요.");
 													return;
@@ -270,10 +290,13 @@ input {
 													}
 												}).done(function(result) {
 													alert("등록완료");
+// 													$("#set").prop("disabled",true);
+// 													$("#noSet").prop("disabled",false);
+// 													$("#noSet").prop("checked",true);
+													$("#managementDiv").hide();
 												});
 												
 											});
-											
 											
 										</script>
                              
@@ -287,7 +310,6 @@ input {
 	    												location.href="makeExcel.do";
 	    						                   	});
                                          	  </script>
-                                         	  
                                          </div>
                                      </div>
                              </div>
