@@ -1,29 +1,41 @@
-console.log("scheduleMain.js 로드됨...!!");
-
-//----- datePicker -----------------------------------------------------------
-
-//$( document ).on( "pagecreate", function(event) {
-//	console.log("mobi activate")
-//    var picker = $( "input[type='mobi']", this );
-//    picker.mobipick();
-//});
-//
-//picker.on( "change", function() {
-//    var date = $( this ).val();
-//    var dateObject = $( this ).mobipick( "option", "date" );
-//});
-//
-//var mpFrom = $( ".min-date" ).mobipick();
-//var mpTo   = $( ".max-date" ).mobipick();
-//mpFrom.on( "change", function() {
-//    mpTo.mobipick( "option", "minDate", mpFrom.mobipick( "option", "date" ) );
-//});
-//mpTo.on( "change", function() {
-//    mpFrom.mobipick( "option", "maxDate", mpTo.mobipick( "option", "date" ) );
-//});
+console.log("scheduleCalendar.js 로드됨...");
 
 
 //----- schedule ---------------------------------------------------------------------------------------------
+
+$(document).ready(function() {
+	console.log("달력용 스케줄 호출")
+	$.ajax({
+		url : "/b90ft4/schedule/scheduleCalendar.json",
+		type: "POST",
+		dataType: "json",
+	}).done(fullCal);
+});
+
+//----- calendar ---------------------------------------------------------------------------------------------
+function fullCal(result) {
+	var sList = result['scheduleList'];
+	console.dir(sList)
+	var calObj = [];
+	for(var i = 0 ; i < sList.length ; i++){
+		console.log(sList[i]);
+		calObj.push(sList[i])
+	}
+	
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay,listWeek'
+		},
+		defaultDate: new Date(),
+		navLinks: true,
+		editable: true,
+		eventLimit: true,
+		events: sList
+	});
+	
+};
 
 //----- 좌측 스케줄 리스트로부터 선택된 스케줄 detail 값 받아오기 -------------------------------------------------------------
 function goDetail(sNo){
@@ -354,18 +366,4 @@ function scheduleForm(form){
 };
 
 
-function swTest(){
-	swal({
-		  title: "정말 삭제하시겠습니까?",
-		  text: "선택한 스케줄이 삭제됩니다",
-		  type: "warning",
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "삭제",
-		  closeOnConfirm: false
-		},
-		function(){
-				swal("삭제", "스케줄이 삭제되었습니다", "success");
-			});
-}
 

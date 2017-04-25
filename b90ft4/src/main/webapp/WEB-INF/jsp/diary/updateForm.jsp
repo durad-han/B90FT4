@@ -213,6 +213,80 @@
 			 		</div>
 			 	</td>
 			</tr>
+							<!-- 날씨정보 입력 -->
+			<tr>
+				<td class="td-txt-right td-wp8">날씨</td>
+			 	<td>
+			 		<div class="form-group">
+			 			<input type='radio' id="sunny" name='weatherCode' value='1' checked />
+			 			<label for="sunny"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg"/>
+			 			</label>
+			 			
+			 			<input type='radio' id="cloud" name='weatherCode' value='2' />
+			 			<label for="cloud"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg"/>
+			 			</label>
+
+			 			<input type='radio' id="rain" name='weatherCode' value='3' />
+			 			<label for="rain"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg"/>
+						</label>
+
+			 			<input type='radio' id="snow" name='weatherCode' value='4' />
+			 			<label for="snow"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg"/>
+			 			</label>
+
+			 			<input type='radio' id="hail" name='weatherCode' value='5' />
+			 			<label for="hail"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg"/>
+			 			</label>
+			 			
+			 		</div>
+			 	</td>
+			</tr>
+			
+			<!-- emotion -->
+			<tr>
+				<td class="td-txt-right td-wp8">상태</td>
+			 	<td>
+			 		<div class="form-group">
+			 			<input type='radio' id="superHappy" name='emotionCode' value='1' checked/>
+			 			<label for="superHappy"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg"/>
+			 			</label>
+			 			
+			 			<input type='radio' id="happy" name='emotionCode' value='2' />
+			 			<label for="happy"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/happy.jpg"/>
+			 			</label>
+			 			
+			 			<input type='radio' id="enjoy" name='emotionCode' value='3' />
+			 			<label for="enjoy"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg"/>
+						</label>
+			 			<input type='radio' id="sad" name='emotionCode' value='4' />
+			 			<label for="sad"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sad.jpg"/>
+			 			</label>
+			 			<input type='radio' id="angry" name='emotionCode' value='5' />
+			 			<label for="angry"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/angry.jpg"/>
+			 			</label>
+			 			<input type='radio' id="despair" name='emotionCode' value='6' />
+			 			<label for="despair"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/despair.jpg"/>
+			 			</label>
+			 			<input type='radio' id="sulk" name='emotionCode' value='7' />
+			 			<label for="sulk"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg"/>
+			 			</label>
+			 		</div>
+			 	</td>
+			</tr>
+			
+			<!-- content -->
 			<tr>
 				<td class="td-txt-right td-wp10">내용</td>
 			 	<td><div class="form-group">

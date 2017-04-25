@@ -30,8 +30,9 @@ delete  from tb_Sam_Diary
 
 
 alter table tb_Sam_diary
-add column Reg_Date datetime default now()
+add column content content varchar(3000) not null;
 
+ ALTER TABLE tb_Sam_diary DROP content, ADD content VARCHAR(3000);
 
 drop table tb_sam_diary
 

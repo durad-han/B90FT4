@@ -29,6 +29,15 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
  	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+/* table { */
+/*  	width:80% !important; */
+/*  	margin: 0 auto; */
+/* } */
+table td{
+	color:black !important;
+}
+</style>
 
 </head>
 <body>
@@ -184,14 +193,84 @@
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
 						<div class="page-content">
-						<table class="tb">
-						<tr class="ttop" >
-						 	<td><c:out value="${diaryVO.title}"/></td>
-						 	<td><fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
-						</tr>
-						<tr class="content">
-						 	<td colspan="2">${diaryVO.content}</td>
-						</tr>
+					
+						<table style="width:80% !important;height: 100% !important;margin-left: 10% !important;">
+								
+								<tr>
+								
+										  <td style="text-align:center !important;">
+										  <span style="font-size: 80px; !important;margin-right: 600px !important;">
+										  	<b><c:out value="${diaryVO.title}"/></b>
+										  </span>
+								</tr>
+								
+								<tr>
+								
+									<td colspan="3" style="text-align:right !important;">
+										 <c:choose>
+											
+												<c:when test="${diaryVO.emotionCode eq 1}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 2}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/happy.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 3}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 4}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sad.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 5}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/angry.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 6}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/despair.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.emotionCode eq 7}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg" />
+												</c:when>
+											
+											</c:choose>
+											
+											 <c:choose>
+												<c:when test="${diaryVO.weatherCode eq 1}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.weatherCode eq 2}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.weatherCode eq 3}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.weatherCode eq 4}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg" />
+												</c:when>
+												
+												<c:when test="${diaryVO.weatherCode eq 5}">
+													<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg" />
+												</c:when>
+											</c:choose>	
+									 			
+								 			<fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" />
+								 			
+								 		</td>
+								
+								</tr>
+		                                
+								<tr>
+								 	<td colspan="3">${diaryVO.content}</td>
+								</tr>
+								
 						</table>
 						
 						<div class="row">
@@ -278,7 +357,6 @@
 <%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script> --%>
 
     <!--CORE JAVASCRIPT-->
-    <script src="script/main.js"></script>
    
 
 

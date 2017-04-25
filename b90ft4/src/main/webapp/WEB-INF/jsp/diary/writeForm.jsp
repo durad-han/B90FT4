@@ -429,7 +429,6 @@
     			}).done(function(result) {
     				console.log("result",result);
     			});
-    			
     		}
     		
     		// 옮길 이미지 ajax
