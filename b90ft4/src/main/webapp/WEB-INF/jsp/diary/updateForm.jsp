@@ -43,89 +43,53 @@
 }
 </style>
 </head>
-<body>
-    <div>
-        <!--BEGIN THEME SETTING-->
-        <div id="theme-setting">
-            <div class="content-theme-setting">
-                <select id="list-style" class="form-control">
-                    <option value="style1">Flat Squared style</option>
-                    <option value="style2">Flat Rounded style</option>
-                    <option value="style3" selected="selected">Flat Border style</option>
-                </select>
-            </div>
-        </div>
-        <!--END THEME SETTING-->
-        <!--BEGIN BACK TO TOP-->
-        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
-        <!--END BACK TO TOP-->
-        <!--BEGIN TOPBAR-->
-        <div id="header-topbar-option-demo" class="page-header-topbar">
-            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
-            <div class="navbar-header">
-                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
-                </div>
-                <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-                                 <ul class="nav navbar-nav">
-                                 <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-                                     <li class="active"><a href="#">메인</a></li>
-                                     <li><a href="#">스케쥴</a></li>
-                                     <li><a href="#">다이어리</a></li>
-                                     <li><a href="#">가계부</a></li>
-                                     <li><a href="#">운동</a></li>
-                                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운<b class="caret"></b></a>
-                                         <ul class="dropdown-menu">
-                                             <li><a href="#">Action</a></li>
-                                             <li><a href="#">Another action</a></li>
-                                             <li><a href="#">Something else here</a></li>
-                                             <li class="divider"></li>
-                                             <li><a href="#">Separated link</a></li>
-                                             <li class="divider"></li>
-                                             <li><a href="#">One more separated link</a></li>
-                                         </ul>
-                                     </li>
-                                 </ul>
-                                 <ul class="nav navbar-nav navbar-right">
-                                     <li><a href="#">Link</a></li>
-                                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<b class="caret"></b></a>
-                                         <ul class="dropdown-menu">
-                                             <li><a href="#">Action</a></li>
-                                             <li><a href="#">Another action</a></li>
-                                             <li><a href="#">Something else here</a></li>
-                                             <li class="divider"></li>
-                                             <li><a href="#">Separated link</a></li>
-                                         </ul>
-                                     </li>
-                                 </ul>
-                             </div>     
-        </nav>
-                          
-        </div>
-            <!--END TOPBAR-->
+<div>
+<!-- 위로가기 ==================================================================================================== -->
+	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
         
-            <!--BEGIN MODAL CONFIG PORTLET-->
-            <div id="modal-config" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
-                                &times;</button>
-                            <h4 class="modal-title">
-                                Modal title</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-default">
-                                Close</button>
-                            <button type="button" class="btn btn-primary">
-                                Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--END MODAL CONFIG PORTLET-->
-        </div>
-        <!--END TOPBAR-->
+<!-- 상단 메뉴 시작 ==================================================================================================== -->
+<div id="header-topbar-option-demo" class="page-header-topbar">
+    <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+	<div class="navbar-header">
+	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only"> toggle </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+	    <a id="logo" href="../main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
+	        </div>
+	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+<!-- 메뉴 옵션들 ==================================================================================================== -->
+              <ul class="nav navbar-nav">
+              <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
+                  <li class="active"><a href="../main/main.do">메인</a></li>
+                  <li class="dropdown"><a href="scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      	  <li><a href="scheduleList.do">스케줄 리스트</a></li>
+                          <li><a href="scheduleCalendar.do">스케줄 캘린더</a></li>
+                          <li><a href="scheduleGraph.do">스케줄 그래프</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">임시메뉴</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="../diary/list.do">다이어리</a></li>
+                  <li><a href="../accountBook/main.do">가계부</a></li>
+                  <li><a href="../workout/workout.do">운동</a></li>
+              </ul>
+<!-- 로그인 & 메모 ==================================================================================================== -->
+              <ul class="nav navbar-nav navbar-right">
+              	<li><a href="#callModal">Login</a></li>
+				<li style='margin-right: 20px;'>
+                <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked/>
+					<label for='showAndHideMemo'>메모 보기</label>
+                </li>
+                <li>
+	                <div id="addMemo">
+						<button><img src="icon_add_stickynote.gif" />메모 추가</button>
+					</div>
+                </li>
+              </ul>
+    </div>     
+	</nav>
+</div>
+<!-- 상단메뉴 종료 ==================================================================================================== -->
+
         <div id="wrapper">
             <!--BEGIN SIDEBAR MENU-->
              <div id="wrapper">

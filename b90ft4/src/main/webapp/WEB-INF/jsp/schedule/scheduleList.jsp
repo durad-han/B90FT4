@@ -20,37 +20,25 @@
     <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
 	<div class="navbar-header">
 	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only"> toggle </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-	    <a id="logo" href="localhost:9090/b90ft4/main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
+	    <a id="logo" href="../main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
 	        </div>
 	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+<!-- 메뉴 옵션들 ==================================================================================================== -->
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-<!-- 메뉴 옵션들 ==================================================================================================== -->
-                  <li class="active"><a href="localhost:9090/b90ft4/main/main.do">메인</a></li>
-                  <li class="dropdown"><a href="localhost:9090/b90ft4/schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
+                  <li class="active"><a href="../main/main.do">메인</a></li>
+                  <li class="dropdown"><a href="scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                      	  <li><a href="localhost:9090/b90ft4/schedule/scheduleList.do">스케줄 리스트</a></li>
-                          <li><a href="localhost:9090/b90ft4/schedule/scheduleCalendar.do">스케줄 캘린더</a></li>
-                          <li><a href="localhost:9090/b90ft4/schedule/scheduleGraph.do">스케줄 그래프</a></li>
+                      	  <li><a href="scheduleList.do">스케줄 리스트</a></li>
+                          <li><a href="scheduleCalendar.do">스케줄 캘린더</a></li>
+                          <li><a href="scheduleGraph.do">스케줄 그래프</a></li>
                           <li class="divider"></li>
                           <li><a href="#">임시메뉴</a></li>
                       </ul>
                   </li>
-                  <li><a href="localhost:9090/b90ft4/diary/list.do">다이어리</a></li>
-                  <li><a href="localhost:9090/b90ft4/accountBook/main.do">가계부</a></li>
-                  <li><a href="localhost:9090/b90ft4/workout/workout.do">운동</a></li>
-<!-- 미사용 드롭다운 샘플 ==================================================================================================== -->
-                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">드롭다운 샘플<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">One more separated link</a></li>
-                      </ul>
-                  </li>
+                  <li><a href="../diary/list.do">다이어리</a></li>
+                  <li><a href="../accountBook/main.do">가계부</a></li>
+                  <li><a href="../workout/workout.do">운동</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
               <ul class="nav navbar-nav navbar-right">
@@ -74,8 +62,7 @@
 <div id="wrapper">
 
 <!-- 서브메뉴 시작 ==================================================================================================== -->
-    <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
-        data-position="right" class="navbar-default navbar-static-side">
+    <nav id="sidebar" role="navigation" class="navbar-default navbar-static-side">
     <div class="sidebar-collapse menu-scroll">
         <ul id="side-menu" class="nav">
             <div class="clearfix"></div>
