@@ -32,6 +32,7 @@ tbody#expense tr.expenseInfo:hover{
 tbody#income tr.incomeInfo:hover{
 	background:pink;
 }
+
 #budgetPlanDiv input{
 	text-align: center;
 	font-weight: bold;
@@ -123,10 +124,10 @@ tbody#income tr.incomeInfo:hover{
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/accountBook/budget.do"><i class="fa fa-fw">
+<%--                     <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw"> --%>
+<!--                         <div class="icon-bg bg-orange"></div> -->
+<!--                     </i><span class="menu-title">전체</span></a></li> -->
+                    <li class="active" ><a href="${pageContext.request.contextPath}/accountBook/budget.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">지출/수입</span></a>
                        
@@ -188,8 +189,11 @@ tbody#income tr.incomeInfo:hover{
                 		<br><br>
                 		
                 			<div id="generalTabContent" class="tab-content responsive">
-			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto">
-										   <div class="panel panel-green" id="expenseTable">
+			                      
+			                       <div id="alert-tab" class="tab-pane fade in active" style="height:500px;overflow: auto;">
+										  
+										  <div class="panel panel-green" id="expenseTable" ">
+						                           
 						                            <div class="panel-heading">지출</div>
 						                            <div class="panel-body">
 						                                <table class="table table-hover-color">
@@ -206,13 +210,16 @@ tbody#income tr.incomeInfo:hover{
 						                                    </tbody>
 						                                </table>
 						                            </div>
+						                            
 						                   </div>
+						                   
 										   <div id="expenseDiv" style='display: none;width: 100%;height: 200px;'>			                       
 				                		   </div>
 				                		   <br><br>
 				                		   <div id="incomeDiv" style='display: none;width: 100%;height: 200px;'>			                       
-				                		   </div>
-			                	   </div>
+				                	       </div>
+				                	       
+			                 	    </div>
 			                				
 	                            	<div id="note-tab" class="tab-pane fade" style="height:500px;overflow: auto;">
 										   <div class="panel panel-yellow" id="incomeTable">
@@ -358,11 +365,11 @@ tbody#income tr.incomeInfo:hover{
 			                      	   </div>
 			                                
 									<div class="modal-footer">
-										<button type="button" id="updateBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">수정</button>
+										<button type="button" id="updateBudget" class="btn btn-success btn-simple" style = "display:none;">수정</button>
 										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">삭제</button>
 										
-										<button type="button" id="budgetRegi">등록</button>
-										<button type="button" id="closeF" 	    class="btn btn-success btn-simple" data-dismiss="modal">닫기</button>
+										<button type="button" id="budgetRegi"   class="btn btn-success btn-simple">등록</button>
+										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
 									
 								</div>

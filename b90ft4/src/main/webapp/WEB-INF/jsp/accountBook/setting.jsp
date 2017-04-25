@@ -90,9 +90,9 @@ input {
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
+<%--                     <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw"> --%>
+<!--                         <div class="icon-bg bg-orange"></div> -->
+<!--                     </i><span class="menu-title">전체</span></a></li> -->
                     <li><a href="${pageContext.request.contextPath}/accountBook/budget.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">지출/수입</span></a>
@@ -102,7 +102,7 @@ input {
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">대입금/차입금</span></a>
                     </li>
-                    <li><a href="setting.do"><i class="fa fa-fw">
+                    <li class="active" ><a href="setting.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-violet"></div>
                     </i><span class="menu-title">설정</span></a>
                       
@@ -275,11 +275,6 @@ input {
 											});
 											
 											
-											
-										   	$("button#getBook").click(function () {
-												location.href="makeExcel.do";
-						                   	});
-											
 										</script>
                              
                            	
@@ -287,6 +282,12 @@ input {
                                      <div class="page-header" style='width:30%;margin: 0 auto'>
                                          <div class="page-title mrm">
                                               <button type="button" id="getBook" style='width:500px;text-align:center;'>엑셀로 가계부 받기</button>
+                                         	  <script>
+	                                         		$("button#getBook").click(function () {
+	    												location.href="makeExcel.do";
+	    						                   	});
+                                         	  </script>
+                                         	  
                                          </div>
                                      </div>
                              </div>

@@ -10,12 +10,14 @@
 /* 	background-color: black; */
 } 
 
-tbody#expense tr.expenseInfo:hover{
+tr.bondInfo:hover{
 	background:skyblue;
 }
 tbody#income tr.incomeInfo:hover{
 	background:pink;
 }
+
+
 
 </style>
 <meta charset="UTF-8">
@@ -101,15 +103,15 @@ tbody#income tr.incomeInfo:hover{
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
+<%--                     <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw"> --%>
+<!--                         <div class="icon-bg bg-orange"></div> -->
+<!--                     </i><span class="menu-title">전체</span></a></li> -->
                     <li><a href="${pageContext.request.contextPath}/accountBook/budget.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">지출/수입</span></a>
                        
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/accountBook/loanDept.do"><i class="fa fa-fw">
+                    <li class="active" ><a href="${pageContext.request.contextPath}/accountBook/loanDept.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">대입금/차입금</span></a>
                     </li>
@@ -290,10 +292,10 @@ tbody#income tr.incomeInfo:hover{
 			                      	   </div>
 			                                
 									<div class="modal-footer">
-										<button type="button" id="updateBond" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">수정</button>
+										<button type="button" id="updateBond" class="btn btn-success btn-simple" style="display:none;">수정</button>
 										<button type="button" id="deleteBond" class="btn btn-danger btn-simple" style="display:none;" data-dismiss="modal">삭제</button>
 										
-										<button type="button" id="regiLoanDept"  class="btn btn-danger btn-simple" data-dismiss="modal">등록</button>
+										<button type="button" id="regiLoanDept"  class="btn btn-success btn-simple">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
 									

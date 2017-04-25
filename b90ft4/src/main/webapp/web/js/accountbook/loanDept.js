@@ -345,15 +345,22 @@
 				loanObj.loanAmount    	 = $(this).children("td:eq(4)").text();
 				
 				// 폼 양식에 id 와 값 셋팅.
-				$("[name=bondF] input:eq(1)").prop("checked",true);
+				$("[name=bondF] input:eq(0)").prop("checked",true);
 				addBondName();
 				
 				$("[name=bondF] input:eq(2)").val(loanObj.debtor);
-				$("[name=bondF] input:eq(3)").val(loanObj.loanAmount);
+			
+				var temp = $(this).children("td:eq(4)").text();
+				temp = temp.replace(",","");
+				temp = temp.replace("원","");
+			
+				$("[name=bondF] input:eq(3)").val(temp);
 				$("[name=bondF] input:eq(4)").val(loanObj.loanContent);
 				$("[name=bondF] input:eq(5)").val(loanObj.loanDate);
 				$("#bondModal").trigger("click");
 				console.log(loanObj);
+			
+			
 			});
 			
 			
@@ -375,7 +382,12 @@
 				addBondName();
 				
 				$("[name=bondF] input:eq(2)").val(debtObj.moneyLender);
-				$("[name=bondF] input:eq(3)").val(debtObj.debtAmount);
+				
+				var temp = $(this).children("td:eq(4)").text();
+				temp = temp.replace(",","");
+				temp = temp.replace("원","");
+				
+				$("[name=bondF] input:eq(3)").val(temp);
 				$("[name=bondF] input:eq(4)").val(debtObj.debtContent);
 				$("[name=bondF] input:eq(5)").val(debtObj.debtDate);
 				$("#bondModal").trigger("click");
@@ -407,11 +419,19 @@
 		$.ajax({
 			url : "regiBond.do",
 			data : params,
-			type: "POST"
+			type: "POST",
+			async:false
 		}).done(function(result) {
 			console.log(result);
 			initForm();
 		});
+		
+		$("#regiLoanDept").attr("data-dismiss","modal");
+		
+		setTimeout(function() {
+			$("#regiLoanDept").removeAttr("data-dismiss");
+		},10);
+		
 		
 	})	
 
@@ -522,7 +542,18 @@
 //			console.log("금액",$("[name=budgetF] input:eq(2)").val());
 //			console.log("금액",$("[name=budgetF] input:eq(2)").attr("name"));
 				
-//			if(isEmpty(eval("f."+$("[name=bondF] input:eq(3)").attr("name")),"금액을 입력하세요")) return;
+			if($("[name=bondF] input:eq(2)").val()==""){
+				if(!bondCodeFordel){
+					alert("빌려간 사람을 입력하세요.")
+				}else{
+					alert("빌려준 사람을 입력하세요.")
+				}
+				return;
+			}
+			if($("[name=bondF] input:eq(3)").val()==""){
+				alert("금액을 입력하세요.")
+				return;
+			}
 			
 			var params = $("[name=bondF]").serialize();
 			console.log("params",params+modNo);
@@ -535,9 +566,15 @@
 				async:false
 			}).done(function(msg){
 //				console.log(msg);
-				initForm();
 			});
 
+			$("#updateBond").attr("data-dismiss","modal");
+			
+			setTimeout(function() {
+				$("#updateBond").removeAttr("data-dismiss");
+				initForm();
+			},10);
+			
 		});
 	}
 

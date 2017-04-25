@@ -654,108 +654,10 @@
 			    
 				
 			    return;
-				
-				/*
-					console.log(result);
-				
-					$("#expenseDiv").empty();
-					$("#incomeDiv").empty();
-					
-					var expenseData = new Array();	
-					var incomeData = new Array();		
-					
-					var expenseSum=0;
-					var incomeSum=0;
-					
-					var expenseMonthBudget = result.expenseMonthBudget;
-					var incomeMonthBudget = result.incomeMonthBudget;
-					
-					var monthExpenseHtml="";
-					var monthIncomeHtml="";
-					
-					var expenseColors = new Array();
-					var incomeColors = new Array();
-					
-					
-					for(var i=0;i<expenseMonthBudget.length;i++) {
-						expenseSum+=expenseMonthBudget[i].eachSum;
-					}	
-			
-					for(var i=0;i<expenseMonthBudget.length;i++) {
-						
-						var obj={};
-						obj.label = expenseMonthBudget[i].expenseCategoryName;
-						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
-						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
-						
-						expenseData.push(obj);
-						
-						var arr=[];
-						arr[0] = expenseMonthBudget[i].expenseCategoryName;
-						
-						
-						arr[1] = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
-						console.log(arr[1]);
-						
-						monthExpenseHtml+="<tr>"
-						monthExpenseHtml+="<td><span class='"+colorChoice(1,expenseMonthBudget[i].expenseCategoryNo)+"'>"+arr[0]+"</span></td>";
-						monthExpenseHtml+="<td>"+expenseMonthBudget[i].eachSum+"</td>";
-						monthExpenseHtml+="</tr>"
-								
-						expenseData.push(arr);
-						expenseColors[i]=colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
-					}	
-					
-					for(var i=0;i<incomeMonthBudget.length;i++) {
-						incomeSum+=incomeMonthBudget[i].eachSum;
-					}	
-					
-					for(var i=0;i<incomeMonthBudget.length;i++) {
-						
-						var arr=[];
-						arr[0] = incomeMonthBudget[i].incomeCategoryName;
-						arr[1] =  Math.round(((incomeMonthBudget[i].eachSum/incomeSum)*1000))/10;
-						incomeData.push(arr);
-						
-						monthIncomeHtml+="<tr>"
-						monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+arr[0]+"</span></td>";
-						monthIncomeHtml+="<td>"+incomeMonthBudget[i].eachSum+"</td>";
-						monthIncomeHtml+="</tr>"
-							
-						incomeColors[i]=colorChoice(2,incomeMonthBudget[i].incomeCategoryNo);	
-					}	
-					
-					
-					console.log("expenseColors",expenseColors);
-					console.log("incomeColors",incomeColors);
-					
-					makePieGraph(expenseData,'expenseDiv','지출',expenseColors);
-					makePieGraph(incomeData,'incomeDiv','수입',incomeColors);
-//					makePieGraph2(expenseData,"지출");
-					
-					
-					monthExpenseHtml+="<tr>"
-					monthExpenseHtml+="<td>합계</td>"
-					monthExpenseHtml+="<td>"+expenseSum+"</td>"
-					monthExpenseHtml+="</tr>"
-						
-					monthIncomeHtml+="<tr>"
-					monthIncomeHtml+="<td>합계</td>"
-					monthIncomeHtml+="<td>"+incomeSum+"</td>"
-					monthIncomeHtml+="</tr>"
-								
-					$("#monthExpense").html(monthExpenseHtml);
-					$("#monthIncome").html(monthIncomeHtml);
-					
-					$("#monthBudgteTable").show();
-					
-				return;
-				 */
+		
 			}
 			
 			// 일 , 주에 대한 지출/수입 테이블 작성
-			
-//			console.log(result);
 			
 			var expense = result.expense;
 			var income = result.income;
@@ -1080,7 +982,7 @@
 			console.log("금액",$("[name=budgetF] input:eq(2)").val());
 			console.log("금액",$("[name=budgetF] input:eq(2)").attr("name"));
 				
-//			if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
+			if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
 			
 			var params = $("[name=budgetF]").serialize();
 			console.log("params+modNo",params+modNo);
@@ -1093,8 +995,16 @@
 				async:false
 			}).done(function(msg){
 //				console.log(msg);
-				initForm(selectedDateOption);
 			});
+
+			
+			$("#updateBudget").attr("data-dismiss","modal");
+			
+			setTimeout(function() {
+				$("#updateBudget").removeAttr("data-dismiss");
+				initForm(selectedDateOption);
+			},10);
+			
 			
 		});
 	}

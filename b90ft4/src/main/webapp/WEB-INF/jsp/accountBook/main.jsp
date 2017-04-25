@@ -91,9 +91,9 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
+<%--                     <li class="active"><a href="${pageContext.request.contextPath}/accountBook/main.do"><i class="fa fa-fw"> --%>
+<!--                         <div class="icon-bg bg-orange"></div> -->
+<!--                     </i><span class="menu-title">전체</span></a></li> -->
                     <li><a href="${pageContext.request.contextPath}/accountBook/budget.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">지출/수입</span></a>
