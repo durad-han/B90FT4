@@ -66,6 +66,7 @@ table td {
                   <li><a href="../diary/list.do">다이어리</a></li>
                   <li><a href="../accountBook/budget.do">가계부</a></li>
                   <li><a href="../workout/workout.do">운동</a></li>
+                  <li><a href="../main/news.do">뉴스</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
               <ul class="nav navbar-nav navbar-right">

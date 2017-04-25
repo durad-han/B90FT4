@@ -60,6 +60,7 @@
                   <li><a href="../diary/list.do">다이어리</a></li>
                   <li><a href="../accountBook/budget.do">가계부</a></li>
                   <li><a href="../workout/workout.do">운동</a></li>
+                  <li><a href="../main/news.do">뉴스</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
               <ul class="nav navbar-nav navbar-right">
@@ -89,7 +90,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashboard.html"><i class="fa fa-fw">
+                    <li class="active"><a href="../main/main.do"><i class="fa fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">전체</span></a></li>
                     <li><a href="Layout.html"><i class="fa fa-fw">
