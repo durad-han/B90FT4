@@ -25,6 +25,17 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/jplist.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+<style>
+table td {
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+	border: 1px solid black;
+}
+table td{
+}
+</style>
 </head>
 <body>
     <div>
@@ -111,86 +122,51 @@
             <!--END MODAL CONFIG PORTLET-->
         </div>
         <!--END TOPBAR-->
-        <div id="wrapper">
-            <!--BEGIN SIDEBAR MENU-->
-             <div id="wrapper">
+        
+    <div id="wrapper">
             <!--BEGIN SIDEBAR MENU-->
             <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                 data-position="right" class="navbar-default navbar-static-side">
             <div class="sidebar-collapse menu-scroll">
                 <ul id="side-menu" class="nav">
-                    
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashboard.html"><i class="fa fa-fw">
+                    <li><a href="dashboard.html"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-fw">
+                    </i><span class="menu-title">일기</span></a>
+                    </li>
+                    <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
+                    </i><span class="menu-title">Layouts</span></a>
                     </li>
-                    <li><a href="UIElements.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Forms.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Tables.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">기능</span></a>
-                          
-                    </li>
-                    <li><a href="DataGrid.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                   
                 </ul>
             </div>
         </nav>
+          
+          
             <div id="page-wrapper">
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">
-                            다이어리</div>
+                            Data Grid</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="hidden"><a href="#">다이어리</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="active">다이어리</li>
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="hidden"><a href="#">Data Grid</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="active">Data Grid</li>
                     </ol>
                     <div class="clearfix">
                     </div>
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
-                <div class="page-content" style='background:url("${pageContext.request.contextPath}/web/image/diary/background1.jpg") no-repeat;background-size:100% 100%'>
-                     <div id="tab-general">
+                <div class="page-content">
+                    <div id="tab-general">
                         <div class="row mbl">
-                        <table style="width: 100%;">
-                        <tr>
-                        <td>
-                        
                             <div class="col-lg-12">
                                 
-                                            <div class="col-md-7">
-                                                <div id="area-chart-spline" style="width: 100%; text-align: center; height: 300px; display: none;">
+                                            <div class="col-md-12">
+                                                <div id="area-chart-spline" style="width: 100%; height: 300px; display: none;">
                                                 </div>
                                             </div>
                                 
@@ -199,45 +175,68 @@
                             <div class="col-lg-12">
                             
                             <div class="page-content">
-				                <div class="row">
-				                    <div class="col-lg-12">
-				                        <div class="panel">
-				                            <div class="panel-body">
-				                                <div id="grid-layout-table-1" class="box jplist">
-				                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
-				                                    <div align="right">
-				                                    	전체 <c:out value="${pageResult.count}"/>개
-													</div>                                    
-				                                    <div style="display: none;" class="jplist-panel box panel-top">
-				                                        
-				                                        
-				                                        <div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
-				                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
-				                                    </div>
-				                                    <div class="box text-shadow">
-				                                        <table class="demo-tbl"><!--<item>1</item>-->
-				                                        <c:forEach var="diary" items="${list}">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div id="grid-layout-table-1" class="box jplist">
+                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+                                    <div class="jplist-panel box panel-top">
+                                        <button type="button" data-control-type="reset" data-control-name="reset" data-control-action="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
+                                        <div style="display: none;">
+                                        <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" class="jplist-drop-down form-control">
+                                            <ul class="dropdown-menu">
+                                                <li><span data-number="3"> 3 per page</span></li>
+                                                <li><span data-number="5"> 5 per page</span></li>
+                                                <li><span data-number="10" data-default="true"> 10 per page</span></li>
+                                                <li><span data-number="all"> view all</span></li>
+                                            </ul>
+                                        </div>
+                                        <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
+                                            <ul class="dropdown-menu">
+                                                <li><span data-path="default">Sort by</span></li>
+                                                <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+                                                <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+                                                <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+                                                <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+                 
+                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+                                                <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+                                                <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="text-filter-box">
+                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div>
+                                        </div>
+                                        <div class="text-filter-box">
+                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div>
+                                        </div>
+                                        <div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
+                                        </div>
+                                    </div>
+                                    <div class="box text-shadow">
+                                        <table class="demo-tbl"><!--<item>1</item>-->
+                                            
+                                            <tr style='display:none;' class="tbl-item"><!--<img/>-->
+                                                <td class="img"><img src="images/thumbs/arch-1.jpg" alt="" title=""/></td>
+                                                <!--<data></data>-->
+                                                <td class="td-block"><p class="date">03/15/2012</p>
+
+                                                    <p class="title">Arch</p>
+
+                                                    <p class="desc">An arch is a structure that spans a space and supports a load. Arches appeared as early as the 2nd millennium BC in Mesopotamian brick architecture and their systematic use started with the Ancient Romans who were the first to apply the technique to a wide range of structures.</p>
+
+                                                    <p class="like">5 Likes</p></td>
+                                            </tr>
+                                            
+                                             <c:forEach var="diary" items="${list}"> 
 				                                            <tr class="tbl-item">
-				                                            
-				                                            
-				                                            	<tr class="tbl-item"><!--<img/>-->
-					                                                <td class="img"><img src="images/thumbs/arch-1.jpg" alt="" title=""/></td>
-					                                                <!--<data></data>-->
-					                                                <td class="td-block"><p class="date">03/15/2012</p>
-					
-					                                                    <p class="title">Arch</p>
-					
-					                                                    <p class="desc">An arch is a structure that spans a space and supports a load. Arches appeared as early as the 2nd millennium BC in Mesopotamian brick architecture and their systematic use started with the Ancient Romans who were the first to apply the technique to a wide range of structures.</p>
-					
-					                                                    <p class="like">5 Likes</p></td>
-					                                            </tr>
-					                                            
-					                                            
-				                                            	<!--<img/>-->
-				                                            	<td style="width:150px;">
+				                                            	<td class="img" style="width:150px;">
 																	<c:choose>
 																		<c:when test="${diary.emotionCode eq 1}">
-																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superHappy.jpg" />
+																			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg" />
 																		</c:when>
 																		
 																		<c:when test="${diary.emotionCode eq 2}">
@@ -267,13 +266,12 @@
 																	</c:choose>				                                            		
 				                                            		
 				                                            	</td>
-				                                                <!--<data></data>-->
 				                                                <td class="td-block">
 				                                                <p class="date"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></p>
 				
-				                                                    <p class="title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
+				                                                    <p class="title" style="font-size:40px;color:blue;"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></p>
 				
-<%-- 				                                                    <p class="desc"><c:out value="${diary.content}"/></p> --%>
+				                                                    <p class="desc">
 				                                                    <p class="weather">
 				                                                    <c:choose>
 																		<c:when test="${diary.weatherCode eq 1}">
@@ -300,59 +298,45 @@
 																</td>
 				                                            </tr>
 				                                        </c:forEach>
-				                                            
-				                                        </table>
-				                                    </div>
-				                                    <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
-				                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
-				                                    <div class="jplist-panel box panel-bottom">
-				                                        <div class="text-filter-box">
-				                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div>
-				                                        </div>
-				                                        <div class="text-filter-box">
-				                                            <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div>
-				                                        </div>
-				                                        <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
-				                                            <ul class="dropdown-menu">
-				                                                <li><span data-number="10" data-default="true"> 10 per page</span></li>
-				                                                <li><span data-number="all"> view all</span></li>
-				                                            </ul>
-				                                        </div>
-				                                        <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
-				                                            <ul class="dropdown-menu">
-				                                                <li><span data-path="default">Sort by</span></li>
-				                                                <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
-				                                                <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
-				                                                <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
-				                                                <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
-				                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
-				                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
-				                                                <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
-				                                                <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
-				                                            </ul>
-				                                        </div>
-				                                        <br><p></p><br>
-				                                        <div id="paging" align="center">
-				                                        	<div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
-				                                    		<div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
-				                                        </div>
-				                                        <div align="right">
-				                                    	<a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
-				                                        </div>
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                    </div>
-				                </div>
-				            </div>
+                                        </table>
+                                    </div>
+                                    <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
+                                    <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+                                    <div class="jplist-panel box panel-bottom">
+                                        <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
+                                            <ul class="dropdown-menu">
+                                                <li><span data-number="3"> 3 per page</span></li>
+                                                <li><span data-number="5"> 5 per page</span></li>
+                                                <li><span data-number="10" data-default="true"> 10 per page</span></li>
+                                                <li><span data-number="all"> view all</span></li>
+                                            </ul>
+                                                <a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
+                                        </div>
+                                        <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
+                                            <ul class="dropdown-menu">
+                                                <li><span data-path="default">Sort by</span></li>
+                                                <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+                                                <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+                                                <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+                                                <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+                                                <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+                                                <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+                                            </ul>
+                                        </div>
+                                        <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+                                        <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
+                                    </div>
+                                </div>
                             </div>
-                            </td>
-<!--                             <td> -->
-<!--                             <div id="datepicker"></div> -->
-<!--                         	</td> -->
-                        </tr>
-                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -366,7 +350,6 @@
             </div>
             <!--END PAGE WRAPPER-->
         </div>
-    </div>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script>
