@@ -17,7 +17,7 @@ function fullCal(result) {
 	var sList = result['scheduleList'];
 	console.dir(sList)
 	var calObj = [];
-	for(var i = 0 ; i <= sList.length ; i++){
+	for(var i = 0 ; i < sList.length ; i++){
 		console.log(sList[i]);
 		calObj.push(sList[i])
 	}
@@ -26,7 +26,7 @@ function fullCal(result) {
 		header: {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month,agendaWeek,listWeek'
+			right: 'month,agendaWeek,agendaDay,listWeek'
 		},
 		defaultDate: new Date(),
 		navLinks: true,

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-console.log("calendarInclude.jsp 로드됨...");
 
 <!-- 공지 ==================================================================================================== -->
 <script src="${pageContext.request.contextPath}/web/js/schedule/notify.js"></script>
@@ -21,10 +20,10 @@ console.log("calendarInclude.jsp 로드됨...");
 <script src="${pageContext.request.contextPath}/web/js/schedule/moment.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/schedule/fullcalendar.min.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/fullcalendar.min.css"/>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/fullcalendar.print.min.css"/>
+<link type="text/css" rel="stylesheet" media='print' href="${pageContext.request.contextPath}/web/css/schedule/fullcalendar.print.min.css"/>
 <!-- 달력 ==================================================================================================== -->
 
 
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleCalendar.css"/>
+<%-- <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleCalendar.css"/> --%>
 <script src="${pageContext.request.contextPath}/web/js/schedule/scheduleCalendar.js"></script>
