@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src =../../bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js></script>
+</head>
+<body>
+<div id = 'timerContainer'>
+	남은시간:
+	</div>
+<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
+<script type="text/javascript">
+var timerId = 0;
+var timerEnd = 0; 
+var gvTypeBTime = 5;
+var nextSet = 2;
+var gvIsLast = false;
+var gvIntervalTime = 20;
+var timerHtml = "남은시간 : "+(gvTypeBTime-timerEnd)+"초";
+$('#timerContainer').html(timerHtml);
+function timerViewSet(){
+	timerHtml = "남은시간 : "+(gvTypeBTime-timerEnd)+"초";
+	$('#timerContainer').html(timerHtml);	
+};
+function typeBStart(){
+	console.log("typeBStart load");
+	gvTypeBTime = 5;
+	timerEnd = 0;
+	timerViewSet();
+	
+timerId = setInterval(function(){
+	timerEnd++;
+	timerViewSet();
+	console.log(timerEnd);
+	if(gvIsLast){
+			timerViewSet();
+		  alert("마지막 세트입니다.");
+		  clearInterval(timerId);
+  	}
+	else if(timerEnd == gvTypeBTime){
+		console.log("clearInterval load");
+		clearInterval(timerId);
+		timerViewSet();
+		alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+		 console.log("nextSetload");
+	}
+	
+},1000); 
+}
+
+
+</script>
+</body>
+</html>

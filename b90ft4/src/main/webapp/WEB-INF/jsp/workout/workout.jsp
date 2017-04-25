@@ -204,7 +204,7 @@
 							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
-					
+					<li><a id="currentSet">현재 세트 :</a></li>
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->

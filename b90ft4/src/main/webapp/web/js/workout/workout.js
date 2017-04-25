@@ -264,6 +264,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	 gvIsLast = isLast;
 	 gvSetIndex = setIndex;
 	console.log("workoutTypeLoad function started");
+	$("#currentSet").html("현재 세트 : "+gvSetIndex);
 	var type="";
 	if(typeACount != 0){
 		type = "A";

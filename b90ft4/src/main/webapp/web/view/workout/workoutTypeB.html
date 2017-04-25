@@ -26,10 +26,10 @@
 	</div>
 </div>
 <script type="text/javascript">
+var nextSet = gvSetIndex+1;
 
 //이미지 슬라이드 가져오기
 function imgSetLoad(){
-	var nextSet = gvSetIndex+1;
 	console.log("nextSet : "+nextSet);
 	var html = "이번 세트 운동시간 : "+gvTypeBTime+"초"+
 				"<br>이번 세트 휴식시간 : "+gvIntervalTime+"초"+
@@ -52,36 +52,46 @@ function imgSetLoad(){
 imgSetLoad();
 
 //typeB 관련 함수
+
 $("#videoCloseBtn").addClass("hidden");
 $("#youtubeCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
 
 //운동 시작 관련 함수
+var timerHtml = "남은시간 : "+(gvTypeBTime-timerEnd)+"초";
+$('#timerContainer').html(timerHtml);
+function timerViewSet(){
+	timerHtml = "남은시간 : "+(gvTypeBTime-timerEnd)+"초";
+	$('#timerContainer').html(timerHtml);	
+};
 function typeBStart(){
 	console.log("typeBStart load");
-	var timerId = 0;
-	var timerEnd = 0; 
+	//gvTypeBTime = 5;
+	timerEnd = 0;
+	timerViewSet();
+	
+timerId = setInterval(function(){
+	timerEnd++;
+	timerViewSet();
+	console.log(timerEnd);			
+	console.log(gvIsLast);
 
-	 
-	timerId = setInterval(function(){
-		console.log("setInterval load");
-		var timerHtml = "남은시간 : "+(timerEnd-gvTypeBTime)+"초";
-		$('#timerContainer').html(timerHtml);
-		timerEnd++;
-		console.log(timerEnd);
-    	if(gvIsLast){
-    		  alert("마지막 세트입니다.");
-    		  clearInterval(timerId);
-      	}
-    	else if(timerEnd == gvTypeBTime){
+	if(timerEnd == gvTypeBTime){
+		if(gvIsLast){
+			timerViewSet();
+			alert("마지막 세트입니다.");
+			//디비에 소모칼로리 보내는 기능 추가하기**
 			clearInterval(timerId);
-			alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-			 $("#setNo"+nextSet).trigger("click");
-		}
-		
-	}, gvTypeBTime*1000); 
-
-
+	  	}
+		console.log("clearInterval load");
+		clearInterval(timerId);
+		timerViewSet();
+		alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+		//디비에 소모칼로리 보내는 기능 추가하기**
+		$("#setNo"+nextSet).trigger("click");
+	}
+	
+},1000); 
 }
 
 

@@ -50,12 +50,15 @@ value++;
   if(count === maxValue){
 	  $("#typeAContainer").css({"background": "#ff7373"});
   		if(gvIsLast){
+  		//디비에 소모칼로리 보내는 기능 추가하기**
 		  alert("마지막 세트입니다.");
 		  
   		}
   		else{
 		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+		//디비에 소모칼로리 보내는 기능 추가하기**
 		  $("#setNo"+nextSet).trigger("click");
+		  
 		}
       $(".container").css({
           "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
@@ -79,11 +82,14 @@ $(".back").on("mousedown", function() {
     if(count === maxValue){
     	$("#typeAContainer").css({"background": "#ff7373"});
     	if(gvIsLast){
+    		//디비에 소모칼로리 보내는 기능 추가하기**
   		  alert("마지막 세트입니다.");
     	}
     	else{
     		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+    		//디비에 소모칼로리 보내는 기능 추가하기**
     		 $("#setNo"+nextSet).trigger("click");
+    		 
   		}
     	
         $(".container").css({
