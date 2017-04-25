@@ -49,7 +49,7 @@ p.newsContent{
 <!-- 메뉴 옵션들 ==================================================================================================== -->
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-                  <li class="active"><a href="../main/main.do">메인</a></li>
+                  <li ><a href="../main/main.do">메인</a></li>
                   <li class="dropdown"><a href="../schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
                       	  <li><a href="../schedule/scheduleList.do">스케줄 리스트</a></li>
@@ -62,7 +62,7 @@ p.newsContent{
                   <li><a href="../diary/list.do">다이어리</a></li>
                   <li><a href="../accountBook/budget.do">가계부</a></li>
                   <li><a href="../workout/workout.do">운동</a></li>
-                  <li><a href="../main/news.do">뉴스</a></li>
+                  <li class="active"><a href="../main/news.do">뉴스</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
               <ul class="nav navbar-nav navbar-right">
@@ -90,63 +90,7 @@ p.newsContent{
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li><a href="../main/main.do"><i class="fa fa-tachometer fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Dashboard</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
-                        <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">Layouts</span></a>
-                       
-                    </li>
-                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">UI Elements</span></a>
-                       
-                    </li>
-                    <li><a href="Forms.html"><i class="fa fa-edit fa-fw">
-                        <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">Forms</span></a>
-                      
-                    </li>
-                    <li><a href="Tables.html"><i class="fa fa-th-list fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">Tables</span></a>
-                          
-                    </li>
-                    <li class="active"><a href="DataGrid.html"><i class="fa fa-database fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">Data Grids</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-file-o fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">Pages</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-gift fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">Extras</span></a>
-                      
-                    </li>
-                    <li><a href="Dropdown.html"><i class="fa fa-sitemap fa-fw">
-                        <div class="icon-bg bg-dark"></div>
-                    </i><span class="menu-title">Multi-Level Dropdown</span></a>
-                      
-                    </li>
-                    <li><a href="Email.html"><i class="fa fa-envelope-o">
-                        <div class="icon-bg bg-primary"></div>
-                    </i><span class="menu-title">Email</span></a>
-                      
-                    </li>
-                    <li><a href="Charts.html"><i class="fa fa-bar-chart-o fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Charts</span></a>
-                       
-                    </li>
-                    <li><a href="Animation.html"><i class="fa fa-slack fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">Animations</span></a></li>
-                </ul>
+                                  </ul>
             </div>
         </nav>
           
