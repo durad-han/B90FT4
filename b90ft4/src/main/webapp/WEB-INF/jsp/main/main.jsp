@@ -156,7 +156,7 @@
 			<div id="menu03" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/budget.jpg" width="350" height="300">Account Book</div>
 			<div id="menu04" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/workout.jpg" width="350" height="300">Workout</div>
 			<div id="menu05" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/login.jpg" width="350" height="300">Login (임시) </div>
-			<div id="menu06" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/option.jpg" width="350" height="300">Options</div>
+			<div id="menu06" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/news.jpg" width="350" height="300">News</div>
 			
 		</div>
 	
