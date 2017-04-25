@@ -333,7 +333,36 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 	
 	
 	
+		select ex.expense_no,
+			   ex.user_id,
+			   exc.expense_category_name,
+			   ex.expense_content,
+			   ex.expense_amount,
+			   ex.expense_date
+		  from tb_sam_expense ex,
+		       tb_sam_expense_category exc
+		where  ex.expense_category_no = exc.expense_category_no
+		  and  ex.user_id = '김현영'
+		into outfile 
+		'C:/accountBookFile/asdff.csv';
+		fields terminated by ','
+		
+		
 	
+		select * 
+		  from tb_sam_expense
+		where user_id = '김현영'
+		into outfile 
+		'C:/accountBookFile/asdf.csv';
+		fields terminated by ','
 	
-	
+		
+			select *
+		  from tb_sam_expense ex,
+		       tb_sam_expense_category exc
+		where  ex.expense_category_no = exc.expense_category_no
+			   ex.user_id = '김현영'
+		into outfile 
+		'C:/accountBookFile/sdfsd.csv';
+		fields terminated by ','
 	

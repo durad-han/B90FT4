@@ -404,7 +404,7 @@
 		  from tb_sam_expense ex,
 		       tb_sam_expense_category exc
 		where  ex.expense_category_no = exc.expense_category_no
-			   user_id = #{userId}
+		  and   user_id = #{userId}
 		into outfile 
 		#{excelFileName}
 		fields terminated by ','
