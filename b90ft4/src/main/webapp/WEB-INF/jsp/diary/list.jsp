@@ -27,14 +27,14 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/jplist.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
 <style>
+
 table td {
-	color: black;
+	color: black !important;
 	font-weight: bold;
 	font-size: 20px;
 	border: 1px solid black;
 }
-table td{
-}
+
 </style>
 </head>
 <body>
@@ -310,7 +310,7 @@ table td{
                                                 <li><span data-number="10" data-default="true"> 10 per page</span></li>
                                                 <li><span data-number="all"> view all</span></li>
                                             </ul>
-                                                <a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
+                                                
                                         </div>
                                         <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
                                             <ul class="dropdown-menu">
@@ -319,8 +319,6 @@ table td{
                                                 <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
                                                 <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
                                                 <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
-                                                <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
-                                                <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
                                                 <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
                                                 <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
                                             </ul>
@@ -328,6 +326,8 @@ table td{
                                         <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
                                         <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
                                     </div>
+                                    <div align="right">
+				                    <a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
                                 </div>
                             </div>
                         </div>
