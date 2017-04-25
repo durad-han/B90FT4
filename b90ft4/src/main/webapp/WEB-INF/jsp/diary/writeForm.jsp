@@ -71,17 +71,17 @@
               <ul class="nav navbar-nav">
               <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
                   <li class="active"><a href="../main/main.do">메인</a></li>
-                  <li class="dropdown"><a href="scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
+                  <li class="dropdown"><a href="../schedule/scheduleList.do" data-toggle="dropdown" class="dropdown-toggle">스케줄<b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                      	  <li><a href="scheduleList.do">스케줄 리스트</a></li>
-                          <li><a href="scheduleCalendar.do">스케줄 캘린더</a></li>
-                          <li><a href="scheduleGraph.do">스케줄 그래프</a></li>
+                      	  <li><a href="../schedule/scheduleList.do">스케줄 리스트</a></li>
+                          <li><a href="../schedule/scheduleCalendar.do">스케줄 캘린더</a></li>
+                          <li><a href="../schedule/scheduleGraph.do">스케줄 그래프</a></li>
                           <li class="divider"></li>
                           <li><a href="#">임시메뉴</a></li>
                       </ul>
                   </li>
                   <li><a href="../diary/list.do">다이어리</a></li>
-                  <li><a href="../accountBook/main.do">가계부</a></li>
+                  <li><a href="../accountBook/budget.do">가계부</a></li>
                   <li><a href="../workout/workout.do">운동</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
@@ -101,7 +101,7 @@
 	</nav>
 </div>
 <!-- 상단메뉴 종료 ==================================================================================================== -->
-            
+      
           <div id="wrapper">
             <!--BEGIN SIDEBAR MENU-->
              <div id="wrapper">
@@ -292,6 +292,7 @@
             </div>
             <!--END PAGE WRAPPER-->
         </div>
+    </div>    
     </div>    
 
 
