@@ -405,6 +405,7 @@
 		       tb_sam_expense_category exc
 		where  ex.expense_category_no = exc.expense_category_no
 		  and  ex.user_id = #{userId}
+		  order by ex.expense_date
 		into outfile 
 		#{excelFileName}
 		fields terminated by ','
