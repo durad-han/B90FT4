@@ -196,7 +196,7 @@
 				<td class="td-txt-right td-wp8">제목</td> 
 			 	<td>
 			 		<div class="form-group">
-			 			<input type='text' name='title' class="form-control input-wp1" />
+			 			<input type='text' name='title' class="form-control input-wp1" placeholder="제목을 입력하세요" required/>
 			 		</div>
 			 	</td>
 			</tr>

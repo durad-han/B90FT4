@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
-.tb-outer{
-	border: 1px solid black;
+div.page-content {
+/*     background-image: url("../../image/diary/background/background.jpg"); */
+    background-repeat: no-repeat;
 }

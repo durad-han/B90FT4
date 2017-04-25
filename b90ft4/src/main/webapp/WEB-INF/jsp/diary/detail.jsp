@@ -29,15 +29,6 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
  	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style>
-/* table { */
-/*  	width:80% !important; */
-/*  	margin: 0 auto; */
-/* } */
-table td{
-	color:black !important;
-}
-</style>
 
 </head>
 <body>
@@ -138,38 +129,8 @@ table td{
                     </i><span class="menu-title">전체</span></a></li>
                     <li><a href="Layout.html"><i class="fa fa-fw">
                         <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">기능</span></a>
+                    </i><span class="menu-title">일기</span></a>
                        
-                    </li>
-                    <li><a href="UIElements.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Forms.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Tables.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">기능</span></a>
-                          
-                    </li>
-                    <li><a href="DataGrid.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
                     </li>
                    
                 </ul>
@@ -192,21 +153,13 @@ table td{
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
-						<div class="page-content">
+						<div class="page-content" style="min-height: 800px !important;">
 					
-						<table style="width:80% !important;height: 100% !important;margin-left: 10% !important;">
+						<table id="tb-content" style="width:70% !important; min-height: 700px !important;margin-left: 10% !important;">
 								
 								<tr>
 								
-										  <td style="text-align:center !important;">
-										  <span style="font-size: 80px; !important;margin-right: 600px !important;">
-										  	<b><c:out value="${diaryVO.title}"/></b>
-										  </span>
-								</tr>
-								
-								<tr>
-								
-									<td colspan="3" style="text-align:right !important;">
+									<td colspan="3" style="text-align:center !important; max-height: 120px">
 										 <c:choose>
 											
 												<c:when test="${diaryVO.emotionCode eq 1}">
@@ -239,36 +192,50 @@ table td{
 											
 											</c:choose>
 											
-											 <c:choose>
-												<c:when test="${diaryVO.weatherCode eq 1}">
-													<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg" />
-												</c:when>
-												
-												<c:when test="${diaryVO.weatherCode eq 2}">
-													<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg" />
-												</c:when>
-												
-												<c:when test="${diaryVO.weatherCode eq 3}">
-													<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg" />
-												</c:when>
-												
-												<c:when test="${diaryVO.weatherCode eq 4}">
-													<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg" />
-												</c:when>
-												
-												<c:when test="${diaryVO.weatherCode eq 5}">
-													<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg" />
-												</c:when>
-											</c:choose>	
-									 			
-								 			<fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" />
+											 
 								 			
 								 		</td>
 								
 								</tr>
+								<tr>
+								
+										  <td style="text-align:center !important; min-height: 800px !important;">
+										  <span style="font-size: 80px; !important;margin-right: 600px !important;">
+										  	<b><c:out value="${diaryVO.title}"/></b>
+										  </span>
+								</tr>
+								
+								<tr>
+									<td style="text-align:right !important;">
+									 		<fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" />
+									</td>
+									<td style="text-align:right !important;">
+								  	<c:choose>
+										<c:when test="${diaryVO.weatherCode eq 1}">
+											<img src="${pageContext.request.contextPath}/web/image/diary/weather/weather1.jpg" />
+										</c:when>
+										
+										<c:when test="${diaryVO.weatherCode eq 2}">
+											<img src="${pageContext.request.contextPath}/web/image/diary/weather/cloud.jpg" />
+										</c:when>
+										
+										<c:when test="${diaryVO.weatherCode eq 3}">
+											<img src="${pageContext.request.contextPath}/web/image/diary/weather/rain.jpg" />
+										</c:when>
+										
+										<c:when test="${diaryVO.weatherCode eq 4}">
+											<img src="${pageContext.request.contextPath}/web/image/diary/weather/snow.jpg" />
+										</c:when>
+										
+										<c:when test="${diaryVO.weatherCode eq 5}">
+											<img src="${pageContext.request.contextPath}/web/image/diary/weather/hail.jpg" />
+										</c:when>
+									</c:choose>	
+							 		</td>
+								</tr>
 		                                
 								<tr>
-								 	<td colspan="3">${diaryVO.content}</td>
+								 	<td class="content" colspan="3">${diaryVO.content}</td>
 								</tr>
 								
 						</table>
