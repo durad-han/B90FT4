@@ -11,5 +11,8 @@ public interface WorkoutService {
 	List<WorkoutVO> workoutList() throws Exception;
 	List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception;
 	List<WorkoutStatisticsVO> WorkoutStatisticsList(String today) throws Exception;
+	void WorkoutStatisticsUpdate(int spentCal,int intakeCal,String today) throws Exception;
 	WorkoutDateTestVO workoutDateTest() throws Exception;
+	String WorkoutStatisticsInsert(String today) throws Exception;
+	
 }

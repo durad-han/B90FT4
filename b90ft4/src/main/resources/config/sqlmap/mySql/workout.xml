@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b90ft4.web.repository.mapper.WorkoutMapper">
+
+<!-- workout -->
 	<resultMap type="workoutVO" id="workoutMap">
 		<result column="Workout_No"		property="workoutNo"	/>
 		<result column="Workout_Type"	property="workoutType"	/>
@@ -10,12 +12,13 @@
 		<result column="Is_Basic"		property="isBasic"		/>
 	</resultMap>
 	
-<!-- workout list -->
+
 	<select id="retrieveWorkoutList" resultMap="workoutMap">
 		select	*
 		from	tb_Sam_Workout
 	</select>
 	
+<!-- workoutSet -->	
   	<resultMap type="workoutSetVO" id="workoutSetMap">
 		<result column="Workout_Set_No"			property="workoutSetNo"			/>
 		<result column="Workout_No"				property="workoutNo"			/>
@@ -28,7 +31,7 @@
 		
 	</resultMap>
 
-<!-- workoutSet list -->
+<!--  retrieveWorkoutSet -->
 	<select id="retrieveWorkoutSetList" resultMap="workoutSetMap" parameterType="int">
 		select	Workout_Set_No,wrkout.Workout_No,Type_A_Count,Type_B_Time,Spent_Cal,Interval_Time,Workout_Description,Workout_Type
 		from tb_Sam_Workout_Set wrkoutset
@@ -43,24 +46,33 @@
 		<result column="Intake_Cal"				property="intakeCal"		/>
 	</resultMap>
 
-<!--  retrieveWorkoutSet list -->
-	<select id="retrieveWorkoutStatisticsList" resultMap="workoutStatisticsMap">
+
+	<select id="retrieveWorkoutStatisticsList" resultMap="workoutStatisticsMap" parameterType="String">
 		select * 
 		from tb_Sam_Workout_Statistics
 		where Workout_Day like concat('%',#{today},'%')
-<!--  where substring(Workout_Day,1,10) = #{today}  -->
-		
+	<!--  where substring(Workout_Day,1,10) = #{today}  -->	
 	</select> 
+	
+	<update id="modifyWorkoutStatisticsList" parameterType="String">		
+		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today}
+	</update> 
  
+	<insert id="insertWorkoutStatisticsList" parameterType="String">
+		insert into tb_sam_workout_statistics(Workout_Day,Spent_Cal,Intake_Cal)
+		values(#{today},0,0)
+	</insert>
+	
+<!--  retrieveWorkoutDateTest -->
    	<resultMap type="workoutDateTestVO" id="workoutDateTestMap">
-		<result column="Workout_Day"			property="workoutDay"		/>
+		<result column="Workout_Day"			property="workoutDay"/>
 	</resultMap>
 	
-<!--  retrieveWorkoutDateTest list -->
+
+
 	<select id="retrieveWorkoutDateTestList" resultMap="workoutDateTestMap" parameterType="String">
 		select * 
 		from tb_Sam_Workout_Statistics
-		
 	</select>
  
 </mapper>

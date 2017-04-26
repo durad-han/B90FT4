@@ -70,7 +70,7 @@ function typeBStart(){
 	timerEnd = 0;
 	timerViewSet();
 	
-timerId = setInterval(function(){
+	timerId = setInterval(function(){
 	timerEnd++;
 	timerViewSet();
 	console.log(timerEnd);			
@@ -81,6 +81,7 @@ timerId = setInterval(function(){
 			timerViewSet();
 			alert("마지막 세트입니다.");
 			//디비에 소모칼로리 보내는 기능 추가하기**
+			calIncDec();
 			clearInterval(timerId);
 	  	}
 		console.log("clearInterval load");
@@ -88,6 +89,7 @@ timerId = setInterval(function(){
 		timerViewSet();
 		alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
 		//디비에 소모칼로리 보내는 기능 추가하기**
+		calIncDec();
 		$("#setNo"+nextSet).trigger("click");
 	}
 	

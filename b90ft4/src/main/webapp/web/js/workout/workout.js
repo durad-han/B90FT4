@@ -6,6 +6,9 @@ var gvSpentCal = "";
 var gvIntervalTime = "";
 var gvIsLast = "";
 var gvSetIndex ="";
+var gvToday = "";
+var gvIntakeCal = "";
+//page load함수들
 function tempMove(){
 	$(".page-content").load("/b90ft4/web/view/workout/Charts.html");
 }
@@ -15,6 +18,7 @@ function workoutMoveCal(){
 function workoutMoveChart(){
 	$(".page-content").load("/b90ft4/web/view/workout/workoutChart.html");
 }
+
 function workoutMove(workoutNo){
 	$.ajax({
 		url:"workoutForm.do",
@@ -345,7 +349,48 @@ function endWorkout(){
 	listLoad();
 }
 
+//today calorie column insert
+function calColumnInsert(){
+	var today = $.datepicker.formatDate("yy-mm-dd",new Date());
+	gvToday = today;
+	console.log("today : " + today);
+	$.ajax({
+		url:"InsertWorkoutStatistics.do",
+		dataType:"json",
+		data : {"today" : today }
+		}).done(function(result){
+			
+			console.dir(result);
+			
+		});
+	
+	
+}
+calColumnInsert();
+//today calorie colunm update
+function calIncDec(){
+console.log("calIncDec load");
+var spentCal = parseInt(gvSpentCal);
+var intakeCal = parseInt(gvIntakeCal);
+if(isNaN(spentCal)){
+	spentCal = 0;
+}
+if(isNaN(intakeCal)){
+	intakeCal = 0;
+}
+console.log("spentCal : " + spentCal);
+console.log("intakeCal : " + intakeCal);
 
+$.ajax({
+	url : "UpdateWorkoutStatistics.do",
+	dataType : "json",
+	data : {"spentCal" : spentCal , "intakeCal" : intakeCal ,"today" : gvToday} 
+}).done(function(result){
+	console.log("얻거나 소모한 칼로리 저장됨.");
+	});
+}
+
+calIncDec();
 
 /*function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,intervalTime){
 	alert(workoutSetNo+" "+workoutNo+" "+typeACount+" "+typeBTime+" "+spentCal+" "+intervalTime);

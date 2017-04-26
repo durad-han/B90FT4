@@ -49,8 +49,21 @@ public class WorkoutController {
 		return list;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/UpdateWorkoutStatistics.do")
+	public void WorkoutStatisticUpdate(int spentCal,int intakeCal,String today) throws Exception{
+		System.out.println("UpdateWorkoutStatistics Controller load");
+		ws.WorkoutStatisticsUpdate(spentCal,intakeCal,today);
+		
+	}
+	@ResponseBody
+	@RequestMapping("/InsertWorkoutStatistics.do")
+	public String WorkoutStatisticInsert(String today) throws Exception{	
+		String workoutStatisticsInsertMsg = ws.WorkoutStatisticsInsert(today);
+		return workoutStatisticsInsertMsg;
+	}
 	
-	
+
 	@ResponseBody
 	@RequestMapping("/workoutList.do")
 	public List<WorkoutVO> workoutList(String userId) throws Exception{
