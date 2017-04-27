@@ -3,17 +3,7 @@ console.log("scheduleMain.js 로드됨...!");
 //----- datePicker -----------------------------------------------------------
 
 
-
 //----- schedule ---------------------------------------------------------------------------------------------
-
-//----- scheduleTimeline -------------------------------------------------------------------------------------
-//$(window).on('scroll', function(){
-//	$timeline_block.each(function(){
-//		if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
-//			$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
-//		}
-//	});
-//});
 
 function scheduleBody(result){
 	
@@ -25,12 +15,10 @@ console.log("foxholder proceed")
 		demo: 6 //(1-15)
 	});
 
-console.log("datepicker proceed")
 //----- datePicker -------------------------------------------------------------------------------------
 	$('#inputStart').datetimepicker();
 	$('#inputEnd').datetimepicker();
 	
-	console.log("stars proceed")
 //----- stars -----------------------------------------------------------
 	$(".stars").starRating({
 		totalStars: 3,
@@ -76,10 +64,8 @@ console.log("datepicker proceed")
 
 }
 
-
 //----- 좌측 스케줄 리스트로부터 선택된 스케줄 detail 값 받아오기 -------------------------------------------------------------
 function goDetail(sNo){
-	console.log("goDetail")
 	console.log(sNo + "번 스케줄 출력");
 	
 	$.ajax({
@@ -141,7 +127,6 @@ function printSchedule(result){
 
 //----- 해당 스케줄의 이전, 다음 스케줄 연결 생성------------------------------------------------------------------------------
 function prevNext(scheduleNo){
-	console.log("prev & next")
 	var prevHtml = "";
 	var nextHtml = "";
 	
@@ -164,7 +149,6 @@ function prevNext(scheduleNo){
 			prevHtml += "<p class='date'>"+result.start+"</p>";
 			prevHtml += "</a>";
 		}
-		console.log("prev 삽입")
 		$("#prev").html(prevHtml)
 	});
 	
@@ -186,7 +170,6 @@ function prevNext(scheduleNo){
 			nextHtml += "</p>";                                                 
 			nextHtml += "</a>";                                                 
 		}
-		console.log("next 삽입")
 		$("#next").html(nextHtml)
 	})
 };
@@ -203,11 +186,12 @@ function goModify(scheduleNo){
 		data: {scheduleNo : scheduleNo},
 		dataType: "json",
 		success: function(){
-			$.notify("스케줄을 수정합니다", {align:"center", verticalAlign:"middle", color: "#fff", background: "#D44950", blur: 0.2, delay: 1500});
+			$.notify("스케줄을 수정합니다", {
+						align:"center", verticalAlign:"middle", color: "#fff", background: "#D44950", delay: 1500
+					});
 		}
 	}).done(modifyForm);
 };
-
 
 //----- 수정용 폼 출력-----------------------------------------------------------------------------------------------
 function modifyForm(result){
@@ -255,7 +239,6 @@ function modifyForm(result){
 	prevNext(result.scheduleNo);
 };
 
-
 //----- 스케줄 수정 서브밋 ------------------------------------------------------------------------------------------------------
 function modifySubmit(scheduleNo){
 	console.log("modifySubmit : "+scheduleNo+"번 스케줄")
@@ -278,7 +261,7 @@ function modifySubmit(scheduleNo){
 			console.log("importance : "+$('.stars').starRating('getRating'));
 			
 				$.ajax({
-					url : "/b90ft4/schedule/modify.json", // dho 이게 적용이 안돼 이상해 모르겠어 ㄷㄷ
+					url : "/b90ft4/schedule/modify.json",
 					type: "POST",
 					data: { scheduleNo: scheduleNo,
 						userId: $("input[id=userId]").val(),
@@ -296,7 +279,6 @@ function modifySubmit(scheduleNo){
 						location.href="scheduleList.do";
 					});
 				});
-	console.log("수정완료펑션2")
 };
 
 
@@ -334,10 +316,9 @@ function goDelete(scheduleNo){
 		});
 };
 
-
 //----- 스케줄 입력---------------------------------------------------------------------------------------------------
 function scheduleForm(form){
-	console.log("insertForm")
+	console.log("insertForm : ")
 	console.dir(form)
 	
 	if ($("#inputTitle").val() == "") {
@@ -345,22 +326,18 @@ function scheduleForm(form){
 		$("input[id=inputTitle]").focus();
 		return false;
 	}
+	
 	if ($("input[id=inputStart]").val() == "") {
 		swal("등록", "스케줄이 시작될 시간을 지정해주세요", "error");
 		$("input[id=inputStart]").focus();
 		return false;
 	}
+	
 	if ($("input[id=inputEnd]").val() == "") {
 		swal("등록", "스케줄이 종료될 시간을 지정해주세요", "error");
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
-	
-	console.log("title : "+$("input[id=inputTitle]").val());
-	console.log("start : "+$("input[id=inputStart]").val());
-	console.log("end : "+$("input[id=inputEnd]").val());
-	console.log("content : "+$("input[id=inputContent]").val());
-	console.log("importance : "+$("select[id=inputImportance]").val());
 	
 	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;

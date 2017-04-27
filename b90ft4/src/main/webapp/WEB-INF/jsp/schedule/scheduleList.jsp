@@ -201,11 +201,11 @@
 				    
 				<!-- 스케줄 상세 -->
 				<div class="panel-body pan" id="schDetail">
-				<div class="clz-insertSchedule">
 				
 				<!-- 스케줄 입력 폼 시작 -->
 				<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
 				<div class="form-body pal">
+			<div class="clz-insertSchedule">
 				
 				<div class="form-group">
 				    <div class="input-icon right">
@@ -230,21 +230,54 @@
 				<div class="form-group">
 				    <div class="input-icon right">
 				        <i class="fa fa-user"></i>
-				        <input id="inputContent" name="content" type="text" placeholder="내용" class="form-control" />
+				        <input id="inputContent" name="content" type="text" placeholder="내용!" class="form-control" />
 				    </div>
 				</div>
+			</div>
+				
+				<div class="form-group text-center">
+	                <div class="col-sm-12 controls">
+	                <div class="row">
+		                <div class="radio">
+			                <label class="radio-inline">
+			                	<input type="radio" name="schedule-type" value="default" checked="checked"><span>기본 스케줄</span>
+			                </label>
+			                <label class="radio-inline">
+			                	<input type="radio" name="schedule-type" value="with-budget"><span>지출이 있는 스케줄</span>
+			                </label>
+			                <label class="radio-inline">
+			                	<input type="radio" name="schedule-type" value="with-workout"><span>운동 스케줄</span>
+			                </label>
+		                </div>
+		                
+	                <div class="col-lg-12 controls">
+	                <div class="row">
+		    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="default">
+		    				<input id="inputCategory" name="category" type="hidden" value="1" class="form-control" />
+		    				<span>기본 스케줄입니다</span>
+					    </div>
+		    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-budget">
+		    				<input id="inputCategory" name="category" type="hidden" value="2" class="form-control" />
+		    				<span>예산관리가 가능한 스케줄입니다</span><br>
+		    				<input id="inputBudget" name="expenseCategory" type="text" placeholder="0,000"/>
+		    				<input id="inputBudget" name="expenseContent" type="text" />
+		    				<input id="inputBudget" name="expenseAmount" type="text" />
+		    				
+					    </div>
+		    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-workout">
+		    				<input id="inputCategory" name="category" type="hidden" value="3" class="form-control" />
+		    				<span>운동 설정이 가능한 스케줄입니다</span>
+		    				
+					    </div>
+	                </div>
+	                </div>
+	                </div>
+	                </div>
+                </div>
 				
 <!-- ============ 임시 하드코딩 ============	-->
 				<div class="form-group">
-				    <div class="input-icon right">
-				        <i class="fa fa-user"></i>
-				        <input id="inputCategory" name="category" type="text" placeholder="카테고리" value="1" class="form-control" />
-				    </div>
-				</div>
-				<div class="form-group">
 				        <input id="inputUserId" name="userId" type="hidden" value="tester01" class="form-control" />
-				        <input id="inputImportance" name="importance" type="hidden" value="0" class="form-control" />
-				        <input id="inputScheduleNo" name="scheduleNo" type="hidden" value="1" class="form-control" />
 				        <input id="inputAchieve" name="achieve" type="hidden" value="1" class="form-control" />
 				</div>
 <!-- ============ 임시 하드코딩============	-->
@@ -258,7 +291,6 @@
 				</div>
 				</div>
 				</form>
-				</div>
 				</div>
 			</div>
 
@@ -298,6 +330,46 @@
 if ('${msg}') {
 	swal("스케줄 입력", '${msg}', "success");
 }
+
+(function($) {
+	  $.fn.conditionize = function(options){ 
+	    
+	     var settings = $.extend({
+	        hideJS: true
+	    }, options );
+	    
+	    $.fn.showOrHide = function(listenTo, listenFor, $section) {
+	      if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
+	        $section.slideDown();
+	      }
+	      else if ($(listenTo + ":checked").val() == listenFor) {
+	        $section.slideDown();
+	      }
+	      else {
+	        $section.slideUp();
+	      }
+	    } 
+
+	    return this.each( function() {
+	      var listenTo = "[name=" + $(this).data('cond-option') + "]";
+	      var listenFor = $(this).data('cond-value');
+	      var $section = $(this);
+	  
+	      //Set up event listener
+	      $(listenTo).on('change', function() {
+	        $.fn.showOrHide(listenTo, listenFor, $section);
+	      });
+	      //If setting was chosen, hide everything first...
+	      if (settings.hideJS) {
+	        $(this).hide();
+	      }
+	      //Show based on current value on page load
+	      $.fn.showOrHide(listenTo, listenFor, $section);
+	    });
+	  }
+	}(jQuery));
+	  
+	 $('.conditional').conditionize();
 </script>
 </body>
 </html>

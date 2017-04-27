@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html>
 <head>
   <meta charset="utf-8">
   <title>네이버 로그인</title>
