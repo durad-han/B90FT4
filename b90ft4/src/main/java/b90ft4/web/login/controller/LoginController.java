@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import b90ft4.web.login.service.LoginService;
+import b90ft4.web.repository.vo.UserVO;
 
 @Controller
 @RequestMapping("/login")
@@ -17,35 +18,36 @@ public class LoginController {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 //	case : naver --------------------------------------------------------------------
-	@RequestMapping("/nloginForm.do")
-	public String nLoginPage (){
+	@RequestMapping("/nLoginForm.do")
+	public String nLoginPage (UserVO user){
 		logger.debug("naver welcome.");
+		ls.nLogin(user);
 		return "login/naverLogin";
 	}
 	
-	@RequestMapping("/nlogin.do")
+	@RequestMapping("/nLogin.do")
 	public String nLoginCallback (){
 		logger.debug("naver welcome.");
 		return "login/naverLoginCallback";
 	}
-	@RequestMapping("/nlogout.do")
+	@RequestMapping("/nLogout.do")
 	public void nLogout (){
 		logger.debug("naver bye");
 	}
 
 //	case : google -------------------------------------------------------------------
-	@RequestMapping("/gloginForm.do")
+	@RequestMapping("/gLoginForm.do")
 	public String gLoginPage (){
 		logger.debug("google welcome.");
 		return "login/naverLogin";
 	}
 	
-	@RequestMapping("/glogin.do")
+	@RequestMapping("/gLogin.do")
 	public String gLoginCallback (){
 		logger.debug("google welcome.");
 		return "login/naverLoginCallback";
 	}
-	@RequestMapping("/glogout.do")
+	@RequestMapping("/gLogout.do")
 	public void gLogout (){
 		logger.debug("google bye");
 	}

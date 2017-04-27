@@ -145,7 +145,7 @@
 	<div class="row">
 		<div class="modalSample" id="callModal">
 		<div id="loginMenu">
-			 <div id="naver_id_login"></div>
+			 <div id="naver_id_login"></div><br>
 			 <a href="#close">닫기</a>
 		</div>
 		</div>
@@ -185,12 +185,11 @@
 <script src="${pageContext.request.contextPath}/web/js/main/main.js"></script>
 
 <script type="text/javascript">
-	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/login.do");
+	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");
 	var state = naver_id_login.getUniqState();
-	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setButton("green", 3,40);
 	naver_id_login.setDomain("http://14.32.66.123:9092/b90ft4/main/main.do");
 	naver_id_login.setState(state);
-	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
 </script>
 </body>
