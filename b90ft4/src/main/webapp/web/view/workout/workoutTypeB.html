@@ -17,7 +17,7 @@
 	<div>
 		<video width='70%' height='70%' autoplay='autoplay' id='myVideo' />
 	</div>
-	<div width='90%' height='90%'>
+	<div id = 'typeBButtons' width='90%' height='95%'>
 		<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
 		<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
@@ -37,7 +37,7 @@ function imgSetLoad(){
 					"<div id='timeline'>"+
 						"<div class='timerContainer'>"+
 							"<div class='timer'></div>"+
-						"<div class='slideshow'>"+
+						"<div class='slideshow' hidden>"+
 							"<div class='slide'>01</div>"+
 							"<div class='slide'>02</div>"+
 							"<div class='slide'>03</div>"+
@@ -167,6 +167,7 @@ function slide() {
   
   // fading function
     function fadeInOut() {
+	 
       timer();
         $i = 0;    
         var setCSS = {
