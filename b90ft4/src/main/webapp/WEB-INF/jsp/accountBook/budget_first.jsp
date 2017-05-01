@@ -26,15 +26,6 @@
 /* 	color:black; */
 /* } */
 
-#budgetPlanDiv > h4 {
-	display: inline;
-}
-
-#budgetPlanDiv > input:last {
-	color:blue;
-}
-
-
 tbody#expense tr.expenseInfo:hover{
 	background:skyblue;
 }
@@ -45,6 +36,9 @@ tbody#income tr.incomeInfo:hover{
 #budgetPlanDiv input{
 	text-align: center;
 	font-weight: bold;
+}
+#budgetPlanDiv input:nth-child(6){
+	color:blue;
 }
 
 </style>
@@ -58,13 +52,10 @@ tbody#income tr.incomeInfo:hover{
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
  	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
-<div class="container">
-<div class = "page-header" style="margin:0;height:150px;background: url('${pageContext.request.contextPath}/web/image/accountBook/Benjamin_img.jpg') no-repeat;background-size:100% 100%;">
-</div>
-
 <div>
 <!-- 위로가기 ==================================================================================================== -->
 	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
@@ -72,12 +63,10 @@ tbody#income tr.incomeInfo:hover{
 <!-- 상단 메뉴 시작 ==================================================================================================== -->
 <div id="header-topbar-option-demo" class="page-header-topbar">
     <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
-	
 	<div class="navbar-header">
 	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only"> toggle </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-	    <a id="logo" href="../main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">자기관리</span><span style="display: none" class="logo-text-icon">µ</span></a>
-	</div>
-	
+	    <a id="logo" href="../main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
+	        </div>
 	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
 <!-- 메뉴 옵션들 ==================================================================================================== -->
               <ul class="nav navbar-nav">
@@ -85,26 +74,22 @@ tbody#income tr.incomeInfo:hover{
                   <li><a href="../main/main.do">메인</a></li>
                   <li><a href="../schedule/scheduleList.do">스케줄</a></li>
                   <li><a href="../diary/list.do">다이어리</a></li>
-               
-                  <li class="active">
-                  	 <a href="../accountBook/budget.do">가계부</a>
-                  </li>
-                  
+                  <li class="active"><a href="../accountBook/budget.do">가계부</a></li>
                   <li><a href="../workout/workout.do">운동</a></li>
                   <li><a href="../main/news.do">뉴스</a></li>
               </ul>
 <!-- 로그인 & 메모 ==================================================================================================== -->
               <ul class="nav navbar-nav navbar-right">
-	              	<li><a href="#callModal">Login</a></li>
-					<li>
-	                <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked/>
-						<label for='showAndHideMemo'>메모 보기</label>
-	                </li>
-	                <li>
-		                <div id="addMemo">
-							<button><img src="icon_add_stickynote.gif" />메모 추가</button>
-						</div>
-	                </li>
+              	<li><a href="#callModal">Login</a></li>
+				<li style='margin-right: 20px;'>
+                <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked/>
+					<label for='showAndHideMemo'>메모 보기</label>
+                </li>
+                <li>
+	                <div id="addMemo">
+						<button><img src="icon_add_stickynote.gif" />메모 추가</button>
+					</div>
+                </li>
               </ul>
     </div>     
 	</nav>
@@ -113,7 +98,6 @@ tbody#income tr.incomeInfo:hover{
 
         
         <div id="wrapper">
-        
             <!--BEGIN SIDEBAR MENU-->
             <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                 data-position="right" class="navbar-default navbar-static-side">
@@ -147,21 +131,22 @@ tbody#income tr.incomeInfo:hover{
 
             <!--END CHAT FORM-->
             <!--BEGIN PAGE WRAPPER-->
-        
             <div id="page-wrapper" 	
-            	style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100% 100%'>
+            	style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100% 100%'
+            	>
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
-                   
                     <div class="page-header pull-left">
                         <div class="page-title">
-                            	${subMenu}
-                        </div>
+                            	${subMenu}</div>
                     </div>
-                    
+                    <ol class="breadcrumb page-breadcrumb pull-right">
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="hidden"><a href="#">카테고리 종류</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="active">카테고리 종류</li>
+                    </ol>
                     <div class="clearfix">
                     </div>
-                    
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 <!--BEGIN CONTENT-->
@@ -170,7 +155,8 @@ tbody#income tr.incomeInfo:hover{
                 
                 <div class="row">
                 
-                  <div class="col-lg-7">
+                  <div class="col-lg-7" style="margin-left: 2%;margin-right: 5%;padding: 0">
+                		
                 		 <ul id="generalTab" class="nav nav-tabs responsive">
                             <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
                             <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
@@ -235,9 +221,10 @@ tbody#income tr.incomeInfo:hover{
 	                			      </div>
 	                			   
                 			</div>
-                </div>
+                		</div>
                 
-                       <div class="col-lg-5">
+                
+                    <div class="col-lg-3">
 					    <ul id="generalTab" class="nav nav-tabs responsive">
 	                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
 	                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
@@ -249,58 +236,53 @@ tbody#income tr.incomeInfo:hover{
                 		<button id="budgetModal" style="margin-left: 35%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 			                 		 지출/수입 등록
 			            </button>
-				        <div id="budgetPlanDiv" style="display: none;display: inline-block; margin-left: 15%;">
-				        	<br><br>
-				        	<h4><b>이번 달 지출 한도</b></h4> <br>
-				        	<input type="text" readonly /> <br>
-				        	<br>
-				        	<h4><b>이번 달 현재 총 지출</b></h4> <br>
-				        	<input type="text" readonly /> <br>
-				        	<br>
-				        	<h4><b>잔여 지출 한도</b></h4> <br>
-				        	<input type="text" readonly /> 
-				        </div> 
+			          
+			        <div id="budgetPlanDiv" style="margin-left: 10%;display: none;border:1px solid black;padding:20px;">
+			        	<h4><b>이번 달 지출 한도</b></h4>
+			        	<input type="text" readonly />
+			        	<h4><b>이번 달 현재 총 지출</b></h4>
+			        	<input type="text" readonly />
+			        	<h4><b>잔여 지출 한도</b></h4>
+			        	<input type="text" readonly />
+			        </div> 
 			        
-					    <div id="monthBudgteTable" style="display: none;">
-					      
-					        <h4 class="box-heading" style="text-align: center;">월별 지출/수입 현황</h4>
-		                 
-		                           <div class="panel panel-red">
-			                            <div class="panel-heading">지출</div>
-			                            <div class="panel-body">
-			                                <table class="table table-hover table-bordered">
-			                                    <thead>
-			                                    <tr>
-			                                        <th>분류</th>
-			                                        <th>합계</th>
-			                                    </tr>
-			                                    </thead>
-			                                    <tbody id="monthExpense">
-			                                    </tbody>
-			                                </table>
-			                            </div>
-		                       	   </div>
-		                        
-		                        <div class="panel panel-blue" style="background:#FFF;">
-		                            <div class="panel-heading">수입</div>
-		                            <div class="panel-body">
-		                                <table class="table table-hover table-bordered">
-		                                    <thead>
-		                                    <tr>
-		                                        <th>분류</th>
-		                                        <th>합계</th>
-		                                    </tr>
-		                                    </thead>
-		                                    <tbody id="monthIncome">
-		                                    </tbody>
-		                                </table>
-		                         </div>
-					             
-					       </div>
-					    </div> <!-- cols -->
-					    
-	          	     </div> <!-- row -->
-                
+				    <div id="monthBudgteTable" style="display: none;">
+				        <h4 class="box-heading">월별 지출/수입 현황</h4>
+	                           <div class="panel panel-red">
+	                            <div class="panel-heading">지출</div>
+	                            <div class="panel-body">
+	                                <table class="table table-hover table-bordered">
+	                                    <thead>
+	                                    <tr>
+	                                        <th>분류</th>
+	                                        <th>합계</th>
+	                                    </tr>
+	                                    </thead>
+	                                    <tbody id="monthExpense">
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="panel panel-blue" style="background:#FFF;">
+	                            <div class="panel-heading">수입</div>
+	                            <div class="panel-body">
+	                                <table class="table table-hover table-bordered">
+	                                    <thead>
+	                                    <tr>
+	                                        <th>분류</th>
+	                                        <th>합계</th>
+	                                    </tr>
+	                                    </thead>
+	                                    <tbody id="monthIncome">
+	                                    </tbody>
+	                                </table>
+	                        </div>
+				             
+				      </div>
+				   </div> <!-- cols -->
+             
+             </div> <!-- row -->
                 
 		  </div> <!-- page wrapper  -->
 		                
@@ -385,11 +367,8 @@ tbody#income tr.incomeInfo:hover{
                 <!--END FOOTER-->
                 
 	 </div>     <!--END WRAPPER-->
-	 
 	 </div> 
 	 </div> 
-	 
-</div>
 		                
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script>

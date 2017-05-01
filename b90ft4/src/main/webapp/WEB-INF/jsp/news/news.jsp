@@ -183,7 +183,7 @@ p.newsContent{
                                     <div class="jplist-panel box panel-top">
                                         				<button onclick="makeNews('rss')"       class="btn"> 속보 </button>
 														<button onclick="makeNews('today')"        class="btn"> 오늘의뉴스 </button>
-														<button onclick="makeNews('it')"        class="btn-warning"> IT </button>
+														<button id="IT" onclick="makeNews('it')"        class="btn-warning"> IT </button>
 							                            <button onclick="makeNews('culture')"   class="btn btn-primary">culture</button>
 							                            <button onclick="makeNews('politics')"  class="btn btn-info">politics</button>
 							                            <button onclick="makeNews('life')"	    class="btn btn-success">life</button>
@@ -218,7 +218,8 @@ p.newsContent{
 			                    		     		
 			                    		     		$.ajax({
 			                    		     			url:"http://192.168.0.60:10001/news?category="+category,
-			                    		     			dataType:"json"
+			                    		     			dataType:"json",
+			                    		     			async:false
 			                    		     		}).done(function(result) {
 			                    		
 			                    		     			   var items = result.rss.channel[0].item;
@@ -332,6 +333,9 @@ p.newsContent{
 			                    		      		});
 			                         		
 			                    			}
+			                                    
+			                                console.log("뉴스");
+			                                $("#IT").trigger("click");
                                     
                                     </script>
                                     

@@ -52,7 +52,7 @@ table td {
 	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
 <!-- 메뉴 옵션들 ==================================================================================================== -->
               <ul class="nav navbar-nav">
-              <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
+            	  <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
                   <li><a href="../main/main.do">메인</a></li>
                   <li><a href="../schedule/scheduleList.do">스케줄</a></li>
                   <li class="active"><a href="../diary/list.do">다이어리</a></li>
@@ -138,8 +138,11 @@ table td {
                                 <div id="grid-layout-table-1" class="box jplist">
                                     <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
                                     <div class="jplist-panel box panel-top">
+                                        
                                         <button type="button" data-control-type="reset" data-control-name="reset" data-control-action="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
+                                        
                                         <div style="display: none;">
+                                       
                                         <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" class="jplist-drop-down form-control">
                                             <ul class="dropdown-menu">
                                                 <li><span data-number="3"> 3 per page</span></li>
@@ -148,6 +151,7 @@ table td {
                                                 <li><span data-number="all"> view all</span></li>
                                             </ul>
                                         </div>
+                                        
                                         <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
                                             <ul class="dropdown-menu">
                                                 <li><span data-path="default">Sort by</span></li>
@@ -162,9 +166,11 @@ table td {
                                                 <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
                                             </ul>
                                         </div>
+                                        
                                         <div class="text-filter-box">
                                             <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".title" type="text" value="" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="form-control"/></div>
                                         </div>
+                                       
                                         <div class="text-filter-box">
                                             <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input data-path=".desc" type="text" value="" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" class="form-control"/></div>
                                         </div>

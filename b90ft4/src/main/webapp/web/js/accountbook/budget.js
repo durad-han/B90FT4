@@ -110,6 +110,9 @@
 						var d1 = $.datepicker.formatDate(dateFormat,new Date(year,month-1,1));
 						var d2 = $.datepicker.formatDate(dateFormat,new Date(year,month,0));
 						budgetList(d1,d2,selectedDateOption);
+						
+						$("#budgetPlanDiv").hide();
+						
 					}
 					
 				},
@@ -206,20 +209,26 @@
 		
 	});
 	
-	$("#month").click(function() {
 	
-		$("head").append(style);
+	
+	$("#month").click(function() {
 		
-		if(selectedDateOption == 3) return; 
+		$("head").append(style);
+		$("#budgetPlanDiv").hide();
+		 // 지출 계획 숨기기.
+		if(selectedDateOption == 3) {
+			return; 
+		}
+		
 		$("#expenseTable").hide();  // 지출 테이블
 		$("#incomeTable").hide();   // 수입 테이블
 		$("#expenseDiv").show();	// 지출 원 그래프 
 		$("#incomeDiv").show();		// 수입 원 그래프 
 		$("#budgetModal").hide();   // 지출/수입 등록 버튼
 		$("#incomeTab").addClass("active"); // 수입 탭활성화
-		$("#budgetPlanDiv").hide(); // 지출 계획 숨기기.
-		
+	
 		selectedDateOption = 3;
+		
 		$("#datepicker").datepicker("refresh");
 		var date = $("#datepicker").datepicker("getDate");
 		$(".ui-datepicker-month").val(date.getMonth());
@@ -231,7 +240,10 @@
 		budgetList(d1,d2,selectedDateOption);
 		
 		
+		
 	});
+	
+	
 	
 	$("#prev").click(function() {
 		switch(selectedDateOption) {
@@ -385,6 +397,8 @@
 		$("[name=budgetF] input:eq(2)").val(""); // 금액
 		$("[name=budgetF] input:eq(3)").val(""); // 내용
 		
+		$("#budgetPlanDiv").hide();
+		
 	}
 	/* -------------------------------------------------------------------------------------------------------------- */
 	
@@ -505,8 +519,13 @@
 			},
 			async:false
 		}).done(function (result) {
+
 			
-			showPlan();
+			// 지출 계획 숨기기.
+			if(selectedDateOption == 3 ) 
+				$("#budgetPlanDiv").hide();
+			else
+				showPlan();
 			
 			// 월을 선택할 경우, 원 그래프 그리기.
 			if(budgetSearchCode==3){
@@ -935,6 +954,8 @@
 				}
 			
 		});	
+		
+		
 	}
 	
 	// 수정,삭제 버튼에 이벤트 등록.

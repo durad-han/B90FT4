@@ -30,6 +30,8 @@ insert into tb_sam_user (
 	'1234'
 )
 
+delete from tb_sam_memo
+
 
 insert into tb_sam_loan ( 
 				user_id,
