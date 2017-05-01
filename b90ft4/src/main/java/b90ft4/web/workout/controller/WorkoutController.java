@@ -83,6 +83,14 @@ public class WorkoutController {
 		WorkoutDateTestVO date = ws.workoutDateTest();
 		return date;
 	}
+	
+/*	@ResponseBody
+	@RequestMapping("/wokroutRecodeTest.do")
+	public void wokroutRecodeTest() throws Exception{
+		
+		
+	}*/
+	
 /*	
 	@RequestMapping("/workoutTypeA.do")
 	public String workoutListTypeA (Model model,int workoutNo) throws Exception{
