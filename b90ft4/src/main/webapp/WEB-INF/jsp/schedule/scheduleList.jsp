@@ -258,10 +258,15 @@
 					    </div>
 		    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-budget">
 		    				<input id="inputCategory" name="category" type="hidden" value="2" class="form-control" />
-		    				<span>예산관리가 가능한 스케줄입니다</span><br>
+		    				<br>
+		    				<span>예산관리가 가능한 스케줄입니다</span>
+		    				<br>
+		    				<br>
 		    				<input id="inputBudget" name="expenseCategory" type="text" placeholder="0,000"/>
 		    				<input id="inputBudget" name="expenseContent" type="text" />
 		    				<input id="inputBudget" name="expenseAmount" type="text" />
+		    				<br>
+		    				<br>
 		    				
 					    </div>
 		    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-workout">

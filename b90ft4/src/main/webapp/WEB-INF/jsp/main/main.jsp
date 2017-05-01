@@ -17,6 +17,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<script>
+function statusChangeCallback(response) { 
+	console.log('statusChangeCallback'); 
+	console.log(response);
+	
+	if (response.status === 'connected') { 
+		testAPI(); 
+	} else if (response.status === 'not_authorized') { 
+		document.getElementById('status').innerHTML = '해당 페이지에 등록이 필요합니다'; 
+	} else { 
+		document.getElementById('status').innerHTML = '페이스북 로그인이 필요합니다'; 
+	} 
+} 
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  	FB.init({ appId      : '226857754465479',
+   			 cookie     : true,  
+   			 xfbml      : true,  
+			 version    : 'v2.8' 
+  			});
+  	
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  	});
+  	};
+  	
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+ 
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        '환영합니다, ' + response.name + '님';
+    });
+  }
+</script>
+
 <div>
 <!-- 위로가기 ==================================================================================================== -->
 	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
@@ -144,8 +194,19 @@
 <div class="page-content">
 	<div class="row">
 		<div class="modalSample" id="callModal">
+		
 		<div id="loginMenu">
-			 <div id="naver_id_login"></div><br>
+		
+			 <div id="naver_id_login"></div>
+			 
+			 <br>
+			 <br>
+			 <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+			 <div id="status"></div>
+			 
+			 <br>
+			 <br>
+			 <br>
 			 <a href="#close">닫기</a>
 		</div>
 		</div>
@@ -155,7 +216,7 @@
 			<div id="menu02" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/diary.jpeg" width="350" height="300">Diary</div>
 			<div id="menu03" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/budget.jpg" width="350" height="300">Account Book</div>
 			<div id="menu04" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/workout.jpg" width="350" height="300">Workout</div>
-			<div id="menu05" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/login.jpg" width="350" height="300">Login (임시) </div>
+			<div id="menu05" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/login.jpg" width="350" height="300">Login</div>
 			<div id="menu06" class="menuIcon"><img src="${pageContext.request.contextPath}/web/image/main/news.jpg" width="350" height="300">News</div>
 			
 		</div>

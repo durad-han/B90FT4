@@ -7,6 +7,9 @@ import b90ft4.web.repository.vo.UserVO;
 @Repository
 public interface LoginMapper {
 	
+	public UserVO selectUser(UserVO user) throws Exception;
+	
 	public UserVO nLogin(UserVO user) throws Exception;
+
 
 }
