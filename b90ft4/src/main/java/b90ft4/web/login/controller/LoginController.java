@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import b90ft4.web.login.service.LoginService;
@@ -19,17 +20,19 @@ public class LoginController {
 	
 //	case : naver --------------------------------------------------------------------
 	@RequestMapping("/nLoginForm.do")
-	public String nLoginPage (UserVO user){
+	public String nLoginPage (UserVO user, Model model){
 		logger.debug("naver welcome.");
-		ls.nLogin(user);
-		return "login/naverLogin";
+		
+		model.addAttribute("user", ls.nLogin(user));
+		return "login/nLogin";
 	}
 	
 	@RequestMapping("/nLogin.do")
 	public String nLoginCallback (){
 		logger.debug("naver welcome.");
-		return "login/naverLoginCallback";
+		return "login/nLoginCallback";
 	}
+	
 	@RequestMapping("/nLogout.do")
 	public void nLogout (){
 		logger.debug("naver bye");
@@ -47,6 +50,7 @@ public class LoginController {
 		logger.debug("google welcome.");
 		return "login/naverLoginCallback";
 	}
+	
 	@RequestMapping("/gLogout.do")
 	public void gLogout (){
 		logger.debug("google bye");

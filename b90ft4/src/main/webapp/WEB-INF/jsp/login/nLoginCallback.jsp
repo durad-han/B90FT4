@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<script src="${pageContext.request.contextPath}/web/js/login/login.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/login/nlogin.js"></script>
 <script>
 
 </script>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b90ft4.web.repository.mapper.LoginMapper">
+
+	<resultMap type="userVO" id="userMap">
+		<result column="user_id" property="userId" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="type" property="type" />
+	</resultMap>
+		
+	<!--============================================================================
+	
+		U S E R		S E L E C T
+		
+	============================================================================-->	
+	 
+	 
+	<!--============================================================================
+			회원가입여부조회 selectUser
+			필터링할 값: 구글계정이면 userId값만
+					네이버계정이면 userkey값만
+			파라메터의 데이터타입: string
+			리턴되는 값의 데이터타입: UserVO
+	============================================================================-->
+	<select id="selectUser" parameterType="userVO" resultMap="userMap">
+	
+		<if test="type == '0'">
+			select *
+		  	  from tb_sam_user
+		  	 where type = #{type}
+		</if>
+		
+		<if test="type == '1'">
+			select *
+		  	  from tb_sam_user
+		  	 where user_id = #{userId}
+		</if>
+		
+	</select>
+	
+	
+	
+	<!--============================================================================ 
+	
+		U S E R		INSERT	/	UPDATE	/	DELETE
+	
+	 ============================================================================-->
+
+
+	<!--============================================================================
+			회원가입 insertUser
+			필터링할 값: 없음
+			파라메터의 데이터타입: string
+			리턴되는 값의 데이터타입: 없음 
+	============================================================================-->
+	<insert id="insertUser" parameterType="userVO" >
+		<selectKey keyProperty="user_id" order="BEFORE" resultType="int">
+			select s_sam_user.nextVal from dual <!-- ??? -->
+		</selectKey>
+		<if test="userKey == null">
+			insert into tb_sam_user (
+				user_id,
+				user_key
+			)
+			values (
+				#{userId},
+				#{userKey}
+			)
+		</if>
+		<if test="userKey == null">
+			insert into tb_sam_user (
+				user_id
+			)
+			values (
+				#{userId}
+			)
+		</if>
+	</insert>
+	
+	
+</mapper>
