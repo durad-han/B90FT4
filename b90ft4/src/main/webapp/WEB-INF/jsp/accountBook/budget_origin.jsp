@@ -158,7 +158,7 @@ tbody#income tr.incomeInfo:hover{
                 
                   <div class="col-lg-7" style="margin-left: 2%;margin-right: 5%;padding: 0">
                 		
-                		 <ul id="generalTab" class="nav nav-tabs responsive">
+                		<ul id="generalTab" class="nav nav-tabs responsive">
                             <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
                             <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
                         </ul>
@@ -222,7 +222,7 @@ tbody#income tr.incomeInfo:hover{
 	                			      </div>
 	                			   
                 			</div>
-                		</div>
+                	</div>
                 
                 
                     <div class="col-lg-3">
