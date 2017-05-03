@@ -34,6 +34,7 @@
 	</script>
 
 	<style>
+	
 		element.style{
 			border: 1px solid white !important;
 		}
@@ -496,8 +497,9 @@
 	                		
 	                		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 50%;">
 	                        
-	                            <li id="expenseTab" class="active"><a href="#alert-tab" data-toggle="tab">지출</a></li>
-	                            <li id="incomeTab"><a href="#note-tab" data-toggle="tab">수입</a></li>
+	                            <li id="expenseTab" class="active"><a href="#expense-tab" data-toggle="tab">지출</a></li>
+	                            <li id="incomeTab"><a href="#income-tab" data-toggle="tab">수입</a></li>
+<!-- 	                            <li id="month"><a href="#other-tab" data-toggle="tab">달</a></li> -->
 	                        
 	                        </ul>
 	                        
@@ -528,11 +530,12 @@
                 		
                 			<div id="generalTabContent" class="tab-content responsive">
 									
-			                       <div id="alert-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
-										  <div class="panel panel-green" id="expenseTable" ">
-						                           
-						                   <div class="panel-heading">지출</div>
-						                            <div class="panel-body">
+			                        <div id="expense-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
+										  
+										  <div class="panel panel-green" id="expenseTable">
+						                   		   
+						                   		   <div class="panel-heading">지출</div>
+						                           <div class="panel-body">
 						                                <table class="table table-hover-color">
 						                                    <thead>
 							                                    <tr id="expenseColumn">
@@ -549,18 +552,10 @@
 						                            </div>
 						                   </div>
 						                   
-						                   
-								   		   <div id="expenseDiv" style='display: none;width: 100%;height: 200px;'>			                       
-					                       </div>
-					                	 
-					                	   <div id="incomeDiv" style='display: none;width: 100%;height: 200px;'>			                       
-				                	       </div>
-						                   
-						                   
 			                 	     </div>
 			                			
 			                				
-	                            	  <div id="note-tab" class="tab-pane fade" style="height:500px;overflow: auto;">
+	                            	  <div id="income-tab" class="tab-pane fade" style="min-height:200px;overflow: auto;">
 										   <div class="panel panel-yellow" id="incomeTable">
 						                            <div class="panel-heading">수입</div>
 						                            <div class="panel-body">
@@ -579,6 +574,102 @@
 						                   </div>
 	                			      </div>
 	                			      
+	                			      <div id="month-tab" class="tab-pane fade" style="background:white;min-height:200px;min-width:1130px;">
+										   
+											  <div class="row">
+										   				
+									   				  <div class="col-md-3">
+														   <div id="expenseDiv" style='width:100%;height:200px;'>			                       
+									                       </div>
+											   		  </div>
+	
+											   		  <div class="col-md-3">
+									                	   <div id="incomeDiv" style="width:100%;height:200px;">			                       
+								                	       </div>
+											   		  </div>
+										   			
+										        
+											  		  <div id="monthBudgteTable" style="display: none;">
+													            <h4 class="box-heading">월별 지출/수입 현황</h4>
+										                        
+										                        <div class="col-md-3">
+											                         <div class="panel panel-red" style="width:100%;">
+													                        	<div class="panel-heading">지출</div>
+													                            <div class="panel-body">
+													                                <table class="table table-hover table-bordered">
+													                                    <thead>
+													                                    <tr>
+													                                        <th>분류</th>
+													                                        <th>합계</th>
+													                                    </tr>
+													                                    </thead>
+													                                    <tbody id="monthExpense">
+													                                    </tbody>
+													                                </table>
+												                            </div>
+									                        		 </div>
+								                        		 </div>
+								                        		 
+								                        		 
+								                         		<div class="col-md-3">
+									                                 <div class="panel panel-blue" style="background:#FFF;width:100%;">
+											                           		<div class="panel-heading">수입</div>
+												                            <div class="panel-body">
+												                                <table class="table table-hover table-bordered">
+												                                    <thead>
+												                                    <tr>
+												                                        <th>분류</th>
+												                                        <th>합계</th>
+												                                    </tr>
+												                                    </thead>
+												                                    <tbody id="monthIncome">
+												                                    </tbody>
+												                                </table>
+												                            </div>
+												     		   		 </div>
+											     		   		</div>
+											 		 </div> 
+					   					   </div>	
+					   					   
+					   					   <div id="row">
+					   					   		<div id="col-md-12">
+						   						   <hr>
+						   						   
+												   <button type = "button" class = "btn btn-default">지출</button>
+												   <button type = "button" class = "btn btn-default">수입</button>
+												   
+												   <br><br>
+												  <div class="panel panel-violet">
+								                            <div class="panel-heading" id="monthExpenseTable">월 지출 내역</div>
+								                             <div class="panel-body">
+								                                <table class="table table-hover-color">
+								                                
+								                                    <thead>
+									                                    <tr>
+									                                    	<th>날짜</th>
+									                                        <th id="expenseCtgy">분류</th>
+									                                        <th class='content'>내용</th>
+									                                        <th class='amount'>금액</th>
+									                                    </tr>
+								                                    </thead>
+								                                    
+								                                    <tbody>
+								                                    
+								                                    </tbody>
+								                                    
+								                                </table>
+								                            </div>
+						                          </div>												   
+																																			   
+												   
+												   
+												   
+												   
+					   					   		</div>
+					   					   </div>
+				                	       
+	                			      </div>
+	                			      
                 			</div>
                 		
                 		</div>   
@@ -594,12 +685,12 @@
 			   		  	 <div class="col-md-12">
 			   		  	 
 							<!-- 데이트 피커 -->
-							<ul id="generalTab" class="nav nav-tabs responsive">
+							 <ul id="generalTab" class="nav nav-tabs responsive">
 		                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
 		                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
-		                           <li id="month"><a href="#1" data-toggle="tab">달</a></li>
-<!-- 		                           <li id="month"><a href="#other-tab" data-toggle="tab">달</a></li> -->
-		                    </ul>
+<!-- 		                           <li id="month"><a href="#1" data-toggle="tab">달</a></li> -->
+		                           <li id="month"><a href="#month-tab" data-toggle="tab">달</a></li>
+		                     </ul>
 							  <div id="datepicker"></div><br>
 		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					                 		 지출/수입 등록
@@ -607,59 +698,17 @@
 				        	  
 				        	  <br><br>
 				        	  <div id="budgetPlanDiv">
-					        	<h4><b>이번 달 지출 한도</b></h4>
-					        	<span></span>
-					        	<h4><b>이번 달 현재 총 지출</b></h4>
-					        	<span></span>
-					        	<h4><b>잔여 지출 한도</b></h4>
-					        	<span></span>
+						        	<h4><b>이번 달 지출 한도</b></h4>
+						        	<span></span>
+						        	<h4><b>이번 달 현재 총 지출</b></h4>
+						        	<span></span>
+						        	<h4><b>잔여 지출 한도</b></h4>
+						        	<span></span>
 					          </div> 
 				        	
 						 </div>	
 						 
 			   		</div>
-			   		
-			   		<div class="row">
-			   			<div class="col-md-12">
-			        
-				  		    <div id="monthBudgteTable" style="display: none; margin-right: 30%;">
-						        <h4 class="box-heading">월별 지출/수입 현황</h4>
-			                        <div class="panel panel-red">
-					                       <div class="panel-heading">지출</div>
-					                            <div class="panel-body">
-					                                <table class="table table-hover table-bordered">
-					                                    <thead>
-					                                    <tr>
-					                                        <th>분류</th>
-					                                        <th>합계</th>
-					                                    </tr>
-					                                    </thead>
-					                                    <tbody id="monthExpense">
-					                                    </tbody>
-					                                </table>
-				                            </div>
-	                        		 </div>
-	                         
-	                                 <div class="panel panel-blue" style="background:#FFF;">
-			                           		<div class="panel-heading">수입</div>
-				                            <div class="panel-body">
-				                                <table class="table table-hover table-bordered">
-				                                    <thead>
-				                                    <tr>
-				                                        <th>분류</th>
-				                                        <th>합계</th>
-				                                    </tr>
-				                                    </thead>
-				                                    <tbody id="monthIncome">
-				                                    </tbody>
-				                                </table>
-				                            </div>
-				     		   		 </div>
-				 		    </div> 
-			   			
-			   			</div>
-			   			
-			   		</div>	
 			   		
 			   </div>
 			   
@@ -773,6 +822,7 @@
     <!-- 차트 js -->
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 	
 </div>
 </body>

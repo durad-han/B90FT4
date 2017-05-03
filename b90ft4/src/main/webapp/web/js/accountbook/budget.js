@@ -155,13 +155,27 @@
 		$("#budgetModal").show();		 // 지출/수입 등록 버튼
 		$("#expenseTable").show(); 	     // 지출 테이블
 		$("#incomeTable").show(); 	     // 수입 테이블
-		$("#expenseDiv").hide(); 	     // 지출 원 그래프 
-		$("#incomeDiv").hide(); 	     // 수입 원 그래프 
+//		$("#expenseDiv").hide(); 	     // 지출 원 그래프 
+//		$("#incomeDiv").hide(); 	     // 수입 원 그래프 
 		$("#expenseDate").remove(); 	 // 지출 테이블 날짜 컬럼
 		$("#incomeDate").remove(); 		 // 수입 테이블 날짜 컬럼
 //		$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
-		
 		$("#monthBudgteTable").hide();
+		
+		if(exOrInFlag){
+			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화
+			$("#incomeTab").addClass("active"); // 수입 탭 비활성화
+			$("#income-tab").addClass("in active");
+			console.log("수입탭 클릭");
+		}else {
+			$("#expenseTab").addClass("active"); // 지출 탭 비활성화
+			$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
+			$("#expense-tab").addClass("in active");
+			console.log("지출탭 클릭");
+		}
+
+		$("#month-tab").removeClass("in active");
+		
 		
 		selectedDateOption = 1;
 
@@ -184,19 +198,25 @@
 		$("#budgetModal").hide();   // 지출/수입 버튼
 		$("#expenseTable").show();  // 지출 테이블
 		$("#incomeTable").show();   // 수입 테이블
-		$("#expenseDiv").hide();    // 지출 원 그래프 
-		$("#incomeDiv").hide();     // 수입 원 그래프 
+//		$("#expenseDiv").hide();    // 지출 원 그래프 
+//		$("#incomeDiv").hide();     // 수입 원 그래프 
 		$("#expenseDate").remove(); // 지출 테이블 날짜 컬럼
 		$("#incomeDate").remove();  // 수입 테이블 날짜 컬럼
 		
 		if(exOrInFlag){
 			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화
 			$("#incomeTab").addClass("active"); // 수입 탭 비활성화
+			$("#income-tab").addClass("in active");
+			console.log("수입탭 클릭");
+			
 		}else {
 			$("#expenseTab").addClass("active"); // 지출 탭 비활성화
 			$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
+			$("#expense-tab").addClass("in active");
+			console.log("지출탭 클릭");
 		}
 		
+		$("#month-tab").removeClass("in active");
 		
 		$("#monthBudgteTable").hide();
 		
@@ -245,7 +265,6 @@
 		
 		$("#incomeTab").addClass("active"); // 수입 탭 비활성화
 		$("#expenseTab").addClass("active"); // 지출 탭 비활성화
-		
 	
 		selectedDateOption = 3;
 		
@@ -257,9 +276,8 @@
 		var d1 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth(),1));
 		var d2 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth()+1,0));
 
-		budgetList(d1,d2,selectedDateOption);
-		
-		
+		console.log("d2",d2);
+		budgetList(d1,d2,3);
 		
 	});
 	
@@ -509,9 +527,9 @@
 	}
 	
 	 
-	var regiOrModFlag; 
+	var regiOrModFlag // 등록, 수정 구분 플래그; 
 	 
-	var weekFlag=false; 
+	var weekFlag=false; // week 구분 플래그
 	 
 	// budgetSearchCode : 일/주/월 구분.
 	// budgetCode		: 지출/수입 구분.
@@ -541,176 +559,15 @@
 			},
 			async:false
 		}).done(function (result) {
-
 			
-			// 지출 계획 숨기기.
+			// 월 선택시, 지출 계획 숨기기.
 			if(selectedDateOption == 3 ) 
 				$("#budgetPlanDiv").hide();
 			else
 				showPlan();
 			
 			// 월을 선택할 경우, 원 그래프 그리기.
-			if(budgetSearchCode==3){
-				
-				$("#expenseDiv").empty();
-				$("#incomeDiv").empty();
-				
-				var expenseData = new Array();	
-				var incomeData = new Array();
-				
-				var expenseSum=0;
-				var incomeSum=0;
-				
-				
-				var expenseMonthBudget = result.expenseMonthBudget;
-				var incomeMonthBudget = result.incomeMonthBudget;
-				
-				var monthExpenseHtml="";
-				var monthIncomeHtml="";
-				
-				for(var i=0;i<expenseMonthBudget.length;i++) {
-					expenseSum+=expenseMonthBudget[i].eachSum;
-				}	
-		
-				for(var i=0;i<expenseMonthBudget.length;i++) {
-					
-					var obj={};
-				
-					obj.label = expenseMonthBudget[i].expenseCategoryName;
-					obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
-					obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
-					
-					expenseData.push(obj);
-					
-					monthExpenseHtml+="<tr>"
-					monthExpenseHtml+="<td><span class='"+colorChoice(1,expenseMonthBudget[i].expenseCategoryNo)+"'>"+obj.label+"</span></td>";
-					monthExpenseHtml+="<td>"+numberWithCommas(expenseMonthBudget[i].eachSum)+"원</td>";
-					monthExpenseHtml+="</tr>"
-							
-				}
-				
-				for(var i=0;i<incomeMonthBudget.length;i++) {
-					incomeSum+=incomeMonthBudget[i].eachSum;
-				}	
-				
-				for(var i=0;i<incomeMonthBudget.length;i++) {
-					
-					var obj={};
-					obj.label = incomeMonthBudget[i].incomeCategoryName;
-					obj.data = Math.round(((incomeMonthBudget[i].eachSum/incomeSum)*1000))/10;
-					obj.color = colorChoice(2,incomeMonthBudget[i].incomeCategoryNo);
-					
-					incomeData.push(obj);
-					
-					monthIncomeHtml+="<tr>";
-					monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+obj.label+"</span></td>";
-					monthIncomeHtml+="<td>"+numberWithCommas(incomeMonthBudget[i].eachSum)+"원</td>";
-					monthIncomeHtml+="</tr>";
-						
-				}	
-				
-					monthExpenseHtml+="<tr>"
-					monthExpenseHtml+="<td>합계</td>"
-					monthExpenseHtml+="<th>"+numberWithCommas(expenseSum)+"원</th>"
-					monthExpenseHtml+="</tr>"
-						
-					monthIncomeHtml+="<tr>"
-					
-					if(incomeSum!=0){	
-						monthIncomeHtml+="<td>합계</td>"
-						monthIncomeHtml+="<th>"+numberWithCommas(incomeSum)+"원</th>"
-					}else {
-						monthIncomeHtml+="<th colspan='2'>내역이 없습니다.</th>"
-					}
-					monthIncomeHtml+="</tr>"
-								
-					$("#monthExpense").html(monthExpenseHtml);
-					$("#monthIncome").html(monthIncomeHtml);
-					
-					$("#monthBudgteTable").show();
-				
-				//BEGIN PIE CHART
-				
-			    if(expenseData.length!=0){
-			       
-				    $.plot('#expenseDiv', expenseData, {
-				    series: {
-				        pie: {
-				            show: true,
-				            startAngle:2,
-				            radius: 1,
-				            tilt:.9,
-				            innerRadius:0.5,
-				            label: {
-				                show: true,
-				                radius: 3/4,
-				                background: {
-				                	opacity: 1,
-				                    color: 'white'
-				                }
-				            }
-				        }
-				    },
-				    legend: {
-				        show: false
-				    }
-				    });
-				    
-				    $("#expenseDiv").prepend("<h3>지출</h3>");
-			        
-				    
-			    }
-			
-			    
-//			    $("div.legend:eq(0) table").css({
-//			    	"font-size":"20px",
-//			    	"font-weight":"bold",
-//			    	"right" : "10%"
-//			    });
-//			    
-			    if(incomeData.length!=0){
-			    	
-				    $.plot('#incomeDiv', incomeData, {
-				    	  series: {
-						        pie: {
-						            show: true,
-						            startAngle:2,
-						            radius: 1,
-						            tilt:.9,
-						            innerRadius:0.5,
-						            label: {
-						                show: true,
-						                radius: 3/4,
-						                background: {
-						                	opacity: 1,
-						                    color: 'white'
-						                }
-						            }
-						        }
-						    },
-						    legend: {
-						        show: false
-						    }
-				    });
-				    
-				    $("#incomeDiv").prepend("<h3>수입</h3>");
-				    
-			    }
-			    
-//			    $("div.legend:eq(1) table").css({
-//			    	"font-size":"20px",
-//			    	"font-weight":"bold",
-//			    	"right" : "10%"
-//			    });
-//			    
-//			
-//			    $("span.pieLabel div").css({
-//			    	"font-weight":"bold"
-//			    })
-				
-			    return;
-		
-			}
+			console.log("selectedDateOption",selectedDateOption)
 			
 			// 일 , 주에 대한 지출/수입 테이블 작성
 			
@@ -740,24 +597,22 @@
 				$("#incomeColumn").prepend("<th id='incomeDate'>날짜</th>");
 			}
 			
-			
-			switch(budgetCode) {
-			
-				case undefined   :
-					makeExpense();
-					// 플래그
-					if(endDate != undefined) weekFlag=true;
-					makeIncome();
-					weekFlag=false;
-					
-					break;
-				case 0:
-					makeExpense();
-					break;
-				case 1:
-					makeIncome();
-					break;
-			}
+				switch(budgetCode) {
+				
+					case undefined   :
+						makeExpense();
+						// 플래그
+						if(endDate != undefined) weekFlag=true;
+						makeIncome();
+						weekFlag=false;
+						break;
+					case 0:
+						makeExpense();
+						break;
+					case 1:
+						makeIncome();
+						break;
+				}
 			
 				function makeExpense() {
 				
@@ -775,7 +630,7 @@
 									expenseHtml+="<td class='expenseCategoryNo' style='display:none;'>"+expense[k].expenseCategoryNo+"</td>";
 									
 									if(weekFlag) {
-										expenseHtml+="<th>"+expense[k].expenseDate+"</th>";
+										expenseHtml+="<th style='text-align:center;'>"+expense[k].expenseDate+"</th>";
 										weekFlag=false;
 									}else{
 										if(selectedDateOption == 2){
@@ -872,7 +727,6 @@
 						});
 						
 						weekFlag=false;
-		
 				}
 			
 				function makeIncome() {
@@ -893,7 +747,7 @@
 									incomeHtml+="<td class='incomeCategoryNo' style='display:none;'>"+income[k].incomeCategoryNo+"</td>";
 									
 									if(weekFlag) {
-										incomeHtml+="<th>"+income[k].incomeDate+"</th>";
+										incomeHtml+="<th style='text-align:center;'>"+income[k].incomeDate+"</th>";
 										weekFlag=false;
 									}else{
 										if(selectedDateOption == 2){
@@ -986,14 +840,153 @@
 							$("[name=budgetF] input:eq(3)").val(incomeObj.incomeContent);
 							$("#budgetModal").trigger("click");
 							
-							
 						});
 				}
+				
+				if(selectedDateOption==3){
+					
+					console.log("result", result);
+					console.log("endDate",endDate);
+					
+//					$("#expenseDiv").empty();
+//					$("#incomeDiv").empty();
+					
+					var expenseData = new Array();	
+					var incomeData = new Array();
+					
+					var expenseSum=0;
+					var incomeSum=0;
+					
+					var expenseMonthBudget = result.expenseMonthBudget;
+					var incomeMonthBudget = result.incomeMonthBudget;
+					
+					var monthExpenseHtml="";
+					var monthIncomeHtml="";
+					
+					for(var i=0;i<expenseMonthBudget.length;i++) {
+						expenseSum+=expenseMonthBudget[i].eachSum;
+					}	
 			
-		});	
+					for(var i=0;i<expenseMonthBudget.length;i++) {
+						
+						var obj={};
+					
+						obj.label = expenseMonthBudget[i].expenseCategoryName;
+						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
+						
+						expenseData.push(obj);
+						
+						monthExpenseHtml+="<tr>"
+						monthExpenseHtml+="<td><span class='"+colorChoice(1,expenseMonthBudget[i].expenseCategoryNo)+"'>"+obj.label+"</span></td>";
+						monthExpenseHtml+="<td>"+numberWithCommas(expenseMonthBudget[i].eachSum)+"원</td>";
+						monthExpenseHtml+="</tr>"
+								
+					}
+					
+					for(var i=0;i<incomeMonthBudget.length;i++) {
+						incomeSum+=incomeMonthBudget[i].eachSum;
+					}	
+					
+					for(var i=0;i<incomeMonthBudget.length;i++) {
+						
+						var obj={};
+						obj.label = incomeMonthBudget[i].incomeCategoryName;
+						obj.data = Math.round(((incomeMonthBudget[i].eachSum/incomeSum)*1000))/10;
+						obj.color = colorChoice(2,incomeMonthBudget[i].incomeCategoryNo);
+						
+						incomeData.push(obj);
+						
+						monthIncomeHtml+="<tr>";
+						monthIncomeHtml+="<td><span class='"+colorChoice(1,incomeMonthBudget[i].incomeCategoryNo)+"'>"+obj.label+"</span></td>";
+						monthIncomeHtml+="<td>"+numberWithCommas(incomeMonthBudget[i].eachSum)+"원</td>";
+						monthIncomeHtml+="</tr>";
+							
+					}	
+					
+						monthExpenseHtml+="<tr>"
+						monthExpenseHtml+="<td>합계</td>"
+						monthExpenseHtml+="<th>"+numberWithCommas(expenseSum)+"원</th>"
+						monthExpenseHtml+="</tr>"
+							
+						monthIncomeHtml+="<tr>"
+						
+						if(incomeSum!=0){	
+							monthIncomeHtml+="<td>합계</td>"
+							monthIncomeHtml+="<th>"+numberWithCommas(incomeSum)+"원</th>"
+						}else {
+							monthIncomeHtml+="<th colspan='2'>내역이 없습니다.</th>"
+						}
+						monthIncomeHtml+="</tr>"
+									
+						$("#monthExpense").html(monthExpenseHtml);
+						$("#monthIncome").html(monthIncomeHtml);
+						
+						$("#monthBudgteTable").show();
+						
+					//BEGIN PIE CHART
+				    if(expenseData.length!=0){
+					    
+				    	$.plot('#expenseDiv', expenseData, {
+					    series: {
+					        pie: {
+					            show: true,
+					            startAngle:2,
+					            radius: 1,
+					            tilt:.9,
+					            innerRadius:0.5,
+					            label: {
+					                show: true,
+					                radius: 3/4,
+					                background: {
+					                	opacity: 1,
+					                    color: 'white'
+					                }
+					            }
+					        }
+					    },
+					    legend: {
+					        show: false
+					    }
+					    });
+					    $("#expenseDiv").prepend("<h3>지출</h3>");
+				    }
+				
+				    
+				    if(incomeData.length!=0){
+				    	
+					    $.plot('#incomeDiv', incomeData, {
+					    	  series: {
+							        pie: {
+							            show: true,
+							            startAngle:2,
+							            radius: 1,
+							            tilt:.9,
+							            innerRadius:0.5,
+							            label: {
+							                show: true,
+							                radius: 3/4,
+							                background: {
+							                	opacity: 1,
+							                    color: 'white'
+							                }
+							            }
+							        }
+							    },
+							    legend: {
+							        show: false
+							    }
+					    });
+					    
+					    $("#incomeDiv").prepend("<h3>수입</h3>");
+					    
+				    }
+				    
+				} // month 처리 if문 끝.
+				
+		});	 // ajax 요청 끝.
 		
-		
-	}
+	} // budgetList 함수 끝.
 	
 	// 수정,삭제 버튼에 이벤트 등록.
 	function modAndDelEvent() {
@@ -1099,14 +1092,14 @@
 			}
 	});
 	
+	// 지출,수입 등록 버튼 클릭.
 	$("#budgetModal").click(function() {
 		$("[name=budgetF] input:eq(2)").focus();
 		console.log("ㅎㅇ");
 		regiOrModFlag = 1;
 	});
 	
-	
-	
+	// 지출,수입 등록
 	$("#budgetRegi").click(function() {
 		
 		var f = document.budgetF;
@@ -1156,68 +1149,6 @@
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(0);
 	});
-	
-	// 원 그래프 그리기 함수.
-	function makePieGraph(obj,div,title,colors) {
-		
-		  jQuery.jqplot.config.enablePlugins = true;
-		  plot7 = jQuery.jqplot(
-		    div, 
-			[obj],
-		    {
-		      title: title, 
-		      seriesDefaults: {shadow: true, renderer: jQuery.jqplot.PieRenderer, rendererOptions: { showDataLabels: true } }, 
-		      legend: { show: true, location: 'w',xoffset:1,yoffset:1},
-		      // compass direction, nw, n, ne, e, se, s, sw, w. xoffset: 12, // pixel offset of the legend box from the x (or x2) axis. yoffset: 12, // pixel offset of the legend box from the y (or y2) axis.  }
-		      seriesColors : colors // [ '#4bb2c5', '#c5b47f', '#EAA228', '#579575', '#839557', '#958c12', '#953579', '#4b5de4', '#d8b83f', '#ff5800', '#0085cc']
-		    }
-		  );
-		  
-		  $(".jqplot-table-legend").css({
-			  "font-size" : "15px",
-			  "margin-left" : "7%"
-		  });
-		  jQuery.jqplot.config.enablePlugins = false;
-	}
-	
-	
-
-//	//BEGIN PIE CHART
-//    var d7_1 = [40];
-//    var d7_2 = [20];
-//    var d7_3 = [40];
-//    $.plot('#pie-chart', [{
-//        data: d7_1,
-//        label: "Search Engines",
-//        color: "#3DB9D3"
-//    },
-//    {
-//        data: d7_2,
-//        label: "Referrals",
-//        color: "#ffce54"
-//    },
-//    {
-//        data: d7_3,
-//        label: "Direct",
-//        color: "#fc6e51"
-//    }], {
-//    series: {
-//        pie: {
-//            show: true,
-//            radius: 1,
-//            label: {
-//                show: true,
-//                radius: 3/4,
-//                background: {
-//                    opacity: 0.5,
-//                    color: '#000'
-//                }
-//            }
-//        }
-//    }
-//    });
-//    //END PIE CHART
-
 	
  // 콤마 찍는 정규 표현식 적용 함수.
 	function numberWithCommas(x) {
