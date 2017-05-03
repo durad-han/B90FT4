@@ -257,6 +257,9 @@
 			return; 
 		}
 		
+		$("#expenseTotal").addClass("active");
+		$("#monthExpense-tab").addClass("in active");
+		
 		$("#expenseTable").hide();  // 지출 테이블
 		$("#incomeTable").hide();   // 수입 테이블
 		$("#expenseDiv").show();	// 지출 원 그래프 
@@ -265,7 +268,8 @@
 		
 		$("#incomeTab").addClass("active"); // 수입 탭 비활성화
 		$("#expenseTab").addClass("active"); // 지출 탭 비활성화
-	
+		
+		
 		selectedDateOption = 3;
 		
 		$("#datepicker").datepicker("refresh");
@@ -276,7 +280,6 @@
 		var d1 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth(),1));
 		var d2 = $.datepicker.formatDate(dateFormat,new Date(date.getYear()+1900,date.getMonth()+1,0));
 
-		console.log("d2",d2);
 		budgetList(d1,d2,3);
 		
 	});
@@ -536,10 +539,13 @@
 	// ctgyNo			: 분류 구분.
 	
 	/* 지출-수입 테이블 로딩 함수*/
-	function budgetList(startDate,endDate,budgetSearchCode,ctgyNo,budgetCode){
+	function budgetList(startDate,endDate,budgetSearchCode,ctgyNo,budgetCode,flag){
 		
 		var expenseCategoryNo;
 		var incomeCategoryNo;
+		
+		var expenseHtml="";
+		var incomeHtml="";
 		
 		if(budgetCode==0){
 			expenseCategoryNo = ctgyNo;
@@ -566,9 +572,6 @@
 			else
 				showPlan();
 			
-			// 월을 선택할 경우, 원 그래프 그리기.
-			console.log("selectedDateOption",selectedDateOption)
-			
 			// 일 , 주에 대한 지출/수입 테이블 작성
 			
 			var expense = result.expense;
@@ -576,9 +579,6 @@
 			var expenseEachDayCount = result.expenseEachDayCount;
 			var incomeEachDayCount = result.incomeEachDayCount;
 			
-			var expenseHtml="";
-			var incomeHtml="";
-
 			var expenseSum =0;
 			var incomeSum =0;
 
@@ -633,7 +633,7 @@
 										expenseHtml+="<th style='text-align:center;'>"+expense[k].expenseDate+"</th>";
 										weekFlag=false;
 									}else{
-										if(selectedDateOption == 2){
+										if(selectedDateOption != 1 ){
 											expenseHtml+="<th style='visibility:hidden;'>"+expense[k].expenseDate+"</th>";
 										}
 									}
@@ -750,7 +750,7 @@
 										incomeHtml+="<th style='text-align:center;'>"+income[k].incomeDate+"</th>";
 										weekFlag=false;
 									}else{
-										if(selectedDateOption == 2){
+										if(selectedDateOption != 1){
 											incomeHtml+="<th style='display:none;'>"+income[k].incomeDate+"</th>";
 										}
 									}
@@ -843,6 +843,15 @@
 						});
 				}
 				
+				// done(function(result){}) 함수안에 있다..
+				if(flag==0){
+					return;
+				}
+				if(flag==1){
+					console.log("incomeHtml",incomeHtml);
+					return;
+				}			
+				
 				if(selectedDateOption==3){
 					
 					console.log("result", result);
@@ -923,10 +932,47 @@
 						$("#monthIncome").html(monthIncomeHtml);
 						$("#monthBudgteTable").show();
 						
+						$("#monthExpenseTable + div tbody").html(expenseHtml);
+						$("#monthIncomeTable + div tbody").html(incomeHtml);
 						
-						$.ajax()
+						$(".expenseCtgy").html("<select><option value='0'>분류</option>"+esOpt+"</select>");
+						$(".incomeCtgy").html("<select><option value='0'>분류</option>"+icOpt+"</select>");
 						
+						$(".expenseCtgy > select").change(function() {
+							//			console.log(this.value);
+							var expense= budgetList(startDate,endDate,3,this.value,0,0);
+							console.log("테스트",expense);
+							$("#monthExpenseTable + div tbody").html(expense);
+						});
 						
+						$(".incomeCtgy > select").change(function() {
+							//			console.log(this.value);
+							var income= budgetList(startDate,endDate,3,this.value,1,1);
+							
+							console.log("income",income);
+							
+							$("#monthIncomeTable + div tbody").html(income);
+						});
+						
+						/*
+							// 지출 테이블 분류 컬럼
+							$("#expenseCtgy > select").change(function() {
+					//			console.log(this.value);
+								budgetList(startDate,endDate,2,this.value,0);
+							});
+							
+							// 수입 테이블 분류 컬럼
+							$("#incomeCtgy").html("<select><option value='0'>분류</option>"+icOpt+"</select>");
+							$("#incomeCtgy > select").change(function() {
+					//			console.log(this.value);
+								console.log("분류일떄를 보자.",this.value);
+								budgetList(startDate,endDate,2,this.value,1);
+							});
+							
+							$(".ui-datepicker-current-day").trigger("click");
+							
+						 */
+ 
 						
 						
 					//BEGIN PIE CHART
@@ -989,7 +1035,16 @@
 				    
 				} // month 처리 if문 끝.
 				
+				// done(function(result){}) 함수안에 있다..
+				
 		});	 // ajax 요청 끝.
+		
+		if(flag==0){
+			return expenseHtml;
+		}
+		if(flag==1){
+			return incomeHtml;
+		}
 		
 	} // budgetList 함수 끝.
 	
