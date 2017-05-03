@@ -68,6 +68,7 @@ public class AccBookController {
 		service.registerIncome(income);
 		return "ok";
 	}
+
 	
 	// 지출/수입 리스트 
 	@ResponseBody

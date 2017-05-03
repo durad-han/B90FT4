@@ -921,8 +921,13 @@
 									
 						$("#monthExpense").html(monthExpenseHtml);
 						$("#monthIncome").html(monthIncomeHtml);
-						
 						$("#monthBudgteTable").show();
+						
+						
+						$.ajax()
+						
+						
+						
 						
 					//BEGIN PIE CHART
 				    if(expenseData.length!=0){
