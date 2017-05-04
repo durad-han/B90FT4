@@ -20,9 +20,9 @@
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

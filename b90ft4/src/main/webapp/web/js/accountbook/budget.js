@@ -151,6 +151,10 @@
 	
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
+		
+		// 월 지출
+		$("#monthExpense-tab").removeClass("in active");
+		
 			
 		$("#budgetModal").show();		 // 지출/수입 등록 버튼
 		$("#expenseTable").show(); 	     // 지출 테이블
@@ -194,6 +198,10 @@
 		
 		$("head > style#hidden").remove();
 		if(selectedDateOption == 2) return; 
+		
+		// 월 지출
+		$("#monthExpense-tab").removeClass("in active");
+		
 
 		$("#budgetModal").hide();   // 지출/수입 버튼
 		$("#expenseTable").show();  // 지출 테이블
@@ -257,8 +265,9 @@
 			return; 
 		}
 		
-		$("#expenseTotal").addClass("active");
+		// 월 지출 테이블.
 		$("#monthExpense-tab").addClass("in active");
+		
 		
 		$("#expenseTable").hide();  // 지출 테이블
 		$("#incomeTable").hide();   // 수입 테이블

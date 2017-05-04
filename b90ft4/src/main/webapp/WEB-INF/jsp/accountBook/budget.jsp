@@ -19,10 +19,12 @@
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
+    
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -33,398 +35,8 @@
 		console.log("하하");
 	</script>
 
-	<style>
-	
-		element.style{
-			border: 1px solid white !important;
-		}
-		
-		#generalTab li {
-			font-weight: bold;
-			font-size: 20px;
-		}
-		
-		.dropdown-menu > li{
-			color:white !important;
-			background: black !important;
-		}
-		
-		.tab-content {
-		    background: #fff;
-		    margin-bottom: 20px;
-		    border-color: #e5e5e5 !important;
-		    border-top: 0;
-		}
-		
-		.prev, .next {
-/* 		    position: absolute; */
-/* 		    top: 50%; */
-		    background-color: rgba(0, 0, 0, 0.3);
-		    color: #fff;
-		    display: inline-block;
-		    font-size: 24px;
-		    height: 50px;
-		    width: 50px;
-		    line-height: 50px;
-		    text-align: center;
-		    border-radius: 4px;
-		    z-index: 5;
-		}
-		
-		.prev:hover, .next:hover {
-			background: grey;
-		}
-		
-		#actualDate{
-			width: 80%;
-			font-size:25px;
-			display: inline-block !important;
-			text-align: center;
-			background: white;
-			height: 48px;
-		}
-		
-		#actualDate:readonly{
-			background: white;
-		}
-		
-		/* 테이블 행 호버 CSS*/
-		
-		tbody#expense tr.expenseInfo:hover{
-			background:skyblue;
-		}
-		tbody#income tr.incomeInfo:hover{
-			background:pink;
-		}
-		
-		#budgetPlanDiv input{
-			text-align: center;
-			font-weight: bold;
-		}
-		#budgetPlanDiv input:nth-child(6){
-			color:blue;
-		}
-		
-		
-		/* 뱃지,레이블*/
-		.label{
-			color:white !important;
-			font-weight: 500 !important;
-		}
-		
-		.badge {
-		  font-size: 11px !important;
-		  font-weight: 300;
-		  height: 18px;
-		  padding: 3px 6px 3px 6px;
-		  -webkit-border-radius: 12px !important;
-		  -moz-border-radius: 12px !important;
-		  border-radius: 12px !important;
-		  text-shadow: none !important;
-		  text-align: center;
-		  vertical-align: middle;
-		  background-color: #bcbcbc;
-		}
-		.label {
-		  font-size: 11px;
-		  font-weight: 300;
-		  -webkit-border-radius: 0 !important;
-		  -moz-border-radius: 0 !important;
-		  border-radius: 0 !important;
-		}
-		.badge-default,
-		.label-default {
-		  background-color: #999 !important;
-		}
-		.badge-primary,
-		.label-primary {
-		  background-color: #dc6767 !important;
-		}
-		.badge-red,
-		.label-red {
-		  background-color: #bf4346 !important;
-		}
-		.badge-orange,
-		.label-orange {
-		  background-color: #e9662c !important;
-		}
-		.badge-green,
-		.label-green {
-		  background-color: #488c6c !important;
-		}
-		.badge-yellow,
-		.label-yellow {
-		  background-color: #f2994b !important;
-		}
-		.badge-blue,
-		.label-blue {
-		  background-color: #0a819c !important;
-		}
-		.badge-violet,
-		.label-violet {
-		  background-color: #9351ad !important;
-		}
-		.badge-pink,
-		.label-pink {
-		  background-color: #bf3773 !important;
-		}
-		.badge-grey,
-		.label-grey {
-		  background-color: #4b5d67 !important;
-		}
-		.badge-dark,
-		.label-dark {
-		  background-color: #594857 !important;
-		}
-		.label-success,
-		.badge-success {
-		  background-color: #5cb85c;
-		  background-image: none !important;
-		}
-		.label-warning,
-		.badge-warning {
-		  background-color: #f0ad4e;
-		  background-image: none !important;
-		}
-		.label-danger,
-		.badge-danger {
-		  background-color: #d9534f;
-		  background-image: none !important;
-		}
-		.label-info,
-		.badge-info {
-		  background-color: #5bc0de;
-		  background-image: none !important;
-		}
-		
-		/* 패널 */
-		
-		.panel {
-		  -webkit-box-shadow: none !important;
-		  box-shadow: none !important;
-		  -webkit-border-radius: 0 !important;
-		  -moz-border-radius: 0 !important;
-		  border-radius: 0 !important;
-		   border: 1px solid #e5e5e5;
-		    border-radius: 0 !important;
-		    box-shadow: none !important;
-		}
-		.panel > .panel-heading {
-		  font-size: 18px;
-		  padding: 7px 15px;
-		  border-top-right-radius: 0 !important;
-		  border-top-left-radius: 0 !important;
-		  border-color: #e5e5e5 !important;
-		}
-		.panel > .panel-footer {
-		  font-size: 18px;
-		  padding: 7px 15px;
-		  border-bottom-right-radius: 0 !important;
-		  border-bottom-left-radius: 0 !important;
-		}
-		.panel.panel-primary {
-		  border-color: #dc6767;
-		}
-		.panel.panel-primary > .panel-heading {
-		  color: #FFFFFF;
-		  background: #dc6767;
-		  border-color: #dc6767 !important;
-		}
-		.panel.panel-primary > .panel-footer {
-		  color: #FFFFFF;
-		  background: #dc6767;
-		  border-color: #dc6767 !important;
-		}
-		.panel.panel-red {
-		  border-color: #bf4346;
-		}
-		.panel.panel-red > .panel-heading {
-		  color: #FFFFFF;
-		  background: #bf4346;
-		  border-color: #bf4346 !important;
-		}
-		.panel.panel-red > .panel-footer {
-		  color: #FFFFFF;
-		  background: #bf4346;
-		  border-color: #bf4346 !important;
-		}
-		.panel.panel-orange {
-		  border-color: #e9662c;
-		}
-		.panel.panel-orange > .panel-heading {
-		  color: #FFFFFF;
-		  background: #e9662c;
-		  border-color: #e9662c !important;
-		}
-		.panel.panel-orange > .panel-footer {
-		  color: #FFFFFF;
-		  background: #e9662c;
-		  border-color: #e9662c !important;
-		}
-		.panel.panel-green {
-		  border-color: #488c6c;
-		}
-		.panel.panel-green > .panel-heading {
-		  color: #FFFFFF;
-		  background: #488c6c;
-		  border-color: #488c6c !important;
-		}
-		.panel.panel-green > .panel-footer {
-		  color: #FFFFFF;
-		  background: #488c6c;
-		  border-color: #488c6c !important;
-		}
-		.panel.panel-yellow {
-		  border-color: #f2994b;
-		}
-		.panel.panel-yellow > .panel-heading {
-		  color: #FFFFFF;
-		  background: #f2994b;
-		  border-color: #f2994b !important;
-		}
-		.panel.panel-yellow > .panel-footer {
-		  color: #FFFFFF;
-		  background: #f2994b;
-		  border-color: #f2994b !important;
-		}
-		
-		.panel.panel-blue {
-		  background: #f2f5f6; /* Old browsers */
-		background: -moz-linear-gradient(top, #f2f5f6 0%, #c8d7dc 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* IE10+ */
-		background: linear-gradient(to bottom, #f2f5f6 0%,#c8d7dc 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
-		
-		  border-color: #0a819c;
-		}
-		.panel.panel-blue > .panel-heading {
-		  color: #FFFFFF;
-		  background: #0a819c;
-		  border-color: #0a819c !important;
-		}
-		.panel.panel-blue > .panel-footer {
-		  color: #FFFFFF;
-		  background: #0a819c;
-		  border-color: #0a819c !important;
-		}
-		.panel.panel-pink {
-		  border-color: #bf3773;
-		}
-		.panel.panel-pink > .panel-heading {
-		  color: #FFFFFF;
-		  background: #bf3773;
-		  border-color: #bf3773 !important;
-		}
-		.panel.panel-pink > .panel-footer {
-		  color: #FFFFFF;
-		  background: #bf3773;
-		  border-color: #bf3773 !important;
-		}
-		.panel.panel-violet {
-		  border-color: #9351ad;
-		}
-		.panel.panel-violet > .panel-heading {
-		  color: #FFFFFF;
-		  background: #9351ad;
-		  border-color: #9351ad !important;
-		}
-		.panel.panel-violet > .panel-footer {
-		  color: #FFFFFF;
-		  background: #9351ad;
-		  border-color: #9351ad !important;
-		}
-		.panel.panel-grey {
-		  border-color: #4b5d67;
-		}
-		.panel.panel-grey > .panel-heading {
-		  color: #FFFFFF;
-		  background: #4b5d67;
-		  border-color: #4b5d67 !important;
-		}
-		.panel.panel-grey > .panel-footer {
-		  color: #FFFFFF;
-		  background: #4b5d67;
-		  border-color: #4b5d67 !important;
-		}
-		.panel.panel-dark {
-		  border-color: #594857;
-		}
-		.panel.panel-dark > .panel-heading {
-		  color: #FFFFFF;
-		  background: #594857;
-		  border-color: #594857 !important;
-		}
-		.panel.panel-dark > .panel-footer {
-		  color: #FFFFFF;
-		  background: #594857;
-		  border-color: #594857 !important;
-		}
-		
-		.panel.panel-white {
-		  border-color: #efefef;
-		}
-		
-		.panel.panel-white > .panel-heading {
-		  border-bottom: 1px solid #faf9fb;
-		  color: #999999;
-		  background: #FFFFFF;
-		}
-		
-		.panel.panel-white > .panel-footer {
-		  border-top: 1px solid #faf9fb;
-		  color: #999999;
-		  background: #FFFFFF;
-		}		
-		
-		.content{
-			white-space:nowrap;		
-			overflow: hidden;  /* 엘리먼트의 넘치는 내용물을 숨겨라 . */
-			text-overflow: ellipsis;	
-			text-align: center;	
-			width: 400px;
-		}
-		
-		.amount {
-			text-align: center;	
-			width: 100px;
-		}
-		
-		#expenseDate, #incomeDate {
-			text-align: center;	
-			width: 25% !important;		
-		}
-		#expenseCtgy, #incomeCtgy {
-			text-align: center;	
-			width: 100px !important;		
-		}
-		
-		#budgetModal {
-			width: 100%;
-		}
-		
-		#budgetPlanDiv > span {
-			font-size: 1.3em;
-			margin-bottom: 30px;
-		}
-		
-		#budgetPlanDiv > span:last-child {
-			color: blue;
-		}
-		hr.star-primary2 {
-		  padding: 0;
-		  border: none;
-		  border-top: solid 5px;
-		  text-align: center;
-		  margin: 25px auto 30px;
-		}
-		
-		#portfolio {
-/* 			background-color: rgba(137, 183, 136, 0.03); */
-		}
-</style>
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 
@@ -444,7 +56,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="main.do">자기 관리</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">자기 관리</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -462,9 +74,9 @@
 					          가계부 <span class = "caret"></span>
 					      </a>
 					      <ul class = "dropdown-menu">
-					         <li><a href = "#">지출/수입</a></li>
-					         <li><a href = "#">대입금/차입금</a></li>
-					         <li><a href = "#">설정</a></li>
+					         <li><a href = "budget.do">지출/수입</a></li>
+					         <li><a href = "loanDept.do">대입금/차입금</a></li>
+					         <li><a href = "setting.do">설정</a></li>
 					      </ul>
 					      
 				   </li>
@@ -476,6 +88,22 @@
                     <li class="page-scroll">
                         <a href="#contact">스케쥴러</a>
                     </li>
+                    
+                    <li>
+                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
+                    </li>
+                    
+                     <li>
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
+					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+	                </li>
+	              
+	                <li>
+		                <div>
+							<button id="addMemo">메모 추가</button>
+						</div>
+	                </li>
+                    
                 </ul>
                 
             </div>
@@ -637,7 +265,7 @@
 						   						   
 											   	 <ul id="generalTab" class="nav nav-tabs responsive" style="width: 50%;">
 	                        
-						                            <li id=expenseTotal><a href="#monthExpense-tab" data-toggle="tab">지출</a></li>
+						                            <li id=expenseTotal class='active'><a href="#monthExpense-tab" data-toggle="tab">지출</a></li>
 						                            <li><a href="#monthIncome-tab" data-toggle="tab">수입</a></li>
 						                        
 						                        </ul>
@@ -855,6 +483,8 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
+	
+	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
 </div>
 </body>

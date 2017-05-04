@@ -1,9 +1,46 @@
-console.log("scheduleMain.js 로드됨...!");
+console.log("scheduleMain.js 로드됨...");
 
 //----- datePicker -----------------------------------------------------------
 
 
 //----- schedule ---------------------------------------------------------------------------------------------
+$(document).ready(function() {
+	console.log("달력용 스케줄 호출")
+	$.ajax({
+		url : "/b90ft4/schedule/scheduleCalendar.json",
+		type: "POST",
+		dataType: "json",
+	}, fullCal);
+});
+
+//----- calendar ---------------------------------------------------------------------------------------------
+function fullCal(result) {
+	console.log("hello calendar");
+if(result.success){
+	var sList = result['scheduleList'];
+	console.dir(sList)
+	var calObj = [];
+	for(var i = 0 ; i < sList.length ; i++){
+		console.log(sList[i]);
+		calObj.push(sList[i])
+	}
+	
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay,listWeek'
+		},
+		defaultDate: new Date(),
+		navLinks: true,
+		editable: false,
+		eventLimit: false,
+		events: sList
+	});
+}
+	
+};
+
 
 function scheduleBody(result){
 	

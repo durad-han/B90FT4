@@ -12,7 +12,6 @@
 			}
 		}
 
-
 		$("#showAndHideMemo").click(function() {
 			memoCheck();
 		})
@@ -26,7 +25,6 @@
 					       width:"150px",
 					       height:"250px",
 					       background: "#ffff9d",
-					       border: "1px solid black",
 					       "z-index" : "999999"
 			       	   })
 					   .attr("class","memo")
@@ -35,7 +33,7 @@
 						.attr("contentEditable",true)
 						.css({
 						   width:"145px", 
-					       height: "220px",
+					       height: "190px",
 					       background : "#ffff9d",
 						   overflow : "auto",
 						   margin: "0 auto"
@@ -56,7 +54,7 @@
 			}).done(function (memoNo) {
 				$(obj)
 				.attr("id",memoNo)
-				.prepend("<div style='width:100%;height:25px;background:yellow'><button type='button' onclick='delMemo("+memoNo+")' style='margin-left:90%'>X</button></div>");
+				.prepend("<div style='width:100%;height:50px;background:yellow'><a class='button remove' onclick='delMemo("+memoNo+")' style='margin-left:84%'>X</a></div>");
 			});
 			
 			
@@ -254,13 +252,13 @@
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
-					   .append("<div style='width:100%;height:25px;background:yellow;'><button type='button' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:90%'>X</button></div>")
+					   .append("<div style='width:100%;height:40px;background:yellow;'><a type='button' class='button remove' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:90%'>X</a></div>")
 					   .append(
 						$("<div class='memoContent'></div>")
 								.attr("contentEditable",true)
 								.css({
 								   width:sList[i].memoWidth-5+"px", 
-							       height: sList[i].memoHeight-30+"px",
+							       height: sList[i].memoHeight-45+"px",
 							       background : "#ffff9d",
 								   overflow : "auto",
 							       margin: "0 auto"
@@ -274,7 +272,7 @@
 		
 		// 메모 크기 조절.
 		
- 		// 북쪽
+ 	// 북쪽
 	function northSide(that) {
 		$(document).mousemove(function(e) {
 			
@@ -291,7 +289,7 @@
 		});
 		
 		$(that).find("div.memoContent").css({
-			"height" : $(that).height() - 30
+			"height" : $(that).height() - 50
 		});
 			
 		
@@ -377,7 +375,7 @@
 		console.log("size : " + size);
 		
 		$(that).find("div.memoContent").css({
-			"height" : $(that).height() - 30
+			"height" : $(that).height() - 50
 		});
 		
 		console.log("memo : " + $(that).height(),"memoContent : " + $(that).find("div.memoContent").height());

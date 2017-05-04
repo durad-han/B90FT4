@@ -57,21 +57,23 @@ function statusChangeCallback(response) {
       console.log('Successful login for: ' + response.name);
       console.dir(response);
       
+//       location.href="${pageContext.request.contextPath}/login/login.do";
+      
       document.getElementById('status').innerHTML =
-        '환영합니다, ' + response.name + '님';
+        '환영합니다~, ' + response.name + '님';
       $.ajax({
 	    	url : "/b90ft4/login/login.do",
 	  		type: "POST",
-	  		data: {user : response.name},
+	  		data: {userId : response.name},
 	  		dataType: "json",
-	  		success: function(response){
+	  		success: function(){
 	  			console.log("hello login")
-			      location.href="${pageContext.request.contextPath}/main/main.do";
 	  		}
       })
     });
   }
 </script>
+
 	<div id="loginMenu">
 		
 		 <div id="naver_id_login"></div>

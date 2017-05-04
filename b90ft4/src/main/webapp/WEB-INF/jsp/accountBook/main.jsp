@@ -15,14 +15,13 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
 
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -76,20 +75,25 @@
 					          가계부 <span class = "caret"></span>
 					      </a>
 					      <ul class = "dropdown-menu">
-					         <li><a href = "#">지출/수입</a></li>
-					         <li><a href = "#">대입금/차입금</a></li>
-					         <li><a href = "#">설정</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/setting.do">설정</a></li>
 					      </ul>
 					      
 				   </li>
                     <!-- 드롭 다운 테스트  -->
-                        
                     <li class="page-scroll">
                         <a href="#about">다이어리</a>
                     </li>
+
                     <li class="page-scroll">
                         <a href="#contact">스케쥴러</a>
                     </li>
+                        
+                    <li>
+                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
+                    </li>
+
                 </ul>
                 
             </div>
