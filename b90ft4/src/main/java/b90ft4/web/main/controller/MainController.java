@@ -27,6 +27,11 @@ public class MainController {
 		logger.debug("hello world, main menu selector speaking.");
 	}
 	
+	@RequestMapping("/testMain.do")
+	public void testPage (){
+		logger.debug("hello world, main menu selector speaking.");
+	}
+	
 	@RequestMapping("/options.do")
 	public void options (){
 		logger.debug("options menu");
