@@ -68,11 +68,44 @@
 		<result column="Workout_Day"			property="workoutDay"/>
 	</resultMap>
 	
-
-
 	<select id="retrieveWorkoutDateTestList" resultMap="workoutDateTestMap" parameterType="String">
 		select * 
 		from tb_Sam_Workout_Statistics
 	</select>
- 
+<!--  retrieveWorkoutDateTest -->	
+	<!-- 
+insert into tb_sam_workout_userinfo(user_Id,userHeight,userWeight,userAge,userGender) values('tester01',180,70,25,'male');
+update tb_sam_workout_userinfo set userHeight = 181 , userWeight = 60 ,  userAge = 27 where User_Id = 'tester01';
+delete from tb_sam_workout_userinfo where User_Id = 'tester01';
+	 -->
+	 <resultMap type="workoutUserInfoVO" id="workoutUserInfoMap">
+	 <result column="user_Id"			property="userId"/>
+	 <result column="user_Gender"			property="userGender"/>
+	 <result column="user_Height"			property="userHeight"/>
+	 <result column="user_Weight"			property="userWeight"/>
+	 <result column="user_Age"			property="userAge"/>
+
+	 </resultMap>
+	 
+	<select id="retrieveWorkoutUserInfoUserId" parameterType="String" resultType="String">
+	 select user_Id from tb_sam_workout_userinfo where user_Id = #{userId}
+	</select>
+	<select id="retrieveWorkoutUserInfo" parameterType="String" resultMap="workoutUserInfoMap">
+	 select * from tb_sam_workout_userinfo where user_Id = #{userId}
+	</select>
+ 	<insert id="insertWorkoutUserInfo" parameterType="map">
+ 		insert into tb_sam_workout_userinfo(
+ 		user_Id,userHeight,userWeight,userAge,userGender)
+ 		values(#{userId},#{userHeight},#{userWeight},#{userAge},#{userGender})
+ 	</insert>
+ 	
+ 	<update id="updateWorkoutUserInfo" parameterType="map">
+ 	update tb_sam_workout_userinfo set 
+ 	userHeight = #{userHeight} , userWeight = #{userWeight} ,  userAge = #{userAge} where User_Id = #{userId}
+ 	</update>
+ 	
+ 	<delete id="deleteWorkoutUserInfo" parameterType="String">
+ 	delete from tb_sam_workout_userinfo where User_Id = #{userId}
+ 	</delete>
+ 	
 </mapper>

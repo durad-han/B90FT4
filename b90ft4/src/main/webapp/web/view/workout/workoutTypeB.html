@@ -14,6 +14,7 @@
 	</div>
 	<div id = 'viewContainer'>
 	</div>
+	
 	<div>
 		<video width='70%' height='70%' autoplay='autoplay' id='myVideo' />
 	</div>
@@ -23,10 +24,9 @@
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
 		<button id='youtubeOpenBtn' class='btn btn-primary' onclick='youtubeOpen()'>영상 켜기</button>
 		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
-		<button id='recoderLoadBtn' class='btn btn-default' onclick='recoderLoad()'>녹화 하기</button>
-		<button id="rec" onclick="onBtnRecordClicked()">Record</button>
-		<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
-		<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>
+		<button id="rec" onclick="onBtnRecordClicked()">녹화</button>
+		<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>녹화 일시정지</button>
+		<button id="stop"  onclick="onBtnStopClicked()" disabled>녹화 정지</button>
 		<a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 		<p id="data"></p>
 		

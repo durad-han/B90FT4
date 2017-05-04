@@ -13,6 +13,20 @@
 
 <button onclick='setCal()'>입력</button><button>저장</button>
 </div>
+<!-- <div id='BMContainer' hidden="true"> -->
+<div id='BMContainer'>
+키:<input id='setUserHeight' type='text'>cm<br>
+몸무게:<input id='setUserWeight' type='text'>kg<br>
+나이:<input id='setUserAge' type='text'>세<br>
+성별:<input type="radio" name="gender" id="genderMale" value="male" checked> 남 
+	<input type="radio" name="gender" id="genderFemale" value="female"> 여<br>
+기초대사량:<input id ='BMView' type='text'><br>
+<button onclick = 'calculateBM()'>계산</button>
+<button onclick = 'setBM()'>오늘 소비 칼로리에 적용</button>
+<button onclick = 'callBM()'>내 정보 불러오기</button>
+<button onclick = 'saveBM()'>내 정보에 저장</button>
+<button onclick = 'deleteBM()'>내 정보 삭제</button>
+</div>
 <div class='caption'>칼로리 계산</div>
 <div id='bar-chart-stack' style='width: 50%; height:300px'></div>
   
@@ -21,7 +35,9 @@
 	var totalSpentCal = 0;   
 	var totalIntakeCal = 0;
 	var today = $.datepicker.formatDate("yy-mm-dd",new Date());
-function callIntakeCal(){
+	var BM = 0;
+	var userId = 'tester01';
+	function callIntakeCal(){
 	$.ajax({
 		url:"selectWorkoutStatisticsList.do",
 		dataType:"json",
@@ -37,6 +53,7 @@ function callIntakeCal(){
 	}
 	
 function callSpentCal(){
+	totalSpentCal = 0;
 	console.log("callSpentCal loaded");
 	console.log("today : "+ today);
 	$.ajax({
@@ -153,6 +170,97 @@ function callSpentCal(){
 		console.dir(d4_1);
    }
    barChartStack();
+   
+   //BM 관련 함수
+//<button onclick = 'calculateBM()'>계산</button>
+   function calculateBM(){
+/* 	   
+	   <div id='BMContainer' hidden="true">
+	   키:<input id='setUserHeight' type='text'>cm<br>
+	   몸무게:<input id='setUserWeight' type='text'>kg<br>
+	   나이:<input id='setUserAge' type='text'><br>
+	   기초대사량:<input id ='BMView'type='text'><br>
+	    */
+
+	    var userHeight = Number($("#setUserHeight").val());
+	    var userWeight = Number($("#setUserWeight").val());
+	    var userAge = Number($("#setUserAge").val());
+	    var userGender = $('input:radio[name=gender]:checked').val();
+	    BM = 66.47 + ( 13.175 * userWeight ) + ( 5 * userHeight ) - ( 6.76 *  userAge );
+	    
+	    if ( userGender == 'female'){
+	    	BM = 655.1 + (9.56 * userWeight ) + (1.85 * userHeight ) - ( 4.68 * userAge );
+	    	tempflag = 2;
+	    }
+	    $('#BMView').val(BM);
+	   
+	   
+   }
+//<button onclick = 'setBM()'>오늘 소비 칼로리에 적용</button>
+	function setBM(){
+		var updateSpendCalVal = Number($('#setSpendCal').val()) + Number(BM);
+		$('#setSpendCal').val(updateSpendCalVal);
+	}
+//<button onclick = 'callBM()'>불러오기</button>
+	function callBM(){
+		$.ajax({
+			url:"selectWorkoutUserInfo.do",
+			dataType:"json",
+			data:{"userId" : userId}
+
+			}).done(function(result){
+				//console.dir(result);
+				$('#setUserHeight').val(Number(result.userHeight));
+				$('#setUserWeight').val(Number(result.userWeight));
+				$('#setUserAge').val(Number(result.userAge));
+				if(result.userGender == 'male'){
+					$('#genderFemale').removeClass('checked');
+					$('#genderMale').addClass('checked');
+				}
+				else{
+					$('#genderMale').removeClass('checked');
+					$('#genderFemale').addClass('checked');
+				}
+				
+			});
+	}
+//<button onclick = 'saveBM()'>저장</button>
+	function saveBM(){
+		
+		var userHeight = Number($("#setUserHeight").val());
+	    var userWeight = Number($("#setUserWeight").val());
+	    var userAge = Number($("#setUserAge").val());
+	    var userGender = $('input:radio[name=gender]:checked').val();
+		
+		$.ajax({
+			url:"updateWorkoutUserInfo.do",
+			dataType:"json",
+			data : {
+					"userId" : userId,
+					"userHeight" : userHeight,
+					"userWeight" : userWeight,
+					"userAge" : userAge,
+					"userGender" : userGender
+					}
+			
+			}).done(function(){
+				console.log("update is done.");
+			});
+		
+	}
+//<button onclick = 'deleteBM()'>삭제</button>
+	function deleteBM(){
+		$.ajax({
+			url:"deleteWorkoutUserInfo.do",
+			dataType:"json",
+			data:{"userId" : userId}
+			
+			}).done(function(){
+				console.log("delete is done.");
+			});
+		
+	}
+   
    </script>
 </body>
 </html>
