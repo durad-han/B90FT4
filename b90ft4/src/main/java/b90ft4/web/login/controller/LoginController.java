@@ -23,10 +23,10 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/login.do")
-	public String login (UserVO user, Model model) throws Exception{
+	public String login (String userId, Model model) throws Exception{
 		logger.debug("login controller");
 		
-		model.addAttribute("user", user);
+		model.addAttribute("userId", userId);
 		return "main/main";
 	}
 	

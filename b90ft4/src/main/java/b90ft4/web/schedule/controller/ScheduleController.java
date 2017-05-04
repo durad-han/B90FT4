@@ -34,7 +34,7 @@ public class ScheduleController {
 		if(ss.retrieveScheduleList(ssVO) != null){ 
 			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		}
-		return "schedule/scheduleList";
+		return "schedule/schedule";
 	}	
 
 	//----- 스케줄 디테일 출력용 (ajax 호출) ----------------------------------------------------------
@@ -95,6 +95,11 @@ public class ScheduleController {
 		logger.debug("deleteSchedule");
 		logger.debug("scheduleNo : "+scheduleNo);
 		ss.deleteSchedule(scheduleNo);
+	}
+	
+	@RequestMapping("/test.do")
+	public String test () throws Exception{
+		return "schedule/schedule";
 	}
 	
 	
