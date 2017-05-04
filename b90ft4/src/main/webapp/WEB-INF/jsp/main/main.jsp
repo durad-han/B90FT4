@@ -96,16 +96,16 @@
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="javascript:workoutMoveCal();">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutChart();">차트</a></li>
+					         <li><a href="javascript:workoutMoveCal()">칼로리 계산</a></li>
+					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
 					      </ul>
                         
                         <script>
                         	function workoutMoveCal(){
-                        		$("#portfolio > container").load("/b90ft4/web/view/workout/workoutCal.html");
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
                         	}
                         	function workoutMoveChart(){
-                        		$("#portfolio > container").load("/b90ft4/web/view/workout/workoutChart.html");
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
                         	}
                         </script>
                         
