@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+#loginModal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+#loginModal:target {
+    opacity:1;
+    pointer-events: auto;
+}
+#loginModal > #loginMenu {
+	position: absolute;
+	top: 15%;
+	left: 25%;
+	width: 50%;
+	height: 70%;
+	padding: 16px;
+	border: 16px solid green;
+	background-color: white;
+	overflow: auto;	
+	z-index: 99999;
+}

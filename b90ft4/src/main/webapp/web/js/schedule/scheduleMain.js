@@ -16,7 +16,6 @@ $(document).ready(function() {
 //----- calendar ---------------------------------------------------------------------------------------------
 function fullCal(result) {
 	var sList = result['scheduleList'];
-	console.dir(sList)
 	var calObj = [];
 	for(var i = 0 ; i < sList.length ; i++){
 		console.log(sList[i]);

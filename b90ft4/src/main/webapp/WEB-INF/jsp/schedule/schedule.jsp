@@ -102,7 +102,7 @@
 		<div class="row">
 		
 			<div class="col-lg-12">
-        		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 50%;">
+        		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 80%;">
                     <li id="listTab" class="active"><a href="#list-tab" data-toggle="tab">목록으로 보기</a></li>
                     <li id="calendarTab"><a href="#calendar-tab" data-toggle="tab">달력으로 보기</a></li>
                 </ul>
@@ -111,7 +111,7 @@
 			<div class="col-lg-12">
 			<div id="generalTabContent" class="tab-content responsive">
             	<div id="list-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
-				<div class="panel panel-green" id="expenseTable">
+				<div class="panel panel-green">
              		<div class="panel-heading">스케줄 목록</div>
                 	<div class="panel-body">
                 	
@@ -294,7 +294,7 @@
                	</div>
                	
                	<div id="calendar-tab" class="tab-pane fade" style="min-height:200px;overflow: auto;">
-			    <div class="panel panel-yellow" id="incomeTable">
+			    <div class="panel panel-yellow">
 	                <div class="panel-heading">스케줄 달력</div>
 	                <div class="panel-body">
 	                

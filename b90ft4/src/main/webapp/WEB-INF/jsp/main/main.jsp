@@ -33,7 +33,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="${pageContext.request.contextPath}/web/css/main/login.css" rel="stylesheet" type="text/css">
 
+	<!-- 	네이버 로그인 임시 -->
+	  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- 	//네이버 로그인 임시 -->
+	
 	<style>
 		.dropdown-menu > li{
 			color:black !important;
@@ -44,6 +50,57 @@
 </head>
 
 <body id="page-top" class="index">
+
+<script>
+function statusChangeCallback(response) { 
+	console.log('statusChangeCallback'); 
+	console.log(response);
+	
+	if (response.status === 'connected') { 
+		testAPI(); 
+	} else if (response.status === 'not_authorized') { 
+		document.getElementById('status').innerHTML = '해당 페이지에 등록이 필요합니다'; 
+	} else { 
+		document.getElementById('status').innerHTML = '페이스북 로그인이 필요합니다'; 
+	} 
+} 
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  	FB.init({ appId      : '226857754465479',
+   			 cookie     : true,  
+   			 xfbml      : true,  
+			 version    : 'v2.8' 
+  			});
+  	
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  	});
+  	};
+  	
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+ 
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        '환영합니다, ' + response.name + '님';
+    });
+  }
+</script>
+
 <div class="container">
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
@@ -68,8 +125,18 @@
                         <a href="#page-top"></a>
                     </li>
                         
+                   <li class = "loginCall">
+					      <a href = "#loginModal">
+					          로그인?
+					      </a>
+				   </li>
+                   <li class = "loginCall">
+					      <a href = "${pageContext.request.contextPath}/login/user.do">
+					          내 정보
+					      </a>
+				   </li>
                     <!-- 드롭 다운 테스트 -->
-                    <li class = "dropdown">
+                   <li class = "dropdown">
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
@@ -142,6 +209,52 @@
         </div>
     </header>
     
+    <!-- Login Section -->
+    <section id="login">
+        <div class="container" id="loginModal">
+        <div id="loginMenu">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Login</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form name="loginItem" id="loginItem" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="userId">ID</label>
+                                <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                       		<div id="naver_id_login"></div>
+                        	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+			 				<div id="status"></div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">확인</button>
+                                <a href="#close" class="btn btn-danger btn-lg">취소</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -237,6 +350,15 @@
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
 </div>
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("green", 3,40);
+	naver_id_login.setDomain("http://14.32.66.123:9092/b90ft4/main/main.do");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script>
 </body>
 
 </html>
