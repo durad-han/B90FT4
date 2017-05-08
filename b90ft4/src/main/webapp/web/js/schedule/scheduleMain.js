@@ -1,4 +1,4 @@
-console.log("scheduleMain.js 로드됨...");
+console.log("scheduleMain.js 로드됨...!");
 
 //----- datePicker -----------------------------------------------------------
 
@@ -10,13 +10,11 @@ $(document).ready(function() {
 		url : "/b90ft4/schedule/scheduleCalendar.json",
 		type: "POST",
 		dataType: "json",
-	}, fullCal);
+	}).done(fullCal);
 });
 
 //----- calendar ---------------------------------------------------------------------------------------------
 function fullCal(result) {
-	console.log("hello calendar");
-if(result.success){
 	var sList = result['scheduleList'];
 	console.dir(sList)
 	var calObj = [];
@@ -37,7 +35,6 @@ if(result.success){
 		eventLimit: false,
 		events: sList
 	});
-}
 	
 };
 

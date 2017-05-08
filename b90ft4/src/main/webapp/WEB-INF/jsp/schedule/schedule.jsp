@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>자기관리 : Schedule</title>
     <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
@@ -147,7 +147,7 @@
 											<div class="cd-timeline-content">
 												<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
 												<p><a href="#;">스케줄을 등록하세요</a></p>
-												<a href="#;" class="cd-read-more">상제</a>
+												<a href="#;" class="cd-read-more">상세</a>
 												<span class="cd-date"></span>
 											</div> <!-- cd-timeline-content -->
 										</div> <!-- cd-timeline-block -->
@@ -333,7 +333,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/jqBootstrapValidation.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script> --%>
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
