@@ -4,10 +4,10 @@ public class PageVO {
 	private int pageNo = 1;
 
 	public int getBegin() {
-		return (pageNo -1) * 5 + 1;
+		return (pageNo-1) * 6;
 	}
 	public int getEnd() {
-		return pageNo * 5;
+		return 6;
 	}
 	public int getPageNo() {
 		return pageNo;

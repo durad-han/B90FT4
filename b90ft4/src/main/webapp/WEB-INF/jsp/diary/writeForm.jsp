@@ -1,51 +1,41 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert Title</title>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<!-- include summernote css/js-->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+    <title>Freelancer - Start Bootstrap Theme</title>
+    <!-- Bootstrap Core CSS -->
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
 
-<!--Loading bootstrap css-->
-<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
-<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/jquery-ui-1.10.4.custom.min.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/font-awesome.min.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/animate.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/all.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/main.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/style-responsive.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/zabuto_calendar.min.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/styles/pace.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/detail.css">
+    <!-- Theme CSS -->
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
 
-<!-- content css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_editor.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/froala_style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/code_view.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/colors.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/emoticons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image_manager.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/image.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/line_breaker.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/table.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/char_counter.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/video.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/fullscreen.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/file.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/plugins/quick_insert.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
 
 <style>
+.modal-backdrop{
+	z-index: 0 !important;
+}
 #attachFileList {
 	border:1px solid black;
 	width: 300px;
@@ -53,124 +43,80 @@
 	margin:0 auto;
 }
 </style>
-</head>
-<body>
-<div>
-<!-- 위로가기 ==================================================================================================== -->
-	<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
-        
-<!-- 상단 메뉴 시작 ==================================================================================================== -->
-<div id="header-topbar-option-demo" class="page-header-topbar">
-    <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
-	<div class="navbar-header">
-	    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only"> toggle </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-	    <a id="logo" href="../main/main.do" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">B90FT4</span><span style="display: none" class="logo-text-icon">µ</span></a>
-	        </div>
-	        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-<!-- 메뉴 옵션들 ==================================================================================================== -->
-              <ul class="nav navbar-nav">
-              <li><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a></li>
-                  <li><a href="../main/main.do">메인</a></li>
-                  <li><a href="../schedule/scheduleList.do">스케줄</a></li>
-                  <li class="active"><a href="../diary/list.do">다이어리</a></li>
-                  <li><a href="../accountBook/budget.do">가계부</a></li>
-                  <li><a href="../workout/workout.do">운동</a></li>
-                  <li><a href="../main/news.do">뉴스</a></li>
-              </ul>
-<!-- 로그인 & 메모 ==================================================================================================== -->
-              <ul class="nav navbar-nav navbar-right">
-              	<li><a href="#callModal">Login</a></li>
-				<li style='margin-right: 20px;'>
-                <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked/>
-					<label for='showAndHideMemo'>메모 보기</label>
-                </li>
-                <li>
-	                <div id="addMemo">
-						<button><img src="icon_add_stickynote.gif" />메모 추가</button>
-					</div>
-                </li>
-              </ul>
-    </div>     
-	</nav>
-</div>
-<!-- 상단메뉴 종료 ==================================================================================================== -->
-      
-          <div id="wrapper">
-            <!--BEGIN SIDEBAR MENU-->
-             <div id="wrapper">
-            <!--BEGIN SIDEBAR MENU-->
-            <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
-                data-position="right" class="navbar-default navbar-static-side">
-            <div class="sidebar-collapse menu-scroll">
-                <ul id="side-menu" class="nav">
-                    
-                     <div class="clearfix"></div>
-                    <li class="active"><a href="../main/main.do"><i class="fa fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">전체</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="UIElements.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Forms.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Tables.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">기능</span></a>
-                          
-                    </li>
-                    <li><a href="DataGrid.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">기능</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">기능</span></a>
-                      
-                    </li>
-                   
-                </ul>
-            </div>
-        </nav>
-            <div id="page-wrapper">
-                <!--BEGIN TITLE & BREADCRUMB PAGE-->
-                <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
-                    <div class="page-header pull-left">
-                        <div class="page-title">
-                            다이어리</div>
-                    </div>
-                    <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="hidden"><a href="#">다이어리</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="active">다이어리</li>
-                    </ol>
-                    <div class="clearfix">
-                    </div>
-                </div>
-                <!--END TITLE & BREADCRUMB PAGE-->
-                <!--BEGIN CONTENT-->
-						<div class="content" style="width: 80%;">
-		<ol class="breadcrumb">
-		  <li><a href="http://14.32.66.123:9092/b90ft4/main/main.do">Home</a></li>
-		  <li class="active">자유게시판</li>
-		</ol>	
 		
-		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post'>
+</head>
+
+<body id="page-top" class="index">
+
+<%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
+<div class="container">
+
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+   
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="main.do">자기 관리</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                        
+                    <!-- 서브메뉴 드랍다운 -->
+                    <li class = "dropdown">
+                    
+					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
+					          가계부 <span class = "caret"></span>
+					      </a>
+					      
+					      <ul class = "dropdown-menu">
+					         <li><a href = "#">지출/수입</a></li>
+					         <li><a href = "#">대입금/차입금</a></li>
+					         <li><a href = "#">설정</a></li>
+					      </ul>
+					      
+				   </li>
+                        
+                    <li class="page-scroll">
+                        <a href="#about">다이어리</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">스케쥴러</a>
+                    </li>
+                </ul>
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    
+
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+        <div class = "page-header">
+				   <h1>
+						Diary 쓰기
+				   </h1>
+		</div>
+	
+        
+		
+ 		<form name="wForm" action='${pageContext.request.contextPath}/diary/write.do' method='post'>
+			
 			<table class="table table-no-border">
 			<tr>
 				<td class="td-txt-right td-wp8">제목</td> 
@@ -253,8 +199,9 @@
 			<tr>
 				<td class="td-txt-right td-wp10">내용</td>
 			 	<td id="editor">
-			   		 <div id="summernote">Hello Summernote
-			   		 
+			   		
+			   		 <div id="summernote" style="height: 600px;">
+			   		 	<!-- summernote -->
 			   		 </div>
 
 					<div id="attachFileList">
@@ -277,35 +224,50 @@
 				
 			</textarea>
 			
-		</form>
-	</div>
-                <!--END CONTENT-->
-                <!--BEGIN FOOTER-->
-                <!--END FOOTER-->
-            </div>
-            <!--END PAGE WRAPPER-->
+		</form>     
+                	
+     	
+		        	
         </div>
-    </div>    
-    </div>    
+    </section>
+    
 
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+    
 
-<!-- 		 <div id="summernote">Hello Summernote -->
-			   		 
-<!-- 			   		 </div> -->
+    <!-- jQuery -->
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/jquery/jquery.min.js"></script> --%>
 
-<!-- 		<div id="attachFileList"> -->
-<!-- 						<ul> -->
-<!-- 						</ul> -->
-<!-- 		</div> -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/jqBootstrapValidation.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 	
-<!-- 	    <button class="btn btn-primary btn-lg" id="check">등록</button> -->
-	
-	
-<script>
+	<!-- 글 등록 js -->
+	<script>
     var imgArr=[];
 
     $('#summernote').summernote({
-    	  callbacks: {
+    	 height : 500, // 에디터의 높이 
+    	    minHeight : null,
+    	    maxHeight : null,
+    	    focus : true,
+    	    lang : 'ko-KR', // 기본 메뉴언어 US->KR로 변경
+    	   callbacks: {
     	    onImageUpload: function(files) {
 //     		upload image to server and create imgNode...
 //     		     console.log(files);
@@ -464,44 +426,10 @@
 //     		  console.log($("div.note-editing-area div:last").html());
     		  
 //     	  }
- </script>	
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-1.10.2.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-migrate-1.2.1.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery-ui.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/bootstrap-hover-dropdown.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/html5shiv.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/respond.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.metisMenu.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.slimscroll.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.cookie.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/icheck.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/custom.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.news-ticker.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.menu.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/pace.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/holder.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/responsive-tabs.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.categories.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.tooltip.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.fillbetween.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.stack.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.spline.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/zabuto_calendar.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/index.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/data.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/drilldown.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/exporting.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/highcharts-more.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-pie.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/charts-highchart-more.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/modernizr.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.min.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jplist.js"></script> --%>
-
+ 	</script>	
+	
+	
+</div>
 </body>
+
 </html>

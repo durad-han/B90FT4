@@ -30,31 +30,24 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/font-awesome.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/animate.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-misc.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-style.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/list.css">
 	
 	
-	
-	
-	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css"> -->
-<!--       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>            -->
-<!--       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>  -->
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-<!-- 	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
-	
-	
-	
-	
 	<style>
-		table td {
-			color: black !important;
-			font-weight: bold;
-			font-size: 20px;
-			border: 1px solid black;
-		}
+	table td {
+		color: black !important;
+		font-weight: bold;
+		font-size: 20px;
+		border: 1px solid black;
+	}
+
+</style>
+	
+	
 	</style>
 </head>
 
@@ -66,7 +59,7 @@
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
-    
+   
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -120,36 +113,17 @@
                
                 <div class="row">
                     <div class="section-header col-md-12">
-                        <h2 style="color: red">Diary</h2>
-                    </div> 
-                </div>	
-                
-                <div class = "page-header">
-				   <h1>
-						DIARY
-				   </h1>
-				   
-				</div>
+                        <h2>Diary</h2>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->	
 				
 			    <div class="row">
                 	<div class="col-md-12">
-                	
 	                    <div class="blog-masonry masonry-true">
-	                    
 			                <c:forEach var="diary" items="${list}" varStatus="loop"> 
-				                      
 				                        <div class="post-masonry col-md-4 col-sm-6">
 				                            <div class="blog-thumb">
-				                                
-				                                <c:choose>
-													<c:when test="${diary.content ne 'x'}">
-						                                	${diary.content}
-													</c:when>
-													<c:when test="${diary.content eq 'x'}">
-						                                <img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" id="img1" alt="">
-													</c:when>
-												</c:choose>
-				                                
+				                                <img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" alt="">
 				                                <div class="overlay-b">
 				                                    <div class="overlay-inner">
 				                                        <a href="blog-single.html" class="fa fa-link"></a>
@@ -157,7 +131,7 @@
 				                                </div>
 				                            </div>
 				                            <div class="blog-body">
-				                                <div class="box-content" style="margin:0 !important;">
+				                                <div class="box-content">
 				                                    <h3 class="post-title"><a href='detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>'><c:out value="${diary.title}" /></a></h3>
 				                                    <span class="blog-meta"><fmt:formatDate value="${diary.diaryDate}" pattern="yyyy-MM-dd hh:mm:ss" /></span>
 				                                </div>
@@ -166,12 +140,11 @@
 			                </c:forEach>
                 
 	                    </div> <!-- /.blog-masonry -->
-	                    
 	                </div>
                  </div> <!-- /.row -->
                  
               <div class="row">
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         	 
                         	 <div class="text-center">
 		                            <ul class="pagination pagination-lg mtm mbm">
@@ -207,21 +180,15 @@
 	  									</c:choose>
 	                                    
 		                            </ul>
-	
-	
-	                    </div>
-	                    
+	                         </div>
+	                         
+                         <!-- write -->
+                         <div align="right">
+                         	<a href='${pageContext.request.contextPath}/diary/writeForm.do' class="btn btn-info" role="button">글쓰기</a>
+                         </div>
+                         <!-- /write -->
                          
                    </div> <!-- /.col-md-12 -->
-				    <div class="col-md-1">
-				   			<br>
-				    		
-			    			<span class="glyphicons glyphicons-show-thumbnails"></span>
-							<span class="glyphicons glyphicons-justify"></span>
-	                       	
-	                       	<a href='${pageContext.request.contextPath}/diary/writeForm.do' style="position: relative; right:100px;" class="btn btn-info" role="button">글쓰기</a>
-			    	</div>	   
-					                      
                 </div> <!-- /.row -->
 
 
@@ -261,6 +228,7 @@
 	<!-- diary.js -->
 	
 	<script>
+	<script type="text/javascript">
 	    //<![CDATA[
 	    $(window).load(function() { // makes sure the whole site is loaded
 	        $('.loader-item').fadeOut(); // will first fade out the loading animation
@@ -270,12 +238,15 @@
 	    //]]>
 	</script>
 	
+	</script>
     <script src="${pageContext.request.contextPath}/web/js/diary/plugins.js"></script>
-     <!--
+    <script src="${pageContext.request.contextPath}/web/js/diary/main.js"></script>
+	    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/list.css">
+        <!--
         Artcore Template
-	    http://www.templatemo.com/preview/templatemo_423_artcore
-	 -->
-     <script src="${pageContext.request.contextPath}/web/js/diary/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		http://www.templatemo.com/preview/templatemo_423_artcore
+        -->
+        <script src="${pageContext.request.contextPath}/web/js/diary/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 	
 </div>
 </body>

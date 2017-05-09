@@ -12,6 +12,8 @@ import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,9 @@ public class DiaryController {
 	
 	@Autowired
 	private DiaryService service;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
+	// 게시글 등록.
 	@RequestMapping("/write.do")
 	public String write(DiaryVO diary, RedirectAttributes attr) 
 			throws Exception {
@@ -45,7 +49,10 @@ public class DiaryController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String datePath = sdf.format(new Date());
 		
-		content = content.replace("temp", datePath);
+		// 내용에 temp가 있을경우.. 버그.
+		// 이미지 태그의 src에 temp 가 있을 경우만 바꾸어 주어야한다.
+		// temp 폴더 말고, 바뀐 실제 파일이 있는 위치의 경로로 변경.
+		content = content.replace("temp", datePath); 
 		diary.setContent(content);
 		
 		service.write(diary);
@@ -53,14 +60,19 @@ public class DiaryController {
 		return "redirect:list.do";
 	}
 	
+	// 게시글 수정 폼
 	@RequestMapping("/updateForm.do")
 	public void updateForm(int diaryNo, Model model) throws Exception{
 		Map<String, Object> result = service.detail(diaryNo);
 		model.addAttribute("diaryVO", result.get("diaryVO"));
 	}
 	
+	// 게시글 수정
 	@RequestMapping("/update.do")
 	public String update(DiaryVO diary, RedirectAttributes attr) throws Exception{
+		
+		String title = diary.getTitle();
+		System.out.println(title);
 		
 		String content = diary.getContent();
 		System.out.println(content);
@@ -68,7 +80,11 @@ public class DiaryController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String datePath = sdf.format(new Date());
 		
+		// 내용에 temp가 있을경우.. 버그.
+		// 이미지 태그의 src에 temp 가 있을 경우만 바꾸어 주어야한다.
+		// temp 폴더 말고, 바뀐 실제 파일이 있는 위치의 경로로 변경.
 		content = content.replace("temp", datePath);
+		
 		diary.setContent(content);
 		
 		service.update(diary);
@@ -77,21 +93,25 @@ public class DiaryController {
 		return "redirect:list.do";
 	}
 	
+	// 게시글 목록
 	@RequestMapping("/list.do")
 	public void list(DiarySearchVO search, Model model) throws Exception{
+	
 		Map<String, Object> result = service.list(search);
 		model.addAttribute("list", result.get("list"));
 		model.addAttribute("pageResult", result.get("pageResult"));
+		
+		
 	}
 	
+	// 상세글 조회
 	@RequestMapping("/detail.do")
 	public void detail(@RequestParam(value="diaryNo") int diaryNo, Model model) throws Exception{
 		Map<String, Object> result = service.detail(diaryNo);
 		model.addAttribute("diaryVO", result.get("diaryVO"));
 	}
 	
-	
-	
+	// 게시글 삭제
 	@RequestMapping("/delete.do")
 	public String delete(int no, RedirectAttributes attr) throws Exception{
 		service.delete(no);
@@ -99,7 +119,7 @@ public class DiaryController {
 		return "redirect:list.do";
 	}
 	
-	
+	// 이미지 삭제 작업.
 	@ResponseBody
 	@RequestMapping("/delImg.do")
 	public String delImg(
@@ -123,15 +143,14 @@ public class DiaryController {
 		
 	}
 	
+	
+	// 이미지 tmep 폴더에 저장.
 	@ResponseBody
 	@RequestMapping("/img2.do")
 	public List<String> imgtest(MultipartHttpServletRequest mRes) throws Exception {
 		
 		ServletContext context = mRes.getServletContext();
 		String path = context.getRealPath("/upload");
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
-//		String datePath = sdf.format(new Date());
 		
 		String savePath = path + "/temp";
 		
@@ -178,16 +197,14 @@ public class DiaryController {
 				
 				fullPath = fullPath.substring(ix);
 				list.add(fullPath);
-				
 			}
-			
 		}
 			
 		return list;
 		
 	}
 	
-	// 이미지 실제 저장 완료.
+	// 이미지 실제 저장.
 	@ResponseBody
 	@RequestMapping("/saveImg.do")
 	public String saveImg(String tempPath,
@@ -223,6 +240,13 @@ public class DiaryController {
 		
 		return "ok";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 //	public  String write(
 //			HttpServletRequest res,

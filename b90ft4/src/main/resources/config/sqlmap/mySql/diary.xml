@@ -32,14 +32,8 @@
 	<select id="selectDiaryList" parameterType="searchVO" resultMap="diaryMap">
 			select *
 			  from tb_sam_diary
-		    order by diary_date
-<!-- 		select	sql_calc_found_rows a.*  -->
-<!-- 		from	(select	*  -->
-<!-- 				 from	tb_Sam_Diary -->
-<!-- 				 order	by Diary_No -->
-<!-- 				) a -->
-<!-- 		limit	10 -->
-<!-- 		offset	0; -->
+			order by Diary_Date desc
+			limit #{begin},#{end}
 	</select>
 	
 	 
