@@ -30,7 +30,15 @@ public class WorkoutController {
 		
 		return "workout/workout";
 	}
-	
+	@RequestMapping("/workoutCal.do")
+	public String workoutCal(Model model) throws Exception{//jsp에 뿌려줄 데이터를 모델 객체에 담는다
+		
+		List<WorkoutVO> list = ws.workoutList();
+
+		model.addAttribute("list",list);
+		
+		return "workout/workoutCal";
+	}
 	/*
 	@RequestMapping("/workoutList.do")
 	public String workoutList(Model model) throws Exception{

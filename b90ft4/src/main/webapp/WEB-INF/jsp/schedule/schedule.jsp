@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>자기관리 : Schedule</title>
     <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
@@ -102,7 +102,7 @@
 		<div class="row">
 		
 			<div class="col-lg-12">
-        		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 50%;">
+        		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 80%;">
                     <li id="listTab" class="active"><a href="#list-tab" data-toggle="tab">목록으로 보기</a></li>
                     <li id="calendarTab"><a href="#calendar-tab" data-toggle="tab">달력으로 보기</a></li>
                 </ul>
@@ -111,7 +111,7 @@
 			<div class="col-lg-12">
 			<div id="generalTabContent" class="tab-content responsive">
             	<div id="list-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
-				<div class="panel panel-green" id="expenseTable">
+				<div class="panel panel-green">
              		<div class="panel-heading">스케줄 목록</div>
                 	<div class="panel-body">
                 	
@@ -147,7 +147,7 @@
 											<div class="cd-timeline-content">
 												<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
 												<p><a href="#;">스케줄을 등록하세요</a></p>
-												<a href="#;" class="cd-read-more">상제</a>
+												<a href="#;" class="cd-read-more">상세</a>
 												<span class="cd-date"></span>
 											</div> <!-- cd-timeline-content -->
 										</div> <!-- cd-timeline-block -->
@@ -294,7 +294,7 @@
                	</div>
                	
                	<div id="calendar-tab" class="tab-pane fade" style="min-height:200px;overflow: auto;">
-			    <div class="panel panel-yellow" id="incomeTable">
+			    <div class="panel panel-yellow">
 	                <div class="panel-heading">스케줄 달력</div>
 	                <div class="panel-body">
 	                
@@ -333,7 +333,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/jqBootstrapValidation.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script> --%>
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>

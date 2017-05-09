@@ -8,4 +8,6 @@ public interface LoginService {
 	
 	UserVO nLogin(UserVO user) throws Exception;
 
+	boolean userCheck(UserVO user) throws Exception;
+
 }

@@ -12,9 +12,11 @@ var gvIntakeCal = "";
 function tempMove(){
 	$(".page-content").load("/b90ft4/web/view/workout/Charts.html");
 }
+
 function workoutMoveCal(){
 	$(".page-content").load("/b90ft4/web/view/workout/workoutCal.html");
 }
+
 function workoutMoveChart(){
 	$(".page-content").load("/b90ft4/web/view/workout/workoutChart.html");
 }

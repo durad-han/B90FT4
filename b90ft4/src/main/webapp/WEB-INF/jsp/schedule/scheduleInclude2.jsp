@@ -45,6 +45,10 @@
 <link type="text/css" rel="stylesheet" media='print' href="${pageContext.request.contextPath}/web/css/schedule/fullcalendar.print.min.css"/>
 <!-- 달력 ==================================================================================================== -->
 
+<!-- 스윗얼럿 ==================================================================================================== -->
+<script src="${pageContext.request.contextPath}/web/js/common/sweetalert.min.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
+<!-- 스윗얼럿 ==================================================================================================== -->
 
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleList.css"/>

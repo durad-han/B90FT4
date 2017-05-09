@@ -19,6 +19,13 @@ public class LoginServiceImpl implements LoginService {
 	public UserVO login(UserVO user) throws Exception {
 		return null;
 	}
+
+	@Override
+	public boolean userCheck(UserVO user) throws Exception {
+		int isNull = mapper.userCheck(user);
+		if(isNull == 0)	return false;
+		return true;
+	}
 	
 	
 	

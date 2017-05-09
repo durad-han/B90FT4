@@ -13,10 +13,14 @@ import b90ft4.web.repository.vo.UserVO;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-//	@Autowired
-//	private LoginService ls;
+	@Autowired
+	private LoginService ls;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@RequestMapping("/user.do")
+	public void user () throws Exception{
+	}
 	
 	@RequestMapping("/loginPage.do")
 	public void loginPage () throws Exception{
@@ -25,7 +29,14 @@ public class LoginController {
 	@RequestMapping("/login.do")
 	public String login (String userId, Model model) throws Exception{
 		logger.debug("login controller");
+		UserVO user = new UserVO();
+		boolean isNull = ls.userCheck(user);
 		
+		String msg = "";
+		if(isNull) msg +="있음";
+		else msg +="없음";
+		
+		model.addAttribute("msg", msg);
 		model.addAttribute("userId", userId);
 		return "main/main";
 	}
@@ -41,11 +52,11 @@ public class LoginController {
 //		return "login/nLogin";
 //	}
 //	
-//	@RequestMapping("/nLogin.do")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-//	public String nLoginCallback (){
-//		logger.debug("naver welcome.");
-//		return "login/nLoginCallback";
-//	}
+	@RequestMapping("/nLogin.do")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+	public String nLoginCallback (){
+		logger.debug("naver welcome.");
+		return "login/nLoginCallback";
+	}
 //	
 //	@RequestMapping("/nLogout.do")
 //	public void nLogout (){
