@@ -193,7 +193,13 @@ public class AccBookServiceImpl implements AccBookService {
 		return result;
 	}
 	
-
+	// 가계부 이용률
+	public double retrieveAccRatio(String userId) 
+			throws Exception {
+		return dao.selectAccRatio(userId);
+	}
+	
+	// csv 파일 주기.
 	public void makeExcel(SearchVO search)
 			throws Exception {
 		

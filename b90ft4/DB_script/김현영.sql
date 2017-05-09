@@ -368,3 +368,73 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		'C:/accountBookFile/sdfsd.csv';
 		fields terminated by ','
 	
+		
+	  -- 가계부 안 쓴 날짜.
+	  select (abs((select count(*)
+	  			    from (
+					select expense_date 
+					  from tb_sam_expense
+					where substring(expense_date,1,7) = substring(now(),1,7)
+					group by expense_date
+					union
+					select income_date 
+					  from tb_sam_income
+					where substring(income_date,1,7) = substring(now(),1,7)
+					group by income_date
+					) cnt ) 
+			 - 
+				  (select dayofmonth(now()))))
+		
+	 	 select 
+	  		round(((select count(*)
+	  			   from (
+					select expense_date 
+					  from tb_sam_expense
+					where substring(expense_date,1,7) = substring(now(),1,7)
+					  and user_id = #{userId}
+					group by expense_date
+					union
+					select income_date 
+					  from tb_sam_income
+					where substring(income_date,1,7) = substring(now(),1,7)
+					  and user_id = #{userId}
+					group by income_date
+			 		) cnt )) / dayofmonth(now()) * 100,1)
+			 		
+	 	 select 
+	  		round(((select count(*)
+	  			   from (
+					select expense_date 
+					  from tb_sam_expense
+					where substring(expense_date,1,7) = substring(now(),1,7)
+					  and user_id = '김현영'
+					group by expense_date
+					union
+					select income_date 
+					  from tb_sam_income
+					where substring(income_date,1,7) = substring(now(),1,7)
+					  and user_id = '김현영'
+					group by income_date
+			 		) cnt )) / dayofmonth(now()) * 100,1)
+			 		
+			 		
+			
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		  
+		 
+		select substring(now(),1,7)
+		
+		
+		
+		
+		  
+		
+	

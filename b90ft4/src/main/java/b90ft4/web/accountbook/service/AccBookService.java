@@ -37,5 +37,6 @@ public interface AccBookService {
 	
 	public void makeExcel(SearchVO search) throws Exception;
 	
+	public double retrieveAccRatio(String userId) throws Exception;
 	
 }

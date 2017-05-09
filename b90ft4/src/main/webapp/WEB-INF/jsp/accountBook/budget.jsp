@@ -37,6 +37,14 @@
 
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
 
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
+
+	<style>
+	.jqplot-axis {
+		font-size: 13px;
+		font-weight: 900;
+	}
+	</style>
 
 </head>
 
@@ -179,7 +187,6 @@
 						                                </table>
 						                            </div>
 						                   </div>
-						                   
 			                 	     </div>
 			                			
 			                				
@@ -357,6 +364,7 @@
 					          </button>
 				        	  
 				        	  <br><br>
+				        	  
 				        	  <div id="budgetPlanDiv">
 						        	<h4><b>이번 달 지출 한도</b></h4>
 						        	<span></span>
@@ -364,7 +372,11 @@
 						        	<span></span>
 						        	<h4><b>잔여 지출 한도</b></h4>
 						        	<span></span>
-					          </div> 
+					          </div>
+					          
+					          
+					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-210px;left:163px;"></div>
+					          
 				        	
 						 </div>	
 						 
@@ -486,6 +498,12 @@
 	
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
+	<script src="${pageContext.request.contextPath}/web/js/accountbook/barChart.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/accountbook/jquery.jqplot.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.barRenderer.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.categoryAxisRenderer.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pointLabels.js"></script>
+		
 </div>
 </body>
 

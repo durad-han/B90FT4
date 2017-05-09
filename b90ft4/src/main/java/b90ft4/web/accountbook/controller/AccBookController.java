@@ -159,10 +159,12 @@ public class AccBookController {
 		return "ok";
 	}
 	
+	// 셋팅 jsp
 	@RequestMapping("/setting.do")
 	public void setting() {
 	}
 	
+	// csv 파일 만들기.
 	@ResponseBody
 	@RequestMapping("/makeExcel.do")
 	public void makeExcel(SearchVO search,
@@ -232,6 +234,13 @@ public class AccBookController {
 		System.out.println("은하계 대표 : " + plan.getExpensePlanDate());
 		return service.expensePlan(plan);
 	}
+	
+	@ResponseBody
+	@RequestMapping("/accRatio.do")
+	public String retrieveAccRatio() throws Exception {
+		return service.retrieveAccRatio("김현영")+"";
+	}
+	
 	
 }
 

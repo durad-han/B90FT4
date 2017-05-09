@@ -276,8 +276,8 @@
 	function northSide(that) {
 		$(document).mousemove(function(e) {
 			
-			var size = (($(that).offset().top) - e.clientY);
-			
+		var size = (($(that).offset().top) - e.clientY);
+		
 		if(size<=0 && $(that).height()<=300){
 			return;
 		}

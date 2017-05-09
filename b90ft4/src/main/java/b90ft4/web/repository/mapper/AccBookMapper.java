@@ -55,8 +55,12 @@ public interface AccBookMapper {
 	public void insertExpensePlan(ExpensePlanVO plan) throws Exception;
 	public void updateExpensePlan(ExpensePlanVO plan) throws Exception;
 	public ExpensePlanVO selectExpensePlan(ExpensePlanVO plan) throws Exception;
-	
 	public int selectMonthTotal(SearchVO search) throws Exception;
+	
+	// 가계부 이용률
+	public double selectAccRatio(String userId) throws Exception;
+
+	
 	
 }
 

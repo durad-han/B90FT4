@@ -166,6 +166,9 @@
 //		$("#incomeTab").removeClass("active"); // 수입 탭 비활성화
 		$("#monthBudgteTable").hide();
 		
+		// occupancyRatio
+		$("#occupancyRatio").show();
+		
 		if(exOrInFlag){
 			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화
 			$("#incomeTab").addClass("active"); // 수입 탭 비활성화
@@ -210,6 +213,11 @@
 //		$("#incomeDiv").hide();     // 수입 원 그래프 
 		$("#expenseDate").remove(); // 지출 테이블 날짜 컬럼
 		$("#incomeDate").remove();  // 수입 테이블 날짜 컬럼
+		
+		// occupancyRatio
+		console.log("쇼");
+		$("#occupancyRatio").show();
+		
 		
 		if(exOrInFlag){
 			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화
@@ -277,7 +285,10 @@
 		
 		$("#incomeTab").addClass("active"); // 수입 탭 비활성화
 		$("#expenseTab").addClass("active"); // 지출 탭 비활성화
-		
+
+		//occupancyRatio
+		console.log("하이드");
+		$("#occupancyRatio").hide();
 		
 		selectedDateOption = 3;
 		
@@ -376,6 +387,10 @@
 					$("#budgetPlanDiv > span:eq(2)").text(numberWithCommas(goal.expenseGoal - result.currentTotal) + "원");
 				}else {
 					$("#budgetPlanDiv").hide();
+					$("#occupancyRatio").css({
+						top:"0px",
+						left:"80px"
+					});
 				}
 	   	});
 		
@@ -423,7 +438,9 @@
 					$("[name=budgetF] input:eq(4)")
 					.attr("name","incomeDate");
 				}
+				
 				return;
+			
 			}
 		});
 	}

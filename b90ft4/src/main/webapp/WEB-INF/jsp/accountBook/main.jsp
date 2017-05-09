@@ -40,7 +40,52 @@
 			background: black !important;
 		}
 	</style>
+	
+	<style>
+		@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+		
+		
+		fieldset, label { margin: 0; padding: 0; }
+		fieldset{ margin-left: 215px;}
+		body{ margin: 20px; }
+		h1 { font-size: 1.5em; margin: 10px; }
+		
+		/****** Style Star Rating Widget *****/
+		
+		.rating { 
+		  border: none;
+		  float: left;
+		}
 
+		.rating > input { display: none; } 
+		.rating > label:before { 
+		  margin: 5px;
+		  font-size: 1.25em;
+		  font-family: FontAwesome;
+		  display: inline-block;
+		  content: "\f005";
+		}
+		
+		.rating > .half:before { 
+		  content: "\f089";
+		  position: absolute;
+		}
+		
+		.rating > label { 
+		  color: #ddd; 
+		  float: right; 
+		}
+		
+		/***** CSS Magic to Highlight Stars on Hover *****/
+		
+		.rating > input:checked ~ label, /* show gold star when clicked */
+		.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+		.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 	
+		
+		
+		
+	</style>
+	
 </head>
 
 <body id="page-top" class="index">
@@ -70,7 +115,6 @@
                         
                     <!-- 드롭 다운 테스트 -->
                     <li class = "dropdown">
-                    
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
@@ -133,11 +177,31 @@
                 </div>
             </div>
             
-            <div class="row">
             
-                <div class="col-sm-6 portfolio-item" data-toggle = "tooltip" title = "가계부" >
+            
+            <div class="row">
+            	<!-- 가계부 -->
+                <div class="col-sm-6 portfolio-item" data-toggle = "tooltip" title = "가계" >
+             
+                <fieldset class="rating">
+				    <input type="radio" id="acc10" name="acc" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="acc9" name="acc" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    
+				    <input type="radio" id="acc8" name="acc" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="acc7" name="acc" value="3 and a half"  checked /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+					
+				    
+				    <input type="radio" id="acc6" name="acc" value="3"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="acc5" name="acc" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    
+				    <input type="radio" id="acc4" name="acc" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="acc3" name="acc" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    
+				    <input type="radio" id="acc2" name="acc" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="acc1" name="acc" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				</fieldset>
+
                     <a href="budget.do" class="portfolio-link">
-                    
                     	<!-- 돋보기 배경 -->
                         <div class="caption">
                             <div class="caption-content">
@@ -145,12 +209,31 @@
                             </div>
                         </div>
                         <!-- 돋보기 배경 끝 -->
-                        
                         <img src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
                 
+                
                 <div class="col-sm-6 portfolio-item">
+                <fieldset class="rating">
+				    <input type="radio" id="wokr10" name="work" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="wokr9" name="work" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    
+				    <input type="radio" id="wokr8" name="work" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="wokr7" name="work" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+					
+				    
+				    <input type="radio" id="wokr6" name="work" value="3"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="wokr5" name="work" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    
+				    <input type="radio" id="wokr4" name="work" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="wokr3" name="work" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    
+				    
+				    <input type="radio" id="wokr2" name="work" value="1"  checked/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="work1" name="work" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				</fieldset>
+
                     <a href="#" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -162,6 +245,25 @@
                 </div>
                 
                 <div class="col-sm-6 portfolio-item">
+                <fieldset class="rating">
+				    <input type="radio" id="sch10" name="sch" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="sch9" name="sch" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    
+				    <input type="radio" id="sch8" name="sch" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="sch7" name="sch" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+					
+				    
+				    <input type="radio" id="sch6" name="sch" value="3"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="sch5" name="sch" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    
+				    <input type="radio" id="sch4" name="sch" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="sch3" name="sch" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    
+				    
+				    <input type="radio" id="sch2" name="sch" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="sch1" name="sch" value="half"  checked /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				</fieldset>
+
                     <a href="#" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -173,6 +275,25 @@
                 </div>
                 
                 <div class="col-sm-6 portfolio-item">
+                <fieldset class="rating">
+				    <input type="radio" id="diary10" name="diary" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="diary9" name="diary" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    
+				    <input type="radio" id="diary8" name="diary" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="diary7" name="diary" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+					
+				    
+				    <input type="radio" id="diary6" name="diary" value="3"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="diary5" name="diary" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    
+				    <input type="radio" id="diary4" name="diary" value="2" checked /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="diary3" name="diary" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    
+				    
+				    <input type="radio" id="diary2" name="diary" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="diary1" name="diary" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				</fieldset>
+
                     <a href="#" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -187,8 +308,9 @@
             </div>
             
         </div>
-        
     </section>
+
+
 
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -214,7 +336,24 @@
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
+    
+    <script src="${pageContext.request.contextPath}/web/js/accountbook/barChart.js"></script>
+    
+    
+    
 </div>
+<script>
+$(document).ready(function(){
+	evaluateStar("acc",ratio);	
+});
+
+function evaluateStar(type,n){
+	if(n%10 !=0){
+		n = parseInt(n) + 10 ;
+	}
+	$("#"+type+Math.floor(n/10)).prop("checked",true);
+}
+</script>
 </body>
 
 </html>
