@@ -146,7 +146,7 @@
 						                                	${diary.content}
 													</c:when>
 													<c:when test="${diary.content eq 'x'}">
-						                                <img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" id="img1" alt="">
+						                                <img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" width="350px" height="215px" id="img1" alt="">
 													</c:when>
 												</c:choose>
 				                                

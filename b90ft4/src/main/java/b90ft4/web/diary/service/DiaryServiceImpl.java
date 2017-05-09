@@ -74,9 +74,7 @@ public class DiaryServiceImpl implements DiaryService {
 				diary.setContent(temp);
 				
 			}else{
-				
 				diary.setContent("x");
-				
 			}
 			
 		}
