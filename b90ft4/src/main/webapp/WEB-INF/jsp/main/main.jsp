@@ -40,6 +40,12 @@
 	  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<!-- 	//네이버 로그인 임시 -->
 	
+	<!-- 스윗얼럿 ==================================================================================================== -->
+	<script src="${pageContext.request.contextPath}/web/js/common/sweetalert.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
+	<!-- 스윗얼럿 ==================================================================================================== -->
+	
+	
 	<style>
 		.dropdown-menu > li{
 			color:black !important;
@@ -127,7 +133,7 @@ function statusChangeCallback(response) {
                    </c:when>
                    <c:otherwise>
 	                   <li class = "logoutCall">
-							<a href = "#logout"><c:out value="${user}"/>님 로그아웃</a>
+							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
 					   </li>
 	                   <li class = "loginCall">
 							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
@@ -243,7 +249,7 @@ function statusChangeCallback(response) {
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">확인</button>
+                                <a href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
                                 <a href="#close" class="btn btn-danger btn-lg">취소</a>
                             </div>
                         </div>
@@ -348,6 +354,7 @@ function statusChangeCallback(response) {
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
 </div>
+
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");
 	var state = naver_id_login.getUniqState();
@@ -356,7 +363,24 @@ function statusChangeCallback(response) {
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
+	
+	function logout (){
+		swal({
+			  title: "Logout",
+			  text: "정말 로그아웃하시겠습니까?",
+			  type: "warning",
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "그래요",
+			  showCancelButton: true,
+			  closeOnConfirm: true
+			},function(){
+				FB.logout(function(response) {
+					location.href="${pageContext.request.contextPath}/login/logout.do";
+					});
+			})
+	};
 </script>
+
 </body>
 
 </html>

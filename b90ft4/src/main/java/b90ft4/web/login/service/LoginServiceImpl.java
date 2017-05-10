@@ -2,6 +2,7 @@ package b90ft4.web.login.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.LoginMapper;
@@ -9,7 +10,7 @@ import b90ft4.web.repository.vo.UserVO;
 
 @Service
 public class LoginServiceImpl implements LoginService {
-	
+	@Autowired
 	private LoginMapper mapper;
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -21,17 +22,21 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public UserVO login(UserVO user) throws Exception {
-		return null;
+		return mapper.selectUser(user);
 	}
 
 	@Override
 	public boolean userCheck(UserVO user) throws Exception {
-		logger.debug("확인할 Id : "+user.getUserId());
-		
-		mapper.userCheck(user.getUserId());
-		return true;
+		if(mapper.userCheck(user.getUserId()) == 0){
+			return false;
+		}else return true;
 	}
 	
+	@Override
+	public void regist(UserVO user) throws Exception {
+		logger.debug(user.getUserId()+" 유저를 신규 등록합니다.");
+		mapper.insertUser(user);
+	}
 	
 	
 

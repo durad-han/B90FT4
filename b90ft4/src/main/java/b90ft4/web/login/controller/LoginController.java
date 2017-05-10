@@ -36,18 +36,19 @@ public class LoginController {
 		logger.debug("login controller");
 		UserVO user = new UserVO();
 		user.setUserId(userId);
-		boolean isNull = ls.userCheck(user);
 		
-		String msg = "";
-		if(isNull) msg +="있음";
-		else msg +="없음";
+		// 존재하는 user 인지 확인. 정보가 없다면 false -> regist, 존재한다면 true -> 정보 올려줌
+		if(!ls.userCheck(user)) ls.regist(user);
 		
-//		model.addAttribute("msg", msg);
-//		model.addAttribute("userName", userId);
-		session.setAttribute("user", userId);
+		session.setAttribute("user", ls.login(user));
 		return "redirect:/main/main.do";
 	}
 	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:/main/main.do";
+	}
 	
 	
 //	case : naver --------------------------------------------------------------------
