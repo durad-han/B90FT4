@@ -22,8 +22,10 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public boolean userCheck(UserVO user) throws Exception {
-		int isNull = mapper.userCheck(user);
-		if(isNull == 0)	return false;
+		System.out.println("확인할 Id : "+user.getUserId());
+//		System.out.println("결과물 : "+mapper.userCheck(user));
+//		int isNull = mapper.userCheck(user);
+//		if(isNull == 0)	return false;
 		return true;
 	}
 	

@@ -1,5 +1,7 @@
 package b90ft4.web.login.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +29,20 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/login.do")
-	public String login (String userId, Model model) throws Exception{
+	public String login (String userId, Model model, HttpSession session) throws Exception{
 		logger.debug("login controller");
 		UserVO user = new UserVO();
+		user.setUserId(userId);
 		boolean isNull = ls.userCheck(user);
 		
 		String msg = "";
 		if(isNull) msg +="있음";
 		else msg +="없음";
 		
-		model.addAttribute("msg", msg);
-		model.addAttribute("userId", userId);
-		return "main/main";
+//		model.addAttribute("msg", msg);
+//		model.addAttribute("userName", userId);
+		session.setAttribute("user", userId);
+		return "redirect:/main/main.do";
 	}
 	
 	

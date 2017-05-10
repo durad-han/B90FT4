@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Cog + I</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,11 +53,9 @@
 
 <script>
 function statusChangeCallback(response) { 
-	console.log('statusChangeCallback'); 
-	console.log(response);
 	
 	if (response.status === 'connected') { 
-		testAPI(); 
+		if(!'${user}') setUser(); 
 	} else if (response.status === 'not_authorized') { 
 		document.getElementById('status').innerHTML = '해당 페이지에 등록이 필요합니다'; 
 	} else { 
@@ -81,7 +79,7 @@ function statusChangeCallback(response) {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   	});
-  	};
+  };
   	
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -91,12 +89,9 @@ function statusChangeCallback(response) {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
  
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        '환영합니다, ' + response.name + '님';
+  function setUser() {
+    FB.api('/me', function(result) {
+	location.href="${pageContext.request.contextPath}/login/login.do?userId="+result.name;      
     });
   }
 </script>
@@ -124,18 +119,22 @@ function statusChangeCallback(response) {
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                        
-                   <li class = "loginCall">
-					      <a href = "#loginModal">
-					          로그인?
-					      </a>
-				   </li>
-                   <li class = "loginCall">
-					      <a href = "${pageContext.request.contextPath}/login/user.do">
-					          내 정보
-					      </a>
-				   </li>
-                    <!-- 드롭 다운 테스트 -->
+                 <c:choose>
+                   <c:when test="${empty user}">
+	                   <li class = "loginCall">
+							<a href = "#loginModal">로그인</a>
+					   </li>
+                   </c:when>
+                   <c:otherwise>
+	                   <li class = "logoutCall">
+							<a href = "#logout"><c:out value="${user}"/>님 로그아웃</a>
+					   </li>
+	                   <li class = "loginCall">
+							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
+					   </li>
+                   </c:otherwise> 
+                 </c:choose>
+                      
                    <li class = "dropdown">
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
@@ -147,13 +146,12 @@ function statusChangeCallback(response) {
 					      </ul>
 					      
 				   </li>
-                    <!-- 드롭 다운 테스트  -->
                     <li>
                         <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케줄</a>
                     </li>
                         
                     <li>
@@ -303,7 +301,7 @@ function statusChangeCallback(response) {
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/portfolio/game.png" class="img-responsive" alt="Game controller">
+                        <img src="${pageContext.request.contextPath}/web/image/corgi/Corgi-schedule-icon-01.gif" class="img-responsive" alt="Game controller">
                     </a>
                 </div>
                 

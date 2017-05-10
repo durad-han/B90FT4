@@ -112,7 +112,7 @@
 			<div id="generalTabContent" class="tab-content responsive">
             	<div id="list-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
 				<div class="panel panel-green">
-             		<div class="panel-heading">스케줄 목록</div>
+             		<div class="panel-heading">${user}님의 스케줄 목록입니다</div>
                 	<div class="panel-body">
                 	
 			<!-- 		왼쪽 리스트  -->

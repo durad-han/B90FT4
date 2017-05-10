@@ -113,7 +113,7 @@
 			<div id="generalTabContent" class="tab-content responsive">
             	<div id="info-tab" class="tab-pane fade in active" style="min-height:200px;overflow: auto;">
 				<div class="panel panel-green">
-             		<div class="panel-heading">기본정보</div>
+             		<div class="panel-heading">${user}님의 기본정보</div>
                 	<div class="panel-body">
                 	
 							<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
@@ -139,7 +139,7 @@
                	
             	<div id="body-tab" class="tab-pane fade" style="min-height:200px;overflow: auto;">
 				<div class="panel panel-green">
-             		<div class="panel-heading">신체정보</div>
+             		<div class="panel-heading">${user}님의 신체정보</div>
                 	<div class="panel-body">
                 	
 							<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
@@ -147,8 +147,14 @@
 									
 									<div class="form-group">
 								        <input id="null" name="null" type="text" placeholder="머리" class="form-control" />
+									</div>
+									<div class="form-group">
 								        <input id="null" name="null" type="text" placeholder="어깨" class="form-control" />
+									</div>
+									<div class="form-group">
 								        <input id="null" name="null" type="text" placeholder="무릎" class="form-control" />
+									</div>
+									<div class="form-group">
 								        <input id="null" name="null" type="text" placeholder="발" class="form-control" />
 									</div>
 									    
@@ -164,7 +170,7 @@
                	
             	<div id="log-tab" class="tab-pane fade" style="min-height:200px;overflow: auto;">
 				<div class="panel panel-green">
-             		<div class="panel-heading">사용기록</div>
+             		<div class="panel-heading">${user}님의 사용기록</div>
                 	<div class="panel-body">
                 	
 							<div class="form-body pal">
