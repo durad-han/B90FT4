@@ -64,9 +64,9 @@ public class WorkoutController {
 	public void updateWorkoutUserInfo(String userId, int userHeight, int userWeight, int userAge, String userGender) throws Exception{
 		// 매치되는 userId가 없는 경우에 대한 insert 처리도 해줘야 함..
 		//셀렉트 쿼리 실행뒤 나온 스트링값을 넣어줌
-		System.out.println("update userId : " + userId);
+		//System.out.println("update userId : " + userId);
 		String checkUserId = ws.workoutUserInfoSelectUserId(userId);
-		System.out.println(checkUserId);
+		//System.out.println(checkUserId);
 		if(checkUserId.equals("null")){
 			System.out.println("insert");
 			//매치되는 값이 없을 경우

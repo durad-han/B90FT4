@@ -42,7 +42,7 @@ $(".front").on("mousedown", function() {
 	console.log("nextSet : " + nextSet);
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
-	$(".container").css({
+	$("#typeAContainer > .container").css({
     "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
 });
 value++;
@@ -50,19 +50,19 @@ value++;
   if(count === maxValue){
 	  $("#typeAContainer").css({"background": "#ff7373"});
   		if(gvIsLast){
-  		//디비에 소모칼로리 보내는 기능 추가하기**
+  		
   		calIncDec();
 		  alert("마지막 세트입니다.");
 		  
   		}
   		else{
 		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-		//디비에 소모칼로리 보내는 기능 추가하기**
+		
 		calIncDec();
 		  $("#setNo"+nextSet).trigger("click");
 		  
 		}
-      $(".container").css({
+      $("#typeAContainer > .container").css({
           "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
         });
 	  value = -1;
@@ -74,29 +74,29 @@ value++;
 });
 
 $(".back").on("mousedown", function() {
-	console.log("backㅋㅋ");
+	console.log("backㅋㅋㅋ");
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
-	$(".container").css({
+	$("#typeAContainer > .container").css({
 		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
 	});
 	value++;
     if(count === maxValue){
     	$("#typeAContainer").css({"background": "#ff7373"});
     	if(gvIsLast){
-    		//디비에 소모칼로리 보내는 기능 추가하기**
+    		
     		calIncDec();
   		  alert("마지막 세트입니다.");
     	}
     	else{
     		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-    		//디비에 소모칼로리 보내는 기능 추가하기**
+    		
     		calIncDec();
     		 $("#setNo"+nextSet).trigger("click");
     		 
   		}
     	
-        $(".container").css({
+        $("#typeAContainer > .container").css({
             "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
           });
   	  value = -1;

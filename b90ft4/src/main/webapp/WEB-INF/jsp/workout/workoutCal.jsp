@@ -91,26 +91,28 @@
         <div class="container">
                 	
      <div>
-<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><button onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
+<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><button id='callIntakeCalBtn' onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
 <input id='setConsumeCal' type='text'>kcal<br>
-<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
+<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button id='callSpentCalBtn' onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
 <input id='setSpendCal'type='text'>kcal<br>
 
-<button onclick='setCal()'>입력</button><button>저장</button>
+<button id='setCalBtn' onclick='setCal()'>입력</button><button>저장</button>
 </div>
 <!-- <div id='BMContainer' hidden="true"> -->
 <div id='BMContainer'>
-키:<input id='setUserHeight' type='text'>cm<br>
-몸무게:<input id='setUserWeight' type='text'>kg<br>
-나이:<input id='setUserAge' type='text'>세<br>
+키:<input class='BMSet' id='setUserHeight' type='text'>cm<br>
+몸무게:<input class='BMSet' id='setUserWeight' type='text'>kg<br>
+나이:<input class='BMSet' id='setUserAge' type='text'>세<br>
 성별:<input type="radio" name="gender" id="genderMale" value="male" checked> 남 
 	<input type="radio" name="gender" id="genderFemale" value="female"> 여<br>
 기초대사량:<input id ='BMView' type='text'><br>
-<button onclick = 'calculateBM()'>계산</button>
-<button onclick = 'setBM()'>오늘 소비 칼로리에 적용</button>
-<button onclick = 'callBM()'>내 정보 불러오기</button>
-<button onclick = 'saveBM()'>내 정보에 저장</button>
-<button onclick = 'deleteBM()'>내 정보 삭제</button>
+<!-- 
+<button id='calculateBMBtn' onclick = 'calculateBM()'>기초대사량 계산</button>
+ -->
+<button id='setBMBtn' onclick = 'setBM()'>오늘 소비 칼로리에 적용</button>
+<button id='callBMBtn' onclick = 'callBM()'>내 정보 불러오기</button>
+<button id='saveBMBtn' onclick = 'saveBM()'>내 정보에 저장</button>
+<button id='deleteBMBtn' onclick = 'deleteBM()'>내 정보 삭제</button>
 </div>
 <div class='caption'>칼로리 계산</div>
 <div id='bar-chart-stack' style='width: 50%; height:300px'></div>
@@ -151,6 +153,9 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 --%>
 </div>
+<script>
+
+</script>
 </body>
 
 </html>
