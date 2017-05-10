@@ -114,7 +114,7 @@ function statusChangeCallback(response) {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">자기 관리</a>
+                <a class="navbar-brand" href="#page-top">Cog + I</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -197,7 +197,7 @@ function statusChangeCallback(response) {
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/profile.png" alt="">
+                    <img class="img-responsive" src="${pageContext.request.contextPath}/web/image/corgi/Corgi-web-icon-01-1.jpg" alt="">
                     <div class="intro-text">
                         <h1 class="name">자기 관리를 시작해보세요!</h1>
                         <hr class="star-light">
