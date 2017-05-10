@@ -25,19 +25,21 @@
 			리턴되는 값의 데이터타입: UserVO
 	============================================================================-->
 	<select id="selectUser" parameterType="userVO" resultMap="userMap">
-	
-		<if test="type == '0'">
-			select *
-		  	  from tb_sam_user
-		  	 where type = #{type}
-		</if>
+<!-- 		<if test="type == '0'"> -->
+<!-- 			select * -->
+<!-- 		  	  from tb_sam_user -->
+<!-- 		  	 where type = #{type} -->
+<!-- 		</if> -->
 		
-		<if test="type == '1'">
+<!-- 		<if test="type == '1'"> -->
+<!-- 			select * -->
+<!-- 		  	  from tb_sam_user -->
+<!-- 		  	 where user_id = #{userId} -->
+<!-- 		</if> -->
+		
 			select *
 		  	  from tb_sam_user
 		  	 where user_id = #{userId}
-		</if>
-		
 	</select>
 	
 	<!--============================================================================
@@ -62,31 +64,22 @@
 	<!--============================================================================
 			회원가입 insertUser
 			필터링할 값: 없음
-			파라메터의 데이터타입: string
+			파라메터의 데이터타입: userVO
 			리턴되는 값의 데이터타입: 없음 
 	============================================================================-->
 	<insert id="insertUser" parameterType="userVO" >
-		<selectKey keyProperty="user_id" order="BEFORE" resultType="int">
-			select s_sam_user.nextVal from dual <!-- ??? -->
-		</selectKey>
-		<if test="userKey == null">
 			insert into tb_sam_user (
 				user_id,
-				user_key
+				password,
+				email,
+				type
 			)
 			values (
 				#{userId},
-				#{userKey}
+				#{password},
+				#{email},
+				0
 			)
-		</if>
-		<if test="userKey == null">
-			insert into tb_sam_user (
-				user_id
-			)
-			values (
-				#{userId}
-			)
-		</if>
 	</insert>
 	
 	
