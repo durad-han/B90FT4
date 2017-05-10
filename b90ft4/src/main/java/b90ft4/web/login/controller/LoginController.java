@@ -22,6 +22,9 @@ public class LoginController {
 	
 	@RequestMapping("/user.do")
 	public void user () throws Exception{
+		UserVO user = new UserVO();
+		user.setUserId("test");
+		ls.userCheck(user);
 	}
 	
 	@RequestMapping("/loginPage.do")

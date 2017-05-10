@@ -77,14 +77,6 @@ public class ScheduleController {
 	public String modifySchedule (ScheduleVO scheduleVO, RedirectAttributes attr) throws Exception{
 		logger.debug("modifySchedule");
 		
-		logger.debug(scheduleVO.getUserId());
-//		logger.debug(scheduleVO.getCategory());
-		logger.debug(scheduleVO.getTitle());
-		logger.debug(scheduleVO.getStart());
-		logger.debug(scheduleVO.getEnd());
-//		logger.debug(scheduleVO.getImportance());
-		logger.debug(scheduleVO.getContent());
-		
 		ss.modifySchedule(scheduleVO);
 		attr.addFlashAttribute("msg", "스케줄이 수정되었습니다");
 		return "redirect:scheduleList";

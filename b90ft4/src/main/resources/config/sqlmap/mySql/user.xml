@@ -46,10 +46,10 @@
 			파라메터의 데이터타입: string
 			리턴되는 값의 데이터타입: int
 	============================================================================-->
-	<select id="userCheck" parameterType="userVO" resultType="int">
-    	select	count(*)
+	<select id="userCheck" parameterType="string" resultType="int">
+    	select	(Count(*) + 1)
     	  from	tb_sam_user
-    	  where	user_id = #{userId}
+    	  where	user_id = #{name}
     </select> 
 	
 	<!--============================================================================ 
