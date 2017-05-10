@@ -47,7 +47,7 @@
 			리턴되는 값의 데이터타입: int
 	============================================================================-->
 	<select id="userCheck" parameterType="string" resultType="int">
-    	select	(Count(*) + 1)
+    	select	count(*)
     	  from	tb_sam_user
     	  where	user_id = #{name}
     </select> 
