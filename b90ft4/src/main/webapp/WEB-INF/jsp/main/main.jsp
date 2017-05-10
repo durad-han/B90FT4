@@ -292,7 +292,7 @@ function statusChangeCallback(response) {
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+                        <img src="${pageContext.request.contextPath}/web/image/corgi/Corgi-workout-icon-01.jpg" class="img-responsive" alt="Slice of cake">
                     </a>
                 </div>
                 
