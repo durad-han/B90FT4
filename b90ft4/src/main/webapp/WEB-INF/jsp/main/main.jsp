@@ -96,7 +96,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/portfolio/safe.png" class="img-responsive" alt="Safe">
+                        <img src="${pageContext.request.contextPath}/web/image/main/diary.jpg" class="img-responsive" alt="Safe">
                     </a>
                 </div>
                 
