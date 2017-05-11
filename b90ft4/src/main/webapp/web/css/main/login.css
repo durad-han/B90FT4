@@ -15,6 +15,7 @@
 #loginModal:target {
     opacity:1;
     pointer-events: auto;
+    z-index: 9999 !important;
 }
 #loginModal > #loginMenu {
 	position: absolute;
