@@ -63,7 +63,7 @@
                         </div>
                         <!-- 돋보기 배경 끝 -->
                         
-                        <img src="${pageContext.request.contextPath}/web/bootstrap/freelancer/img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+                        <img src="${pageContext.request.contextPath}/web/image/main/account1.JPG" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
                 

@@ -115,6 +115,10 @@
     </nav>
 
     <!-- Portfolio Grid Section -->
+    <script>
+    	var pageNo = 2;
+    </script>
+    
     <section id="portfolio">
         <div class="container">
                
@@ -128,13 +132,13 @@
 				   <h1>
 						DIARY
 				   </h1>
-				   
+				   	<a href='${pageContext.request.contextPath}/diary/writeForm.do' style="position: relative; right:0;" class="btn btn-info" role="button">글쓰기</a>
 				</div>
 				
 			    <div class="row">
                 	<div class="col-md-12">
                 	
-	                    <div class="blog-masonry masonry-true">
+	                    <div id="diaryBox" class="blog-masonry masonry-true">
 	                    
 			                <c:forEach var="diary" items="${list}" varStatus="loop"> 
 				                      
@@ -169,10 +173,81 @@
 	                    
 	                </div>
                  </div> <!-- /.row -->
-                 
+               
+              <script>
+              
+              
+              
+		          	$(window).scroll(function(){				
+		    			var sh = $(window).scrollTop() + $(window).height(); 	//scrollHeight
+		    			var dh = $(document).height();							//documentHeight
+// 		    			console.log(sh,dh);
+		    			if (sh >= dh - 10 ){
+		    				
+		    				$.ajax({
+		              			url:"listForScroll.do",
+		              			dataType:"json",
+		              			data:{
+		              				pageNo:pageNo
+		              			}
+		              		}).done(function(result) {
+		              			
+		              			var list = result;
+		              			var html="";
+		              			
+		              			if(list.length){
+			              			for(var i=0;i<list.length;i++) {
+			              				
+					              			html+='<div class="post-masonry col-md-4 col-sm-6">';
+					              			html+='<div class="blog-thumb">';
+					              			 
+					              			if(list[i].content != 'x') {
+					              				html+=list[i].content;
+					              			}
+					              			if(list[i].content == 'x') {
+					              				html+='<img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" width="350px" height="215px" id="img1" alt="">';
+					              			}
+					                                
+						                     html+='           <div class="overlay-b">                                                                                         ';
+						                     html+='               <div class="overlay-inner">                                                                                 ';
+						                     html+='                   <a href="blog-single.html" class="fa fa-link"></a>                                                      ';
+						                     html+='               </div>                                                                                                      ';
+						                     html+='           </div>                                                                                                          ';
+						                     html+='       </div>                                                                                                              ';
+						                     html+='       <div class="blog-body">                                                                                             ';
+						                     html+='           <div class="box-content" style="margin:0 !important;">                                                          ';
+						                     html+='               <h3 class="post-title"><a href="detail.do?diaryNo='+list[i].diaryNo+'" >'+list[i].title+'</a></h3> ';     
+						                     html+='               <span class="blog-meta">'+list[i].diaryDate+'</span>  ';
+						                     html+='           </div>                                                                                                          ';
+						                     html+='       </div>';                                                                                                              
+						                     html+='   </div> ';
+			              			}
+		              			
+			              			$("#diaryBox").append(html);
+	// 		              			console.log("html : " ,html);
+			              			html="";
+			              			pageNo++;
+		              			}
+		              			
+		              		}); // 아잭스 끝
+		    				
+		    			} // if 문 끝
+		    			
+		    		}); // 스크롤 이벤트 끝
+              </script>
+              
+              
+              
+              
+              
+              
+              
+              
+              <!-- 페이징 소스 -->
+              <!-- 
               <div class="row">
+                   
                     <div class="col-md-11">
-                        	 
                         	 <div class="text-center">
 		                            <ul class="pagination pagination-lg mtm mbm">
 	  									<c:choose>
@@ -183,9 +258,7 @@
 	                                   		 	<li class="disabled"><a href="#">&laquo;</a></li>
 	  										</c:otherwise>	
 	  									</c:choose>
-	  									
 			   								<c:forEach var="i" begin="${pageResult.beginPage}" end="${pageResult.endPage}" >
-			   									
 			   									<c:choose>
 			   										<c:when test="${i eq pageResult.pageNo}">
 				                            	    	<li class="active"><a href="list.do?pageNo=${i}">${i}</a></li>
@@ -194,9 +267,7 @@
 					                            	    <li><a href="list.do?pageNo=${i}">${i}</a></li>
 			   										</c:otherwise>
 			   									</c:choose>
-			   								
 			   								</c:forEach>
-			   								
 	                                    <c:choose>
 	  										<c:when test="${pageResult.next}">
 			                                    <li class=""><a href="#">&raquo;</a></li>
@@ -205,26 +276,27 @@
 			                                    <li class="disabled"><a href="#">&raquo;</a></li>
 	  										</c:otherwise>	
 	  									</c:choose>
-	                                    
 		                            </ul>
-	
-	
-	                    </div>
-	                    
-                         
-                   </div> <!-- /.col-md-12 -->
-				    <div class="col-md-1">
+	                    	</div>
+                   </disv>
+                    
+                    
+                    <!--  
+				    <div class="col-md-12">
 				   			<br>
 				    		
 			    			<span class="glyphicons glyphicons-show-thumbnails"></span>
 							<span class="glyphicons glyphicons-justify"></span>
-	                       	
-	                       	<a href='${pageContext.request.contextPath}/diary/writeForm.do' style="position: relative; right:100px;" class="btn btn-info" role="button">글쓰기</a>
-			    	</div>	   
+	                       
+			    	</div>
 					                      
-                </div> <!-- /.row -->
+                </div> 
+				-->
 
-
+		      
+		      <br><br><br><br>
+		      <br><br><br><br>
+		      
 		        	
         </div>
     </section>
