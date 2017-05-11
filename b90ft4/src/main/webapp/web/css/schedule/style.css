@@ -62,7 +62,7 @@ Main components
 header {
   height: 200px;
   line-height: 200px;
-  text-align: center;
+  text-align: left;
   background: #303e49;
 }
 header h1 {
@@ -308,7 +308,7 @@ header h1 {
     font-size: 0.875rem;
   }
 }
-@media only screen and (min-width: 1170px) {
+/* @media only screen and (min-width: 1170px) { */
   .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
@@ -358,16 +358,16 @@ header h1 {
     -moz-animation: cd-bounce-2 0.6s;
     animation: cd-bounce-2 0.6s;
   }
-}
+/* } */
 
-@media only screen and (min-width: 1170px) {
+/* @media only screen and (min-width: 1170px) { */
   /* inverse bounce effect on even content blocks */
   .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
     -webkit-animation: cd-bounce-2-inverse 0.6s;
     -moz-animation: cd-bounce-2-inverse 0.6s;
     animation: cd-bounce-2-inverse 0.6s;
   }
-}
+/* } */
 @-webkit-keyframes cd-bounce-2 {
   0% {
     opacity: 0;

@@ -242,7 +242,7 @@ function statusChangeCallback(response) {
 <!-- 전체 래퍼 종료 ==================================================================================================== -->
 
 </div>
-<jsp:include page="/WEB-INF/jsp/common/old/frameInclude.jsp"/>
+<jsp:include page="/WEB-INF/jsp/common/frameInclude.jsp"/>
 <script src="${pageContext.request.contextPath}/web/js/main/main.js"></script>
 
 <script type="text/javascript">

@@ -50,11 +50,11 @@
 								
 								<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
 										<div class="cd-timeline-block">
-											<div class="cd-timeline-img cd-picture">
-												<i class="fa fa-edit fa-fw">
-									            </i>
-								<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-											</div> <!-- cd-timeline-img -->
+<!-- 											<div class="cd-timeline-img cd-picture"> -->
+<!-- 												<i class="fa fa-edit fa-fw"> -->
+<!-- 									            </i> -->
+<!-- 												<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
+<!-- 											</div> cd-timeline-img -->
 								
 											<div class="cd-timeline-content">
 												<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
@@ -109,10 +109,7 @@
 								<div class="clz-insertSchedule">
 									
 									<div class="form-group">
-									    <div class="input-icon right">
-									        <i class="fa fa-user"></i>
 									        <input id="inputTitle" name="title" type="text" placeholder="제목" class="form-control" />
-									    </div>
 									</div>
 									
 									<div class="row">
@@ -129,10 +126,7 @@
 									</div>
 									
 									<div class="form-group">
-									    <div class="input-icon right">
-									        <i class="fa fa-user"></i>
-									        <input id="inputContent" name="content" type="text" placeholder="내용!" class="form-control" />
-									    </div>
+									        <input id="inputContent" name="content" type="text" placeholder="내용" class="form-control" ></input>
 									</div>
 								</div>
 									
