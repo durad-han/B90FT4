@@ -34,7 +34,7 @@
 	
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" style="background-color:white">
 
 <div class="container">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
@@ -46,8 +46,8 @@
     	var pageNo = 2;
     </script>
     
-    <section id="portfolio">
-        <div class="container">
+    <section id="portfolio" style="background-color:transparent !important;">
+        <div class="container" style="padding-right:40px; background-color: rgba(102, 114, 191, 0.03) !important;"> <!-- 패딩 right 필수 -->
                
                 <div class="row">
                     <div class="section-header col-md-12">
@@ -55,11 +55,21 @@
                     </div> 
                 </div>	
                 
-                <div class = "page-header">
-				   <h1>
-						DIARY
-				   </h1>
-				   	<a href='${pageContext.request.contextPath}/diary/writeForm.do' style="position: relative; right:0;" class="btn btn-info" role="button">글쓰기</a>
+                 <div id="row">
+                	<div class="col-md-12">
+                	<h1 style="font-size:50px !important;">
+                		
+                		DIARY
+                		
+                	</h1>
+                	</div>
+				</div>
+				
+				<div id="row">
+                	<div class="col-md-12">
+					   	<a href='${pageContext.request.contextPath}/diary/writeForm.do' style="margin-left: 94%;" class="btn btn-info" role="button">글쓰기</a>
+						<br><br>
+					</div>
 				</div>
 				
 			    <div class="row">

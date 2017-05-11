@@ -464,7 +464,13 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		   set user_id = 'durad han'
 		where user_id = '김현영';
 		
-		
+		select * 
+		  from tb_sam_chat_room
+		  
+		 delete
+		   from tb_sam_chat_room
+		 where room_no = 1;
+		 
 		
 		
 		  
