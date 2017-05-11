@@ -93,6 +93,14 @@ public class DiaryController {
 		return "redirect:list.do";
 	}
 	
+
+	@ResponseBody
+	@RequestMapping("/listForScroll.do")
+	public List<DiaryVO> listForScroll(DiarySearchVO search) 
+			throws Exception{
+		return service.listForScroll(search);
+	}
+	
 	// 게시글 목록
 	@RequestMapping("/list.do")
 	public void list(DiarySearchVO search, Model model) throws Exception{

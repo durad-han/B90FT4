@@ -43,6 +43,43 @@ public class DiaryServiceImpl implements DiaryService {
 		dao.updateDiary(diary);
 	}
 	
+	
+	public List<DiaryVO> listForScroll(DiarySearchVO search) throws Exception{
+		List<DiaryVO> list = dao.selectDiaryList(search);
+		
+		for(DiaryVO diary : list){
+			
+			String title = diary.getTitle();
+			
+			if (title.length() >= 17) {
+				diary.setTitle(title.substring(0,17) + "...");
+			}
+			
+			String temp = diary.getContent();
+			
+			if(temp!=null && temp.indexOf("<img") != -1){
+		
+				int sIx = temp.indexOf("<img");
+				int eIx = temp.indexOf(">",sIx);
+				temp = temp.substring(sIx, eIx+1);
+				System.out.println(temp);
+				int ix = temp.lastIndexOf(">");
+				temp = temp.substring(0,ix) + "width='350' height='215' />";
+				temp = temp.replace("style", "");
+				System.out.println("테스트 : " + temp);
+				diary.setContent(temp);
+				
+			}else{
+				diary.setContent("x");
+			}
+		}
+		
+		return list;
+		
+	}
+
+	
+	
 	// 글 목록
 	@Override
 	public Map<String, Object> list(DiarySearchVO search) throws Exception{
@@ -76,7 +113,6 @@ public class DiaryServiceImpl implements DiaryService {
 			}else{
 				diary.setContent("x");
 			}
-			
 		}
 		
 		

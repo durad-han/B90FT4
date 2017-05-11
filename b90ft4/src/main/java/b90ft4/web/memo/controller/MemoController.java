@@ -19,13 +19,13 @@ public class MemoController {
 	
 	@RequestMapping("/list.do")
 	public List<MemoVO> list(UserVO user) throws Exception{
-		user.setUserId("김현영");
+		user.setUserId("durad han");
 		return service.list(user);
 	}
 	
 	@RequestMapping("/save.do")
 	public int save(MemoVO memo) throws Exception{
-		memo.setUserId("김현영");
+		memo.setUserId("durad han");
 		service.save(memo);
 		return memo.getMemoNo();
 	}

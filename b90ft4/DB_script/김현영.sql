@@ -17,6 +17,9 @@ select * from tb_sam_income
 select * from tb_sam_loan
 select * from tb_sam_debt
 
+select * from tb_sam_user
+
+
 select * from tb_sam_memo
 tb_Sam_Budget_Memo
 
@@ -431,6 +434,35 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		  
 		 
 		select substring(now(),1,7)
+		
+		
+		update tb_sam_expense
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_income
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_income
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_loan
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_debt
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_expense_plan
+		   set user_id = 'durad han'
+		where user_id = '김현영';
+		
+		update tb_sam_memo
+		   set user_id = 'durad han'
+		where user_id = '김현영';
 		
 		
 		

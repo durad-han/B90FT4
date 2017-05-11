@@ -17,7 +17,6 @@
 	var i=0; // 화살표로 날짜 움직이기 제어 변수.
 	var dateFormat = 'yy-mm-dd';
 
-	
 	var weekPN=0;
 	
 	function makeCalendar(type){
@@ -388,7 +387,7 @@
 				}else {
 					$("#budgetPlanDiv").hide();
 					$("#occupancyRatio").css({
-						top:"0px",
+						top:"-20px",
 						left:"80px"
 					});
 				}
