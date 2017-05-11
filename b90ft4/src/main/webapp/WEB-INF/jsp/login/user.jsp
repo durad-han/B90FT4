@@ -20,7 +20,7 @@
 <div class="container">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-<%@include file="/WEB-INF/jsp/common/menu.jsp"%>
+<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" >

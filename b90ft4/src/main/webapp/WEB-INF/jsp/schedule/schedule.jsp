@@ -20,7 +20,7 @@
 <div class="container">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-<%@include file="/WEB-INF/jsp/common/menu.jsp"%>
+<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" >
@@ -30,8 +30,8 @@
 		
 			<div class="col-lg-12">
         		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 80%;">
-                    <li id="listTab" class="active"><a href="#list-tab" data-toggle="tab">목록으로 보기</a></li>
-                    <li id="calendarTab"><a href="#calendar-tab" data-toggle="tab">달력으로 보기</a></li>
+                    <li id="listTab" class="active"><a href="#list-tab" data-toggle="tab"><i class="fa fa-list" style="font-size:24px"></i> 목록으로 보기</a></li>
+                    <li id="calendarTab"><a href="#calendar-tab" data-toggle="tab"><i class="fa fa-calendar" style="font-size:24px"></i> 달력으로 보기</a></li>
                 </ul>
 			</div>
 		<div class="row">
@@ -248,7 +248,7 @@
     </div>
     
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
-<c:import url ="/WEB-INF/jsp/schedule/scheduleInclude2.jsp"/>
+<c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 </div>
 
 </body>
