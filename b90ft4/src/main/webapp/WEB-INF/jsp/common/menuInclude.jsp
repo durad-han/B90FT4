@@ -51,7 +51,8 @@ function statusChangeCallback(response) {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Cog + I</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
+                <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -127,7 +127,7 @@
 
 </div>
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
-<c:import url ="/WEB-INF/jsp/schedule/scheduleInclude2.jsp"/>
+<c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 </body>
 
 </html>
