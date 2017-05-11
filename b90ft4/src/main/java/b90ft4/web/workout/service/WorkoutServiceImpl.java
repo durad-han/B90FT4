@@ -33,21 +33,22 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	@Override
-	public List<WorkoutStatisticsVO> workoutStatisticsList(String today) throws Exception {
+	public List<WorkoutStatisticsVO> workoutStatisticsList(String today,String userId) throws Exception {
 		// TODO Auto-generated method stub
-		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today);
+		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today,userId);
 		return list;
 	}
 	
 	@Override
-	public String workoutStatisticsInsert(String today) throws Exception {
+	public String workoutStatisticsInsert(String today,String userId) throws Exception {
 		// TODO Auto-generated method stub
-		
+		System.out.println("workoutStatisticsInsert load");
+		System.out.println("today :" + today + ",userId : " + userId);
 		String workoutStatisticsInsertMsg = "";
-		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today);
+		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today,userId);
 		if(list.size() <= 0){
 			
-			wm.insertWorkoutStatisticsList(today);
+			wm.insertWorkoutStatisticsList(today,userId);
 			workoutStatisticsInsertMsg = "오늘 운동 칼로리 컬럼 추가됨.";
 		}
 		else{
@@ -59,7 +60,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 	
 	@Override
-	public void workoutStatisticsUpdate(int spentCal,int intakeCal,String today) throws Exception {
+	public void workoutStatisticsUpdate(int spentCal,int intakeCal,String today,String userId) throws Exception {
 		// TODO Auto-generated method stub
 		String tempVal = spentCal+""; 
 		String tempVal2 = intakeCal+""; 
@@ -68,7 +69,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 		System.out.println("intakeCal : " + intakeCal);
 		System.out.println("today : " + today.getClass().getName());
 		*/
-		wm.modifyWorkoutStatisticsList(tempVal , tempVal2 , today);
+		wm.modifyWorkoutStatisticsList(tempVal , tempVal2 , today , userId);
 	
 	}
 	

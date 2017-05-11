@@ -11,10 +11,10 @@ import b90ft4.web.repository.vo.WorkoutVO;
 public interface WorkoutService {
 	List<WorkoutVO> workoutList() throws Exception;
 	List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception;
-	List<WorkoutStatisticsVO> workoutStatisticsList(String today) throws Exception;
-	void workoutStatisticsUpdate(int spentCal,int intakeCal,String today) throws Exception;
+	List<WorkoutStatisticsVO> workoutStatisticsList(String today , String userId) throws Exception;
+	void workoutStatisticsUpdate(int spentCal,int intakeCal,String today,String userId) throws Exception;
 	WorkoutDateTestVO workoutDateTest() throws Exception;
-	String workoutStatisticsInsert(String today) throws Exception;
+	String workoutStatisticsInsert(String today,String userId) throws Exception;
 	WorkoutUserInfoVO workoutUserInfoSelect(String userId) throws Exception;
 	String workoutUserInfoSelectUserId(String userId) throws Exception;
 	void workoutUserInfoUpdate(String userId, int userHeight, int userWeight, int userAge, String userGender) throws Exception;

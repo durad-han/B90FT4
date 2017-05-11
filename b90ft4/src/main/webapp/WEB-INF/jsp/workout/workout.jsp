@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>B90FT4 | 운동</title>
+    <title>Cog + I</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +23,9 @@
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -51,7 +50,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="main.do">자기 관리</a>
+                <a class="navbar-brand" href="#page-top">Cog + I</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,28 +60,68 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                        
-                    <!-- 서브메뉴 드랍다운 -->
-                    <li class = "dropdown">
-                    
+                 <c:choose>
+                   <c:when test="${empty user}">
+	                   <li class = "loginCall">
+							<a href = "#loginModal">로그인</a>
+					   </li>
+                   </c:when>
+                   <c:otherwise>
+	                   <li class = "logoutCall">
+							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
+					   </li>
+	                   <li class = "loginCall">
+							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
+					   </li>
+                   </c:otherwise> 
+                 </c:choose>
+                      
+                   <li class = "dropdown">
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
-					      
 					      <ul class = "dropdown-menu">
-					         <li><a href = "#">지출/수입</a></li>
-					         <li><a href = "#">대입금/차입금</a></li>
-					         <li><a href = "#">설정</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>
+					         <li><a href = "${pageContext.request.contextPath}/accountBook/setting.do">설정</a></li>
 					      </ul>
 					      
 				   </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
+                    </li>
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케줄</a>
+                    </li>
                         
-                    <li class="page-scroll">
-                        <a href="#about">다이어리</a>
+                    <li>
+<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
+                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
+					          운동 <span class = "caret"></span>
+					      </a>
+					      <ul class = "dropdown-menu">
+					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
+					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
+					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
+					      </ul>
+                        
+                        <script>
+                        	function workoutMoveCal(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
+                        	}
+                        	function workoutMoveChart(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
+                        	}
+                        </script>
+                        
+                        
                     </li>
-                    <li class="page-scroll">
-                        <a href="#contact">스케쥴러</a>
+                        
+                    <li>
+                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
                     </li>
+
                 </ul>
                 
             </div>
@@ -90,6 +129,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+    
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -157,7 +197,7 @@
 		{{/list}} 
 	</div>
 	<div id="workoutMainButtons">
-		<button class='btn btn-primary' id="workoutUpdateBtn">운동 편집</button>
+		<button class='btn btn-primary' id="workoutUpdateBtn" hidden>운동 편집</button>
  		
 	</div>
    

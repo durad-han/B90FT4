@@ -1,11 +1,10 @@
 package b90ft4.web.repository.vo;
 
-import java.util.Date;
-
 public class WorkoutStatisticsVO {
 	private String workoutDay;
 	private int spentCal;
 	private int intakeCal;
+	private String userId;
 	public String getWorkoutDay() {
 		return workoutDay;
 	}
@@ -23,6 +22,12 @@ public class WorkoutStatisticsVO {
 	}
 	public void setIntakeCal(int intakeCal) {
 		this.intakeCal = intakeCal;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	

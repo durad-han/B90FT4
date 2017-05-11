@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
+<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
+</head>
+<body>
+ㅋz
+<div id="occupancyRatio" style="width: 100px; height:300px;"></div>
+		
+<script type="text/javascript">
+$(document).ready(function() {
+	$.jqplot.config.enablePlugins = true;
+	var s1 = [80];
+	var ticks = ['날짜1'];
+	plot1 = $.jqplot('occupancyRatio', [s1], {
+	    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+	    animate: !$.jqplot.use_excanvas,
+	    seriesDefaults:{
+	        renderer:$.jqplot.BarRenderer,
+	        pointLabels: { show: true }
+	    },
+	    axes: {
+	        xaxis: {
+	            renderer: $.jqplot.CategoryAxisRenderer,
+	            ticks: ticks
+	        },
+	        yaxis: {
+	        	min:0,
+	        	max:100,
+	        	markSize:10
+	        }
+	    },
+	    highlighter: { show: false }
+	});
+});
+	
+</script>		
+
+
+
+
+			          
+</body>
+</html>

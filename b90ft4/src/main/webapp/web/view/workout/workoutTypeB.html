@@ -37,7 +37,7 @@ var nextSet = gvSetIndex+1;
 var timerEnd = 0; 
 //이미지 슬라이드 가져오기
 function imgSetLoad(){
-	console.log("nextSet : "+nextSet);
+	//console.log("nextSet : "+nextSet);
 	var html = "이번 세트 운동시간 : "+gvTypeBTime+"초"+
 				"<br>이번 세트 휴식시간 : "+gvIntervalTime+"초"+
 				"<div id='view' hidden>"+
@@ -72,7 +72,7 @@ function timerViewSet(){
 	$('#timerContainer').html(timerHtml);	
 };
 function typeBStart(){
-	console.log("typeBStart load");
+	//console.log("typeBStart load");
 	//gvTypeBTime = 5;
 	timerEnd = 0;
 	timerViewSet();
@@ -80,8 +80,8 @@ function typeBStart(){
 	timerId = setInterval(function(){
 	timerEnd++;
 	timerViewSet();
-	console.log(timerEnd);			
-	console.log(gvIsLast);
+	//console.log(timerEnd);			
+	//console.log(gvIsLast);
 
 	if(timerEnd == gvTypeBTime){
 		if(gvIsLast){
@@ -91,7 +91,7 @@ function typeBStart(){
 			calIncDec();
 			clearInterval(timerId);
 	  	}
-		console.log("clearInterval load");
+		//console.log("clearInterval load");
 		clearInterval(timerId);
 		timerViewSet();
 		alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
@@ -136,7 +136,7 @@ function videoClose(){
 
 //녹화 관련 함수
 
-	console.log("recoderLoad function started");
+	//console.log("recoderLoad function started");
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
 
@@ -276,12 +276,12 @@ function videoClose(){
 
 	function onPauseResumeClicked(){
 		if(pauseResBtn.textContent === "Pause"){
-			console.log("pause");
+			//console.log("pause");
 			pauseResBtn.textContent = "Resume";
 			mediaRecorder.pause();
 			stopBtn.disabled = true;
 		}else{
-			console.log("resume");
+			//console.log("resume");
 			pauseResBtn.textContent = "Pause";
 			mediaRecorder.resume();
 			stopBtn.disabled = false;

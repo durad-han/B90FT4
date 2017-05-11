@@ -117,9 +117,8 @@
 <div class='caption'>칼로리 계산</div>
 <div id='bar-chart-stack' style='width: 50%; height:300px'></div>
 <script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
-		        	
-        </div>
-    </section>
+</div>
+</section>
     
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -128,6 +127,8 @@
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+    
+    
     
 <%-- 
     <!-- jQuery -->
@@ -153,9 +154,9 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 --%>
 </div>
-<script>
-
-</script>
+<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.barRenderer.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.pointLabels.js"></script>
 </body>
 
 </html>

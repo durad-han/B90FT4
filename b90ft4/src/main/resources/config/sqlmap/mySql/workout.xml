@@ -44,13 +44,14 @@
 		<result column="Workout_Day"			property="workoutDay"		/>
 		<result column="Spent_Cal"				property="spentCal"			/>
 		<result column="Intake_Cal"				property="intakeCal"		/>
+		<result column="User_Id"				property="userId"		/>
 	</resultMap>
 
 
 	<select id="retrieveWorkoutStatisticsList" resultMap="workoutStatisticsMap" parameterType="String">
 		select * 
 		from tb_Sam_Workout_Statistics
-		where Workout_Day like concat('%',#{today},'%')
+		where Workout_Day like concat('%',#{today},'%') and User_Id = #{userId}
 	<!--  where substring(Workout_Day,1,10) = #{today}  -->	
 	</select> 
 	
@@ -59,8 +60,8 @@
 	</update> 
  
 	<insert id="insertWorkoutStatisticsList" parameterType="String">
-		insert into tb_sam_workout_statistics(Workout_Day,Spent_Cal,Intake_Cal)
-		values(#{today},0,0)
+		insert into tb_sam_workout_statistics(Workout_Day,Spent_Cal,Intake_Cal,User_Id)
+		values(#{today},0,0,#{userId})
 	</insert>
 	
 <!--  retrieveWorkoutDateTest -->

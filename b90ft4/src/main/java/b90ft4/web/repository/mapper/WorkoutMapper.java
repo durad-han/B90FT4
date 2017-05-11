@@ -15,15 +15,16 @@ import b90ft4.web.repository.vo.WorkoutVO;
 public interface WorkoutMapper {
 	public List<WorkoutVO> retrieveWorkoutList() throws Exception; 
 	public List<WorkoutSetVO> retrieveWorkoutSetList(int workoutNo) throws Exception; 
-	public List<WorkoutStatisticsVO> retrieveWorkoutStatisticsList(String today) throws Exception; 
-	public void insertWorkoutStatisticsList(String today) throws Exception; 
+	public List<WorkoutStatisticsVO> retrieveWorkoutStatisticsList(@Param("today") String today,@Param("userId") String userId) throws Exception; 
+	public void insertWorkoutStatisticsList(@Param("today") String today,@Param("userId") String userId) throws Exception; 
 	public WorkoutDateTestVO retrieveWorkoutDateTestList() throws Exception;
 	public String retrieveWorkoutUserInfoUserId(String userId) throws Exception;
 	public WorkoutUserInfoVO retrieveWorkoutUserInfo(String userId) throws Exception;
 	public void modifyWorkoutStatisticsList(
 			@Param("spentCal") String spentCal,
 			@Param("intakeCal") String intakeCal,
-			@Param("today") String today)throws Exception;
+			@Param("today") String today,
+			@Param("userId") String userId)throws Exception;
 	public void insertWorkoutUserInfo(
 			@Param("userId") String userId ,
 			@Param("userGender") String userGender,

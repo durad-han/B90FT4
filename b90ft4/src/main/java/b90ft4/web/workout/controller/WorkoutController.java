@@ -93,22 +93,24 @@ public class WorkoutController {
 
 	@ResponseBody
 	@RequestMapping("/selectWorkoutStatisticsList.do")
-	public List<WorkoutStatisticsVO> WorkoutStatisticsList(String today) throws Exception{	
-		List<WorkoutStatisticsVO> list = ws.workoutStatisticsList(today);
+	public List<WorkoutStatisticsVO> WorkoutStatisticsList(String today , String userId) throws Exception{	
+		List<WorkoutStatisticsVO> list = ws.workoutStatisticsList(today , userId);
 		return list;
 	}
 	
 	@ResponseBody
 	@RequestMapping("/UpdateWorkoutStatistics.do")
-	public void WorkoutStatisticUpdate(int spentCal,int intakeCal,String today) throws Exception{
+	public void WorkoutStatisticUpdate(int spentCal,int intakeCal,String today , String userId) throws Exception{
 		System.out.println("UpdateWorkoutStatistics Controller load");
-		ws.workoutStatisticsUpdate(spentCal,intakeCal,today);
+		ws.workoutStatisticsUpdate(spentCal,intakeCal,today,userId);
 		
 	}
 	@ResponseBody
 	@RequestMapping("/InsertWorkoutStatistics.do")
-	public String WorkoutStatisticInsert(String today) throws Exception{	
-		String workoutStatisticsInsertMsg = ws.workoutStatisticsInsert(today);
+	public String WorkoutStatisticInsert(String today,String userId) throws Exception{
+		/*System.out.println("InsertWorkoutStatistics load");
+		System.out.println("today :" + today + ",userId : " + userId );*/
+		String workoutStatisticsInsertMsg = ws.workoutStatisticsInsert(today,userId);
 		return workoutStatisticsInsertMsg;
 	}
 	
