@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="chrome"/>
 
 <title>Cog + I : Schedule</title>
     
@@ -46,53 +45,32 @@
 			<!-- 		왼쪽 리스트  -->
 						<div class="col-lg-3">
 						
-						<div class="view">
-							
-				<div class="sList__full">
-					<div class="sList__full-top">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-								<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
-								<path d="M0 0h24v24h-24z" fill="none"/>
-						</svg>
-						<span class="sList__full-date"></span>
-					</div>
-					<div class="sList__full-bottom">
-						<p class="sList__full-handle"></p>
-						<p class="sList__full-info"></p>
-					</div>
-				</div>
-	
-	
-				<ul class="sList__list">
-					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--blue">
-					
-						<div class="sList__info">
-							<div class="info-sch">
-								<p class="info-sch__date"><c:out value='${schedules.start}'/></p>
+							<div class="side-scroll">
+								<section id="cd-timeline" class="timeline-container">
 								
-								<p class="info-sch__title"><small>text here</small><br><c:out value='${schedules.title }'/></p>
+								<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
+									<div class="cd-timeline-block">
+									<div class="cd-timeline-content">
+										<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
+										<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
+										<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">자세히</a>
+										<span class="cd-date"><c:out value='${schedules.start}'/></span>
+									</div> <!-- cd-timeline-content -->
+									</div> <!-- cd-timeline-block -->
+								</c:forEach>
 								
-							</div>
-							<div class="info-place"><c:out value='${schedules.content }'/></div>
-						</div>
-					</li>
-					</c:forEach>
-					<c:if test='${empty scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--blue">
-					
-						<div class="sList__info">
-							<div class="info-sch">
-								<p class="info-sch__date">0</p>
-
-								<p class="info-sch__title"><small>아직 없어</small><br>텅 비었어</p>
-
-							</div>
-							<div class="info-place">0</div>
-						</div>
-					</li>
-					</c:if>
-				</ul>
+								<c:if test='${empty scheduleMap["scheduleList"]}'>
+									<div class="cd-timeline-block">
+									<div class="cd-timeline-content">
+										<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
+										<p><a href="#;">스케줄을 등록하세요</a></p>
+										<a href="#;" class="cd-read-more">상세</a>
+										<span class="cd-date"></span>
+									</div> <!-- cd-timeline-content -->
+									</div> <!-- cd-timeline-block -->
+								</c:if>
+								
+								</section>
 							</div>
 						</div>
 						

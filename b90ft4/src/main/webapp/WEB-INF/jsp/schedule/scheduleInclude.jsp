@@ -53,3 +53,4 @@
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/scheduleList.css"/>
 <script src="${pageContext.request.contextPath}/web/js/schedule/scheduleMain.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/schedule/sList.css"/>
