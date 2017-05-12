@@ -188,10 +188,10 @@ div#test{
                     <!-- 드롭 다운 테스트  -->
                         
                     <li class="page-scroll">
-                        <a href="#about">다이어리</a>
+                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">스케쥴러</a>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
                     </li>
                     
                     <li>
@@ -199,14 +199,16 @@ div#test{
                     </li>
                     
                      <li>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
+ 
+		                <span>
+<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
+							<button id="addMemo">
+							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="50px"/></button>
+						</span>
+
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-	                </li>
-	              
-	                <li>
-		                <div>
-							<button id="addMemo">메모 추가</button>
-						</div>
+
 	                </li>
                     
                 </ul>
@@ -471,9 +473,7 @@ div#test{
 						        	<span style="display: block;"></span>
 					          </div>
 					          
-					          
-					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-210px;left:163px;"></div>
-					          
+					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;"></div>
 				        	
 						 </div>	
 						 

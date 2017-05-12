@@ -275,7 +275,6 @@
 		// 월 지출 테이블.
 		$("#monthExpense-tab").addClass("in active");
 		
-		
 		$("#expenseTable").hide();  // 지출 테이블
 		$("#incomeTable").hide();   // 수입 테이블
 		$("#expenseDiv").show();	// 지출 원 그래프 
@@ -387,7 +386,7 @@
 				}else {
 					$("#budgetPlanDiv").hide();
 					$("#occupancyRatio").css({
-						top:"-20px",
+						top:"-10px",
 						left:"80px"
 					});
 				}
@@ -1184,10 +1183,21 @@
 		regiOrModFlag = 1;
 	});
 	
+	console.log("숫자추가");
+	
 	// 지출,수입 등록
 	$("#budgetRegi").click(function() {
 		
 		var f = document.budgetF;
+
+		// 숫자 정규 표현식
+		var regNumber = /^[0-9]*$/;
+		if(!regNumber.test(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")))) {
+		    alert('숫자만 입력해주세요.');
+		    return;
+		}
+		  
+		
 		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
 		
 		var params = $("[name=budgetF]").serialize();

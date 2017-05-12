@@ -5,7 +5,8 @@
 				$("label[for=showAndHideMemo]").text("메모 보기");
 				bringMemo();
 			}else {
-				$("label[for=showAndHideMemo]").text("메모 숨기기");
+				console.log("ㅋㅋ");
+				$("label[for=showAndHideMemo]").text("메모 숨김");
 				$("div.memo").each(function() {
 					$(this).remove();
 				});

@@ -410,6 +410,14 @@
 		console.log("ㅋㅋ");
 		
 		var f = document.bondF;
+
+		// 숫자 정규 표현식
+		var regNumber = /^[0-9]*$/;
+		if(!regNumber.test(eval("f."+$("[name=bondF] input:eq(3)").attr("name")))) {
+		    alert('숫자만 입력해주세요.');
+		    return;
+		}
+		
 		if(isEmpty(eval("f."+$("[name=bondF] input:eq(3)").attr("name")),"금액을 입력하세요")) return;
 		
 		var params = $("[name=bondF]").serialize();
