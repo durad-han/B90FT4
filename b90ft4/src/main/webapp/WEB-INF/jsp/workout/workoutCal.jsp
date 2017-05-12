@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Cog + I</title>
     <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
@@ -46,7 +46,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="main.do">자기 관리</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -175,8 +175,7 @@
     </div>
     
     
-    
-<%-- 
+ <%--    
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/jquery/jquery.min.js"></script>
 
@@ -193,21 +192,22 @@
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
-	
+	 --%>
+<%-- 
     <!-- 차트 js -->
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 --%>
 </div>
-<!-- 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
+<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script> -->
 <script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
- -->
+
 </body>
 
 </html>

@@ -17,14 +17,15 @@
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
 <!-- ==================================================== workout original ==================================================== -->
-	
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
-
+  <!-- Bootstrap Core CSS -->
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
+	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
+
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Custom Fonts -->
@@ -32,8 +33,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	
-	
 </head>
+
 <body id="page-top" class="index">
 
 <%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
@@ -50,7 +51,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Cog + I</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -134,7 +135,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
