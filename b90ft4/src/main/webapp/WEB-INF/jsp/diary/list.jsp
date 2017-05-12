@@ -38,7 +38,7 @@
 			border: 1px solid black;
 		}
 	</style>
-<!-- 	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script> -->
+	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script>
 </head>
 
 <body id="page-top" class="index" style="background-color:white">
@@ -236,7 +236,6 @@
     </section>
     
     
-     <!-- 채팅 
       <aside style="position: fixed;left:80px;top:200px;">
 			<ul class = "list-group" style="width: 200px;">
 			   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
@@ -280,7 +279,6 @@
 	
 	<div id="list"> 
 	</div>
-   채팅 끝 -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -309,7 +307,7 @@
 	<script>
 	var myId = "admin";
 	</script>
-<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
+	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 		
 	
 </div>

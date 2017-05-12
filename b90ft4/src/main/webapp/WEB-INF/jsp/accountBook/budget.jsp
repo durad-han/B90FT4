@@ -35,10 +35,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	
-	<script>
-		console.log("하하");
-	</script>
-
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
 
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
@@ -69,7 +65,7 @@
 	
 	</style>
 
-<!-- 	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script> -->
+	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script>
 	
 </head>
 
@@ -443,7 +439,6 @@
     </section>
     
     
-    <!-- 채팅 
     <span>
        	  <aside style="position: fixed;left:80px;top:200px;">
 			<ul class = "list-group" style="width: 200px;">
@@ -490,7 +485,6 @@
 	
 	<button type="button" id="showList">친구 목록</button>
    	</span>			
-    채팅 -->			
    				
    				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						
@@ -610,7 +604,7 @@
 	var myId = "김현영";
 </script>
 
-<%-- <script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
+<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 
 </div>
 </body>
