@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +8,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="chrome"/>
 
 <title>Cog + I : Schedule</title>
     
@@ -48,19 +46,19 @@
 						
 						<div class="view">
 							
-				<div class="sList__full">
-					<div class="sList__full-top">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-								<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
-								<path d="M0 0h24v24h-24z" fill="none"/>
-						</svg>
-						<span class="sList__full-date"></span>
-					</div>
-					<div class="sList__full-bottom">
-						<p class="sList__full-handle"></p>
-						<p class="sList__full-info"></p>
-					</div>
-				</div>
+<!-- 				<div class="sList__full"> -->
+<!-- 					<div class="sList__full-top"> -->
+<!-- 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> -->
+<!-- 								<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/> -->
+<!-- 								<path d="M0 0h24v24h-24z" fill="none"/> -->
+<!-- 						</svg> -->
+<!-- 						<span class="sList__full-date"></span> -->
+<!-- 					</div> -->
+<!-- 					<div class="sList__full-bottom"> -->
+<!-- 						<p class="sList__full-handle"></p> -->
+<!-- 						<p class="sList__full-info"></p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 	
 	
 				<ul class="sList__list">
@@ -71,10 +69,10 @@
 							<div class="info-sch">
 								<p class="info-sch__date"><c:out value='${schedules.start}'/></p>
 								
-								<p class="info-sch__title"><small>text here</small><br><c:out value='${schedules.title }'/></p>
+								<p class="info-sch__title"><small><c:out value='${schedules.start}'/></small><br><c:out value='${schedules.title }'/></p>
 								
 							</div>
-							<div class="info-place"><c:out value='${schedules.content }'/></div>
+							<div class="info-place"><c:out value='${schedules.scheduleNo }'/></div>
 						</div>
 					</li>
 					</c:forEach>

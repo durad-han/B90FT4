@@ -44,15 +44,15 @@
              		<div class="panel-heading">${user.userId}님의 기본정보</div>
                 	<div class="panel-body">
                 	
-							<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
+							<form name="updateUser" action="updateUser.do" onsubmit="return userForm();" method="post">
 							<div class="form-body pal">
 									
 									<div class="form-group">
-									        <input id="null" name="null" type="text" placeholder="기본값" class="form-control" />
+									        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" />
 									</div>
 									
 									<div class="form-group">
-									        <input id="null" name="null" type="text" placeholder="기본값2" class="form-control" />
+									        <input id="email" name="email" type="text" placeholder="이메일이 존재하지 않습니다" value="${user.email}" class="form-control" />
 									</div>
 									    
 									<div class="form-actions text-center pal">
@@ -69,20 +69,23 @@
              		<div class="panel-heading">${user.userId}님의 신체정보</div>
                 	<div class="panel-body">
                 	
-							<form name="insertSchedule" action="insertSchedule.do" onsubmit="return scheduleForm();" method="post">
+							<form name="updateUser" action="updateUser.do" onsubmit="return userForm();" method="post">
 							<div class="form-body pal">
 									
 									<div class="form-group">
-								        <input id="null" name="null" type="text" placeholder="머리" class="form-control" />
+								        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${userInfo.userId}" class="form-control" />
 									</div>
 									<div class="form-group">
-								        <input id="null" name="null" type="text" placeholder="어깨" class="form-control" />
+								        <input id="userHeight" name="userHeight" type="text" placeholder="키" value="${userInfo.userHeight}" class="form-control" />
 									</div>
 									<div class="form-group">
-								        <input id="null" name="null" type="text" placeholder="무릎" class="form-control" />
+								        <input id="userWeight" name="userWeight" type="text" placeholder="몸무게" value="${userInfo.userWeight}" class="form-control" />
 									</div>
 									<div class="form-group">
-								        <input id="null" name="null" type="text" placeholder="발" class="form-control" />
+								        <input id="userAge" name="userAge" type="text" placeholder="연령" value="${userInfo.userAge}" class="form-control" />
+									</div>
+									<div class="form-group">
+								        <input id="userGender" name="userGender" type="text" placeholder="성별" value="${userInfo.userGender}" class="form-control" />
 									</div>
 									    
 									<div class="form-actions text-center pal">
@@ -128,6 +131,12 @@
 </div>
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
+<script>
+function userForm() {
+	alert("err");
+	
+}
+</script>
 </body>
 
 </html>

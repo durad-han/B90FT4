@@ -23,8 +23,16 @@ public class LoginController {
 	@RequestMapping("/user.do")
 	public void user () throws Exception{
 		UserVO user = new UserVO();
-		user.setUserId("tester01");
+		user.setUserId("Durad  Han");
 		ls.userCheck(user);
+	}
+	
+	@RequestMapping("/updateUser.do")
+	public String updateUser () throws Exception{
+		UserVO user = new UserVO();
+		user.setUserId("Durad  Han");
+		ls.userCheck(user);
+		return "redirect:/login/user.do";
 	}
 	
 	@RequestMapping("/loginPage.do")
