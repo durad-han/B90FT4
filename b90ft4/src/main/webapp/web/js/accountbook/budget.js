@@ -1190,15 +1190,15 @@
 		
 		var f = document.budgetF;
 
+		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
+		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(3)").attr("name")),"내용을 입력하세요")) return;
+
 		// 숫자 정규 표현식
 		var regNumber = /^[0-9]*$/;
-		if(!regNumber.test(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")))) {
+		if(!regNumber.test(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")).value)) {
 		    alert('숫자만 입력해주세요.');
 		    return;
 		}
-		  
-		
-		if(isEmpty(eval("f."+$("[name=budgetF] input:eq(2)").attr("name")),"금액을 입력하세요")) return;
 		
 		var params = $("[name=budgetF]").serialize();
 		var path="";

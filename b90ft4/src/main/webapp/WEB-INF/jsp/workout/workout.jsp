@@ -114,8 +114,6 @@
                         		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
                         	}
                         </script>
-                        
-                        
                     </li>
                         
                     <li>

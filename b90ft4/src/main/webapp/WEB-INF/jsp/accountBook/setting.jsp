@@ -74,6 +74,29 @@
 					      
 				   </li>
                     <!-- 드롭 다운 테스트  -->
+                    
+                   <li>
+<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
+                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
+					          운동 <span class = "caret"></span>
+					      </a>
+					      <ul class = "dropdown-menu">
+					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
+					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
+					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
+					      </ul>
+                        
+                        <script>
+                        	function workoutMoveCal(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
+                        	}
+                        	function workoutMoveChart(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
+                        	}
+                        </script>
+                    </li>
+                    
+                    
                         
                     <li class="page-scroll">
                         <a href="#about">다이어리</a>

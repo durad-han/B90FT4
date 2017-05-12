@@ -44,7 +44,6 @@
 	<style>
 		@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 		
-		
 		fieldset, label { margin: 0; padding: 0; }
 		fieldset{ margin-left: 215px;}
 		body{ margin: 20px; }

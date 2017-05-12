@@ -42,6 +42,12 @@ public class MainController {
 		return "news/news";
 	}
 	
+	
+	@RequestMapping("/leaderBoard.do")
+	public void leaderBoard() {
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping("/newsImg.do")
 	public String newsImg(String url) throws Exception {

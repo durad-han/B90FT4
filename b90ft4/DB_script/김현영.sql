@@ -466,6 +466,14 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		
 		select * 
 		  from tb_sam_chat_room
+		
+		delete 
+		  from tb_sam_chat_room
+		  
+		delete 
+		  from tb_sam_chat_msg
+		  
+		  
 		  
 		 delete
 		   from tb_sam_chat_room

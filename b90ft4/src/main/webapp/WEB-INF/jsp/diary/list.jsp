@@ -20,8 +20,15 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-style.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/list.css">
 	
+	<!-- chat -->
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
+	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+ 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<style>
 		table td {
@@ -31,7 +38,7 @@
 			border: 1px solid black;
 		}
 	</style>
-	
+<!-- 	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script> -->
 </head>
 
 <body id="page-top" class="index" style="background-color:white">
@@ -228,6 +235,52 @@
         </div>
     </section>
     
+    
+     <!-- 채팅 
+      <aside style="position: fixed;left:80px;top:200px;">
+			<ul class = "list-group" style="width: 200px;">
+			   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
+			  
+			   <li class = "list-group-item">	
+			   		<span class="badge badge-danger pull-left">1</span>
+            		&nbsp;&nbsp; admin
+  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
+			   </li>
+			  
+			   <li class = "list-group-item">
+			   		<span class="badge badge-warning pull-left">2</span>
+			   		&nbsp;&nbsp;durad han
+			      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
+			   </li>
+			   
+			   <li class = "list-group-item">
+				    <span class="badge badge-info pull-left">3</span>
+				    &nbsp;&nbsp;손광석
+			      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
+			   </li>
+			   
+			   <li class = "list-group-item">
+			   	    <span class="badge badge-danger pull-left">4</span>
+			   	    &nbsp;&nbsp;한선재
+			        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
+			   </li>
+			   
+			   <li class = "list-group-item">
+			      <span class="badge badge-info pull-left">5</span>
+			      &nbsp;&nbsp;김현영
+			      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
+			   </li>
+			</ul>      
+		</aside>
+
+	<button type="button" id="showList">친구 목록</button>
+	<div id="addDiv">
+		<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button>
+	</div>
+	
+	<div id="list"> 
+	</div>
+   채팅 끝 -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -252,9 +305,17 @@
     <script src="${pageContext.request.contextPath}/web/js/diary/plugins.js"></script>
     <script src="${pageContext.request.contextPath}/web/js/diary/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 	
+	
+	<script>
+	var myId = "admin";
+	</script>
+<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
+		
+	
 </div>
 
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
 </body>
 
 </html>
+
