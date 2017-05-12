@@ -61,21 +61,19 @@ function statusChangeCallback(response) {
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                 <c:choose>
-                   <c:when test="${empty user}">
+			<c:choose>
+				<c:when test="${empty user}">
 	                   <li class = "loginCall">
 							<a href = "#loginModal">로그인</a>
 					   </li>
-                   </c:when>
-                   <c:otherwise>
+				</c:when>
+				<c:otherwise>
 	                   <li class = "logoutCall">
 							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
 					   </li>
 	                   <li class = "loginCall">
 							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
 					   </li>
-                   </c:otherwise> 
-                 </c:choose>
                       
                    <li class = "dropdown">
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
@@ -117,6 +115,8 @@ function statusChangeCallback(response) {
                         
                         
                     </li>
+				</c:otherwise> 
+			</c:choose>
                         
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>

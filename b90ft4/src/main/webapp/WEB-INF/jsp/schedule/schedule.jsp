@@ -49,39 +49,26 @@
 								<section id="cd-timeline" class="timeline-container">
 								
 								<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
-										<div class="cd-timeline-block">
-<!-- 											<div class="cd-timeline-img cd-picture"> -->
-<!-- 												<i class="fa fa-edit fa-fw"> -->
-<!-- 									            </i> -->
-<!-- 												<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-<!-- 											</div> cd-timeline-img -->
-								
-											<div class="cd-timeline-content">
-												<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
-												<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
-												<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">상세</a>
-												<span class="cd-date"><c:out value='${schedules.start}'/></span>
-											</div> <!-- cd-timeline-content -->
-										</div> <!-- cd-timeline-block -->
+									<div class="cd-timeline-block">
+									<div class="cd-timeline-content">
+										<h2><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.title }'/></a></h2>
+										<p><a href="javascript:goDetail(${schedules.scheduleNo});"><c:out value='${schedules.content }'/></a></p>
+										<a href="javascript:goDetail(${schedules.scheduleNo});" class="cd-read-more">자세히</a>
+										<span class="cd-date"><c:out value='${schedules.start}'/></span>
+									</div> <!-- cd-timeline-content -->
+									</div> <!-- cd-timeline-block -->
 								</c:forEach>
-								<c:if test='${empty scheduleMap["scheduleList"]}'>
-								<div class="cd-timeline-block">
-											<div class="cd-timeline-img cd-picture">
-												<i class="fa fa-edit fa-fw">
-									            </i>
-								<!-- 				<img src="/webapp/web/css/schedule/img/cd-icon-picture.svg" alt="Picture"> -->
-											</div> <!-- cd-timeline-img -->
-											<div class="cd-timeline-content">
-												<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
-												<p><a href="#;">스케줄을 등록하세요</a></p>
-												<a href="#;" class="cd-read-more">상세</a>
-												<span class="cd-date"></span>
-											</div> <!-- cd-timeline-content -->
-										</div> <!-- cd-timeline-block -->
-								</c:if>
 								
-								<div class="list" id="9">content</div>  
-								<div id="loading"></div>
+								<c:if test='${empty scheduleMap["scheduleList"]}'>
+									<div class="cd-timeline-block">
+									<div class="cd-timeline-content">
+										<h2><a href="#;">스케줄이 존재하지 않습니다</a></h2>
+										<p><a href="#;">스케줄을 등록하세요</a></p>
+										<a href="#;" class="cd-read-more">상세</a>
+										<span class="cd-date"></span>
+									</div> <!-- cd-timeline-content -->
+									</div> <!-- cd-timeline-block -->
+								</c:if>
 								
 								</section>
 							</div>
