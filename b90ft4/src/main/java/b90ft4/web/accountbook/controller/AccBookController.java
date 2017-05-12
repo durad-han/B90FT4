@@ -54,7 +54,7 @@ public class AccBookController {
 	@RequestMapping("/expenseRegi.do")
 	public String registerExpense(ExpenseVO expense) 
 			throws Exception {
-		expense.setUserId("김현영");
+		expense.setUserId("Durad  Han");
 		service.registerExpense(expense);
 		return "ok";
 	}
@@ -64,7 +64,7 @@ public class AccBookController {
 	@RequestMapping("/incomeRegi.do")
 	public String registerIncome(IncomeVO income) 
 			throws Exception {
-		income.setUserId("김현영");
+		income.setUserId("Durad  Han");
 		service.registerIncome(income);
 		return "ok";
 	}
@@ -74,7 +74,7 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/budgetList.do")
 	public Map<String, Object> retrieveBudgetList(SearchVO search) throws Exception{
-		search.setUserId("김현영");
+		search.setUserId("Durad  Han");
 
 		Map<String, Object> result;
 		
@@ -123,7 +123,7 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/bondList.do")
 	public Map<String, Object> bondList(SearchVO search) throws Exception {
-		search.setUserId("김현영");
+		search.setUserId("Durad  Han");
 		System.out.println(search.getStartDate());
 		return service.retrieveBondList(search);
 	}
@@ -132,8 +132,8 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/regiBond.do")
 	public String regiLoanDebt(LoanVO loan,DebtVO debt) throws Exception {
-		loan.setUserId("김현영");
-		debt.setUserId("김현영");
+		loan.setUserId("Durad  Han");
+		debt.setUserId("Durad  Han");
 		service.registerBond(loan, debt);
 		return "ok";
 	}
@@ -173,7 +173,7 @@ public class AccBookController {
 		
 		String filePath = "C:/accountBookFile/"+UUID.randomUUID().toString()+".csv";
 		search.setExcelFileName(filePath);
-		search.setUserId("김현영");
+		search.setUserId("Durad  Han");
 		service.makeExcel(search);
 		
 		File f = new File(filePath);
@@ -222,7 +222,7 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/regiPlan.do")
 	public String regiPlan(ExpensePlanVO plan) throws Exception{
-		plan.setUserId("김현영");
+		plan.setUserId("Durad  Han");
 		service.regiPlan(plan);
 		return "ok";
 	}
@@ -230,7 +230,7 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/expensePlan.do")
 	public Map<String,Object> expensePlan(ExpensePlanVO plan) throws Exception{
-		plan.setUserId("김현영");
+		plan.setUserId("Durad  Han");
 		System.out.println("은하계 대표 : " + plan.getExpensePlanDate());
 		return service.expensePlan(plan);
 	}
@@ -238,7 +238,7 @@ public class AccBookController {
 	@ResponseBody
 	@RequestMapping("/accRatio.do")
 	public String retrieveAccRatio() throws Exception {
-		return service.retrieveAccRatio("김현영")+"";
+		return service.retrieveAccRatio("Durad  Han")+"";
 	}
 	
 	

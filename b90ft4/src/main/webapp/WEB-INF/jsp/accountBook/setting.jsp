@@ -50,7 +50,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">자기 관리</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -109,15 +109,16 @@
                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
                     </li>
                     
-                     <li>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-	                </li>
-	              
 	                <li>
-		                <div>
-							<button id="addMemo">메모 추가</button>
-						</div>
+		                <span>
+<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
+							<a id="addMemo">
+							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
+							</a>
+						</span><br>
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
+					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+
 	                </li>
                     
                 </ul>

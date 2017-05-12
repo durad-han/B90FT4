@@ -68,8 +68,13 @@ function statusChangeCallback(response) {
 					   </li>
 				</c:when>
 				<c:otherwise>
-						<li>
-		             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
+		             	<li>
+			                <span>
+								<a id="addMemo">
+								<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
+								</a>
+							</span><br>
+		             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
 						   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
 		                </li>
 		              
