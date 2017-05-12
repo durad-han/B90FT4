@@ -11,20 +11,53 @@
 <script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
 </head>
 <body>
-ㅋz
-<div id="occupancyRatio" style="width: 100px; height:300px;"></div>
+ee8
+<div id="calChart" style="width: 100px; height:300px;"></div>
 		
 <script type="text/javascript">
+
+var spendCal1 = 500; 
+var consumeCal1 = 1000;
+var leftCal1 = consumeCal1 - spendCal1;
+var overCal1 = spendCal1 - consumeCal1;
+if (spendCal1 < consumeCal1){
+	   overCal1 = 0;
+}
+
+var spendCal2 = 1000; 
+var consumeCal2 = 1000;
+var leftCal2 = consumeCal2 - spendCal2;
+var overCal2 = spendCal2 - consumeCal2;
+
+if (spendCal2 < consumeCal2){
+	   overCal2 = 0;
+}
+
+var spendCal3 = 1500; 
+var consumeCal3 = 1000;
+var leftCal3 = consumeCal3 - spendCal3;
+var overCal3 = spendCal3 - consumeCal3;
+if (spendCal3 < consumeCal3){
+	   overCal3 = 0;
+}
+
+
+
+
 $(document).ready(function() {
 	$.jqplot.config.enablePlugins = true;
-	var s1 = [80];
-	var ticks = ['날짜1'];
-	plot1 = $.jqplot('occupancyRatio', [s1], {
+	var s1 = [spendCal1,spendCal2,spendCal3];
+	var s2 = [leftCal1,leftCal2,leftCal3];
+	var s3 = [overCal1,overCal2,overCal3];
+	var ticks = ['날짜1','날짜2','날짜3'];
+
+	plot1 = $.jqplot('calChart', [s1,s2,s3], {
 	    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
 	    animate: !$.jqplot.use_excanvas,
+	    stackSeries: true,
 	    seriesDefaults:{
 	        renderer:$.jqplot.BarRenderer,
-	        pointLabels: { show: true }
+	        pointLabels: { show: true , stackedValue: true}
 	    },
 	    axes: {
 	        xaxis: {
@@ -33,7 +66,7 @@ $(document).ready(function() {
 	        },
 	        yaxis: {
 	        	min:0,
-	        	max:100,
+	        	max:5000,
 	        	markSize:10
 	        }
 	    },

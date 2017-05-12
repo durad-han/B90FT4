@@ -26,7 +26,7 @@
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="${pageContext.request.contextPath}/web/image/corgi/Corgi-web-icon-01-1.jpg" alt="">
+                    <img class="img-responsive" src="${pageContext.request.contextPath}/web/image/corgi/Corgi-web-icon-CenterIcon.png" alt="">
                     <div class="intro-text">
                         <h1 class="name">자기 관리를 시작해보세요!</h1>
                         <hr class="star-light">
