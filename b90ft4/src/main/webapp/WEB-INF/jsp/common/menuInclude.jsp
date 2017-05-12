@@ -68,6 +68,16 @@ function statusChangeCallback(response) {
 					   </li>
 				</c:when>
 				<c:otherwise>
+						<li>
+		             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
+						   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+		                </li>
+		              
+		                <li>
+			                <div>
+								<button id="addMemo">메모 추가</button>
+							</div>
+		                </li>
 	                   <li class = "logoutCall">
 							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
 					   </li>
@@ -115,6 +125,7 @@ function statusChangeCallback(response) {
                         
                         
                     </li>
+                    
 				</c:otherwise> 
 			</c:choose>
                         

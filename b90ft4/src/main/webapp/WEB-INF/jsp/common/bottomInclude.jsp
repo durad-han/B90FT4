@@ -15,3 +15,7 @@
 
 <!-- Theme JavaScript -->
 <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
+<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
+
+<!-- Memo -->
+<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
