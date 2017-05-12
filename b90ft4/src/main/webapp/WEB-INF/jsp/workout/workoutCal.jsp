@@ -52,32 +52,50 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
-                <ul class="nav navbar-nav navbar-right">
+                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
                         
-                    <!-- 서브메뉴 드랍다운 -->
+                    <!-- 드롭 다운 테스트 -->
                     <li class = "dropdown">
                     
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
-					      
 					      <ul class = "dropdown-menu">
-					         <li><a href = "#">지출/수입</a></li>
-					         <li><a href = "#">대입금/차입금</a></li>
-					         <li><a href = "#">설정</a></li>
+					         <li><a href = "budget.do">지출/수입</a></li>
+					         <li><a href = "loanDept.do">대입금/차입금</a></li>
+					         <li><a href = "setting.do">설정</a></li>
 					      </ul>
 					      
 				   </li>
+                    <!-- 드롭 다운 테스트  -->
                         
                     <li class="page-scroll">
-                        <a href="#about">다이어리</a>
+                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">스케쥴러</a>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
                     </li>
+                    
+                    <li>
+                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
+                    </li>
+                    
+                     <li>
+ 
+		                <span>
+<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
+							<button id="addMemo">
+							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="50px"/></button>
+						</span>
+
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
+					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+
+	                </li>
+                    
                 </ul>
                 
             </div>
@@ -93,7 +111,7 @@
      <div>
 <h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><button id='callIntakeCalBtn' onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
 <input id='setConsumeCal' type='text'>kcal<br>
-<h2>오늘 소비 칼로리 입력(기초대사량 제외)</h2><button>기초대사량 구하기</button><button id='callSpentCalBtn' onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
+<h2>오늘 소비 칼로리 입력(기초대사량은 제외)</h2><button onclick = 'showBMContainer()'>기초대사량 구하기</button><button id='callSpentCalBtn' onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
 <input id='setSpendCal'type='text'>kcal<br>
 
 <button id='setCalBtn' onclick='setCal()'>입력</button><button>저장</button>
@@ -116,6 +134,7 @@
 </div>
 <div class='caption'>칼로리 계산</div>
 <div id='bar-chart-stack' style='width: 50%; height:300px'></div>
+<div id="calChart" style="width: 50%; height:300px;"></div>
 <script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
 </div>
 </section>
@@ -154,9 +173,14 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 --%>
 </div>
-<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.barRenderer.js"></script>
-<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
-<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.pointLabels.js"></script>
+<!-- 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
+<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
+<script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
+ -->
 </body>
 
 </html>

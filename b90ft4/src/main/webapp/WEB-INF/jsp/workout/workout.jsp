@@ -56,70 +56,50 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
-                <ul class="nav navbar-nav navbar-right">
+                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                 <c:choose>
-                   <c:when test="${empty user}">
-	                   <li class = "loginCall">
-							<a href = "#loginModal">로그인</a>
-					   </li>
-                   </c:when>
-                   <c:otherwise>
-	                   <li class = "logoutCall">
-							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
-					   </li>
-	                   <li class = "loginCall">
-							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
-					   </li>
-                   </c:otherwise> 
-                 </c:choose>
-                      
-                   <li class = "dropdown">
+                        
+                    <!-- 드롭 다운 테스트 -->
+                    <li class = "dropdown">
+                    
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
 					      <ul class = "dropdown-menu">
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/setting.do">설정</a></li>
+					         <li><a href = "budget.do">지출/수입</a></li>
+					         <li><a href = "loanDept.do">대입금/차입금</a></li>
+					         <li><a href = "setting.do">설정</a></li>
 					      </ul>
 					      
 				   </li>
-                    <li>
+                    <!-- 드롭 다운 테스트  -->
+                        
+                    <li class="page-scroll">
                         <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
-
-                    <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케줄</a>
+                    <li class="page-scroll">
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
                     </li>
-                        
-                    <li>
-<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
-					      </ul>
-                        
-                        <script>
-                        	function workoutMoveCal(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
-                        	}
-                        	function workoutMoveChart(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
-                        	}
-                        </script>
-                    </li>
-                        
+                    
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
                     </li>
+                    
+                     <li>
+ 
+		                <span>
+<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
+							<button id="addMemo">
+							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="50px"/></button>
+						</span>
 
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
+					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+
+	                </li>
+                    
                 </ul>
                 
             </div>

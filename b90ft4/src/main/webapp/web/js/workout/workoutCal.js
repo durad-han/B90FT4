@@ -7,7 +7,10 @@ var userId = 'tester01';
 $(".BMSet").on("keyup" , function(){
 	calculateBM();
 });
-
+$('#BMContainer').addClass('hidden');
+function showBMContainer(){
+	$('#BMContainer').removeClass('hidden');
+}
 
 function callIntakeCal(){
 	totalIntakeCal = 0;
@@ -77,6 +80,7 @@ function callSpentCal(){
    var overCal4 = 0;
    function setCal(){
    spendCal4 = $("#setSpendCal").val();
+   consumeCal4 = $("#setConsumeCal").val();
    //console.log("consume:"+$("#setConsumeCal").val());
    //consumeCal4 = $("#setConsumeCal").val();
    leftCal4 = consumeCal4 - spendCal4;
@@ -180,6 +184,7 @@ function callSpentCal(){
 				$('#setUserHeight').val(Number(result.userHeight));
 				$('#setUserWeight').val(Number(result.userWeight));
 				$('#setUserAge').val(Number(result.userAge));
+				
 				if(result.userGender == 'male'){
 					$('#genderFemale').removeClass('checked');
 					$('#genderMale').addClass('checked');
@@ -188,7 +193,7 @@ function callSpentCal(){
 					$('#genderMale').removeClass('checked');
 					$('#genderFemale').addClass('checked');
 				}
-				
+				calculateBM();
 			});
 	}
 //<button onclick = 'saveBM()'>저장</button>
@@ -298,11 +303,11 @@ function callSpentCal(){
 							    }
 							    initUpdateSpendCalVal = Number(Number(initTotalSpentCal) + Number(initBM));
 								
-
-							    spendCal4 = initUpdateSpendCalVal;
-
-							    leftCal4 = consumeCal4 - spendCal4;
-							    overCal4 = spendCal4 - consumeCal4;
+							    
+							     spendCal4 = initUpdateSpendCalVal;
+							     consumeCal4 = $('#setConsumeCal').val();
+							     leftCal4 = consumeCal4 - spendCal4;
+							     overCal4 = spendCal4 - consumeCal4;
 							    if (spendCal4 < consumeCal4){
 							 	   overCal4 = 0;
 							    }
@@ -367,32 +372,75 @@ function callSpentCal(){
 		
 	}
 	
+	var spendCal1 = 500; 
+	var consumeCal1 = 1000;	
+	var spendCal2 = 1000; 
+	var consumeCal2 = 1000;
+	var spendCal3 = 1500; 
+	var consumeCal3 = 1000;
+
+	var spendBar1 = spendCal1;
+	var leftBar1 = consumeCal1 - spendCal1;
+	var overBar1 = spendCal1 - consumeCal1;
+	if (consumeCal1 < spendCal1){
+		spendBar1 = consumeCal1;
+		leftBar1 = 0;
+		overCal1 = spendCal1 - consumeCal1;
+	}
+
+	var spendBar2 = spendCal2;
+	var leftBar2 =  consumeCal2 - spendCal2;
+	var overBar2 = spendCal2 - consumeCal2;
+	if (consumeCal2 < spendCal2){
+		spendBar2 = consumeCal2;
+		leftBar2 = 0;
+		overCal2 = spendCal2 - consumeCal2;
+	}
+
+	var spendBar3 = spendCal3;
+	var leftBar3 = consumeCal3 - spendCal3;
+	var overBar3 = spendCal3 - consumeCal3;
+	if (consumeCal3 < spendCal3){
+		spendBar3 = consumeCal3;
+		leftBar3 = 0;
+		overCal3 = spendCal3 - consumeCal3;
+	}
+
+
+	$(document).ready(function() {
+		$.jqplot.config.enablePlugins = true;
+		var maxYaxis = Math.ceil(Math.max(spendCal1,spendCal2,spendCal3))+100;
+		var s1 = [spendBar1,spendBar2,spendBar3];
+		var s2 = [leftBar1,leftBar2,leftBar3];
+		var s3 = [overBar1,overBar2,overBar3];
+		var ticks = ['날짜1','날짜2','날짜3'];
+
+		plot1 = $.jqplot('calChart', [s1,s2,s3], {
+		    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+		    animate: !$.jqplot.use_excanvas,
+		    stackSeries: true,
+		    seriesDefaults:{
+		        renderer:$.jqplot.BarRenderer,
+		        pointLabels: { show: true , stackedValue: true}
+		    },
+		    axes: {
+		        xaxis: {
+		            renderer: $.jqplot.CategoryAxisRenderer,
+		            ticks: ticks
+		        },
+		        yaxis: {
+		        	min:0,
+		        	max:maxYaxis,
+		        	markSize:10
+		        }
+		    },
+		    highlighter: { show: false }
+		});
+	});
+	
 	
 	window.onload = function(){
 		
 		initChart();
-		$.jqplot.config.enablePlugins = true;
-    	var s1 = [80];
-    	var ticks = ['가계부 작성률'];
-	    plot1 = $.jqplot('occupancyRatio', [s1], {
-	        // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-	        animate: !$.jqplot.use_excanvas,
-	        seriesDefaults:{
-	            renderer:$.jqplot.BarRenderer,
-	            pointLabels: { show: true }
-	        },
-	        axes: {
-	            xaxis: {
-	                renderer: $.jqplot.CategoryAxisRenderer,
-	                ticks: ticks
-	            },
-	            yaxis: {
-	            	min:0,
-	            	max:100,
-	            	markSize:10
-	            }
-	        },
-	        highlighter: { show: false }
-	    });
 		
 	}
