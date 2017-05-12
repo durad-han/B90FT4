@@ -60,6 +60,12 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    
+                    <!-- 
+                    <li class="page-scroll">
+                        <a href="${pageContext.request.contextPath}/main/leaderBoard.do">리더보드</a>
+                    </li>
+                     -->
                         
                     <!-- 드롭 다운 테스트 -->
                     <li class = "dropdown">
@@ -79,8 +85,30 @@
                     <li class="page-scroll">
                         <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
+                    
                     <li class="page-scroll">
                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
+                    </li>
+                    
+                    <li>
+<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
+                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
+					          운동 <span class = "caret"></span>
+					      </a>
+					      <ul class = "dropdown-menu">
+					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
+					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
+					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
+					      </ul>
+                        
+                        <script>
+                        	function workoutMoveCal(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
+                        	}
+                        	function workoutMoveChart(){
+                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
+                        	}
+                        </script>
                     </li>
                     
                     <li>
@@ -88,13 +116,12 @@
                     </li>
                     
                      <li>
- 
 		                <span>
 <!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
-							<button id="addMemo">
-							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="50px"/></button>
-						</span>
-
+							<a id="addMemo">
+							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
+							</a>
+						</span><br>
 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
 
