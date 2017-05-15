@@ -17,7 +17,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
     
     <!-- chat -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
+<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css"> --%>
     
     <!-- 프리랜서 Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
@@ -149,11 +149,11 @@
 
 	                </li>
 	                 <!-- 채팅 아이콘 -->
-                    <li id="topbar-chat" class="hidden-xs">
-	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
-	                   		 <i class="fa fa-comments"></i>
-	                    </a>
-                    </li>
+<!--                     <li id="topbar-chat" class="hidden-xs"> -->
+<!-- 	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"> -->
+<!-- 	                   		 <i class="fa fa-comments"></i> -->
+<!-- 	                    </a> -->
+<!--                     </li> -->
                     
                 </ul>
                 
@@ -561,63 +561,63 @@
 </div>  <!-- container div  끝 -->
 	
 	 <!--BEGIN CHAT FORM-->
-     <div id="chat-form" class="fixed">
-         <div class="chat-inner">
+<!--      <div id="chat-form" class="fixed"> -->
+<!--          <div class="chat-inner"> -->
             
-             <h2 class="chat-header">
-                 <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove">
-                 </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;</h2>
+<!--              <h2 class="chat-header"> -->
+<!--                  <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove"> -->
+<!--                  </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;</h2> -->
             
             
-             <div id="group-1" class="chat-group">
-                 <strong>online</strong>
+<!--              <div id="group-1" class="chat-group"> -->
+<!--                  <strong>online</strong> -->
                
-                 <a href="#">
-                 <span class="user-status is-online"></span> 
-                 <small>Verna Morton</small> 
-                 </a>
+<!--                  <a href="#"> -->
+<!--                  <span class="user-status is-online"></span>  -->
+<!--                  <small>Verna Morton</small>  -->
+<!--                  </a> -->
                  
-                 <a href="#">
-                 <span class="user-status is-online"></span> 
-                 <small>Delores Blake</small> 
-                 <span class="badge badge-info is-hidden">
-                 </span>
-                 </a>
-             </div>
+<!--                  <a href="#"> -->
+<!--                  <span class="user-status is-online"></span>  -->
+<!--                  <small>Delores Blake</small>  -->
+<!--                  <span class="badge badge-info is-hidden"> -->
+<!--                  </span> -->
+<!--                  </a> -->
+<!--              </div> -->
              
-             <div id="group-2" class="chat-group">
-                 <strong>OFFLINE</strong><a href="#">
+<!--              <div id="group-2" class="chat-group"> -->
+<!--                  <strong>OFFLINE</strong><a href="#"> -->
                  
-                 <a href="#">
-                 <span class="user-status is-offline"></span> 
-                 <small>Verna Morton</small> 
-                 </a>
+<!--                  <a href="#"> -->
+<!--                  <span class="user-status is-offline"></span>  -->
+<!--                  <small>Verna Morton</small>  -->
+<!--                  </a> -->
                  
-                 <a href="#">
-                 <span class="user-status is-offline"></span> 
-                 <small>Delores Blake</small> 
-                 </span>
-                 </a>
-             </div>
+<!--                  <a href="#"> -->
+<!--                  <span class="user-status is-offline"></span>  -->
+<!--                  <small>Delores Blake</small>  -->
+<!--                  </span> -->
+<!--                  </a> -->
+<!--              </div> -->
              
-         </div>
+<!--          </div> -->
        
-         <div id="chat-box" style="top: 400px">
+<!--          <div id="chat-box" style="top: 400px"> -->
             
-             <div class="chat-box-header">
-                 <a href="#" class="chat-box-close pull-right">
-                 <i class="glyphicon glyphicon-remove">
-                 </i>
-                 </a>
-                 <span class="user-status is-online"></span>
-                 <span class="display-name">
-                 Willard Mckenzie
-                 </span> 
-                 <small>Online</small>
-             </div>
+<!--              <div class="chat-box-header"> -->
+<!--                  <a href="#" class="chat-box-close pull-right"> -->
+<!--                  <i class="glyphicon glyphicon-remove"> -->
+<!--                  </i> -->
+<!--                  </a> -->
+<!--                  <span class="user-status is-online"></span> -->
+<!--                  <span class="display-name"> -->
+<!--                  Willard Mckenzie -->
+<!--                  </span>  -->
+<!--                  <small>Online</small> -->
+<!--              </div> -->
             
-             <div class="chat-content">
-                 <ul class="chat-box-body">
+<!--              <div class="chat-content"> -->
+<!--                  <ul class="chat-box-body"> -->
 <!--                      <li> -->
 <!--                          <p> -->
 <%--                              <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span --%>
@@ -632,17 +632,17 @@
 <!--                          <p> -->
 <!--                              Hi, we're listening you...</p> -->
 <!--                      </li> -->
-                 </ul>
-             </div>
+<!--                  </ul> -->
+<!--              </div> -->
             
-            <div class="chat-textarea">
-                 <input placeholder="Type your message" class="form-control" />
-            </div>
+<!--             <div class="chat-textarea"> -->
+<!--                  <input placeholder="Type your message" class="form-control" /> -->
+<!--             </div> -->
             
-         </div>
+<!--          </div> -->
          
          
-     </div>
+<!--      </div> -->
      <!--END CHAT FORM-->
 
 
@@ -681,7 +681,7 @@
 	<script>
 		var myId = "김현영";
     </script>
-	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
 
 	<!-- 채팅 네비게이션에 꼭 필요. -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 

@@ -3,70 +3,48 @@ console.log("scheduleMain.js 로드됨...");
 //----- schedule List -----------------------------------------------------------
 var sLists = (function() {
 	
-	var view 	= $('.view');
+	var view 	= $('.side-scroll');
 	var vw 		= view.innerWidth();
 	var vh	 	= view.innerHeight();
 	var vo 		= view.offset();
 	var sList 	= $('.sList__item');
-	var sListfull = $('.sList__full');
-	var sListfulltop = sListfull.find('.sList__full-top');
-	var arrow = sListfulltop.find('svg');
-	var sListdate = sListfulltop.find('.sList__full-date');
-	var sListhandle = sListfull.find('.sList__full-handle');
-	var sListinfo = sListfull.find('.sList__full-info');
+	var sListDetail = $('#schDetail');
+	var sListDetailtop = sListDetail.find('#schDetail-top');
+	var sListdate = sListDetailtop.find('.sList__full-date');
+	var sListhandle = sListDetail.find('.sList__full-handle');
+	var sListinfo = sListDetail.find('.sList__full-info');
 	var w 		= $(window);
 	
-	var data = [
-		{
-			date: 9,
-			handle: '@adfdafg',
-			info: 'dfhdfjnaerjh.'
-		},
-		{
-			date: 18,
-			handle: '@1243',
-			info: '11111111111111111111111111.'
-		},
-		{
-			date: 12,
-			handle: '@g4g4g4g4g4',
-			info: 'g4g4g4g4g4g4g4g4g4.'
-		},
-		{
-			date: 7,
-			handle: '@benroethlisberger',
-			info: 'This is some info about the player and sports.'
-		},
-		{
-			date: 9,
-			handle: '@drewbrees',
-			info: 'This is some info about the player and sports.'
-		},
-		{
-			date: 18,
-			handle: '@peytonmanning',
-			info: 'This is some info about the player and sports.'
-		}
-	];
+	function getDocumentHeight() {
+		const html = document.documentElement;
+		
+		return Math.max(
+			view.scrollHeight, view.offsetHeight,
+			html.clientHeight, html.scrollHeight, html.offsetHeight
+		);
+	};
 	
-	var movesList = function() {
+	function getScrollTop() {
+		return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.view.parentNode || document.view).scrollTop;
+	}
+	
+	var openDetail = function() {
 		var self = $(this);
-		var selfIndex = self.index();
+		var sNo	= self.find('#sNo').val();
 		var selfO = self.offset();
-		var ty = w.innerHeight()/2 - selfO.top -4;
 		
 		var color = self.css('border-top-color');
-		sListfulltop.css('background-color', color);
+		sListDetailtop.css('background-color', color);
 		sListhandle.css('color', color);
 		
-		updateData(selfIndex);
+		goDetail(sNo);
 		
 		self.css({
-			'transform': 'translateY(' + ty + 'px)'
+			'border': '3px solid '+color
 		});
 				
 		self.on('transitionend', function() {
-			sListfull.addClass('active');
+			sListDetail.addClass('active');
 			self.off('transitionend');
 		});
 		
@@ -74,11 +52,11 @@ var sLists = (function() {
 	};
 	
 	var closesList = function() {
-		sListfull.removeClass('active');
+		sListDetail.removeClass('active');
 		sListdate.hide();
 		sListinfo.hide();
 		sListhandle.hide();
-		sListfull.on('transitionend', function() {
+		sListDetail.on('transitionend', function() {
 			sList.removeAttr('style');
 			sListdate.show();
 			sListinfo.show();
@@ -87,19 +65,13 @@ var sLists = (function() {
 		});
 	};
 	
-	var updateData = function(index) {
-		sListdate.text(data[index].date);
-		sListhandle.text(data[index].handle);
-		sListinfo.text(data[index].info);
-	};
-	
-	var bindActions = function() {
-		sList.on('click', movesList);
+	var settings = function() {
+		sList.on('click', openDetail);
 		arrow.on('click', closesList);
 	};
 	
 	var init = function() {
-		bindActions();
+		settings();
 	};
 	
 	return {
@@ -108,7 +80,6 @@ var sLists = (function() {
 	
 }());
 
-sLists.init();
 
 //----- schedule ---------------------------------------------------------------------------------------------
 $(document).ready(function() {
@@ -508,4 +479,4 @@ function getScheduleList() {
 
 
 scheduleBody();
-
+sLists.init();

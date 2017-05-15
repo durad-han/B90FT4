@@ -156,18 +156,18 @@ function statusChangeCallback(response) {
                 <div class="col-lg-8 col-lg-offset-2">
                     <form name="loginItem" id="loginItem" novalidate>
                         <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="userId">ID</label>
-                                <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요.">
-                                <p class="help-block text-danger"></p>
-                            </div>
+<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
+<!--                                 <label for="userId">ID</label> -->
+<!--                                 <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요."> -->
+<!--                                 <p class="help-block text-danger"></p> -->
+<!--                             </div> -->
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요.">
-                                <p class="help-block text-danger"></p>
-                            </div>
+<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
+<!--                                 <label for="password">Password</label> -->
+<!--                                 <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요."> -->
+<!--                                 <p class="help-block text-danger"></p> -->
+<!--                             </div> -->
                         </div>
                         <div class="row">
                        		<div id="naver_id_login"></div>

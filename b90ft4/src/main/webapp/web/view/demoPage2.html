@@ -1,85 +1,77 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-<title>Facebook Login JavaScript Example</title> 
-<meta charset="UTF-8"> </head> 
-<body> 
-<script> 
-// This is called with the results from from FB.getLoginStatus(). 
-function statusChangeCallback(response) { 
-	console.log('statusChangeCallback'); 
-	console.log(response); 
-	// response 객체는 현재 로그인 상태를 나타내는 정보를 보여준다. 
-	// 앱에서 현재의 로그인 상태에 따라 동작하면 된다. 
-	// FB.getLoginStatus().의 레퍼런스에서 더 자세한 내용이 참조 가능하다. 
-	
-	if (response.status === 'connected') { 
-		// 페이스북을 통해서 로그인이 되어있다. 
-		testAPI(); 
-	} else if (response.status === 'not_authorized') { 
-		// 페이스북에는 로그인 했으나, 앱에는 로그인이 되어있지 않다. 
-		document.getElementById('status').innerHTML = 'Please log ' + 'into this app.'; 
-	} else { 
-		// 페이스북에 로그인이 되어있지 않다. 따라서, 앱에 로그인이 되어있는지 여부가 불확실하다. 
-		document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.'; 
-			} 
-	} 
-		// 이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
-		// onlogin 핸들러를 아래와 같이 첨부하면 된다. 
-		function checkLoginState() { 
-			FB.getLoginStatus(function(response) { 
-				statusChangeCallback(response); 
-			}); 
-		} 
-		
-	window.fbAsyncInit = function() { 
-		FB.init({ appId : '226857754465479',
-					cookie : true, 
-					// 쿠키가 세션을 참조할 수 있도록 허용 
-					xfbml : true, 
-					// 소셜 플러그인이 있으면 처리 
-					version : 'v2.1' 
-					// 버전 2.1 사용 
-				}); 
-		// 자바스크립트 SDK를 초기화 했으니, FB.getLoginStatus()를 호출한다. 
-		//.이 함수는 이 페이지의 사용자가 현재 로그인 되어있는 상태 3가지 중 하나를 콜백에 리턴한다. 
-		// 그 3가지 상태는 아래와 같다. 
-		// 1. 앱과 페이스북에 로그인 되어있다. ('connected') 
-		// 2. 페이스북에 로그인되어있으나, 앱에는 로그인이 되어있지 않다. ('not_authorized') 
-		// 3. 페이스북에 로그인이 되어있지 않아서 앱에 로그인이 되었는지 불확실하다. 
-		// 
-		// 위에서 구현한 콜백 함수는 이 3가지를 다루도록 되어있다. 
-		
-	FB.getLoginStatus(function(response) {
-		statusChangeCallback(response); 
-		}); 
-		}; 
-		
-		// SDK를 비동기적으로 호출 
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0]; 
-		if (d.getElementById(id)) return; 
-		js = d.createElement(s); 
-		js.id = id; 
-		js.src = "//connect.facebook.net/en_US/sdk.js"; 
-		fjs.parentNode.insertBefore(js, fjs); 
-		}(document, 'script', 'facebook-jssdk')); 
-		
-		// 로그인이 성공한 다음에는 간단한 그래프API를 호출한다. 
-		// 이 호출은 statusChangeCallback()에서 이루어진다. 
-	function testAPI() { 
-			console.log('Welcome! Fetching your information.... '); 
-			FB.api('/me', function(response) { 
-				console.log('Successful login for: ' + response.name); 
-				document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!'; 
-			}); 
-			} 
-	</script> 
-	<!-- 아래는 소셜 플러그인으로 로그인 버튼을 넣는다. 
-	이 버튼은 자바스크립트 SDK에 그래픽 기반의 로그인 버튼을 넣어서 
-	클릭시 FB.login() 함수를 실행하게 된다. --> 
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button> 
-	<div id="status"> </div> 
-	
-</body> 
-</html>
+
+
+<div class="view">
+	<div class="card__full">
+		<div class="card__full-top">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
+					<path d="M0 0h24v24h-24z" fill="none"/>
+			</svg>
+			<span class="card__full-num"></span>
+		</div>
+		<div class="card__full-bottom">
+			<p class="card__full-handle"></p>
+			<p class="card__full-info"></p>
+		</div>
+	</div>
+	<ul class="card__list">
+		<li class="card__item card__item--blue">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">9</p>
+					<p class="info-player__name"><small>Tony</small><br>Romo</p>
+				</div>
+				<div class="info-place">1<sup>st</sup></div>
+			</div>
+		</li>
+		<li class="card__item card__item--purple">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">18</p>
+					<p class="info-player__name"><small>Tom</small><br>Brady</p>
+				</div>
+				<div class="info-place">2<sup>nd</sup></div>
+			</div>
+		</li>
+		<li class="card__item card__item--green">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">12</p>
+					<p class="info-player__name"><small>Aaron</small><br>Rogers</p>
+				</div>
+				<div class="info-place">3<sup>rd</sup></div>
+			</div>
+		</li>
+		<li class="card__item card__item--yellow">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">7</p>
+					<p class="info-player__name"><small>Ben</small><br>Roethlisberger</p>
+				</div>
+				<div class="info-place">4<sup>th</sup></div>
+			</div>
+		</li>
+		<li class="card__item card__item--tan">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">9</p>
+					<p class="info-player__name"><small>Drew</small><br>Brees</p>
+				</div>
+				<div class="info-place">5<sup>th</sup></div>
+			</div>
+		</li>
+		<li class="card__item card__item--orange">
+			<div class="card__info">
+				<div class="info-player">
+					<p class="info-player__num">18</p>
+					<p class="info-player__name"><small>Peyton</small><br>Manning</p>
+				</div>
+				<div class="info-place">6<sup>th</sup></div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<a href="http://ettrics.com/code/mobile-material-design-cards/" class="logo" target="_blank">
+ <img class="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/ettrics-logo.svg" alt="" /> 
+</a>

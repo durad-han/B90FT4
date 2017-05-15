@@ -1,8 +1,64 @@
 @CHARSET "UTF-8";
 
 .side-scroll {
-	height: inherit !important;
 	position: relative !important;
     overflow-y: scroll !important;
     height: 600px !important;
 }
+
+.sList__item {
+	border-radius: 10px;
+	margin: 2px;
+	padding: 5px;
+	
+}
+
+.sList__info { 
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between; 
+} 
+
+.sList__item--orange {
+	border: 1px solid #DE660F;
+}
+
+.sList__item--orange:hover {
+	border-top-color: #DE660F;
+	background: #facfaf;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.sList__item--green {
+	border-top-color: #2EA83B;
+}
+
+.sList__item--green:hover {
+	border-top-color: #2EA83B;
+	background: #aae8b0;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.sList__info .start{ 
+	
+} 
+
+.sList__info .end{ 
+	
+} 
+
+.sList__info .title{ 
+	
+} 
+
+.sList__info .achieve{ 
+	
+} 
+
+.sList__info .category{ 
+
+} 
+
+.sList__info .importance{ 
+
+} 

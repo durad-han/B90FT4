@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -42,42 +43,30 @@
                 	<div class="panel-body">
                 	
 			<!-- 		왼쪽 리스트  -->
-						<div class="col-lg-3">
+						<div class="col-lg-4">
 						
-						<div class="view">
-							
-<!-- 				<div class="sList__full"> -->
-<!-- 					<div class="sList__full-top"> -->
-<!-- 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> -->
-<!-- 								<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/> -->
-<!-- 								<path d="M0 0h24v24h-24z" fill="none"/> -->
-<!-- 						</svg> -->
-<!-- 						<span class="sList__full-date"></span> -->
-<!-- 					</div> -->
-<!-- 					<div class="sList__full-bottom"> -->
-<!-- 						<p class="sList__full-handle"></p> -->
-<!-- 						<p class="sList__full-info"></p> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-	
+						<div class="side-scroll">
 	
 				<ul class="sList__list">
 					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--blue">
+					<li class="sList__item sList__item--orange" id="month ${fn: substring(schedules.start,0,2)}">
 					
 						<div class="sList__info">
-							<div class="info-sch">
-								<p class="info-sch__date"><c:out value='${schedules.start}'/></p>
-								
-								<p class="info-sch__title"><small><c:out value='${schedules.start}'/></small><br><c:out value='${schedules.title }'/></p>
-								
+							<div class="sList__contents">
+								<p class="start"><c:out value='${schedules.start}'/></p>
+								<p class="end"><small><c:out value='${schedules.end}'/></small></p>
+								<br>
+								<p class="title"><c:out value='${schedules.title }'/></p>
 							</div>
-							<div class="info-place"><c:out value='${schedules.scheduleNo }'/></div>
+							<div class="sList__options">
+								<p class="achieve"><c:out value='${schedules.scheduleNo }'/>번</p>
+								<input type="hidden" id="sNo" value="${schedules.scheduleNo }">
+							</div>
 						</div>
 					</li>
 					</c:forEach>
 					<c:if test='${empty scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--blue">
+					<li class="sList__item sList__item--orange">
 					
 						<div class="sList__info">
 							<div class="info-sch">
@@ -95,7 +84,7 @@
 						</div>
 						
 			<!-- 		오른쪽 인풋/디테일  -->
-						<div class="col-lg-9">
+						<div class="col-lg-8">
 						
 							<div class="panel">
 							<div class="panel-body">
