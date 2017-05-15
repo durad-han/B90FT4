@@ -15,6 +15,18 @@
 		console.log(socket.id);
 	})
 	
+	function resize(user) {
+		var height = 0;
+        
+		$("#"+user).find('li').each(function(i, value){
+            height += parseInt($(this).height());
+        });
+        height += '';
+        //alert(height);
+        $("#"+user).scrollTop(height+30);  // add more 400px for #chat-box position   
+		
+	}
+	console.log("리사이즈");
 	
 	// 메시지 받기
 	socket.on("msg",function (data) {
@@ -31,15 +43,7 @@
 	  	
 		$("#"+data.sender).append(msg);
 		
-		var height = 0;
-        
-		$("#"+data.sender).find('li').each(function(i, value){
-            height += parseInt($(this).height());
-        });
-        height += '';
-        //alert(height);
-        $("#"+data.sender).scrollTop(height);  // add more 400px for #chat-box position   
-		
+		resize(data.sender);
 		
 	});
 	
@@ -76,13 +80,7 @@
 		
 		$("#"+user).html(msg); // 대화창에 메시지 추가.
 		
-		var height = 0;
-		$("#"+user).find('li').each(function(i, value){
-            height += parseInt($(this).height());
-        });
-        height += '';
-        //alert(height);
-        $("#"+user).scrollTop(height);  // add more 400px for #chat-box position   
+		resize(user); 
 		
 		
 	});
@@ -99,9 +97,10 @@
 	// 방 삭제
 	function deleteRoom(e){
 		e.stopPropagation();
+		e.preventDefault();
 		console.log("전파 중지..");
 		
-		var that = e.target.parentNode; // li 요소
+		var that = e.target.parentNode; // a 요소
 		// 부모 삭제
 		var no = $(that).attr("data-roomNo");
 		var user = $(that).attr("data-recvId");
@@ -113,10 +112,16 @@
 			that.parentNode.removeChild(that);
 			socket.emit("deleteRoom",{roomNo:no,recvId:user});
 		}
+		
+		setTimeout(function(){
+				$('#chat-box').hide();
+		},500);
+		
+		
 	}
 	
 	// 방만들기, 방삭제
-	$("body").on("click","button#deleteRoom",deleteRoom);
+	$("body").on("click","span#deleteRoom",deleteRoom);
 //			 .on("click",".list-group.chat li",makeRoom);
 	
 
@@ -138,13 +143,13 @@
 				if(data[i].login=='y'){
 					onhtml +='<a href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
 					onhtml +='<span class="user-status is-online"></span>' 
-					onhtml +='<small>'+data[i].user+'</small>'; 
+					onhtml +='<small>'+data[i].user+'</small> <span id="deleteRoom"> 삭제 </span>'; 
 					onhtml +='</a>';
 					
 				}else {
 					offhtml +='<a href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
 					offhtml +='<span class="user-status is-offline"></span>' 
-					offhtml +='<small>'+data[i].user+'</small>'; 
+					offhtml +='<small>'+data[i].user+'</small> <span id="deleteRoom"> 삭제 </span>'; 
 					offhtml +='</a>';
 				}
 		} 
@@ -257,14 +262,7 @@
 	        // 메시지 가져오기 첫단계
 			socket.emit("giveMsg",{roomNo: roomNo , user:recvId});
 	        
-			
-			var height = 0;
-			$("#"+recvId).find('li').each(function(i, value){
-	            height += parseInt($(this).height());
-	        });
-	        height += '';
-	        //alert(height);
-	        $("#"+recvId).scrollTop(height);  // add more 400px for #chat-box position   
+			resize(recvId);
 			
 			
 	        $("#chat-box .chat-textarea input").focus();
@@ -311,34 +309,9 @@
               // 메시지 전달.
               socket.emit("msg",{roomNo:roomNo ,recvId:recvId,msg:$content} );
               // 내용물 삽입.
-              $me.append($element); 
-              var height = 0;
-             
-              $me.find('li').each(function(i, value){
-                  height += parseInt($(this).height());
-              });
-
-              height += '';
-              //alert(height);
-              $me.scrollTop(height);  // add more 400px for #chat-box position      
-
-              // RANDOM RESPOND CHAT
-
-//              var $res = "";
-//              $res += "<li class='odd'>";
-//              $res += "<p>";
-//              $res += "<img class='avt' src='"+$your_avt+"'>";
-//              $res += "<span class='user'>Swlabs</span>";
-//              $res += "<span class='time'>" + h + ":" + m + "</span>";
-//              $res += "</p>";
-//              $res = $res + "<p>" + "Yep! It's so funny :)" + "</p>";
-//              $res += "</li>";
-//            
-//              setTimeout(function(){
-//                  $me.append($res);
-//                  $me.scrollTop(height+100); // add more 500px for #chat-box position             
-//              }, 1000);
+              $me.append($element);
               
+              resize(recvId);
           }
       }
 
@@ -363,9 +336,10 @@
 	
 	
 	// 친구 추가
-// 	$("#addFriend").click(function() {
-//		socket.emit("retrieveUser",$("#friend").val());		
-//	});
+ 	$("#addFriend").click(function() {
+ 		friend = $("#friend").val();
+		socket.emit("retrieveUser",friend);		
+	});
 	
 	// 유저 체크.
 	socket.on("userCheckResult",function(data) {
@@ -373,6 +347,7 @@
 			socket.emit("chatWith",friend); // 친구와 방 생성 작업. (실질적인 친구 추가 작업)
 			socket.emit("giveRoom",myId);  				// 매칭된 친구와의 대화방 모두 가져오는 작업.
 			alert(data.msg);
+			
 		}
 		if(data.status == 'false'){
 			// case 1. : 비회원.
@@ -381,6 +356,7 @@
 		}
 		
 		$("#friend").val(""); // 친구 창 비우기.
+		friend="";
 	});
 	
 	

@@ -17,13 +17,12 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
     
     <!-- chat -->
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css"> --%>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
     
     <!-- 프리랜서 Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
-    
     
 	<!-- 제이쿼리 , Bootstrap css-->
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -32,12 +31,12 @@
 	<!-- 제이쿼리, 부트스트랩 js -->
 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!-- 	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 이것 때문에 모달이 안된다. -->
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
 	
 	<!-- 막대 그래프. -->
@@ -49,7 +48,6 @@
 		font-size: 13px;
 		font-weight: 900;
 	}
-	
 	</style>
 
 	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
@@ -58,7 +56,6 @@
 
 <body id="page-top" class="index">
 
-<%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
@@ -93,7 +90,7 @@
                     <li class = "dropdown">
                     
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부z <span class = "caret"></span>
+					          가계부  <span class = "caret"></span>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href = "budget.do">지출/수입</a></li>
@@ -148,12 +145,13 @@
 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
 
 	                </li>
-	                 <!-- 채팅 아이콘 -->
-<!--                     <li id="topbar-chat" class="hidden-xs"> -->
-<!-- 	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"> -->
-<!-- 	                   		 <i class="fa fa-comments"></i> -->
-<!-- 	                    </a> -->
-<!--                     </li> -->
+	               
+	                <!-- 채팅 아이콘 -->
+                    <li id="topbar-chat" class="hidden-xs">
+	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+	                   		 <i class="fa fa-comments"></i>
+	                    </a>
+                    </li>
                     
                 </ul>
                 
@@ -384,66 +382,21 @@
                 		</div>   
                 		
 					</div>		
-					
-					
-					<!-- 자기 관리 순위. -->
-					<div class="row">
-						<div class="col-md-2">
-							<aside style="position: relative;left: -300px;top:-400px;">
-								<ul class = "list-group" style="width: 200px;">
-								   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
-								  
-								   <li class = "list-group-item">	
-								   		<span class="badge badge-danger pull-left">1</span>
-					            		&nbsp;&nbsp; admin
-					  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
-								   </li>
-								  
-								   <li class = "list-group-item">
-								   		<span class="badge badge-warning pull-left">2</span>
-								   		&nbsp;&nbsp;durad han
-								      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
-								   </li>
-								   
-								   <li class = "list-group-item">
-									    <span class="badge badge-info pull-left">3</span>
-									    &nbsp;&nbsp;손광석
-								      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
-								   </li>
-								   
-								   <li class = "list-group-item">
-								   	    <span class="badge badge-danger pull-left">4</span>
-								   	    &nbsp;&nbsp;한선재
-								        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
-								   </li>
-								   
-								   <li class = "list-group-item">
-								      <span class="badge badge-info pull-left">5</span>
-								      &nbsp;&nbsp;김현영
-								      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
-								   </li>
-								</ul>      
-							</aside>
-						</div>
-					</div>
-					<!-- 자기 관리 순위. -->
-		        	
 			   </div>
 				
 			   <div class="col-md-3">
 			   
 			   		<div class="row">
-			   		
 			   		  	 <div class="col-md-12">
 			   		  	 
 							<!-- 데이트 피커 -->
 							 <ul id="generalTab" class="nav nav-tabs responsive">
 		                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
 		                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
-<!-- 		                           <li id="month"><a href="#1" data-toggle="tab">달</a></li> -->
 		                           <li id="month"><a href="#month-tab" data-toggle="tab">달</a></li>
 		                     </ul>
 							  <div id="datepicker"></div><br>
+		                	 
 		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					                 		 지출/수입 등록
 					          </button>
@@ -451,7 +404,7 @@
 				        	  <br><br>
 				        	  
 				        	  <div id="budgetPlanDiv">
-						        	<h4><b>이번 달 지출 한도z</b></h4>
+						        	<h4><b>이번 달 지출 한도</b></h4>
 						        	<span style="display: block;"></span>
 						        	<h4><b>이번 달 현재 총 지출</b></h4>
 						        	<span style="display: block;"></span>
@@ -459,33 +412,21 @@
 						        	<span style="display: block;"></span>
 					          </div>
 					          
-					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;"></div>
-				        	
-<!-- 				        	<div style="position: relative;top:-500px;left:300px;width:200px;height: 310px;"> -->
-					        	
-<!-- 					        	<div id="list" style="width:200px;height: 200px;border: 1px solid black;">  -->
-<!-- 								</div> -->
-								
-<!-- 							    <button type="button" id="showList">친구 목록</button> -->
-<!-- 					        	<div id="addDiv"> -->
-<!-- 									<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button> -->
-<!-- 								</div> -->
-
-<!-- 				        	</div>   -->
+					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;">
+					          
+					          </div>
 				        	
 						 </div>	
-						 
 			   		</div>
 			   		
 			   </div>
+			   
 			</div>
 			
 			
         </div>
         
     </section>
-    
-	
 	
    				<!-- 입력 모달 시작 -->
    				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -547,6 +488,7 @@
 				</div>
 				<br><br><br><br><br><br><br><br><br> 
 				<!-- 모달 끝 -->
+				
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -561,88 +503,113 @@
 </div>  <!-- container div  끝 -->
 	
 	 <!--BEGIN CHAT FORM-->
-<!--      <div id="chat-form" class="fixed"> -->
-<!--          <div class="chat-inner"> -->
+     <div id="chat-form" class="fixed">
+         <div class="chat-inner">
             
-<!--              <h2 class="chat-header"> -->
-<!--                  <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove"> -->
-<!--                  </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;</h2> -->
+             <h2 class="chat-header">
+                 <a href="javascript:;" class="chat-form-close pull-right" style="text-decoration: none;">
+<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
+<!-- 	                 </i> -->
+<!-- 	                 <span class="glyphicons glyphicons-log-in"></span> -->
+	                     닫기
+                 </a>
+                 <i class="fa fa-user"></i>&nbsp; 친구 목록 &nbsp;</h2>
             
             
-<!--              <div id="group-1" class="chat-group"> -->
-<!--                  <strong>online</strong> -->
-               
-<!--                  <a href="#"> -->
-<!--                  <span class="user-status is-online"></span>  -->
-<!--                  <small>Verna Morton</small>  -->
-<!--                  </a> -->
-                 
-<!--                  <a href="#"> -->
-<!--                  <span class="user-status is-online"></span>  -->
-<!--                  <small>Delores Blake</small>  -->
-<!--                  <span class="badge badge-info is-hidden"> -->
-<!--                  </span> -->
-<!--                  </a> -->
-<!--              </div> -->
+             <div id="group-1" class="chat-group">
+             </div>
              
-<!--              <div id="group-2" class="chat-group"> -->
-<!--                  <strong>OFFLINE</strong><a href="#"> -->
-                 
-<!--                  <a href="#"> -->
-<!--                  <span class="user-status is-offline"></span>  -->
-<!--                  <small>Verna Morton</small>  -->
-<!--                  </a> -->
-                 
-<!--                  <a href="#"> -->
-<!--                  <span class="user-status is-offline"></span>  -->
-<!--                  <small>Delores Blake</small>  -->
-<!--                  </span> -->
-<!--                  </a> -->
-<!--              </div> -->
+             <div id="group-2" class="chat-group">
+             </div>
              
-<!--          </div> -->
+             <div id="group-3" class="chat-group">
+                 <strong style="color: yellow;font-size:20px;">친구 찾기</strong>
+                 <input  style="margin-left: 30px;margin-bottom: 5px;" type="text" id="friend" /><br>
+                 <button style="margin-left: 30px;" id="addFriend" type = "button" class = "btn btn-info">친구 추가</button>
+             </div>
+             
+             
+             <div id="group-4" class="chat-group" style="margin-left: 30px;">
+             	<br><br>
+				<ul class = "list-group" style="width: 200px;">
+				   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
+				  
+				   <li class = "list-group-item">	
+				   		<span class="badge badge-danger pull-left">1</span>
+	            		&nbsp;&nbsp; admin
+	  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
+				   </li>
+				  
+				   <li class = "list-group-item">
+				   		<span class="badge badge-warning pull-left">2</span>
+				   		&nbsp;&nbsp;durad han
+				      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+					    <span class="badge badge-info pull-left">3</span>
+					    &nbsp;&nbsp;손광석
+				      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+				   	    <span class="badge badge-danger pull-left">4</span>
+				   	    &nbsp;&nbsp;한선재
+				        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+				      <span class="badge badge-info pull-left">5</span>
+				      &nbsp;&nbsp;김현영
+				      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
+				   </li>
+				</ul>      
+			</div>
+             
+         </div>
        
-<!--          <div id="chat-box" style="top: 400px"> -->
+         <div id="chat-box" style="top: 400px">
             
-<!--              <div class="chat-box-header"> -->
-<!--                  <a href="#" class="chat-box-close pull-right"> -->
-<!--                  <i class="glyphicon glyphicon-remove"> -->
-<!--                  </i> -->
-<!--                  </a> -->
-<!--                  <span class="user-status is-online"></span> -->
-<!--                  <span class="display-name"> -->
-<!--                  Willard Mckenzie -->
-<!--                  </span>  -->
-<!--                  <small>Online</small> -->
-<!--              </div> -->
+             <div class="chat-box-header">
+                 <a href="#" class="chat-box-close pull-right" style="text-decoration: none;">
+<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
+<!-- 	                 </i> -->
+                 	 	닫기
+                 </a>
+                 <span class="user-status is-online"></span>
+                 <span class="display-name">
+                 Willard Mckenzie
+                 </span> 
+                 <small>Online</small>
+             </div>
             
-<!--              <div class="chat-content"> -->
-<!--                  <ul class="chat-box-body"> -->
-<!--                      <li> -->
-<!--                          <p> -->
-<%--                              <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span --%>
-<!--                                  class="time">09:33</span></p> -->
-<!--                          <p> -->
-<!--                              Hi Swlabs, we have some comments for you.</p> -->
-<!--                      </li> -->
-<!--                      <li class="odd"> -->
-<!--                          <p> -->
-<%--                              <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">Swlabs</span><span --%>
-<!--                                  class="time">09:33</span></p> -->
-<!--                          <p> -->
-<!--                              Hi, we're listening you...</p> -->
-<!--                      </li> -->
-<!--                  </ul> -->
-<!--              </div> -->
+             <div class="chat-content">
+                 <ul class="chat-box-body">
+                     <li>
+                         <p>
+                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span
+                                 class="time">09:33</span></p>
+                         <p>
+                             Hi Swlabs, we have some comments for you.</p>
+                     </li>
+                     <li class="odd">
+                         <p>
+                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">Swlabs</span><span
+                                 class="time">09:33</span></p>
+                         <p>
+                             Hi, we're listening you...</p>
+                     </li>
+                 </ul>
+             </div>
             
-<!--             <div class="chat-textarea"> -->
-<!--                  <input placeholder="Type your message" class="form-control" /> -->
-<!--             </div> -->
+            <div class="chat-textarea">
+                 <input placeholder="Type your message" class="form-control" />
+            </div>
             
-<!--          </div> -->
+         </div>
          
          
-<!--      </div> -->
+     </div>
      <!--END CHAT FORM-->
 
 
@@ -680,8 +647,9 @@
 	<!-- 채팅 js -->
 	<script>
 		var myId = "김현영";
+		console.log(myId);
     </script>
-<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
+	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 
 	<!-- 채팅 네비게이션에 꼭 필요. -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
