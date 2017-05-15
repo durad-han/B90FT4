@@ -12,32 +12,37 @@
     <meta name="author" content="">
 
     <title>Freelancer - Start Bootstrap Theme</title>
+    
     <!-- Bootstrap Core CSS -->
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
     
     <!-- chat -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
     
-
-    <!-- Theme CSS -->
+    <!-- 프리랜서 Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
     
-
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+	<!-- 제이쿼리 , Bootstrap css-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<!-- 	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet"> -->
+	
+	<!-- 제이쿼리, 부트스트랩 js -->
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
-
+	
+	<!-- 막대 그래프. -->
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
+
 
 	<style>
 	.jqplot-axis {
@@ -45,27 +50,9 @@
 		font-weight: 900;
 	}
 	
-/* 	::-webkit-scrollbar-track */
-/* 	{ */
-/* 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-/* 	    background-color: #F5F5F5; */
-/* 	} */
-	
-/* 	::-webkit-scrollbar */
-/* 	{ */
-/* 	    width: 12px; */
-/* 	    background-color: #F5F5F5; */
-/* 	} */
-	
-/* 	::-webkit-scrollbar-thumb */
-/* 	{ */
-/* 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
-/* 	    background-color: #555; */
-/* 	} */
-	
 	</style>
 
-	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script>
+	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
 	
 </head>
 
@@ -106,7 +93,7 @@
                     <li class = "dropdown">
                     
 					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
+					          가계부z <span class = "caret"></span>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href = "budget.do">지출/수입</a></li>
@@ -161,6 +148,12 @@
 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
 
 	                </li>
+	                 <!-- 채팅 아이콘 -->
+                    <li id="topbar-chat" class="hidden-xs">
+	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+	                   		 <i class="fa fa-comments"></i>
+	                    </a>
+                    </li>
                     
                 </ul>
                 
@@ -172,7 +165,7 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
+        <div class="container" style="padding-right:40px;">
 			<br><br>
 			
 			<div class="row">
@@ -391,6 +384,49 @@
                 		</div>   
                 		
 					</div>		
+					
+					
+					<!-- 자기 관리 순위. -->
+					<div class="row">
+						<div class="col-md-2">
+							<aside style="position: relative;left: -300px;top:-400px;">
+								<ul class = "list-group" style="width: 200px;">
+								   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
+								  
+								   <li class = "list-group-item">	
+								   		<span class="badge badge-danger pull-left">1</span>
+					            		&nbsp;&nbsp; admin
+					  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
+								   </li>
+								  
+								   <li class = "list-group-item">
+								   		<span class="badge badge-warning pull-left">2</span>
+								   		&nbsp;&nbsp;durad han
+								      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
+								   </li>
+								   
+								   <li class = "list-group-item">
+									    <span class="badge badge-info pull-left">3</span>
+									    &nbsp;&nbsp;손광석
+								      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
+								   </li>
+								   
+								   <li class = "list-group-item">
+								   	    <span class="badge badge-danger pull-left">4</span>
+								   	    &nbsp;&nbsp;한선재
+								        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
+								   </li>
+								   
+								   <li class = "list-group-item">
+								      <span class="badge badge-info pull-left">5</span>
+								      &nbsp;&nbsp;김현영
+								      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
+								   </li>
+								</ul>      
+							</aside>
+						</div>
+					</div>
+					<!-- 자기 관리 순위. -->
 		        	
 			   </div>
 				
@@ -415,7 +451,7 @@
 				        	  <br><br>
 				        	  
 				        	  <div id="budgetPlanDiv">
-						        	<h4><b>이번 달 지출 한도</b></h4>
+						        	<h4><b>이번 달 지출 한도z</b></h4>
 						        	<span style="display: block;"></span>
 						        	<h4><b>이번 달 현재 총 지출</b></h4>
 						        	<span style="display: block;"></span>
@@ -425,80 +461,41 @@
 					          
 					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;"></div>
 				        	
+<!-- 				        	<div style="position: relative;top:-500px;left:300px;width:200px;height: 310px;"> -->
+					        	
+<!-- 					        	<div id="list" style="width:200px;height: 200px;border: 1px solid black;">  -->
+<!-- 								</div> -->
+								
+<!-- 							    <button type="button" id="showList">친구 목록</button> -->
+<!-- 					        	<div id="addDiv"> -->
+<!-- 									<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button> -->
+<!-- 								</div> -->
+
+<!-- 				        	</div>   -->
+				        	
 						 </div>	
 						 
 			   		</div>
 			   		
 			   </div>
-			   
-		
 			</div>
+			
 			
         </div>
         
     </section>
     
-    
-    <span>
-       	  <aside style="position: fixed;left:80px;top:200px;">
-			<ul class = "list-group" style="width: 200px;">
-			   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
-			  
-			   <li class = "list-group-item">	
-			   		<span class="badge badge-danger pull-left">1</span>
-            		&nbsp;&nbsp; admin
-  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
-			   </li>
-			  
-			   <li class = "list-group-item">
-			   		<span class="badge badge-warning pull-left">2</span>
-			   		&nbsp;&nbsp;durad han
-			      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-				    <span class="badge badge-info pull-left">3</span>
-				    &nbsp;&nbsp;손광석
-			      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			   	    <span class="badge badge-danger pull-left">4</span>
-			   	    &nbsp;&nbsp;한선재
-			        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			      <span class="badge badge-info pull-left">5</span>
-			      &nbsp;&nbsp;김현영
-			      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
-			   </li>
-			</ul>      
-		</aside>
-    
-	<div id="addDiv">
-		<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button>
-	</div>
 	
-	<div id="list"> 
-	</div>
 	
-	<button type="button" id="showList">친구 목록</button>
-   	</span>			
-   				
+   				<!-- 입력 모달 시작 -->
    				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						
 						<div class="modal-dialog">
-						
 							<div class="modal-content">
-							
 										<div class="modal-header">
 											<h4 class="modal-title">지출/수입 등록</h4>
 										</div>
-										
 										<div class="modal-body">
 											<form name="budgetF">
-											
 			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
 		                                                <div class="col-sm-9 controls">
 		                                                    <div class="row">
@@ -510,7 +507,6 @@
 		                                                    </div>
 		                                                </div>
 		                                            </div>
-			                                            
 											 		<div class="form-group"><label class="col-sm-3 control-label">분류</label>
 		                                              	<div class="col-sm-9 controls">
 		                                                  	<div class="row">
@@ -521,7 +517,6 @@
 		                                                  	 </div>
 		                                              	 </div>
 			                                    	 </div>
-			                                    	   
 			                                         <div class="form-group"><label class="col-sm-3 control-label">금액</label>
 		                                                 <div class="col-sm-9 controls">
 		                                                     <div class="row">
@@ -529,7 +524,6 @@
 		                                                      </div>
 		                                               </div>
 			                                         </div>
-			                                           
 			                                         <div class="form-group"><label class="col-sm-3 control-label">내용</label>
 			                                               <div class="col-sm-9 controls">
 			                                                   <div class="row">
@@ -537,13 +531,10 @@
 			                                                   </div>
 			                                           	   </div>
 			                                         </div>
-			                                           
 			                                         <input type="hidden" />
-			                                           
 			                                </form>
 											<br><br><br><br><br><br><br>
 			                      	   </div>
-			                                
 									<div class="modal-footer">
 										<button type="button" id="updateBudget" class="btn btn-success btn-simple" style = "display:none;">수정</button>
 										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">삭제</button>
@@ -551,13 +542,11 @@
 										<button type="button" id="budgetRegi"   class="btn btn-success btn-simple">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
-									
 								</div>
-                                        
 						</div>
 				</div>
 				<br><br><br><br><br><br><br><br><br> 
-
+				<!-- 모달 끝 -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -566,9 +555,98 @@
         </a>
     </div>
     
+    
+    
+    
+</div>  <!-- container div  끝 -->
+	
+	 <!--BEGIN CHAT FORM-->
+     <div id="chat-form" class="fixed">
+         <div class="chat-inner">
+            
+             <h2 class="chat-header">
+                 <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove">
+                 </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;</h2>
+            
+            
+             <div id="group-1" class="chat-group">
+                 <strong>online</strong>
+               
+                 <a href="#">
+                 <span class="user-status is-online"></span> 
+                 <small>Verna Morton</small> 
+                 </a>
+                 
+                 <a href="#">
+                 <span class="user-status is-online"></span> 
+                 <small>Delores Blake</small> 
+                 <span class="badge badge-info is-hidden">
+                 </span>
+                 </a>
+             </div>
+             
+             <div id="group-2" class="chat-group">
+                 <strong>OFFLINE</strong><a href="#">
+                 
+                 <a href="#">
+                 <span class="user-status is-offline"></span> 
+                 <small>Verna Morton</small> 
+                 </a>
+                 
+                 <a href="#">
+                 <span class="user-status is-offline"></span> 
+                 <small>Delores Blake</small> 
+                 </span>
+                 </a>
+             </div>
+             
+         </div>
+       
+         <div id="chat-box" style="top: 400px">
+            
+             <div class="chat-box-header">
+                 <a href="#" class="chat-box-close pull-right">
+                 <i class="glyphicon glyphicon-remove">
+                 </i>
+                 </a>
+                 <span class="user-status is-online"></span>
+                 <span class="display-name">
+                 Willard Mckenzie
+                 </span> 
+                 <small>Online</small>
+             </div>
+            
+             <div class="chat-content">
+                 <ul class="chat-box-body">
+<!--                      <li> -->
+<!--                          <p> -->
+<%--                              <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span --%>
+<!--                                  class="time">09:33</span></p> -->
+<!--                          <p> -->
+<!--                              Hi Swlabs, we have some comments for you.</p> -->
+<!--                      </li> -->
+<!--                      <li class="odd"> -->
+<!--                          <p> -->
+<%--                              <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">Swlabs</span><span --%>
+<!--                                  class="time">09:33</span></p> -->
+<!--                          <p> -->
+<!--                              Hi, we're listening you...</p> -->
+<!--                      </li> -->
+                 </ul>
+             </div>
+            
+            <div class="chat-textarea">
+                 <input placeholder="Type your message" class="form-control" />
+            </div>
+            
+         </div>
+         
+         
+     </div>
+     <!--END CHAT FORM-->
 
-    <!-- jQuery -->
-<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/jquery/jquery.min.js"></script> --%>
+
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -600,13 +678,19 @@
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pointLabels.js"></script>
 	
 	<!-- 채팅 js -->
-<script>
-	var myId = "김현영";
-</script>
+	<script>
+		var myId = "김현영";
+    </script>
+	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 
-<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+	<!-- 채팅 네비게이션에 꼭 필요. -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
+    <!-- 꼭 필요. -->
 
-</div>
 </body>
 
 </html>
