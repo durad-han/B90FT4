@@ -31,7 +31,8 @@
 	<select id="selectScheduleList" parameterType="scheduleSearchVO" resultMap="scheduleMap">
 		select	*      
 		from	tb_Sam_Schedule
-		order	by Start 
+		order	by Start
+		where	User_Id = #{userId}
 	
 <!-- 		select	sql_calc_found_rows a.*  -->
 <!-- 		from	(select	*  -->
@@ -53,6 +54,20 @@
     	select count(*)
     	  from tb_Sam_Schedule
     </select> 
+	
+	
+	<!--============================================================================
+			한달치 스케줄 조회 selectMonthly 
+			필터링할 값: Schedule_No
+			파라메터의 데이터타입: int
+			리턴되는 값의 데이터타입: scheduleVO
+	============================================================================-->
+	<select id="selectMonthly" parameterType="scheduleSearchVO" resultMap="scheduleMap">
+		select	*
+		from	tb_Sam_Schedule
+		where	User_Id = #{userId}
+		and		left(start,2) = #{month}
+	</select>
 	
 	
 	<!--============================================================================

@@ -1,11 +1,11 @@
 package b90ft4.web.repository.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
-import b90ft4.web.repository.vo.ScheduleVO;
 import b90ft4.web.repository.vo.ScheduleVO;
 
 @Repository
@@ -22,5 +22,7 @@ public interface ScheduleMapper {
 	public void deleteSchedule(int scheduleNo) throws Exception;
 	
 	public void insertSchedule(ScheduleVO schedule) throws Exception;
+
+	public Map<String, Object> selectMonthly(ScheduleSearchVO ssVO) throws Exception;
 
 }

@@ -27,13 +27,25 @@ public class ScheduleController {
 
 	//----- 스케줄 리스트 호출시 (초기로딩 포함) ---------------------------------------------------------
 	@RequestMapping("/scheduleList.do")
-	public String retrieveScheduleList (Model model) throws Exception{
+	public String retrieveScheduleList (String userId, Model model) throws Exception{
 		logger.debug("retrieveScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+		ssVO.setUserId(userId);
 		
 		if(ss.retrieveScheduleList(ssVO) != null){ 
 			model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
 		}
+		return "schedule/schedule";
+	}	
+	//----- 스케줄 한달치 호출시 ---------------------------------------------------------
+	@RequestMapping("/monthlyScheduleList.do")
+	public String monthlyScheduleList (String userId, int month, Model model) throws Exception{
+		logger.debug("monthlyScheduleList");
+		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+		ssVO.setUserId(userId);
+		ssVO.setMonth(month);
+		
+		model.addAttribute("scheduleMap", ss.monthlyScheduleList(ssVO));
 		return "schedule/schedule";
 	}	
 
@@ -55,9 +67,10 @@ public class ScheduleController {
 	//----- 스케줄 캘린더 값 주기 --------------------------------------------------------------------
 	@RequestMapping("/scheduleCalendar.json")
 	@ResponseBody
-	public Map<String, Object> retrieveScheduleCalendar () throws Exception{
+	public Map<String, Object> retrieveScheduleCalendar (String userId) throws Exception{
 		logger.debug("retrieveScheduleCalendar");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+		ssVO.setUserId(userId);
 		return ss.retrieveScheduleList(ssVO);
 	}	
 	

@@ -1,85 +1,118 @@
 console.log("scheduleMain.js 로드됨...");
 
 //----- schedule List -----------------------------------------------------------
-var sLists = (function() {
+//var sLists = (function() {
+//	var view 	= $('.side-scroll');
+//	var vw 		= view.innerWidth();
+//	var vh	 	= view.innerHeight();
+//	var vo 		= view.offset();
+//	var sList 	= $('.sList__item');
+//	var sListDetail = $('#schDetail');
+//	var sListDetailtop = sListDetail.find('#schDetail-top');
+//	var sListdate = sListDetailtop.find('.sList__full-date');
+//	var sListhandle = sListDetail.find('.sList__full-handle');
+//	var sListinfo = sListDetail.find('.sList__full-info');
+//	var w 		= $(window);
+//	function getDocumentHeight() {
+//		const html = document.documentElement;
+//		return Math.max(
+//			view.scrollHeight, view.offsetHeight,
+//			html.clientHeight, html.scrollHeight, html.offsetHeight
+//		);
+//	};
+//	function getScrollTop() {
+//		return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.view.parentNode || document.view).scrollTop;
+//	}
+//	var openDetail = function() {
+//		var self = $(this);
+//		var sNo	= self.find('#sNo').val();
+//		var selfO = self.offset();
+//		
+//		var color = self.css('border-top-color');
+//		sListDetailtop.css('background-color', color);
+//		sListhandle.css('color', color);
+//		goDetail(sNo);
+//		self.css({
+//			'border': '3px solid '+color
+//		});
+//		self.on('transitionend', function() {
+//			sListDetail.addClass('active');
+//			self.off('transitionend');
+//		});
+//		return false;
+//	};
+//	var closesList = function() {
+//		sListDetail.removeClass('active');
+//		sListdate.hide();
+//		sListinfo.hide();
+//		sListhandle.hide();
+//		sListDetail.on('transitionend', function() {
+//			sList.removeAttr('style');
+//			sListdate.show();
+//			sListinfo.show();
+//			sListhandle.show();
+//			sListfull.off('transitionend');
+//		});
+//	};
+//	var settings = function() {
+//		sList.on('click', openDetail);
+//		arrow.on('click', closesList);
+//	};
+//	var init = function() {
+//		settings();
+//	};
+//	return {
+//		init: init
+//	};
+//}());
+
+//----- schedule InfiniteScrolling + Pagination ---------------------------------------------------------------------------------------------
+var date = new Date();
+var month = new Array();
+month[0] = "1월";month[1] = "2월";month[2] = "3월";month[3] = "4월";month[4] = "5월";month[5] = "6월";
+month[6] = "7월";month[7] = "8월";month[8] = "9월";month[9] = "10월";month[10] = "11월";month[11] = "12월";
+
+var currentMonth = month[date.getMonth()];
+
+const scheduleList = document.getElementById('sList__list');
+const scheduleListPagination = document.getElementById('schedule-list-pagination');
+var page = 0;
+
+addPage(currentMonth);
+
+function addPage(currentMonth) {
+	fetchPage(currentMonth);
+	addPaginationPage(currentMonth);
+}
+
+function fetchPage(currentMonth) {
+	scheduleList.appendChild(getSchedulePage(currentMonth));
+}
+
+function getSchedulePage(currentMonth) {
+	const pageElement = document.createElement('div');
+	pageElement.id = 'schedule-page-'+currentMonth;
+	pageElement.className = 'schedule-list__page';
 	
-	var view 	= $('.side-scroll');
-	var vw 		= view.innerWidth();
-	var vh	 	= view.innerHeight();
-	var vo 		= view.offset();
-	var sList 	= $('.sList__item');
-	var sListDetail = $('#schDetail');
-	var sListDetailtop = sListDetail.find('#schDetail-top');
-	var sListdate = sListDetailtop.find('.sList__full-date');
-	var sListhandle = sListDetail.find('.sList__full-handle');
-	var sListinfo = sListDetail.find('.sList__full-info');
-	var w 		= $(window);
-	
-	function getDocumentHeight() {
-		const html = document.documentElement;
-		
-		return Math.max(
-			view.scrollHeight, view.offsetHeight,
-			html.clientHeight, html.scrollHeight, html.offsetHeight
-		);
-	};
-	
-	function getScrollTop() {
-		return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.view.parentNode || document.view).scrollTop;
+	while (schedulesPerPage--) {
+		pageElement.appendChild(getSchedule());
 	}
 	
-	var openDetail = function() {
-		var self = $(this);
-		var sNo	= self.find('#sNo').val();
-		var selfO = self.offset();
-		
-		var color = self.css('border-top-color');
-		sListDetailtop.css('background-color', color);
-		sListhandle.css('color', color);
-		
-		goDetail(sNo);
-		
-		self.css({
-			'border': '3px solid '+color
-		});
-				
-		self.on('transitionend', function() {
-			sListDetail.addClass('active');
-			self.off('transitionend');
-		});
-		
-		return false;
-	};
-	
-	var closesList = function() {
-		sListDetail.removeClass('active');
-		sListdate.hide();
-		sListinfo.hide();
-		sListhandle.hide();
-		sListDetail.on('transitionend', function() {
-			sList.removeAttr('style');
-			sListdate.show();
-			sListinfo.show();
-			sListhandle.show();
-			sListfull.off('transitionend');
-		});
-	};
-	
-	var settings = function() {
-		sList.on('click', openDetail);
-		arrow.on('click', closesList);
-	};
-	
-	var init = function() {
-		settings();
-	};
-	
-	return {
-		init: init
-	};
-	
-}());
+	return pageElement;
+}
 
+function getSchedule() {
+	const articleImage = getArticleImage();
+	const schedule = document.createElement('schedule');
+	schedule.className = 'schedule-list__item';
+	schedule.appendChild(articleImage);
+	
+	return schedule;
+}
+
+function getPageId(n) {
+	return 'schedule-page-' + n;
+}
 
 //----- schedule ---------------------------------------------------------------------------------------------
 $(document).ready(function() {
