@@ -15,11 +15,9 @@
 <c:import url ="/WEB-INF/jsp/common/topInclude.jsp"/>
 
   	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/animate.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-misc.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-style.css">
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/list.css">
-	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/animate.css">
 	<!-- chat -->
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 	
@@ -30,15 +28,6 @@
  	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	<style>
-		table td {
-			color: black !important;
-			font-weight: bold;
-			font-size: 20px;
-			border: 1px solid black;
-		}
-	</style>
-	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script>
 </head>
 
 <body id="page-top" class="index" style="background-color:white">
@@ -86,7 +75,7 @@
 	                    
 			                <c:forEach var="diary" items="${list}" varStatus="loop"> 
 				                      
-				                        <div class="post-masonry col-md-4 col-sm-6">
+				                        <div class="post-masonry col-md-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;"> 
 				                            <div class="blog-thumb">
 				                                
 				                                <c:choose>
@@ -94,7 +83,7 @@
 						                                	${diary.content}
 													</c:when>
 													<c:when test="${diary.content eq 'x'}">
-						                                <img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" width="350px" height="215px" id="img1" alt="">
+						                                <img src="${pageContext.request.contextPath}/web/image/diary/diaryimg.jpg" width="350px" height="300px" id="img1" alt="">
 													</c:when>
 												</c:choose>
 				                                
@@ -140,14 +129,14 @@
 		              			if(list.length){
 			              			for(var i=0;i<list.length;i++) {
 			              				
-					              			html+='<div class="post-masonry col-md-4 col-sm-6">';
+					              			html+='<div class="post-masonry col-md-4 col-sm-6" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;">';
 					              			html+='<div class="blog-thumb">';
 					              			 
 					              			if(list[i].content != 'x') {
 					              				html+=list[i].content;
 					              			}
 					              			if(list[i].content == 'x') {
-					              				html+='<img src="${pageContext.request.contextPath}/web/image/diary/background2.jpg" width="350px" height="215px" id="img1" alt="">';
+					              				html+='<img src="${pageContext.request.contextPath}/web/image/diary/diaryimg.jpg" width="350px" height="300px" id="img1" alt="">';
 					              			}
 					                                
 						                     html+='           <div class="overlay-b">                                                                                         ';
@@ -236,49 +225,7 @@
     </section>
     
     
-      <aside style="position: fixed;left:80px;top:200px;">
-			<ul class = "list-group" style="width: 200px;">
-			   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
-			  
-			   <li class = "list-group-item">	
-			   		<span class="badge badge-danger pull-left">1</span>
-            		&nbsp;&nbsp; admin
-  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
-			   </li>
-			  
-			   <li class = "list-group-item">
-			   		<span class="badge badge-warning pull-left">2</span>
-			   		&nbsp;&nbsp;durad han
-			      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-				    <span class="badge badge-info pull-left">3</span>
-				    &nbsp;&nbsp;손광석
-			      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			   	    <span class="badge badge-danger pull-left">4</span>
-			   	    &nbsp;&nbsp;한선재
-			        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			      <span class="badge badge-info pull-left">5</span>
-			      &nbsp;&nbsp;김현영
-			      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
-			   </li>
-			</ul>      
-		</aside>
-
-	<button type="button" id="showList">친구 목록</button>
-	<div id="addDiv">
-		<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button>
-	</div>
-	
-	<div id="list"> 
-	</div>
+      
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -303,11 +250,7 @@
     <script src="${pageContext.request.contextPath}/web/js/diary/plugins.js"></script>
     <script src="${pageContext.request.contextPath}/web/js/diary/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 	
-	
-	<script>
-	var myId = "admin";
-	</script>
-	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+
 		
 	
 </div>
