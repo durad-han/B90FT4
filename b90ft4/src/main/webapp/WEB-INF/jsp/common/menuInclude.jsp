@@ -68,21 +68,7 @@ function statusChangeCallback(response) {
 					   </li>
 				</c:when>
 				<c:otherwise>
-		             	<li>
-			                <span>
-								<a id="addMemo">
-								<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
-								</a>
-							</span><br>
-		             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-						   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-		                </li>
-		              
-		                <li>
-			                <div>
-								<button id="addMemo">메모 추가</button>
-							</div>
-		                </li>
+
 	                   <li class = "logoutCall">
 							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
 					   </li>
@@ -101,6 +87,7 @@ function statusChangeCallback(response) {
 					      </ul>
 					      
 				   </li>
+				   
                     <li>
                         <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
                     </li>
@@ -127,68 +114,212 @@ function statusChangeCallback(response) {
                         		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
                         	}
                         </script>
-                        
-                        
                     </li>
-                    
+                    <li>
+		                <span>
+							<a id="addMemo">
+								<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
+							</a>
+						</span><br>
+	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
+					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+		            </li>
+		            <!-- 채팅 아이콘 -->
+				   <li id="topbar-chat" class="hidden-xs">
+						<a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+						       <i class="fa fa-comments"></i>
+						</a>
+				   </li>
 				</c:otherwise> 
 			</c:choose>
                         
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
                     </li>
+                    
 
                 </ul>
                 
             </div>
         </div>
     </nav>
-    <section id="login">
-        <div class="container" id="loginModal">
-        <div id="loginMenu">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Login</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <form name="loginItem" id="loginItem" novalidate>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="userId">ID</label>
-                                <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                       		<div id="naver_id_login"></div>
-                        	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-			 				<div id="status"></div>
-                        </div>
-                        <br>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <a href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
-                                <a href="#close" class="btn btn-danger btn-lg">취소</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
     
+    <div id="login">
+        <div class="container" id="loginModal">
+	        <div id="loginMenu">
+	            <div class="row">
+	                <div class="col-lg-12 text-center">
+	                    <h2>Login</h2>
+	                    <hr class="star-primary">
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-lg-8 col-lg-offset-2">
+	                    <form name="loginItem" id="loginItem" novalidate>
+	                        <div class="row control-group">
+	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
+	<!--                                 <label for="userId">ID</label> -->
+	<!--                                 <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요."> -->
+	<!--                                 <p class="help-block text-danger"></p> -->
+	<!--                             </div> -->
+	                        </div>
+	                        <div class="row control-group">
+	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
+	<!--                                 <label for="password">Password</label> -->
+	<!--                                 <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요."> -->
+	<!--                                 <p class="help-block text-danger"></p> -->
+	<!--                             </div> -->
+	                        </div>
+	                        <div class="row">
+	                       		<div id="naver_id_login"></div>
+	                        	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+				 				<div id="status"></div>
+	                        </div>
+	                        <br>
+	                        <div id="success"></div>
+	                        <div class="row">
+	                            <div class="form-group col-xs-12">
+	                                <a href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
+	                                <a href="#close" class="btn btn-danger btn-lg">취소</a>
+	                            </div>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	         </div>
+        </div>
+   </div>
+    
+     <!-- 채팅 -->
+     <!--BEGIN CHAT FORM-->
+     <div id="chat-form" class="fixed">
+         <div class="chat-inner">
+            
+             <h2 class="chat-header">
+                 <a href="javascript:;" class="chat-form-close pull-right" style="text-decoration: none;">
+<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
+<!-- 	                 </i> -->
+<!-- 	                 <span class="glyphicons glyphicons-log-in"></span> -->
+	                     닫기
+                 </a>
+                 <i class="fa fa-user"></i>&nbsp; 친구 목록 &nbsp;</h2>
+            
+            
+             <div id="group-1" class="chat-group">
+             </div>
+             
+             <div id="group-2" class="chat-group">
+             </div>
+             
+             <div id="group-3" class="chat-group">
+                 <strong style="color: yellow;font-size:20px;">친구 찾기</strong>
+                 <input  style="margin-left: 30px;margin-bottom: 5px;" type="text" id="friend" /><br>
+                 <button style="margin-left: 30px;" id="addFriend" type = "button" class = "btn btn-info">친구 추가</button>
+             </div>
+             
+             
+             <div id="group-4" class="chat-group" style="margin-left: 30px;">
+             	<br><br>
+				<ul class = "list-group" style="width: 200px;">
+				   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
+				  
+				   <li class = "list-group-item">	
+				   		<span class="badge badge-danger pull-left">1</span>
+	            		&nbsp;&nbsp; admin
+	  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
+				   </li>
+				  
+				   <li class = "list-group-item">
+				   		<span class="badge badge-warning pull-left">2</span>
+				   		&nbsp;&nbsp;durad han
+				      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+					    <span class="badge badge-info pull-left">3</span>
+					    &nbsp;&nbsp;손광석
+				      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+				   	    <span class="badge badge-danger pull-left">4</span>
+				   	    &nbsp;&nbsp;한선재
+				        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
+				   </li>
+				   
+				   <li class = "list-group-item">
+				      <span class="badge badge-info pull-left">5</span>
+				      &nbsp;&nbsp;김현영
+				      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
+				   </li>
+				</ul>      
+			</div>
+             
+         </div>
+       
+         <div id="chat-box" style="top: 400px">
+            
+             <div class="chat-box-header">
+                 <a href="#" class="chat-box-close pull-right" style="text-decoration: none;">
+<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
+<!-- 	                 </i> -->
+                 	 	닫기
+                 </a>
+                 <span class="user-status is-online"></span>
+                 <span class="display-name">
+                 Willard Mckenzie
+                 </span> 
+                 <small>Online</small>
+             </div>
+            
+             <div class="chat-content">
+                 <ul class="chat-box-body">
+                     <li>
+                         <p>
+                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span
+                                 class="time">09:33</span></p>
+                         <p>
+                             Hi Swlabs, we have some comments for you.</p>
+                     </li>
+                     <li class="odd">
+                         <p>
+                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">Swlabs</span><span
+                                 class="time">09:33</span></p>
+                         <p>
+                             Hi, we're listening you...</p>
+                     </li>
+                 </ul>
+             </div>
+            
+            <div class="chat-textarea">
+                 <input placeholder="Type your message" class="form-control" />
+            </div>
+            
+         </div>
+         
+         
+     </div>
+     <!--END CHAT FORM-->
+     <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
+     
+	     <!-- 채팅 js -->
+	<script>
+		var myId = "김현영";
+		if('${user.userId}'){
+			myId = '${user.userId}';
+		}
+		console.log(myId);
+    </script>
+	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+
+	<!-- 채팅 네비게이션에 꼭 필요. -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
+    <!-- 꼭 필요. -->
+     
     
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");

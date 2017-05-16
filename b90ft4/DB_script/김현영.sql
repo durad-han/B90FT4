@@ -482,8 +482,6 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		delete 
 		  from tb_sam_chat_msg
 		  
-		  
-		  
 		 delete
 		   from tb_sam_chat_room
 		 where room_no = 1;

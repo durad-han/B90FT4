@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,24 +12,37 @@
     <meta name="author" content="">
 
     <title>Freelancer - Start Bootstrap Theme</title>
-    <!-- Bootstrap Core CSS -->
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
+     <!-- Bootstrap Core CSS -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
-
-    <!-- Theme CSS -->
+    
+    <!-- chat -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
+    
+    <!-- 프리랜서 Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
+    
+	<!-- 제이쿼리 , Bootstrap css-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<!-- 	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet"> -->
+	
+	<!-- 제이쿼리, 부트스트랩 js -->
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 이것 때문에 모달이 안된다. -->
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
-	<link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
+<!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
+	
+	<!-- 막대 그래프. -->
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
+	
+	<!-- 로긴 css -->
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css">
 	
 	<style>
 		tr.bondInfo:hover{
@@ -39,105 +52,16 @@
 			background:pink;
 		}
 	</style>
-	
 </head>
 
 <body id="page-top" class="index">
 
-<%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
-   
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              
-                   <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                        
-                    <!-- 드롭 다운 테스트 -->
-                    <li class = "dropdown">
-                    
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href = "budget.do">지출/수입</a></li>
-					         <li><a href = "loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "setting.do">설정</a></li>
-					      </ul>
-					      
-				   </li>
-				   
-				   <li>
-<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
-					      </ul>
-                        
-                        <script>
-                        	function workoutMoveCal(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
-                        	}
-                        	function workoutMoveChart(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
-                        	}
-                        </script>
-                    </li>
-				   
-                    <!-- 드롭 다운 테스트  -->
-                        
-                    <li class="page-scroll">
-                        <a href="#about">다이어리</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="#contact">스케쥴러</a>
-                    </li>
-                    
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
-                    </li>
-	              
-	                 <li>
-		                <span>
-<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
-							<a id="addMemo">
-							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
-							</a>
-						</span><br>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-
-	                </li>
-                    
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+	<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -360,7 +284,6 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-	
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
 </div>

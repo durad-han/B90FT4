@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,167 +12,62 @@
     <meta name="author" content="">
 
     <title>Freelancer - Start Bootstrap Theme</title>
+    
     <!-- Bootstrap Core CSS -->
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
     
     <!-- chat -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
     
-
-    <!-- Theme CSS -->
+    <!-- 프리랜서 Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
     
-
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- 제이쿼리 , Bootstrap css-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<!-- 	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet"> -->
+	
+	<!-- 제이쿼리, 부트스트랩 js -->
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 이것 때문에 모달이 안된다. -->
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	
+<!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
-
+	
+	<!-- 막대 그래프. -->
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
+	
+	<!-- 로긴 css -->
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css">
 
 	<style>
 	.jqplot-axis {
 		font-size: 13px;
 		font-weight: 900;
 	}
-	
-/* 	::-webkit-scrollbar-track */
-/* 	{ */
-/* 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-/* 	    background-color: #F5F5F5; */
-/* 	} */
-	
-/* 	::-webkit-scrollbar */
-/* 	{ */
-/* 	    width: 12px; */
-/* 	    background-color: #F5F5F5; */
-/* 	} */
-	
-/* 	::-webkit-scrollbar-thumb */
-/* 	{ */
-/* 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
-/* 	    background-color: #555; */
-/* 	} */
-	
 	</style>
 
-	<script src="http://192.168.0.119:10001/socket.io/socket.io.js"></script>
+<!-- 	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
 	
 </head>
 
 <body id="page-top" class="index">
 
-<%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-    <!-- Navigation -->
-   
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    
-                    <!-- 
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/main/leaderBoard.do">리더보드</a>
-                    </li>
-                     -->
-                        
-                    <!-- 드롭 다운 테스트 -->
-                    <li class = "dropdown">
-                    
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href = "budget.do">지출/수입</a></li>
-					         <li><a href = "loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "setting.do">설정</a></li>
-					      </ul>
-					      
-				   </li>
-                    <!-- 드롭 다운 테스트  -->
-                        
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
-                    </li>
-                    
-                    <li>
-<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
-					      </ul>
-                        
-                        <script>
-                        	function workoutMoveCal(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
-                        	}
-                        	function workoutMoveChart(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
-                        	}
-                        </script>
-                    </li>
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
-                    </li>
-                    
-                     <li>
-		                <span>
-<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
-							<a id="addMemo">
-							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
-							</a>
-						</span><br>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-
-	                </li>
-                    
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+	<!-- 네비게이션 -->
+	<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
+        <div class="container" style="padding-right:40px;">
 			<br><br>
 			
 			<div class="row">
@@ -209,8 +104,6 @@
                 		<br><br>
                 		</div>   
 					</div>			        
-                		
-                	
                 	<div class="row">
                 		<div class="col-md-12">
                 		
@@ -391,23 +284,21 @@
                 		</div>   
                 		
 					</div>		
-		        	
 			   </div>
 				
 			   <div class="col-md-3">
 			   
 			   		<div class="row">
-			   		
 			   		  	 <div class="col-md-12">
 			   		  	 
 							<!-- 데이트 피커 -->
 							 <ul id="generalTab" class="nav nav-tabs responsive">
 		                           <li class="active" id="day"><a href="#1" data-toggle="tab">일</a></li>
 		                           <li id="week"><a href="#1" data-toggle="tab" >주</a></li>
-<!-- 		                           <li id="month"><a href="#1" data-toggle="tab">달</a></li> -->
 		                           <li id="month"><a href="#month-tab" data-toggle="tab">달</a></li>
 		                     </ul>
 							  <div id="datepicker"></div><br>
+		                	 
 		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					                 		 지출/수입 등록
 					          </button>
@@ -423,82 +314,31 @@
 						        	<span style="display: block;"></span>
 					          </div>
 					          
-					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;"></div>
+					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;">
+					          
+					          </div>
 				        	
 						 </div>	
-						 
 			   		</div>
 			   		
 			   </div>
 			   
-		
 			</div>
+			
 			
         </div>
         
     </section>
-    
-    
-    <span>
-       	  <aside style="position: fixed;left:80px;top:200px;">
-			<ul class = "list-group" style="width: 200px;">
-			   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
-			  
-			   <li class = "list-group-item">	
-			   		<span class="badge badge-danger pull-left">1</span>
-            		&nbsp;&nbsp; admin
-  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
-			   </li>
-			  
-			   <li class = "list-group-item">
-			   		<span class="badge badge-warning pull-left">2</span>
-			   		&nbsp;&nbsp;durad han
-			      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-				    <span class="badge badge-info pull-left">3</span>
-				    &nbsp;&nbsp;손광석
-			      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			   	    <span class="badge badge-danger pull-left">4</span>
-			   	    &nbsp;&nbsp;한선재
-			        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
-			   </li>
-			   
-			   <li class = "list-group-item">
-			      <span class="badge badge-info pull-left">5</span>
-			      &nbsp;&nbsp;김현영
-			      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
-			   </li>
-			</ul>      
-		</aside>
-    
-	<div id="addDiv">
-		<input type="text" id="friend" /><button type="button" id="addFriend">친구 추가</button>
-	</div>
 	
-	<div id="list"> 
-	</div>
-	
-	<button type="button" id="showList">친구 목록</button>
-   	</span>			
-   				
+   				<!-- 입력 모달 시작 -->
    				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						
 						<div class="modal-dialog">
-						
 							<div class="modal-content">
-							
 										<div class="modal-header">
 											<h4 class="modal-title">지출/수입 등록</h4>
 										</div>
-										
 										<div class="modal-body">
 											<form name="budgetF">
-											
 			                                        <div class="form-group"><label class="col-sm-3 control-label">종류</label>
 		                                                <div class="col-sm-9 controls">
 		                                                    <div class="row">
@@ -510,7 +350,6 @@
 		                                                    </div>
 		                                                </div>
 		                                            </div>
-			                                            
 											 		<div class="form-group"><label class="col-sm-3 control-label">분류</label>
 		                                              	<div class="col-sm-9 controls">
 		                                                  	<div class="row">
@@ -521,7 +360,6 @@
 		                                                  	 </div>
 		                                              	 </div>
 			                                    	 </div>
-			                                    	   
 			                                         <div class="form-group"><label class="col-sm-3 control-label">금액</label>
 		                                                 <div class="col-sm-9 controls">
 		                                                     <div class="row">
@@ -529,7 +367,6 @@
 		                                                      </div>
 		                                               </div>
 			                                         </div>
-			                                           
 			                                         <div class="form-group"><label class="col-sm-3 control-label">내용</label>
 			                                               <div class="col-sm-9 controls">
 			                                                   <div class="row">
@@ -537,13 +374,10 @@
 			                                                   </div>
 			                                           	   </div>
 			                                         </div>
-			                                           
 			                                         <input type="hidden" />
-			                                           
 			                                </form>
 											<br><br><br><br><br><br><br>
 			                      	   </div>
-			                                
 									<div class="modal-footer">
 										<button type="button" id="updateBudget" class="btn btn-success btn-simple" style = "display:none;">수정</button>
 										<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">삭제</button>
@@ -551,24 +385,21 @@
 										<button type="button" id="budgetRegi"   class="btn btn-success btn-simple">등록</button>
 										<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>
 									</div>
-									
 								</div>
-                                        
 						</div>
 				</div>
 				<br><br><br><br><br><br><br><br><br> 
-
+				<!-- 모달 끝 -->
+				
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <div id="last" class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
     
-
-    <!-- jQuery -->
-<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/jquery/jquery.min.js"></script> --%>
+</div>  <!-- container div  끝 -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -600,13 +431,23 @@
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pointLabels.js"></script>
 	
 	<!-- 채팅 js -->
-<script>
-	var myId = "김현영";
-</script>
+	<script>
+// 		var myId = "김현영";
+// 		if('${user.userId}'){
+// 			myId = '${user.userId}';
+// 		}
+// 		console.log(myId);
+	console.log("수정");
+    </script>
+<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+	<!-- 채팅 네비게이션에 꼭 필요. -->
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script>  --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script> --%>
 
-</div>
 </body>
 
 </html>

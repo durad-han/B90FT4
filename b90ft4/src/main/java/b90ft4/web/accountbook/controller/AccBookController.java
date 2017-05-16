@@ -52,8 +52,9 @@ public class AccBookController {
 	// 지출 등록
 	@ResponseBody
 	@RequestMapping("/expenseRegi.do")
-	public String registerExpense(ExpenseVO expense) 
+	public String registerExpense(HttpServletRequest d,ExpenseVO expense) 
 			throws Exception {
+		
 		expense.setUserId("Durad  Han");
 		service.registerExpense(expense);
 		return "ok";

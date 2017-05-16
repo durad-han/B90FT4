@@ -26,7 +26,7 @@
 					       width:"150px",
 					       height:"250px",
 					       background: "#ffff9d",
-					       "z-index" : "999999"
+					       "z-index" : "1"
 			       	   })
 					   .attr("class","memo")
 					   .append(
@@ -41,8 +41,8 @@
 					       }
 						));
 						
-			
-			$("body").append(obj);
+			$("#last").after(obj);
+//			$("body").append(obj);
 			
 			$.ajax({
 				url:"/b90ft4/memo/save.do",
@@ -249,7 +249,7 @@
 					       width:sList[i].memoWidth+"px",
 					       height:sList[i].memoHeight+"px",
 					       background: "#ffff9d",
-				    	   "z-index" : "999999"
+				    	   "z-index" : "1"
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
@@ -265,7 +265,8 @@
 							       margin: "0 auto"
 								}).html(sList[i].memoContent));
 					
-					$("body").append(obj);
+//					$("body").append(obj);
+					$("#last").after(obj);
 					
 				}
 			});
