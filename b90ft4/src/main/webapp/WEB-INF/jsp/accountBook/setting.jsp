@@ -141,28 +141,9 @@
 	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/setting.js"></script>
 	
-    <!-- 차트 js -->
+    <!-- 메모 js -->
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
-	<!-- 채팅 js -->
-	<script>
-		var myId = "김현영";
-		if('${user.userId}'){
-			myId = '${user.userId}';
-		}
-		console.log(myId);
-    </script>
-	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
-
-	<!-- 채팅 네비게이션에 꼭 필요. -->
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
-    <!-- 꼭 필요. -->
-	
-</div>
 </body>
 
 </html>
