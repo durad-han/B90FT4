@@ -377,7 +377,7 @@ function calColumnInsert(){
 calColumnInsert();
 //today calorie colunm update
 function calIncDec(){
-console.log("calIncDec load");
+//console.log("calIncDec load");
 var spentCal = parseInt(gvSpentCal);
 var intakeCal = parseInt(gvIntakeCal);
 if(isNaN(spentCal)){
@@ -386,8 +386,8 @@ if(isNaN(spentCal)){
 if(isNaN(intakeCal)){
 	intakeCal = 0;
 }
-console.log("spentCal : " + spentCal);
-console.log("intakeCal : " + intakeCal);
+//console.log("spentCal : " + spentCal);
+//console.log("intakeCal : " + intakeCal);
 
 $.ajax({
 	url : "UpdateWorkoutStatistics.do",

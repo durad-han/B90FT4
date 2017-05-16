@@ -4,6 +4,7 @@ var today = $.datepicker.formatDate("yy-mm-dd",new Date());
 var BM = 0;
 var userId = 'tester01';
 
+
 $(".BMSet").on("keyup" , function(){
 	calculateBM();
 });
@@ -106,15 +107,15 @@ function callSpentCal(){
 	   //console.dir(d4_1);
        $.plot("#bar-chart-stack", [{
            data: d4_1,
-           label: "소비 칼로리",
+           label: "소비 칼로리 spendCal",
            color: "#f15f5f"
        },{
            data: d4_2,
-           label: "섭취 칼로리",
+           label: "섭취 칼로리 leftCal",
            color: "#3DB9D3"
        },{
            data: d4_3,
-           label: "초과 소비 칼로리",
+           label: "초과 소비 칼로리 overCal",
            color: "#ffce54"
        }], {
            series: {
@@ -158,7 +159,7 @@ function callSpentCal(){
 	    var userWeight = Number($("#setUserWeight").val());
 	    var userAge = Number($("#setUserAge").val());
 	    var userGender = $('input:radio[name=gender]:checked').val();
-	    BM = 66.47 + ( 13.175 * userWeight ) + ( 5 * userHeight ) - ( 6.76 *  userAge );
+	    	BM = 66.47 + ( 13.175 * userWeight ) + ( 5 * userHeight ) - ( 6.76 *  userAge );
 	    
 	    if ( userGender == 'female'){
 	    	BM = 655.1 + (9.56 * userWeight ) + (1.85 * userHeight ) - ( 4.68 * userAge );
@@ -274,15 +275,15 @@ function callSpentCal(){
 
 							}).done(function(result){
 								
-								//console.dir(result);
+								console.dir(result);
 								initUserHeight = Number(result.userHeight);
 								initUserWeight = Number(result.userWeight);
 								initUserAge = Number(result.userAge);
 								initUserGender = result.userGender;
-								console.log('initUserAge:'+initUserAge);
-								console.log('initUserAge:'+initUserGender);
-								console.log('initTotalSpentCal:'+initTotalSpentCal);
-								console.log('initTotalIntakeCal:'+initTotalIntakeCal);
+								//console.log('initUserAge:'+initUserAge);
+								//console.log('initUserAge:'+initUserGender);
+								//console.log('initTotalSpentCal:'+initTotalSpentCal);
+								//console.log('initTotalIntakeCal:'+initTotalIntakeCal);
 								/*
 								if(result.userGender == 'male'){
 									$('#genderFemale').removeClass('checked');
@@ -294,31 +295,30 @@ function callSpentCal(){
 								}
 								*/
 
-								
 							    initBM = 66.47 + ( 13.175 * initUserWeight ) + ( 5 * initUserHeight ) - ( 6.76 *  initUserAge );
 							    
 							    if ( initUserGender == 'female'){
 							    	initBM = 655.1 + (9.56 * initUserWeight ) + (1.85 * initUserHeight ) - ( 4.68 * initUserAge );
 							    	
 							    }
-							    initUpdateSpendCalVal = Number(Number(initTotalSpentCal) + Number(initBM));
-								
 							    
-							     spendCal4 = initUpdateSpendCalVal;
-							     consumeCal4 = $('#setConsumeCal').val();
-							     leftCal4 = consumeCal4 - spendCal4;
-							     overCal4 = spendCal4 - consumeCal4;
+							    initUpdateSpendCalVal = Number(Number(initTotalSpentCal) + Number(initBM));
+							    spendCal4 = initUpdateSpendCalVal;
+							    consumeCal4 = $('#setConsumeCal').val();
+							    leftCal4 = consumeCal4 - spendCal4;
+							    overCal4 = spendCal4 - consumeCal4;
+							    
 							    if (spendCal4 < consumeCal4){
-							 	   overCal4 = 0;
+							    	overCal4 = 0;
 							    }
+							    
 							    barChartStack();
-
 								
 							});
 					});
 			});
 		
-		console.log(initTotalIntakeCal);
+		//console.log(initTotalIntakeCal);
 
 		//$("#callSpentCalBtn").trigger("click");
 		
@@ -329,9 +329,6 @@ function callSpentCal(){
 		//$("#setBMBtn").trigger("click");
 		
 		//$("#setCalBtn").trigger("click");
-		
-		
-		
 		
 /*		callSpentCal();
 	    var userHeight = "";
@@ -408,34 +405,40 @@ function callSpentCal(){
 
 
 	$(document).ready(function() {
-		$.jqplot.config.enablePlugins = true;
-		var maxYaxis = Math.ceil(Math.max(spendCal1,spendCal2,spendCal3))+100;
-		var s1 = [spendBar1,spendBar2,spendBar3];
-		var s2 = [leftBar1,leftBar2,leftBar3];
-		var s3 = [overBar1,overBar2,overBar3];
-		var ticks = ['날짜1','날짜2','날짜3'];
+		
+		function setCalChart(calList){
+			$.jqplot.config.enablePlugins = true;
+			var maxYaxis = Math.ceil(Math.max(spendCal1,spendCal2,spendCal3))+100;
+			var s1 = [spendBar1,spendBar2,spendBar3];
+			var s2 = [leftBar1,leftBar2,leftBar3];
+			var s3 = [overBar1,overBar2,overBar3];
+			var ticks = ['날짜1','날짜2','날짜3'];
 
-		plot1 = $.jqplot('calChart', [s1,s2,s3], {
-		    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-		    animate: !$.jqplot.use_excanvas,
-		    stackSeries: true,
-		    seriesDefaults:{
-		        renderer:$.jqplot.BarRenderer,
-		        pointLabels: { show: true , stackedValue: true}
-		    },
-		    axes: {
-		        xaxis: {
-		            renderer: $.jqplot.CategoryAxisRenderer,
-		            ticks: ticks
-		        },
-		        yaxis: {
-		        	min:0,
-		        	max:maxYaxis,
-		        	markSize:10
-		        }
-		    },
-		    highlighter: { show: false }
-		});
+			plot1 = $.jqplot('calChart', [s1,s2,s3], {
+			    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			    animate: !$.jqplot.use_excanvas,
+			    stackSeries: true,
+			    seriesDefaults:{
+			        renderer:$.jqplot.BarRenderer,
+			        pointLabels: { show: true , stackedValue: true}
+			    },
+			    axes: {
+			        xaxis: {
+			            renderer: $.jqplot.CategoryAxisRenderer,
+			            ticks: ticks
+			        },
+			        yaxis: {
+			        	min:0,
+			        	max:maxYaxis,
+			        	markSize:10
+			        }
+			    },
+			    highlighter: { show: false }
+			});	
+		}
+		//기본 차트 뿌려주기
+		setCalChart();
+		
 	});
 	
 	

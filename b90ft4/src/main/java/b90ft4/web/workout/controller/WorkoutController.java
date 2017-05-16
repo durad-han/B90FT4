@@ -8,15 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import b90ft4.web.repository.vo.UserVO;
 import b90ft4.web.repository.vo.WorkoutDateTestVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
-import b90ft4.web.repository.vo.WorkoutVO;
 import b90ft4.web.repository.vo.WorkoutUserInfoVO;
+import b90ft4.web.repository.vo.WorkoutVO;
 import b90ft4.web.workout.service.WorkoutService;
 @RequestMapping("/workout")
 @Controller
 public class WorkoutController {
+	
 	
 	@Autowired
 	private WorkoutService ws;
@@ -50,13 +52,26 @@ public class WorkoutController {
 		return "workout/workoutList";
 	}
 	*/
-	
 	@ResponseBody
 	@RequestMapping("/selectWorkoutUserInfo.do")
 	public WorkoutUserInfoVO selectWorkoutUserInfo(String userId) throws Exception{
 		System.out.println(userId);
 		WorkoutUserInfoVO list = ws.workoutUserInfoSelect(userId);
 		return list;
+	}
+	@ResponseBody
+	@RequestMapping("/selectWorkoutStatisticsListWeek.do")
+	public List<WorkoutStatisticsVO> selectWorkoutStatisticsListWeek(String userId) throws Exception{
+		List<WorkoutStatisticsVO> list = ws.workoutStatisticsListWeek(userId);
+		return list;
+	}
+	@ResponseBody
+	@RequestMapping("/listTest.do")
+	public void listTest(String days) throws Exception{
+		
+		System.out.println("days : " + days);
+		System.out.println("days toString : " + days.toString());
+		
 	}
 
 	@ResponseBody
@@ -130,8 +145,11 @@ public class WorkoutController {
 	}
 	@ResponseBody
 	@RequestMapping("/workoutDateTest.do")
-	public WorkoutDateTestVO workoutDateTest () throws Exception{
-		WorkoutDateTestVO date = ws.workoutDateTest();
+	public List<WorkoutDateTestVO> workoutDateTest (String[] array) throws Exception{
+		
+		System.out.println("list : "+array.toString()+" ");
+		
+		List<WorkoutDateTestVO> date = ws.workoutDateTest();
 		return date;
 	}
 	

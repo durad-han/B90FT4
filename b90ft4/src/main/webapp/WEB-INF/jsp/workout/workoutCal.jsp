@@ -161,8 +161,10 @@
 </div>
 <div class='caption'>칼로리 계산</div>
 <div id='bar-chart-stack' style='width: 50%; height:300px'></div>
+zz
 <div id="calChart" style="width: 50%; height:300px;"></div>
-<script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
+qq1
+
 </div>
 </section>
     
@@ -202,12 +204,13 @@
 </div>
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+-->
 <script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script> -->
+<script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
-
+<script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
 </body>
 
 </html>

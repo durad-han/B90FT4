@@ -37,7 +37,7 @@
 		from tb_Sam_Workout_Set wrkoutset
         inner join tb_sam_workout wrkout
 		on wrkoutset.Workout_No = wrkout.Workout_No
-		where wrkout.Workout_No =#{workoutNo}
+		where wrkout.Workout_No = #{workoutNo}
 	</select>
 	
    	<resultMap type="workoutStatisticsVO" id="workoutStatisticsMap">
@@ -53,6 +53,12 @@
 		from tb_Sam_Workout_Statistics
 		where Workout_Day like concat('%',#{today},'%') and User_Id = #{userId}
 	<!--  where substring(Workout_Day,1,10) = #{today}  -->	
+	</select> 
+
+	<select id="retrieveWorkoutStatisticsListWeek" resultMap="workoutStatisticsMap" parameterType="String">
+	select * from tb_sam_workout_statistics
+	where Workout_Day between date_format(date_add(now(),interval -7 day),'%Y-%m-%d') 
+		  and date_format(now(),'%Y-%m-%d') and user_Id = #{userId}
 	</select> 
 	
 	<update id="modifyWorkoutStatisticsList" parameterType="String">		

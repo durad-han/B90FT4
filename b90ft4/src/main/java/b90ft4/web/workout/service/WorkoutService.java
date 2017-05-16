@@ -12,13 +12,15 @@ public interface WorkoutService {
 	List<WorkoutVO> workoutList() throws Exception;
 	List<WorkoutSetVO> workoutSetList(int workoutNo) throws Exception;
 	List<WorkoutStatisticsVO> workoutStatisticsList(String today , String userId) throws Exception;
+	List<WorkoutStatisticsVO> workoutStatisticsListWeek(String userId) throws Exception;
 	void workoutStatisticsUpdate(int spentCal,int intakeCal,String today,String userId) throws Exception;
-	WorkoutDateTestVO workoutDateTest() throws Exception;
+	List<WorkoutDateTestVO> workoutDateTest() throws Exception;
 	String workoutStatisticsInsert(String today,String userId) throws Exception;
 	WorkoutUserInfoVO workoutUserInfoSelect(String userId) throws Exception;
 	String workoutUserInfoSelectUserId(String userId) throws Exception;
 	void workoutUserInfoUpdate(String userId, int userHeight, int userWeight, int userAge, String userGender) throws Exception;
 	void workoutUserInfoInsert(String userId, int userHeight, int userWeight, int userAge, String userGender) throws Exception;
 	void workoutUserInfoDelete(String userId) throws Exception;
+	
 
 }

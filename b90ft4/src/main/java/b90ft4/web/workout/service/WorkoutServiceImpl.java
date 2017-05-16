@@ -38,7 +38,12 @@ public class WorkoutServiceImpl implements WorkoutService {
 		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today,userId);
 		return list;
 	}
-	
+	@Override
+	public List<WorkoutStatisticsVO> workoutStatisticsListWeek(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsListWeek(userId);
+		return list;
+	}
 	@Override
 	public String workoutStatisticsInsert(String today,String userId) throws Exception {
 		// TODO Auto-generated method stub
@@ -74,10 +79,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 	
 	@Override
-	public WorkoutDateTestVO workoutDateTest() throws Exception {
+	public List<WorkoutDateTestVO> workoutDateTest() throws Exception {
 		// TODO Auto-generated method stub
-		WorkoutDateTestVO date = wm.retrieveWorkoutDateTestList();
-		System.out.println(date.getWorkoutDay().toString());
+		List<WorkoutDateTestVO> date = wm.retrieveWorkoutDateTestList();
+		
 		return date;
 	}
 	
@@ -124,5 +129,6 @@ public class WorkoutServiceImpl implements WorkoutService {
 		// TODO Auto-generated method stub
 		wm.insertWorkoutUserInfo(userId, userGender, userHeight, userWeight, userAge);
 	}
+
 	
 }
