@@ -10,6 +10,8 @@ public interface ScheduleService {
 
 	Map<String, Object> retrieveScheduleList(ScheduleSearchVO ssVO) throws Exception;
 
+	Map<String, Object> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception;
+	
 	ScheduleVO retrieveSchedule(int scheduleNo) throws Exception;
 
 	void modifySchedule(ScheduleVO schedule) throws Exception;

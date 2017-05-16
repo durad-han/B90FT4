@@ -40,6 +40,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 //		System.out.println("--------------------------------");
 		return sMap;
 	}
+	
+	@Override
+	public Map<String, Object> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception {
+		return sm.selectMonthly(ssVO);
+	}
+	
 
 //	PK인 scheduleNo 로 해당 스케줄 검색
 	@Override
@@ -68,7 +74,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 		sm.insertSchedule(schedule);
 		
 	}
-	
 	
 	
 }
