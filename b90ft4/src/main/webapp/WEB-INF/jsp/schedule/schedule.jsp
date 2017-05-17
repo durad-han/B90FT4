@@ -44,9 +44,10 @@
                 	
 			<!-- 		왼쪽 리스트  -->
 						<div class="col-lg-4">
+						<ul class="schedule-list__pagination schedule-list__pagination--inactive" id="schedule-list-pagination"></ul>
 						
 						<div class="side-scroll">
-	
+				<div id="sList__list"></div>
 				<ul class="sList__list">
 					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
 					<li class="sList__item sList__item--orange" id="month ${fn: substring(schedules.start,0,2)}">
@@ -180,12 +181,10 @@
 						                </div>
 					                </div>
 									
-					<!-- ============ 임시 하드코딩 ============	-->
 									<div class="form-group">
-									        <input id="inputUserId" name="userId" type="hidden" value="tester01" class="form-control" />
-									        <input id="inputAchieve" name="achieve" type="hidden" value="1" class="form-control" />
+									        <input id="inputUserId" name="userId" type="hidden" value="${user.userId}" class="form-control" />
+									        <input id="inputAchieve" name="achieve" type="hidden" value="0" class="form-control" />
 									</div>
-					<!-- ============ 임시 하드코딩============	-->
 									<div class="form-group text-center">
 								    	<div class="stars"></div>
 									    <div class="stars-msg"></div>
@@ -217,7 +216,6 @@
 	                
 <!-- 	                달력 영역 -->
 					<div id='calendar'></div>
-
 	                </div>
 				</div>
 				</div>
@@ -240,7 +238,8 @@
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 </div>
-
+<script>
+</script>
 </body>
 
 </html>

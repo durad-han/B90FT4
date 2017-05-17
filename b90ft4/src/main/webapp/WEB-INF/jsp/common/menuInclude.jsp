@@ -106,7 +106,7 @@ function statusChangeCallback(response) {
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케줄</a>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">스케줄</a>
                     </li>
                         
                     <li>

@@ -8,13 +8,13 @@ public class ScheduleSearchVO extends SearchVO {
 	private String title;
 	private int category;
 	private int achieve;
-	private int month;
+	private String month;
 	
 	
-	public int getMonth() {
+	public String getMonth() {
 		return month;
 	}
-	public void setMonth(int month) {
+	public void setMonth(String month) {
 		this.month = month;
 	}
 	public Date getScheduleDate() {

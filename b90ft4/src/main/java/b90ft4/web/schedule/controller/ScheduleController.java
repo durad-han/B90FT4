@@ -30,6 +30,7 @@ public class ScheduleController {
 	public String retrieveScheduleList (String userId, Model model) throws Exception{
 		logger.debug("retrieveScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
+		logger.debug(userId);
 		ssVO.setUserId(userId);
 		
 		if(ss.retrieveScheduleList(ssVO) != null){ 
@@ -38,8 +39,9 @@ public class ScheduleController {
 		return "schedule/schedule";
 	}	
 	//----- 스케줄 한달치 호출시 ---------------------------------------------------------
-	@RequestMapping("/monthlyScheduleList.do")
-	public String monthlyScheduleList (String userId, int month, Model model) throws Exception{
+	@RequestMapping("/monthlyScheduleList.json")
+	@ResponseBody
+	public String monthlyScheduleList (String userId, String month, Model model) throws Exception{
 		logger.debug("monthlyScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 		ssVO.setUserId(userId);
