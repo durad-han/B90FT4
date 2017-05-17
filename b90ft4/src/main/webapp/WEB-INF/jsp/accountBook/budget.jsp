@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,9 @@
 	
 	<!-- 막대 그래프. -->
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/jquery.jqplot.min.css">
-
+	
+	<!-- 로긴 css -->
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css">
 
 	<style>
 	.jqplot-axis {
@@ -50,7 +52,7 @@
 	}
 	</style>
 
-	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
+<!-- 	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
 	
 </head>
 
@@ -60,106 +62,8 @@
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-    <!-- Navigation -->
-   
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    
-                    <!-- 
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/main/leaderBoard.do">리더보드</a>
-                    </li>
-                     -->
-                        
-                    <!-- 드롭 다운 테스트 -->
-                    <li class = "dropdown">
-                    
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부  <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href = "budget.do">지출/수입</a></li>
-					         <li><a href = "loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "setting.do">설정</a></li>
-					      </ul>
-					      
-				   </li>
-                    <!-- 드롭 다운 테스트  -->
-                        
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
-                    </li>
-                    
-                    <li>
-<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
-					      </ul>
-                        
-                        <script>
-                        	function workoutMoveCal(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
-                        	}
-                        	function workoutMoveChart(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
-                        	}
-                        </script>
-                    </li>
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
-                    </li>
-                    
-                     <li>
-		                <span>
-<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
-							<a id="addMemo">
-							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
-							</a>
-						</span><br>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-
-	                </li>
-	               
-	                <!-- 채팅 아이콘 -->
-                    <li id="topbar-chat" class="hidden-xs">
-	                    <a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
-	                   		 <i class="fa fa-comments"></i>
-	                    </a>
-                    </li>
-                    
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+	<!-- 네비게이션 -->
+	<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -200,8 +104,6 @@
                 		<br><br>
                 		</div>   
 					</div>			        
-                		
-                	
                 	<div class="row">
                 		<div class="col-md-12">
                 		
@@ -491,129 +393,13 @@
 				
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <div id="last" class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
     
-    
-    
-    
 </div>  <!-- container div  끝 -->
-	
-	 <!--BEGIN CHAT FORM-->
-     <div id="chat-form" class="fixed">
-         <div class="chat-inner">
-            
-             <h2 class="chat-header">
-                 <a href="javascript:;" class="chat-form-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
-<!-- 	                 <span class="glyphicons glyphicons-log-in"></span> -->
-	                     닫기
-                 </a>
-                 <i class="fa fa-user"></i>&nbsp; 친구 목록 &nbsp;</h2>
-            
-            
-             <div id="group-1" class="chat-group">
-             </div>
-             
-             <div id="group-2" class="chat-group">
-             </div>
-             
-             <div id="group-3" class="chat-group">
-                 <strong style="color: yellow;font-size:20px;">친구 찾기</strong>
-                 <input  style="margin-left: 30px;margin-bottom: 5px;" type="text" id="friend" /><br>
-                 <button style="margin-left: 30px;" id="addFriend" type = "button" class = "btn btn-info">친구 추가</button>
-             </div>
-             
-             
-             <div id="group-4" class="chat-group" style="margin-left: 30px;">
-             	<br><br>
-				<ul class = "list-group" style="width: 200px;">
-				   <li class = "list-group-item active" style="text-align: center;">자기 관리 순위</li>
-				  
-				   <li class = "list-group-item">	
-				   		<span class="badge badge-danger pull-left">1</span>
-	            		&nbsp;&nbsp; admin
-	  			      <span class = "badge"><a href="javascript:addFriend('admin');">친구 추가</a></span>
-				   </li>
-				  
-				   <li class = "list-group-item">
-				   		<span class="badge badge-warning pull-left">2</span>
-				   		&nbsp;&nbsp;durad han
-				      <span class = "badge"><a href="javascript:addFriend('durad han');">친구 추가</a></span>
-				   </li>
-				   
-				   <li class = "list-group-item">
-					    <span class="badge badge-info pull-left">3</span>
-					    &nbsp;&nbsp;손광석
-				      <span class = "badge"><a href="javascript:addFriend('손광석');">친구 추가</a></span>
-				   </li>
-				   
-				   <li class = "list-group-item">
-				   	    <span class="badge badge-danger pull-left">4</span>
-				   	    &nbsp;&nbsp;한선재
-				        <span class = "badge"><a href="javascript:addFriend('한선재');">친구 추가</a></span>
-				   </li>
-				   
-				   <li class = "list-group-item">
-				      <span class="badge badge-info pull-left">5</span>
-				      &nbsp;&nbsp;김현영
-				      <span class = "badge"><a href="javascript:addFriend('김현영');">친구 추가</a></span>
-				   </li>
-				</ul>      
-			</div>
-             
-         </div>
-       
-         <div id="chat-box" style="top: 400px">
-            
-             <div class="chat-box-header">
-                 <a href="#" class="chat-box-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
-                 	 	닫기
-                 </a>
-                 <span class="user-status is-online"></span>
-                 <span class="display-name">
-                 Willard Mckenzie
-                 </span> 
-                 <small>Online</small>
-             </div>
-            
-             <div class="chat-content">
-                 <ul class="chat-box-body">
-                     <li>
-                         <p>
-                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">John Doe</span><span
-                                 class="time">09:33</span></p>
-                         <p>
-                             Hi Swlabs, we have some comments for you.</p>
-                     </li>
-                     <li class="odd">
-                         <p>
-                             <img src="${pageContext.request.contextPath}/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">Swlabs</span><span
-                                 class="time">09:33</span></p>
-                         <p>
-                             Hi, we're listening you...</p>
-                     </li>
-                 </ul>
-             </div>
-            
-            <div class="chat-textarea">
-                 <input placeholder="Type your message" class="form-control" />
-            </div>
-            
-         </div>
-         
-         
-     </div>
-     <!--END CHAT FORM-->
-
-
-
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -646,18 +432,21 @@
 	
 	<!-- 채팅 js -->
 	<script>
-		var myId = "김현영";
-		console.log(myId);
+// 		var myId = "김현영";
+// 		if('${user.userId}'){
+// 			myId = '${user.userId}';
+// 		}
+// 		console.log(myId);
+	console.log("수정");
     </script>
-	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
 
 	<!-- 채팅 네비게이션에 꼭 필요. -->
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
-    <!-- 꼭 필요. -->
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script>  --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script> --%>
 
 </body>
 

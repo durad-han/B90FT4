@@ -18,12 +18,12 @@
 	function resize(user) {
 		var height = 0;
         
-		$("#"+user).find('li').each(function(i, value){
+		$("ul.chat-box-body").each(function(i, value){
             height += parseInt($(this).height());
         });
         height += '';
         //alert(height);
-        $("#"+user).scrollTop(height+30);  // add more 400px for #chat-box position   
+        $("ul.chat-box-body").scrollTop(height+30);  // add more 400px for #chat-box position   
 		
 	}
 	console.log("리사이즈");
@@ -41,8 +41,8 @@
 		msg+= 	  data.msg +'</p>';
 		msg+='</li>';
 	  	
-		$("#"+data.sender).append(msg);
-		
+//		$("#"+data.sender).append(msg);
+		$("ul.chat-box-body").append(msg); // 대화창에 메시지 추가.
 		resize(data.sender);
 		
 	});
@@ -78,7 +78,8 @@
 	
 		});
 		
-		$("#"+user).html(msg); // 대화창에 메시지 추가.
+//		$("#"+user).html(msg); // 대화창에 메시지 추가.
+		$("ul.chat-box-body").html(msg); // 대화창에 메시지 추가.
 		
 		resize(user); 
 		
@@ -100,24 +101,23 @@
 		e.preventDefault();
 		console.log("전파 중지..");
 		
-		var that = e.target.parentNode; // a 요소
+		var that = $(e.target).prev(); // a 요소
 		// 부모 삭제
-		var no = $(that).attr("data-roomNo");
-		var user = $(that).attr("data-recvId");
+		var no = that.attr("data-roomNo");
+		var user = that.attr("data-recvId");
 //		console.log("삭제할 방번호 : ",no,user);
 		
 //		alert(confirm("삭제하시겠습니까?"));
 		
 		if(confirm("삭제하시겠습니까?")){
-			that.parentNode.removeChild(that);
+			that.remove();
+			$(e.target).remove();
 			socket.emit("deleteRoom",{roomNo:no,recvId:user});
 		}
 		
 		setTimeout(function(){
 				$('#chat-box').hide();
 		},500);
-		
-		
 	}
 	
 	// 방만들기, 방삭제
@@ -141,16 +141,16 @@
 				var dataRoomNo= data[i].room_no;
 				
 				if(data[i].login=='y'){
-					onhtml +='<a href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
+					onhtml +='<a class="room" href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
 					onhtml +='<span class="user-status is-online"></span>' 
-					onhtml +='<small>'+data[i].user+'</small> <span id="deleteRoom"> 삭제 </span>'; 
-					onhtml +='</a>';
+					onhtml +='<small>'+data[i].user+'</small> '; 
+					onhtml +='</a> <span id="deleteRoom"> 삭제 </span>';
 					
 				}else {
-					offhtml +='<a href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
+					offhtml +='<a class="room" href="#" data-recvId="'+dataRecvId+'" data-roomNo="'+dataRoomNo+'" >';
 					offhtml +='<span class="user-status is-offline"></span>' 
-					offhtml +='<small>'+data[i].user+'</small> <span id="deleteRoom"> 삭제 </span>'; 
-					offhtml +='</a>';
+					offhtml +='<small>'+data[i].user+'</small>'; 
+					offhtml +='</a>  <span id="deleteRoom"> 삭제 </span>';
 				}
 		} 
 		
@@ -184,8 +184,10 @@
 		
 	    // 방 목록에 방 만드는 이벤트 걸기.
 	    console.log("방 만들기 이벤트 걸기");
-	    $('#chat-form .chat-group a').unbind('*').click(function(){
-	       
+	    $('#chat-form .chat-group a.room').unbind('*').click(function(){
+	        
+	    	console.log("이벤트 전파 클릭");
+	        
 	    	$('#chat-box').hide();
 	    	
 	    	$('ul.chat-box-body').html(""); // 초기화
@@ -278,7 +280,7 @@
       
       var recvId = this.getAttribute("data-recvId");
       var roomNo = this.getAttribute("data-roomNo");
-      console.log(recvId,roomNo);
+      console.log("듀라드 처리 : ",recvId,roomNo);
       
       var $me = $obj.parent().parent().find('ul.chat-box-body');
       var $my_avt = '/b90ft4/web/image/accountBook/팬더.jpg';
