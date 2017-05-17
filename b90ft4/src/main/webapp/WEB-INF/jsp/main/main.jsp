@@ -10,6 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Cog + I</title>
+<!-- chat css -->
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
     
 <c:import url ="/WEB-INF/jsp/common/topInclude.jsp"/>
 </head>

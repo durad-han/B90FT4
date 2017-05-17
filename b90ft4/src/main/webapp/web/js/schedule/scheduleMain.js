@@ -1,5 +1,6 @@
 console.log("scheduleMain.js 로드됨...");
-
+var ttid = '${user.userId}';
+console.log(ttid);
 //----- schedule List -----------------------------------------------------------
 //var sLists = (function() {
 //	var view 	= $('.side-scroll');
@@ -69,8 +70,8 @@ console.log("scheduleMain.js 로드됨...");
 //----- schedule InfiniteScrolling + Pagination ---------------------------------------------------------------------------------------------
 var date = new Date();
 var month = new Array();
-month[0] = "1월";month[1] = "2월";month[2] = "3월";month[3] = "4월";month[4] = "5월";month[5] = "6월";
-month[6] = "7월";month[7] = "8월";month[8] = "9월";month[9] = "10월";month[10] = "11월";month[11] = "12월";
+month[0] = "01";month[1] = "02";month[2] = "03";month[3] = "04";month[4] = "05";month[5] = "06";
+month[6] = "07";month[7] = "08";month[8] = "09";month[9] = "10";month[10] = "11";month[11] = "12";
 
 var currentMonth = month[date.getMonth()];
 
@@ -81,6 +82,7 @@ var page = 0;
 addPage(currentMonth);
 
 function addPage(currentMonth) {
+	console.log("currentMonth : "+currentMonth);
 	fetchPage(currentMonth);
 	addPaginationPage(currentMonth);
 }
@@ -90,22 +92,39 @@ function fetchPage(currentMonth) {
 }
 
 function getSchedulePage(currentMonth) {
+	console.log("스케줄 페이지 만들기");
+	var tempId = '${user}';
+	console.log("tempId.. : "+tempId);
+	var userId = sessionStorage.toString();
+	console.log("userId : "+userId);
 	const pageElement = document.createElement('div');
 	pageElement.id = 'schedule-page-'+currentMonth;
 	pageElement.className = 'schedule-list__page';
+	$.ajax({
+		url : "/b90ft4/schedule/monthlyScheduleList.json",
+		type: "POST",
+		data: {
+			userId : userId,
+			month : currentMonth
+				},
+		dataType: "json",
+	}).done(function(result){
+		var scheduleItem = result['scheduleList'];
+		var length = scheduleItem.length;
+		console.log(scheduleItem);
+		console.log("결과값 크기 : "+length);
+		while (length--) {
+			pageElement.appendChild(getSchedule(scheduleItem));
+		}
+		
+		return pageElement;
+	});
 	
-	while (schedulesPerPage--) {
-		pageElement.appendChild(getSchedule());
-	}
-	
-	return pageElement;
 }
 
-function getSchedule() {
-	const articleImage = getArticleImage();
-	const schedule = document.createElement('schedule');
+function getSchedule(scheduleItem) {
+	const schedule = document.createElement('div');
 	schedule.className = 'schedule-list__item';
-	schedule.appendChild(articleImage);
 	
 	return schedule;
 }
@@ -114,12 +133,28 @@ function getPageId(n) {
 	return 'schedule-page-' + n;
 }
 
-//----- schedule ---------------------------------------------------------------------------------------------
+function addPaginationPage(currentMonth) {
+	const pageLink = document.createElement('a');
+	pageLink.href = '#' + getPageId(currentMonth);
+	pageLink.innerHTML = page;
+	
+	const listItem = document.createElement('li');
+	listItem.className = 'schedule-list__pagination__item';
+	listItem.appendChild(pageLink);
+	
+	scheduleListPagination.appendChild(listItem);
+	
+	if (page === 2) {
+		scheduleListPagination.classList.remove('schedule-list__pagination--inactive');
+	}
+}
+//----- schedule for calendar ---------------------------------------------------------------------------------------------
 $(document).ready(function() {
 	console.log("달력용 스케줄 호출")
 	$.ajax({
 		url : "/b90ft4/schedule/scheduleCalendar.json",
 		type: "POST",
+		data: {userId : '${user.userId}'},
 		dataType: "json",
 	}).done(fullCal);
 });
@@ -489,27 +524,26 @@ function scheduleForm(form){
 
 
 //----- 페이지 스크롤---------------------------------------------------------------------------------------------------
-function getScheduleList() {
-	$('#loading').html('스케줄 로딩중입니다');
-
-	$.post("data.html?action=getLastList&lastID=" + $(".timeline-container:last").attr("id"), 
-			function(addSchedule){ 
-			if (addSchedule != "") { 
-				$(".timeline-container").after(addSchedule); 
-			} 
-			$('#loading').empty(); 
-		}); 
-	}; 
-	
-	//무한 스크롤 
-	$(window).scroll(function() { 
-		if($(window).scrollTop() == $(document).height() - $(window).height()){
-			getScheduleList(); 
-			} 
-		}); 
+//function getScheduleList() {
+//	$('#loading').html('스케줄 로딩중입니다');
+//
+//	$.post("data.html?action=getLastList&lastID=" + $(".timeline-container:last").attr("id"), 
+//			function(addSchedule){ 
+//			if (addSchedule != "") { 
+//				$(".timeline-container").after(addSchedule); 
+//			} 
+//			$('#loading').empty(); 
+//		}); 
+//	}; 
+//	
+//	//무한 스크롤 
+//	$(window).scroll(function() { 
+//		if($(window).scrollTop() == $(document).height() - $(window).height()){
+//			getScheduleList(); 
+//			} 
+//		}); 
 
 
 
 
 scheduleBody();
-sLists.init();

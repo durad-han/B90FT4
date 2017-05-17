@@ -31,8 +31,8 @@
 	<select id="selectScheduleList" parameterType="scheduleSearchVO" resultMap="scheduleMap">
 		select	*      
 		from	tb_Sam_Schedule
-		order	by Start
 		where	User_Id = #{userId}
+		order	by Start
 	
 <!-- 		select	sql_calc_found_rows a.*  -->
 <!-- 		from	(select	*  -->
