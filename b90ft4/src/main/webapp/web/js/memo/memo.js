@@ -26,7 +26,7 @@
 					       width:"150px",
 					       height:"250px",
 					       background: "#ffff9d",
-					       "z-index" : "1"
+					       "z-index" : "99999"
 			       	   })
 					   .attr("class","memo")
 					   .append(
@@ -61,7 +61,7 @@
 			
 		});
 		
-		
+		// 메모 이동
 		$("body").on("mousedown","div.memo",function(e){
 			
 			var x = e.offsetX;
@@ -111,7 +111,7 @@
 			}
 			
 			
-			// edit.do
+		// edit.do
 		}).on("mouseup","div.memo",function() {
 			
 			$(this).css("opacity","1");
@@ -249,7 +249,7 @@
 					       width:sList[i].memoWidth+"px",
 					       height:sList[i].memoHeight+"px",
 					       background: "#ffff9d",
-				    	   "z-index" : "1"
+				    	   "z-index" : "99999"
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
@@ -272,7 +272,8 @@
 			});
 		}	
 		
-		// 메모 크기 조절.
+		
+	// 메모 크기 조절.
 		
  	// 북쪽
 	function northSide(that) {
