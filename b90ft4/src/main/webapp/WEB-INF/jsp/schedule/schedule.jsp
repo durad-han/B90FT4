@@ -54,39 +54,39 @@ if('${user.userId}'){
 						
 						<div class="side-scroll">
 				<div id="sList__list"></div>
-				<ul class="sList__list">
-					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--orange" id="month ${fn: substring(schedules.start,0,2)}">
+<!-- 				<ul class="sList__list"> -->
+<%-- 					<c:forEach var="schedules" items='${scheduleMap["scheduleList"]}'> --%>
+<%-- 					<li class="sList__item sList__item--orange" id="month ${fn: substring(schedules.start,0,2)}"> --%>
 					
-						<div class="sList__info">
-							<div class="sList__contents">
-								<p class="start"><c:out value='${schedules.start}'/></p>
-								<p class="end"><small><c:out value='${schedules.end}'/></small></p>
-								<br>
-								<p class="title"><c:out value='${schedules.title }'/></p>
-							</div>
-							<div class="sList__options">
-								<p class="achieve"><c:out value='${schedules.scheduleNo }'/>번</p>
-								<input type="hidden" id="sNo" value="${schedules.scheduleNo }">
-							</div>
-						</div>
-					</li>
-					</c:forEach>
-					<c:if test='${empty scheduleMap["scheduleList"]}'>
-					<li class="sList__item sList__item--orange">
+<!-- 						<div class="sList__info"> -->
+<!-- 							<div class="sList__contents"> -->
+<%-- 								<p class="start"><c:out value='${schedules.start}'/></p> --%>
+<%-- 								<p class="end"><small><c:out value='${schedules.end}'/></small></p> --%>
+<!-- 								<br> -->
+<%-- 								<p class="title"><c:out value='${schedules.title }'/></p> --%>
+<!-- 							</div> -->
+<!-- 							<div class="sList__options"> -->
+<%-- 								<p class="achieve"><c:out value='${schedules.scheduleNo }'/>번</p> --%>
+<%-- 								<input type="hidden" id="sNo" value="${schedules.scheduleNo }"> --%>
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<%-- 					</c:forEach> --%>
+<%-- 					<c:if test='${empty scheduleMap["scheduleList"]}'> --%>
+<!-- 					<li class="sList__item sList__item--orange"> -->
 					
-						<div class="sList__info">
-							<div class="info-sch">
-								<p class="info-sch__date">0</p>
+<!-- 						<div class="sList__info"> -->
+<!-- 							<div class="info-sch"> -->
+<!-- 								<p class="info-sch__date">0</p> -->
 
-								<p class="info-sch__title"><small>아직 없어</small><br>텅 비었어</p>
+<!-- 								<p class="info-sch__title"><small>아직 없어</small><br>텅 비었어</p> -->
 
-							</div>
-							<div class="info-place">0</div>
-						</div>
-					</li>
-					</c:if>
-				</ul>
+<!-- 							</div> -->
+<!-- 							<div class="info-place">0</div> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<%-- 					</c:if> --%>
+<!-- 				</ul> -->
 							</div>
 						</div>
 						

@@ -52,21 +52,30 @@ function getSchedulePage(currentMonth, monthlySchedule) {
 
 function getSchedule(scheduleItem) {
 	const schedule = document.createElement('div');
-	schedule.className = 'schedule-list__item';
+	
+	if(scheduleItem.achieve == 1)
+	schedule.className = 'slist__item sList__item--green';
+	else
+	schedule.className = 'slist__item sList__item--orange';
+	
+	var startArr = scheduleItem.start.split(" ");
+	var endArr = scheduleItem.end.split(" ");
 	
 	var shtml = "";
+	shtml += "	<a href='javascript:goDetail("+scheduleItem.scheduleNo+")'>"
 	shtml += "	<div class='sList__info'>"
 	shtml += "	<div class='sList__contents'>"
-	shtml += "		<p class='start'>"+scheduleItem.start+"</p>";
-	shtml += "		<p class='end'><small>"+scheduleItem.end+"</small></p>"
+	shtml += "		<p class='info-sch__date start'>"+startArr[0].substring(3,5)+"일 "+startArr[1]+"시</p>";
+	shtml += "		<p class='end'><small>"+endArr[0].substring(3,5)+"일 "+endArr[1]+"시</small></p>"
 	shtml += "		<br>"
 	shtml += "		<p class='title'>"+scheduleItem.title+"</p>"
 	shtml += "	</div>"
 	shtml += "	<div class='sList__options'>"
-	shtml += "		<p class='achieve'>"+scheduleItem.scheduleNo+"번</p>"
+	shtml += "		<p class='achieve'>"+scheduleItem.importance+"</p>"
 	shtml += "		<input type='hidden' id='sNo' value='"+scheduleItem.scheduleNo+"'>"
 	shtml += "	</div>"
 	shtml += "	</div>"
+	shtml += "	</a>"
 	schedule.innerHTML = shtml;
 	return schedule;
 }
