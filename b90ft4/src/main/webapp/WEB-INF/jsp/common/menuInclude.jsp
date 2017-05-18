@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 userId = "admin";
 
@@ -144,7 +145,6 @@ function statusChangeCallback(response) {
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
                     </li>
-                    
 
                 </ul>
                 
@@ -308,18 +308,20 @@ function statusChangeCallback(response) {
          
      </div>
      <!--END CHAT FORM-->
-     <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
      
-	     <!-- 채팅 js -->
+	<!-- 채팅 네비게이션에 꼭 필요. -->
+    <!-- 채팅 js -->
+    <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
 	<script>
-		var myId = "김현영";
+// 		var myId = "김현영";
 		if('${user.userId}'){
 			myId = '${user.userId}';
 		}
     </script>
-	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+    <c:if test="${not empty user.userId}">
+		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+    </c:if>
 
-	<!-- 채팅 네비게이션에 꼭 필요. -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>

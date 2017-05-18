@@ -68,10 +68,12 @@ function makeAccRatio(year,month) {
 //		console.log(result);
 		ratio=result;
 	});
+	
+	$("#occupancyRatio").empty();
+	console.log("ratio",ratio);
 
-	if($("#occupancyRatio").length!=0) {
+	if($("#occupancyRatio").length!=0 && ratio !=0 ) {
 		
-		$("#occupancyRatio").empty();
 		$.jqplot.config.enablePlugins = true;
 		var s1 = [ratio];
 		var ticks = [month + '월 가계부 작성률'];

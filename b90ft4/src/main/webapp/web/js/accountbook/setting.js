@@ -10,13 +10,8 @@ if(month<10) {
 }	
 $("#expensePlanDate").val(year+"-"+month);
 
-$("[name=set]").click(function(){
-	console.log("라디오 테스트");
-	
-});
-
 $("#budgetManagement").click(function() {
-	$("div.modal-dialog").slideToggle(250);	
+	$(".row.main").slideToggle(250);	
 });
 
 $.ajax({
@@ -30,59 +25,41 @@ $.ajax({
 	
 	if(result.goal.planStatus=='y'){
 		$("#managementDiv").hide();
+		$("#set").prop("disabled",true);
 	}	
-//			$("#set").prop("checked",true);
 	else{
-		$("#managementDiv").show();
+		$("#noSet").prop("disabled",true);
 	}	
 });
 
 
 $("#set").click(function() {
-	$("#managementDiv").show();
+	$("#managementDiv").slideToggle(250);
 });
 
 
 $("#noSet").click(function() {
+	
+	if(!confirm("설정된 지출 한도는 사라지는데 괜찮으신가요?")){
+		return;
+	}
+	
 	$("#managementDiv").hide();
 		
-		$.ajax({
-			url:"regiPlan.do",
-			data:{
-				expensePlanDate : $("#expensePlanDate").val(),
-				planStatus : "n"
-			}
-		}).done(function(result) {
-		});
-		
-	return;
+	$.ajax({
+		url:"regiPlan.do",
+		data:{
+			expensePlanDate : $("#expensePlanDate").val(),
+			planStatus : "n"
+		}
+	}).done(function(result) {
+
+	});
+	
+	$("#set").prop("disabled",false);
+	$("#noSet").prop("disabled",true);
+	
 });
-
-function checkCode(){
-   
-	  $("[name=budgetManageCode]").each(function() {
-			
-		  if(this.checked && this.value == 0){
-					$("#managementDiv").show();
-					return;
-				}
-
-			if(this.checked && this.value == 1){
-					$("#managementDiv").hide();
-					
-					$.ajax({
-						url:"regiPlan.do",
-						data:{
-							expensePlanDate : $("#expensePlanDate").val(),
-							planStatus : "n"
-						}
-					}).done(function(result) {
-					});
-					return;
-				}
-		});
-  }
-
 
 
 $("#registerPlan").click(function() {
@@ -101,6 +78,8 @@ $("#registerPlan").click(function() {
 	}).done(function(result) {
 		alert("등록완료");
 		$("#managementDiv").hide();
+		$("#set").prop("disabled",true);
+		$("#noSet").prop("disabled",false);
 	});
 	
 });

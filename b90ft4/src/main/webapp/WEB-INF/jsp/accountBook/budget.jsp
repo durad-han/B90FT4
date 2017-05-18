@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>COG + I - 가계부</title>
     
     <!-- Bootstrap Core CSS -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
@@ -55,7 +55,6 @@
 <!-- 	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
 	
 </head>
-
 <body id="page-top" class="index">
 
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
@@ -75,15 +74,10 @@
 			   <div class="col-md-9">
 					<div class="row">
                 		<div class="col-md-12">
-	                		
 	                		<ul id="generalTab" class="nav nav-tabs responsive" style="width: 50%;">
-	                        
 	                            <li id="expenseTab" class="active"><a href="#expense-tab" data-toggle="tab">지출</a></li>
 	                            <li id="incomeTab"><a href="#income-tab" data-toggle="tab">수입</a></li>
-<!-- 	                            <li id="month"><a href="#other-tab" data-toggle="tab">달</a></li> -->
-	                        
 	                        </ul>
-	                        
 	                    </div>   
 					</div>			        
 					

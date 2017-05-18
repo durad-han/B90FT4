@@ -36,7 +36,7 @@
 				firstDay: 0,
 				isRTL: false,
 				showMonthAfterYear: true,
-//				changeMonth: true,
+				changeMonth: true,
 				changeYear: true,
 				showOtherMonths: true,
 				selectOtherMonths: true,
@@ -182,6 +182,7 @@
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
 		
+		
 		// 월 지출
 		$("#monthExpense-tab").removeClass("in active");
 		
@@ -200,6 +201,13 @@
 		
 		// occupancyRatio
 		$("#occupancyRatio").show();
+		var date = $("#datepicker").datepicker("getDate");
+		var month = date.getMonth() + 1;
+		
+		month = month < 10 ? "0"+month : month;
+		
+		makeAccRatio(date.getYear()+1900,month);
+		
 		
 		if(exOrInFlag){
 			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화

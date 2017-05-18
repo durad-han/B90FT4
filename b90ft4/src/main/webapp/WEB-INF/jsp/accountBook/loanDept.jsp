@@ -65,7 +65,7 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
+        <div class="container" style="padding-right:40px;">
             <br><br>
 			<div class="row">
 			   
