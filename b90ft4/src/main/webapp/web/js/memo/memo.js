@@ -55,9 +55,8 @@
 			}).done(function (memoNo) {
 				$(obj)
 				.attr("id",memoNo)
-				.prepend("<div style='width:100%;height:50px;background:yellow'><a class='button remove' onclick='delMemo("+memoNo+")' style='margin-left:84%'>X</a></div>");
+				.prepend("<div style='cursor: move;width:100%;height:50px;background:yellow'><a class='button remove' onclick='delMemo("+memoNo+")' style='margin-left:84%'>X</a></div>");
 			});
-			
 			
 		});
 		
@@ -71,25 +70,25 @@
  			var height = that.height();
 			
  			// 서쪽
-//			if(x >=0 && x<=4) {
-//				westSide(this);
-//			}	
+			if(x >=0 && x<=4) {
+				westSide(this);
+			}	
 //			
-//			// 동쪽
-//			if(x >=width-4  && x <= width){
-//				console.log("동쪽");
-//				eastSide(this);
-//			}
+			// 동쪽
+			if(x >=width-4  && x <= width){
+				console.log("동쪽");
+				eastSide(this);
+			}
 //			
 //			// 북쪽
 //			if(y>=0 && y<=4){
 //				northSide(this);				
 //			}
 //			
-//			// 남쪽
-//			if(y>=height-4  && y <= height){
-//				southSide(this);
-//			}
+			// 남쪽
+			if(y>=height-4  && y <= height){
+				southSide(this);
+			}
 			
 			if( !(x >=0 && x<=4) &&
 				!(x >=width-4  && x <= width) &&
@@ -106,14 +105,14 @@
 
 			
 			$(document).on("dragstart",function() {
-				return;
+				return false;
 			});
 			
 			$(document).on("selectstart",function() {
-				return;
+				return false;
 			});
 
-			//			$(this).siblings().on("dragstart",function(){
+//			$(this).siblings().on("dragstart",function(){
 //				return;
 //			});
 
@@ -124,24 +123,24 @@
 			console.log("시블링2");
 			
 			
- 			// 메모 이동.
-			function moveMemo() {
-				$(document).mousemove(function(event) {
-					that.css("left", event.clientX - x);
-					that.css("top", event.clientY - y);
-					that.css("opacity", "0.5");
-				}).mouseup(function() {
-					$(this).off();
-				});
-			}
+		// 메모 이동.
+		function moveMemo() {
+			$(document).mousemove(function(event) {
+				that.css("left", event.clientX - x);
+				that.css("top", event.clientY - y);
+				that.css("opacity", "0.5");
+			}).mouseup(function() {
+				$(this).off();
+			});
+		}
 			
 			
 		// edit.do
 		}).on("mouseup","div.memo",function() {
 			
 			
-			$(this).siblings().off("dragstart");
-			$(this).siblings().off("selectstart");
+			$(document).off("dragstart");
+			$(document).off("selectstart");
 
 			
 			$(this).css("opacity","1");
@@ -197,13 +196,14 @@
 			
 			// 남북쪽
 			if(y>=0 && y<=4 || y>=height-4 && y<=height) {
-				$(this).css("cursor","s-resize");
 				
-				if(y >=0 && y<=4){
-// 					console.log("북쪽");
-				}
+				// 북쪽 버그 있다..
+//				if(y >=0 && y<=4){
+// 					console.log("북쪽",y); 
+//				}
 				
 				if(y >=height-4  && y <= height){
+					$(this).css("cursor","s-resize");
 // 					console.log("남쪽");
 				}
 			}
@@ -283,7 +283,7 @@
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
-					   .append("<div style='width:100%;height:40px;background:yellow;'><a type='button' class='button remove' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:90%'>X</a></div>")
+					   .append("<div style='cursor: move;width:100%;height:40px;background:yellow;'><a type='button' class='button remove' onclick='delMemo("+sList[i].memoNo+")' style='margin-left:90%'>X</a></div>")
 					   .append(
 						$("<div class='memoContent'></div>")
 								.attr("contentEditable",true)
@@ -307,6 +307,7 @@
 		
  	// 북쪽
 	function northSide(that) {
+	
 		$(document).mousemove(function(e) {
 			
 		var size = (($(that).offset().top) - e.clientY);
@@ -419,4 +420,6 @@
 		});
 	}
 		
-		
+	$(document).ready(function() {
+	    $(".dropdown-toggle").dropdown();
+	});

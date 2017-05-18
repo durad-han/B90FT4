@@ -5,8 +5,6 @@
 	var socket;
 	var html="";
 	
-	var madeRoom = [];
-	
 	socket = io.connect("http://192.168.0.60:10001");
 	socket.emit("passId",myId);
 	
@@ -33,7 +31,7 @@
 		 
 		msg+='<li class="odd">';
 		msg+='    <p>';
-		msg+='        <img src="/b90ft4/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">'+data.sender+'</span><span';
+		msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+data.sender+'</span><span';
 		msg+='            class="time">09:33</span></p>';
 		msg+='    <p>';
 		msg+= 	  data.msg +'</p>';
@@ -57,7 +55,7 @@
 			if(row.user==myId) {
 				msg+='<li>';
 				msg+='    <p>';
-				msg+='        <img src="/b90ft4/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">'+myId+'</span><span';
+				msg+='        <img src="/b90ft4/web/image/chat/me.png" class="avt" /><span class="user">'+myId+'</span><span';
 				msg+='            class="time">09:33</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
@@ -66,7 +64,7 @@
 				user = row.user;
 				msg+='<li class="odd">';
 				msg+='    <p>';
-				msg+='        <img src="/b90ft4/web/image/accountBook/팬더.jpg" class="avt" /><span class="user">'+row.user+'</span><span';
+				msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+row.user+'</span><span';
 				msg+='            class="time">09:33</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
@@ -84,13 +82,6 @@
 		
 	});
 	
-	
-	// 방 닫기.
-	function closeRoom(that) {
-		var user = that.getAttribute("data-id");
-		delete madeRoom[user];
-		$("[data-close="+user+"]").remove();
-	}
 	
 	// 방 삭제
 	function deleteRoom(e){
@@ -275,7 +266,7 @@
 //      console.log("듀라드 처리 : ",recvId,roomNo);
       
       var $me = $obj.parent().parent().find('ul.chat-box-body');
-      var $my_avt = '/b90ft4/web/image/accountBook/팬더.jpg';
+      var $my_avt = '/b90ft4/web/image/chat/me.png';
 
       if (e.which == 13) {
         

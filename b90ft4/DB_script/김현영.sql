@@ -124,6 +124,9 @@ create table tb_sam_expense_plan (
 	FOREIGN KEY(User_Id) REFERENCES tb_sam_user(User_Id)
 )
 
+select *
+  from tb_sam_expense_plan
+
 
 
 create table tb_Sam_Memo (

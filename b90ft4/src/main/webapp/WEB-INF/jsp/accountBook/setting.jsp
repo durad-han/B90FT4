@@ -41,14 +41,59 @@
 	<!-- 로긴 css -->
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css">
 	
-	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
+	<style>
 	
+		.main{
+		    margin-top: 50px;
+		}
+		
+		.main-content {
+		/*    background-color:#009edf;*/
+		    border: 2px solid #009edf;
+		    margin: 0 auto;
+		    max-width: 500px;
+		    padding: 20px 40px;
+		    color: black;
+		    text-shadow: none;
+		    text-align: center;
+		}
+		
+		.input-group{
+			margin: 20px 0px;
+		}
+		.input-group-addon {
+		    color: #009edf ;
+		    font-size: 17px;
+		}
+		.login-button{
+		    margin: 0px auto;
+		    max-width: 200px;;
+		}
+		
+		.form-header{
+		    max-width: 500px;
+		    margin: 0 auto;
+		    background-color: #009edf;
+		    color: #fff;
+		    width: 100% ;
+		    padding: 20px 0px;
+		    border-top-right-radius:10px ;
+		    border-top-left-radius:10px 
+		}
+		
+		.form-header button {
+			color:black;
+		}
+		
+	
+	</style>
+		
 </head>
 
 <body id="page-top" class="index">
 
 <%-- <div class="container" style='background:url("${pageContext.request.contextPath}/web/image/accountBook/가계부 배경2.jpg") no-repeat;background-size:100%'> --%>
-<div class="container">
+<div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
@@ -57,56 +102,43 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
+        <div class="container" style="padding-right:40px;">
                <br><br>
                <div class="page-title-breadcrumb option-demo">
                    <div class="page-header">
                        <div class="page-title mrm">
-                            <button id="budgetManagement" type="button" style='width:500px;text-align:center;margin-left: 50%;'> 지출 관리 </button>
+                            <button id="budgetManagement" type="button" style='width:500px;text-align:center;margin-left: 54%;'> 지출 관리 </button>
                        </div>
                    </div>
                </div>
-                             
-				<!-- 자산 등록 모달 -->
-				<div class="modal-dialog" style='width:50%;display: none; text-align: center;'>
-						
-							<div class="modal-content">
-										
-								<div class="modal-header">
-									<h4 class="modal-title">지출 한도 설정
-										<button id="set">설정</button>
-										<button id="noSet">미설정</button>
-										
-									</h4>
-								</div>
-										
-		                        <div id="managementDiv">
-									    <div class="modal-body">
-											<form name="budgetManageF">
-					                                        
-			                                       	 <h4><b>이번 달</b></h4>
-		                                             <input type="text" style="font-weight: bold;text-align: center;" id="expensePlanDate" readonly />
-		                                             <br>
-			                                       	 <h4><b>목표 지출 한도</b></h4>
-			                                         <input type="text" id="expenseGoal"/>
-							                                                      
-				                              </form>
-				                              
-			                      	    </div>
-			                                
-										<div class="modal-footer">
-											<button type="button" id="registerPlan">등록</button>
-										</div>
-		                          </div>
-		                          
-							</div>
-				</div>
+
+				   <div class="row main" style='width:30%;text-align: center;display:none;margin-left: 33%;'>
+					       <div class="form-header">
+					          <h1 class="text-center ">지출 한도 관리</h1>
+					          	<button id="set" class="btn">설정</button>
+								<button id="noSet" class="btn">미설정</button>
+					        </div>
+					        
+						    <div class="main-content" id="managementDiv">
+						             <h4><b>이번 달</b></h4>
+						             <input type="text" style="font-weight: bold;text-align: center;" id="expensePlanDate" readonly />
+						          	 <br>
+						          	 <h4><b>목표 지출 한도</b></h4>
+						         	 <input type="text" style="width: 193px;font-weight: bold;text-align: center;" id="expenseGoal"/> 
+						         	 <br><br>
+						        
+						          <div class="form-group ">
+						              <a href="#" type="button" id="registerPlan"  class="btn btn-danger btn-lg btn-block login-button">등록</a>
+						          </div>
+						    </div>
+			          <br><br>   
+				  </div>
                              
                            	
                	<div class="page-title-breadcrumb option-demo">
                          <div class="page-header">
                              <div class="page-title mrm">
-                                  <button type="button" id="getBook" style='width:500px;text-align:center;margin-left: 50%;'>엑셀로 가계부 받기</button>
+                                  <button type="button" id="getBook" style='width:500px;text-align:center;margin-left: 54%;'>엑셀로 가계부 받기</button>
                              </div>
                          </div>
                  </div>
@@ -145,7 +177,8 @@
 	
     <!-- 메모 js -->
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
-	
+
+</div>	
 </body>
 
 </html>

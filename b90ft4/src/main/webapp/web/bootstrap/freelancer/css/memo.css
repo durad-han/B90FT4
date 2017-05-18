@@ -15,8 +15,8 @@ div.memo{
     font-weight: bold;
 }
 
-div.memo:hover{
-	cursor: pointer;	
+div.catch:first{
+	cursor: move;	
 }
 
 .button.remove:hover{
