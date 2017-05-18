@@ -35,6 +35,9 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
 <!-- 스윗얼럿 ==================================================================================================== -->
 
+<!-- 채팅 ==================================================================================================== -->
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
+<!-- 채팅 ==================================================================================================== -->
 <style>
 .dropdown-menu > li{
 	color:black !important;
