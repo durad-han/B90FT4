@@ -13,34 +13,34 @@
 
     <title>Freelancer - Start Bootstrap Theme</title>
       <!-- Bootstrap Core CSS -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
+<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css"> --%>
     
     <!-- chat -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
+<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css"> --%>
     
     <!-- 프리랜서 Theme CSS -->
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet"> --%>
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet"> --%>
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet"> --%>
     
 	<!-- 제이쿼리 , Bootstrap css-->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<!-- 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
 <!-- 	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet"> -->
 	
 	<!-- 제이쿼리, 부트스트랩 js -->
-	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <!-- 	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 이것 때문에 모달이 안된다. -->
 
     <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --%>
 <!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
 <!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" />
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/sub.css" rel="stylesheet" type="text/css" /> --%>
 	
 	<!-- 로긴 css -->
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css">
-	
+<%-- 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/main/login.css"> --%>
+	<%@include file="/WEB-INF/jsp/common/topInclude.jsp"%>
 	<style>
 	
 		.main{

@@ -34,7 +34,9 @@
 <script src="${pageContext.request.contextPath}/web/js/common/sweetalert.min.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/sweetalert.css">
 <!-- 스윗얼럿 ==================================================================================================== -->
-
+<!-- 메모 -->
+<link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
+<!-- 메모 -->
 <!-- 채팅 ==================================================================================================== -->
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 <!-- 채팅 ==================================================================================================== -->

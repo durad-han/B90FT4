@@ -14,38 +14,23 @@
     <title>Freelancer - Start Bootstrap Theme</title>
     <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
+<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css"> --%>
 
     <!-- Theme CSS -->
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/news.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet">
-
-<!--  					<li> -->
-<%--                         <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a> --%>
-<!--                     </li> -->
-<!-- 					 <li> -->
-<!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br> -->
-<!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> -->
-<!-- 	                </li> -->
-	              
-<!-- 	                <li> -->
-<!-- 		                <div> -->
-<!-- 							<button id="addMemo">메모 추가</button> -->
-<!-- 						</div> -->
-<!-- 	                </li> -->
-
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet"> --%>
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet"> --%>
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/news.css" rel="stylesheet"> --%>
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet"> --%>
 	
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+<!--  	<script src="http://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!--   	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
     <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	
+<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --%>
+<!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+	<%@include file="/WEB-INF/jsp/common/topInclude.jsp"%>
 	<style>
 	
 	#portfolio button{
@@ -65,73 +50,13 @@
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-    <!-- Navigation -->
-   
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">자기 관리</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                        
-                    <!-- 서브메뉴 드랍다운 -->
-                    <li class = "dropdown">
-                    
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
-					      </a>
-					      
-					      <ul class = "dropdown-menu">
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "${pageContext.request.contextPath}/accountBook/setting.do">설정</a></li>
-					      </ul>
-					      
-				   </li>
-                        
-                    <li class="page-scroll">
-                        <a href="#about">다이어리</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">스케쥴러</a>
-                    </li>
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
-                    </li>
-                    
-                    <li>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:30px;height:30px;"/><br>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-	                </li>
-	              
-	                <li>
-		                <div>
-							<button id="addMemo">메모 추가</button>
-						</div>
-	                </li>
-                    
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+   <!-- 네비게이션 -->
+	<%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
+    
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
+        
         <div class="container">
         	<br><br>
 			<div class="row">
@@ -152,8 +77,7 @@
 				    </section>
 			    <hr>
 		</div>
-			
-		        	
+		
         </div>
     </section>
     
@@ -181,14 +105,12 @@
 	<script src="${pageContext.request.contextPath}/web/js/main/news.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
-	
 </div>
-</body>
 
-</html>
+
 <script>
 // 이미지 받아오기 
-//	$.ajax({
+// 	$.ajax({
 //		url: "http://localhost:9090/b90ft4/main/newsImg.do",
 //		data:{
 //			url : items[i].link[0]
@@ -198,4 +120,7 @@
 //		console.log(result);
 //	});
 </script>
+</body>
+
+</html>
 
