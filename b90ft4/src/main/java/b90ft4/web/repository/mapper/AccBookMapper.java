@@ -58,7 +58,7 @@ public interface AccBookMapper {
 	public int selectMonthTotal(SearchVO search) throws Exception;
 	
 	// 가계부 이용률
-	public double selectAccRatio(String userId) throws Exception;
+	public double selectAccRatio(SearchVO search) throws Exception;
 
 	
 	

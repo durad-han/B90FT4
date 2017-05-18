@@ -68,36 +68,38 @@
                </div>
                              
 				<!-- 자산 등록 모달 -->
-				<div class="modal-dialog" style='width:25%;display: none;'>
-						<div class="modal-content">
-									
-							<div class="modal-header">
-								<h4 class="modal-title">지출 한도 설정
-									<button id="set">설정</button>
-									<button id="noSet">미설정</button>
-									
-								</h4>
+				<div class="modal-dialog" style='width:50%;display: none; text-align: center;'>
+						
+							<div class="modal-content">
+										
+								<div class="modal-header">
+									<h4 class="modal-title">지출 한도 설정
+										<button id="set">설정</button>
+										<button id="noSet">미설정</button>
+										
+									</h4>
+								</div>
+										
+		                        <div id="managementDiv">
+									    <div class="modal-body">
+											<form name="budgetManageF">
+					                                        
+			                                       	 <h4><b>이번 달</b></h4>
+		                                             <input type="text" style="font-weight: bold;text-align: center;" id="expensePlanDate" readonly />
+		                                             <br>
+			                                       	 <h4><b>목표 지출 한도</b></h4>
+			                                         <input type="text" id="expenseGoal"/>
+							                                                      
+				                              </form>
+				                              
+			                      	    </div>
+			                                
+										<div class="modal-footer">
+											<button type="button" id="registerPlan">등록</button>
+										</div>
+		                          </div>
+		                          
 							</div>
-									
-	                        <div id="managementDiv">
-								    <div class="modal-body">
-										<form name="budgetManageF">
-				                                        
-		                                       	 <h4><b>이번 달</b></h4>
-	                                             <input type="text" id="expensePlanDate" readonly />
-	                                             <br>
-		                                       	 <h4><b>목표 지출 한도</b></h4>
-		                                         <input type="text" id="expenseGoal"/>
-						                                                      
-			                              </form>
-			                              
-		                      	    </div>
-		                                
-									<div class="modal-footer">
-										<button type="button" id="registerPlan">등록</button>
-									</div>
-	                          </div>
-						</div>
 				</div>
                              
                            	

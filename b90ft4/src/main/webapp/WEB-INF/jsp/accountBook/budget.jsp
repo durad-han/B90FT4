@@ -155,12 +155,12 @@
 										   
 											  <div class="row">
 										   				
-									   				  <div class="col-md-3">
+									   				  <div class="col-md-3" id="expensePie">
 														   <div id="expenseDiv" style='width:100%;height:200px;'>			                       
 									                       </div>
 											   		  </div>
 	
-											   		  <div class="col-md-3">
+											   		  <div class="col-md-3" id="incomePie">
 									                	   <div id="incomeDiv" style="width:100%;height:200px;">			                       
 								                	       </div>
 											   		  </div>
@@ -306,16 +306,20 @@
 				        	  <br><br>
 				        	  
 				        	  <div id="budgetPlanDiv">
-						        	<h4><b>이번 달 지출 한도</b></h4>
+						        	<h4><b><span> </span> 지출 한도</b></h4>
 						        	<span style="display: block;"></span>
-						        	<h4><b>이번 달 현재 총 지출</b></h4>
+						        	<h4><b>현재 총 지출</b></h4>
 						        	<span style="display: block;"></span>
 						        	<h4><b>잔여 지출 한도</b></h4>
 						        	<span style="display: block;"></span>
 					          </div>
-					          
+
+					          <script>
+					          		var month = new Date().getMonth()+1;
+									$("#budgetPlanDiv > h4 > b").children("span").html(month+"월 달");
+					          </script>
+
 					          <div id="occupancyRatio" style="width: 100px; height:300px;position: relative;top:-270px;left:163px;">
-					          
 					          </div>
 				        	
 						 </div>	
@@ -411,12 +415,6 @@
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/jqBootstrapValidation.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
-	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
-	
-    <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
-    
     <!-- 차트 js -->
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
@@ -430,6 +428,12 @@
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.categoryAxisRenderer.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/jqplot.pointLabels.js"></script>
 	
+    <!-- Theme JavaScript -->
+    <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
+	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
+	
+    <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
+    
 	<!-- 채팅 js -->
 	<script>
 // 		var myId = "김현영";
@@ -437,7 +441,6 @@
 // 			myId = '${user.userId}';
 // 		}
 // 		console.log(myId);
-	console.log("수정");
     </script>
 <%-- 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
 

@@ -5,6 +5,7 @@
 	right: 10px;
 }
 
+
 div.memo{
 	width: 150px;
 	height: 250px;
@@ -12,7 +13,14 @@ div.memo{
     box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, 0.3);
     font-family: "Gloria Hallelujah", cursive;
     font-weight: bold;
-    
+}
+
+div.memo:hover{
+	cursor: pointer;	
+}
+
+.button.remove:hover{
+	cursor: pointer;	
 }
 
 .button.remove {
@@ -22,7 +30,8 @@ div.memo{
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: #E01C12;
+    background-color: rgba(255, 255, 255, 0) !important;
+    color:red !important;
     text-align: center;
     line-height: 16px;
     padding: 10px;
@@ -30,6 +39,8 @@ div.memo{
     font-style: 1.6em;
     font-weight: bolder;
     font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    font-size: 20px !important;
 }
 
 /* Button style  */

@@ -77,9 +77,12 @@ function statusChangeCallback(response) {
 					   </li>
                       
                    <li class = "dropdown">
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
+					     
+					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 					          가계부 <span class = "caret"></span>
 					      </a>
+					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
+					      
 					      <ul class = "dropdown-menu">
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>

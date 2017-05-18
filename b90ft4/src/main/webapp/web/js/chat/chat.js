@@ -12,7 +12,7 @@
 	
 	socket.on("socket",function(data){
 		socket = data;
-		console.log(socket.id);
+//		console.log(socket.id);
 	})
 	
 	function resize(user) {
@@ -26,8 +26,6 @@
         $("ul.chat-box-body").scrollTop(height+30);  // add more 400px for #chat-box position   
 		
 	}
-	console.log("리사이즈");
-	
 	// 메시지 받기
 	socket.on("msg",function (data) {
 		
@@ -89,7 +87,6 @@
 	
 	// 방 닫기.
 	function closeRoom(that) {
-		console.log("방 닫기");
 		var user = that.getAttribute("data-id");
 		delete madeRoom[user];
 		$("[data-close="+user+"]").remove();
@@ -99,7 +96,7 @@
 	function deleteRoom(e){
 		e.stopPropagation();
 		e.preventDefault();
-		console.log("전파 중지..");
+//		console.log("전파 중지..");
 		
 		var that = $(e.target).prev(); // a 요소
 		// 부모 삭제
@@ -127,8 +124,6 @@
 
 	// 방 목록 만들기
 	function makeRoomList(data) {
-		
-		console.log("방 만들기.");
 		
 		var onhtml="";
 		var offhtml="";
@@ -183,10 +178,7 @@
 		makeRoomList(data);
 		
 	    // 방 목록에 방 만드는 이벤트 걸기.
-	    console.log("방 만들기 이벤트 걸기");
 	    $('#chat-form .chat-group a.room').unbind('*').click(function(){
-	        
-	    	console.log("이벤트 전파 클릭");
 	        
 	    	$('#chat-box').hide();
 	    	
@@ -252,7 +244,7 @@
 	        var recvId = this.getAttribute("data-recvId");
 	        var roomNo = this.getAttribute("data-roomNo");
 	        
-	        console.log(recvId,roomNo);
+//	        console.log(recvId,roomNo);
 	        
 	        $("ul.chat-box-body").attr("id",recvId);
 	        
@@ -280,7 +272,7 @@
       
       var recvId = this.getAttribute("data-recvId");
       var roomNo = this.getAttribute("data-roomNo");
-      console.log("듀라드 처리 : ",recvId,roomNo);
+//      console.log("듀라드 처리 : ",recvId,roomNo);
       
       var $me = $obj.parent().parent().find('ul.chat-box-body');
       var $my_avt = '/b90ft4/web/image/accountBook/팬더.jpg';
@@ -324,7 +316,7 @@
 	
 	// 자기 관리 순위로 친구 추가.
 	function addFriend(id) {
-		console.log(id);
+//		console.log(id);
 		friend = id;
 		socket.emit("retrieveUser",id);	
 	}

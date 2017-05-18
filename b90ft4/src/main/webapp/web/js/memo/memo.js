@@ -2,11 +2,11 @@
 	
 		function memoCheck(){
 			if($("#showAndHideMemo").prop("checked")){
-				$("label[for=showAndHideMemo]").text("메모 보기");
+				$("label[for=showAndHideMemo]").text("메모 숨김");
 				bringMemo();
 			}else {
 				//console.log("ㅋㅋ");
-				$("label[for=showAndHideMemo]").text("메모 숨김");
+				$("label[for=showAndHideMemo]").text("메모 보기");
 				$("div.memo").each(function() {
 					$(this).remove();
 				});
@@ -71,25 +71,25 @@
  			var height = that.height();
 			
  			// 서쪽
-			if(x >=0 && x<=4) {
-				westSide(this);
-			}	
-			
-			// 동쪽
-			if(x >=width-4  && x <= width){
-				console.log("동쪽");
-				eastSide(this);
-			}
-			
-			// 북쪽
-			if(y>=0 && y<=4){
-				northSide(this);				
-			}
-			
-			// 남쪽
-			if(y>=height-4  && y <= height){
-				southSide(this);
-			}
+//			if(x >=0 && x<=4) {
+//				westSide(this);
+//			}	
+//			
+//			// 동쪽
+//			if(x >=width-4  && x <= width){
+//				console.log("동쪽");
+//				eastSide(this);
+//			}
+//			
+//			// 북쪽
+//			if(y>=0 && y<=4){
+//				northSide(this);				
+//			}
+//			
+//			// 남쪽
+//			if(y>=height-4  && y <= height){
+//				southSide(this);
+//			}
 			
 			if( !(x >=0 && x<=4) &&
 				!(x >=width-4  && x <= width) &&
@@ -99,6 +99,31 @@
 				moveMemo();
 			}
  			
+//			$(this).siblings().attr({
+//				ondragstart:"return false;",
+//				onselectstart:"return false"
+//			});
+
+			
+			$(document).on("dragstart",function() {
+				return;
+			});
+			
+			$(document).on("selectstart",function() {
+				return;
+			});
+
+			//			$(this).siblings().on("dragstart",function(){
+//				return;
+//			});
+
+//			$(this).siblings().on("selectstart",function(){
+//				return;
+//			});
+			
+			console.log("시블링2");
+			
+			
  			// 메모 이동.
 			function moveMemo() {
 				$(document).mousemove(function(event) {
@@ -113,6 +138,11 @@
 			
 		// edit.do
 		}).on("mouseup","div.memo",function() {
+			
+			
+			$(this).siblings().off("dragstart");
+			$(this).siblings().off("selectstart");
+
 			
 			$(this).css("opacity","1");
 			

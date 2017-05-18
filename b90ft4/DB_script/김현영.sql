@@ -488,6 +488,56 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 		 
 		
 		
+		 select  last_day('2017-04-01')
+		 select  concat('2017','-','04','-','01')
+
+		 select concat('2017','-','05')
+		  
+		 select substring(last_day(concat('2017','-','05','-01')),9,2)	
+		  
+		 select substring(now(),1,7)
+		 select concat('2017','-','05','-01')
+		 
+		 
+		 select dayofmonth(now()) 
+		 
+		  
+		  select 
+	  		round(((select count(*)
+	  			   from (
+					select expense_date 
+					  from tb_sam_expense
+					where substring(expense_date,1,7) = concat('2017','-','04')
+					  and user_id = 'Durad  Han'
+					group by expense_date
+					union
+					select income_date 
+					  from tb_sam_income
+					where substring(income_date,1,7) = concat('2017','-','04')
+					  and user_id = 'Durad  Han'
+					group by income_date
+			 		) cnt )) 
+			 		/
+			 	   CASE concat('2017','-','04')
+						WHEN substring(now(),1,7) THEN dayofmonth(now()) 
+						ELSE substring(last_day(concat('2017','-','04','-01')),9,2)		  
+					 END
+			 		* 
+			 		100,1)
+		  
+			 		
+			 		
+			 		dayofmonth(now()) 
+		  
+			 		 CASE concat('2017','-','05')
+						WHEN substring(now(),1,7) THEN dayofmonth(now()) 
+						ELSE substring(last_day(concat('2017','-','05','-01')),9,2)		  
+					 END
+		  
+		  
+		  
+		  
+		  
 		  
 		
 	

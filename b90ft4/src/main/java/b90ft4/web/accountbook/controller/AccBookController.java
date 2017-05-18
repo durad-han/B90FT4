@@ -238,8 +238,11 @@ public class AccBookController {
 	
 	@ResponseBody
 	@RequestMapping("/accRatio.do")
-	public String retrieveAccRatio() throws Exception {
-		return service.retrieveAccRatio("Durad  Han")+"";
+	public String retrieveAccRatio(SearchVO search) throws Exception {
+		
+		search.setUserId("Durad  Han");
+		
+		return service.retrieveAccRatio(search)+"";
 	}
 	
 	
