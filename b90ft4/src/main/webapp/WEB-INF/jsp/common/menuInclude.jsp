@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script>
+userId = "admin";
+
 function statusChangeCallback(response) { 
 	
 	if (response.status === 'connected') { 
-		if(!'${user}') setUser(); 
+		if(!'${user}'){
+			userId = '${user.userId}';
+			setUser(); 
+		}
 	} else if (response.status === 'not_authorized') { 
 		document.getElementById('status').innerHTML = '해당 페이지에 등록이 필요합니다'; 
 	} else { 
@@ -311,7 +316,6 @@ function statusChangeCallback(response) {
 		if('${user.userId}'){
 			myId = '${user.userId}';
 		}
-		console.log(myId);
     </script>
 	<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 

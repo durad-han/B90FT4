@@ -31,18 +31,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 		sMap.put("scheduleList", sm.selectScheduleList(ssVO));
 		sMap.put("pageResult", new PageResultVO(ssVO.getPageNo(), sm.selectScheduleCount(ssVO)));
 		
-//-----	디버그용 코드 -----------------------------------------------------------------------------
-//		System.out.println("--------------------------------");
-//		System.out.println("title : "+svo.getTitle());
-//		System.out.println("content : "+svo.getContent());
-//		System.out.println("userId : "+svo.getUserId());
-//		System.out.println("start : "+svo.getStart());
-//		System.out.println("--------------------------------");
 		return sMap;
 	}
 	
 	@Override
-	public Map<String, Object> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception {
+	public List<ScheduleVO> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception {
 		return sm.selectMonthly(ssVO);
 	}
 	

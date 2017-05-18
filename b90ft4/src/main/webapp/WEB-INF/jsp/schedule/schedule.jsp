@@ -21,6 +21,12 @@
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
 <%@include file="/WEB-INF/jsp/common/menuInclude.jsp"%>
+<script>
+var getUserId = "admin";
+if('${user.userId}'){
+	getUserId = '${user.userId}';
+}
+</script>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" >
@@ -239,6 +245,7 @@
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 </div>
 <script>
+
 </script>
 </body>
 

@@ -1,5 +1,6 @@
 package b90ft4.web.schedule.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -41,14 +42,13 @@ public class ScheduleController {
 	//----- 스케줄 한달치 호출시 ---------------------------------------------------------
 	@RequestMapping("/monthlyScheduleList.json")
 	@ResponseBody
-	public String monthlyScheduleList (String userId, String month, Model model) throws Exception{
+	public List<ScheduleVO> monthlyScheduleList (String userId, String month) throws Exception{
 		logger.debug("monthlyScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 		ssVO.setUserId(userId);
 		ssVO.setMonth(month);
 		
-		model.addAttribute("scheduleMap", ss.monthlyScheduleList(ssVO));
-		return "schedule/schedule";
+		return ss.monthlyScheduleList(ssVO);
 	}	
 
 	//----- 스케줄 디테일 출력용 (ajax 호출) ----------------------------------------------------------
@@ -74,16 +74,6 @@ public class ScheduleController {
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
 		ssVO.setUserId(userId);
 		return ss.retrieveScheduleList(ssVO);
-	}	
-	
-	//----- 스케줄 그래프 호출시 --------------------------------------------------------------------
-	@RequestMapping("/scheduleGraph.do")
-	public String retrieveScheduleGraph (Model model) throws Exception{
-		logger.debug("retrieveScheduleGraph");
-		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-		
-		model.addAttribute("scheduleMap", ss.retrieveScheduleList(ssVO));
-		return "schedule/scheduleGraph";
 	}	
 	
 	

@@ -1,5 +1,6 @@
 package b90ft4.web.schedule.service;
 
+import java.util.List;
 import java.util.Map;
 
 import b90ft4.web.repository.vo.ScheduleSearchVO;
@@ -10,7 +11,7 @@ public interface ScheduleService {
 
 	Map<String, Object> retrieveScheduleList(ScheduleSearchVO ssVO) throws Exception;
 
-	Map<String, Object> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception;
+	List<ScheduleVO> monthlyScheduleList(ScheduleSearchVO ssVO) throws Exception;
 	
 	ScheduleVO retrieveSchedule(int scheduleNo) throws Exception;
 

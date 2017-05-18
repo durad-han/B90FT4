@@ -67,6 +67,7 @@
 		from	tb_Sam_Schedule
 		where	User_Id = #{userId}
 		and		left(start,2) = #{month}
+		order	by Start
 	</select>
 	
 	

@@ -23,6 +23,6 @@ public interface ScheduleMapper {
 	
 	public void insertSchedule(ScheduleVO schedule) throws Exception;
 
-	public Map<String, Object> selectMonthly(ScheduleSearchVO ssVO) throws Exception;
+	public List<ScheduleVO> selectMonthly(ScheduleSearchVO ssVO) throws Exception;
 
 }
