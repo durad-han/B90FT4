@@ -283,31 +283,10 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	var html = "";
 	//typeA load
 	if(type == "A"){
-		console.log("typeA load");
-		
-/*
-		html += "<div id='typeAContainer'>"	+
-					"<div class='container'>"+
-						"<div class='front'>"+
-							"<div></div>"+
-							"<div class='value_front'>Start!</div>"+
-							"<div></div>"+
-						"</div>"+
-						"<div class='back'>"+
-							"<div></div>"+
-							"<div class='value_back'>0</div>"+
-							"<div></div>"+
-						"</div>"+
-					"</div>"+
-				"</div>";
-		
-		$('#typeContainer').html(html);
-*/
-		
-		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA.html");
-		//해당 운동의 첫번째 세트 띄워줌 ERRORCODE1
-		//$("#setNo1").trigger("click");
+		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA2.html");
 	}
+
+	
 	//typeB load
 	else if(type == "B"){
 		console.log("typeB load");
@@ -344,6 +323,85 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	
 	/*console.log(html);*/
 }
+//typeA 관련 함수
+var nextSet = gvSetIndex+1;
+var count, rotateY, setValueFunc, value, zero;
+zero = 0;
+rotateY = 180;
+value = -1;
+count = -1;
+maxValue = gvTypeACount;
+max = "/"+maxValue;
+breakTimeVal = 10;
+
+
+$(".front").on("mousedown", function() {
+
+	count++;
+	$("#typeAContainer").css({"background": "#0080ff"});
+	$("#typeAContainer > .container").css({
+    "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+});
+value++;
+  
+  if(count === maxValue){
+	  $("#typeAContainer").css({"background": "#ff7373"});
+  		if(gvIsLast){
+  		
+  		calIncDec();
+		  alert("마지막 세트입니다.");
+		  
+  		}
+  		else{
+		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+		
+		calIncDec();
+		  $("#setNo"+nextSet).trigger("click");
+		  
+		}
+      $("#typeAContainer > .container").css({
+          "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+        });
+	  value = -1;
+	  count = -1;
+	  return $(".value_front").text("Start!");
+  }
+  
+  return $(".value_back").text(value + max);
+});
+
+$(".back").on("mousedown", function() {
+	
+	count++;
+	$("#typeAContainer").css({"background": "#0080ff"});
+	$("#typeAContainer > .container").css({
+		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	});
+	value++;
+    if(count === maxValue){
+    	$("#typeAContainer").css({"background": "#ff7373"});
+    	if(gvIsLast){
+    		
+    		calIncDec();
+  		  alert("마지막 세트입니다.");
+    	}
+    	else{
+    		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+    		
+    		calIncDec();
+    		 $("#setNo"+nextSet).trigger("click");
+    		 
+  		}
+    	
+        $("#typeAContainer > .container").css({
+            "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+          });
+  	  value = -1;
+  	  count = -1;
+  	  return $(".value_back").text("Start!");
+    }
+	return $(".value_front").text(value + max);
+});
 
 
 listLoad();

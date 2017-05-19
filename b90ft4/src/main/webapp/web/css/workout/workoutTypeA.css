@@ -21,7 +21,7 @@
   -webkit-perspective: 300px;
           perspective: 300px;
 }
-#typeAContainer > .container {
+#typeAContainer > .containerA {
   background: transparent;
   border-radius: 4px;
   width: 272px;
@@ -31,19 +31,19 @@
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
-#typeAContainer > .container .front {
+#typeAContainer > .containerA .front {
   background: #fff;
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
   z-index: 2;
 }
-#typeAContainer > .container .back {
+#typeAContainer > .containerA .back {
   background: #fff;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
-#typeAContainer > .container .front,
-#typeAContainer > .container .back {
+#typeAContainer > .containerA .front,
+#typeAContainer > .containerA .back {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -60,32 +60,32 @@
   height: 100px;
   border-radius: 4px;
 }
-#typeAContainer > .container .front .decrement,
-#typeAContainer > .container .back .decrement,
-#typeAContainer > .container .front .increment,
-#typeAContainer > .container .back .increment {
+#typeAContainer > .containerA .front .decrement,
+#typeAContainer > .containerA .back .decrement,
+#typeAContainer > .containerA .front .increment,
+#typeAContainer > .containerA .back .increment {
   width: 64px;
   height: 100px;
   opacity: 0.2;
 }
-#typeAContainer > .container .front .decrement:hover,
-#typeAContainer > .container .back .decrement:hover,
-#typeAContainer > .container .front .increment:hover,
-#typeAContainer > .container .back .increment:hover {
+#typeAContainer > .containerA .front .decrement:hover,
+#typeAContainer > .containerA .back .decrement:hover,
+#typeAContainer > .containerA .front .increment:hover,
+#typeAContainer > .containerA .back .increment:hover {
   cursor: pointer;
 }
-#typeAContainer > .container .front .decrement,
-#typeAContainer > .container .back .decrement {
+#typeAContainer > .containerA .front .decrement,
+#typeAContainer > .containerA .back .decrement {
   background: url("http://frolovoleg.ru/images/decrement.svg") no-repeat center;
 }
-#typeAContainer > .container .front .increment,
-#typeAContainer > .container .back .increment {
+#typeAContainer > .containerA .front .increment,
+#typeAContainer > .containerA .back .increment {
   background: url("http://frolovoleg.ru/images/increment.svg") no-repeat center;
 }
-#typeAContainer > .container .front .value_front,
-#typeAContainer > .container .back .value_front,
-#typeAContainer > .container .front .value_back,
-#typeAContainer > .container .back .value_back {
+#typeAContainer > .containerA .front .value_front,
+#typeAContainer > .containerA .back .value_front,
+#typeAContainer > .containerA .front .value_back,
+#typeAContainer > .containerA .back .value_back {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

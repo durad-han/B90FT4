@@ -97,7 +97,7 @@ function saveCal(){
 	 leftBar 	= [0,0,0,0,0,0,0];
 	 overBar 	= [0,0,0,0,0,0,0];
 	 totalCal    = [0,0,0,0,0,0,0];
-	gvSpentCal = $("#setSpenCal").val();
+	gvSpentCal = $("#setSpendCal").val();
 	gvIntakeCal = $("#setConsumeCal").val();
 	updateCal();
 	chartDayCall();
