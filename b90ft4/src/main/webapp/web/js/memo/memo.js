@@ -41,8 +41,8 @@
 					       }
 						));
 						
-			$("#last").after(obj);
-//			$("body").append(obj);
+//			$("#last").after(obj);
+			$("body").append(obj);
 			
 			$.ajax({
 				url:"/b90ft4/memo/save.do",
@@ -295,8 +295,8 @@
 							       margin: "0 auto"
 								}).html(sList[i].memoContent));
 					
-//					$("body").append(obj);
-					$("#last").after(obj);
+					$("body").append(obj);
+//					$("#last").after(obj);
 					
 				}
 			});

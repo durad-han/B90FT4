@@ -40,9 +40,24 @@
 <!-- 채팅 ==================================================================================================== -->
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 <!-- 채팅 ==================================================================================================== -->
+
 <style>
 .dropdown-menu > li{
-	color:black !important;
-	background: black !important;
+	color:green !important;
+	background: #9a4545 !important;
 }
+</style>
+
+<style>
+
+	img.menu {
+		width:60px;
+		height: 50px;
+	}
+	
+	.nav a:hover {
+		background-color: #fff !important;
+		transition:1s;
+	}
+	
 </style>
