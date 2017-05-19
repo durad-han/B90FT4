@@ -26,6 +26,11 @@ var date6 = $.datepicker.formatDate("yy-mm-dd",myDate);
 myDate.setDate(dayOfMonth - 6);
 var date7 = $.datepicker.formatDate("yy-mm-dd",myDate);
 
+$(document).ready(function() {
+	chartDayCall();
+
+});
+
 
 
 //음식 검색 관련 함수
@@ -34,15 +39,35 @@ function searchFood(foodValue){
 	$.ajax({
 		url : "selectWorkoutFoodList.do",
 		dataType : "json",
-		data : {"foodValue":foodValue} 
+		data : {"foodValue":foodValue}
 	}).done(function(result){
+		var foodSearchList = "";
+		var foodOtherInfo = "";
+		var tempFood = "";
 		for(var i = 0 ; i<result.length ; i++){
-			$('$fooodList').append('<option value='+result.foodCal+'>'+result.foodName+' / '+result.foodCal+' kcal</option>');
+			foodSearchList += '<option value='+result[i].foodCal+'>'+result[i].foodName+' / '+result[i].foodCal+' kcal</option>';
+			foodOtherInfo  += '<option value='+result[i].foodCal+'>'+result[i].foodName+' / '+result[i].foodCal+' kcal</option>';
+			tempFood += '<tr><td align="left"><input type="button" style="background-color:white;border:0px;" onclick="addFood('+result[i].foodNumber+','+result[i].foodCal+')" value="'+result[i].foodName+' / '+result[i].foodCal+' kcal" id="foodButton'+result[i].foodNumber+'"></td></tr>';
 		}
+		$('#foodList').html(foodSearchList);
+		$('#foodTable').html(tempFood);
 	});
 }
 
-
+function addFood(foodNumber,foodCal){
+	var foodName = $("#foodButton"+foodNumber).val();
+	
+	$('#foodSelectedTable').append('<tr id = "foodSelected'+foodNumber+'"><td align="left"><input type="button" style="background-color:white;border:0px;" onclick="removeFood('+foodNumber+','+foodCal+')" value="'+foodName+'"></td></tr>'
+	);
+	totalIntakeCal += foodCal;
+	$('#setConsumeCal').val(totalIntakeCal);
+	
+}
+function removeFood(foodNumber,foodCal){
+	$('#foodSelected'+foodNumber).remove();
+	totalIntakeCal -= foodCal;
+	$('#setConsumeCal').val(totalIntakeCal);
+}
 $("#setFood").on("keyup" , function(){
 	var foodValue = $("#setFood").val();
 	searchFood(foodValue);
@@ -67,7 +92,6 @@ function updateCal(){
 		data : {"spentCal" : spentCal , "intakeCal" : intakeCal ,"today" : today, "userId" : userId} 
 	});
 }
-//닫기버튼
 function saveCal(){
 	 spendBar 	= [0,0,0,0,0,0,0];
 	 leftBar 	= [0,0,0,0,0,0,0];
@@ -145,9 +169,7 @@ function setChart(){
 	});
 
 }
-$(document).ready(function() {
-	chartDayCall();
-});
+
 
 
 
@@ -164,6 +186,43 @@ function showBMContainer(){
 	$("#callBMBtn").trigger("click");
 	
 }
+function showBM(){
+	$.ajax({
+		url:"selectWorkoutUserInfo.do",
+		dataType:"json",
+		data:{"userId" : userId}
+
+		}).done(function(result){
+			
+			//console.dir(result);
+			$('#setUserHeight').val(Number(result.userHeight));
+			$('#setUserWeight').val(Number(result.userWeight));
+			$('#setUserAge').val(Number(result.userAge));
+			
+			if(result.userGender == 'male'){
+				$('#genderFemale').removeClass('checked');
+				$('#genderMale').addClass('checked');
+			}
+			else{
+				$('#genderMale').removeClass('checked');
+				$('#genderFemale').addClass('checked');
+			}
+			
+		    var userHeight = Number($("#setUserHeight").val());
+		    var userWeight = Number($("#setUserWeight").val());
+		    var userAge = Number($("#setUserAge").val());
+		    var userGender = $('input:radio[name=gender]:checked').val();
+		    	BM = 66.47 + ( 13.175 * userWeight ) + ( 5 * userHeight ) - ( 6.76 *  userAge );
+		    
+		    if ( userGender == 'female'){
+		    	BM = 655.1 + (9.56 * userWeight ) + (1.85 * userHeight ) - ( 4.68 * userAge );
+		    	tempflag = 2;
+		    }
+		    var tempBM = Number($("#setSpendCal").val())+Number(BM);
+			$("#setSpendCal").val(tempBM);
+		});
+}
+
 
 function hideBMContainer(){
 	$('#BMContainer').addClass('hidden');
@@ -171,7 +230,6 @@ function hideBMContainer(){
 
 
 function callIntakeCal(){
-	totalIntakeCal = 0;
 	$.ajax({
 		url:"selectWorkoutStatisticsList.do",
 		dataType:"json",
