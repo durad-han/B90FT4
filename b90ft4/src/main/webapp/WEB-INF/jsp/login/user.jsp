@@ -69,11 +69,11 @@
              		<div class="panel-heading">${user.userId}님의 신체정보</div>
                 	<div class="panel-body">
                 	
-							<form name="updateUser" action="updateUser.do" onsubmit="return userForm();" method="post">
+							<form name="updateUser" action="/b90ft4/workout/updateUserInfo.do" onsubmit="return userForm();" method="post">
 							<div class="form-body pal">
 									
 									<div class="form-group">
-								        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${userInfo.userId}" class="form-control" />
+								        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" />
 									</div>
 									<div class="form-group">
 								        <input id="userHeight" name="userHeight" type="text" placeholder="키" value="${userInfo.userHeight}" class="form-control" />
@@ -85,7 +85,8 @@
 								        <input id="userAge" name="userAge" type="text" placeholder="연령" value="${userInfo.userAge}" class="form-control" />
 									</div>
 									<div class="form-group">
-								        <input id="userGender" name="userGender" type="text" placeholder="성별" value="${userInfo.userGender}" class="form-control" />
+										<input type="radio" name="userGender" id="genderMale" value="male" checked> 남 
+										<input type="radio" name="userGender" id="genderFemale" value="female"> 여<br>
 									</div>
 									    
 									<div class="form-actions text-center pal">
@@ -133,8 +134,27 @@
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 <script>
 function userForm() {
-	alert("err");
-	
+// 		var userId = '{user.userId}';
+// 		var userHeight = Number($("#userHeight").val());
+// 	    var userWeight = Number($("#userWeight").val());
+// 	    var userAge = Number($("#userAge").val());
+// 	    var userGender = $('input:radio[name=userGender]:checked').val();
+		
+// 		$.ajax({
+// 			url:"workout/updateWorkoutUserInfo.do",
+// 			dataType:"json",
+// 			data : {
+// 					"userId" : userId,
+// 					"userHeight" : userHeight,
+// 					"userWeight" : userWeight,
+// 					"userAge" : userAge,
+// 					"userGender" : userGender
+// 					}
+			
+// 			}).done(function(){
+// 				console.log("update is done.");
+// 			});
+		
 }
 </script>
 </body>

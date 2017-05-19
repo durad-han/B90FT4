@@ -94,8 +94,12 @@ $(function () {
 							
 					   </li>
 	                   <li class = "loginCall">
+<<<<<<< HEAD
+							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a>
+=======
 							<br>
 							<a href = "${pageContext.request.contextPath}/login/user.do">내 정z보</a>
+>>>>>>> 6fc31b0131ac6a584bb1cf66f493392d9cfcaa89
 					   </li>
                       
                    <li class = "dropdown">

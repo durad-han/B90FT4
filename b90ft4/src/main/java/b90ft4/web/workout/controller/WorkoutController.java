@@ -111,6 +111,20 @@ public class WorkoutController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/updateUserInfo.do")
+	public String updateUserInfo(String userId, int userHeight, int userWeight, int userAge, String userGender, Model model) throws Exception{
+		String checkUserId = ws.workoutUserInfoSelectUserId(userId);
+		if(checkUserId.equals("null")){
+			ws.workoutUserInfoInsert(userId, userHeight, userWeight, userAge, userGender);
+		}
+		else{
+			ws.workoutUserInfoUpdate(userId, userHeight, userWeight, userAge, userGender);
+		}
+		model.addAttribute("userInfo",selectWorkoutUserInfo(userId));
+		return "login/user";
+	}
+	
+	@ResponseBody
 	@RequestMapping("/deleteWorkoutUserInfo.do")
 	public void deleteWorkoutUserInfo(String userId) throws Exception{
 		System.out.println(userId);
