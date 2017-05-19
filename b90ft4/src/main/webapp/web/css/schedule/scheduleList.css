@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
 .side-scroll {
+	margin-top: 30px;
+	padding: 3px;
 	position: relative !important;
     overflow-y: scroll !important;
     height: 600px !important;
@@ -39,6 +41,25 @@ top: -.75em;
 vertical-align: middle; 
 z-index: 1; 
 } 
+
+.schedule-list__pagination { 
+	background-color: #ff8000; 
+	box-shadow: 0 0 1em rgba(0, 0, 0, 0.25); 
+	display: block; 
+	color: black;
+/* 	bottom: 0; left: 0;  */
+/* 	list-style-type: none;  */
+/* 	margin: 0;  */
+/* 	padding: .5em;  */
+/* 	position: fixed;  */
+/* 	right: 0;  */
+	text-align: center; 
+	transform: translateY(0); 
+	transition: transform 0.2s; 
+	z-index: 2; 
+	} 
+.schedule-list__pagination--inactive { transform: translateY(100%); } 
+
 
 .sList__item--orange {
 	border: 1px solid #DE660F;

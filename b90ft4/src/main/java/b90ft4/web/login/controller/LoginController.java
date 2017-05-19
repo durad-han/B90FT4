@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import b90ft4.web.login.service.LoginService;
 import b90ft4.web.repository.vo.UserVO;
+import b90ft4.web.workout.controller.WorkoutController;
 
 @Controller
 @RequestMapping("/login")
@@ -21,10 +22,15 @@ public class LoginController {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping("/user.do")
-	public void user () throws Exception{
+	public void user (String userId, HttpSession session) throws Exception{
 		UserVO user = new UserVO();
-		user.setUserId("Durad  Han");
+		logger.debug("user side Id : "+userId);
+		user.setUserId(userId);
 		ls.userCheck(user);
+		
+//		WorkoutController wc = new WorkoutController();
+//		session.setAttribute("userInfo", wc.selectWorkoutUserInfo(userId));
+		
 	}
 	
 	@RequestMapping("/updateUser.do")

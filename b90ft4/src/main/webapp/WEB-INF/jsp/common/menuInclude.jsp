@@ -79,7 +79,7 @@ function statusChangeCallback(response) {
 							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
 					   </li>
 	                   <li class = "loginCall">
-							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
+							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a>
 					   </li>
                       
                    <li class = "dropdown">
