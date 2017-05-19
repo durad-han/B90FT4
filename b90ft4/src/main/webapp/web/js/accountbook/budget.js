@@ -631,8 +631,8 @@
 				
 				$("#budgetPlanDiv").hide();
 				
-				$("#expenseDiv").html("zzzz");
-				$("#incomeDiv").html("zzzzzz");
+//				$("#expenseDiv").html("zzzz");
+//				$("#incomeDiv").html("zzzzzz");
 				
 			}else{
 				showPlan();

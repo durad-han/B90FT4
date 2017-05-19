@@ -12,14 +12,14 @@
     <meta name="author" content="">
 
     <title>Freelancer - Start Bootstrap Theme</title>
-    <!-- Bootstrap Core CSS -->
+<!--     Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
 <%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css"> --%>
 
     <!-- Theme CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet"> --%>
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet"> --%>
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/news.css" rel="stylesheet"> --%>
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/news.css" rel="stylesheet">
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/memo.css" rel="stylesheet"> --%>
 	
 <!--     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
@@ -27,7 +27,7 @@
 <!--   	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
     <!-- Custom Fonts -->
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --%>
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
 <!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
 	<%@include file="/WEB-INF/jsp/common/topInclude.jsp"%>
@@ -109,6 +109,7 @@
 
 
 <script>
+	console.log("ㅎㅎㅎ");
 // 이미지 받아오기 
 // 	$.ajax({
 //		url: "http://localhost:9090/b90ft4/main/newsImg.do",

@@ -49,9 +49,19 @@ function statusChangeCallback(response) {
     });
   }
 </script>
+<script>
+
+$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+});
+
+</script>
 
 
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+<!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
+<!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
+<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
+       
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -76,16 +86,23 @@ function statusChangeCallback(response) {
 				<c:otherwise>
 
 	                   <li class = "logoutCall">
-							<a href = "javascript:logout();"><c:out value="${user.userId}"/>님 로그아웃</a>
+	                   		<br>
+							<a href = "javascript:logout();">
+								<c:out value="${user.userId}"/>님 로그아웃
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/로그아웃.png" /> --%>
+							</a>
+							
 					   </li>
 	                   <li class = "loginCall">
-							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
+							<br>
+							<a href = "${pageContext.request.contextPath}/login/user.do">내 정z보</a>
 					   </li>
                       
                    <li class = "dropdown">
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
+<!-- 					          가계부 <span class = "caret"></span> -->
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/가계부5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" />
 					      </a>
 					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
@@ -98,16 +115,22 @@ function statusChangeCallback(response) {
 				   </li>
 				   
                     <li>
-                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
+                        <a href="${pageContext.request.contextPath}/diary/list.do">
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/일기5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" />
+                        </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">스케줄</a>
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	
+                        		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/스케쥴5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" />
+                        </a>
+
                     </li>
                         
                     <li>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
+                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
+<!-- 					          운동 <span class = "caret"></span> -->
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/운동5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -125,25 +148,28 @@ function statusChangeCallback(response) {
                         </script>
                     </li>
                     <li>
-		                <span>
+<!-- 		                <span> -->
 							<a id="addMemo">
-								<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
 							</a>
-						</span><br>
+<!-- 						</span> -->
 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
 		            </li>
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
-						<a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
-						       <i class="fa fa-comments"></i>
+						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>채팅</h3>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+<!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/채팅5.png" />
 						</a>
 				   </li>
 				</c:otherwise> 
 			</c:choose>
                         
                     <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
+                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>뉴스</h3>">
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/뉴스5.png"  />
+                        </a>
                     </li>
 
                 </ul>
@@ -311,7 +337,6 @@ function statusChangeCallback(response) {
      
 	<!-- 채팅 네비게이션에 꼭 필요. -->
     <!-- 채팅 js -->
-    <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script>
 	<script>
 // 		var myId = "김현영";
 		if('${user.userId}'){
@@ -319,14 +344,14 @@ function statusChangeCallback(response) {
 		}
     </script>
     <c:if test="${not empty user.userId}">
-		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+<!-- 	    <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
+<%-- 		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
+<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script>  --%>
+<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script> --%>
+<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script> --%>
+<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script> --%>
+<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script> --%>
     </c:if>
-
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
     <!-- 꼭 필요. -->
      
     

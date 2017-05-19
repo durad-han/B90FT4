@@ -413,6 +413,7 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 	
+	<!-- 메모 js -->
 	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
 	
 	<script src="${pageContext.request.contextPath}/web/js/accountbook/barChart.js"></script>
@@ -425,6 +426,7 @@
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
 	
+	<!-- budget js -->
     <script src="${pageContext.request.contextPath}/web/js/accountbook/budget.js"></script>
     
 	<!-- 채팅 js -->

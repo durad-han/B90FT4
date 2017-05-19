@@ -11,9 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>COG + I - 가계부</title>
      <!-- Bootstrap Core CSS -->
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css"> --%>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
     
     <!-- chat -->
 <%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css"> --%>
@@ -55,6 +55,8 @@
 <body id="page-top" class="index">
 
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
+
+
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
@@ -250,8 +252,6 @@
 	</div>
     
     
-    
-
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
@@ -259,9 +259,7 @@
         </a>
     </div>
     
-
-    <!-- jQuery -->
-<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/jquery/jquery.min.js"></script> --%>
+</div> <!-- container div 끝 -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -272,19 +270,19 @@
     <!-- Contact Form JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/jqBootstrapValidation.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/contact_me.js"></script>
+	
+	<!-- 메모 js -->	
+	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
+	
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/js/freelancer.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/common/validUtil.js"></script>
+    
+    <!-- loanDept js -->
     <script src="${pageContext.request.contextPath}/web/js/accountbook/loanDept.js"></script>
 	
-    <!-- 차트 js -->
-	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
-	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
-	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"></script>
-	
-</div>
+
 </body>
 
 </html>

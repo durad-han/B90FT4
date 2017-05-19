@@ -6,6 +6,9 @@
 	var html="";
 	
 	socket = io.connect("http://192.168.0.60:10001");
+	
+	if(socekt) {
+	
 	socket.emit("passId",myId);
 	
 	socket.on("socket",function(data){
@@ -344,5 +347,5 @@
 		friend="";
 	});
 	
-	
+	}
 	
