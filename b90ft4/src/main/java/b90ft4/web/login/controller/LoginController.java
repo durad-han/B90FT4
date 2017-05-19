@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import b90ft4.web.login.service.LoginService;
 import b90ft4.web.repository.vo.UserVO;
 import b90ft4.web.workout.controller.WorkoutController;
+import b90ft4.web.workout.service.WorkoutService;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired
 	private LoginService ls;
+	@Autowired
+	private WorkoutService ws;
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -27,10 +30,8 @@ public class LoginController {
 		logger.debug("user side Id : "+userId);
 		user.setUserId(userId);
 		ls.userCheck(user);
-		
-//		WorkoutController wc = new WorkoutController();
-//		session.setAttribute("userInfo", wc.selectWorkoutUserInfo(userId));
-		
+		System.out.println(ws.workoutUserInfoSelect(userId));
+//		session.setAttribute("userInfo", ws.workoutUserInfoSelect(userId));
 	}
 	
 	@RequestMapping("/updateUser.do")

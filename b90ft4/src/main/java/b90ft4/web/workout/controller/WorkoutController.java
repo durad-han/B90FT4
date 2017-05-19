@@ -110,7 +110,6 @@ public class WorkoutController {
 		//이 서비스가 실패하는 경우 굳이 실패 메세지를 넘겨줄 필요 없이 html단에서 var로 실패했다는 메세지 심어넣어놨다가 정상적으로 값이 넘어오지 않을 경우 그 메세지를 보여주면 됨.
 	}
 	
-	@ResponseBody
 	@RequestMapping("/updateUserInfo.do")
 	public String updateUserInfo(String userId, int userHeight, int userWeight, int userAge, String userGender, Model model) throws Exception{
 		String checkUserId = ws.workoutUserInfoSelectUserId(userId);
@@ -121,7 +120,7 @@ public class WorkoutController {
 			ws.workoutUserInfoUpdate(userId, userHeight, userWeight, userAge, userGender);
 		}
 		model.addAttribute("userInfo",selectWorkoutUserInfo(userId));
-		return "login/user";
+		return "redirect:/login/user.do";
 	}
 	
 	@ResponseBody
