@@ -57,7 +57,6 @@ $(function () {
 
 </script>
 
-
 <!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 <!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 <nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -94,17 +93,15 @@ $(function () {
 							
 					   </li>
 	                   <li class = "loginCall">
-							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a>
+							<br>
+							<a href = "${pageContext.request.contextPath}/login/user.do">내 정보</a>
 					   </li>
                       
                    <li class = "dropdown">
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-<!-- 					          가계부 <span class = "caret"></span> -->
 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/가계부5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" />
 					      </a>
-					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
-					      
 					      <ul class = "dropdown-menu">
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li>
@@ -147,13 +144,14 @@ $(function () {
                         </script>
                     </li>
                     <li>
-<!-- 		                <span> -->
-							<a id="addMemo">
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
-							</a>
-<!-- 						</span> -->
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+						<a id="addMemo">
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
+						</a>
+	    				
+						<span style="margin-left: 15px;">	    				
+	              	    	<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
+						</span>
+						            
 		            </li>
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
@@ -162,6 +160,7 @@ $(function () {
 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/채팅5.png" />
 						</a>
 				   </li>
+				   
 				</c:otherwise> 
 			</c:choose>
                         
@@ -222,6 +221,21 @@ $(function () {
 	         </div>
         </div>
    </div>
+   
+   <!-- 스위치 -->
+
+
+<%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script> --%>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
+    
+    
+   <!-- 스위치 --> 
     
      <!-- 채팅 -->
      <!--BEGIN CHAT FORM-->
@@ -352,7 +366,6 @@ $(function () {
 <%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script> --%>
     </c:if>
     <!-- 꼭 필요. -->
-     
     
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");

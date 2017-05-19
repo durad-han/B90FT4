@@ -31,7 +31,6 @@ public class ScheduleController {
 	public String retrieveScheduleList (String userId, Model model) throws Exception{
 		logger.debug("retrieveScheduleList");
 		ScheduleSearchVO ssVO = new ScheduleSearchVO();
-		logger.debug(userId);
 		ssVO.setUserId(userId);
 		
 		if(ss.retrieveScheduleList(ssVO) != null){ 
@@ -104,15 +103,6 @@ public class ScheduleController {
 	@RequestMapping("/insertSchedule.do")
 	public String insertSchedule (ScheduleVO scheduleVO, RedirectAttributes attr) throws Exception{
 		logger.debug("insertSchedule");
-		
-		logger.debug("--------------------------------");
-		logger.debug("scheduleVO 자동화 체크 : ");
-		logger.debug("title "+scheduleVO.getTitle());
-		logger.debug("content "+scheduleVO.getContent());
-		logger.debug("start "+scheduleVO.getStart());
-		logger.debug("end "+scheduleVO.getEnd());
-		logger.debug("importance "+scheduleVO.getImportance());
-		logger.debug("--------------------------------");
 		
 		if(scheduleVO.getTitle() != null)ss.insertSchedule(scheduleVO);
 		attr.addFlashAttribute("msg", "스케줄이 입력되었습니다");

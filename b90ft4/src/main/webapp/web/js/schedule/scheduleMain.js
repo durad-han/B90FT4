@@ -33,6 +33,7 @@ function addPage(currentMonth) {
 	console.log("currentMonth : "+currentMonth);
 	fetchPage(currentMonth);
 	addPaginationPage(currentMonth);
+	listStars();
 }
 
 function fetchPage(currentMonth) {
@@ -85,7 +86,7 @@ function getSchedule(scheduleItem) {
 	shtml += "		<p class='title'>"+scheduleItem.title+"</p>"
 	shtml += "	</div>"
 	shtml += "	<div class='sList__options'>"
-	shtml += "		<p class='achieve'>"+scheduleItem.importance+"</p>"
+	shtml += "		<div id='list-stars'>"+scheduleItem.importance+"</div>"
 	shtml += "		<input type='hidden' id='sNo' value='"+scheduleItem.scheduleNo+"'>"
 	shtml += "	</div>"
 	shtml += "	</div>"
@@ -119,6 +120,42 @@ window.onscroll = function() {
 	addPage(month[++currentMonth]);
 };
 
+function listStars(){
+	console.log("listStars!")
+	$("#list-stars").starRating({
+		totalStars: 3,
+		initialRating: 0,
+		starSize: 40,
+		starShape: 'rounded',
+		emptyColor: 'lightgray',
+		hoverColor: 'salmon',
+		activeColor: 'yellow',
+		useFullStars: true,
+		useGradient: true,
+		starGradient: {start: '#FEF7CD', end: '#FF9511'},
+		disableAfterRate: false,
+		onHover: function(currentIndex, currentRating, $el){
+					var navTxt = "";
+					switch(currentIndex){
+					case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+					case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+					case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+					default : navTxt = "설정되지 않음 : 중요도를 설정합니다"; break;
+					}
+				      $('.stars-msg').text(navTxt);
+				    },
+		onLeave: function(currentIndex, currentRating, $el){
+					var navTxt = "";
+					switch(currentRating){
+					case 1: navTxt = "보통 : 일정을 추가합니다"; break;
+					case 2: navTxt = "중요 : 중요한 일정을 추가합니다"; break;
+					case 3: navTxt = "매우 중요 : 알람이 제공되는 특별한 일정을 추가합니다"; break;
+					default : navTxt = "설정되지 않음 : 중요도를 설정합니다"; break;
+					}
+				        $('.stars-msg').text(navTxt);
+				    },
+	});
+}
 //----- schedule for calendar ---------------------------------------------------------------------------------------------
 $(document).ready(function() {
 	$.ajax({
@@ -134,7 +171,6 @@ function fullCal(result) {
 	var sList = result['scheduleList'];
 	var calObj = [];
 	for(var i = 0 ; i < sList.length ; i++){
-		console.log(sList[i]);
 		calObj.push(sList[i])
 	}
 	
@@ -153,12 +189,11 @@ function fullCal(result) {
 	
 };
 
-
+//----- 스케줄 기능 먹이기 -------------------------------------------------------------------------------------
 function scheduleBody(result){
 	
 	if(result!=null) console.log("중요도 : "+result.importance)
 	
-console.log("foxholder proceed")
 //----- foxholder -----------------------------------------------------------
 	jQuery('.clz-insertSchedule').foxholder({
 		demo: 6 //(1-15)
@@ -210,7 +245,45 @@ console.log("foxholder proceed")
 		case 3: $(".stars").starRating('setRating', 3);break;
 		}
 	}
+	(function($) {
+		  $.fn.conditionize = function(options){ 
+		    
+		     var settings = $.extend({
+		        hideJS: true
+		    }, options );
+		    
+		    $.fn.showOrHide = function(listenTo, listenFor, $section) {
+		      if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
+		        $section.slideDown();
+		      }
+		      else if ($(listenTo + ":checked").val() == listenFor) {
+		        $section.slideDown();
+		      }
+		      else {
+		        $section.slideUp();
+		      }
+		    } 
 
+		    return this.each( function() {
+		      var listenTo = "[name=" + $(this).data('cond-option') + "]";
+		      var listenFor = $(this).data('cond-value');
+		      var $section = $(this);
+		  
+		      //Set up event listener
+		      $(listenTo).on('change', function() {
+		        $.fn.showOrHide(listenTo, listenFor, $section);
+		      });
+		      //If setting was chosen, hide everything first...
+		      if (settings.hideJS) {
+		        $(this).hide();
+		      }
+		      //Show based on current value on page load
+		      $.fn.showOrHide(listenTo, listenFor, $section);
+		    });
+		  }
+		}(jQuery));
+		  
+		 $('.conditional').conditionize();
 }
 
 //----- 좌측 스케줄 리스트로부터 선택된 스케줄 detail 값 받아오기 -------------------------------------------------------------
@@ -234,10 +307,7 @@ function printSchedule(result){
 	html += "<div id='sForm'>"
 	html += "<div class='form-body pal'>"
 	html += "<div class='form-group' id='schedule'>"
-	html += "    <div class='input-icon right'>"
-	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputTitle' type='text' value='"+result.title+"' class='form-control' readonly/></div>"
-	html += "</div>"
 	html += "<div class='row'>"
 	html += "    <div class='col-md-6'>"
 	html += "        <div class='form-group'>"
@@ -249,10 +319,7 @@ function printSchedule(result){
 	html += "    </div>"
 	html += "</div>"
 	html += "<div class='form-group'>"
-	html += "    <div class='input-icon right'>"
-	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputContent' type='text' value='"+result.content+"' class='form-control' readonly/></div>"
-	html += "</div>"
 	html += "<div class='form-group text-center' id='inputImportance'>"
 	html += "   <div class='form-group text-center'>"
 	html += "   	<div class='stars'></div>"       
@@ -350,10 +417,7 @@ function modifyForm(result){
 	html += "<div name='modifyForm' >"
 	html += "<div class='form-body pal'>"
 	html += "<div class='form-group' id='schedule'>"
-	html += "    <div class='input-icon right'>"
-	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputTitle' type='text' value='"+result.title+"' class='form-control' /></div>"
-	html += "</div>"
 	html += "<div class='row'>"
 	html += "    <div class='col-md-6'>"
 	html += "        <div class='form-group'>"
@@ -365,10 +429,7 @@ function modifyForm(result){
 	html += "    </div>"
 	html += "</div>"
 	html += "<div class='form-group'>"
-	html += "    <div class='input-icon right'>"
-	html += "        <i class='fa fa-user'></i>"
 	html += "        <input id='inputContent' type='text' placeholder='내용을 입력해주세요' value='"+result.content+"' class='form-control' /></div>"
-	html += "</div>"
 	html += "<div class='form-group text-center' id='inputImportance'>"
 	html += "   	<div class='form-group text-center'>"
 	html += "   		<div class='stars'></div>"       
@@ -492,3 +553,4 @@ function scheduleForm(form){
 
 
 scheduleBody();
+
