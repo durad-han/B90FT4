@@ -48,10 +48,12 @@
 							<div class="form-body pal">
 									
 									<div class="form-group">
-									        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" />
+											<label>아이디</label>
+									        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" readonly="readonly"/>
 									</div>
 									
 									<div class="form-group">
+											<label>이메일</label>
 									        <input id="email" name="email" type="text" placeholder="이메일이 존재하지 않습니다" value="${user.email}" class="form-control" />
 									</div>
 									    
@@ -73,18 +75,23 @@
 							<div class="form-body pal">
 									
 									<div class="form-group">
-								        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" />
+										<label>아이디</label>
+								        <input id="userId" name="userId" type="text" placeholder="아이디를 불러오는데 실패했습니다." value="${user.userId}" class="form-control" readonly="readonly"/>
 									</div>
 									<div class="form-group">
+										<label>키</label>
 								        <input id="userHeight" name="userHeight" type="text" placeholder="키" value="${userInfo.userHeight}" class="form-control" />
 									</div>
 									<div class="form-group">
+										<label>몸무게</label>
 								        <input id="userWeight" name="userWeight" type="text" placeholder="몸무게" value="${userInfo.userWeight}" class="form-control" />
 									</div>
 									<div class="form-group">
+										<label>연령</label>
 								        <input id="userAge" name="userAge" type="text" placeholder="연령" value="${userInfo.userAge}" class="form-control" />
 									</div>
 									<div class="form-group">
+										<label>성별</label>
 										<input type="radio" name="userGender" id="genderMale" value="male" checked> 남 
 										<input type="radio" name="userGender" id="genderFemale" value="female"> 여<br>
 									</div>
@@ -133,28 +140,10 @@
 <c:import url ="/WEB-INF/jsp/common/bottomInclude.jsp"/>
 <c:import url ="/WEB-INF/jsp/schedule/scheduleInclude.jsp"/>
 <script>
+$('.form-body').foxholder({
+	demo: 2 //(1-15)
+});
 function userForm() {
-// 		var userId = '{user.userId}';
-// 		var userHeight = Number($("#userHeight").val());
-// 	    var userWeight = Number($("#userWeight").val());
-// 	    var userAge = Number($("#userAge").val());
-// 	    var userGender = $('input:radio[name=userGender]:checked').val();
-		
-// 		$.ajax({
-// 			url:"workout/updateWorkoutUserInfo.do",
-// 			dataType:"json",
-// 			data : {
-// 					"userId" : userId,
-// 					"userHeight" : userHeight,
-// 					"userWeight" : userWeight,
-// 					"userAge" : userAge,
-// 					"userGender" : userGender
-// 					}
-			
-// 			}).done(function(){
-// 				console.log("update is done.");
-// 			});
-		
 }
 </script>
 </body>

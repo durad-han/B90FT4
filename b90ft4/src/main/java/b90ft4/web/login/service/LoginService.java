@@ -11,4 +11,6 @@ public interface LoginService {
 	boolean userCheck(UserVO user) throws Exception;
 
 	void regist(UserVO user) throws Exception;
+
+	void updateUser(UserVO user) throws Exception;
 }

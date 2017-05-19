@@ -37,6 +37,11 @@ public class LoginServiceImpl implements LoginService {
 		logger.debug(user.getUserId()+" 유저를 신규 등록합니다.");
 		mapper.insertUser(user);
 	}
+
+	@Override
+	public void updateUser(UserVO user) throws Exception {
+		mapper.updateUser(user);
+	}
 	
 	
 

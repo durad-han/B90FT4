@@ -195,8 +195,8 @@ function scheduleBody(result){
 	if(result!=null) console.log("중요도 : "+result.importance)
 	
 //----- foxholder -----------------------------------------------------------
-	jQuery('.clz-insertSchedule').foxholder({
-		demo: 6 //(1-15)
+	$('.clz-insertSchedule').foxholder({
+		demo: 2 //(1-15)
 	});
 
 //----- datePicker -------------------------------------------------------------------------------------

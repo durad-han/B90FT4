@@ -81,6 +81,17 @@
 				0
 			)
 	</insert>
-	
+
+	<!--============================================================================
+			다이어리 정보 수정 updateUser
+			필터링할 값: ...
+			파라메터의 데이터타입: UserVO
+			리턴되는 값의 데이터타입: 없음
+	============================================================================-->
+	<update id="updateUser" parameterType="userVO" >
+		update	tb_sam_user
+		set		email    		= #{email}    
+		where	User_Id			= #{userId}
+	</update>	
 	
 </mapper>

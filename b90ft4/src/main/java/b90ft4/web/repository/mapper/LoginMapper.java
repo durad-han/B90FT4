@@ -14,4 +14,6 @@ public interface LoginMapper {
 	public int userCheck(String name) throws Exception;
 	
 	public void insertUser(UserVO user) throws Exception;
+
+	public void updateUser(UserVO user) throws Exception;
 }

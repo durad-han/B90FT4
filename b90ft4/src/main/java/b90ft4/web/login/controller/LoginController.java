@@ -27,18 +27,19 @@ public class LoginController {
 	@RequestMapping("/user.do")
 	public void user (String userId, HttpSession session) throws Exception{
 		UserVO user = new UserVO();
-		logger.debug("user side Id : "+userId);
 		user.setUserId(userId);
 		ls.userCheck(user);
-		System.out.println(ws.workoutUserInfoSelect(userId));
-//		session.setAttribute("userInfo", ws.workoutUserInfoSelect(userId));
+		session.setAttribute("user", ls.login(user));
+		session.setAttribute("userInfo", ws.workoutUserInfoSelect(userId));
 	}
 	
 	@RequestMapping("/updateUser.do")
-	public String updateUser () throws Exception{
+	public String updateUser (String userId, String email) throws Exception{
+		logger.debug("updateUser with "+userId+", "+email);
 		UserVO user = new UserVO();
-		user.setUserId("Durad  Han");
-		ls.userCheck(user);
+		user.setUserId(userId);
+		user.setEmail(email);
+		ls.updateUser(user);
 		return "redirect:/login/user.do";
 	}
 	
@@ -48,7 +49,6 @@ public class LoginController {
 	
 	@RequestMapping("/login.do")
 	public String login (String userId, Model model, HttpSession session) throws Exception{
-		logger.debug("login controller");
 		UserVO user = new UserVO();
 		user.setUserId(userId);
 		
