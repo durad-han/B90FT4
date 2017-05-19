@@ -64,6 +64,9 @@
 	<update id="modifyWorkoutStatisticsList" parameterType="String">		
 		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today}
 	</update> 
+	<update id="modifyWorkoutStatisticsListByWorkoutCal" parameterType="String">		
+		update tb_sam_workout_statistics set Spent_Cal = #{spentCal} , Intake_Cal = #{intakeCal} where Workout_Day = #{today}
+	</update> 
  
 	<insert id="insertWorkoutStatisticsList" parameterType="String">
 		insert into tb_sam_workout_statistics(Workout_Day,Spent_Cal,Intake_Cal,User_Id)
@@ -114,5 +117,41 @@ delete from tb_sam_workout_userinfo where User_Id = 'tester01';
  	<delete id="deleteWorkoutUserInfo" parameterType="String">
  	delete from tb_sam_workout_userinfo where User_Id = #{userId}
  	</delete>
+ 	
+  	
+	 <resultMap type="WorkoutFoodNutritionFactVO" id="WorkoutFoodNutritionFactMap">
+	 <result column="food_Number"				property="foodNumber"/>
+	 <result column="food_Name"					property="foodName"/>
+	 <result column="food_Serving_Size"			property="foodServingSize"/>
+	 <result column="food_Cal"					property="foodCal"/>
+	 <result column="food_Carbohydrate"			property="foodCarbohydrate"/>
+	 <result column="food_Protein"				property="foodProtein"/>
+	 <result column="food_Fat"					property="foodFat"/>
+	 <result column="food_Sugar"				property="foodSugar"/>
+	 <result column="food_Natrium"				property="foodNatrium"/>
+	 <result column="food_Cholesterol"			property="foodCholesterol"/>
+	 <result column="food_Saturated_Fatty_Acid"	property="foodSaturatedFattyAcid"/>
+	 <result column="food_Trans_Fatty_Acid"		property="foodTransFattyAcid"/>
+
+	 </resultMap>
+	 
+	<select id="selectWorkoutFoodNutritionFactList" parameterType="String" resultMap="WorkoutFoodNutritionFactMap">
+		select 
+		Food_Number,
+		Food_Name,
+		Food_Serving_Size,
+		Food_Cal,
+		Food_Carbohydrate,	
+		Food_Protein,
+		Food_Fat,
+		Food_Sugar,
+		Food_Natrium,
+		Food_Cholesterol,
+		Food_Saturated_Fatty_Acid,
+		Food_Trans_Fatty_Acid 
+		from tb_sam_workout_nutrition_fact 
+		where food_Name like concat('%',#{foodValue},'%')
+	</select>
+
  	
 </mapper>

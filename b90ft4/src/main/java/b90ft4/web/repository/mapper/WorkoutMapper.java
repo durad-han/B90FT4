@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import b90ft4.web.repository.vo.WorkoutDateTestVO;
+import b90ft4.web.repository.vo.WorkoutFoodNutritionFactVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutUserInfoVO;
@@ -26,6 +27,11 @@ public interface WorkoutMapper {
 			@Param("intakeCal") String intakeCal,
 			@Param("today") String today,
 			@Param("userId") String userId)throws Exception;
+	public void modifyWorkoutStatisticsListByWorkoutCal(
+			@Param("spentCal") String spentCal,
+			@Param("intakeCal") String intakeCal,
+			@Param("today") String today,
+			@Param("userId") String userId)throws Exception;
 	public void insertWorkoutUserInfo(
 			@Param("userId") String userId ,
 			@Param("userGender") String userGender,
@@ -40,4 +46,5 @@ public interface WorkoutMapper {
 			@Param("userAge") int userAge
 			) throws Exception;
 	public void deleteWorkoutUserInfo(String userId) throws Exception;
+	public List<WorkoutFoodNutritionFactVO> selectWorkoutFoodNutritionFactList(String foodValue)throws Exception;
 }

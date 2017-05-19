@@ -17,11 +17,12 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
     <!-- Theme CSS -->
+    
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -136,12 +137,19 @@
         <div class="container">
                 	
      <div>
-<h2>오늘 섭취 칼로리 입력</h2><button>음식별 섭취 칼로리 알아보기</button><button id='callIntakeCalBtn' onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
+<h2>오늘 섭취 칼로리 입력</h2>
+칼로리 검색 : <input id='setFood' type='text'><br>
+<select id ='foodList'></select>
+<select id ='foodCal'></select>
+<select id ='foodOtherInfo'></select>
+
+<button id='callIntakeCalBtn' onclick='callIntakeCal()'>오늘 운동 전에 먹은 음식에서 받아오기</button><br>
 <input id='setConsumeCal' type='text'>kcal<br>
-<h2>오늘 소비 칼로리 입력(기초대사량은 제외)</h2><button onclick = 'showBMContainer()'>기초대사량 구하기</button><button id='callSpentCalBtn' onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
+<h2>오늘 소비 칼로리 입력(기초대사량은 제외)</h2>
+<button onclick = 'showBMContainer()'>기초대사량 구하기</button><button id='callSpentCalBtn' onclick='callSpentCal()'>오늘 한 운동에서 받아오기</button><br>
 <input id='setSpendCal'type='text'>kcal<br>
 
-<button id='setCalBtn' onclick='setCal()'>입력</button><button>저장</button>
+<button id='setCalBtn' onclick='setCal()'>차트 새로고침</button><button id='saveCalBtn' onclick='saveCal()'>저장</button>
 </div>
 <!-- <div id='BMContainer' hidden="true"> -->
 <div id='BMContainer'>
@@ -155,16 +163,14 @@
 <button id='calculateBMBtn' onclick = 'calculateBM()'>기초대사량 계산</button>
  -->
 <button id='setBMBtn' onclick = 'setBM()'>오늘 소비 칼로리에 적용</button>
+<button id='hideBMContainerBtn' onclick = 'hideBMContainer()'>닫기</button>
 <button id='callBMBtn' onclick = 'callBM()'>내 정보 불러오기</button>
 <button id='saveBMBtn' onclick = 'saveBM()'>내 정보에 저장</button>
 <button id='deleteBMBtn' onclick = 'deleteBM()'>내 정보 삭제</button>
 </div>
 <div class='caption'>칼로리 계산</div>
-<div id='bar-chart-stack' style='width: 50%; height:300px'></div>
-zz
 <div id="calChart" style="width: 50%; height:300px;"></div>
-qq1
-
+		
 </div>
 </section>
     
@@ -205,6 +211,7 @@ qq1
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 -->
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 <script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>

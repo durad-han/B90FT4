@@ -3,15 +3,172 @@ var totalIntakeCal = 0;
 var today = $.datepicker.formatDate("yy-mm-dd",new Date());
 var BM = 0;
 var userId = 'tester01';
+var spendBar 	= [0,0,0,0,0,0,0];
+var leftBar 	= [0,0,0,0,0,0,0];
+var overBar 	= [0,0,0,0,0,0,0];
+var totalCal    = [0,0,0,0,0,0,0];
+var date  = new Date();
+var myDate = new Date();
+var dayOfMonth = myDate.getDate();
+myDate.setDate(dayOfMonth - 1);
+$.ajaxSettings.traditional = true;
+var date1 = $.datepicker.formatDate("yy-mm-dd",date);
+myDate.setDate(dayOfMonth - 1);
+var date2 = $.datepicker.formatDate("yy-mm-dd",myDate);
+myDate.setDate(dayOfMonth - 2);
+var date3 = $.datepicker.formatDate("yy-mm-dd",myDate);
+myDate.setDate(dayOfMonth - 3);
+var date4 = $.datepicker.formatDate("yy-mm-dd",myDate);
+myDate.setDate(dayOfMonth - 4);
+var date5 = $.datepicker.formatDate("yy-mm-dd",myDate);
+myDate.setDate(dayOfMonth - 5);
+var date6 = $.datepicker.formatDate("yy-mm-dd",myDate);
+myDate.setDate(dayOfMonth - 6);
+var date7 = $.datepicker.formatDate("yy-mm-dd",myDate);
+
+
+
+//음식 검색 관련 함수
+
+function searchFood(foodValue){
+	$.ajax({
+		url : "selectWorkoutFoodList.do",
+		dataType : "json",
+		data : {"foodValue":foodValue} 
+	}).done(function(result){
+		for(var i = 0 ; i<result.length ; i++){
+			$('$fooodList').append('<option value='+result.foodCal+'>'+result.foodName+' / '+result.foodCal+' kcal</option>');
+		}
+	});
+}
+
+
+$("#setFood").on("keyup" , function(){
+	var foodValue = $("#setFood").val();
+	searchFood(foodValue);
+});
+
+
+
+
+function updateCal(){
+	
+	var spentCal = parseInt(gvSpentCal);
+	var intakeCal = parseInt(gvIntakeCal);
+	if(isNaN(spentCal)){
+		spentCal = 0;
+	}
+	if(isNaN(intakeCal)){
+		intakeCal = 0;
+	}
+	$.ajax({
+		url : "UpdateWorkoutStatisticsByWorkoutCal.do",
+		dataType : "json",
+		data : {"spentCal" : spentCal , "intakeCal" : intakeCal ,"today" : today, "userId" : userId} 
+	});
+}
+//닫기버튼
+function saveCal(){
+	 spendBar 	= [0,0,0,0,0,0,0];
+	 leftBar 	= [0,0,0,0,0,0,0];
+	 overBar 	= [0,0,0,0,0,0,0];
+	 totalCal    = [0,0,0,0,0,0,0];
+	gvSpentCal = $("#setSpenCal").val();
+	gvIntakeCal = $("#setConsumeCal").val();
+	updateCal();
+	chartDayCall();
+}
+
+//차트 초기 호출 관련 함수들
+function chartDayCall(){
+	$.ajax({
+		url:"/b90ft4/workout/selectWorkoutStatisticsListWeek.do",
+		dataType:"json",
+		data : {"userId" : userId}
+		}).done(function(result){
+		
+ 				myDate.setDate(dayOfMonth - 7);
+ 				 
+			    for(var k in result) {
+			    	
+			    	var stDate = $.datepicker.parseDate( "yy-mm-dd", result[k].workoutDay );//ajax에서 받아온 k번째 날짜
+	 			    var endDate = myDate;//7일전
+	 			    var btMs = stDate.getTime() - endDate.getTime();//
+	 			    var i = Math.floor(btMs / (1000*60*60*24));//
+
+					if(result[k].spentCal < result[k].intakeCal){
+						spendBar[k] = result[k].spentCal;
+						leftBar[k] = result[k].intakeCal - result[k].spentCal;
+						totalCal[k] = Number(spendBar[k] + leftBar[k]);
+	
+					}
+					else{
+						spendBar[k] = result[k].intakeCal;
+						overBar[k] = result[k].spentCal - result[k].intakeCal;
+						totalCal[k] = Number(spendBar[k] + overBar[k]);
+					} 
+			    }
+			    setChart();
+		});
+
+}
+
+function setChart(){
+	$("#calChart").html(" ");
+	var maxYaxis = Math.ceil(Math.max(totalCal[0],totalCal[1],totalCal[2],totalCal[3],totalCal[4],totalCal[5],totalCal[6]))+100;
+	var s1 = spendBar;
+	var s2 = leftBar;
+	var s3 = overBar;
+	var ticks = [date7,date6,date5,date4,date3,date2,date1];
+	
+	plot1 = $.jqplot('calChart', [s1,s2,s3], {
+	    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+	    animate: !$.jqplot.use_excanvas,
+	    stackSeries: true,
+	    seriesDefaults:{
+	        renderer:$.jqplot.BarRenderer,
+	        pointLabels: { show: true , stackedValue: true}
+	    },
+	    axes: {
+	        xaxis: {
+	        	
+	            renderer: $.jqplot.CategoryAxisRenderer,
+	            ticks: ticks
+	        },
+	        yaxis: {
+	        	min:0,
+	        	max:maxYaxis,
+	        	markSize:0
+	        }
+	    },
+	    highlighter: { show: false }
+	});
+
+}
+$(document).ready(function() {
+	chartDayCall();
+});
+
+
+
 
 
 $(".BMSet").on("keyup" , function(){
 	calculateBM();
 });
+
+
 $('#BMContainer').addClass('hidden');
 function showBMContainer(){
 	$('#BMContainer').removeClass('hidden');
+	$("#callBMBtn").trigger("click");
+	
 }
+
+function hideBMContainer(){
+	$('#BMContainer').addClass('hidden');
+}
+
 
 function callIntakeCal(){
 	totalIntakeCal = 0;
@@ -47,8 +204,11 @@ function callSpentCal(){
 			$('#setSpendCal').val(totalSpentCal);
 		});
 	}
+
+
+
   
-   
+ /*  
    var spendCal1 = 500; 
    var consumeCal1 = 1000;
    var leftCal1 = consumeCal1 - spendCal1;
@@ -150,7 +310,7 @@ function callSpentCal(){
 		console.dir(d4_1);
    }
    barChartStack();
-   
+   */
    //BM 관련 함수
 //<button onclick = 'calculateBM()'>계산</button>
    function calculateBM(){
@@ -233,217 +393,4 @@ function callSpentCal(){
 			});
 		
 	}
-	
-	var initTotalIntakeCal = 0;
-	var initTotalSpentCal = 0;
-	var initUserHeight = 0;
-	var initUserWeight = 0;
-	var initUserAge = 0;
-	var initUserGender = 'male';
-	var initBM = 0;
-	var initUpdateSpendCalVal = 0;
-	function initChart(){
-		//$("#callIntakeCalBtn").trigger("click");
-		$.ajax({
-			url:"selectWorkoutStatisticsList.do",
-			dataType:"json",
-			data : {"today" : today,
-					"userId" : userId}
-			//,async : false
-			}).done(function(result){				
-				for(var i = 0 ; i < result.length ; i++){
-					initTotalIntakeCal += parseInt(result[i].intakeCal);
-				}
-				//console.log('initTotalSpentCal:'+initTotalIntakeCal);
-				$.ajax({
-					url:"selectWorkoutStatisticsList.do",
-					dataType:"json",
-					data : {"today" : today,
-						"userId" : userId}
-					}).done(function(result){
-						console.dir(result);
-						for(var i = 0 ; i < result.length ; i++){
-							initTotalSpentCal += parseInt(result[i].spentCal);
-							//console.log('initTotalSpentCal:'+initTotalSpentCal);
-							//console.log('initTotalIntakeCal:'+initTotalIntakeCal);
-							
-						}
-						$.ajax({
-							url:"selectWorkoutUserInfo.do",
-							dataType:"json",
-							data:{"userId" : userId}
 
-							}).done(function(result){
-								
-								console.dir(result);
-								initUserHeight = Number(result.userHeight);
-								initUserWeight = Number(result.userWeight);
-								initUserAge = Number(result.userAge);
-								initUserGender = result.userGender;
-								//console.log('initUserAge:'+initUserAge);
-								//console.log('initUserAge:'+initUserGender);
-								//console.log('initTotalSpentCal:'+initTotalSpentCal);
-								//console.log('initTotalIntakeCal:'+initTotalIntakeCal);
-								/*
-								if(result.userGender == 'male'){
-									$('#genderFemale').removeClass('checked');
-									$('#genderMale').addClass('checked');
-								}
-								else{
-									$('#genderMale').removeClass('checked');
-									$('#genderFemale').addClass('checked');
-								}
-								*/
-
-							    initBM = 66.47 + ( 13.175 * initUserWeight ) + ( 5 * initUserHeight ) - ( 6.76 *  initUserAge );
-							    
-							    if ( initUserGender == 'female'){
-							    	initBM = 655.1 + (9.56 * initUserWeight ) + (1.85 * initUserHeight ) - ( 4.68 * initUserAge );
-							    	
-							    }
-							    
-							    initUpdateSpendCalVal = Number(Number(initTotalSpentCal) + Number(initBM));
-							    spendCal4 = initUpdateSpendCalVal;
-							    consumeCal4 = $('#setConsumeCal').val();
-							    leftCal4 = consumeCal4 - spendCal4;
-							    overCal4 = spendCal4 - consumeCal4;
-							    
-							    if (spendCal4 < consumeCal4){
-							    	overCal4 = 0;
-							    }
-							    
-							    barChartStack();
-								
-							});
-					});
-			});
-		
-		//console.log(initTotalIntakeCal);
-
-		//$("#callSpentCalBtn").trigger("click");
-		
-		//$("#callBMBtn").trigger("click");
-		
-		//$("#calculateBMBtn").trigger("click");
-		
-		//$("#setBMBtn").trigger("click");
-		
-		//$("#setCalBtn").trigger("click");
-		
-/*		callSpentCal();
-	    var userHeight = "";
-	    var userWeight = "";
-	    var userAge = "";
-	    var userGender = "";
-		$.ajax({
-			url:"selectWorkoutUserInfo.do",
-			dataType:"json",
-			data:{"userId" : userId}
-
-			}).done(function(result){
-				
-				//console.dir(result);
-
-					
-				userHeight = Number(result.userHeight);
-				userWeight = Number(result.userWeight);
-				userAge = Number(result.userAge);
-				userGender = result.userGender;
-				
-				BM = 66.47 + ( 13.175 * userWeight ) + ( 5 * userHeight ) - ( 6.76 *  userAge );
-			    
-			    if ( userGender == 'female'){
-			    	BM = 655.1 + (9.56 * userWeight ) + (1.85 * userHeight ) - ( 4.68 * userAge );
-			    	tempflag = 2;
-			    }
-			    setBM();
-			    setCal();
-				 
-			});
-	*/
-		    
-		
-	}
-	
-	function checkUserInfo(){
-		
-	}
-	
-	var spendCal1 = 500; 
-	var consumeCal1 = 1000;	
-	var spendCal2 = 1000; 
-	var consumeCal2 = 1000;
-	var spendCal3 = 1500; 
-	var consumeCal3 = 1000;
-
-	var spendBar1 = spendCal1;
-	var leftBar1 = consumeCal1 - spendCal1;
-	var overBar1 = spendCal1 - consumeCal1;
-	if (consumeCal1 < spendCal1){
-		spendBar1 = consumeCal1;
-		leftBar1 = 0;
-		overCal1 = spendCal1 - consumeCal1;
-	}
-
-	var spendBar2 = spendCal2;
-	var leftBar2 =  consumeCal2 - spendCal2;
-	var overBar2 = spendCal2 - consumeCal2;
-	if (consumeCal2 < spendCal2){
-		spendBar2 = consumeCal2;
-		leftBar2 = 0;
-		overCal2 = spendCal2 - consumeCal2;
-	}
-
-	var spendBar3 = spendCal3;
-	var leftBar3 = consumeCal3 - spendCal3;
-	var overBar3 = spendCal3 - consumeCal3;
-	if (consumeCal3 < spendCal3){
-		spendBar3 = consumeCal3;
-		leftBar3 = 0;
-		overCal3 = spendCal3 - consumeCal3;
-	}
-
-
-	$(document).ready(function() {
-		
-		function setCalChart(calList){
-			$.jqplot.config.enablePlugins = true;
-			var maxYaxis = Math.ceil(Math.max(spendCal1,spendCal2,spendCal3))+100;
-			var s1 = [spendBar1,spendBar2,spendBar3];
-			var s2 = [leftBar1,leftBar2,leftBar3];
-			var s3 = [overBar1,overBar2,overBar3];
-			var ticks = ['날짜1','날짜2','날짜3'];
-
-			plot1 = $.jqplot('calChart', [s1,s2,s3], {
-			    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-			    animate: !$.jqplot.use_excanvas,
-			    stackSeries: true,
-			    seriesDefaults:{
-			        renderer:$.jqplot.BarRenderer,
-			        pointLabels: { show: true , stackedValue: true}
-			    },
-			    axes: {
-			        xaxis: {
-			            renderer: $.jqplot.CategoryAxisRenderer,
-			            ticks: ticks
-			        },
-			        yaxis: {
-			        	min:0,
-			        	max:maxYaxis,
-			        	markSize:10
-			        }
-			    },
-			    highlighter: { show: false }
-			});	
-		}
-		//기본 차트 뿌려주기
-		setCalChart();
-		
-	});
-	
-	
-	window.onload = function(){
-		
-		initChart();
-		
-	}

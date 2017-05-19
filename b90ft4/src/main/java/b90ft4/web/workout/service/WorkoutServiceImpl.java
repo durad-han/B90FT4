@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import b90ft4.web.repository.mapper.WorkoutMapper;
 import b90ft4.web.repository.vo.WorkoutDateTestVO;
+import b90ft4.web.repository.vo.WorkoutFoodNutritionFactVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutUserInfoVO;
@@ -77,7 +78,14 @@ public class WorkoutServiceImpl implements WorkoutService {
 		wm.modifyWorkoutStatisticsList(tempVal , tempVal2 , today , userId);
 	
 	}
-	
+	@Override
+	public void workoutStatisticsUpdateByWorkoutCal(int spentCal, int intakeCal, String today, String userId)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String tempVal = spentCal+""; 
+		String tempVal2 = intakeCal+""; 
+		wm.modifyWorkoutStatisticsListByWorkoutCal(tempVal , tempVal2 , today , userId);
+	}
 	@Override
 	public List<WorkoutDateTestVO> workoutDateTest() throws Exception {
 		// TODO Auto-generated method stub
@@ -129,6 +137,15 @@ public class WorkoutServiceImpl implements WorkoutService {
 		// TODO Auto-generated method stub
 		wm.insertWorkoutUserInfo(userId, userGender, userHeight, userWeight, userAge);
 	}
+	@Override
+	public List<WorkoutFoodNutritionFactVO> workoutFoodNutritionFactList(String foodValue) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("imp까지 옴");
+		List<WorkoutFoodNutritionFactVO> list = wm.selectWorkoutFoodNutritionFactList(foodValue);
+		System.out.println("imp리턴받음");
+		return list;
+	}
+
 
 	
 }

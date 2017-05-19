@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import b90ft4.web.repository.vo.UserVO;
 import b90ft4.web.repository.vo.WorkoutDateTestVO;
+import b90ft4.web.repository.vo.WorkoutFoodNutritionFactVO;
 import b90ft4.web.repository.vo.WorkoutSetVO;
 import b90ft4.web.repository.vo.WorkoutStatisticsVO;
 import b90ft4.web.repository.vo.WorkoutUserInfoVO;
@@ -52,10 +52,21 @@ public class WorkoutController {
 		return "workout/workoutList";
 	}
 	*/
+	
+	
+	@ResponseBody
+	@RequestMapping("/selectWorkoutFoodList.do")
+	public List<WorkoutFoodNutritionFactVO> selectWorkoutFoodList(String foodValue) throws Exception{
+		System.out.println("컨트롤러 들어옴 : " + foodValue);
+		List<WorkoutFoodNutritionFactVO> list = ws.workoutFoodNutritionFactList(foodValue);
+		System.out.println("나오냐 : " + foodValue);
+		return list;
+	}
+
 	@ResponseBody
 	@RequestMapping("/selectWorkoutUserInfo.do")
 	public WorkoutUserInfoVO selectWorkoutUserInfo(String userId) throws Exception{
-		System.out.println(userId);
+		//System.out.println(userId);
 		WorkoutUserInfoVO list = ws.workoutUserInfoSelect(userId);
 		return list;
 	}
@@ -116,8 +127,15 @@ public class WorkoutController {
 	@ResponseBody
 	@RequestMapping("/UpdateWorkoutStatistics.do")
 	public void WorkoutStatisticUpdate(int spentCal,int intakeCal,String today , String userId) throws Exception{
-		System.out.println("UpdateWorkoutStatistics Controller load");
+		//System.out.println("UpdateWorkoutStatistics Controller load");
 		ws.workoutStatisticsUpdate(spentCal,intakeCal,today,userId);
+		
+	}
+	@ResponseBody
+	@RequestMapping("/UpdateWorkoutStatisticsByWorkoutCal.do")
+	public void WorkoutStatisticUpdateByWorkoutCal(int spentCal,int intakeCal,String today , String userId) throws Exception{
+		//System.out.println("UpdateWorkoutStatistics Controller load");
+		ws.workoutStatisticsUpdateByWorkoutCal(spentCal,intakeCal,today,userId);
 		
 	}
 	@ResponseBody
