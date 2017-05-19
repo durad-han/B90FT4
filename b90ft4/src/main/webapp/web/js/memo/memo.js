@@ -1,20 +1,21 @@
 		memoCheck();
 	
+		console.log($("#showAndHideMemo").prop("checked"));
+		
 		function memoCheck(){
 			if($("#showAndHideMemo").prop("checked")){
-				$("label[for=showAndHideMemo]").text("메모 숨김");
 				bringMemo();
 			}else {
 				//console.log("ㅋㅋ");
-				$("label[for=showAndHideMemo]").text("메모 보기");
 				$("div.memo").each(function() {
 					$(this).remove();
 				});
 			}
 		}
 
-		$("#showAndHideMemo").click(function() {
+		$("#showAndHideMemo").change(function() {
 			memoCheck();
+			console.log($("#showAndHideMemo").prop("checked"));
 		})
 		
 		$("#addMemo").click(function() {
