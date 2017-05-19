@@ -7,13 +7,27 @@ var month = new Array();
 month[0] = "01";month[1] = "02";month[2] = "03";month[3] = "04";month[4] = "05";month[5] = "06";
 month[6] = "07";month[7] = "08";month[8] = "09";month[9] = "10";month[10] = "11";month[11] = "12";
 
-var currentMonth = month[date.getMonth()];
+var currentMonth = date.getMonth();
 
 const scheduleList = document.getElementById('sList__list');
 const scheduleListPagination = document.getElementById('schedule-list-pagination');
 var page = 0;
 
-addPage(currentMonth);
+function getDocumentHeight() {
+	const body = document.body;
+	const html = document.documentElement;
+	
+	return Math.max(
+		body.scrollHeight, body.offsetHeight,
+		html.clientHeight, html.scrollHeight, html.offsetHeight
+	);
+};
+
+function getScrollTop() {
+	return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+}
+
+addPage(month[currentMonth]);
 
 function addPage(currentMonth) {
 	console.log("currentMonth : "+currentMonth);
@@ -99,6 +113,11 @@ function addPaginationPage(currentMonth) {
 		scheduleListPagination.classList.remove('schedule-list__pagination--inactive');
 	}
 }
+
+window.onscroll = function() {
+	if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
+	addPage(month[++currentMonth]);
+};
 
 //----- schedule for calendar ---------------------------------------------------------------------------------------------
 $(document).ready(function() {
@@ -405,10 +424,10 @@ function modifySubmit(scheduleNo){
 					},
 					dataType: "json"
 					})
-					swal("스케줄 수정", '스케줄이 변경되었습니다', "success", function(){
-						location.href="scheduleList.do";
-					});
+					location.href="scheduleList.do";
 				});
+	swal("스케줄 수정", '스케줄이 변경되었습니다', "success", function(){
+	});
 };
 
 
@@ -431,18 +450,17 @@ function goDelete(scheduleNo){
 			data: {scheduleNo : scheduleNo},
 			dataType: "json"
 			}).done(function(){
-				swal({
-					title: "스케줄 삭제?",
-					text: "선택한 스케줄이 삭제되었습니다",
-					type: "success",
-					confirmButtonText: "확인",
-					showCancelButton: false,
-					closeOnConfirm: true
-				}, function(){
 					location.href="scheduleList.do";
 				});
-				
+		swal({
+			title: "스케줄 삭제?",
+			text: "선택한 스케줄이 삭제되었습니다",
+			type: "success",
+			confirmButtonText: "확인",
+			showCancelButton: false,
+			closeOnConfirm: true
 			})
+				
 		});
 };
 
@@ -468,7 +486,6 @@ function scheduleForm(form){
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
-	
 	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;
 };

@@ -190,6 +190,7 @@ if('${user.userId}'){
 									<div class="form-group">
 									        <input id="inputUserId" name="userId" type="hidden" value="${user.userId}" class="form-control" />
 									        <input id="inputAchieve" name="achieve" type="hidden" value="0" class="form-control" />
+									        <input id="inputImportance" name="importance" type="hidden" value="0" class="form-control" />
 									</div>
 									<div class="form-group text-center">
 								    	<div class="stars"></div>

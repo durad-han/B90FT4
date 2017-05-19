@@ -19,6 +19,27 @@
 	justify-content: space-between; 
 } 
 
+.schedule-list__page { 
+border-top: 2px solid #ddd; 
+clear: both; 
+counter-increment: page; 
+padding-bottom: 3em; 
+position: relative; 
+} 
+
+.schedule-list__page:before { 
+background-color: #ddd; 
+display: inline-block; 
+content: " ☆ "; 
+color: #888; 
+padding: .25em .5em; 
+position: absolute; 
+left: calc(50% - .75em); 
+top: -.75em; 
+vertical-align: middle; 
+z-index: 1; 
+} 
+
 .sList__item--orange {
 	border: 1px solid #DE660F;
 	border-radius: 10px;
