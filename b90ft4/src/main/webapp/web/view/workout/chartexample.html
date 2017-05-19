@@ -20,9 +20,11 @@
 var spendBar 	= [0,0,0,0,0,0,0];
 var leftBar 	= [0,0,0,0,0,0,0];
 var overBar 	= [0,0,0,0,0,0,0];
+var totalCal    = [0,0,0,0,0,0,0];
 var spendCal 	= [0,0,0,0,0,0,0];
 var consumeCal 	= [0,0,0,0,0,0,0];
 var overCal 	= [0,0,0,0,0,0,0];
+
 $.ajaxSettings.traditional = true;
 var userId = 'tester01';
 var date  = new Date();
@@ -48,6 +50,15 @@ myDate.setDate(dayOfMonth - 5);
 var date6 = $.datepicker.formatDate("yy-mm-dd",myDate);
 myDate.setDate(dayOfMonth - 6);
 var date7 = $.datepicker.formatDate("yy-mm-dd",myDate);
+
+var myWeek = new Array();
+myWeek[0] = $.datepicker.formatDate("yy-mm-dd",date);
+for(var i = 1 ; i<7 ; i++){
+	myDate.setDate(dayOfMonth - i);
+	myWeek[i] = $.datepicker.formatDate("yy-mm-dd",myDate);
+	console.log("myWeek:"+myWeek[i]);
+}
+
 console.log(date1);
 console.log(date2);
 console.log(date3);
@@ -100,7 +111,7 @@ if (consumeCal3 < spendCal3){
 var days = { "date1" : date1 ,"date2" : date2 ,"date3" : date3 ,"date4" : date4 ,"date5" : date5 ,"date6" : date6 ,"date7" : date7}; */
 // var days = [ "date1" : date1 ,"date2" : date2 ,"date3" : date3 ,"date4" : date4 ,"date5" : date5 ,"date6" : date6 ,"date7" : date7 ];
 
-var days = date1+"&"+date2+"&"+date3+"&"+date4+"&"+date5+"&"+date6+"&"+date7;
+//var days = data1+"&"+date2+"&"+date3+"&"+date4+"&"+date5+"&"+date6+"&"+date7;
 function chartDayCall(){
 	
 	$.ajax({
@@ -110,27 +121,17 @@ function chartDayCall(){
 		}).done(function(result){
 		
 				console.dir(result);
+				console.log("ee");
  				myDate.setDate(dayOfMonth - 7);
  				 
-// 				 var myTempDate = $.datepicker.formatDate("yy-mm-dd",myDate);
-// 				 console.log("7days ago"+myTempDate);
-
-// 				var stDate = new Date(2015, 7, 27) ;
-// 			    var endDate = new Date(2015, 8, 1) ;
-			 
-// 			    var btMs = endDate.getTime() - stDate.getTime() ;
-// 			    var btDay = btMs / (1000*60*60*24) ;
-
 			    for(var k in result) {
 			    	
-			    	var stDate = $.datepicker.parseDate( "yy-mm-dd", result[k].workoutDay );
-			    		
-	 			    var endDate = myDate ;
-				 
-	 			    var btMs = stDate.getTime() - endDate.getTime() ;
-	 			    var i = Math.floor(btMs / (1000*60*60*24)) ;
-							
-						if(result[k].intakeCal < result[k].spentCal){
+			    	var stDate = $.datepicker.parseDate( "yy-mm-dd", result[k].workoutDay );//ajax에서 받아온 k번째 날짜
+	 			    var endDate = myDate;//7일전
+	 			    var btMs = stDate.getTime() - endDate.getTime();//
+	 			    var i = Math.floor(btMs / (1000*60*60*24));//
+						
+					/* 	if(result[k].intakeCal < result[k].spentCal){
 						leftBar[i]  = result[k].intakeCal - result[k].spentCal;
 						spendCal[i] = result[k].spentCal;
 						}
@@ -141,12 +142,26 @@ function chartDayCall(){
 						spendCal[i] = result[k].spentCal;
 						overBar[i]  = result[k].spentCal - result[k].intakeCal;
 						}
-
-	 			    
-	 			    
-	 			  /*   spendCal[i] = result[k].spentCal;
+					*/
+	 			   
+					if(result[k].spentCal < result[k].intakeCal){
+						spendBar[k] = result[k].spentCal;
+						leftBar[k] = result[k].intakeCal - result[k].spentCal;
+						totalCal[k] = Number(spendBar[k] + leftBar[k]);
+					/* 	console.log(spendBar[k]);
+						console.log(leftBar[k]);
+						console.log(totalCal[k]); */
+					}
+					else{
+						spendBar[k] = result[k].intakeCal;
+						overBar[k] = result[k].spentCal - result[k].intakeCal;
+						totalCal[k] = Number(spendBar[k] + overBar[k]);
+						/* console.log(spendBar[k]);
+						console.log(overBar[k]);
+						console.log(totalCal[k]); */
+					}
+	 			  /* 
 					consumeCal[i] = result[k].intakeCal;
-					leftBar[i] = consumeCal[i] - spendCal[i];
 					overBar[i] = spendCal[i] - consumeCal[i];
 					if (consumeCal[i] < spendCal[i]){
 						spendBar[i] = consumeCal[i];
@@ -154,10 +169,8 @@ function chartDayCall(){
 						overCal[i] = spendCal[i] - consumeCal[i];
 					} */
 			    	
-			    	console.log(stDate);
-			    	console.log(endDate);
-			    	
-			    
+//			    	console.log(stDate);
+//			    	console.log(endDate);
 			    }
 
 			    setChart();
@@ -201,12 +214,11 @@ function chartDayCall(){
 }
 
 function setChart(){
-	
-	var maxYaxis = Math.ceil(Math.max(spendCal[0],spendCal[1],spendCal[2],spendCal[3],spendCal[4],spendCal[5],spendCal[6]))+100;
-	var s1 = spendCal;
+	var maxYaxis = Math.ceil(Math.max(totalCal[0],totalCal[1],totalCal[2],totalCal[3],totalCal[4],totalCal[5],totalCal[6]))+100;
+	var s1 = spendBar;
 	var s2 = leftBar;
 	var s3 = overBar;
-	var ticks = [date1,date2,date3,date4,date5,date6,date7];
+	var ticks = [date7,date6,date5,date4,date3,date2,date1];
 	
 	plot1 = $.jqplot('calChart', [s1,s2,s3], {
 	    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
@@ -218,13 +230,14 @@ function setChart(){
 	    },
 	    axes: {
 	        xaxis: {
+	        	min:200,
 	            renderer: $.jqplot.CategoryAxisRenderer,
 	            ticks: ticks
 	        },
 	        yaxis: {
 	        	min:0,
 	        	max:maxYaxis,
-	        	markSize:100
+	        	markSize:50
 	        }
 	    },
 	    highlighter: { show: false }
