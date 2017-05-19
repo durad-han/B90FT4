@@ -94,6 +94,7 @@ $(function () {
 							
 					   </li>
 	                   <li class = "loginCall">
+							<br>
 							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a>
 					   </li>
                       
@@ -343,13 +344,13 @@ $(function () {
 		}
     </script>
     <c:if test="${not empty user.userId}">
-<!-- 	    <script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
-<%-- 		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script> --%>
-<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script>  --%>
-<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script> --%>
-<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script> --%>
-<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script> --%>
-<%-- 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script> --%>
+	    <script src="http://192.168.0.60:10000/socket.io/socket.io.js"></script>
+		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
+	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
+	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
+	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.cookie.js"></script>
+	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/icheck.min.js"></script>
+	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/main.js"></script>
     </c:if>
     <!-- 꼭 필요. -->
      

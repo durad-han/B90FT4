@@ -52,9 +52,8 @@
                 </div>
             </div>
             
-            <div class="row">
-            
-                <div class="col-sm-6 portfolio-item" data-toggle = "tooltip" title = "가계부" >
+            <div id="spec" class="row">
+                <div class="col-sm-6 portfolio-item tooltip-show"  data-html="true" data-toggle = "tooltip"  title = "<h3>가계부</h3>" >
                     <a href="${pageContext.request.contextPath}/accountBook/budget.do" class="portfolio-link">
                     
                     	<!-- 돋보기 배경 -->
@@ -69,7 +68,7 @@
                     </a>
                 </div>
                 
-                <div class="col-sm-6 portfolio-item">
+                <div class="col-sm-6 portfolio-item tooltip-show" data-html="true" data-toggle = "tooltip" title = "<h3>운동</h3>" >
                     <a href="${pageContext.request.contextPath}/workout/workout.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -80,7 +79,7 @@
                     </a>
                 </div>
                 
-                <div class="col-sm-6 portfolio-item">
+                <div class="col-sm-6 portfolio-item tooltip-show" data-html="true" data-toggle = "tooltip" title = "<h3>스케쥴</h3>" >
                     <a href="${pageContext.request.contextPath}/schedule/scheduleList.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -91,7 +90,7 @@
                     </a>
                 </div>
                 
-                <div class="col-sm-6 portfolio-item">
+                <div class="col-sm-6 portfolio-item tooltip-show"  data-html="true" data-toggle = "tooltip" title = "<h3>다이어리</h3>" >
                     <a href="${pageContext.request.contextPath}/diary/list.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -107,6 +106,18 @@
         </div>
         
     </section>
+    <script>
+//             	  $(function () { $('.tooltip-show').tooltip('show');});
+            	  
+            	  $(function() {
+            		  $('.tooltip-show').each(function() {
+	            		  $(this).tooltip("toggle");
+	            	  });
+            	  });
+            	  
+            	  
+      </script>
+    
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
