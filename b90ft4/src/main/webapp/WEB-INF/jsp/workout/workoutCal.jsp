@@ -28,7 +28,7 @@
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	
+	<%@include file ="/WEB-INF/jsp/common/topInclude.jsp"%>
 </head>
 
 <body id="page-top" class="index">
@@ -40,97 +40,7 @@
 
     <!-- Navigation -->
    
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              
-                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    
-                    <!-- 
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/main/leaderBoard.do">리더보드</a>
-                    </li>
-                     -->
-                        
-                    <!-- 드롭 다운 테스트 -->
-                    <li class = "dropdown">
-                    
-					      <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          가계부 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href = "budget.do">지출/수입</a></li>
-					         <li><a href = "loanDept.do">대입금/차입금</a></li>
-					         <li><a href = "setting.do">설정</a></li>
-					      </ul>
-					      
-				   </li>
-                    <!-- 드롭 다운 테스트  -->
-                        
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/diary/list.do">다이어리</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do">스케쥴러</a>
-                    </li>
-                    
-                    <li>
-<%--                         <a href="${pageContext.request.contextPath}/workout/workout.do">운동</a> --%>
-                          <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-					          운동 <span class = "caret"></span>
-					      </a>
-					      <ul class = "dropdown-menu">
-					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
-					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
-					      </ul>
-                        
-                        <script>
-                        	function workoutMoveCal(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
-                        	}
-                        	function workoutMoveChart(){
-                        		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
-                        	}
-                        </script>
-                    </li>
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do">뉴스</a>
-                    </li>
-                    
-                     <li>
-		                <span>
-<!-- 							<button id="addMemo" style="text-align: center !important;background-color: #cebc21;"> -->
-							<a id="addMemo">
-							<img src="${pageContext.request.contextPath}/web/image/memo/Notes-icon.png" height="30px"/>
-							</a>
-						</span><br>
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
-
-	                </li>
-                    
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+   <%@include file ="/WEB-INF/jsp/common/menuInclude.jsp"%>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">

@@ -36,7 +36,7 @@ breakTimeVal = 10;
 
 //typeA관련 함수
 
-$(".front").on("mousedown", function() {
+$(".front").click(function() {
 	//console.log("gvWorkoutSetNo : " + gvWorkoutSetNo);
 	//console.log("gvIsLast : " + gvIsLast);
 	//console.log("nextSet : " + nextSet);
@@ -73,7 +73,7 @@ value++;
   return $(".value_back").text(value + max);
 });
 
-$(".back").on("mousedown", function() {
+$(".back").click(function() {
 	//console.log("backㅋㅋㅋ");
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
