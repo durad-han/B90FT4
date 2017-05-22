@@ -398,8 +398,11 @@ function callSpentCal(){
 			data:{"userId" : userId}
 
 			}).done(function(result){
-				
 				//console.dir(result);
+			
+				if(!result){
+					alert("저장된 정보가 없습니다.");
+				}
 				$('#setUserHeight').val(Number(result.userHeight));
 				$('#setUserWeight').val(Number(result.userWeight));
 				$('#setUserAge').val(Number(result.userAge));
