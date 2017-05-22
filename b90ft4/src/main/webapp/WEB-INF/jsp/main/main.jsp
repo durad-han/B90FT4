@@ -14,6 +14,24 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
     
 <c:import url ="/WEB-INF/jsp/common/topInclude.jsp"/>
+
+<style>
+.custom-tooltip {
+    display: inline-block;
+    margin: 10px 20px;
+    opacity: 1;
+    position: relative;
+}
+
+.custom-tooltip .tooltip-inner {
+	background: #0088cc;
+}
+
+.custom-tooltip.top .tooltip-arrow {
+	border-top-color: #0088cc;
+}
+</style>
+
 </head>
 
 <body id="page-top" class="index">

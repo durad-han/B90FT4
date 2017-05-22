@@ -43,7 +43,7 @@
 
 
 <!-- 스위치 -->
-<%-- 	<link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" /> --%>
+<link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" />
 
 	<script>
 		console.log("??");

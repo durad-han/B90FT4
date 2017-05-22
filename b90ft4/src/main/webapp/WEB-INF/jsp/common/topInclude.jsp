@@ -41,6 +41,11 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 <!-- 채팅 ==================================================================================================== -->
 
+<!-- switch -->
+<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" /> --%>
+<link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />  
+<link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/font-awesome.css" rel="stylesheet">
+
 <style>
 .dropdown-menu > li{
 	color:green !important;

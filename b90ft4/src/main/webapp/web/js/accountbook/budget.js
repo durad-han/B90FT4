@@ -1,6 +1,3 @@
-
-
-
 /*  ---------------------------------------  달력 만들기 자바스크립트 -------------------------------------------------------------- */
 
 	var selectCurrentWeek = function() {
@@ -944,7 +941,18 @@
 						var obj={};
 					
 						obj.label = expenseMonthBudget[i].expenseCategoryName;
-						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+//						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
+//						obj.data = (expenseMonthBudget[i].eachSum/expenseSum)*1000/10;
+						
+						obj.data = (expenseMonthBudget[i].eachSum/expenseSum);
+
+//						if(temp<10){
+//							obj.data = temp;
+//						}else {
+//							obj.data = Math.floor(temp);
+//						}
+						
+						console.log(obj.data);
 						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
 						
 						expenseData.push(obj);
@@ -1229,8 +1237,19 @@
 	// 지출,수입 등록 버튼 클릭.
 	$("#budgetModal").click(function() {
 		$("[name=budgetF] input:eq(2)").focus();
-		console.log("ㅎㅇ");
+		console.log("ㅎㅇzz");
 		regiOrModFlag = 1;
+		
+		
+		$("body").addClass("modal-open").css("padding-right","17px");
+		$("#myModal").addClass('in');
+		$("#myModal").css({
+		    "display":"block",
+		    "padding-right":"17px"
+		});
+		
+		$("body").append($("<div class='modal-backdrop fade in'></div>"));
+		
 	});
 	
 	
@@ -1292,6 +1311,30 @@
 	$("#closeF").click(function() {
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(0);
+		
+		$("body").removeClass("modal-open").removeAttr("style");
+		$("#myModal").removeClass('in');
+		$("#myModal").removeAttr('style');
+		
+		$("#myModal").css({
+		    "display":"none"
+		});
+		
+		$("div.modal-backdrop.fade.in").remove();
+		
+		
+//		setTimeout(function(){
+//			
+//			if($("div.modal-backdrop.fade.in").length > 0) {
+//				console.log("백드롭 존재");
+//				$("div.modal-backdrop.fade.in").remove();
+//			}else {
+//				console.log("백드롭 존재 X");
+//			}
+//			
+//		},2000);
+
+		
 	});
 	
  // 콤마 찍는 정규 표현식 적용 함수.
@@ -1301,6 +1344,4 @@
     	
 
 
-	
-	
 	

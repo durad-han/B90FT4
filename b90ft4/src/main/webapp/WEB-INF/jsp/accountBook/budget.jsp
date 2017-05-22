@@ -53,8 +53,33 @@
 	</style>
 
 <!-- 	<script src="http://192.168.0.60:10001/socket.io/socket.io.js"></script> -->
+	<style>
+	.ui-datepicker-inline{
+		background-color: rgba(255, 255, 255, 0.13);
+	}
+
+	.ui-datepicker-current-day{
 	
+	}
+	
+	.ui-state-default{
+		border: 1px solid #ffffff !important;
+	}
+	
+	.ui-datepicker-current-day {
+		background: blue;
+	}
+	
+	.ui-datepicker-today {
+		background: green;
+	}
+	
+	
+	</style>
 </head>
+<script>
+	console.log("수정");
+</script>
 <body id="page-top" class="index">
 
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
@@ -292,7 +317,7 @@
 		                     </ul>
 							  <div id="datepicker"></div><br>
 		                	 
-		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="" data-target="">
 					                 		 지출/수입 등록
 					          </button>
 				        	  
@@ -384,17 +409,17 @@
 									</div>
 								</div>
 						</div>
-				</div>
 				<br><br><br><br><br><br><br><br><br> 
+				</div>
 				<!-- 모달 끝 -->
 				
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div id="last" class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
+<!--     <div id="last" class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md"> -->
+<!--         <a class="btn btn-primary" href="#page-top"> -->
+<!--             <i class="fa fa-chevron-up"></i> -->
+<!--         </a> -->
+<!--     </div> -->
     
 </div>  <!-- container div  끝 -->
 

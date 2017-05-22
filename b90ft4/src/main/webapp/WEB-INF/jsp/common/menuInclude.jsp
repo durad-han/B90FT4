@@ -153,8 +153,12 @@ $(function () {
 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
 							</a>
 <!-- 						</span> -->
-	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/>
-					   <label for='showAndHideMemo' style="color:white;">메모 보기</label>
+<!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
+<!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> -->
+							<span style="margin-left: 15px;">	    				
+	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
+							</span>
+
 		            </li>
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
@@ -223,6 +227,19 @@ $(function () {
 	         </div>
         </div>
    </div>
+   
+      <!-- 스위치 -->
+
+
+<%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script> --%>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
+   
     
      <!-- 채팅 -->
      <!--BEGIN CHAT FORM-->

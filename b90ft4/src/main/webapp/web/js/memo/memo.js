@@ -1,4 +1,63 @@
-		memoCheck();
+//	var div = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+//		div +='<div class="modal-dialog">';																
+//		div +='		<div class="modal-content">																																			';
+//		div +='					<div class="modal-header">                                                                                                                              ';
+//		div +='						<h4 class="modal-title">지출/수입 등록</h4>                                                                                                         ';
+//		div +='					</div>                                                                                                                                                  ';
+//		div +='					<div class="modal-body">                                                                                                                                ';
+//		div +='						<form name="budgetF">                                                                                                                               ';
+//		div +='	                            <div class="form-group"><label class="col-sm-3 control-label">종류</label>                                                                  ';
+//		div +='	                                <div class="col-sm-9 controls">                                                                                                         ';
+//		div +='	                                    <div class="row">                                                                                                                   ';
+//		div +='	                                        <div class="col-xs-9">                                                                                                          ';
+//		div +='	                                            <div class="radio"><label class="radio-inline"><input type="radio" value="0" name="budgetCode" checked="checked"/>&nbsp;    ';
+//		div +='	                                               	 지출</label><label class="radio-inline"><input type="radio" value="1" name="budgetCode"/>&nbsp;                        ';
+//		div +='	                                                                 수입</label></div>                                                                                     ';
+//		div +='	                                        </div>                                                                                                                          ';
+//		div +='	                                    </div>                                                                                                                              ';
+//		div +='	                                </div>                                                                                                                                  ';
+//		div +='	                            </div>                                                                                                                                      ';
+//		div +='						 		<div class="form-group"><label class="col-sm-3 control-label">분류</label>                                                                  ';
+//		div +='	                              	<div class="col-sm-9 controls">                                                                                                         ';
+//		div +='	                                  	<div class="row">                                                                                                                   ';
+//		div +='	                                    	  <div class="col-xs-4">                                                                                                        ';
+//		div +='	                                     	  	<select class="form-control">                                                                                               ';
+//		div +='	                                     	  	</select>                                                                                                                   ';
+//		div +='	                                    	 	</div>                                                                                                                      ';
+//		div +='	                                  	 </div>                                                                                                                             ';
+//		div +='	                              	 </div>                                                                                                                                 ';
+//		div +='	                        	 </div>                                                                                                                                     ';
+//		div +='	                             <div class="form-group"><label class="col-sm-3 control-label">금액</label>                                                                 ';
+//		div +='	                                 <div class="col-sm-9 controls">                                                                                                        ';
+//		div +='	                                     <div class="row">                                                                                                                  ';
+//		div +='	                                      	    <div class="col-xs-9"><input type="text" class="form-control"/></div>                                                       ';
+//		div +='	                                      </div>                                                                                                                            ';
+//		div +='	                               </div>                                                                                                                                   ';
+//		div +='	                             </div>                                                                                                                                     ';
+//		div +='	                             <div class="form-group"><label class="col-sm-3 control-label">내용</label>                                                                 ';
+//		div +='	                                   <div class="col-sm-9 controls">                                                                                                      ';
+//		div +='	                                       <div class="row">                                                                                                                ';
+//		div +='	                                           <div class="col-xs-9"><input type="text" class="form-control"/></div>                                                        ';
+//		div +='	                                       </div>                                                                                                                           ';
+//		div +='	                               	   </div>                                                                                                                               ';
+//		div +='	                             </div>                                                                                                                                     ';
+//		div +='	                             <input type="hidden" />                                                                                                                    ';
+//		div +='	                    </form>                                                                                                                                             ';
+//		div +='						<br><br><br><br><br><br><br>                                                                                                                        ';
+//		div +='	          	   </div>                                                                                                                                                   ';
+//		div +='				<div class="modal-footer">                                                                                                                                  ';
+//		div +='					<button type="button" id="updateBudget" class="btn btn-success btn-simple" style = "display:none;">수정</button>                                        ';
+//		div +='					<button type="button" id="deleteBudget" class="btn btn-danger btn-simple" style = "display:none;" data-dismiss="modal">삭제</button>                    ';
+//		div +='					                                                                                                                                                        ';
+//		div +='					<button type="button" id="budgetRegi"   class="btn btn-success btn-simple">등록</button>                                                                ';
+//		div +='					<button type="button" id="closeF" 	    class="btn btn-danger btn-simple" data-dismiss="modal">닫기</button>                                            ';
+//		div +='				</div>                                                                                                                                                      ';
+//		div +='			</div>                                                                                                                                                          ';
+//		div +='	</div>                                                                                                                                                                  ';
+//		div +='	</div>                                                                                                                                                                  ';
+//		div +='	<br><br><br><br><br><br><br><br><br>                                                                                                                                    ';
+
+	    memoCheck();
 	
 		console.log($("#showAndHideMemo").prop("checked"));
 		
@@ -27,7 +86,7 @@
 					       width:"150px",
 					       height:"250px",
 					       background: "#ffff9d",
-					       "z-index" : "99999"
+					       "z-index" : "1049"
 			       	   })
 					   .attr("class","memo")
 					   .append(
@@ -159,6 +218,24 @@
 			}).done(function (result) {
 			});
 			
+			if($('#budgetModal').length > 0 ){
+//				console.log("존재");
+//				$('#budgetModal').hide();
+//				$("#myModal").remove();
+//				console.log("삭제");
+				
+//				$("body").append($(div));
+//				console.log("삽입");
+				
+//				$('#budgetModal').show();
+//				$("#myModal").show();
+				
+				
+			}else{
+				console.log("존재 X");
+			}
+			
+			
 			// edit.do
 		}).on("keyup","div.memo",function() {
 			$.ajax({
@@ -280,7 +357,7 @@
 					       width:sList[i].memoWidth+"px",
 					       height:sList[i].memoHeight+"px",
 					       background: "#ffff9d",
-				    	   "z-index" : "99999"
+				    	   "z-index" : "1049"
 			       	   })
 					   .attr("class","memo")
 					   .attr("id",sList[i].memoNo)
@@ -410,10 +487,10 @@
 		console.log("size : " + size);
 		
 		$(that).find("div.memoContent").css({
-			"height" : $(that).height() - 50
+			"height" : $(that).height() - 80
 		});
 		
-		console.log("memo : " + $(that).height(),"memoContent : " + $(that).find("div.memoContent").height());
+//		console.log("memo : " + $(that).height(),"memoContent : " + $(that).find("div.memoContent").height());
 		
 		}).mouseup(function() {
 			$(document).off();
