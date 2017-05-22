@@ -208,7 +208,7 @@ $(function () {
 	<!--                                 <p class="help-block text-danger"></p> -->
 	<!--                             </div> -->
 <!-- 	                        </div> -->
-	                        <div class="row" style="text-align: center;">
+	                        <div class="row" style="text-align: center; padding-left: 60px;">
 	                       		
 	                       			<div id="spinner" style=" background: #1EC800; border-radius: 5px;
 									        color: white; height: 40px; text-align: center; width: 250px;">
