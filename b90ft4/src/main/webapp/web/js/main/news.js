@@ -185,7 +185,7 @@ function makeNews(category) {
 		var html="";
 		
 		$.ajax({
-			url:"http://localhost:10001/news?category="+category,
+			url:"http://192.168.0.60:10001/news?category="+category,
 			dataType:"json",
 			async:false
 		}).done(function(result) {
