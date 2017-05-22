@@ -13,7 +13,7 @@
     
 <!-- ==================================================== workout original ==================================================== -->
 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/workout/timerTest.css"/>
+	<link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeA.css" />
 	<script src="${pageContext.request.contextPath}/web/js/common/handlebars.min.js"></script>
 	<script src="${pageContext.request.contextPath}/web/js/workout/handlebarsHelper.js"></script>
 <!-- ==================================================== workout original ==================================================== -->
@@ -269,6 +269,5 @@
 </script>
 
     <script src="${pageContext.request.contextPath}/web/js/workout/workout.js"></script>
-    <script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
 </body>
 </html>

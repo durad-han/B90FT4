@@ -42,7 +42,7 @@ $(".front").on("mousedown", function() {
 	//console.log("nextSet : " + nextSet);
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
-	$("#typeAContainer > .container").css({
+	$("#typeAContainer > .containerA").css({
     "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
 });
 value++;
@@ -62,7 +62,7 @@ value++;
 		  $("#setNo"+nextSet).trigger("click");
 		  
 		}
-      $("#typeAContainer > .container").css({
+      $("#typeAContainer > .containerA").css({
           "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
         });
 	  value = -1;
@@ -77,7 +77,7 @@ $(".back").on("mousedown", function() {
 	//console.log("backㅋㅋㅋ");
 	count++;
 	$("#typeAContainer").css({"background": "#0080ff"});
-	$("#typeAContainer > .container").css({
+	$("#typeAContainer > .containerA").css({
 		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
 	});
 	value++;
@@ -96,7 +96,7 @@ $(".back").on("mousedown", function() {
     		 
   		}
     	
-        $("#typeAContainer > .container").css({
+        $("#typeAContainer > .containerA").css({
             "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
           });
   	  value = -1;
