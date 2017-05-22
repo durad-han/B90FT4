@@ -194,29 +194,34 @@ $(function () {
 	            <div class="row">
 	                <div class="col-lg-8 col-lg-offset-2">
 	                    <form name="loginItem" id="loginItem" novalidate>
-	                        <div class="row control-group">
+<!-- 	                        <div class="row control-group"> -->
 	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
 	<!--                                 <label for="userId">ID</label> -->
 	<!--                                 <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요."> -->
 	<!--                                 <p class="help-block text-danger"></p> -->
 	<!--                             </div> -->
-	                        </div>
-	                        <div class="row control-group">
+<!-- 	                        </div> -->
+<!-- 	                        <div class="row control-group"> -->
 	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
 	<!--                                 <label for="password">Password</label> -->
 	<!--                                 <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요."> -->
 	<!--                                 <p class="help-block text-danger"></p> -->
 	<!--                             </div> -->
-	                        </div>
-	                        <div class="row">
-	                       		<div id="naver_id_login"></div>
-	                        	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-				 				<div id="status"></div>
+<!-- 	                        </div> -->
+	                        <div class="row" style="text-align: center;">
+	                       		
+	                       			<div id="spinner" style=" background: #1EC800; border-radius: 5px;
+									        color: white; height: 40px; text-align: center; width: 250px;">
+		                       			<div id="naver_id_login"></div>
+									</div>
+	                       			<div id="spinner" style=" background: #4267b2; border-radius: 5px;
+									        color: white; height: 40px; text-align: center; width: 250px;">
+		                        		<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+									</div>
 	                        </div>
 	                        <br>
-	                        <div id="success"></div>
-	                        <div class="row">
-	                            <div class="form-group col-xs-12">
+	                        <div class="row" style="text-align: center;">
+	                            <div class="form-group col-xs-12" style="margin: auto; ">
 	                                <a href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
 	                                <a href="#close" class="btn btn-danger btn-lg">취소</a>
 	                            </div>

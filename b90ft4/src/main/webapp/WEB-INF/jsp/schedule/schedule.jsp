@@ -159,13 +159,14 @@ if('${user.userId}'){
 							    				<br>
 							    				<span>예산관리가 가능한 스케줄입니다</span>
 							    				<br>
-							    				<button data-dropdown="#dropdown-dark-with-icons">ops</button>
+							    				<button data-dropdown="#dropdown-dark-with-icons">옵션</button>
 							    				<div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor dark" id="dropdown-dark-with-icons">
 													<ul>
-														<li><a href="#"><svg>...</svg> exp </a></li>
-														<li><a href="#"><svg>...</svg> inc </a></li>
+														<li><a href="#"><svg>...</svg> 지출 </a></li>
+														<li><a href="#"><svg>...</svg> 수입 </a></li>
 														<li class="divider"></li>
-														<li><a href="#"><svg>...</svg> others </a></li>
+														<li><a href="#"><svg>...</svg> 빌려준돈 </a></li>
+														<li><a href="#"><svg>...</svg> 빌린돈 </a></li>
 													</ul>
 												</div>
 							    				<br>
