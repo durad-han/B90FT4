@@ -12,22 +12,11 @@
 
 <title>Cog + I</title>
     
-<c:import url ="/WEB-INF/jsp/common/topInclude.jsp"/>
-
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-misc.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/templatemo-style.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/web/css/diary/animate.css">
-	<!-- chat -->
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
- 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+	<%@include file="/WEB-INF/jsp/common/topInclude.jsp"%>
 </head>
 
 <body id="page-top" class="index" style="background-color:white">
