@@ -102,7 +102,7 @@ $(function () {
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 <!-- 					          가계부 <span class = "caret"></span> -->
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/가계부5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" />
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/notepad0.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" />
 					      </a>
 					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
@@ -116,13 +116,13 @@ $(function () {
 				   
                     <li>
                         <a href="${pageContext.request.contextPath}/diary/list.do">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/일기5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" />
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/diary0.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" />
                         </a>
                     </li>
 
                     <li>
                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	
-                        		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/스케쥴5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" />
+                        		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/calendar0.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" />
                         </a>
 
                     </li>
@@ -130,7 +130,7 @@ $(function () {
                     <li>
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
 <!-- 					          운동 <span class = "caret"></span> -->
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/운동5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/>
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/workout0.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -150,7 +150,7 @@ $(function () {
                     <li>
 <!-- 		                <span> -->
 							<a id="addMemo">
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/pad0.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
 							</a>
 <!-- 						</span> -->
 <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
@@ -164,7 +164,7 @@ $(function () {
 				   <li id="topbar-chat" class="hidden-xs">
 						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>채팅</h3>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 <!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/채팅5.png" />
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/chat0.png" />
 						</a>
 				   </li>
 				</c:otherwise> 
@@ -172,7 +172,7 @@ $(function () {
                         
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>뉴스</h3>">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/뉴스5.png"  />
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/news0.png"  />
                         </a>
                     </li>
 
