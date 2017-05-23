@@ -44,23 +44,25 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
-        <br>
-        <h3>칼로리 계산</h3>
-        
-        <!-- 차트 -->
-     <div style = "height:30px;"></div>
-     <div style= "width: 60%; margin:0 auto;">
-        <div id="calChart" style="width: 100%; height:300px;"></div>
-     </div>
+        <div class="container">      
+			<br>
+			<div class="panel panel-yellow">
+				<div class="panel-heading">칼로리 계산</div>
+				     
+				<!-- 차트 -->
+				<div style = "height:30px;"></div>
+				<div style= "width: 60%; margin:0 auto;">
+					<div id="calChart" style="width: 100%; height:300px;"></div>
+				</div>
+			</div>
      <div style = "height:30px;"></div>
      <div>
-     	<div style="float:left; width: 49%; ">
-			<h4>오늘 섭취 칼로리 입력</h4>
+     	<div class="panel panel-yellow" style="float:left; width: 49%; ">
+			<div class="panel-heading">오늘 섭취 칼로리 입력</div>
 			
 			<input id='setConsumeCal' type='text'>kcal<br>
 			내 칼로리 <button id='callIntakeCalBtn' onclick='callIntakeCal()' class="btn btn-info">받아오기</button><br>
-			<hr color : "000000">
+			<hr style ="color : blue;">
 			칼로리 검색 : <input id='setFood' type='text'  placeholder='음식명을 입력하세요.'><br>
 			<div id ='foodListContainer' style ="float:left; overflow-y:auto;overflow-x:hidden;background-color:white;width:49%;height:140px;">
 			검색 결과:<br>
@@ -75,8 +77,8 @@
 			</div>
 			
      	</div>
-     	<div style="float:right; width: 49%;">
-			<h4>오늘 소비 칼로리 입력</h4>
+     	<div class="panel panel-yellow" style="float:right; width: 49%;">
+			<div class="panel-heading">오늘 소비 칼로리 입력</div>
 			<input id='setSpendCal'type='text'>kcal<br>
 			오늘 한 운동 <button id='callSpentCalBtn' onclick='callSpentCal()' class="btn btn-info">받아오기</button>
 			<button id='saveCalBtn' onclick='saveCal()'class="btn btn-success">칼로리 저장</button><br>

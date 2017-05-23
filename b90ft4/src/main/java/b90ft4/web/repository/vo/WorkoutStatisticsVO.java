@@ -1,10 +1,18 @@
 package b90ft4.web.repository.vo;
 
 public class WorkoutStatisticsVO {
+	private String PkStatistics;
 	private String workoutDay;
 	private int spentCal;
 	private int intakeCal;
 	private String userId;
+	
+	public String getPkStatistics() {
+		return PkStatistics;
+	}
+	public void setPkStatistics(String pkStatistics) {
+		PkStatistics = pkStatistics;
+	}
 	public String getWorkoutDay() {
 		return workoutDay;
 	}

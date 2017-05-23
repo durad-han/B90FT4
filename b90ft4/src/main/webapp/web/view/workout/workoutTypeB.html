@@ -24,9 +24,19 @@
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
 		<button id='youtubeOpenBtn' class='btn btn-primary' onclick='youtubeOpen()'>영상 켜기</button>
 		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
+		<div id = "recBtns">
+			<div style="float:left;">
+				<a href="#" title="Play video" class="recPlayBtn" onclick="onBtnRecordClicked()"></a>
+				<h1>녹화 / 일시중지</h1>
+			</div>
+			<div style="float:left; width:10%; height:40%;">
+				<a href="#" title="Stop video" class="recStopBtn" onclick="onBtnStopClicked()"></a>
+				<h1>정지</h1>
+			</div>
+		</div>
 		<button id="rec" onclick="onBtnRecordClicked()">녹화</button>
-		<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>녹화 일시정지</button>
-		<button id="stop"  onclick="onBtnStopClicked()" disabled>녹화 정지</button>
+		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>녹화 일시정지</button>
+		<button id="stop" onclick="onBtnStopClicked()" disabled>녹화 정지</button>
 		<a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 		<p id="data"></p>
 		
@@ -474,8 +484,16 @@ function slide() {
 
 //페이지 로딩시 이미지 슬라이더 로드
 slide();
-
-
+//recBtn함수
+/* 
+$(document).ready(function() {
+	  var icon = $('.recPlayBtn');
+	  icon.click(function() {
+	     icon.toggleClass('activePlayBtn');
+	     return false;
+	  });
+	});
+ */
 </script>
 </body>
 </html>

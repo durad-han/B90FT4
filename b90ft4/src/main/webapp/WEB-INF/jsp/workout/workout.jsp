@@ -79,7 +79,7 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
 	
 </div>   
-
+<a id = "userIdTag" hidden>${user.userId}</a>
 <script id="workoutList" type="text/x-handlebars-template">
 
 	<div id="sum_box" class="row mbl">
@@ -89,27 +89,21 @@
 			<div class="col-sm-6 col-md-3">
 				<div class="panel task db mbm">
 					<div class="panel-body" onclick="workoutMove({{workoutNo}})">
-						<%-- <div class="panel-body" onclick="workoutMove(${l.workoutNo},'${l.workoutType}')"> --%>
-						<p class="icon">
-							<i class="icon fa fa-signal"></i>
-						</p>
+						
 						<h4 class="value">
 							<span>215</span>
 						</h4>
 						<p class="description">{{workoutId}} 운동타입 - {{workoutType}}</p>
 						<div class="progress progress-sm mbn">
-							<div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar progress-bar-danger">
-								<span class="sr-only">70% Complete (success)</span>
+							
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		{{/list}} 
 	</div>
 	<div id="workoutMainButtons">
-		<button class='btn btn-primary' id="workoutUpdateBtn" hidden>운동 편집</button>
- 		
+			
 	</div>
    
 </script>
@@ -148,14 +142,14 @@
 					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
 						{{#isZero}}
-						<!--	<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
-							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
+						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
+							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
 						{{else}}
-						<!--	<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
-							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
+						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
+							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
-					<li><a id="currentSet">현재 세트 :</a></li>
+					<li><a id="currentSet">현재 세트 :</a><br></li>
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->

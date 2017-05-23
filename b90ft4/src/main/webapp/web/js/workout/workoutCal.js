@@ -3,7 +3,6 @@ var totalIntakeCal = 0;
 var today = $.datepicker.formatDate("yy-mm-dd",new Date());
 var BM = 0;
 var userId = $("#userIdTag").text();
-console.log(userId);
 var spendBar 	= [0,0,0,0,0,0,0];
 var leftBar 	= [0,0,0,0,0,0,0];
 var overBar 	= [0,0,0,0,0,0,0];
@@ -32,7 +31,29 @@ $(document).ready(function() {
 
 });
 
-
+//오늘 칼로리 컬럼 생성,확인
+function calColumnInsert(){
+	//console.log("calColumnInsertload : " );
+	var today = $.datepicker.formatDate("yy-mm-dd",new Date());
+	//console.log("today : "+today );
+	gvToday = today;
+	//console.log("gvToday : " + gvToday);
+	//console.log("calColumnInsertload2 : " );
+	$.ajax({
+		url:"InsertWorkoutStatistics.do",
+		dataType:"json",
+		data : {"today" : gvToday , "userId" : userId }
+		}).done(function(result){
+			
+			console.log("calColumnInsertload3 : " );
+			console.dir(result);
+			
+		});
+	//console.log("calColumnInsertload4 : " );
+	
+	
+}
+calColumnInsert();
 
 //음식 검색 관련 함수
 
@@ -100,8 +121,11 @@ function saveCal(){
 	 totalCal    = [0,0,0,0,0,0,0];
 	gvSpentCal = $("#setSpendCal").val();
 	gvIntakeCal = $("#setConsumeCal").val();
+	console.log("saveCal1");
 	updateCal();
+	console.log("saveCal2");
 	chartDayCall();
+	console.log("saveCal3");
 }
 
 //차트 초기 호출 관련 함수들
@@ -145,6 +169,10 @@ function setChart(){
 	var s2 = leftBar;
 	var s3 = overBar;
 	var ticks = [date7,date6,date5,date4,date3,date2,date1];
+	console.dir(s1);
+	console.dir(s2);
+	console.dir(s3);
+	console.dir(ticks);
 	
 	plot1 = $.jqplot('calChart', [s1,s2,s3], {
 	    // Only animate if we're not using excanvas (not in IE 7 or IE 8)..

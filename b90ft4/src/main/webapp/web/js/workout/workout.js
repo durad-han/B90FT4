@@ -1,4 +1,4 @@
-var userId = 'tester01';
+var userId = $("#userIdTag").text();
 var gvWorkoutSetNo = "";
 var gvWorkoutNo = "";
 var gvTypeACount = "";
@@ -95,7 +95,9 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	console.log("workoutTypeLoad function started");
 	console.log("gvSetIndex : " + gvSetIndex);
 	$("#currentSet").html("현재 세트 : "+gvSetIndex);
-	var type="";
+	 document.getElementById("currentSet").style.backgroundColor = "#ffaaff";
+	
+	var type = "";
 	if(typeACount != 0){
 		type = "A";
 	}else{ 
@@ -105,7 +107,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	var html = "";
 	//typeA load
 	if(type == "A"){
-		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA2.html");
+		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA3.html");
 	}
 
 	
@@ -130,9 +132,9 @@ function endWorkout(){
 
 //today calorie column insert
 function calColumnInsert(){
-	console.log("calColumnInsertload : " );
+	//console.log("calColumnInsertload : " );
 	var today = $.datepicker.formatDate("yy-mm-dd",new Date());
-	console.log("today : "+today );
+	//console.log("today : "+today );
 	gvToday = today;
 	console.log("gvToday : " + gvToday);
 	console.log("calColumnInsertload2 : " );

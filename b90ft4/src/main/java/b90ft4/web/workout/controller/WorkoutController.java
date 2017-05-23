@@ -133,6 +133,7 @@ public class WorkoutController {
 	@ResponseBody
 	@RequestMapping("/selectWorkoutStatisticsList.do")
 	public List<WorkoutStatisticsVO> WorkoutStatisticsList(String today , String userId) throws Exception{	
+		
 		List<WorkoutStatisticsVO> list = ws.workoutStatisticsList(today , userId);
 		return list;
 	}

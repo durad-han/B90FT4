@@ -41,6 +41,7 @@
 	</select>
 	
    	<resultMap type="workoutStatisticsVO" id="workoutStatisticsMap">
+   		<result column="Pk_Statistics"			property="PkStatistics"		/>
 		<result column="Workout_Day"			property="workoutDay"		/>
 		<result column="Spent_Cal"				property="spentCal"			/>
 		<result column="Intake_Cal"				property="intakeCal"		/>
@@ -62,15 +63,15 @@
 	</select> 
 	
 	<update id="modifyWorkoutStatisticsList" parameterType="String">		
-		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today}
+		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today} and user_Id = #{userId}
 	</update> 
 	<update id="modifyWorkoutStatisticsListByWorkoutCal" parameterType="String">		
-		update tb_sam_workout_statistics set Spent_Cal = #{spentCal} , Intake_Cal = #{intakeCal} where Workout_Day = #{today}
+		update tb_sam_workout_statistics set Spent_Cal = #{spentCal} , Intake_Cal = #{intakeCal} where Workout_Day = #{today} and user_Id = #{userId}
 	</update> 
  
 	<insert id="insertWorkoutStatisticsList" parameterType="String">
-		insert into tb_sam_workout_statistics(Workout_Day,Spent_Cal,Intake_Cal,User_Id)
-		values(#{today},0,0,#{userId})
+		insert into tb_sam_workout_statistics(Pk_Statistics,Workout_Day,Spent_Cal,Intake_Cal,User_Id)
+		values(CONCAT(#{today},#{userId}),#{today},0,0,#{userId})
 	</insert>
 	
 <!--  retrieveWorkoutDateTest -->

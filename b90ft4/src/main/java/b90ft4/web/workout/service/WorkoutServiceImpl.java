@@ -48,8 +48,8 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Override
 	public String workoutStatisticsInsert(String today,String userId) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("workoutStatisticsInsert load");
-		System.out.println("today :" + today + ",userId : " + userId);
+		//System.out.println("workoutStatisticsInsert load");
+		//System.out.println("today :" + today + ",userId : " + userId);
 		String workoutStatisticsInsertMsg = "";
 		List<WorkoutStatisticsVO> list = wm.retrieveWorkoutStatisticsList(today,userId);
 		if(list.size() <= 0){
@@ -98,7 +98,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public String workoutUserInfoSelectUserId(String userId) throws Exception {
 		// TODO Auto-generated method stub
 		
-		System.out.println("workoutUserInfoSelectUserId : " + userId);
+//		System.out.println("workoutUserInfoSelectUserId : " + userId);
 //		System.out.println(""+wm.retrieveWorkoutUserInfoUserId(userId));
 		String userIdResult = "";
 		if(wm.retrieveWorkoutUserInfoUserId(userId)==null){
@@ -140,9 +140,9 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Override
 	public List<WorkoutFoodNutritionFactVO> workoutFoodNutritionFactList(String foodValue) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("imp까지 옴");
+		//System.out.println("imp까지 옴");
 		List<WorkoutFoodNutritionFactVO> list = wm.selectWorkoutFoodNutritionFactList(foodValue);
-		System.out.println("imp리턴받음");
+		//System.out.println("imp리턴받음");
 		return list;
 	}
 
