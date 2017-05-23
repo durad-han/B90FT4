@@ -432,7 +432,7 @@
 		console.log("size : " + size);
 		
 		$(that).find("div.memoContent").css({
-			"height" : $(that).height() - 30
+			"height" : $(that).height() - 50
 		});
 		
 //		console.log("memo : " + $(that).height(),"memoContent : " + $(that).find("div.memoContent").height());
