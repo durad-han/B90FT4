@@ -161,9 +161,9 @@
 				<td class="td-txt-right td-wp8">상태</td>
 			 	<td>
 			 		<div class="form-group">
-			 			<input type='radio' id="superHappy" name='emotionCode' value='1' checked/>
-			 			<label for="superHappy"> 
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg"/>
+			 			<input type='radio' id="super" name='emotionCode' value='1' checked/>
+			 			<label for="super"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/super.jpg"/>
 			 			</label>
 			 			
 			 			<input type='radio' id="happy" name='emotionCode' value='2' />
@@ -171,9 +171,9 @@
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/happy.jpg"/>
 			 			</label>
 			 			
-			 			<input type='radio' id="enjoy" name='emotionCode' value='3' />
-			 			<label for="enjoy"> 
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg"/>
+			 			<input type='radio' id="lol" name='emotionCode' value='3' />
+			 			<label for="lol"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/lol.jpg"/>
 						</label>
 			 			<input type='radio' id="sad" name='emotionCode' value='4' />
 			 			<label for="sad"> 
@@ -187,9 +187,26 @@
 			 			<label for="despair"> 
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/despair.jpg"/>
 			 			</label>
-			 			<input type='radio' id="sulk" name='emotionCode' value='7' />
-			 			<label for="sulk"> 
-			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg"/>
+			 			<input type='radio' id="cry" name='emotionCode' value='7' />
+			 			<label for="cry"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/cry.jpg"/>
+			 			</label>
+			 			<br>
+			 			<input type='radio' id="boring" name='emotionCode' value='8' />
+			 			<label for="boring"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/boring.jpg"/>
+			 			</label>
+			 			<input type='radio' id="love" name='emotionCode' value='9' />
+			 			<label for="love"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/love.jpg"/>
+			 			</label>
+			 			<input type='radio' id="surprise" name='emotionCode' value='10' />
+			 			<label for="surprise"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/surprise.jpg"/>
+			 			</label>
+			 			<input type='radio' id="sick" name='emotionCode' value='11' />
+			 			<label for="sick"> 
+			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sick.jpg"/>
 			 			</label>
 			 		</div>
 			 	</td>

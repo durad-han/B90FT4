@@ -214,6 +214,7 @@ $(function () {
 									        color: white; height: 40px; text-align: center; width: 250px;">
 		                       			<div id="naver_id_login"></div>
 									</div>
+									<br>
 	                       			<div id="spinner" style=" background: #4267b2; border-radius: 5px;
 									        color: white; height: 40px; text-align: center; width: 250px;">
 		                        		<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
