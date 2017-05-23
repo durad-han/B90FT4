@@ -65,8 +65,6 @@
 		// 메모 이동
 		$("body").on("mousedown","div.memo",function(e){
 			
-			e.stopPropagation();
-			
 			var x = e.offsetX;
 			var y = e.offsetY;
 			var that = $(this);
@@ -108,13 +106,13 @@
 //			});
 
 			
-//			$(document).on("dragstart",function() {
-//				return false;
-//			});
-//			
-//			$(document).on("selectstart",function() {
-//				return false;
-//			});
+			$(document).on("dragstart",function() {
+				return false;
+			});
+			
+			$(document).on("selectstart",function() {
+				return false;
+			});
 
 //			$(this).siblings().on("dragstart",function(){
 //				return;
@@ -142,9 +140,8 @@
 		}).on("mouseup","div.memo",function() {
 			
 			
-//			$(document).off("dragstart");
-//			$(document).off("selectstart");
-
+			$(document).off("dragstart");
+			$(document).off("selectstart");
 			
 			$(this).css("opacity","1");
 			
@@ -196,8 +193,6 @@
 		}).on("mousedown","div.memoContent",function(e) {
 			e.stopPropagation();
 		}).on("mousemove","div.memo",function(e) {
-			
-			e.stopPropagation();
 			
 			var x = e.offsetX;
  			var y = e.offsetY;
