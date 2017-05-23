@@ -364,7 +364,7 @@ $(function () {
 		}
     </script>
     <c:if test="${not empty user.userId}">
-	    <script src="http://192.168.0.60:10000/socket.io/socket.io.js"></script>
+	    <script src="http://14.32.66.123:10000/socket.io/socket.io.js"></script>
 		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
@@ -379,7 +379,7 @@ $(function () {
 	var naver_id_login = new naver_id_login("q_ZhPmwu3AMenQdKmDGj", "http://14.32.66.123:9092/b90ft4/login/nLogin.do");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("green", 3,40);
-	naver_id_login.setDomain("http://14.32.66.123:9092/b90ft4/main/main.do");
+	naver_id_login.setDomain("http://14.32.66.123:10000/b90ft4/main/main.do");
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();

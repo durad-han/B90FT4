@@ -5,7 +5,7 @@
 	var socket;
 	var html="";
 	
-	socket = io.connect("http://192.168.0.60:10000");
+	socket = io.connect("http://14.32.66.123:10000");
 	
 	if(socket) {
 	
