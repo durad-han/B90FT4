@@ -37,7 +37,7 @@
                
                 <div class="row">
                     <div class="section-header col-md-12">
-                        <h2 style="color: red">Diary</h2>
+<!--                         <h2 style="color: red">Diary</h2> -->
                     </div> 
                 </div>	
                 
