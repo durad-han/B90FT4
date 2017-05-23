@@ -1,4 +1,6 @@
-console.log("scheduleMain.js 로드됨...");
+console.log("scheduleMain.js 로드됨...!");
+console.log("scheduleMain.js 로드됨...!");
+console.log("scheduleMain.js 로드됨...!");
 //----- schedule List -----------------------------------------------------------
 
 //----- schedule InfiniteScrolling + Pagination ---------------------------------------------------------------------------------------------
@@ -198,6 +200,7 @@ function scheduleBody(result){
 //	$('.clz-insertSchedule').foxholder({
 //		demo: 2 //(1-15)
 //	});
+	
 
 //----- datePicker -------------------------------------------------------------------------------------
 	$('#inputStart').datetimepicker();
@@ -206,7 +209,7 @@ function scheduleBody(result){
 //----- stars -----------------------------------------------------------
 	$(".stars").starRating({
 		totalStars: 3,
-		initialRating: 0,
+		initialRating: 1,
 		starSize: 40,
 		starShape: 'rounded',
 		emptyColor: 'lightgray',
@@ -547,6 +550,11 @@ function scheduleForm(form){
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
+	if($('#inputImportance').val($('.stars').starRating('getRating'))){
+		swal("등록", "중요도를 설정해주세요", "error");
+		return false;
+	}
+	
 	$('#inputImportance').val($('.stars').starRating('getRating'))
 	return true;
 };
