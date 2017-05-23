@@ -84,17 +84,19 @@
 
 	<div id="sum_box" class="row mbl">
 	<!-- 운동 리스트 호출 -->
-
+<br>
+<br>
+<br>
 		{{#list}} 
 			<div class="col-sm-6 col-md-3">
-				<div class="panel task db mbm">
+				<div class="panel task db mbm" style = "border : solid 4px gray;">
 					<div class="panel-body" onclick="workoutMove({{workoutNo}})">
 						
-						<h4 class="value">
+						<h4 class="value" ">
 							<span>215</span>
 						</h4>
 						<p class="description">{{workoutId}} 운동타입 - {{workoutType}}</p>
-						<div class="progress progress-sm mbn">
+						<div class="progress progress-sm mbn" style="background-color:orange;">
 							
 							</div>
 						</div>
