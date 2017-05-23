@@ -365,7 +365,7 @@ $(function () {
 		}
     </script>
     <c:if test="${not empty user.userId}">
-	    <script src="http://14.32.66.123:10000/socket.io/socket.io.js"></script>
+	    <script src="http://14.32.66.123:10006/socket.io/socket.io.js"></script>
 		<script src="${pageContext.request.contextPath}/web/js/chat/chat.js"></script>
 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.metisMenu.js"></script> 
 	    <script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Light/script/jquery.slimscroll.js"></script>
