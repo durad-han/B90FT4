@@ -317,7 +317,7 @@
 		                     </ul>
 							  <div id="datepicker"></div><br>
 		                	 
-		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="" data-target="">
+		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					                 		 지출/수입 등록
 					          </button>
 				        	  

@@ -1241,14 +1241,14 @@
 		regiOrModFlag = 1;
 		
 		
-		$("body").addClass("modal-open").css("padding-right","17px");
-		$("#myModal").addClass('in');
-		$("#myModal").css({
-		    "display":"block",
-		    "padding-right":"17px"
-		});
-		
-		$("body").append($("<div class='modal-backdrop fade in'></div>"));
+//		$("body").addClass("modal-open").css("padding-right","17px");
+//		$("#myModal").addClass('in');
+//		$("#myModal").css({
+//		    "display":"block",
+//		    "padding-right":"17px"
+//		});
+//		
+//		$("body").append($("<div class='modal-backdrop fade in'></div>"));
 		
 	});
 	
@@ -1312,15 +1312,15 @@
 //		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(0);
 		
-		$("body").removeClass("modal-open").removeAttr("style");
-		$("#myModal").removeClass('in');
-		$("#myModal").removeAttr('style');
-		
-		$("#myModal").css({
-		    "display":"none"
-		});
-		
-		$("div.modal-backdrop.fade.in").remove();
+//		$("body").removeClass("modal-open").removeAttr("style");
+//		$("#myModal").removeClass('in');
+//		$("#myModal").removeAttr('style');
+//		
+//		$("#myModal").css({
+//		    "display":"none"
+//		});
+//		
+//		$("div.modal-backdrop.fade.in").remove();
 		
 		
 //		setTimeout(function(){
