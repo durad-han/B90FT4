@@ -65,21 +65,6 @@
 					<div class="panel panel-yellow">
 						<div class="panel-heading">오늘 섭취 칼로리 입력</div>
 						
-<!-- 						<input id='setConsumeCal' type='text'>kcal<br> -->
-<!-- 						내 칼로리 <button id='callIntakeCalBtn' onclick='callIntakeCal()' class="btn btn-info">받아오기</button><br> -->
-<!-- 						<hr style ="color : blue;"> -->
-<!-- 						칼로리 검색 : <input id='setFood' type='text'  placeholder='음식명을 입력하세요.'><br> -->
-<!-- 						<div id ='foodListContainer' style ="float:left; overflow-y:auto;overflow-x:hidden;background-color:white;width:49%;height:140px;"> -->
-<!-- 						검색 결과:<br> -->
-<!-- 						<table id ='foodTable'> -->
-<!-- 						</table> -->
-<!-- 						</div> -->
-						
-<!-- 						<div id ='foodSelectedListContainer' style = "float:right; overflow-y:auto;overflow-x:hidden;background-color:white;width:49%;height:140px;"> -->
-<!-- 						선택한 음식:<br> -->
-						
-<!-- 						<table id ='foodSelectedTable'> -->
-<!-- 						</table> -->
 						<input id='setConsumeCal' type='text'>kcal<br>
 						내 칼로리 <button id='callIntakeCalBtn' onclick='callIntakeCal()' class="btn btn-info">받아오기</button><br>
 						<hr style ="color : blue;">
@@ -121,19 +106,44 @@
 								<div class="panel panel-yellow" id='BMContainer'>
 							<div class="panel-heading">내 정보</div>
 				     	<br>
-							키:    <input class='BMSet' id='setUserHeight' type='text'>cm<br>
-							몸무게: <input class='BMSet' id='setUserWeight' type='text'>kg<br>
-							나이:   <input class='BMSet' id='setUserAge' type='text'>세<br>
-							성별:<input type="radio" name="gender" id="genderMale" value="male" checked> 남 
-								<input type="radio" name="gender" id="genderFemale" value="female"> 여<br>
-						<br>
-							내 정보<button id='callBMBtn' onclick = 'callBM()'class="btn btn-info">불러오기</button>
-							<button id='saveBMBtn' onclick = 'saveBM()'class="btn btn-success">저장</button>
-							<button id='deleteBMBtn' onclick = 'deleteBM()'class="btn btn-danger">삭제</button><br>	
-						<br>
-							기초대사량:<input id ='BMView' type='text'>kcal<br><br>
+				     	<table style = "border : 0px;">
+				     	<tr>
+					     	<td>키:</td>
+					     	<td><input class='BMSet' id='setUserHeight' type='text'></td>
+					     	<td>cm</td>
+					     	<td></td>
+					     	<td>기초대사량:<input id ='BMView' type='text'></td>
+					     	<td>kcal</td>
+				     	</tr>
+				     	<tr>
+				     		<td>몸무게:</td>
+				     		<td><input class='BMSet' id='setUserWeight' type='text'></td>
+				     		<td>kg</td>
+				     		
+							<td align="right" colspan="2">
 							<button id='setBMBtn' onclick = 'setBM()'class="btn btn-success">오늘 소비 칼로리에 적용</button>
-							<button id='hideBMContainerBtn' onclick = 'hideBMContainer()'class="btn btn-warning">닫기</button><br>
+							</td>
+				     	</tr>
+				     	<tr>
+					     	<td>나이:</td>
+					     	<td><input class='BMSet' id='setUserAge' type='text'></td>
+					     	<td>세</td>
+				     	</tr>
+				     	<tr>
+					     	<td>성별:</td>
+					     	<td><input type="radio" name="gender" id="genderMale" value="male" checked> 남 
+					     	    <input type="radio" name="gender" id="genderFemale" value="female"> 여</td>
+					     	<td></td>
+				     	</tr>
+				     	</table>
+						<br>
+							<button id='callBMBtn' onclick = 'callBM()'class="btn btn-info">불러오기</button>
+							<button id='saveBMBtn' onclick = 'saveBM()'class="btn btn-success">저장</button>
+							<button id='deleteBMBtn' onclick = 'deleteBM()'class="btn btn-danger">삭제</button>
+							<button id='hideBMContainerBtn' onclick = 'hideBMContainer()'class="btn btn-warning">닫기</button>
+						<br>
+							
+							<br>
 						</div>
 				
 					

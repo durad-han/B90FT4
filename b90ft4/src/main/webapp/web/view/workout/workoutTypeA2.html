@@ -22,7 +22,7 @@
 </div>
 <script>
 var nextSet = gvSetIndex+1;
-var count, rotateY, setValueFunc, value, zero;
+var count, rotateY, setValueFunc, value, zero ,fbFlag;
 zero = 0;
 rotateY = 180;
 value = -1;
@@ -30,79 +30,89 @@ count = -1;
 maxValue = gvTypeACount;
 max = "/"+maxValue;
 breakTimeVal = 10;
-
+fbFlag = 0;
 //setContainer혹은 viewContainer 마지막에 현재 세트 정보 표시
 
 
 //typeA관련 함수
 
-$(".front").click(function() {
-	//console.log("gvWorkoutSetNo : " + gvWorkoutSetNo);
-	//console.log("gvIsLast : " + gvIsLast);
-	//console.log("nextSet : " + nextSet);
-	count++;
-	$("#typeAContainer").css({"background": "#0080ff"});
-	$("#typeAContainer > .containerA").css({
-    "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"});
-value++;
-  
-  if(count === maxValue){
-	  $("#typeAContainer").css({"background": "#ff7373"});
-  		if(gvIsLast){
-  		
-  		calIncDec();
-		  alert("마지막 세트입니다.");
-		  
-  		}
-  		else{
-		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-		
-		calIncDec();
-		  $("#setNo"+nextSet).trigger("click");
-		  
-		}
-      $("#typeAContainer > .containerA").css({
-          "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-        });
-	  value = -1;
-	  count = -1;
-	  return $(".value_front").text("Start!");
-  }
-  
-  return $(".value_back").text(value + max);
-});
-
-$(".back").click(function() {
-	//console.log("backㅋㅋㅋ");
-	count++;
-	$("#typeAContainer").css({"background": "#0080ff"});
-	$("#typeAContainer > .containerA").css({
-		"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-	});
+$("#typeAContainer").click(function() {
+	
+	if( fbFlag = 1){
+		//console.log("gvWorkoutSetNo : " + gvWorkoutSetNo);
+		//console.log("gvIsLast : " + gvIsLast);
+		//console.log("nextSet : " + nextSet);
+		console.log("flag1");
+		count++;
+		$("#typeAContainer").css({"background": "#0080ff"});
+		$("#typeAContainer > .containerA").css({
+	    "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"});
 	value++;
-    if(count === maxValue){
-    	$("#typeAContainer").css({"background": "#ff7373"});
-    	if(gvIsLast){
-    		
-    		calIncDec();
-  		  alert("마지막 세트입니다.");
-    	}
-    	else{
-    		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-    		
-    		calIncDec();
-    		 $("#setNo"+nextSet).trigger("click");
-    		 
-  		}
-    	
-        $("#typeAContainer > .containerA").css({
-            "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
-          });
-  	  value = -1;
-  	  count = -1;
-  	  return $(".value_back").text("Start!");
-    }
-	return $(".value_front").text(value + max);
+	  
+	  if(count === maxValue){
+		  $("#typeAContainer").css({"background": "#ff7373"});
+	  		if(gvIsLast){
+	  		
+	  		calIncDec();
+			  alert("마지막 세트입니다.");
+			  
+	  		}
+	  		else{
+			  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+			
+			calIncDec();
+			  $("#setNo"+nextSet).trigger("click");
+			  
+			}
+	      $("#typeAContainer > .containerA").css({
+	          "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	        });
+		  value = -1;
+		  count = -1;
+		  fbFlag = 0;
+		  return $(".value_front").text("Start!");
+	  }
+	  fbFlag = 0;
+	  console.log(value + max);
+	  return $(".value_back").text(value + max);
+	}
+	
+	else if(fbFlag = 0){
+		console.log("flag1");
+		count++;
+		$("#typeAContainer").css({"background": "#0080ff"});
+		$("#typeAContainer > .containerA").css({
+			"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+		});
+		value++;
+	    if(count === maxValue){
+	    	$("#typeAContainer").css({"background": "#ff7373"});
+	    	if(gvIsLast){
+	    		
+	    		calIncDec();
+	  		  alert("마지막 세트입니다.");
+	    	}
+	    	else{
+	    		 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+	    		
+	    		calIncDec();
+	    		 $("#setNo"+nextSet).trigger("click");
+	    		 
+	  		}
+	    	
+	        $("#typeAContainer > .containerA").css({
+	            "transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
+	          });
+	  	  value = -1;
+	  	  count = -1;
+	  	  fbFlag = 0;
+	  	  return $(".value_back").text("Start!");
+	    }
+	    fbFlag = 0;
+	    console.log(value + max);
+		return $(".value_front").text(value + max);
+	}
+
 });
 </script>
 </body>

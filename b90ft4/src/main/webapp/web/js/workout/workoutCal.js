@@ -211,6 +211,7 @@ $(".BMSet").on("keyup" , function(){
 
 $('#BMContainer').addClass('hidden');
 function showBMContainer(){
+	
 	$('#BMContainer').removeClass('hidden');
 	$("#callBMBtn").trigger("click");
 	

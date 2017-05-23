@@ -93,10 +93,10 @@
 					<div class="panel-body" onclick="workoutMove({{workoutNo}})">
 						
 						<h4 class="value" ">
-							<span>215</span>
+							<span>{{workoutId}}</span>
 						</h4>
-						<p class="description">{{workoutId}} 운동타입 - {{workoutType}}</p>
-						<div class="progress progress-sm mbn" style="background-color:orange;">
+						<p class="description">운동타입 - {{workoutType}}</p>
+						<div class="progress progress-sm mbn" style="background-color:orange;ackground-color:orange;">
 							
 							</div>
 						</div>
