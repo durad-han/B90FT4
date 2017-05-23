@@ -77,9 +77,11 @@
 	
 	</style>
 </head>
+
 <script>
 	console.log("수정");
 </script>
+
 <body id="page-top" class="index">
 
 <div class="container" style="background-color: rgba(137, 183, 136, 0.03);">
@@ -317,9 +319,9 @@
 		                     </ul>
 							  <div id="datepicker"></div><br>
 		                	 
-		                	  <button id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		                	  <a href="#" id="budgetModal" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					                 		 지출/수입 등록
-					          </button>
+					          </a>
 				        	  
 				        	  <br><br>
 				        	  
@@ -353,7 +355,7 @@
     </section>
 	
    				<!-- 입력 모달 시작 -->
-   				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   				<div class="modal fade" id="myModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
 						<div class="modal-dialog">
 							<div class="modal-content">
 										<div class="modal-header">
