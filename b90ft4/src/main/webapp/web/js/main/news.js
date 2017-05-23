@@ -179,7 +179,6 @@ http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Styl
 })(jQuery, window, document);
 
 
-
 function makeNews(category) {
 	
 		var html="";
