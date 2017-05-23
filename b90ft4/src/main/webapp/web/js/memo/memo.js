@@ -65,6 +65,8 @@
 		// 메모 이동
 		$("body").on("mousedown","div.memo",function(e){
 			
+			e.stopPropagation();
+			
 			var x = e.offsetX;
 			var y = e.offsetY;
 			var that = $(this);
@@ -194,6 +196,8 @@
 		}).on("mousedown","div.memoContent",function(e) {
 			e.stopPropagation();
 		}).on("mousemove","div.memo",function(e) {
+			
+			e.stopPropagation();
 			
 			var x = e.offsetX;
  			var y = e.offsetY;
