@@ -137,7 +137,7 @@
 						                           <div class="panel-body">
 						                                <table class="table table-hover-color">
 						                                    <thead>
-							                                    <tr id="expenseColumn">
+						                                    <tr id="expenseColumn">
 							                                        <th id="expenseCtgy">
 																		분류
 							                                        </th>

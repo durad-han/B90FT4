@@ -106,13 +106,13 @@
 //			});
 
 			
-			$(document).on("dragstart",function() {
-				return false;
-			});
-			
-			$(document).on("selectstart",function() {
-				return false;
-			});
+//			$(document).on("dragstart",function() {
+//				return false;
+//			});
+//			
+//			$(document).on("selectstart",function() {
+//				return false;
+//			});
 
 //			$(this).siblings().on("dragstart",function(){
 //				return;
@@ -122,7 +122,7 @@
 //				return;
 //			});
 			
-			console.log("시블링2");
+			console.log("시블링");
 			
 			
 		// 메모 이동.
@@ -140,8 +140,8 @@
 		}).on("mouseup","div.memo",function() {
 			
 			
-			$(document).off("dragstart");
-			$(document).off("selectstart");
+//			$(document).off("dragstart");
+//			$(document).off("selectstart");
 
 			
 			$(this).css("opacity","1");

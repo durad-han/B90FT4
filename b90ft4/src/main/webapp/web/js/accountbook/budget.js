@@ -218,7 +218,6 @@
 
 		$("#month-tab").removeClass("in active");
 		
-		
 		selectedDateOption = 1;
 
 		$("#datepicker").datepicker("refresh");
