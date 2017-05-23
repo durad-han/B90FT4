@@ -550,7 +550,7 @@ function scheduleForm(form){
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
-	if($('#inputImportance').val($('.stars').starRating('getRating'))){
+	if($('#inputImportance').val($('.stars').starRating('getRating')) == 0){
 		swal("등록", "중요도를 설정해주세요", "error");
 		return false;
 	}
