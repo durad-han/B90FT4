@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard | Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Loading bootstrap css-->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+    
+<!--     <link type="text/css" rel="stylesheet" href="styles/jquery-ui-1.10.4.custom.min.css"> -->
+   	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!--     <link type="text/css" rel="stylesheet" href="styles/all.css"> -->
+    <link type="text/css" rel="stylesheet" href="main.css">
+    
+     <!-- 제이쿼리 , Bootstrap css-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="chat.css">
+	<link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+	
+	<!-- 제이쿼리, 부트스트랩 js -->
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src ="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="http://14.32.66.123:10006/socket.io/socket.io.js"></script>
+	
+</head>
+<body>
+       
+        <!--BEGIN THEME SETTING-->
+        
+        <!--END THEME SETTING-->
+        <!--BEGIN BACK TO TOP-->
+<!--         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a> -->
+        <!--END BACK TO TOP-->
+       
+        <!--BEGIN TOPBAR-->
+<!--         <div id="header-topbar-option-demo" class="page-header-topbar"> -->
+<!--             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top"> -->
+                <ul class="nav navbar navbar-top-links">
+                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">3</span></a>
+                    </li>
+                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">7</span></a>
+                    </li>
+                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
+                    </li>
+                    
+                    <!-- 채팅 아이콘 -->
+                    <li id="topbar-chat" class="hidden-xs"><a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"><i class="fa fa-comments"></i><span class="badge badge-info">3</span></a></li>
+                </ul>
+<!--        	 	</nav> -->
+<!--         </div> -->
+        
+            <!--BEGIN CHAT FORM-->
+            <div id="chat-form" class="fixed">
+                <div class="chat-inner">
+                    <h2 class="chat-header">
+                        <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove">
+                        </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;<span class="badge badge-info">3</span></h2>
+                    <div id="group-1" class="chat-group">
+                        <strong>Favorites</strong><a href="#"><span class="user-status is-online"></span> <small>
+                            Verna Morton</small> <span class="badge badge-info">2</span></a><a href="#"><span
+                                class="user-status is-online"></span> <small>Delores Blake</small> <span class="badge badge-info is-hidden">
+                                    0</span></a><a href="#"><span class="user-status is-busy"></span> <small>Nathaniel Morris</small>
+                                        <span class="badge badge-info is-hidden">0</span></a><a href="#"><span class="user-status is-idle"></span>
+                                            <small>Boyd Bridges</small> <span class="badge badge-info is-hidden">0</span></a><a
+                                                href="#"><span class="user-status is-offline"></span> <small>Meredith Houston</small>
+                                                <span class="badge badge-info is-hidden">0</span></a></div>
+                    <div id="group-2" class="chat-group">
+                        <strong>Office</strong><a href="#"><span class="user-status is-busy"></span> <small>
+                            Ann Scott</small> <span class="badge badge-info is-hidden">0</span></a><a href="#"><span
+                                class="user-status is-offline"></span> <small>Sherman Stokes</small> <span class="badge badge-info is-hidden">
+                                    0</span></a><a href="#"><span class="user-status is-offline"></span> <small>Florence
+                                        Pierce</small> <span class="badge badge-info">1</span></a></div>
+                </div>
+                <div id="chat-box" style="top: 400px">
+                    <div class="chat-box-header">
+                        <a href="#" class="chat-box-close pull-right"><i class="glyphicon glyphicon-remove">
+                        </i></a><span class="user-status is-online"></span><span class="display-name">Willard
+                            Mckenzie</span> <small>Online</small>
+                    </div>
+                    <div class="chat-content">
+                       
+                       <ul class="chat-box-body">
+                	   </ul>
+                    
+                    </div>
+                    <div class="chat-textarea">
+                        <input placeholder="Type your message" class="form-control" /></div>
+                </div>
+            </div>
+            <!--END CHAT FORM-->
+         
+            
+	<!-- 채팅 네비게이션에 꼭 필요. -->
+    <script src="jquery.metisMenu.js"></script> 
+    <script src="jquery.slimscroll.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <script src="icheck.min.js"></script>
+    <script src="main.js"></script>
+    <!-- 꼭 필요. -->
+    
+    	<!-- 채팅 js -->
+	<script>
+		var myId = "김현영";
+    </script>
+	<script src="chat.js"></script>
+    
+    
+</body>
+</html>
