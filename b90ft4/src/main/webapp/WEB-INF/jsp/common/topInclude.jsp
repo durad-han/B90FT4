@@ -51,9 +51,6 @@
 	color:green !important;
 	background: #9a4545 !important;
 }
-</style>
-
-<style>
 
 	img.menu {
 		width:60px;
