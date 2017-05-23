@@ -43,17 +43,14 @@
 
 <!-- switch -->
 <%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" /> --%>
-<link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />  
-<link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/font-awesome.css" rel="stylesheet">
+<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />   --%>
+<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/font-awesome.css" rel="stylesheet"> --%>
 
 <style>
 .dropdown-menu > li{
 	color:green !important;
 	background: #9a4545 !important;
 }
-</style>
-
-<style>
 
 	img.menu {
 		width:60px;
