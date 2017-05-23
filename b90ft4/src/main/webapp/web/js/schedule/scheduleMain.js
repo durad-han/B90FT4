@@ -80,8 +80,8 @@ function getSchedule(scheduleItem) {
 	shtml += "	<a href='javascript:goDetail("+scheduleItem.scheduleNo+")'>"
 	shtml += "	<div class='sList__info'>"
 	shtml += "	<div class='sList__contents'>"
-	shtml += "		<p class='info-sch__date start'>"+startArr[0].substring(3,5)+"일 "+startArr[1]+"시</p>";
-	shtml += "		<p class='end'><small>"+endArr[0].substring(3,5)+"일 "+endArr[1]+"시</small></p>"
+	shtml += "		<p class='info-sch__date start'>"+startArr[0].substring(3,5)+"일 "+startArr[1]+"시부터 ~ </p>";
+	shtml += "		<p class='end'><small>"+endArr[0].substring(3,5)+"일 "+endArr[1]+"시까지</small></p>"
 	shtml += "		<br>"
 	shtml += "		<p class='title'>"+scheduleItem.title+"</p>"
 	shtml += "	</div>"
