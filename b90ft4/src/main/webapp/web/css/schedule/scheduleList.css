@@ -78,6 +78,7 @@ z-index: 1;
 	border: 1px solid #DE660F;
 	border-radius: 10px;
 	background: #ffff80; 
+	width: auto;
 	} 
 
 .sList__item--orange:hover .info-sch__title, .sList__item--orange:hover .info-place { color: #DE660F; } 
