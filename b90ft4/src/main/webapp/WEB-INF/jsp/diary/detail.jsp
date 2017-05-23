@@ -227,7 +227,7 @@
 						  
 						  	  <c:choose>
 									<c:when test="${diaryVO.emotionCode eq 1}">
-										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/superhappy.jpg" width="90px" height="50px"		/>
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/super.jpg" width="90px" height="50px"		/>
 									</c:when>                                                                               
 									                                                                                        
 									<c:when test="${diaryVO.emotionCode eq 2}">                                             
@@ -235,7 +235,7 @@
 									</c:when>                                                                                
 									                                                                                         
 									<c:when test="${diaryVO.emotionCode eq 3}">                                              
-										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/enjoy.jpg" 	width="90px" height="50px"	/>
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/lol.jpg" 	width="90px" height="50px"	/>
 									</c:when>                                                                                
 									                                                                                         
 									<c:when test="${diaryVO.emotionCode eq 4}">                                              
@@ -251,7 +251,19 @@
 									</c:when>                                                                                
 									                                                                                         
 									<c:when test="${diaryVO.emotionCode eq 7}">                                              
-										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sulk.jpg"		width="90px" height="50px" />
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/cry.jpg"		width="90px" height="50px" />
+									</c:when>                                                                                
+									<c:when test="${diaryVO.emotionCode eq 8}">                                              
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/boring.jpg"		width="90px" height="50px" />
+									</c:when>                                                                                
+									<c:when test="${diaryVO.emotionCode eq 9}">                                              
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/love.jpg"		width="90px" height="50px" />
+									</c:when>                                                                                
+									<c:when test="${diaryVO.emotionCode eq 10}">                                              
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/surprise.jpg"		width="90px" height="50px" />
+									</c:when>                                                                                
+									<c:when test="${diaryVO.emotionCode eq 11}">                                              
+										<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sick.jpg"		width="90px" height="50px" />
 									</c:when>                                                                                
 							 </c:choose> 
 							 

@@ -194,19 +194,19 @@
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/cry.jpg"/>
 			 			</label>
 			 			<br>
-			 			<input type='radio' id="boring" name='emotionCode' value='7' />
+			 			<input type='radio' id="boring" name='emotionCode' value='8' />
 			 			<label for="boring"> 
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/boring.jpg"/>
 			 			</label>
-			 			<input type='radio' id="love" name='emotionCode' value='7' />
+			 			<input type='radio' id="love" name='emotionCode' value='9' />
 			 			<label for="love"> 
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/love.jpg"/>
 			 			</label>
-			 			<input type='radio' id="surprise" name='emotionCode' value='7' />
+			 			<input type='radio' id="surprise" name='emotionCode' value='10' />
 			 			<label for="surprise"> 
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/surprise.jpg"/>
 			 			</label>
-			 			<input type='radio' id="sick" name='emotionCode' value='7' />
+			 			<input type='radio' id="sick" name='emotionCode' value='11' />
 			 			<label for="sick"> 
 			 			<img src="${pageContext.request.contextPath}/web/image/diary/emotion/sick.jpg"/>
 			 			</label>
