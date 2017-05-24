@@ -212,6 +212,7 @@
 <script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
+<%@include file ="/WEB-INF/jsp/common/bottomInclude.jsp"%>
 </body>
 
 </html>

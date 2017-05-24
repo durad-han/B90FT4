@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Cog + I</title>
+    <title>Bog + I </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
   <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
-	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/>
+<%-- 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/> --%>
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
@@ -42,6 +42,7 @@
 
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 <%@include file ="/WEB-INF/jsp/common/menuInclude.jsp"%>
+
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
@@ -61,7 +62,7 @@
     </div>
   <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+<%-- 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
@@ -77,7 +78,7 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-	
+	 --%>
 </div>   
 <a id = "userIdTag" hidden>${user.userId}</a>
 <script id="workoutList" type="text/x-handlebars-template">
@@ -171,5 +172,6 @@
 </script>
 
     <script src="${pageContext.request.contextPath}/web/js/workout/workout.js"></script>
+    <%@include file ="/WEB-INF/jsp/common/bottomInclude.jsp"%>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.ripplelink { line-height: 10em; display: block; float: left; width: 90%; margin: 0.2%; height: 90%; text-align: center; color: #fff; text-decoration: none; position: relative; overflow: hidden; -webkit-transition: all 0.2s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease; z-index: 0; } .ink { display: block; position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 100%; -webkit-transform: scale(0); -moz-transform: scale(0); -o-transform: scale(0); transform: scale(0); } .animate { -webkit-animation: ripple 0.65s linear; -moz-animation: ripple 0.65s linear; -ms-animation: ripple 0.65s linear; -o-animation: ripple 0.65s linear; animation: ripple 0.65s linear; } @-webkit-keyframes ripple { 100% { opacity: 0; -webkit-transform: scale(2.5); } } @-moz-keyframes ripple { 100% { opacity: 0; -moz-transform: scale(2.5); } } @-o-keyframes ripple { 100% { opacity: 0; -o-transform: scale(2.5); } } @keyframes ripple { 100% { opacity: 0; transform: scale(2.5); } } .cyan { background: #00bcd4; } .lightgreen { background: #8bc34a; } .amber { background: #ffc107; } .orange { background: #ff9800; } 
+
+
+</style>
+</head>
+<body>
+<div style = "height:500px; line-height:500px;">
+  <div class="ripplelink cyan" style ="vertical-align:middle;" href="#"><h1 id = 'AText' style ="vertical-align:middle;">화면을 눌러 시작하세요 !</h1></div>
+
+<div>
+<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	var nextSet = gvSetIndex+1;
+	var count, value, zero;
+	zero = 0;
+	value = 0;
+	count = -1;
+	maxValue = gvTypeACount;
+	max = "/"+maxValue;
+	breakTimeVal = 10;
+    
+$(function(){
+	var ink, d, x, y;
+	$(".ripplelink").click(function(e){
+		
+    if($(this).find(".ink").length === 0){
+        $(this).prepend("<span class='ink'></span>");
+    }
+         
+    ink = $(this).find(".ink");
+    ink.removeClass("animate");
+     
+    if(!ink.height() && !ink.width()){
+        d = Math.max($(this).outerWidth(), $(this).outerHeight());
+        ink.css({height: d, width: d});
+    }
+     
+    x = e.pageX - $(this).offset().left - ink.width()/2;
+    y = e.pageY - $(this).offset().top - ink.height()/2;
+     
+    ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+	count++;
+    value++;
+    
+    if(count === maxValue){
+    		if(gvIsLast){
+    		
+    		calIncDec();
+  		  	alert("마지막 세트입니다.");
+  		  
+    		}
+    		else{
+  		 	 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+  		
+  			calIncDec();
+  		  $("#setNo"+nextSet).trigger("click");
+  		  $("#AText").html("화면을 눌러 시작하세요 !");
+  		  
+  		}
+  	  value = -1;
+  	  count = -1;
+  	  //return $(".ripplelink").text("Start!");
+    }
+    //return $(".ripplelink").text(value + max);
+      $("#AText").html(value + max);
+	
+    
+    
+});
+});
+</script>
+
+</body>
+</html>

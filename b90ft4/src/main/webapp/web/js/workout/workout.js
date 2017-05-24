@@ -107,7 +107,7 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	var html = "";
 	//typeA load
 	if(type == "A"){
-		$("#typeContainer").load("/b90ft4/web/view/workout/workoutTypeA4.html");
+		$("#typeContainer").load("/b90ft4/web/view/workout/sample.html");
 	}
 
 	
