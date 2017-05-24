@@ -43,7 +43,7 @@
 
 <!-- switch -->
 <%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" /> --%>
-<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />   --%>
+<link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />  
 <%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/font-awesome.css" rel="stylesheet"> --%>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

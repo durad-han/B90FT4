@@ -22,22 +22,22 @@ input.ct-red + span + label + span.switch-right {
 
 
 /*      Checkbox and radio         */
-.checkbox,
-.radio {
-  margin-bottom: 12px;
-  padding-left: 32px;
-  position: relative;
-  -webkit-transition: color 0.25s linear;
-  transition: color 0.25s linear;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #333333; }
+/* .checkbox, */
+/* .radio { */
+/*   margin-bottom: 12px; */
+/*   padding-left: 32px; */
+/*   position: relative; */
+/*   -webkit-transition: color 0.25s linear; */
+/*   transition: color 0.25s linear; */
+/*   font-size: 14px; */
+/*   font-weight: normal; */
+/*   line-height: 1.5; */
+/*   color: #333333; } */
 
-.checkbox input,
-.radio input {
-  outline: none !important;
-  display: none; }
+/* .checkbox input, */
+/* .radio input { */
+/*   outline: none !important; */
+/*   display: none; } */
 
 .checkbox .icons,
 .radio .icons {
