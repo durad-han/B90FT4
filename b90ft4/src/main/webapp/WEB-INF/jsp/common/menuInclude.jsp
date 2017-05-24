@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 userId = "admin";
+resetMsg = "아무의미없지만일단리셋용";
 
 function statusChangeCallback(response) { 
 	
@@ -67,8 +68,8 @@ $(function () {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-                <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do"> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</a>
+<!--                 <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a> -->
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -102,7 +103,8 @@ $(function () {
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 <!-- 					          가계부 <span class = "caret"></span> -->
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" />
+								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" /> --%>
 					      </a>
 					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
@@ -115,14 +117,16 @@ $(function () {
 				   </li>
 				   
                     <li>
-                        <a href="${pageContext.request.contextPath}/diary/list.do">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" />
+                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>다이어리</h3>">
+                        		 <i class="fa fa-book fa-3x"></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" /> --%>
                         </a>
                     </li>
 
                     <li>
                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	
-                        		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" />
+                        		<i class="fa fa-calendar fa-3x"></i>
+<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" /> --%>
                         </a>
 
                     </li>
@@ -130,7 +134,9 @@ $(function () {
                     <li>
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
 <!-- 					          운동 <span class = "caret"></span> -->
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/>
+<!-- 								<i class="fa fa-male fa-3x"></i> -->
+								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/> --%>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -150,7 +156,8 @@ $(function () {
                     <li>
 <!-- 		                <span> -->
 							<a id="addMemo">
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/>
+								<i class="fa fa-pencil-square-o fa-3x"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/> --%>
 							</a>
 <!-- 						</span> -->
 <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
@@ -164,7 +171,9 @@ $(function () {
 				   <li id="topbar-chat" class="hidden-xs">
 						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>채팅</h3>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 <!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/6.png" />
+<!-- 							<i class="fa fa-commenting-o fa-3x"></i> -->
+							<i class="fa fa-weixin fa-3x" ></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/6.png" /> --%>
 						</a>
 				   </li>
 				</c:otherwise> 
@@ -172,7 +181,8 @@ $(function () {
                         
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>뉴스</h3>">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  />
+                        	<i class="fa fa-newspaper-o fa-3x"></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  /> --%>
                         </a>
                     </li>
 

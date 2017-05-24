@@ -77,7 +77,7 @@
                     	<!-- 돋보기 배경 -->
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-krw fa-5x"></i>
                             </div>
                         </div>
                         <!-- 돋보기 배경 끝 -->
@@ -90,7 +90,7 @@
                     <a href="${pageContext.request.contextPath}/workout/workout.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-male fa-5x"></i>
                             </div>
                         </div>
                         <img src="${pageContext.request.contextPath}/web/image/corgi/Corgi-workout-icon-01.jpg" class="img-responsive" alt="Slice of cake">
@@ -101,7 +101,7 @@
                     <a href="${pageContext.request.contextPath}/schedule/scheduleList.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-calendar fa-5x"></i>
                             </div>
                         </div>
                         <img src="${pageContext.request.contextPath}/web/image/corgi/Booksprites_9.png" class="img-responsive" alt="schedule">
@@ -112,7 +112,7 @@
                     <a href="${pageContext.request.contextPath}/diary/list.do" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-book fa-5x"></i>
                             </div>
                         </div>
                         <img src="${pageContext.request.contextPath}/web/image/main/diary.jpg" class="img-responsive" alt="Safe">
