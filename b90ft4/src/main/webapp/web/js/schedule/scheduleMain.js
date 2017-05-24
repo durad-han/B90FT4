@@ -1,6 +1,5 @@
 console.log("scheduleMain.js 로드됨...!");
 console.log("scheduleMain.js 로드됨...!");
-console.log("scheduleMain.js 로드됨...!");
 //----- schedule List -----------------------------------------------------------
 
 //----- schedule InfiniteScrolling + Pagination ---------------------------------------------------------------------------------------------
@@ -550,7 +549,7 @@ function scheduleForm(form){
 		$("input[id=inputEnd]").focus();
 		return false;
 	}
-	if($('#inputImportance').val($('.stars').starRating('getRating')) == 0){
+	if($('.stars').starRating('getRating') == 0){
 		swal("등록", "중요도를 설정해주세요", "error");
 		return false;
 	}

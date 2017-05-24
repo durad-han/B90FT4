@@ -613,27 +613,25 @@ if('${user.userId}'){
 						                <div class="row">
 							                <div class="radio">
 								                <label class="radio-inline">
-								                	<input type="radio" name="schedule-type" value="default" checked="checked"><span>기본 스케줄</span>
+								                	<input type="radio" name="category" value="0" checked="checked"><span>기본 스케줄</span>
 								                </label>
 								                <label class="radio-inline">
-								                	<input type="radio" name="schedule-type" value="with-budget"><span>지출이 있는 스케줄</span>
+								                	<input type="radio" name="category" value="1"><span>지출이 있는 스케줄</span>
 								                </label>
 								                <label class="radio-inline">
-								                	<input type="radio" name="schedule-type" value="with-workout"><span>운동 스케줄</span>
+								                	<input type="radio" name="category" value="2"><span>운동 스케줄</span>
 								                </label>
 							                </div>
 							                
 						                <div class="col-lg-12 controls">
 						                <div class="row">
-							    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="default">
-							    				<input id="inputCategory" name="category" type="hidden" value="1" class="form-control" />
+							    			<div class="conditional" data-cond-option="category" data-cond-value="0">
 							    				<br>
 							    				<span>달력에 일정을 추가합니다</span>
 							    				<br><br>
 							    				<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/스케쥴5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="스케쥴" />
 										    </div>
-							    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-budget">
-							    				<input id="inputCategory" name="category" type="hidden" value="2" class="form-control" />
+							    			<div class="conditional" data-cond-option="category" data-cond-value="1">
 							    				<br>
 							    				<span>지출할 금액 입력이 가능한 스케줄입니다</span>
 							    				<br><br>
@@ -645,8 +643,7 @@ if('${user.userId}'){
 							    				<br>
 							    				
 										    </div>
-							    			<div class="conditional" data-cond-option="schedule-type" data-cond-value="with-workout">
-							    				<input id="inputCategory" name="category" type="hidden" value="3" class="form-control" />
+							    			<div class="conditional" data-cond-option="category" data-cond-value="2">
 							    				<span>운동 알람을 설정합니다</span>
 							    				<br><br>
 													<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/운동5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="운동"/>

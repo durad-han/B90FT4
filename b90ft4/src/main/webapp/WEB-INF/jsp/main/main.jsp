@@ -82,7 +82,7 @@
                         </div>
                         <!-- 돋보기 배경 끝 -->
                         
-                        <img src="${pageContext.request.contextPath}/web/image/main/account1.JPG" class="img-responsive" alt="Cabin">
+                        <img src="${pageContext.request.contextPath}/web/image/corgi/royal-corgi.jpg" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
                 
@@ -104,7 +104,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="${pageContext.request.contextPath}/web/image/corgi/Corgi-schedule-icon-01.gif" class="img-responsive" alt="Game controller">
+                        <img src="${pageContext.request.contextPath}/web/image/corgi/Booksprites_9.png" class="img-responsive" alt="schedule">
                     </a>
                 </div>
                 

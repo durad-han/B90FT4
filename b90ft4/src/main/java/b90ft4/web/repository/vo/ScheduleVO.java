@@ -8,7 +8,7 @@ public class ScheduleVO {
 	private String title;
 	private String content;
 	private int category;
-	private int importance;
+	private float importance;
 	private int achieve;
 	
 	public int getScheduleNo() {
@@ -53,10 +53,10 @@ public class ScheduleVO {
 	public void setCategory(int category) {
 		this.category = category;
 	}
-	public int getImportance() {
+	public float getImportance() {
 		return importance;
 	}
-	public void setImportance(int importance) {
+	public void setImportance(float importance) {
 		this.importance = importance;
 	}
 	public int getAchieve() {
