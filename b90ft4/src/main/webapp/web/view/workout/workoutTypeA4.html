@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeA4.css" />
+</head>
+<body>
+<div style = "height: 1000px;">
+  <div class="ripplelink cyan" href="#"> 화면을 눌러 시작하세요 !</div>
+  </div>
+<script type="text/javascript">
+
+var nextSet = gvSetIndex+1;
+var count, rotateY, setValueFunc, value, zero;
+zero = 0;
+rotateY = 180;
+value = -1;
+count = -1;
+maxValue = gvTypeACount;
+max = "/"+maxValue;
+breakTimeVal = 10;
+$(function(){
+	var ink, d, x, y;
+	$(".ripplelink").click(function(e){
+    if($(this).find(".ink").length === 0){
+        $(this).prepend("<span class='ink'></span>");
+    }
+         
+    ink = $(this).find(".ink");
+    ink.removeClass("animate");
+     
+    if(!ink.height() && !ink.width()){
+        d = Math.max($(this).outerWidth(), $(this).outerHeight());
+        ink.css({height: d, width: d});
+    }
+     
+    x = e.pageX - $(this).offset().left - ink.width()/2;
+    y = e.pageY - $(this).offset().top - ink.height()/2;
+     
+    ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+});
+});
+$(".ripplelink").click(function(){
+    $(this).addClass("btnShadow").delay(800).queue(function(n){
+        $(this).removeClass("btnShadow");
+        n();
+    });
+    
+    count++;
+    value++;
+    
+    if(count === maxValue){
+    		if(gvIsLast){
+    		
+    		calIncDec();
+  		  alert("마지막 세트입니다.");
+  		  
+    		}
+    		else{
+  		  alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+  		
+  		calIncDec();
+  		  $("#setNo"+nextSet).trigger("click");
+  		  
+  		}
+
+  	  value = -1;
+  	  count = -1;
+  	  return $(".ripplelink").text("Start!");
+    }
+    return $(".ripplelink").text(value + max);
+});
+
+</script>
+</body>
+</html>

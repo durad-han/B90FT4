@@ -158,15 +158,6 @@ function chartDayCall(){
 					} 
 			    }
 			    setChart();
-			    
-			    console.log("키키코코");
-//				$("canvas").each(function() {
-//					$(this).css({
-//						top:"0px",
-//						left:"0px"
-//					});
-//				});
-			    
 		});
 
 }
@@ -219,9 +210,12 @@ $(".BMSet").on("keyup" , function(){
 
 
 $('#BMContainer').addClass('hidden');
+$('#hideBMContainerBtn1').addClass('hidden');
 function showBMContainer(){
 	
-	$('#BMContainer').removeClass('hidden');
+	$('#BMContainer').removeClass('hidden');	
+	$('#showBMContainer').addClass('hidden');
+	$('#hideBMContainerBtn1').removeClass('hidden');
 	$("#callBMBtn").trigger("click");
 	
 }
@@ -265,6 +259,8 @@ function showBM(){
 
 function hideBMContainer(){
 	$('#BMContainer').addClass('hidden');
+	$('#showBMContainer').removeClass('hidden');
+	$('#hideBMContainerBtn1').addClass('hidden');
 }
 
 
@@ -437,7 +433,7 @@ function callSpentCal(){
 			data:{"userId" : userId}
 
 			}).done(function(result){
-				//console.dir(result);
+				console.dir(result);
 			
 				if(!result){
 					alert("저장된 정보가 없습니다.");

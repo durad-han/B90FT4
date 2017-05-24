@@ -14,20 +14,20 @@
     <title>Cog + I</title>
     <!-- Bootstrap Core CSS -->
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
-<%--     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css"> --%>
-<%-- 	<c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/> --%>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
+	<%-- <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/> --%>
     <!-- Theme CSS -->
     
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet"> --%>
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet"> --%>
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/freelancer.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/css/main.css" rel="stylesheet">
 
-<!--     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   	
 
     <!-- Custom Fonts -->
-<%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --%>
-<!--     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
-<!--     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+    <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<%@include file ="/WEB-INF/jsp/common/topInclude.jsp"%>
 </head>
 
@@ -49,12 +49,12 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel panel-yellow">
-							
 							<div class="panel-heading">칼로리 계산</div>   
 							<!-- 차트 -->
-							<div id="calChart"></div>
-							
-							
+							<div style = "height:30px;"></div>
+							<div style= "width: 60%; margin:0 auto;">
+								<div id="calChart" style="width: 100%; height:300px;"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -67,6 +67,7 @@
 								내 칼로리 <button id='callIntakeCalBtn' onclick='callIntakeCal()' class="btn btn-info">받아오기</button><br>
 								<hr style ="color : blue;">
 								칼로리 검색 : <input id='setFood' type='text'  placeholder='음식명을 입력하세요.'><br>
+								<div style = "height: 8px;"></div>
 							</div>
 					     </div>
 					     	<div class="col-md-12">
@@ -102,7 +103,8 @@
 									<button id='saveCalBtn' onclick='saveCal()'class="btn btn-success">칼로리 저장</button><br>
 									<hr color : "000000">
 									내 기초대사량 <button onclick = 'showBM()'class="btn btn-info">불러오기</button>
-									<button onclick = 'showBMContainer()'class="btn btn-warning">계산하기</button><br>
+									<button id='showBMContainerBtn' onclick = 'showBMContainer()'class="btn btn-warning">알아내기</button>
+									<button id='hideBMContainerBtn1' onclick = 'hideBMContainer()'class="btn btn-warning" hidden>닫기</button><br>
 						     	</div>
 					    	 </div>
 					     </div>
@@ -203,17 +205,13 @@
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 -->
-<!-- <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/b90ft4/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 <script src="/b90ft4/web/js/workout/jquery.jqplot.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.barRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
 <script src="/b90ft4/web/js/workout/jqplot.pointLabels.js"></script>
 <script src="${pageContext.request.contextPath}/web/js/workout/workoutCal.js"></script>
-<script>
-
-
-</script>
 </body>
 
 </html>
