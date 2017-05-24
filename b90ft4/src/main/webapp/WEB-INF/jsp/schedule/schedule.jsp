@@ -157,15 +157,134 @@ $(function () {
 
 <!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 <!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
-<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
+<!-- <nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
+       
+<!--         <div class="container"> -->
+<!--             <div class="navbar-header page-scroll"> -->
+<!--                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
+<!--                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i> -->
+<!--                 </button> -->
+<%--                 <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a> --%>
+<!--                 <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a> -->
+<!--             </div> -->
+
+<!--             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+              
+<!--                 <ul class="nav navbar-nav navbar-right"> -->
+<!--                     <li class="hidden"> -->
+<!--                         <a href="#page-top"></a> -->
+<!--                     </li> -->
+<%-- 			<c:choose> --%>
+<%-- 				<c:when test="${empty user}"> --%>
+<!-- 	                   <li class = "loginCall"> -->
+<!-- 							<a href = "#loginModal">로그인</a> -->
+<!-- 					   </li> -->
+<%-- 				</c:when> --%>
+<%-- 				<c:otherwise> --%>
+
+<!-- 	                   <li class = "logoutCall"> -->
+<!-- 	                   		<br> -->
+<!-- 							<a href = "javascript:logout();"> -->
+<%-- 								<c:out value="${user.userId}"/>님 로그아웃 --%>
+<%-- <%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/로그아웃.png" /> --%> --%>
+<!-- 							</a> -->
+							
+<!-- 					   </li> -->
+<!-- 	                   <li class = "loginCall"> -->
+<!-- 							<br> -->
+<%-- 							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a> --%>
+<!-- 					   </li> -->
+                      
+<!--                    <li class = "dropdown"> -->
+					     
+<!-- 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#"> -->
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/가계부5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="가계부"/> --%>
+<!-- 					      </a> -->
+					      
+<!-- 					      <ul class = "dropdown-menu"> -->
+<%-- 					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li> --%>
+<%-- 					         <li><a href = "${pageContext.request.contextPath}/accountBook/loanDept.do">대입금/차입금</a></li> --%>
+<%-- 					         <li><a href = "${pageContext.request.contextPath}/accountBook/setting.do">설정</a></li> --%>
+<!-- 					      </ul> -->
+					      
+<!-- 				   </li> -->
+				   
+<!--                     <li> -->
+<%--                         <a href="${pageContext.request.contextPath}/diary/list.do"> --%>
+<%-- 							<img class="menu tooltip-show" src="${pageContext.request.contextPath}/web/image/menu/일기5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="Diary" /> --%>
+<!--                         </a> -->
+<!--                     </li> -->
+
+<!--                     <li> -->
+<%--                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	 --%>
+<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/스케쥴5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="스케쥴" /> --%>
+<!--                         </a> -->
+
+<!--                     </li> -->
+                        
+<!--                     <li> -->
+<!--                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" > -->
+<!-- <!-- 					          운동 <span class = "caret"></span> --> -->
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/운동5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="운동"/> --%>
+<!-- 					      </a> -->
+<!-- 					      <ul class = "dropdown-menu"> -->
+<%-- 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li> --%>
+<%-- 					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li> --%>
+<!-- 					         <li><a href="javascript:workoutMoveChart()">차트</a></li> -->
+<!-- 					      </ul> -->
+                        
+<!--                         <script> -->
+//                         	function workoutMoveCal(){
+//                         		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutCal.html");
+//                         	}
+//                         	function workoutMoveChart(){
+//                         		$("#portfolio > .container").load("/b90ft4/web/view/workout/workoutChart.html");
+//                         	}
+<!--                         </script> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!-- <!-- 		                <span> --> -->
+<!-- 							<a id="addMemo"> -->
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="메모"/> --%>
+<!-- 							</a> -->
+<!-- <!-- 						</span> --> -->
+<!-- <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> --> -->
+<!-- <!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> --> -->
+<!-- 							<span style="margin-left: 15px;">	    				 -->
+<!-- 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
+<!-- 							</span> -->
+
+<!-- 		            </li> -->
+<!-- 		            채팅 아이콘 -->
+<!-- 				   <li id="topbar-chat" class="hidden-xs"> -->
+<!-- 						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="채팅" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"> -->
+<!-- <!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> --> -->
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/채팅5.png" /> --%>
+<!-- 						</a> -->
+<!-- 				   </li> -->
+<%-- 				</c:otherwise>  --%>
+<%-- 			</c:choose> --%>
+                        
+<!--                     <li> -->
+<%--                         <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="뉴스"> --%>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/뉴스5.png"  /> --%>
+<!--                         </a> -->
+<!--                     </li> -->
+
+<!--                 </ul> -->
+                
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
+    <nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
        
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">Cog + I</a>
-                <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do"> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</a>
+<!--                 <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a> -->
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -198,8 +317,11 @@ $(function () {
                    <li class = "dropdown">
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/가계부5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="가계부"/>
+<!-- 					          가계부 <span class = "caret"></span> -->
+								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>" /> --%>
 					      </a>
+					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
 					      <ul class = "dropdown-menu">
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
@@ -210,14 +332,16 @@ $(function () {
 				   </li>
 				   
                     <li>
-                        <a href="${pageContext.request.contextPath}/diary/list.do">
-							<img class="menu tooltip-show" src="${pageContext.request.contextPath}/web/image/menu/일기5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="Diary" />
+                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h6>다이어리</h6>">
+                        		 <i class="fa fa-book fa-3x"></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>Diary</h4>" /> --%>
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	
-                        		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/스케쥴5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="스케쥴" />
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케줄</h4>">	
+                        		<i class="fa fa-calendar fa-3x"></i>
+<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케쥴</h4>" /> --%>
                         </a>
 
                     </li>
@@ -225,7 +349,9 @@ $(function () {
                     <li>
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
 <!-- 					          운동 <span class = "caret"></span> -->
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/운동5.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="운동"/>
+<!-- 								<i class="fa fa-male fa-3x"></i> -->
+								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"/> --%>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -244,8 +370,9 @@ $(function () {
                     </li>
                     <li>
 <!-- 		                <span> -->
-							<a id="addMemo">
-								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/메모5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="메모"/>
+							<a id="addMemo" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>">
+								<i class="fa fa-pencil-square-o fa-3x"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"/> --%>
 							</a>
 <!-- 						</span> -->
 <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
@@ -257,17 +384,20 @@ $(function () {
 		            </li>
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
-						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="채팅" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 <!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/채팅5.png" />
+<!-- 							<i class="fa fa-commenting-o fa-3x"></i> -->
+							<i class="fa fa-weixin fa-3x" ></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/6.png" /> --%>
 						</a>
 				   </li>
 				</c:otherwise> 
 			</c:choose>
                         
                     <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="뉴스">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/뉴스5.png"  />
+                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
+                        	<i class="fa fa-newspaper-o fa-3x"></i>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  /> --%>
                         </a>
                     </li>
 

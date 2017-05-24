@@ -103,8 +103,8 @@ $(function () {
 					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 <!-- 					          가계부 <span class = "caret"></span> -->
-								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>가계부</h3>" /> --%>
+								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>" /> --%>
 					      </a>
 					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
@@ -117,16 +117,16 @@ $(function () {
 				   </li>
 				   
                     <li>
-                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>다이어리</h3>">
+                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h6>다이어리</h6>">
                         		 <i class="fa fa-book fa-3x"></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>Diary</h3>" /> --%>
+<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>Diary</h4>" /> --%>
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}">	
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케줄</h4>">	
                         		<i class="fa fa-calendar fa-3x"></i>
-<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>스케쥴</h3>" /> --%>
+<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케쥴</h4>" /> --%>
                         </a>
 
                     </li>
@@ -135,8 +135,8 @@ $(function () {
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
 <!-- 					          운동 <span class = "caret"></span> -->
 <!-- 								<i class="fa fa-male fa-3x"></i> -->
-								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>운동</h3>"/> --%>
+								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"></i>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"/> --%>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -155,9 +155,9 @@ $(function () {
                     </li>
                     <li>
 <!-- 		                <span> -->
-							<a id="addMemo">
+							<a id="addMemo" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>">
 								<i class="fa fa-pencil-square-o fa-3x"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>메모</h3>"/> --%>
+<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"/> --%>
 							</a>
 <!-- 						</span> -->
 <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
@@ -169,7 +169,7 @@ $(function () {
 		            </li>
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
-						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>채팅</h3>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
+						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 <!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
 <!-- 							<i class="fa fa-commenting-o fa-3x"></i> -->
 							<i class="fa fa-weixin fa-3x" ></i>
@@ -180,7 +180,7 @@ $(function () {
 			</c:choose>
                         
                     <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h3>뉴스</h3>">
+                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
                         	<i class="fa fa-newspaper-o fa-3x"></i>
 <%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  /> --%>
                         </a>
