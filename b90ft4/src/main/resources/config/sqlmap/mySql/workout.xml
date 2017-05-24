@@ -58,9 +58,10 @@
 
 	<select id="retrieveWorkoutStatisticsListWeek" resultMap="workoutStatisticsMap" parameterType="String">
 	select * from tb_sam_workout_statistics
-	where Workout_Day between date_format(date_add(now(),interval -7 day),'%Y-%m-%d') 
+	where Workout_Day between date_format(date_add(now(),interval -6 day),'%Y-%m-%d') 
 		  and date_format(now(),'%Y-%m-%d') and user_Id = #{userId}
 	</select> 
+	
 	
 	<update id="modifyWorkoutStatisticsList" parameterType="String">		
 		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today} and user_Id = #{userId}

@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeA4.css" />
+
 </head>
 <body>
 <div style = "height: 1000px;">
-  <div class="ripplelink cyan" href="#"> 화면을 눌러 시작하세요 !</div>
+
+  <div class="mask waves-effect waves-light" href="#"> 화면을 눌러 시작하세요 !</div>
   </div>
 <script type="text/javascript">
 
@@ -41,10 +42,6 @@ $(function(){
 });
 });
 $(".ripplelink").click(function(){
-    $(this).addClass("btnShadow").delay(800).queue(function(n){
-        $(this).removeClass("btnShadow");
-        n();
-    });
     
     count++;
     value++;
