@@ -3,10 +3,13 @@ var totalIntakeCal = 0;
 var today = $.datepicker.formatDate("yy-mm-dd",new Date());
 var BM = 0;
 var userId = $("#userIdTag").text();
-var spendBar 	= [20,50,33,48,86,44,0];
+var spendBar 	= [0,0,0,0,0,0,0];
+var leftBar 	= [0,0,0,0,0,0,0];
+var overBar 	= [0,0,0,0,0,0,0];
+/*var spendBar 	= [20,50,33,48,86,44,0];
 var leftBar 	= [40,15,0,0,0,0,0];
 var overBar 	= [0,0,0,27,10,0,89];
-var totalCal    = [0,0,0,0,0,0,0];
+*/var totalCal    = [0,0,0,0,0,0,0];
 var date  = new Date();
 var myDate = new Date();
 var dayOfMonth = myDate.getDate();
@@ -118,7 +121,7 @@ function saveCal(){
 	 spendBar 	= [0,0,0,0,0,0,0];
 	 leftBar 	= [0,0,0,0,0,0,0];
 	 overBar 	= [0,0,0,0,0,0,0];
-	 totalCal    = [0,0,0,0,0,0,0];
+	 totalCal   = [0,0,0,0,0,0,0];
 	gvSpentCal = $("#setSpendCal").val();
 	gvIntakeCal = $("#setConsumeCal").val();
 	console.log("saveCal1");
@@ -135,7 +138,7 @@ function chartDayCall(){
 		dataType:"json",
 		data : {"userId" : userId}
 		}).done(function(result){
-		
+				console.log(result.length);
  				myDate.setDate(dayOfMonth - 7);
  				 
 			    for(var k in result) {
