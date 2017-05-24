@@ -253,7 +253,7 @@ $(function () {
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
-   <script>console.log("스위치 테스트ㅋㅋ");</script>
+<!--    <script>console.log("스위치 테스트ㅋㅋ");</script> -->
     
      <!-- 채팅 -->
      <!--BEGIN CHAT FORM-->
