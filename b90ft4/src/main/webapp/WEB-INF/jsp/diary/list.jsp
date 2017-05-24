@@ -79,7 +79,8 @@
 				                                
 				                                <div class="overlay-b">
 				                                    <div class="overlay-inner">
-				                                        <a href="blog-single.html" class="fa fa-link"></a>
+<!-- 				                                        <a href="blog-single.html" class="fa fa-link"></a> -->
+															<a href="detail.do?diaryNo=<c:out value="${diary.diaryNo}"/>" class="fa fa-link"></a>
 				                                    </div>
 				                                </div>
 				                            </div>

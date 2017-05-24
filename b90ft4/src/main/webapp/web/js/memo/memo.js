@@ -132,13 +132,16 @@
 				that.css("top", event.clientY + $(document).scrollTop() - y);
 				that.css("opacity", "0.5");
 			}).mouseup(function() {
-				$(this).off();
+				$(this).off("mousemove");
+				
+				// document 와 modal 이벤트가 상관관계가 있으므로,
+				// 반드시 명시를 해주 어야 한다.
+				
 			});
 		}
 			
 		// edit.do
 		}).on("mouseup","div.memo",function() {
-			
 			
 			$(document).off("dragstart");
 			$(document).off("selectstart");

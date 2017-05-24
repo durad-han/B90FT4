@@ -158,6 +158,15 @@ function chartDayCall(){
 					} 
 			    }
 			    setChart();
+			    
+			    console.log("키키코코");
+//				$("canvas").each(function() {
+//					$(this).css({
+//						top:"0px",
+//						left:"0px"
+//					});
+//				});
+			    
 		});
 
 }
@@ -194,7 +203,7 @@ function setChart(){
 	        	markSize:0
 	        }
 	    },
-	    highlighter: { show: false }
+//	    highlighter: { show: false }
 	});
 
 }
