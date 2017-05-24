@@ -143,7 +143,7 @@
 						  <h2 style="margin-top: 20px;"> <c:out value="${diaryVO.title}"/> </b>  </h2>
 						  <hr>
 						
-						<h3 class="lead">
+						<h3 class="lead" align="right">
 						 	   <fmt:formatDate value="${diaryVO.diaryDate}" pattern="yyyy-MM-dd" />
 						   
 							  <c:choose>
