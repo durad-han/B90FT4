@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>COG + I - 가계부</title>
+    <title>COG + I - z가계부z</title>
     
     <!-- Bootstrap Core CSS -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">

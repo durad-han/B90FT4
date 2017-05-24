@@ -238,12 +238,12 @@ $(function () {
 <%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/js/bootstrap.js" type="text/javascript"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script> --%>
-<%--     <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>     --%>
-   
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
+	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
+    <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
+   <script>console.log("스위치 테스트ㅋㅋ");</script>
     
      <!-- 채팅 -->
      <!--BEGIN CHAT FORM-->
