@@ -184,8 +184,9 @@ function setChart(){
 	    stackSeries: true,
 	    seriesDefaults:{
 	        renderer:$.jqplot.BarRenderer,
-	        pointLabels: { show: true , stackedValue: true}
+	        pointLabels: { show: false , stackedValue: false}
 	    },
+	    seriesColors:['#00bcd4','#f2994b' , '#1c95ea'],
 	    axes: {
 	        xaxis: {
 	        	
