@@ -63,7 +63,6 @@
 		border-radius: 20px;
 		background-color: #fff !important;
 		transition:1s;
-		padding: 15px;
 	}
 	
 </style>

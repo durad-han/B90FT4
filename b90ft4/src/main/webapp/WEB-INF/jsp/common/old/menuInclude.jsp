@@ -59,8 +59,6 @@ $(function () {
 </script>
 
 
-<!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
-<!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 <nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
        
         <div class="container">
@@ -80,29 +78,20 @@ $(function () {
                     </li>
 			<c:choose>
 				<c:when test="${empty user}">
+				
 	                   <li class = "loginCall">
-							<a href = "#loginModal">
+							<a id="acc" href = "#loginModal">
 							로그인 <i class="fa fa-sign-in fa-3x"></i>
 							</a>
 					   </li>
+					   
 				</c:when>
 				<c:otherwise>
 
-<!-- 	                   <li class = "logoutCall"> -->
-<!-- 	                   		<br> -->
-<!-- 							<a href = "javascript:logout();"> -->
-<%-- 								<c:out value="${user.userId}"/>님 로그아웃 --%>
-<!-- 							</a> -->
-							
-<!-- 					   </li> -->
-<!-- 	                   <li class = "loginCall"> -->
-<%-- 							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a> --%>
-<!-- 					   </li> -->
                    <li class = "dropdown">
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 								<c:out value="${user.userId}"/>님  <i class="fa fa-user-circle-o fa-3x"></i>
 					      </a>
-					      
 					      <ul class = "dropdown-menu">
 					         <li><a href = "javascript:logout();">
 								<i class="fa fa-user-times"></i> 로그아웃
@@ -111,15 +100,11 @@ $(function () {
 					         	<i class="fa fa-address-card-o"></i> 내 정보
 					        </a></li>
 					      </ul>
-					      
 				   </li>
                       
                    <li class = "dropdown">
-					     
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-<!-- 					          가계부 <span class = "caret"></span> -->
 								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>" /> --%>
 					      </a>
 					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
