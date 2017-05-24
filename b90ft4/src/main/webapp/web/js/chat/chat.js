@@ -32,10 +32,15 @@
 		
 		 var msg = "";
 		 
+		var d = new Date();
+	    var h = d.getHours();
+	    var m = d.getMinutes();
+	    if (m < 10) m = "0" + m;
+		 
 		msg+='<li class="odd">';
 		msg+='    <p>';
 		msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+data.sender+'</span><span';
-		msg+='            class="time">09:33</span></p>';
+		msg+='            class="time">'+d+'</span></p>';
 		msg+='    <p>';
 		msg+= 	  data.msg +'</p>';
 		msg+='</li>';
@@ -59,7 +64,7 @@
 				msg+='<li>';
 				msg+='    <p>';
 				msg+='        <img src="/b90ft4/web/image/chat/me.png" class="avt" /><span class="user">'+myId+'</span><span';
-				msg+='            class="time">09:33</span></p>';
+				msg+='            class="time">'+string.substring(row.reg_date,0,17)+'</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
 				msg+='</li>';
@@ -67,7 +72,7 @@
 				user = row.user;
 				msg+='<li class="odd">';
 				msg+='    <p>';
-				msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+row.user+'</span><span';
+				msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+string.substring(row.reg_date,0,17)+'</span><span';
 				msg+='            class="time">09:33</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
@@ -277,7 +282,7 @@
 
           if ($content !== "") { // 내용이 비어있지 않다면..
           
-          	var d = new Date();
+              var d = new Date();
               var h = d.getHours();
               var m = d.getMinutes();
               if (m < 10) m = "0" + m;

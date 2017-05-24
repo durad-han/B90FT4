@@ -164,6 +164,7 @@
 	var icOpt="";
 	var exOrInFlag = false;
 	
+	// 지출, 수입 탭을 클릭할 경우..
 	$("#expenseTab").click(function() {
 		exOrInFlag = false;
 	});
@@ -172,18 +173,16 @@
 		exOrInFlag = true;
 	});
 	
-	
 	makeCalendar();
 	$("#datepicker").datepicker(datepicker_default);
+
 	
 	$("#day").click(function() {
 		$("head > style#hidden").remove();
 		
-		
 		// 월 지출
 		$("#monthExpense-tab").removeClass("in active");
 		
-			
 		$("#budgetModal").show();		 // 지출/수입 등록 버튼
 		$("#expenseTable").show(); 	     // 지출 테이블
 		$("#incomeTable").show(); 	     // 수입 테이블

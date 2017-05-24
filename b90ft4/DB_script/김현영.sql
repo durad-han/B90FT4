@@ -140,8 +140,10 @@ create table tb_Sam_Memo (
 );
 
 
-select *
-  from tb_sam_expense_plan
+select reg_date
+  from tb_sam_chat_msg
+  
+  
   
 		where user_id = '김현영'
 		  and expense_plan_date = '2017-04'
