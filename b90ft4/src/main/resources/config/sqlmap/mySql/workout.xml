@@ -62,6 +62,7 @@
 		  and date_format(now(),'%Y-%m-%d') and user_Id = #{userId}
 	</select> 
 	
+	
 	<update id="modifyWorkoutStatisticsList" parameterType="String">		
 		update tb_sam_workout_statistics set Spent_Cal = Spent_Cal + #{spentCal} , Intake_Cal = Intake_Cal + #{intakeCal} where Workout_Day = #{today} and user_Id = #{userId}
 	</update> 

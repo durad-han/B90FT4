@@ -141,6 +141,7 @@ function chartDayCall(){
 				console.log(result.length);
  				myDate.setDate(dayOfMonth - 7);
  				 
+ 				
 			    for(var k in result) {
 			    	
 			    	var stDate = $.datepicker.parseDate( "yy-mm-dd", result[k].workoutDay );//ajax에서 받아온 k번째 날짜
