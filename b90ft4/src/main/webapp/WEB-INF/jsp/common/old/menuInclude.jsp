@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 userId = "admin";
-resetMsg = "아무의미없지만일단리셋용";
+resetMsg = "아무의미없지만일단리셋용fdoijghdfklbgmdf;lhj;efjgpokhdmpmkh[rkpohgetdkt;o]";
 
 function statusChangeCallback(response) { 
 	
@@ -66,8 +66,7 @@ $(function () {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do"> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</a>
-<!--                 <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a> -->
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do" style="font-size: 40px;"><h2> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</h2></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -119,24 +118,19 @@ $(function () {
                     <li>
                         <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h6>다이어리</h6>">
                         		 <i class="fa fa-book fa-3x"></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>Diary</h4>" /> --%>
                         </a>
                     </li>
 
                     <li>
                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케줄</h4>">	
                         		<i class="fa fa-calendar fa-3x"></i>
-<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케쥴</h4>" /> --%>
                         </a>
 
                     </li>
                         
                     <li>
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
-<!-- 					          운동 <span class = "caret"></span> -->
-<!-- 								<i class="fa fa-male fa-3x"></i> -->
 								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"/> --%>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -157,11 +151,7 @@ $(function () {
 <!-- 		                <span> -->
 							<a id="addMemo" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>">
 								<i class="fa fa-pencil-square-o fa-3x"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"/> --%>
 							</a>
-<!-- 						</span> -->
-<!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
-<!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> -->
 							<span style="margin-left: 15px;">	    				
 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
 							</span>
@@ -170,10 +160,7 @@ $(function () {
 		            <!-- 채팅 아이콘 -->
 				   <li id="topbar-chat" class="hidden-xs">
 						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
-<!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
-<!-- 							<i class="fa fa-commenting-o fa-3x"></i> -->
 							<i class="fa fa-weixin fa-3x" ></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/6.png" /> --%>
 						</a>
 				   </li>
 				</c:otherwise> 
@@ -182,7 +169,6 @@ $(function () {
                     <li>
                         <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
                         	<i class="fa fa-newspaper-o fa-3x"></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  /> --%>
                         </a>
                     </li>
 
@@ -204,20 +190,6 @@ $(function () {
 	            <div class="row">
 	                <div class="col-lg-8 col-lg-offset-2">
 	                    <form name="loginItem" id="loginItem" novalidate>
-<!-- 	                        <div class="row control-group"> -->
-	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
-	<!--                                 <label for="userId">ID</label> -->
-	<!--                                 <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요."> -->
-	<!--                                 <p class="help-block text-danger"></p> -->
-	<!--                             </div> -->
-<!-- 	                        </div> -->
-<!-- 	                        <div class="row control-group"> -->
-	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
-	<!--                                 <label for="password">Password</label> -->
-	<!--                                 <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요."> -->
-	<!--                                 <p class="help-block text-danger"></p> -->
-	<!--                             </div> -->
-<!-- 	                        </div> -->
 	                        <div class="row" style="text-align: center; padding-left: 60px;">
 	                       		
 	                       			<div id="spinner" style=" background: #1EC800; border-radius: 5px;
@@ -245,26 +217,18 @@ $(function () {
    </div>
    
       <!-- 스위치 -->
-<%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/js/bootstrap.js" type="text/javascript"></script> --%>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
-<!--    <script>console.log("스위치 테스트ㅋㅋ");</script> -->
     
      <!-- 채팅 -->
-     <!--BEGIN CHAT FORM-->
      <div id="chat-form" class="fixed">
          <div class="chat-inner">
             
              <h2 class="chat-header">
                  <a href="javascript:;" class="chat-form-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
-<!-- 	                 <span class="glyphicons glyphicons-log-in"></span> -->
 	                     닫기
                  </a>
                  <i class="fa fa-user"></i>&nbsp; 친구 목록 &nbsp;</h2>
@@ -326,8 +290,6 @@ $(function () {
             
              <div class="chat-box-header">
                  <a href="#" class="chat-box-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
                  	 	닫기
                  </a>
                  <span class="user-status is-online"></span>
@@ -369,7 +331,6 @@ $(function () {
 	<!-- 채팅 네비게이션에 꼭 필요. -->
     <!-- 채팅 js -->
 	<script>
-// 		var myId = "김현영";
 		if('${user.userId}'){
 			myId = '${user.userId}';
 		}
