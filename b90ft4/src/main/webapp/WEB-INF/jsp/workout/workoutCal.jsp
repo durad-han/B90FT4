@@ -57,11 +57,10 @@
 							
 							<div class = "row" style= "width: 60%; margin:0 auto;">
 							<div class="col-md-10">
-									<div id="calChart" style="width: 100%; height:300px; float:left;"></div>
-							
+								<div id="calChart" style="width: 100%; height:300px; float:left;"></div>
 							</div>
 							<div class="col-md-2">
-							<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/legend.png" style="width:120px;height:60px;float: left;"/>
+								<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/legend.png" style="width:120px;height:60px;float: left;"/>
 							</div>
 							
 								<div style= "width: 60%; margin:0 auto;">

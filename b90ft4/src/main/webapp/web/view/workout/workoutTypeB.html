@@ -16,10 +16,11 @@
 	</div>
 	
 
-	
-	<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/RunningImg.jpg"/><br>
-	<div>
-		<video width='70%' height='70%' autoplay='autoplay' id='myVideo' />
+	<div id = "explainView" style = "width:90%; height:400px;">
+	<img class="menu" src="/b90ft4/web/image/workout/RunningImg.jpg" style = "width:99%;height:300px;"/><br>
+	</div>
+	<div id ="videoContents">
+		<video width='90%' height='90%' autoplay='autoplay' id='myVideo'/>
 	</div>
 	<div>
 		① 어깨에 힘을 뺀다.<br>
@@ -28,6 +29,7 @@
 		④ 몸을 앞으로 기울이거나 허리가 굽지 않게 한다.<br> 
 		⑤ 허리를 높게 위치하도록 한다.<br>
 	</div>
+	
 	<div id = 'typeBButtons' width='90%' height='95%'>
 		<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
 		<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>
@@ -42,7 +44,7 @@
 		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled style = "display: none;">녹화 일시정지</button>
 		<button id="stop" onclick="onBtnStopClicked()" disabled style = "display: none;">녹화 정지</button>
 		<br>
-		녹화 상태 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+		녹화 기능 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 		<p id="data"></p>
 		
 	</div>
@@ -384,14 +386,15 @@ function videoClose(){
 //youtube 영상 가져오기 
 function youtubeOpen() {
 		
-	var youtubeTag = '<iframe width="80%" height="70%" src="https://www.youtube.com/embed/piHCHNPDO_4" frameborder="0" allowfullscreen></iframe>';
-	$("#viewContainer").html(youtubeTag);
+	var youtubeTag = '<iframe width="99%" height="420px" src="https://www.youtube.com/embed/umvubPZ6rCo" frameborder="0" allowfullscreen></iframe>';
+	$("#explainView").html(youtubeTag);
 		$("#youtubeOpenBtn").addClass("hidden");
 		$("#youtubeCloseBtn").removeClass("hidden");
 		
 	    }
 function youtubeClose(){
-		imgSetLoad();
+	var youtubeTag ='<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/RunningImg.jpg"/><br>';
+	$("#explainView").html(youtubeTag);
 		$("#youtubeCloseBtn").addClass("hidden");
 		$("#youtubeOpenBtn").removeClass("hidden");
 	}

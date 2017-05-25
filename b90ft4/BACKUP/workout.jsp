@@ -193,6 +193,7 @@
             <!--END MODAL CONFIG PORTLET-->
          <!-- 운동 세트 호출 -->
             <div id="setContainer">
+<div style="height:200px"></div>
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
 					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
@@ -204,7 +205,7 @@
 							<li id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
-					<li><a id="currentSet">현재 세트 :</a></li>
+					<li><a id="currentSet" style ="line-height:48px;">현재 세트 :</a></li>
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->

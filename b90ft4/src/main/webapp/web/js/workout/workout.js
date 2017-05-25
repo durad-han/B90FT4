@@ -94,8 +94,9 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	 gvSetIndex = setIndex;
 	console.log("workoutTypeLoad function started");
 	console.log("gvSetIndex : " + gvSetIndex);
+	
 	$("#currentSet").html("현재 세트 : "+gvSetIndex);
-	 document.getElementById("currentSet").style.backgroundColor = "#ffaaff";
+	 document.getElementById("currentSet").style.backgroundColor = "#f0ad4e";
 	
 	var type = "";
 	if(typeACount != 0){
@@ -122,7 +123,6 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	
 	/*console.log(html);*/
 }
-
 
 listLoad();
 
