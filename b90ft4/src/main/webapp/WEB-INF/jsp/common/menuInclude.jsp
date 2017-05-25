@@ -61,9 +61,10 @@ $(function () {
 
 <!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 <!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
-<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom">
-       
-        <div class="container">
+<!-- 	<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
+	<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom" style="padding-bottom: 0px;">
+<!--         <div class="container"> -->
+        <div class="container" style="height: 90px;">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
@@ -168,16 +169,20 @@ $(function () {
                         	}
                         </script>
                     </li>
-                    <li>
+                    <li id="memoNav">
 <!-- 		                <span> -->
-							<a id="addMemo" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>">
+							<a style="padding-bottom: 0px;" id="addMemo">
 								<i class="fa fa-pencil-square-o fa-3x"></i>
 <%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"/> --%>
 							</a>
 <!-- 						</span> -->
 <!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
 <!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> -->
-							<span style="margin-left: 15px;">	    				
+<!-- 							<span id="onOff" style="margin:0;margin-left: 3.8px;padding: 0;">	    				 -->
+<!-- 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
+<!-- 							</span> -->
+
+							<span id="onOff" style="margin-left: 3.8px; display: none;" data-html="true"  data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"> 	    				
 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
 							</span>
 
@@ -202,6 +207,10 @@ $(function () {
                     </li>
 
                 </ul>
+                
+<!--             	<span style="margin:0;padding: 0;margin-left:70%;margin-top: 10%;">	    				 -->
+<!--            	    	<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
+<!-- 				</span> -->
                 
             </div>
         </div>
@@ -258,6 +267,59 @@ $(function () {
 	         </div>
         </div>
    </div>
+   
+<!--                	<span id="onOff" style="">	    				 -->
+<!--            	    	<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
+<!-- 				</span> -->
+   
+   	     <script>
+//           		var memoNav = $("#memoNav");
+//             	var oftop = memoNav.offset().top;
+//             	var ofleft = memoNav.offset().left;
+          		
+//           		$("#memoNav").hover(function() {
+            		
+//             		console.log(";;")
+//             		$("#onOff").show();
+//             		$("#onOff").css({
+//             			"position":"relative",
+//             			"top": "50px",
+//             			"left": "700px",
+//             			"z-index":99999
+//             		});
+            		
+// //             		$('#onOff').tooltip('show');
+
+//             	},function() {
+//             		$("#onOff").hide();
+// //             		$('#onOff').tooltip('destroy');
+//             	});
+            	
+//             	$("#onOff").hover(function() {
+//             		$("#onOff").show();
+// 					$(".tooltip-inner").css({
+// 						"top":top,
+// 						"left":left
+// 					});
+// //             		$('#onOff').tooltip('destroy');
+//             	},function() {
+//             		$("#onOff").hide();
+// //             		$('#onOff').tooltip('destroy');
+//             	});
+            
+		    	$("#memoNav").hover(function() {
+		    		
+            		$("#onOff").show();
+            		$('#onOff').tooltip('show');
+            		
+            	},function() {
+            		$('#onOff').tooltip('destroy');
+            		$("#onOff").hide();
+            		
+            	});
+         </script>
+   
+   
    
       <!-- 스위치 -->
 <%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
