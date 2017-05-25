@@ -39,7 +39,9 @@
 					       height: "190px",
 					       background : "#ffff9d",
 						   overflow : "auto",
-						   margin: "0 auto"
+						   margin: "0 auto",
+						   "font-size":"18px",
+						   "font-weight":"normal"
 					       }
 						));
 						
@@ -311,7 +313,9 @@
 							       height: sList[i].memoHeight-45+"px",
 							       background : "#ffff9d",
 								   overflow : "auto",
-							       margin: "0 auto"
+							       margin: "0 auto",
+							       "font-size":"18px",
+							       "font-weight":"normal"
 								}).html(sList[i].memoContent));
 					
 					$("body").append(obj);
