@@ -540,9 +540,14 @@ select exc.expense_category_name expenseCategoryName, sum(ex.expense_amount) eac
 					 END
 		  
 		  
+		  select  date_format(reg_date,'%Y-%m-%d %H:%i:%s') reg_date
+		    from tb_sam_chat_msg
+		    
+		    
+		  select no,room_no,user,msg,substring(reg_date,1,19) reg_date
+		    from tb_sam_chat_msg
+		    
 		  
 		  
 		  
-		  
-		
 	
