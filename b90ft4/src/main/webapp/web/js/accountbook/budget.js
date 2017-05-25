@@ -15,6 +15,8 @@
 	var dateFormat = 'yy-mm-dd';
 	var weekPN=0;
 	
+	var dayByDayFlag = 0;
+	
 	// 추가 부분
 	var currentMonth = new Date().getMonth()+1;
 	var thisMonth = new Date().getMonth()+1;
@@ -69,7 +71,7 @@
 	     				}
 	     				
 		    			var selectedDate = $.datepicker.formatDate( dateFormat, date );
-		    			console.log("selectedDate : " , selectedDate);
+//		    			console.log("selectedDate : " , selectedDate);
 		    			$("[id=actualDate]").val(selectedDate); // 선택한 날짜를 인풋 박스에 출력.
 		    			$("[name=budgetF] input:eq(4)").val(selectedDate);
 //		    			console.log("선택한 날짜1",	$("[name=budgetF] input:eq(4)").val());
@@ -103,24 +105,23 @@
 		                
 	     			}
 	     			
-	     			console.log("day , i : ", i);
+//	     			console.log("day , i : ", i);
 	     			
 	            },
 				onChangeMonthYear: function(year, month) {
 					
-					
 					// 추가 사항
 				    var tempDate = ( j < 10 ) ? "0"+j : j ;
 				    var tempMonth = ( month < 10 ) ? "0"+month : month ;
-					console.log("year : ", year);
-					console.log("month : ", tempMonth);
-				    console.log("date : " , tempDate);
+//					console.log("year : ", year);
+//					console.log("month : ", tempMonth);
+//				    console.log("date : " , tempDate);
 					
 					var yMD1 = year+"-"+tempMonth+"-"+tempDate;
 					var yMD2 = tempMonth+"/"+tempDate+"/"+year;
 					
-					console.log(yMD1);
-					console.log(yMD2);
+//					console.log(yMD1);
+//					console.log(yMD2);
 		
 					
 					$("#datepicker").datepicker("setDate",$.datepicker.parseDate("yy-mm-dd",yMD1));
@@ -128,7 +129,7 @@
 					$("[id=actualDate]").val(yMD1);
 					$(".ui-datepicker-current-day").trigger("click");
 					
-					console.log($("#datepicker").datepicker("getDate"));
+//					console.log($("#datepicker").datepicker("getDate"));
 					makeAccRatio(year,tempMonth);
 					
 					if(selectedDateOption==3) {
@@ -294,9 +295,9 @@
 	$("#month").click(function() {
 		// 추가 사항
 //		console.log("month : ", month);
-		console.log("thisMonth : ", thisMonth);
+//		console.log("thisMonth : ", thisMonth);
 //		moveMonth = (month-thisMonth) * 30;
-		console.log(moveMonth);
+//		console.log(moveMonth);
 		
 		$("head").append(style);
 		$("#budgetPlanDiv").hide();
@@ -333,11 +334,19 @@
 		
 	});
 	
-	
+//	$(".ui-icon-circle-triangle-w").click(function(){
+//		dayByDayFlag=2;
+//		console.log("whoFirst? 2");
+//	});
+//	$(".ui-icon-circle-triangle-e").click(function(){
+//		dayByDayFlag=2;
+//		console.log("whoFirst? 2");
+//	});
 	
 	$("#prev").click(function() {
 		switch(selectedDateOption) {
 			case 1:
+				dayByDayFlag=1;
 				$("#datepicker").datepicker("setDate",--i);
 				$(".ui-datepicker-current-day").trigger("click");
 				break;
@@ -360,6 +369,7 @@
 		
 		switch(selectedDateOption) {
 		case 1:
+			dayByDayFlag=1;
 			$("#datepicker").datepicker("setDate",++i);
 			$(".ui-datepicker-current-day").trigger("click");
 			break;
@@ -950,7 +960,7 @@
 //							obj.data = Math.floor(temp);
 //						}
 						
-						console.log(obj.data);
+//						console.log(obj.data);
 						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
 						
 						expenseData.push(obj);
@@ -1049,7 +1059,7 @@
 						
 //					$("#expensePie").html("<div id='expenseDiv' style='width:100%;height:200px></div>")	;
 //					$("#incomePie").html("<div id='incomeDiv' style='width:100%;height:200px></div>")	;
-					console.log("생성");
+//					console.log("생성");
  
 					//BEGIN PIE CHART
 					

@@ -115,10 +115,12 @@
 					        <input type="text" id="actualDate" class = "form-control" readonly>
 				            
 				            <a class="prev" id="prev" href="#">
-				            	<i class="icon-angle-left"></i>
+				            	<br>
+				            	<i class="icon-angle-left" style="z-index: 9999;"></i>
 				            </a>
 				            
 				        	<a class="next" id="next" href="#">
+				        		<br>
 				        		<i class="icon-angle-right"></i>
 				        	</a>
                 		</h3>

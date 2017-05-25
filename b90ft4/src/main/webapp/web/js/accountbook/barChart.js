@@ -70,7 +70,7 @@ function makeAccRatio(year,month) {
 	});
 	
 	$("#occupancyRatio").empty();
-	console.log("ratio",ratio);
+//	console.log("ratio",ratio);
 
 	if($("#occupancyRatio").length!=0 && ratio !=0 ) {
 		
