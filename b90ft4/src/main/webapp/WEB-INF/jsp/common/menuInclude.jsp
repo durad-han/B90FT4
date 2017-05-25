@@ -83,16 +83,34 @@ $(function () {
                 <ul class="nav navbar-nav navbar-right">
 			<c:choose>
 				<c:when test="${empty user}">
+					   
+	                   <li class = "loginCall" style="display:none;">
+							<a href = "javascript:loginCall();">
+							로그인test <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
 				
 	                   <li class = "loginCall">
-							<a href = "#loginModal">
+							<a class="temp01" id="temp02" href = "#loginModal">
 							로그인 <i class="fa fa-sign-in fa-3x"></i>
 							</a>
 					   </li>
-					   
-	                   <li class = "loginCall">
-							<a href = "javascript:loginCall();">
-							로그인test <i class="fa fa-sign-in fa-3x"></i>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#loginMenu">
+							로그인2 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#login">
+							로그인3 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#loginMenu">
+							로그인4 <i class="fa fa-sign-in fa-3x"></i>
 							</a>
 					   </li>
 					   
