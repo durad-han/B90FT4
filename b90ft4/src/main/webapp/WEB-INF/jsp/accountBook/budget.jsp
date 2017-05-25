@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>COG + I - z가계부z</title>
+    <title>COG + I - 가계부</title>
     
     <!-- Bootstrap Core CSS -->
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">
@@ -114,14 +114,14 @@
 	                		<!-- 날짜 표시 -->
 					        <input type="text" id="actualDate" class = "form-control" readonly>
 				            
-				            <a class="prev" id="prev" href="#">
-				            	<br>
-				            	<i class="icon-angle-left" style="z-index: 9999;"></i>
+				            <a class="prev" id="prev" href="#" style="text-decoration: none;">
+<!-- 				            	<i class="icon-angle-left" style="z-index: 9999;"></i> -->
+				            	&lt;
 				            </a>
 				            
-				        	<a class="next" id="next" href="#">
-				        		<br>
-				        		<i class="icon-angle-right"></i>
+				        	<a class="next" id="next" href="#" style="text-decoration: none;">
+<!-- 				        		<i class="icon-angle-right"></i> -->
+				        		&gt;
 				        	</a>
                 		</h3>
                 		<br><br>

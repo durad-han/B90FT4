@@ -113,16 +113,9 @@
 					// 추가 사항
 				    var tempDate = ( j < 10 ) ? "0"+j : j ;
 				    var tempMonth = ( month < 10 ) ? "0"+month : month ;
-//					console.log("year : ", year);
-//					console.log("month : ", tempMonth);
-//				    console.log("date : " , tempDate);
 					
 					var yMD1 = year+"-"+tempMonth+"-"+tempDate;
 					var yMD2 = tempMonth+"/"+tempDate+"/"+year;
-					
-//					console.log(yMD1);
-//					console.log(yMD2);
-		
 					
 					$("#datepicker").datepicker("setDate",$.datepicker.parseDate("yy-mm-dd",yMD1));
 
@@ -140,8 +133,6 @@
 						$("#budgetPlanDiv").hide();
 					}
 					
-					
-					
 				},
 	            beforeShowDay: function(date) {
 	            	
@@ -158,7 +149,6 @@
 	            
 	            }
 		}
-	
 	}
 
 	var esOpt="";
@@ -293,12 +283,7 @@
 	
 	
 	$("#month").click(function() {
-		// 추가 사항
-//		console.log("month : ", month);
-//		console.log("thisMonth : ", thisMonth);
-//		moveMonth = (month-thisMonth) * 30;
-//		console.log(moveMonth);
-		
+
 		$("head").append(style);
 		$("#budgetPlanDiv").hide();
 		 // 지출 계획 숨기기.
@@ -333,15 +318,6 @@
 		budgetList(d1,d2,3);
 		
 	});
-	
-//	$(".ui-icon-circle-triangle-w").click(function(){
-//		dayByDayFlag=2;
-//		console.log("whoFirst? 2");
-//	});
-//	$(".ui-icon-circle-triangle-e").click(function(){
-//		dayByDayFlag=2;
-//		console.log("whoFirst? 2");
-//	});
 	
 	$("#prev").click(function() {
 		switch(selectedDateOption) {
@@ -394,11 +370,8 @@
 	var date = $("#datepicker").datepicker("getDate");
 	var today = $.datepicker.formatDate( "yy-mm-dd", date);
 	
-//	console.log("today",today);
 	$("#actualDate").val(today);
 	$("[name=budgetF] input:eq(4)").val(today);
-//	console.log($("[name=budgetF] input:eq(4)").val());
-//	console.log("들어왔다.");
 
 	showPlan();
 	function showPlan(){
@@ -636,9 +609,6 @@
 				
 				$("#budgetPlanDiv").hide();
 				
-//				$("#expenseDiv").html("zzzz");
-//				$("#incomeDiv").html("zzzzzz");
-				
 			}else{
 				showPlan();
 			}
@@ -809,8 +779,6 @@
 			
 							for(var i=0;i<incomeEachDayCount.length;i++) {
 								
-			//					console.log("?",incomeEachDayCount[i]);
-								
 								for(var j=0;j<incomeEachDayCount[i];j++,k++) {
 									
 									incomeHtml+="<tr class='incomeInfo'>";
@@ -949,18 +917,8 @@
 						var obj={};
 					
 						obj.label = expenseMonthBudget[i].expenseCategoryName;
-//						obj.data = Math.round(((expenseMonthBudget[i].eachSum/expenseSum)*1000))/10;
-//						obj.data = (expenseMonthBudget[i].eachSum/expenseSum)*1000/10;
-						
 						obj.data = (expenseMonthBudget[i].eachSum/expenseSum);
 
-//						if(temp<10){
-//							obj.data = temp;
-//						}else {
-//							obj.data = Math.floor(temp);
-//						}
-						
-//						console.log(obj.data);
 						obj.color = colorChoice(2,expenseMonthBudget[i].expenseCategoryNo);
 						
 						expenseData.push(obj);
@@ -1038,29 +996,6 @@
 							$("#monthIncomeTable + div tbody").html(income);
 						});
 						
-						/*
-							// 지출 테이블 분류 컬럼
-							$("#expenseCtgy > select").change(function() {
-					//			console.log(this.value);
-								budgetList(startDate,endDate,2,this.value,0);
-							});
-							
-							// 수입 테이블 분류 컬럼
-							$("#incomeCtgy").html("<select><option value='0'>분류</option>"+icOpt+"</select>");
-							$("#incomeCtgy > select").change(function() {
-					//			console.log(this.value);
-								console.log("분류일떄를 보자.",this.value);
-								budgetList(startDate,endDate,2,this.value,1);
-							});
-							
-							$(".ui-datepicker-current-day").trigger("click");
-							
-						 */
-						
-//					$("#expensePie").html("<div id='expenseDiv' style='width:100%;height:200px></div>")	;
-//					$("#incomePie").html("<div id='incomeDiv' style='width:100%;height:200px></div>")	;
-//					console.log("생성");
- 
 					//BEGIN PIE CHART
 					
 				    if(expenseData.length!=0){
@@ -1247,17 +1182,6 @@
 		$("[name=budgetF] input:eq(2)").focus();
 		console.log("ㅎㅇzz");
 		regiOrModFlag = 1;
-		
-		
-//		$("body").addClass("modal-open").css("padding-right","17px");
-//		$("#myModal").addClass('in');
-//		$("#myModal").css({
-//		    "display":"block",
-//		    "padding-right":"17px"
-//		});
-//		
-//		$("body").append($("<div class='modal-backdrop fade in'></div>"));
-		
 	});
 	
 	
@@ -1315,34 +1239,9 @@
 		
 	});
 	
-	// close를 눌렀을 때 초기화 시키기.
+// close를 눌렀을 때 초기화 시키기.
 	$("#closeF").click(function() {
-//		console.log("expense.expenseNo",expenseObj.expenseNo);
 		initForm(0);
-		
-//		$("body").removeClass("modal-open").removeAttr("style");
-//		$("#myModal").removeClass('in');
-//		$("#myModal").removeAttr('style');
-//		
-//		$("#myModal").css({
-//		    "display":"none"
-//		});
-//		
-//		$("div.modal-backdrop.fade.in").remove();
-		
-		
-//		setTimeout(function(){
-//			
-//			if($("div.modal-backdrop.fade.in").length > 0) {
-//				console.log("백드롭 존재");
-//				$("div.modal-backdrop.fade.in").remove();
-//			}else {
-//				console.log("백드롭 존재 X");
-//			}
-//			
-//		},2000);
-
-		
 	});
 	
  // 콤마 찍는 정규 표현식 적용 함수.

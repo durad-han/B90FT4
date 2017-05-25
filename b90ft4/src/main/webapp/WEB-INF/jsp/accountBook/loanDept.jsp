@@ -86,12 +86,14 @@
 	                		<!-- 날짜 표시 -->
 					        <input type="text" id="actualDate" class = "form-control" readonly>
 				            
-				            <a class="prev" id="prev" href="#">
-				            	<i class="icon-angle-left"></i>
+				            <a class="prev" id="prev" href="#" style="text-decoration: none;">
+<!-- 				            	<i class="icon-angle-left"></i> -->
+									&lt;
 				            </a>
 				            
-				        	<a class="next" id="next" href="#">
-				        		<i class="icon-angle-right"></i>
+				        	<a class="next" id="next" href="#" style="text-decoration: none;">
+<!-- 				        		<i class="icon-angle-right"></i> -->
+				        			&gt;
 				        	</a>
                 		</h3>
                 		<br><br>
