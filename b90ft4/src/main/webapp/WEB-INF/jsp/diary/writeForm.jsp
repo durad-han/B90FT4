@@ -389,6 +389,7 @@
 //     	  }
  	</script>	
 	
+	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"> </script>
 	
 </div>
 </body>

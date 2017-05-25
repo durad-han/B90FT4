@@ -271,7 +271,7 @@
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.pie.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
-	
+	<script src="${pageContext.request.contextPath}/web/js/memo/memo.js"> </script>
 	
 </div>
 </body>
