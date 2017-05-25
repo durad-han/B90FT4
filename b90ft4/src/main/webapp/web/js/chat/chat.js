@@ -43,6 +43,7 @@
 	    if (M < 10) M = "0" + M;
 	    if (m < 10) m = "0" + m;
 	    var s = d.getSeconds();
+	    if (s < 10) s = "0" + s;
 	    
 	    var fullDate = y+'-'+M+"-"+date+" "+h+":"+m+":"+s;
 		 
@@ -246,6 +247,7 @@
 	                direction: 'right'
 	            }, 500);
 	        }
+	        
 	        // FOCUS INPUT TExT WHEN CLICK
 	        $('ul.chat-box-body').scrollTop(500);
 	        
@@ -302,6 +304,7 @@
 	    	    if (M < 10) M = "0" + M;
 	    	    if (m < 10) m = "0" + m;
 	    	    var s = d.getSeconds();
+	    	    if (s < 10) s = "0" + s;
 	    	    
 	    	    var fullDate = y+'-'+M+"-"+date+" "+h+":"+m+":"+s;
              
