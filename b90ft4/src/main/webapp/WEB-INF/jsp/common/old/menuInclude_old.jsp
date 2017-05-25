@@ -84,6 +84,12 @@ $(function () {
 							</a>
 					   </li>
 					   
+	                   <li class = "loginCall">
+							<a id="acc" href = "#loginModal">
+							로그인 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+					   
 				</c:when>
 				<c:otherwise>
 

@@ -33,14 +33,24 @@
 		 var msg = "";
 		 
 		var d = new Date();
+		
+		var y = d.getYear() + 1900;
+		var M = d.getMonth() + 1;
+		var date = d.getDate();
 	    var h = d.getHours();
 	    var m = d.getMinutes();
+	    
+	    if (M < 10) M = "0" + M;
 	    if (m < 10) m = "0" + m;
+	    var s = d.getSeconds();
+	    if (s < 10) s = "0" + s;
+	    
+	    var fullDate = y+'-'+M+"-"+date+" "+h+":"+m+":"+s;
 		 
 		msg+='<li class="odd">';
 		msg+='    <p>';
 		msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+data.sender+'</span><span';
-		msg+='            class="time">'+d+'</span></p>';
+		msg+='            class="time">'+fullDate+'</span></p>';
 		msg+='    <p>';
 		msg+= 	  data.msg +'</p>';
 		msg+='</li>';
@@ -64,7 +74,7 @@
 				msg+='<li>';
 				msg+='    <p>';
 				msg+='        <img src="/b90ft4/web/image/chat/me.png" class="avt" /><span class="user">'+myId+'</span><span';
-				msg+='            class="time">'+string.substring(row.reg_date,0,17)+'</span></p>';
+				msg+='            class="time">'+row.reg_date+'</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
 				msg+='</li>';
@@ -72,13 +82,14 @@
 				user = row.user;
 				msg+='<li class="odd">';
 				msg+='    <p>';
-				msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user">'+string.substring(row.reg_date,0,17)+'</span><span';
-				msg+='            class="time">09:33</span></p>';
+				msg+='        <img src="/b90ft4/web/image/chat/friend.png" class="avt" /><span class="user"></span><span';
+				msg+='            class="time">'+row.reg_date+'</span></p>';
 				msg+='    <p>';
 				msg+= 	  row.msg +'</p>';
 				msg+='</li>';
 			}
 			
+//			console.log(row.reg_date);
 	
 		});
 		
@@ -236,6 +247,7 @@
 	                direction: 'right'
 	            }, 500);
 	        }
+	        
 	        // FOCUS INPUT TExT WHEN CLICK
 	        $('ul.chat-box-body').scrollTop(500);
 	        
@@ -283,9 +295,18 @@
           if ($content !== "") { // 내용이 비어있지 않다면..
           
               var d = new Date();
-              var h = d.getHours();
-              var m = d.getMinutes();
-              if (m < 10) m = "0" + m;
+	      		var y = d.getYear() + 1900;
+	    		var M = d.getMonth() + 1;
+	    		var date = d.getDate();
+	    	    var h = d.getHours();
+	    	    var m = d.getMinutes();
+	    	    
+	    	    if (M < 10) M = "0" + M;
+	    	    if (m < 10) m = "0" + m;
+	    	    var s = d.getSeconds();
+	    	    if (s < 10) s = "0" + s;
+	    	    
+	    	    var fullDate = y+'-'+M+"-"+date+" "+h+":"+m+":"+s;
              
               $obj.val(""); // CLEAR TEXT ON TEXTAREA
 
@@ -294,7 +315,7 @@
               $element += "<p>";
               $element += "<img class='avt' src='"+$my_avt+"'>";
               $element += "<span class='user'>"+myId+"</span>";
-              $element += "<span class='time'>" + h + ":" + m + "</span>";
+              $element += "<span class='time'>" + fullDate + "</span>";
               $element += "</p>";
               $element = $element + "<p>" + $content +  "</p>";
               $element += "</li>";

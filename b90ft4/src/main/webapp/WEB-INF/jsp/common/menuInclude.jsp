@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 userId = "admin";
-resetMsg = "아무의미없지만일단리셋용";
+resetMsg = "test";
 
 function statusChangeCallback(response) { 
 	
@@ -46,9 +46,18 @@ function statusChangeCallback(response) {
  
   function setUser() {
     FB.api('/me', function(result) {
-	location.href="${pageContext.request.contextPath}/login/login.do?userId="+result.name;      
+		location.href="${pageContext.request.contextPath}/login/login.do?userId="+result.name;      
+    	console.log("anybody here?");
+    	sectionVisiblity();
     });
   }
+  
+ 	function sectionVisiblity(){
+		console.log("section chhhhhhhhhhhk")
+	   	$("#portfolio").css("display", "block");
+    	$("#loginSuccess").trigger("click");
+    	showMain();
+   };
 </script>
 <script>
 
@@ -59,46 +68,54 @@ $(function () {
 </script>
 
 
-<!-- <nav id="mainNav" style="background-color: rgb(214, 32, 140);" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
-<!-- <nav id="mainNav"  style="height: 120px;" class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
-<!-- 	<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom"> -->
 	<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom" style="padding-bottom: 0px;">
-<!--         <div class="container"> -->
         <div class="container" style="height: 90px;">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do"> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</a>
-<!--                 <a class="navbar-brand" href="#page-top"><i class="fa fa-caret-up" style="font-size:24px"></i></a> -->
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
 			<c:choose>
 				<c:when test="${empty user}">
+					   
+	                   <li class = "loginCall" style="display:none;">
+							<a href = "javascript:loginCall();">
+							로그인test <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+				
 	                   <li class = "loginCall">
-							<a href = "#loginModal">
+							<a class="temp01" id="temp02" href = "#loginModal">
 							로그인 <i class="fa fa-sign-in fa-3x"></i>
 							</a>
 					   </li>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#loginMenu">
+							로그인2 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#login">
+							로그인3 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+				
+	                   <li class = "loginCall" style="display:none;">
+							<a class="temp01" id="temp02" href = "#loginMenu">
+							로그인4 <i class="fa fa-sign-in fa-3x"></i>
+							</a>
+					   </li>
+					   
 				</c:when>
 				<c:otherwise>
-
-<!-- 	                   <li class = "logoutCall"> -->
-<!-- 	                   		<br> -->
-<!-- 							<a href = "javascript:logout();"> -->
-<%-- 								<c:out value="${user.userId}"/>님 로그아웃 --%>
-<!-- 							</a> -->
-							
-<!-- 					   </li> -->
-<!-- 	                   <li class = "loginCall"> -->
-<%-- 							<a href = "${pageContext.request.contextPath}/login/user.do?userId=${user.userId}">내 정보</a> --%>
-<!-- 					   </li> -->
+				
                    <li class = "dropdown">
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 								<c:out value="${user.userId}"/>님  <i class="fa fa-user-circle-o fa-3x"></i>
@@ -115,14 +132,10 @@ $(function () {
 					      
 				   </li>
                       
-                   <li class = "dropdown">
-					     
+                   <li class = "dropdown"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>">
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-<!-- 					          가계부 <span class = "caret"></span> -->
-								<i class="fa fa-krw fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/1.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>" /> --%>
+								<i class="fa fa-krw fa-3x"></i>
 					      </a>
-					      <script>$("#acc").click(function(){console.log("ㅋㅋ");}) </script>
 					      
 					      <ul class = "dropdown-menu">
 					         <li><a href = "${pageContext.request.contextPath}/accountBook/budget.do">지출/수입</a></li>
@@ -135,24 +148,19 @@ $(function () {
                     <li>
                         <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h6>다이어리</h6>">
                         		 <i class="fa fa-book fa-3x"></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/2.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>Diary</h4>" /> --%>
                         </a>
                     </li>
 
                     <li>
                         <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케줄</h4>">	
                         		<i class="fa fa-calendar fa-3x"></i>
-<%--                         		<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/3.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케쥴</h4>" /> --%>
                         </a>
 
                     </li>
                         
-                    <li>
+                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>">
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
-<!-- 					          운동 <span class = "caret"></span> -->
-<!-- 								<i class="fa fa-male fa-3x"></i> -->
-								<i class="fa fa-child fa-3x"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/4.png" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>"/> --%>
+								<i class="fa fa-child fa-3x"></i>
 					      </a>
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
@@ -169,49 +177,31 @@ $(function () {
                         	}
                         </script>
                     </li>
-                    <li id="memoNav">
-<!-- 		                <span> -->
+                    <li id="memoNav" >
 							<a style="padding-bottom: 0px;" id="addMemo">
 								<i class="fa fa-pencil-square-o fa-3x"></i>
-<%-- 								<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/5.png" style="height:25px;" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"/> --%>
 							</a>
-<!-- 						</span> -->
-<!-- 	             	   <input type="checkbox" id="showAndHideMemo" name='memoOpt' value='1' checked style="width:15px;height:15px;"/> -->
-<!-- 					   <label for='showAndHideMemo' style="color:white;">메모 보기</label> -->
-<!-- 							<span id="onOff" style="margin:0;margin-left: 3.8px;padding: 0;">	    				 -->
-<!-- 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
-<!-- 							</span> -->
 
 							<span id="onOff" style="margin-left: 3.8px; display: none;" data-html="true"  data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"> 	    				
 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
 							</span>
 
 		            </li>
-		            <!-- 채팅 아이콘 -->
-				   <li id="topbar-chat" class="hidden-xs">
-						<a href="javascript:void(0)"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
-<!-- 						       <i class="fa fa-comments fa-6" aria-hidden="true"></i> -->
-<!-- 							<i class="fa fa-commenting-o fa-3x"></i> -->
+				   <li id="topbar-chat" class="hidden-xs" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>">
+						<a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 							<i class="fa fa-weixin fa-3x" ></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/6.png" /> --%>
 						</a>
 				   </li>
 				</c:otherwise> 
 			</c:choose>
                         
-                    <li>
-                        <a href="${pageContext.request.contextPath}/main/news.do" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
+                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
+                        <a href="${pageContext.request.contextPath}/main/news.do">
                         	<i class="fa fa-newspaper-o fa-3x"></i>
-<%-- 							<img class="menu" src="${pageContext.request.contextPath}/web/image/menu/8.png"  /> --%>
                         </a>
                     </li>
 
                 </ul>
-                
-<!--             	<span style="margin:0;padding: 0;margin-left:70%;margin-top: 10%;">	    				 -->
-<!--            	    	<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
-<!-- 				</span> -->
-                
             </div>
         </div>
     </nav>
@@ -228,20 +218,6 @@ $(function () {
 	            <div class="row">
 	                <div class="col-lg-8 col-lg-offset-2">
 	                    <form name="loginItem" id="loginItem" novalidate>
-<!-- 	                        <div class="row control-group"> -->
-	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
-	<!--                                 <label for="userId">ID</label> -->
-	<!--                                 <input type="text" class="form-control" placeholder="ID" id="userId" required data-validation-required-message="아이디를 입력해주세요."> -->
-	<!--                                 <p class="help-block text-danger"></p> -->
-	<!--                             </div> -->
-<!-- 	                        </div> -->
-<!-- 	                        <div class="row control-group"> -->
-	<!--                             <div class="form-group col-xs-12 floating-label-form-group controls"> -->
-	<!--                                 <label for="password">Password</label> -->
-	<!--                                 <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="비밀번호를 입력해주세요."> -->
-	<!--                                 <p class="help-block text-danger"></p> -->
-	<!--                             </div> -->
-<!-- 	                        </div> -->
 	                        <div class="row" style="text-align: center; padding-left: 60px;">
 	                       		
 	                       			<div id="spinner" style=" background: #1EC800; border-radius: 5px;
@@ -257,7 +233,7 @@ $(function () {
 	                        <br>
 	                        <div class="row" style="text-align: center;">
 	                            <div class="form-group col-xs-12" style="margin: auto; ">
-	                                <a href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
+	                                <a id="loginSuccess" href="${pageContext.request.contextPath}/main/main.do" class="btn btn-success btn-lg">확인</a>
 	                                <a href="#close" class="btn btn-danger btn-lg">취소</a>
 	                            </div>
 	                        </div>
@@ -268,45 +244,7 @@ $(function () {
         </div>
    </div>
    
-<!--                	<span id="onOff" style="">	    				 -->
-<!--            	    	<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/> -->
-<!-- 				</span> -->
-   
    	     <script>
-//           		var memoNav = $("#memoNav");
-//             	var oftop = memoNav.offset().top;
-//             	var ofleft = memoNav.offset().left;
-          		
-//           		$("#memoNav").hover(function() {
-            		
-//             		console.log(";;")
-//             		$("#onOff").show();
-//             		$("#onOff").css({
-//             			"position":"relative",
-//             			"top": "50px",
-//             			"left": "700px",
-//             			"z-index":99999
-//             		});
-            		
-// //             		$('#onOff').tooltip('show');
-
-//             	},function() {
-//             		$("#onOff").hide();
-// //             		$('#onOff').tooltip('destroy');
-//             	});
-            	
-//             	$("#onOff").hover(function() {
-//             		$("#onOff").show();
-// 					$(".tooltip-inner").css({
-// 						"top":top,
-// 						"left":left
-// 					});
-// //             		$('#onOff').tooltip('destroy');
-//             	},function() {
-//             		$("#onOff").hide();
-// //             		$('#onOff').tooltip('destroy');
-//             	});
-            
 		    	$("#memoNav").hover(function() {
 		    		
             		$("#onOff").show();
@@ -322,26 +260,18 @@ $(function () {
    
    
       <!-- 스위치 -->
-<%--  	<script src="${pageContext.request.contextPath}/web/bootstrap/jquery/jquery-1.10.2.js" type="text/javascript"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script> --%>
-<%-- 	<script src="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/js/bootstrap.js" type="text/javascript"></script> --%>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-checkbox.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-radio.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/gsdk-bootstrapswitch.js"></script>
 	<script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/get-shit-done.js"></script>
     <script src="${pageContext.request.contextPath}/web/bootstrap/assets/js/custom.js"></script>    
-<!--    <script>console.log("스위치 테스트ㅋㅋ");</script> -->
     
      <!-- 채팅 -->
-     <!--BEGIN CHAT FORM-->
      <div id="chat-form" class="fixed">
          <div class="chat-inner">
             
              <h2 class="chat-header">
                  <a href="javascript:;" class="chat-form-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
-<!-- 	                 <span class="glyphicons glyphicons-log-in"></span> -->
 	                     닫기
                  </a>
                  <i class="fa fa-user"></i>&nbsp; 친구 목록 &nbsp;</h2>
@@ -403,8 +333,6 @@ $(function () {
             
              <div class="chat-box-header">
                  <a href="#" class="chat-box-close pull-right" style="text-decoration: none;">
-<!-- 	                 <i class="glyphicon glyphicon-remove"> -->
-<!-- 	                 </i> -->
                  	 	닫기
                  </a>
                  <span class="user-status is-online"></span>

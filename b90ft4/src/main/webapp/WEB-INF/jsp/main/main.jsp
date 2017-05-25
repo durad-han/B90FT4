@@ -59,7 +59,7 @@
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section id="portfolio" style="display: none;">
         <div class="container">
         
             <div class="row">
@@ -124,18 +124,21 @@
         </div>
         
     </section>
-    <script>
-//             	  $(function () { $('.tooltip-show').tooltip('show');});
-            	  
-            	  $(function() {
-            		  $('.tooltip-show').each(function() {
-	            		  $(this).tooltip("toggle");
-	            	  });
-            	  });
-            	  
-            	  
-      </script>
     
+    <script>
+    (function hideMain(){
+    	console.log("hideMain()")
+    	if('${user}')
+    	$("#portfolio").css("display","none");
+    });
+    
+	$(function() {
+		$('.tooltip-show').each(function() {
+			$(this).tooltip("toggle");
+		});
+	});
+            	  
+	</script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
