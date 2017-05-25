@@ -15,8 +15,18 @@
 	<div id = 'viewContainer'>
 	</div>
 	
+
+	
+	<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/RunningImg.jpg"/><br>
 	<div>
 		<video width='70%' height='70%' autoplay='autoplay' id='myVideo' />
+	</div>
+	<div>
+		① 어깨에 힘을 뺀다.<br>
+		② 몸이 크게 흔들지 않는다.<br>
+		③ 팔을 안쪽으로 흔들지 않는다.<br>
+		④ 몸을 앞으로 기울이거나 허리가 굽지 않게 한다.<br> 
+		⑤ 허리를 높게 위치하도록 한다.<br>
 	</div>
 	<div id = 'typeBButtons' width='90%' height='95%'>
 		<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
@@ -24,20 +34,15 @@
 		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
 		<button id='youtubeOpenBtn' class='btn btn-primary' onclick='youtubeOpen()'>영상 켜기</button>
 		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
-		<div id = "recBtns">
-			<div style="float:left;">
-				<a href="#" title="Play video" class="recPlayBtn" onclick="onBtnRecordClicked()"></a>
-				<h1>녹화 / 일시중지</h1>
-			</div>
-			<div style="float:left; width:10%; height:40%;">
-				<a href="#" title="Stop video" class="recStopBtn" onclick="onBtnStopClicked()"></a>
-				<h1>정지</h1>
-			</div>
-		</div>
-		<button id="rec" onclick="onBtnRecordClicked()">녹화</button>
-		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>녹화 일시정지</button>
-		<button id="stop" onclick="onBtnStopClicked()" disabled>녹화 정지</button>
-		<a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+		<br>
+		<i class="fa fa-play-circle-o fa-3x" aria-hidden="true" id="rec" onclick="onBtnRecordClicked()"></i>
+		<i class="fa fa-pause-circle-o fa-3x" aria-hidden="true" id="pauseRes" onclick="onPauseResumeClicked()" disabled></i>
+		<i class="fa fa-stop-circle-o fa-3x" aria-hidden="true" id="stop" onclick="onBtnStopClicked()" disabled></i>
+		<button id="rec" onclick="onBtnRecordClicked()" style = "display: none;">녹화</button>
+		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled style = "display: none;">녹화 일시정지</button>
+		<button id="stop" onclick="onBtnStopClicked()" disabled style = "display: none;">녹화 정지</button>
+		<br>
+		녹화 상태 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 		<p id="data"></p>
 		
 	</div>

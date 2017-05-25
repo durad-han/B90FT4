@@ -1,0 +1,14 @@
+diff a/b90ft4/src/main/webapp/WEB-INF/jsp/workout/workoutCal.jsp b/b90ft4/src/main/webapp/WEB-INF/jsp/workout/workoutCal.jsp	(rejected hunks)
+@@ -154,9 +154,9 @@
+ 	<script src="${pageContext.request.contextPath}/web/bootstrap/KAdmin-Dark/script/jquery.flot.resize.js"></script>
+ --%>
+ </div>
+-<script>
+-
+-</script>
++<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.barRenderer.js"></script>
++<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.categoryAxisRenderer.js"></script>
++<script src="${pageContext.request.contextPath}/web/js/workout/jqplot.pointLabels.js"></script>
+ </body>
+ 
+ </html>

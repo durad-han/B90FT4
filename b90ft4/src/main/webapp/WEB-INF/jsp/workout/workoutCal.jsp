@@ -13,6 +13,8 @@
 
     <title>Cog + I</title>
     <!-- Bootstrap Core CSS -->
+    <link href = "${pageContext.request.contextPath}/web/bootstrap/css/jquery.jqplot.min.css" rel = "stylesheet">
+    
 <%--     <link href="${pageContext.request.contextPath}/web/bootstrap/freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --%>
   <%--   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/common/bootstrap.min.css">--%>
   <%-- <c:import url ="/WEB-INF/jsp/common/frameInclude.jsp"/> --%>
@@ -52,10 +54,20 @@
 						<div class="panel panel-yellow">
 							<div class="panel-heading">칼로리 계산</div>   
 							<!-- 차트 -->
-							<div style = "height:30px;"></div>
-							<div style= "width: 60%; margin:0 auto;">
-								<div id="calChart" style="width: 100%; height:300px;"></div>
+							
+							<div class = "row" style= "width: 60%; margin:0 auto;">
+							<div class="col-md-10">
+									<div id="calChart" style="width: 100%; height:300px; float:left;"></div>
+							
 							</div>
+							<div class="col-md-2">
+							<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/legend.png" style="width:120px;height:60px;float: left;"/>
+							</div>
+							
+								<div style= "width: 60%; margin:0 auto;">
+								</div>
+							</div>
+					      
 						</div>
 					</div>
 				</div>

@@ -47,7 +47,6 @@ function calColumnInsert(){
 		dataType:"json",
 		data : {"today" : gvToday , "userId" : userId }
 		}).done(function(result){
-			
 			console.log("calColumnInsertload3 : " );
 			console.dir(result);
 			
@@ -187,6 +186,17 @@ function setChart(){
 	        pointLabels: { show: false , stackedValue: false}
 	    },
 	    seriesColors:['#00bcd4','#f2994b' , '#1c95ea'],
+	   /* 
+	    legend : { // Legend 옵션  
+	        renderer : $.jqplot.EnhancedLegendRenderer,
+	        show : true, // Legend 표시 유무
+	        placement : 'outside', // Legend 위치 (Default값은 inside)
+	        textColor : 'black',  // Legend 내부 Text Color
+	        rowSpacing : '1px',  // Legend 들간의 사이 공간
+	        location : 'ne',  // Legend 위치 (e,w,s,n)(동,서,남,북) 조합가능
+	        series:[ {label:'소모 칼로리'},{label:'남은 칼로리'},{label:'초과 소모 칼로리'}]
+	    },
+	    */
 	    axes: {
 	        xaxis: {
 	        	

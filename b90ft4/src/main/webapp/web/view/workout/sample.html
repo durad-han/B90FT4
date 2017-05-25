@@ -23,7 +23,7 @@
 	value = 0;
 	count = -1;
 	maxValue = gvTypeACount;
-	max = "/"+maxValue+"회";
+	max = " / "+maxValue+" 회";
 	breakTimeVal = 10;
     
 $(function(){
@@ -54,14 +54,15 @@ $(function(){
     		
     		calIncDec();
   		  	alert("마지막 세트입니다.");
-  		  
+  		    $("#AText").html("화면을 눌러 시작하세요 !");
+  		  $("#setNo"+1).trigger("click");
     		}
     		else{
-  		 	 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-  		
-  			calIncDec();
-  		  $("#setNo"+nextSet).trigger("click");
   		  $("#AText").html("화면을 눌러 시작하세요 !");
+  			calIncDec();
+  		 	 alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
+  		  $("#setNo"+nextSet).trigger("click");
+  		
   		  
   		}
   	  value = -1;
