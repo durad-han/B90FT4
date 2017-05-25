@@ -48,9 +48,17 @@ function statusChangeCallback(response) {
     FB.api('/me', function(result) {
 		location.href="${pageContext.request.contextPath}/login/login.do?userId="+result.name;      
     	console.log("anybody here?");
-    	$("#loginSuccess").trigger("click");
+    	sectionVisiblity();
     });
   }
+  
+ 	function sectionVisiblity(){
+		console.log("section chhhhhhhhhhhk")
+	   	if('${user}'){
+	   		$("#portfolio").css("display:block");
+    		$("#loginSuccess").trigger("click");
+		}
+   };
 </script>
 <script>
 

@@ -59,7 +59,7 @@
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section id="portfolio" style="display: none;">
         <div class="container">
         
             <div class="row">
@@ -125,14 +125,12 @@
         
     </section>
     <script>
-//             	  $(function () { $('.tooltip-show').tooltip('show');});
-            	  
-            	  $(function() {
-            		  $('.tooltip-show').each(function() {
-	            		  $(this).tooltip("toggle");
-	            	  });
-            	  });
-            	  
+    
+      	  $(function() {
+      		 $('.tooltip-show').each(function() {
+       		  	$(this).tooltip("toggle");
+       	 	 });
+      	  });
             	  
       </script>
     
