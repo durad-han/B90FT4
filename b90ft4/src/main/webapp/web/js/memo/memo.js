@@ -3,6 +3,11 @@
 	
 		console.log($("#showAndHideMemo").prop("checked"));
 		
+		if($("#showAndHideMemo").prop("checked")){
+			$("#portfolio").css("display","block");
+			$("#portfolio")[0].scrollIntoView(); 
+		}
+		
 		function memoCheck(){
 			if($("#showAndHideMemo").prop("checked")){
 				bringMemo();

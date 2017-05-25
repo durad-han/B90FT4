@@ -124,16 +124,21 @@
         </div>
         
     </section>
+    
     <script>
+    (function hideMain(){
+    	console.log("hideMain()")
+    	if('${user}')
+    	$("#portfolio").css("display","none");
+    });
     
-      	  $(function() {
-      		 $('.tooltip-show').each(function() {
-       		  	$(this).tooltip("toggle");
-       	 	 });
-      	  });
+	$(function() {
+		$('.tooltip-show').each(function() {
+			$(this).tooltip("toggle");
+		});
+	});
             	  
-      </script>
-    
+	</script>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">

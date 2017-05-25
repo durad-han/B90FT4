@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 userId = "admin";
-resetMsg = "아무의미없지만일단리셋용sfdgnkfdjgpdsjfohkdpofkg,[pedflh[pbl,dgpb[pdfl,g[pfdl[pglfd;g,df;g,p[dflgpdf]]]]]]";
+resetMsg = "test";
 
 function statusChangeCallback(response) { 
 	
@@ -54,10 +54,9 @@ function statusChangeCallback(response) {
   
  	function sectionVisiblity(){
 		console.log("section chhhhhhhhhhhk")
-	   	if('${user}'){
-	   		$("#portfolio").css("display:block");
-    		$("#loginSuccess").trigger("click");
-		}
+	   	$("#portfolio").css("display", "block");
+    	$("#loginSuccess").trigger("click");
+    	showMain();
    };
 </script>
 <script>
