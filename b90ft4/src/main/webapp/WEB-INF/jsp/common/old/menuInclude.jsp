@@ -66,15 +66,15 @@ $(function () {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do" style="font-size: 40px;"><h2> C <i class="fa fa-cog" aria-hidden="true"></i> G + I</h2></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do" style="font-size: 40px;"> C <i class="fa fa-cog" aria-hidden="true"></i> G + I </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
+<!--                     <li class="hidden"> -->
+<!--                         <a href="#page-top"></a> -->
+<!--                     </li> -->
 			<c:choose>
 				<c:when test="${empty user}">
 				
@@ -148,7 +148,6 @@ $(function () {
                         </script>
                     </li>
                     <li>
-<!-- 		                <span> -->
 							<a id="addMemo" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>">
 								<i class="fa fa-pencil-square-o fa-3x"></i>
 							</a>
