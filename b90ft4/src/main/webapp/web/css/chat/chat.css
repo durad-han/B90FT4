@@ -72,6 +72,7 @@ span#deleteRoom {
   background-color: #666666;
 }
 #chat-form .chat-inner {
+	background-image: url(../../image/background/texture10.jpg);
   overflow: auto;
   height: 100%;
 }
@@ -102,7 +103,7 @@ span#deleteRoom {
   display: block;
   padding: 6px 35px;
   position: relative;
-  color: #eaeaea;
+  color: #000000;
   text-decoration: none;
 }
 #chat-form .chat-group > a .badge {
