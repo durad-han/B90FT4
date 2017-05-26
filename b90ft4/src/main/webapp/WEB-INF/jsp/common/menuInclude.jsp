@@ -165,7 +165,7 @@ $(function () {
 					      <ul class = "dropdown-menu">
 					         <li><a href="${pageContext.request.contextPath}/workout/workout.do">운동 하기</a></li>
 					         <li><a href="${pageContext.request.contextPath}/workout/workoutCal.do">칼로리 계산</a></li>
-					         <li><a href="javascript:workoutMoveChart()">차트</a></li>
+<!-- 					         <li><a href="javascript:workoutMoveChart()">차트</a></li> -->
 					      </ul>
                         
                         <script>
