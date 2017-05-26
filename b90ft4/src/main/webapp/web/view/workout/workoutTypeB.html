@@ -16,20 +16,22 @@
 	<div id = 'viewContainer' style="font-weight:bold;font-size:12pt;text-align:center;">
 	</div>
 
-	<div id = "explainView" style = "width:90%; height:400px;">
-	<img class="menu" src="/b90ft4/web/image/workout/RunningImg.jpg" style = "width:99%;height:300px;"/><br>
+	<div id = "explainView" style = "width:90%; height:400px;text-align:center;margin: 0 auto;">
+	<img class="menu" src="/b90ft4/web/image/workout/squatImg.jpg" style = "width:650px;height:300px;"/><br>
+	<div style = "width:90%; height:400px;text-align:center;margin: 0 auto;">
+		① 릴렉스한 채로 선다. 어깨 넓이로 발을 벌리고 양 팔은 몸에 가볍게 붙인다.<br>
+		② 밸런스를 취하며 숨도 들이쉬면서 그대로 무릎을 굽혀 허리 위 상반신을 내린다. 이 때에 발뒤꿈치를 절대 올리지 않는다.<br>상체를 가능한 똑바로 세워 허리의 등뼈가 아치형태를 유지하도록 한다. 허리가 굽어지면 부상의 원인이 된다.<br>
+		③ 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮춘다. 그리고 가능하면 평행 상태에서 1초 정도 머문다. 숨을 뱉으면서 무릎과 등을 세우면서 허리를 올린다.<br>
+		④ 1〜3을 반복한다.<br>
+
+
+	</div>
 	</div>
 	<br><br>
 	<div id ="videoContents">
 		<video width='90%' height='90%' autoplay='autoplay' id='myVideo'/>
 	</div>
-	<div>
-		① 어깨에 힘을 뺀다.<br>
-		② 몸이 크게 흔들지 않는다.<br>
-		③ 팔을 안쪽으로 흔들지 않는다.<br>
-		④ 몸을 앞으로 기울이거나 허리가 굽지 않게 한다.<br> 
-		⑤ 허리를 높게 위치하도록 한다.<br>
-	</div>
+	
 	
 	<div id = 'typeBButtons' width='90%' height='95%'>
 	<div class = 'row'>
@@ -426,13 +428,14 @@ function videoClose(){
 function youtubeOpen() {
 		
 	var youtubeTag = '<iframe width="99%" height="420px" src="https://www.youtube.com/embed/umvubPZ6rCo" frameborder="0" allowfullscreen></iframe>';
-	$("#explainView").html(youtubeTag);//wkatl qjrmtnwjdwha ㅠ ?ㅕ? 버그수정좀 잠시
+	$("#explainView").html(youtubeTag);
 		$("#youtubeOpenBtn").addClass("hidden");
 		$("#youtubeCloseBtn").removeClass("hidden");
 		
 	    }
 function youtubeClose(){
-	var youtubeTag ='<img class="menu" src="/b90ft4/web/image/workout/RunningImg.jpg" style = "width:99%;height:300px;"/><br>';
+	var youtubeTag ='<img class="menu" src="/b90ft4/web/image/workout/squatImg.jpg" style = "width = 650px;height:300px;"/><br>'+
+	'<div>① 릴렉스한 채로 선다. 어깨 넓이로 발을 벌리고 양 팔은 몸에 가볍게 붙인다.<br>② 밸런스를 취하며 숨도 들이쉬면서 그대로 무릎을 굽혀 허리 위 상반신을 내린다. 이 때에 발뒤꿈치를 절대 올리지 않는다.<br>상체를 가능한 똑바로 세워 허리의 등뼈가 아치형태를 유지하도록 한다. 허리가 굽어지면 부상의 원인이 된다.<br>③ 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮춘다. 그리고 가능하면 평행 상태에서 1초 정도 머문다. 숨을 뱉으면서 무릎과 등을 세우면서 허리를 올린다.<br>④ 1〜3을 반복한다.<br></div>';
 	$("#explainView").html(youtubeTag);
 		$("#youtubeCloseBtn").addClass("hidden");
 		$("#youtubeOpenBtn").removeClass("hidden");
