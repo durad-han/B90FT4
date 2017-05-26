@@ -79,7 +79,7 @@
 
 #schDetail{
 	background-repeat: repeat;
-	background-image: url(../../../image/background/texture10.jpg);
+	background-image: url(../web/image/background/texture07.jpg);
 }
 </style>
 </head>
