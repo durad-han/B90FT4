@@ -98,11 +98,11 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	//setUl의 li중 id가 setNo로 시작하는 놈의 a태그에 스타일 먹이기. a태그가 li태그 잡아먹어서.
 	$("#setUl li[id^='setNo'] a").attr("style", "background:#ffffff");
 	//현재 li class 주기
-	$("#setUl li[id='setNo"+gvSetIndex+"'] a").attr("style", "background:rgb(240, 173, 78);");
+	$("#setUl li[id='setNo"+gvSetIndex+"'] a").attr("style", "background:rgb(240, 173, 78);color:rgb(250,250,250)");
 	
 	var position_x = $("#setUl a[id='set"+setIndex+"']").offset().left + ($("#setUl a[id='set"+setIndex+"']").width() / 2);
 	var position_y = $("#setUl a[id='set"+setIndex+"']").offset().top - 50;
-	$("#pointer").offset({ top: position_y, left: position_x-30});
+	$("#pointer").offset({ top: position_y, left: position_x-20});
 	
 	
 	var type = "";
