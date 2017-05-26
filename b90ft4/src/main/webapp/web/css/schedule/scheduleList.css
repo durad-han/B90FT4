@@ -62,7 +62,7 @@ z-index: 1;
 
 
 .sList__item--orange {
-	border: 1px solid #DE660F;
+	border: 2px solid #DE660F;
 	border-radius: 10px;
 	margin: 2px;
 	padding: 5px;
@@ -85,6 +85,7 @@ z-index: 1;
 
 
 .sList__item--green {
+	border: 2px solid #2EA83B;
 	border-top-color: #2EA83B;
 	border-radius: 10px;
 	margin: 2px;
