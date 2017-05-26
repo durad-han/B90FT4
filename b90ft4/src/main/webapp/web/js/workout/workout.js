@@ -9,6 +9,7 @@ var gvIsLast = "";
 var gvSetIndex ="";
 var gvToday = $.datepicker.formatDate("yy-mm-dd",new Date());
 var gvIntakeCal = "";
+var timerId = "";
 //page load함수들
 function tempMove(){
 	$(".page-content").load("/b90ft4/web/view/workout/Charts.html");
@@ -100,7 +101,8 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	$("#setUl li[id='setNo"+gvSetIndex+"'] a").attr("style", "background:rgb(240, 173, 78);");
 	
 	var position_x = $("#setUl a[id='set"+setIndex+"']").offset().left + ($("#setUl a[id='set"+setIndex+"']").width() / 2);
-	$("#pointer").offset({ top: $("#pointer").offset().top, left: position_x-30});
+	var position_y = $("#setUl a[id='set"+setIndex+"']").offset().top - 50;
+	$("#pointer").offset({ top: position_y, left: position_x-30});
 	
 	
 	var type = "";

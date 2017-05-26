@@ -10,21 +10,16 @@
 <div id='setContainer' style="text-align:center">	
 </div>
 <div id='typeBContainer'>
-	<div id = 'timerContainer' style="font-weight:bold;font-size:15pt;text-align:center;color:skyblue;">
+	<div id = 'timerContainer' style="font-weight:bold;font-size:15pt;text-align:center;">
 	남은시간:
 	</div>
 	<div id = 'viewContainer' style="font-weight:bold;font-size:12pt;text-align:center;">
 	</div>
 
 	<div id = "explainView" style = "width:90%; height:400px;text-align:center;margin: 0 auto;">
-	<img class="menu" src="/b90ft4/web/image/workout/squatImg.jpg" style = "width:650px;height:300px;"/><br>
+	<img src="/b90ft4/web/image/workout/lunge.jpg" style = "width:650px;height:300px;"/><br>
 	<div style = "width:90%; height:400px;text-align:center;margin: 0 auto;">
-		① 릴렉스한 채로 선다. 어깨 넓이로 발을 벌리고 양 팔은 몸에 가볍게 붙인다.<br>
-		② 밸런스를 취하며 숨도 들이쉬면서 그대로 무릎을 굽혀 허리 위 상반신을 내린다. 이 때에 발뒤꿈치를 절대 올리지 않는다.<br>상체를 가능한 똑바로 세워 허리의 등뼈가 아치형태를 유지하도록 한다. 허리가 굽어지면 부상의 원인이 된다.<br>
-		③ 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮춘다. 그리고 가능하면 평행 상태에서 1초 정도 머문다. 숨을 뱉으면서 무릎과 등을 세우면서 허리를 올린다.<br>
-		④ 1〜3을 반복한다.<br>
-
-
+	<br>어깨 넓이로 발을 벌리고 양 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮추고 1초 정도 머문 뒤 숨을 뱉으면서 무릎과 등을 세운다.<br>
 	</div>
 	</div>
 	<br><br>
@@ -36,36 +31,37 @@
 	<div id = 'typeBButtons' width='90%' height='95%'>
 	<div class = 'row'>
 		<!-- <button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button> -->
-		<div class = 'col-md-9'>
-		<table>
-		<tr>
-		<td>
-		<i class="fa fa-eye fa-3x" aria-hidden="true" id='videoLoadBtn'  onclick='videoLoad()'></i>
-		<i class="fa fa-eye-slash fa-3x" aria-hidden="true" id='videoCloseBtn'  onclick='videoClose()'></i>
-		</td>
-		<td>
-		<i class="fa fa-youtube-play fa-3x" aria-hidden="true" id='youtubeOpenBtn'  onclick='youtubeOpen()'></i>
-		<i class="fa fa-times fa-3x" aria-hidden="true" id='youtubeCloseBtn'  onclick='youtubeClose()'></i>
-		</td>
-		<td><i class="fa fa-dot-circle-o fa-3x" aria-hidden="true" id="rec" onclick="onBtnRecordClicked()" style ="color: #ff0000;"></i></td>
-		<td><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true" id="pauseRes" onclick="onPauseResumeClicked()" disabled></i></td>
-		<td><i class="fa fa-stop-circle-o fa-3x" aria-hidden="true" id="stop" onclick="onBtnStopClicked()" disabled></i></td>
-		</tr>
-		<tr>
-		<td>거울</td>
-		<td>유튜브</td>
-		<td>녹화</td>
-		<td>중지</td>
-		<td>정지</td>
-		</tr>
-		</table>
-
-		
-		
-		
-		녹화 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
-		<p id="data"></p>
+			<div class = 'col-md-3 col-md-offset-4'>
+		<div class = 'container'>
+			<table>
+			<tr>
+			<td style="padding:8px;">
+			<i class="fa fa-eye fa-3x" aria-hidden="true" id='videoLoadBtn'  onclick='videoLoad()'></i>
+			<i class="fa fa-eye-slash fa-3x" aria-hidden="true" id='videoCloseBtn'  onclick='videoClose()'></i>
+			</td>
+			<td style="padding:8px;">
+			<i class="fa fa-youtube-play fa-3x" aria-hidden="true" id='youtubeOpenBtn'  onclick='youtubeOpen()'></i>
+			<i class="fa fa-times fa-3x" aria-hidden="true" id='youtubeCloseBtn'  onclick='youtubeClose()'></i>
+			</td>
+			<td style="padding:8px;"><i class="fa fa-dot-circle-o fa-3x" aria-hidden="true" id="rec" onclick="onBtnRecordClicked()" style ="color: #ff0000;"></i></td>
+			<td style="padding:8px;"><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true" id="pauseRes" onclick="onPauseResumeClicked()" disabled></i></td>
+			<td style="padding:8px;"><i class="fa fa-stop-circle-o fa-3x" aria-hidden="true" id="stop" onclick="onBtnStopClicked()" disabled></i></td>
+			</tr>
+			<tr>
+			<td style="padding:8px; text-align:center;">거울</td>
+			<td style="padding:8px; text-align:center;">유튜브</td>
+			<td style="padding:8px; text-align:center;">녹화</td>
+			<td id="recPause" style="padding:8px; text-align:center;">일시정지</td>
+			<td style="padding:8px; text-align:center;">정지</td>
+			</tr>
+			</table>
+			
+			녹화 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+			<p id="data"></p>
+			</div>
 		</div>
+		
+		
 	</div>
 		<button id="rec" onclick="onBtnRecordClicked()" style = "display: none;">녹화</button>
 		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled style = "display: none;">녹화 일시정지</button>
@@ -76,8 +72,7 @@
 </div>
 <script type="text/javascript">
 var nextSet = gvSetIndex+1;
-var timerEnd = 0; 
-var timerId;
+var timerEnd = 0;
 
 //이미지 슬라이드 가져오기
 function imgSetLoad(){
@@ -295,11 +290,13 @@ function videoClose(){
 		mediaRecorder.onpause = function(){
 			//log('Paused & state = ' + mediaRecorder.state);
 			log('녹화 일시정지');
+			$("#recPause").html("일시정지");
 		}
 
 		mediaRecorder.onresume = function(){
 			//log('Resumed  & state = ' + mediaRecorder.state);
 			log('녹화 재시작');
+			$("#recPause").html("재시작");
 		}
 
 		mediaRecorder.onwarning = function(e){
@@ -322,7 +319,7 @@ function videoClose(){
 	function onBtnStopClicked(){
 
 		//$("#videoContents").hide();
-		
+		$("#recPause").html("일시정지");
 		mediaRecorder.stop();
 		videoElement.controls = true;
 
@@ -349,7 +346,6 @@ function videoClose(){
 
 
 	function log(message){
-		//dataElement.innerHTML = dataElement.innerHTML+'<br>'+message ;
 		dataElement.innerHTML = message;
 	}
 
@@ -426,16 +422,16 @@ function videoClose(){
 
 //youtube 영상 가져오기 
 function youtubeOpen() {
-		
-	var youtubeTag = '<iframe width="99%" height="420px" src="https://www.youtube.com/embed/umvubPZ6rCo" frameborder="0" allowfullscreen></iframe>';
+	var youtubeTag = '<iframe width="99%" height="420px" src="https://www.youtube.com/embed/iMoW5neyRFk" frameborder="0" allowfullscreen></iframe>';
 	$("#explainView").html(youtubeTag);
 		$("#youtubeOpenBtn").addClass("hidden");
 		$("#youtubeCloseBtn").removeClass("hidden");
 		
 	    }
 function youtubeClose(){
-	var youtubeTag ='<img class="menu" src="/b90ft4/web/image/workout/squatImg.jpg" style = "width = 650px;height:300px;"/><br>'+
-	'<div>① 릴렉스한 채로 선다. 어깨 넓이로 발을 벌리고 양 팔은 몸에 가볍게 붙인다.<br>② 밸런스를 취하며 숨도 들이쉬면서 그대로 무릎을 굽혀 허리 위 상반신을 내린다. 이 때에 발뒤꿈치를 절대 올리지 않는다.<br>상체를 가능한 똑바로 세워 허리의 등뼈가 아치형태를 유지하도록 한다. 허리가 굽어지면 부상의 원인이 된다.<br>③ 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮춘다. 그리고 가능하면 평행 상태에서 1초 정도 머문다. 숨을 뱉으면서 무릎과 등을 세우면서 허리를 올린다.<br>④ 1〜3을 반복한다.<br></div>';
+	var youtubeTag ='<img src="/b90ft4/web/image/workout/lunge.jpg" style = "width = 650px;height:300px;"/><br>'+
+	'<br>어깨 넓이로 발을 벌리고 양 허벅지와 바닥이 평행을 이룰 때까지 허리를 낮추고 평행 상태에서 1초 정도 머문 뒤 숨을 뱉으면서 무릎과 등을 세운다.<br>'+
+
 	$("#explainView").html(youtubeTag);
 		$("#youtubeCloseBtn").addClass("hidden");
 		$("#youtubeOpenBtn").removeClass("hidden");

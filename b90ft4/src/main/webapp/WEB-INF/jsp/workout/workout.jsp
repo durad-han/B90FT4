@@ -141,15 +141,13 @@
             <!--END MODAL CONFIG PORTLET-->
          <!-- 운동 세트 호출 --> 
             <div id="setContainer"  style="text-align:center">
-				<div id="pointer" style="width:100px">현재 세트<br><i class="fa fa-check-circle-o fa-2x" aria-hidden="true" id="pauseRes" disabled style = "color:lightgreen;"></i></div>
-				<ul class="pagination pagination-lg mtm mbm" id="setUl">
+				<div id="pointer" style="width:100px">현재 세트<br><i class="fa fa-angle-double-down fa-2x" aria-hidden="true" id="pauseRes" disabled></i></div>
+				<ul class="pagination pagination-lg" id="setUl">
 					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
 						{{#isZero}}
-						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
 							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
 						{{else}}
-						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
 							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
