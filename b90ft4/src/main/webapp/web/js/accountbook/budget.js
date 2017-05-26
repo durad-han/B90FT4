@@ -15,7 +15,7 @@
 	var dateFormat = 'yy-mm-dd';
 	var weekPN=0;
 	
-	var dayByDayFlag = 0;
+	var dayByDayFlag = false;
 	
 	// 추가 부분
 	var currentMonth = new Date().getMonth()+1;
@@ -106,23 +106,37 @@
 	     			}
 	     			
 //	     			console.log("day , i : ", i);
+	     			dayByDayFlag=false;
 	     			
 	            },
 				onChangeMonthYear: function(year, month) {
 					
-					// 추가 사항
-				    var tempDate = ( j < 10 ) ? "0"+j : j ;
-				    var tempMonth = ( month < 10 ) ? "0"+month : month ;
+					console.log("month change");
 					
-					var yMD1 = year+"-"+tempMonth+"-"+tempDate;
-					var yMD2 = tempMonth+"/"+tempDate+"/"+year;
-					
-					$("#datepicker").datepicker("setDate",$.datepicker.parseDate("yy-mm-dd",yMD1));
+					var tempDate = ( j < 10 ) ? "0"+j : j ;
+					var tempMonth = ( month < 10 ) ? "0"+month : month ;
 
-					$("[id=actualDate]").val(yMD1);
-					$(".ui-datepicker-current-day").trigger("click");
+					// flag 추가.
+					if(!dayByDayFlag){
 					
-//					console.log($("#datepicker").datepicker("getDate"));
+					
+						
+						var yMD1 = year+"-"+tempMonth+"-"+tempDate;
+						var yMD2 = tempMonth+"/"+tempDate+"/"+year;
+						
+						$("#datepicker").datepicker("setDate",$.datepicker.parseDate("yy-mm-dd",yMD1));
+	
+						$("[id=actualDate]").val(yMD1);
+						$(".ui-datepicker-current-day").trigger("click");
+						
+	//					console.log($("#datepicker").datepicker("getDate"));
+					
+					}else {
+						dayByDayFlag=false;
+					}
+					
+					
+					
 					makeAccRatio(year,tempMonth);
 					
 					if(selectedDateOption==3) {
@@ -192,9 +206,7 @@
 		var month = date.getMonth() + 1;
 		
 		month = month < 10 ? "0"+month : month;
-		
 		makeAccRatio(date.getYear()+1900,month);
-		
 		
 		if(exOrInFlag){
 			$("#expenseTab").removeClass("active"); // 지출 탭 비활성화
@@ -320,6 +332,9 @@
 	});
 	
 	$("#prev").click(function() {
+		
+		dayByDayFlag = true;
+		
 		switch(selectedDateOption) {
 			case 1:
 				dayByDayFlag=1;
@@ -342,6 +357,8 @@
 	
 	
 	$("#next").click(function() {
+		
+		dayByDayFlag=true;
 		
 		switch(selectedDateOption) {
 		case 1:

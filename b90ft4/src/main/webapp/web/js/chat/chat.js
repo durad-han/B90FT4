@@ -188,7 +188,9 @@
 		makeRoomList(data);
 		
 	    // 방 목록에 방 만드는 이벤트 걸기.
-	    $('#chat-form .chat-group a.room').unbind('*').click(function(){
+	    $('#chat-form .chat-group a.room').unbind('*').click(function(e){
+	    	
+	    	e.preventDefault();
 	        
 	    	$('#chat-box').hide();
 	    	
@@ -230,18 +232,22 @@
 	
 	        var offset = $(this).offset();
 	        
-	        var h_main = $('#chat-form').height();
+//	        var h_main = $('#chat-form').height();
+//	        
+//	        console.log("h_main : ", h_main);
+//	        
+//	        var h_title = $("#chat-box > .chat-box-header").height();
+//	        
+//	        var top = ($('#chat-box').is(':visible') ? (offset.top - h_title - 40) : (offset.top + h_title - 20));
+//	
+//	        if((top + $('#chat-box').height()) > h_main){
+//	            top = h_main - 	$('#chat-box').height();
+//	        }
+//	
+//	        $('#chat-box').css({'top': offset.top-10});
+	        $('#chat-box').css({'top': offset.top-10-$(document).scrollTop()});
+
 	        
-	        var h_title = $("#chat-box > .chat-box-header").height();
-	        
-	        var top = ($('#chat-box').is(':visible') ? (offset.top - h_title - 40) : (offset.top + h_title - 20));
-	
-	        if((top + $('#chat-box').height()) > h_main){
-	            top = h_main - 	$('#chat-box').height();
-	        }
-	
-	        $('#chat-box').css({'top': top});
-	
 	        if(!$('#chat-box').is(':visible')){
 	            $('#chat-box').toggle('slide',{
 	                direction: 'right'

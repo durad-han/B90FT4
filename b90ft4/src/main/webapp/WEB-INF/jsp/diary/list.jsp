@@ -35,11 +35,11 @@
     <section id="portfolio" style="background-color:transparent !important;">
         <div class="container" style="padding-right:40px; background-color: rgba(102, 114, 191, 0.03) !important;"> <!-- 패딩 right 필수 -->
                
-                <div class="row">
-                    <div class="section-header col-md-12">
+<!--                 <div class="row"> -->
+<!--                     <div class="section-header col-md-12"> -->
 <!--                         <h2 style="color: red">Diary</h2> -->
-                    </div> 
-                </div>	
+<!--                     </div>  -->
+<!--                 </div>	 -->
                 
                  <div id="row">
                 	<div class="col-md-12">
@@ -130,6 +130,20 @@
 					              				html+='<img src="${pageContext.request.contextPath}/web/image/diary/diaryimg.jpg" width="350px" height="300px" id="img1" alt="">';
 					              			}
 					                                
+					              			var d = new Date(list[i].diaryDate)
+					              			var y = d.getYear() + 1900;
+					              			var M = d.getMonth() + 1;
+					              			var date = d.getDate();
+					              		    var h = d.getHours();
+					              		    var m = d.getMinutes();
+					              		    
+					              		    if (M < 10) M = "0" + M;
+					              		    if (m < 10) m = "0" + m;
+					              		    var s = d.getSeconds();
+					              		    if (s < 10) s = "0" + s;
+					              		    var fullDate = y+'-'+M+"-"+date+" "+h+":"+m+":"+s;
+					             		 
+					              			
 						                     html+='           <div class="overlay-b">                                                                                         ';
 						                     html+='               <div class="overlay-inner">                                                                                 ';
 						                     html+='                   <a href="blog-single.html" class="fa fa-link"></a>                                                      ';
@@ -139,7 +153,8 @@
 						                     html+='       <div class="blog-body">                                                                                             ';
 						                     html+='           <div class="box-content" style="margin:0 !important;">                                                          ';
 						                     html+='               <h3 class="post-title"><a href="detail.do?diaryNo='+list[i].diaryNo+'" >'+list[i].title+'</a></h3> ';     
-						                     html+='               <span class="blog-meta">'+list[i].diaryDate+'</span>  ';
+// 						                     html+='               <span class="blog-meta">'+ $.datepicker.formatDate("yy-mm-dd",new Date(list[i].diaryDate))+'</span>  ';
+						                     html+='               <span class="blog-meta">'+ fullDate +'</span>  ';
 						                     html+='           </div>                                                                                                          ';
 						                     html+='       </div>';                                                                                                              
 						                     html+='   </div> ';

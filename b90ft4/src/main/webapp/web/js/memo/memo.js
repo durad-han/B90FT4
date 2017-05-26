@@ -12,7 +12,6 @@
 			if($("#showAndHideMemo").prop("checked")){
 				bringMemo();
 			}else {
-				//console.log("ㅋㅋ");
 				$("div.memo").each(function() {
 					$(this).remove();
 				});
@@ -28,8 +27,8 @@
 			
 			var obj =  $("<div></div>").css({
 					       position: "absolute",
-					       left:"300px",
-					       top:"300px",
+					       left: "300px" ,
+					       top: $(document).scrollTop() + 300,
 					       width:"150px",
 					       height:"250px",
 					       background: "#ffff9d",

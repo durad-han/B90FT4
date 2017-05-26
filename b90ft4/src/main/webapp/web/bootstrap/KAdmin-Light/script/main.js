@@ -14,7 +14,9 @@ $(function () {
         }
     });
     
-    $('.chat-box-close').click(function(){
+    $('.chat-box-close').click(function(e){
+    	console.log("갱신");
+    	e.preventDefault();
         $('#chat-box').hide();
         $('#chat-form .chat-group a').removeClass('active');
     });
