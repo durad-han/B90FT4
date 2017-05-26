@@ -30,6 +30,18 @@
 .custom-tooltip.top .tooltip-arrow {
 	border-top-color: #0088cc;
 }
+
+#maincontent{
+	background-image: url(../web/image/Cover.jpg);
+	background-size: cover;
+	margin-top: 80px;
+}
+
+#cover{
+	background-color: white;
+	margin: 35px 48px 15px 41px;
+	padding-bottom: 50px;
+}
 </style>
 
 </head>
@@ -46,13 +58,25 @@
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="${pageContext.request.contextPath}/web/image/corgi/Corgi-web-icon-CenterIcon.png" alt="">
-                    <div class="intro-text">
-                        <h1 class="name">자기 관리를 시작해보세요!</h1>
+<!--                 	<div class="col-md-1"></div> -->
+<!--                 	<div class="col-md-5"> -->
+<!--                     <div class="intro-text" id="cover"> -->
+<!--                         <h1 class="name">자기 관리를<br>시작해보세요!</h1> -->
+<!--                         <hr class="star-light"> -->
+<!--                         <span class="skills"> 『 적은 밖에 있는것이 아니라 내 안에 있다.<br> -->
+<!--                         						나를 극복하는 순간, 나는 황제가 된다. 』<br> - 칭키스칸 </span> -->
+<!--                     </div> -->
+<!--                 	</div> -->
+                	<div class="col-md-7">
+                	
+                    <div class="intro-text" id="cover">
+                        <h1 class="name">자기 관리를<br>시작해보세요!</h1>
                         <hr class="star-light">
-                        <span class="skills"> 『 적은 밖에 있는것이 아니라 내 안에 있다.
-                        나를 극복하는 순간, 나는 황제가 된다. 』 - 칭키스칸 </span>
-                    </div>
+                        <span class="skills"> 『 적은 밖에 있는것이 아니라 내 안에 있다.<br>
+                        						나를 극복하는 순간, 나는 황제가 된다. 』<br> - 칭키스칸 </span>
+                	</div>
+                	</div>
+                	<div class="col-md-5"></div>
                 </div>
             </div>
         </div>

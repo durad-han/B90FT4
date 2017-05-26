@@ -29,17 +29,10 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 <link href="${pageContext.request.contextPath}/web/css/main/login.css" rel="stylesheet" type="text/css">
 
 <!-- 	네이버 로그인 임시 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <!-- 	//네이버 로그인 임시 -->
 
 <!-- 스윗얼럿 ==================================================================================================== -->
@@ -52,11 +45,6 @@
 <!-- 채팅 ==================================================================================================== -->
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/web/css/chat/chat.css">
 <!-- 채팅 ==================================================================================================== -->
-
-<!-- switch -->
-<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/bootstrap.css" rel="stylesheet" /> --%>
-<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/assets/css/gsdk.css" rel="stylesheet" />   --%>
-<%-- <link href="${pageContext.request.contextPath}/web/bootstrap/bootstrap3/css/font-awesome.css" rel="stylesheet"> --%>
 
 <style>
 .dropdown-menu > li{
@@ -87,6 +75,11 @@
 
 .custom-tooltip.top .tooltip-arrow {
 	border-top-color: #0088cc;
+}
+
+#schDetail{
+	background-repeat: repeat;
+	background-image: url(../../../image/background/texture10.jpg);
 }
 </style>
 </head>
@@ -163,7 +156,6 @@ $(function () {
 
 </script>
 
-
 	<nav id="mainNav"  class="navbar navbar-default navbar-fixed-top navbar-custom" style="padding-bottom: 0px;">
         <div class="container" style="height: 90px;">
             <div class="navbar-header page-scroll">
@@ -228,7 +220,7 @@ $(function () {
 					      
 				   </li>
                       
-                   <li class = "dropdown"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>가계부</h4>">
+                   <li class = "dropdown"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="가계부">
 					      <a id="acc" class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
 								<i class="fa fa-krw fa-3x"></i>
 					      </a>
@@ -242,19 +234,19 @@ $(function () {
 				   </li>
 				   
                     <li>
-                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h6>다이어리</h6>">
+                        <a href="${pageContext.request.contextPath}/diary/list.do"  data-html="true" data-toggle="tooltip" data-placement="bottom" title="다이어리">
                         		 <i class="fa fa-book fa-3x"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>스케줄</h4>">	
+                        <a href="${pageContext.request.contextPath}/schedule/scheduleList.do?userId=${user.userId}" data-html="true" data-toggle="tooltip" data-placement="bottom" title="스케줄">	
                         		<i class="fa fa-calendar fa-3x"></i>
                         </a>
 
                     </li>
                         
-                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>운동</h4>">
+                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="운동">
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#" >
 								<i class="fa fa-child fa-3x"></i>
 					      </a>
@@ -278,12 +270,12 @@ $(function () {
 								<i class="fa fa-pencil-square-o fa-3x"></i>
 							</a>
 
-							<span id="onOff" style="margin-left: 3.8px; display: none;" data-html="true"  data-toggle="tooltip" data-placement="bottom" title="<h4>메모</h4>"> 	    				
+							<span id="onOff" style="margin-left: 3.8px; display: none;" data-html="true"  data-toggle="tooltip" data-placement="bottom" title="메모"> 	    				
 	              	    		<input type="checkbox" id="showAndHideMemo" value="1" name="memoOpt" checked data-toggle="switch" class="ct-info"/>
 							</span>
 
 		            </li>
-				   <li id="topbar-chat" class="hidden-xs" data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>채팅</h4>">
+				   <li id="topbar-chat" class="hidden-xs" data-html="true" data-toggle="tooltip" data-placement="bottom" title="채팅">
 						<a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat">
 							<i class="fa fa-weixin fa-3x" ></i>
 						</a>
@@ -291,7 +283,7 @@ $(function () {
 				</c:otherwise> 
 			</c:choose>
                         
-                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="<h4>뉴스</h4>">
+                    <li data-html="true" data-toggle="tooltip" data-placement="bottom" title="뉴스">
                         <a href="${pageContext.request.contextPath}/main/news.do">
                         	<i class="fa fa-newspaper-o fa-3x"></i>
                         </a>
