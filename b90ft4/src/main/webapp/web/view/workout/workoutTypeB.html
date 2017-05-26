@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link type='text/css' rel='stylesheet' href="/b90ft4/web/css/workout/workoutTypeB.css" />
+
 </head>
 <body>
-<div id='setContainer'>	
+<div id='setContainer' style="text-align:center">	
 </div>
 <div id='typeBContainer'>
-	<div id = 'timerContainer'>
+	<div id = 'timerContainer' style="font-weight:bold;font-size:15pt;text-align:center;color:skyblue;">
 	남은시간:
 	</div>
-	<div id = 'viewContainer'>
+	<div id = 'viewContainer' style="font-weight:bold;font-size:12pt;text-align:center;">
 	</div>
-	
 
 	<div id = "explainView" style = "width:90%; height:400px;">
 	<img class="menu" src="/b90ft4/web/image/workout/RunningImg.jpg" style = "width:99%;height:300px;"/><br>
 	</div>
+	<br><br>
 	<div id ="videoContents">
 		<video width='90%' height='90%' autoplay='autoplay' id='myVideo'/>
 	</div>
@@ -31,27 +32,51 @@
 	</div>
 	
 	<div id = 'typeBButtons' width='90%' height='95%'>
-		<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button><br>
-		<button id='videoLoadBtn' class='btn btn-primary' onclick='videoLoad()'>거울 보기</button>
-		<button id='videoCloseBtn' class='btn btn-default' onclick='videoClose()'>거울 끄기</button>
-		<button id='youtubeOpenBtn' class='btn btn-primary' onclick='youtubeOpen()'>영상 켜기</button>
-		<button id='youtubeCloseBtn' class='btn btn-default' onclick='youtubeClose()'>영상 끄기</button>
-		<br>
-		<i class="fa fa-play-circle-o fa-3x" aria-hidden="true" id="rec" onclick="onBtnRecordClicked()"></i>
-		<i class="fa fa-pause-circle-o fa-3x" aria-hidden="true" id="pauseRes" onclick="onPauseResumeClicked()" disabled></i>
-		<i class="fa fa-stop-circle-o fa-3x" aria-hidden="true" id="stop" onclick="onBtnStopClicked()" disabled></i>
+	<div class = 'row'>
+		<!-- <button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()'>운동 시작</button> -->
+		<div class = 'col-md-9'>
+		<table>
+		<tr>
+		<td>
+		<i class="fa fa-eye fa-3x" aria-hidden="true" id='videoLoadBtn'  onclick='videoLoad()'></i>
+		<i class="fa fa-eye-slash fa-3x" aria-hidden="true" id='videoCloseBtn'  onclick='videoClose()'></i>
+		</td>
+		<td>
+		<i class="fa fa-youtube-play fa-3x" aria-hidden="true" id='youtubeOpenBtn'  onclick='youtubeOpen()'></i>
+		<i class="fa fa-times fa-3x" aria-hidden="true" id='youtubeCloseBtn'  onclick='youtubeClose()'></i>
+		</td>
+		<td><i class="fa fa-dot-circle-o fa-3x" aria-hidden="true" id="rec" onclick="onBtnRecordClicked()" style ="color: #ff0000;"></i></td>
+		<td><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true" id="pauseRes" onclick="onPauseResumeClicked()" disabled></i></td>
+		<td><i class="fa fa-stop-circle-o fa-3x" aria-hidden="true" id="stop" onclick="onBtnStopClicked()" disabled></i></td>
+		</tr>
+		<tr>
+		<td>거울</td>
+		<td>유튜브</td>
+		<td>녹화</td>
+		<td>중지</td>
+		<td>정지</td>
+		</tr>
+		</table>
+
+		
+		
+		
+		녹화 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+		<p id="data"></p>
+		</div>
+	</div>
 		<button id="rec" onclick="onBtnRecordClicked()" style = "display: none;">녹화</button>
 		<button id="pauseRes" onclick="onPauseResumeClicked()" disabled style = "display: none;">녹화 일시정지</button>
 		<button id="stop" onclick="onBtnStopClicked()" disabled style = "display: none;">녹화 정지</button>
 		<br>
-		녹화 기능 : <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
-		<p id="data"></p>
 		
 	</div>
 </div>
 <script type="text/javascript">
 var nextSet = gvSetIndex+1;
 var timerEnd = 0; 
+var timerId;
+
 //이미지 슬라이드 가져오기
 function imgSetLoad(){
 	//console.log("nextSet : "+nextSet);
@@ -77,6 +102,7 @@ imgSetLoad();
 
 //typeB 관련 함수
 
+$("#videoContents").hide();
 $("#videoCloseBtn").addClass("hidden");
 $("#youtubeCloseBtn").addClass("hidden");
 var video = document.getElementById('myVideo');
@@ -88,6 +114,7 @@ function timerViewSet(){
 	timerHtml = "남은시간 : "+(gvTypeBTime-timerEnd)+"초";
 	$('#timerContainer').html(timerHtml);	
 };
+
 function typeBStart(){
 	//console.log("typeBStart load");
 	//gvTypeBTime = 5;
@@ -104,7 +131,7 @@ function typeBStart(){
 		if(gvIsLast){
 			timerViewSet();
 			alert("마지막 세트입니다.");
-			//디비에 소모칼로리 보내는 기능 추가하기**
+			//디비에 소모칼로리 보내는 기능 
 			calIncDec();
 			clearInterval(timerId);
 	  	}
@@ -112,9 +139,11 @@ function typeBStart(){
 		clearInterval(timerId);
 		timerViewSet();
 		alert(gvIntervalTime+"초 동안 휴식 후 "+nextSet+"세트를 시작합니다.");
-		//디비에 소모칼로리 보내는 기능 추가하기**
+		//디비에 소모칼로리 보내는 기능
 		calIncDec();
 		$("#setNo"+nextSet).trigger("click");
+		var position_x = $("#setUl li[id='setNo"+gvSetIndex+"']").offset().left + ($("#setUl li[id='setNo"+gvSetIndex+"']").width() / 2);
+		$("#pointer").offset({ top: $("#pointer").offset().top, left: $("#setUl li[id='setNo"+gvSetIndex+"']").offset().left});
 	}
 	
 },1000); 
@@ -135,16 +164,21 @@ function videoLoad() {
 	    video.play();
 	  };
 	});
+
+	$("#videoContents").show();
+	
 	$("#viewContainer").addClass("hidden");
 	$("#videoLoadBtn").addClass("hidden");
 	$("#videoCloseBtn").removeClass("hidden");
 	
-    }
+}
 
 function videoClose(){
 	var video = document.querySelector('video');
 	video.pause();
 	video.srcObject = null;
+
+	$("#videoContents").hide();
 	
 	$("#viewContainer").removeClass("hidden");
 	$("#videoCloseBtn").addClass("hidden");
@@ -272,6 +306,7 @@ function videoClose(){
 		};
 	}	
 	function onBtnRecordClicked (){
+		$("#videoContents").show();
 		 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 			alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 		}else {
@@ -283,6 +318,9 @@ function videoClose(){
 	}
 
 	function onBtnStopClicked(){
+
+		//$("#videoContents").hide();
+		
 		mediaRecorder.stop();
 		videoElement.controls = true;
 
@@ -379,7 +417,8 @@ function videoClose(){
 		return browserName;
 	}
 	//derault  recorder state
-	log('영상 모듈 비활성화');
+	//영상 모듈
+	log('준비됨');
 
 
 
@@ -387,13 +426,13 @@ function videoClose(){
 function youtubeOpen() {
 		
 	var youtubeTag = '<iframe width="99%" height="420px" src="https://www.youtube.com/embed/umvubPZ6rCo" frameborder="0" allowfullscreen></iframe>';
-	$("#explainView").html(youtubeTag);
+	$("#explainView").html(youtubeTag);//wkatl qjrmtnwjdwha ㅠ ?ㅕ? 버그수정좀 잠시
 		$("#youtubeOpenBtn").addClass("hidden");
 		$("#youtubeCloseBtn").removeClass("hidden");
 		
 	    }
 function youtubeClose(){
-	var youtubeTag ='<img class="menu" src="${pageContext.request.contextPath}/web/image/workout/RunningImg.jpg"/><br>';
+	var youtubeTag ='<img class="menu" src="/b90ft4/web/image/workout/RunningImg.jpg" style = "width:99%;height:300px;"/><br>';
 	$("#explainView").html(youtubeTag);
 		$("#youtubeCloseBtn").addClass("hidden");
 		$("#youtubeOpenBtn").removeClass("hidden");
@@ -493,15 +532,19 @@ function slide() {
 //페이지 로딩시 이미지 슬라이더 로드
 slide();
 //recBtn함수
-/* 
+
 $(document).ready(function() {
-	  var icon = $('.recPlayBtn');
+	if($("#typeBStartBtn").length < 1){
+		$("<button id='typeBStartBtn' class='btn btn-primary' onclick='typeBStart()' style='margin-right:10px'>운동 시작</button>").insertBefore("#setEndBtn");
+	}
+    
+/*	  var icon = $('.recPlayBtn');
 	  icon.click(function() {
 	     icon.toggleClass('activePlayBtn');
 	     return false;
-	  });
+	  });*/
 	});
- */
+
 </script>
 </body>
 </html>

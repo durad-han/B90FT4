@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Bog + I </title>
+    <title>Cog + I </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -139,20 +139,20 @@
                 </div>
             </div>
             <!--END MODAL CONFIG PORTLET-->
-         <!-- 운동 세트 호출 -->
-            <div id="setContainer">
+         <!-- 운동 세트 호출 --> 
+            <div id="setContainer"  style="text-align:center">
+				<div id="pointer" style="width:100px">현재 세트<br><i class="fa fa-check-circle-o fa-2x" aria-hidden="true" id="pauseRes" disabled style = "color:lightgreen;"></i></div>
 				<ul class="pagination pagination-lg mtm mbm" id="setUl">
 					<!-- 굳이 여기다 횟수 표시해줄 필요 없다. 자바에서 갯수 반환해서 새로운 div에 띄워주면 그만임. 깊게 고민하지 마라-->
 					{{#setList}}						
 						{{#isZero}}
-						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
-							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
+						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeACount}}회</a></li> -->
+							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeACount}}회</a></li>
 						{{else}}
-						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
-							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
+						<!--	<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br> {{@last}}/0/{{typeBTime}}초</a></li> -->
+							<li class = "{{@last}}Set" id="setNo{{counter @index}}" onclick="workoutTypeLoad({{workoutSetNo}},{{workoutNo}},{{typeACount}},{{typeBTime}},{{spentCal}},{{intervalTime}},{{@last}},{{counter @index}})"><a style="font-color:black;" id = "set{{counter @index}}"> {{counter @index}} 세트<br>{{typeBTime}}초</a></li>
 						{{/isZero}}
 					{{/setList}}
-					<li><a id="currentSet">현재 세트 :</a><br></li>
 				</ul>
             </div>
 		<!-- 운동 내용 호출 -->
@@ -161,7 +161,7 @@
 			</div>
 			<div>
 				<div class="buttons">
-					<button id="setEndBtn" class='btn btn-primary' onclick="endWorkout()">운동 끝내기</button>
+					<button id="setEndBtn" class='btn btn-primary' onclick="javascript:clearInterval(timerId);listLoad();">운동 끝내기</button>
 					<!-- <button id="viewChartBtn" class='btn btn-primary' >차트보기</button> --> 
 				</div>
 					<br>

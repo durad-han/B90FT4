@@ -92,11 +92,16 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 	 gvIntervalTime = intervalTime;
 	 gvIsLast = isLast;
 	 gvSetIndex = setIndex;
-	console.log("workoutTypeLoad function started");
-	console.log("gvSetIndex : " + gvSetIndex);
+	//console.log("workoutTypeLoad function started");
+	//console.log("gvSetIndex : " + gvSetIndex);
+	//setUl의 li중 id가 setNo로 시작하는 놈의 a태그에 스타일 먹이기. a태그가 li태그 잡아먹어서.
+	$("#setUl li[id^='setNo'] a").attr("style", "background:#ffffff");
+	//현재 li class 주기
+	$("#setUl li[id='setNo"+gvSetIndex+"'] a").attr("style", "background:rgb(240, 173, 78);");
 	
-	$("#currentSet").html("현재 세트 : "+gvSetIndex);
-	 document.getElementById("currentSet").style.backgroundColor = "#f0ad4e";
+	var position_x = $("#setUl a[id='set"+setIndex+"']").offset().left + ($("#setUl a[id='set"+setIndex+"']").width() / 2);
+	$("#pointer").offset({ top: $("#pointer").offset().top, left: position_x-30});
+	
 	
 	var type = "";
 	if(typeACount != 0){
@@ -125,10 +130,6 @@ function workoutTypeLoad(workoutSetNo,workoutNo,typeACount,typeBTime,spentCal,in
 }
 
 listLoad();
-
-function endWorkout(){
-	listLoad();
-}
 
 //today calorie column insert
 function calColumnInsert(){
