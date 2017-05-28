@@ -149,7 +149,7 @@ function typeBStart(){
 
 //사용자 카메라 가져오기
 function videoLoad() {
-
+	$("#mainNav").hide();
 	var constraints = { audio: true, video: true}; 
 /* 	navigator.serviceWorker.register('sw.js',{insecure:true});
 	navigator.serviceWorker.register('workout.js',{insecure:true}); */
@@ -171,6 +171,7 @@ function videoLoad() {
 }
 
 function videoClose(){
+	$("nav").show();
 	var video = document.querySelector('video');
 	video.pause();
 	video.srcObject = null;
@@ -304,8 +305,9 @@ function videoClose(){
 			log('경고 : ' + e);
 		};
 	}	
-	function onBtnRecordClicked (){
+	function onBtnRecordClicked(){
 		$("#videoContents").show();
+		$("#mainNav").hidden();
 		 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 			alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 		}else {
@@ -317,7 +319,7 @@ function videoClose(){
 	}
 
 	function onBtnStopClicked(){
-
+		$("#mainNav").show();
 		//$("#videoContents").hide();
 		$("#recPause").html("일시정지");
 		mediaRecorder.stop();
